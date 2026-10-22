@@ -171,6 +171,6 @@ Falta (uma vez):
        gflow auth login --browser chrome --profile flow-gflow        (Google Flow, vídeo)
      e pôr seus perfis do ChatGPT em ~/.claude/bin/gpt-contas.lst   (linha: <conta> <perfil> <porta>)
   2. Checkout: crie conta no gateway que for usar (Wiven, Mundpay, GGCheckout, Hotmart, Cooud, Zenith).
-  3. Sem hospedagem? Leia "Hospedagem grátis (Cloudflare)" no README.md.
+  3. Sem hospedagem? Leia "Sem hospedagem? Use a Cloudflare" no README.md.
   4. Reinicie o Claude Code e peça: "vamos criar uma oferta low ticket do zero".
 MSG
