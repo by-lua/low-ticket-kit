@@ -1,0 +1,576 @@
+[
+ {
+  "id": "0s0tckZNA4EDjsNWIGpn",
+  "name": "Brandon",
+  "gender": "male",
+  "accent": "american",
+  "provider": "openai"
+ },
+ {
+  "id": "2OMmjuvizlUUkgCLYrEU",
+  "name": "Nicole",
+  "gender": "female",
+  "accent": "australian",
+  "provider": "cartesia"
+ },
+ {
+  "id": "4VCohb9n7kc8qQAMbC9T",
+  "name": "Jamal",
+  "gender": "male",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "4wRMNoWpnF0F0r5LTRHM",
+  "name": "Brittney",
+  "gender": "female",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "7pjl1PlCtijY5E7k9nex",
+  "name": "Emma",
+  "gender": "female",
+  "accent": "american",
+  "provider": "google"
+ },
+ {
+  "id": "86JL2u8s14F9DthqWgPk",
+  "name": "Almee",
+  "gender": "female",
+  "accent": "british",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "8OwpkBz4OXvyOgg6uSVM",
+  "name": "Alexandra",
+  "gender": "female",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "9H5PLh8sHyc4NiQba2sO",
+  "name": "Josh",
+  "gender": "male",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "9L8v6Oy5x46GlKUxRg6H",
+  "name": "Daniela",
+  "gender": "female",
+  "accent": "peninsular",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "9w5cLesHgaQLE6AEhHww",
+  "name": "Liberty",
+  "gender": "female",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "D5K8U3Eh3Kl7THhI7gee",
+  "name": "Lasso",
+  "gender": "male",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "DVkGI1gOEQwhI9D98kgV",
+  "name": "Bella",
+  "gender": "female",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "Dw4Y69nCUd0lijzanffn",
+  "name": "Sophia",
+  "gender": "female",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "EddrDT2Ls2QvMmujTL5d",
+  "name": "Egypt",
+  "gender": "female",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "FNrD9UXPRmnlfELyZfOH",
+  "name": "Ethan",
+  "gender": "male",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "GFvARbVuizGj4jkdG1iN",
+  "name": "Greg",
+  "gender": "male",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "GNliQ6gOp8Y96hz0uPSY",
+  "name": "Isabella",
+  "gender": "female",
+  "accent": "american",
+  "provider": "google"
+ },
+ {
+  "id": "GTfQlFazcVAZK9iGyXN3",
+  "name": "Rocha",
+  "gender": "male",
+  "accent": "brazilian",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "Jc5LFEs9ONmW3vilHdpg",
+  "name": "Mason",
+  "gender": "male",
+  "accent": "american",
+  "provider": "google"
+ },
+ {
+  "id": "JtYCd3bj25SpuCA0wLQM",
+  "name": "Anika",
+  "gender": "female",
+  "accent": "indian",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "LWoskltOczE5nVUCPFCl",
+  "name": "Justin",
+  "gender": "male",
+  "accent": "american",
+  "provider": "cartesia"
+ },
+ {
+  "id": "Lvu57Tdi6WU0LrCkf3W0",
+  "name": "Bradford",
+  "gender": "male",
+  "accent": "british",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "NKfeMAFYqtyx9PHd3TYP",
+  "name": "Arthur",
+  "gender": "male",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "NkxXZNRZuGVagP3gLTlk",
+  "name": "James",
+  "gender": "male",
+  "accent": "british",
+  "provider": "openai"
+ },
+ {
+  "id": "NmypOAkKcWovPSbjMJPk",
+  "name": "George",
+  "gender": "male",
+  "accent": "british",
+  "provider": "cartesia"
+ },
+ {
+  "id": "OsLeLksKZUcYFR6Rj3AV",
+  "name": "Lea",
+  "gender": "female",
+  "accent": "american",
+  "provider": "openai"
+ },
+ {
+  "id": "Pt04qYLGmK9HateRrrdh",
+  "name": "Brian",
+  "gender": "male",
+  "accent": "american",
+  "provider": "cartesia"
+ },
+ {
+  "id": "QQ0vIwK2AgVtbHZk3wYq",
+  "name": "Taylor",
+  "gender": "female",
+  "accent": "british",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "QyFFVFY5hzA5T7sVv9JI",
+  "name": "Samara",
+  "gender": "female",
+  "accent": "british",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "RIDXPvBoFo0aOwJW5PFt",
+  "name": "Joe",
+  "gender": "male",
+  "accent": "british",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "RPX3siW9Kio3DNFmS9aT",
+  "name": "Sandra",
+  "gender": "female",
+  "accent": "peninsular",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "SveSw38zJT860NRIeiVk",
+  "name": "Liam",
+  "gender": "male",
+  "accent": "american",
+  "provider": "google"
+ },
+ {
+  "id": "UfOKaDAlzOMjZnyEhPH1",
+  "name": "Hope",
+  "gender": "female",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "VesROIDY8lJS6zz8xTRb",
+  "name": "William",
+  "gender": "male",
+  "accent": "american",
+  "provider": "google"
+ },
+ {
+  "id": "VfJEoIjcuedwbnVocfwS",
+  "name": "John",
+  "gender": "male",
+  "accent": "american",
+  "provider": "openai"
+ },
+ {
+  "id": "W6Wa8eUTXHCPiSSYsssd",
+  "name": "Jacob",
+  "gender": "male",
+  "accent": "australian",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "W76fVeloaQcuN71bIQF6",
+  "name": "Dwight",
+  "gender": "male",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "YLTAqV9Wix7Nhi6MSi9Z",
+  "name": "Lucy",
+  "gender": "female",
+  "accent": "british",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "aCWKe1NzicFCAkohj7TY",
+  "name": "Arial",
+  "gender": "female",
+  "accent": "american",
+  "provider": "cartesia"
+ },
+ {
+  "id": "aIJGQIEdPBlV4bWoLgiC",
+  "name": "Jordan",
+  "gender": "male",
+  "accent": "american",
+  "provider": "openai"
+ },
+ {
+  "id": "arGkfQC5Z0yNlNrYLlE8",
+  "name": "Elliot",
+  "gender": "male",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "bmSnYdSLhHXD50TAWW7T",
+  "name": "Roberta",
+  "gender": "female",
+  "accent": "brazilian",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "bqvJyFf80waIYPYiv6zX",
+  "name": "Leo",
+  "gender": "male",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "cPtN7blFGdiROwNbfof3",
+  "name": "Haider",
+  "gender": "male",
+  "accent": "indian",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "cQ0q3hcj9Bm4IccGDY9C",
+  "name": "Eve",
+  "gender": "female",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "dEcutGbESImg8uIOJOb3",
+  "name": "Julie",
+  "gender": "female",
+  "accent": "american",
+  "provider": "openai"
+ },
+ {
+  "id": "dZ7kbDbDdY9H6RttZTKE",
+  "name": "Marianne",
+  "gender": "female",
+  "accent": "brazilian",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "e3zFWWHHfNk6vOh5kbBX",
+  "name": "Serena",
+  "gender": "female",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "eSojoW8lMv5whHRCJugk",
+  "name": "Domi",
+  "gender": "female",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "eVNvr3tiJvcvHbMVcZSo",
+  "name": "Anna",
+  "gender": "female",
+  "accent": "australian",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "eXjri1H442qcs35pWaTr",
+  "name": "Alex",
+  "gender": "female",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "f17of6JRlYfH1MLkueyX",
+  "name": "Nicko",
+  "gender": "male",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "fHmK4z2cR0VXxvQmd7ei",
+  "name": "Blondie",
+  "gender": "female",
+  "accent": "british",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "fq31CkjruviAHMUL29Xv",
+  "name": "Cayla",
+  "gender": "female",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "gAMMcyqjx1ah89dVqibp",
+  "name": "Chris",
+  "gender": "male",
+  "accent": "british",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "hawOICV0yZNV4X3QIiIz",
+  "name": "Dan",
+  "gender": "male",
+  "accent": "peninsular",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "iBsjG6Kk8tmO0ldX7Aho",
+  "name": "Tara",
+  "gender": "female",
+  "accent": "american",
+  "provider": "cartesia"
+ },
+ {
+  "id": "iQfL7duYSv9WEYMqHD8U",
+  "name": "Ginyin",
+  "gender": "male",
+  "accent": "peninsular",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "iWBJcyi2qdFpXYRGt42f",
+  "name": "Maya",
+  "gender": "female",
+  "accent": "american",
+  "provider": "cartesia"
+ },
+ {
+  "id": "j51tO8Upz9wEVIUkynCJ",
+  "name": "Ashley",
+  "gender": "female",
+  "accent": "american",
+  "provider": "openai"
+ },
+ {
+  "id": "kNu7mWSr3CreFbu2R031",
+  "name": "Archie",
+  "gender": "male",
+  "accent": "british",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "lJQLBnDNpkkc4RIgqhIZ",
+  "name": "Matthew",
+  "gender": "male",
+  "accent": "australian",
+  "provider": "cartesia"
+ },
+ {
+  "id": "lQS5Hszd1P0W2m18M4ME",
+  "name": "Andrew",
+  "gender": "male",
+  "accent": "american",
+  "provider": "cartesia"
+ },
+ {
+  "id": "ltYBSrCwVJp0I99DmLfq",
+  "name": "Olivia",
+  "gender": "female",
+  "accent": "american",
+  "provider": "google"
+ },
+ {
+  "id": "m1t6JeyI9DXRhnCg8kuX",
+  "name": "Adam",
+  "gender": "male",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "mLImGOUHHIxGi3sug96e",
+  "name": "Karishma",
+  "gender": "female",
+  "accent": "indian",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "nbuPMDFw8XS4YZTa8acL",
+  "name": "Tessa",
+  "gender": "female",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "okc8JAt7Vb3u20k4soKB",
+  "name": "Mark",
+  "gender": "male",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "r0ZdS6QBWDxmcRN7HxWq",
+  "name": "Micah",
+  "gender": "male",
+  "accent": "british",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "r4gww888sYU82aKZSUHy",
+  "name": "Elli",
+  "gender": "female",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "r7ff8tEP5oczbE3LQqZX",
+  "name": "Mario",
+  "gender": "male",
+  "accent": "brazilian",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "rJmVxgRa6YI9bALBqvtC",
+  "name": "Sylvia",
+  "gender": "female",
+  "accent": "american",
+  "provider": "openai"
+ },
+ {
+  "id": "rgqCbvqWKIaxYs54d7xS",
+  "name": "Noah",
+  "gender": "male",
+  "accent": "australian",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "s1R1xK2BRG2VVS2QSvE0",
+  "name": "Harsh",
+  "gender": "male",
+  "accent": "indian",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "s1YBw3dmanbLNCq7MXI8",
+  "name": "Kayla",
+  "gender": "female",
+  "accent": "american",
+  "provider": "openai"
+ },
+ {
+  "id": "sUXCiUMyEVHBC7sRlPZY",
+  "name": "Carla",
+  "gender": "female",
+  "accent": "american",
+  "provider": "cartesia"
+ },
+ {
+  "id": "tijk10imWq7nGRawDD62",
+  "name": "Owen",
+  "gender": "male",
+  "accent": "american",
+  "provider": "google"
+ },
+ {
+  "id": "wjOnivHr3V1ZGNuCMZJI",
+  "name": "Lila",
+  "gender": "female",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "xpkvvHUyS37s3f84MObW",
+  "name": "Sam",
+  "gender": "male",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "y5nGwtfzvQ2OhrBXZnj5",
+  "name": "Antoni",
+  "gender": "male",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "ygpNLsdYDCOTTYCfy1Ns",
+  "name": "Nayva",
+  "gender": "female",
+  "accent": "american",
+  "provider": "elevenlabs"
+ },
+ {
+  "id": "zYqKDc8tFTIsAhJFpTaC",
+  "name": "Ava",
+  "gender": "female",
+  "accent": "american",
+  "provider": "google"
+ }
+]

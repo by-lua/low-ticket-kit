@@ -1,0 +1,74 @@
+
+Confirme pedidos por eventos assinados e processe cada entrega uma única vez.
+
+Cadastre um endpoint
+
+Gere ZENITH_WEBHOOK_SECRET no seu backend e guarde-o separadamente da API secret. O campo secret abaixo configura o segredo compartilhado do webhook em uma chamada backend-to-backend sobre HTTPS; ele não é a sua zp_sec.
+
+cURL
+Copiar
+curl -X POST "https://api.zenithworld.com.br/integrations/webhooks/endpoints" \
+  -H "X-API-Key: $ZENITH_PUBLIC_KEY" \
+  -H "X-API-Secret: $ZENITH_SECRET_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Pedidos pagos",
+    "url": "https://api.sualoja.com/webhooks/zenith",
+    "secret": "'$ZENITH_WEBHOOK_SECRET'",
+    "events": ["payment.captured", "payment.failed", "checkout.succeeded"]
+  }'
+Valide a assinatura antes de processar
+
+A assinatura é HMAC SHA-256 de timestamp + "." + corpo bruto. Use o corpo bruto recebido, rejeite timestamps com mais de 300 segundos e compare em tempo constante.
+
+Node.js
+Copiar
+import crypto from "node:crypto";
+
+const timestamp = req.headers["x-zenith-timestamp"];
+const received = req.headers["x-zenith-signature"];
+const age = Math.abs(Date.now() / 1000 - Number(timestamp));
+
+if (!timestamp || !received || age > 300) {
+  return res.status(401).end();
+}
+
+const expected = crypto
+  .createHmac("sha256", process.env.ZENITH_WEBHOOK_SECRET)
+  .update(timestamp + ".")
+  .update(req.rawBody)
+  .digest("hex");
+
+const receivedBytes = Buffer.from(received, "hex");
+const expectedBytes = Buffer.from(expected, "hex");
+
+if (receivedBytes.length !== expectedBytes.length ||
+    !crypto.timingSafeEqual(receivedBytes, expectedBytes)) {
+  return res.status(401).end();
+}
+
+await processEventOnce(req.headers["x-zenith-event-id"], req.body);
+return res.status(200).end();
+
+Headers enviados: X-Zenith-Event-Id, X-Zenith-Event-Type, X-Zenith-Timestamp e X-Zenith-Signature.
+
+Eventos e confirmação do pedido
+EVENTO	USO
+checkout.created	Checkout criado; estado inicial, ainda não confirma pagamento.
+checkout.canceled	Checkout cancelado; mantenha o pedido sem confirmação.
+payment.captured	Pagamento capturado; pode confirmar o pedido depois da validação e idempotência.
+checkout.succeeded	Checkout concluído; pode confirmar o pedido depois da validação e idempotência.
+payment.pending	Pagamento ainda aguardando ação, compensação ou confirmação.
+payment.failed	Falha de pagamento; atualize a experiência sem marcar como pago.
+payment.refunded	Pagamento estornado; aplique a política de pós-venda idempotente.
+payment.chargeback	Contestação/chargeback detectado; acione seu fluxo de risco sem repetir efeitos.
+
+Eventos de payout existentes na plataforma não pertencem ao escopo de Zenith Elements ou Zenith Payments API e, por isso, não são apresentados nesta referência de pagamentos.
+
+Idempotência do consumidor
+
+Armazene X-Zenith-Event-Id com restrição única. Se o mesmo evento chegar novamente, responda 2xx sem repetir efeitos financeiros ou operacionais.
+
+Entrega e respostas
+
+Responda com HTTP 2xx somente depois de persistir o evento ou concluir o trabalho idempotente. Faça processamento demorado em fila, mas garanta que o evento já esteja salvo antes de responder.

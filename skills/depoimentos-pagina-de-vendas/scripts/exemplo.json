@@ -1,0 +1,47 @@
+{
+  "_comentario": "Formato de entrada do gerar_secao.py. Copie, troque o conteudo pelo do produto e rode: python3 gerar_secao.py depoimentos.json",
+
+  "kicker": "Quem ja recebe",
+  "titulo_html": "O que elas mandam<br><em>depois do primeiro dia.</em>",
+  "cabecalho_html": null,
+  "_cabecalho_html": "Opcional: HTML pronto do cabecalho, quando a pagina alvo usa outra estrutura de sec-head. Se preenchido, ignora kicker/titulo_html.",
+
+  "wrap_class": "wrap",
+  "section_attrs": "",
+  "status_contato": "online",
+
+  "consentimento": "Mensagens de clientes reais, postadas com o consentimento de cada um. Nomes abreviados e fotos ilustrativas para preservar a privacidade.",
+  "_consentimento": "Obrigatorio. Se os depoimentos forem ilustrativos e nao vierem de clientes reais, escreva isso aqui — nunca 'clientes reais' em cima de material inventado.",
+
+  "depoimentos": [
+    {
+      "nome": "Juliana R.",
+      "foto": "/assets/depoimentos/br-1.jpg",
+      "foto_alt": "/assets/depoimentos/ar-1.jpg",
+      "_foto_alt": "Opcional: foto do outro idioma. Vira data-src-alt no img; o tradutor da pagina troca o src.",
+      "hora_status": "09:41",
+      "rede": "4G",
+      "sinal": 4,
+      "bateria": 0.9,
+      "mensagens": [
+        { "lado": "in", "texto": "amiga, chegou o meu em uns 3 minutos kkkk achei que ia demorar dias", "hora": "08:12" },
+        { "lado": "in", "texto": "e veio com uma coisa que eu tava passando JUSTAMENTE essa semana", "hora": "08:12" },
+        { "lado": "out", "texto": "eu falei que era diferente dos outros né", "hora": "08:15" },
+        { "lado": "in", "texto": "diferente demais. esse aqui e MEU 😭", "hora": "08:16" }
+      ],
+      "_lado": "in = balao branco a esquerda (a cliente). out = balao verde a direita, com check azul (a amiga)."
+    }
+  ],
+
+  "paginas": [
+    {
+      "arquivo": "/caminho/para/landing/index.html",
+      "antes_de": "<section id=\"oferta\">",
+      "_antes_de": "Ancora usada so na primeira vez, quando ainda nao existem os marcadores DEPOIMENTOS:START/END. Precisa ser unica no arquivo. Coloque a secao ANTES do bloco de preco.",
+      "substituir": {
+        "/assets/depoimentos/": "/lp/v1/assets/depoimentos/"
+      },
+      "_substituir": "Opcional: trocas de string aplicadas so nesta pagina, util quando cada versao da LP serve os assets de um caminho proprio. Use caminho ABSOLUTO nas imagens; relativo quebra quando a URL nao tem diretorio."
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+# Fim de linha estável: o checkout do Windows não pode transformar um script
+# de shell em CRLF (bash recusa) nem tirar o CRLF de um script do PowerShell.
+* text=auto
+*.sh text eol=lf
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+
+# Defesa em profundidade: material de trabalho interno fica fora de qualquer
+# `git archive`, mesmo que um dia volte a ser versionado por engano. A defesa
+# principal continua sendo o teste-guarda, que impede esses caminhos no índice.
+docs/superpowers/ export-ignore
+docs/discovery/ export-ignore
+.superpowers/ export-ignore
+.claude/ export-ignore
+.agents/ export-ignore
+.codex/ export-ignore
+.playwright-cli/ export-ignore

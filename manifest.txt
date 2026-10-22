@@ -1,0 +1,61 @@
+# Skills que entram no Low Ticket Kit (uma por linha). O sync copia de ~/.claude/skills.
+# Método e oferta
+criacao-low-ticket-mvt
+low-ticket-metodo-mvt
+mvt-minerar
+mvt-modelar
+mvt-validar
+mvt-obra-100k
+mvt-cross-market
+mvt-auditar
+mvt-funil
+x1-cross-market-mvt
+organizar-projeto
+yt-transcricao
+# Página de vendas
+imagens-pagina-low
+depoimentos-pagina-de-vendas
+depoimentos-comentarios-social
+gerador-depoimentos-instagram-gpt
+popup-saida-low-ticket
+otimizacao-pagina-vendas
+traduzir-entregavel-imagem
+# Entregável e área de membros
+area-membros-netflix
+auditar-entregaveis-oferta
+# Checkout
+banner-checkout-gpt
+checkout-premium
+wiven-checkout
+mundpay
+ggcheckout-produto
+hotmart-produto-playwright
+cooud-checkout
+zenith-gateway
+publicos-meta-checkout
+# Criativo
+criativo-ads
+criativo-ads-video-orq
+modelagem-escalados
+gpt-imagem-playwright
+flow-video-playwright
+narracao-hub-tts
+depoimentos-video
+embedded-captions
+captions-overlay
+cut-the-curve
+talking-head-recut
+watch
+remotion-best-practices
+remotion-captions
+remotion-render
+hyperframes
+# Orgânico
+stories-diarias-ofertas
+modelar-perfil-social
+# Tráfego
+metaads-kevones
+# Browser
+agent-browser
+browser-harness
+browser-cloudflare

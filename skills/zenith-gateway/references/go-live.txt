@@ -1,0 +1,46 @@
+
+Valide credenciais, origens, webhooks e conciliação antes de receber tráfego real.
+
+Checklist de liberação
+Produto, país, moeda, métodos e produção aparecem como liberados no painel seller.
+Credencial de produção usa escopos mínimos e está guardada em cofre de segredos.
+API secret não aparece em frontend, URL, payload de checkout, analytics ou logs.
+Origem HTTPS exata está autorizada para cada domínio que usa Elements.
+A aplicação consulta métodos e campos em vez de manter uma lista fixa.
+Cada checkout recebe uma Idempotency-Key coerente com a intenção lógica.
+Todos os tipos de nextAction esperados foram testados.
+Webhook valida assinatura, timestamp e id do evento antes de alterar o pedido.
+Reentrega do mesmo webhook não repete baixa, saldo, estoque ou fulfillment.
+Timeout e 5xx consultam estado antes de uma nova criação.
+Cenários mínimos de homologação
+1
+Sucesso
+
+A experiência apresenta a instrução e o webhook definitivo confirma uma única vez.
+
+2
+Falha
+
+O pedido permanece não pago e a interface oferece uma ação segura de recuperação.
+
+3
+Timeout
+
+A aplicação consulta o checkout e não cria duplicidade.
+
+4
+Webhook repetido
+
+O mesmo id retorna 2xx sem repetir nenhum efeito.
+
+5
+Credencial revogada
+
+A aplicação falha fechada e alerta a operação sem expor headers.
+
+Depois da validação
+
+Solicite a liberação de produção à Zenith somente depois de concluir a homologação. Ao abrir um chamado, informe o id público do checkout, horário e ambiente — nunca envie a secret.
+
+Abrir suporte
+Ver minha conta

@@ -1,0 +1,55 @@
+Autenticação e segurança
+Autenticação e segurança
+
+Use suas credenciais no backend sem expor a secret em navegador, aplicativo, payload ou log.
+
+O par de credenciais
+
+A public key identifica a credencial. A secret key prova que a chamada veio do seu servidor. A secret aparece uma única vez quando a credencial é criada.
+
+A secret nunca vai no payload
+
+Envie X-API-Key e X-API-Secret nos headers de uma conexão HTTPS feita pelo backend. Nunca coloque a secret no JSON, navegador, aplicativo móvel, URL, analytics, log ou repositório.
+
+Headers obrigatórios
+HTTP
+Copiar
+X-API-Key: zp_pub_...
+X-API-Secret: zp_sec_...
+
+Guarde a secret em um cofre de segredos ou variável de ambiente restrita ao processo do backend. Em produção, mantenha logs de headers sensíveis redigidos.
+
+Escopos
+ESCOPO	PERMITE
+CHECKOUT_CREATE	Criar e cancelar checkouts; criar sessões do Elements.
+CHECKOUT_READ	Consultar meios disponíveis e estado de checkouts.
+WEBHOOKS_READ	Listar endpoints e entregas de webhook.
+WEBHOOKS_WRITE	Criar, atualizar e remover endpoints de webhook.
+
+Crie credenciais com o menor conjunto de escopos necessário e separe aplicações ou ambientes quando isso reduzir o impacto de uma exposição.
+
+Rotação e revogação
+1
+Crie uma nova credencial
+
+Armazene a nova secret com segurança assim que ela aparecer.
+
+2
+Atualize sua aplicação
+
+Faça deploy da nova credencial e valide chamadas reais de sandbox ou leitura.
+
+3
+Revogue a anterior
+
+Revogue somente depois de confirmar que nenhum processo ainda usa a chave antiga.
+
+Limites de requisição
+CAMADA	COTA POR MINUTO	IDENTIDADE
+Credencial verificada	300	Por API key, para chamadas gerais.
+Leitura de checkout	1200	Por API key, em GET/refresh de um checkout.
+Borda geral	1200	Por IP, antes da autenticação.
+Borda · leitura	6000	Por IP, para leitura/refresh.
+Borda · demais rotas	120	Por IP quando a rota não publica uma cota mais específica.
+
+A criação de sessão Elements também tem cota própria de 60/min. Em 429, respeite Retry-After e os headers RateLimit-*; distribua retries com jitter.

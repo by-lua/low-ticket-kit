@@ -1,0 +1,341 @@
+Zenith Payments API
+Zenith Payments API
+
+Crie uma experiência de pagamento própria usando um contrato estável e independente da rota financeira.
+
+Endpoints principais
+GET
+/integrations/payment-methods
+
+Lista somente os métodos autorizados para a consulta.
+
+POST
+/integrations/checkouts
+
+Cria o checkout usando um código público de método.
+
+GET
+/integrations/checkouts/:id
+
+Retorna checkout, pagamento e estado público normalizado.
+
+POST
+/integrations/checkouts/:id/refresh
+
+Atualiza o estado consultando a rota financeira.
+
+POST
+/integrations/checkouts/:id/cancel
+
+Cancela um checkout ainda cancelável.
+
+Criar checkout
+cURL
+Copiar
+# Gere um UUID/ULID uma vez e persista-o com esta intenção.
+# Em retry, mantenha PAYMENT_INTENT_ID e o payload exatamente iguais.
+curl -X POST "https://api.zenithworld.com.br/integrations/checkouts" \
+  -H "X-API-Key: $ZENITH_PUBLIC_KEY" \
+  -H "X-API-Secret: $ZENITH_SECRET_KEY" \
+  -H "Content-Type: application/json" \
+  -H "Idempotency-Key: $PAYMENT_INTENT_ID" \
+  -d '{
+    "amount": 10990,
+    "currency": "MXN",
+    "country": "MX",
+    "environment": "sandbox",
+    "paymentMethod": "spei",
+    "referenceId": "pedido-123",
+    "customerName": "Ana Silva",
+    "customerEmail": "voce@exemplo.com",
+    "metadata": {
+      "firstName": "Ana",
+      "lastName": "Silva",
+      "documentType": "rfc",
+      "documentNumber": "XAXX010101000",
+      "birthDate": "1990-01-15",
+      "birthCountry": "MX"
+    },
+    "returnUrl": "https://sualoja.com/obrigado",
+    "cancelUrl": "https://sualoja.com/carrinho"
+  }'
+Contrato comum obrigatório
+CAMPO	TIPO E LIMITE	REGRA
+Idempotency-Key	Header, 8–120 caracteres	Obrigatório; uma chave por intenção lógica.
+amount	Integer, 1–2.000.000.000	Valor na menor unidade monetária; o método e a conta podem restringir essa faixa.
+currency	String, 3 letras	Código ISO 4217 em maiúsculas.
+country	String, 2–3 letras	País liberado para a conta e o ambiente.
+environment	sandbox | production	Deve estar habilitado no produto.
+paymentMethod	String não vazia	Código exatamente como retornado pela consulta.
+referenceId	String, até 120	Referência do pedido no seu sistema.
+customerName	String, até 140	Nome e sobrenome reais; sem números, repetições, iniciais isoladas ou dados fictícios.
+customerEmail	E-mail real e válido, até 254	E-mails de teste, exemplo, temporários ou descartáveis são recusados.
+returnUrl	URL absoluta	Retorno após a experiência de pagamento.
+cancelUrl	URL absoluta	Retorno quando o comprador cancela.
+
+Os onze itens acima são obrigatórios no contrato Payments API. Campos específicos vêm em requiredPayloadFields, customerFields e fields. Não suponha que nome e e-mail bastam para todos os métodos.
+
+Dados reais e boas práticas
+
+Envie nome e sobrenome reais, além do e-mail real do comprador. Nomes ausentes, repetidos, com números, iniciais isoladas ou fictícios são recusados antes da criação do checkout. O uso reiterado de dados fictícios ou descartáveis viola as boas práticas de integração e poderá acarretar o bloqueio permanente da conta após análise de conformidade.
+
+Faixa publicada em runtime
+
+A resposta de métodos informa amountLimits com mínimo e máximo técnico por forma de pagamento. Limites comerciais, regulatórios ou da conta podem aplicar um teto menor.
+
+Listar métodos e campos em runtime
+
+Use uma credencial criada especificamente para Zenith Payments API com CHECKOUT_READ. A resposta não contém adquirente, gateway ou credencial financeira.
+
+cURL
+Copiar
+curl "https://api.zenithworld.com.br/integrations/payment-methods?country=MX&currency=MXN&environment=sandbox" \
+  -H "X-API-Key: $ZENITH_PUBLIC_KEY" \
+  -H "X-API-Secret: $ZENITH_SECRET_KEY"
+Resposta resumida
+Copiar
+{
+  "country": "MX",
+  "currency": "MXN",
+  "environment": "sandbox",
+  "items": [
+    {
+      "code": "spei",
+      "displayName": "SPEI",
+      "category": "bank",
+      "renderer": "confirmation",
+      "iconKey": "spei",
+      "iconUrl": "https://api.zenithworld.com.br/elements/icons/spei.svg",
+      "fields": [],
+      "customerFields": [
+        { "name": "firstName", "label": "Nome", "type": "text", "required": true, "autocomplete": "given-name", "maxLength": 70 },
+        { "name": "lastName", "label": "Sobrenome", "type": "text", "required": true, "autocomplete": "family-name", "maxLength": 70 },
+        { "name": "documentType", "label": "Tipo de documento", "type": "select", "required": true, "options": [{ "value": "rfc", "label": "RFC" }] },
+        { "name": "documentNumber", "label": "RFC", "type": "text", "required": true, "autocomplete": "off", "maxLength": 13, "placeholder": "XAXX010101000" },
+        { "name": "birthDate", "label": "Data de nascimento", "type": "date", "required": true, "autocomplete": "bday" },
+        { "name": "birthCountry", "label": "País de nascimento", "type": "select", "required": true, "options": [{ "value": "MX", "label": "México" }] }
+      ],
+      "requiredPayloadFields": [
+        "headers.Idempotency-Key", "amount", "currency", "country",
+        "environment", "paymentMethod", "referenceId", "customerName",
+        "customerEmail", "returnUrl", "cancelUrl", "metadata.firstName",
+        "metadata.lastName", "metadata.documentType", "metadata.documentNumber",
+        "metadata.birthDate", "metadata.birthCountry"
+      ],
+      "amountLimits": {
+        "currency": "MXN",
+        "minimumAmount": 1,
+        "maximumAmount": 2000000000,
+        "minimumAmountFormatted": "MXN 0,01",
+        "maximumAmountFormatted": "MXN 20.000.000,00"
+      },
+      "capabilities": {
+        "secureCard": false,
+        "redirect": true,
+        "asynchronous": true,
+        "hostedCheckout": true
+      }
+    }
+  ],
+  "conflicts": []
+}
+Conflito falha fechado
+
+Se duas rotas internas empatarem para o mesmo código, o método não é retornado em items e seu código aparece em conflicts. Não tente escolher uma rota manualmente.
+
+Tratar a resposta
+JSON
+Copiar
+{
+  "checkout": {
+    "id": "checkout_...",
+    "referenceId": "pedido-123",
+    "amount": 10990,
+    "currency": "MXN",
+    "status": "pending"
+  },
+  "payment": {
+    "status": "pending",
+    "providerTransactionId": "..."
+  },
+  "method": {
+    "code": "spei",
+    "displayName": "SPEI",
+    "iconUrl": "https://api.zenithworld.com.br/elements/icons/spei.svg"
+  },
+  "nextAction": {
+    "type": "bank_transfer",
+    "details": {
+      "clabe": "...",
+      "bankName": "...",
+      "reference": "pedido-123"
+    },
+    "instructions": {
+      "locale": "es-419",
+      "title": "Cómo pagar por SPEI",
+      "steps": ["Abre la aplicación o el sitio web de tu banco.", "Selecciona una transferencia SPEI.", "..."]
+    }
+  }
+}
+
+nextAction é a ação pública que sua interface deve apresentar. Nos meios locais de México, Colômbia e Peru, o objeto também inclui instructions com locale, title e steps prontos para orientar o comprador.
+
+Peru usa checkout agregado
+
+Para PE/PEN, os códigos yape, plin, bank-transfer e cash são aliases compatíveis e todos devolvem nextAction.type = redirect. Abra exatamente nextAction.url; o comprador escolhe no checkout hospedado os canais disponíveis para aquela ordem. O código enviado não pré-seleciona uma carteira e não elimina essa etapa.
+
+Campo aditivo e seguro
+
+As instruções não alteram o código, QR, URL, conta, status ou confirmação do pagamento. Renderize os passos junto do artefato da ordem e continue usando o webhook assinado como única confirmação definitiva.
+
+JavaScript
+Copiar
+if (result.nextAction?.instructions) {
+  renderBuyerInstructions(result.nextAction.instructions);
+}
+
+switch (result.nextAction?.type) {
+  case "redirect":
+    window.location.assign(result.nextAction.url);
+    break;
+  case "qr_code":
+    renderQrCode(result.nextAction.code);
+    break;
+  case "voucher":
+    renderVoucher(result.nextAction.code);
+    break;
+  case "bank_transfer":
+    renderBankTransfer(result.nextAction.details);
+    break;
+  case "app_approval":
+    renderAppApproval(result.nextAction.app);
+    break;
+}
+Enviar GCash ou Maya por WhatsApp
+
+Para um SaaS de funil ou atendimento individual, toda a criação permanece server-to-server: consulte os métodos, crie o checkout e envie ao comprador somente a URL temporária de nextAction.url. O link é clicável no WhatsApp e abre a autorização hospedada da carteira escolhida.
+
+Node.js · entrega do link
+Copiar
+const result = await createZenithCheckout({
+  amount: 30000,
+  currency: "PHP",
+  country: "PH",
+  environment: "production",
+  paymentMethod: "gcash", // ou "maya"
+  referenceId: "pedido-123",
+  customerName: "Ana Santos",
+  customerEmail: "ana@cliente.com",
+  metadata: { customerPhone: "+639175550101" },
+  returnUrl: "https://sualoja.com/obrigado",
+  cancelUrl: "https://sualoja.com/carrinho"
+});
+
+if (result.nextAction?.type !== "redirect" || !result.nextAction.url) {
+  throw new Error("PAYMENT_LINK_NOT_AVAILABLE");
+}
+const expiresAt = result.nextAction.presentation?.expiresAt;
+if (!expiresAt) throw new Error("PAYMENT_LINK_EXPIRY_NOT_AVAILABLE");
+
+await savePaymentAttempt({
+  checkoutId: result.checkout.id,
+  referenceId: result.checkout.referenceId,
+  status: result.payment.status,
+  expiresAt
+});
+
+await sendWhatsAppText(
+  buyer.whatsapp,
+  `Pagamento gerado: PHP 300,00\nPagar agora: ${result.nextAction.url}\nLink válido até: ${expiresAt}`
+);
+
+// Não marque o pedido como pago aqui. Aguarde o webhook assinado.
+MÉTODO	O QUE O COMPRADOR VÊ AO CLICAR	VALIDADE	CONFIRMAÇÃO
+GCash
+gcash	No fluxo observado, a primeira tela mostra a marca GCash, o botão Open in GCash, um QR alternativo e o tempo restante; ela não mostra o valor da compra. Um domínio externo de pagamento pode ficar visível na barra do navegador.	A Zenith solicita 1.440 minutos, equivalentes a 24 horas, na criação da ordem. Use nextAction.presentation.expiresAt como instante exato de vencimento e pare de enviar ou reutilizar o link depois desse horário. Pagamento concluído, cancelamento ou invalidação da ordem podem encerrá-lo antes.	Permanece pending até a Zenith processar a confirmação financeira e entregar o webhook assinado.
+Maya
+maya	No fluxo observado, a primeira tela mostra a marca Maya, os campos Mobile number e Password, o link Forgot your password? e o botão Log in; ela não mostra o valor antes da autenticação. Um domínio externo de pagamento pode ficar visível na barra do navegador.	A Zenith solicita 1.440 minutos, equivalentes a 24 horas, na criação da ordem. Use nextAction.presentation.expiresAt como instante exato de vencimento e pare de enviar ou reutilizar o link depois desse horário. Pagamento concluído, cancelamento ou invalidação da ordem podem encerrá-lo antes.	Permanece pending até a Zenith processar a confirmação financeira e entregar o webhook assinado.
+Evidência operacional de 26/08/2026
+
+GCash:
+Em 26/08/2026, uma criação mínima de PHP 300,00 foi aceita em produção e o redirect carregou a experiência GCash. O artefato enviado à carteira codificou PHP 304,99, diferença ainda pendente de confirmação comercial com o provedor da rota. A ordem permaneceu pending: esta evidência comprova criação e abertura do link, não liquidação financeira.
+Maya:
+Em 26/08/2026, uma criação mínima de PHP 300,00 foi aceita em produção e o redirect carregou a experiência Maya. A ordem permaneceu pending: esta evidência comprova criação e abertura do link, não liquidação financeira.
+
+Validade máxima: 24 horas
+
+A Zenith envia expiryPeriod: 1440 para GCash e Maya e devolve o vencimento exato em nextAction.presentation.expiresAt. Use esse timestamp como fonte de verdade. O prazo é máximo: pagamento concluído, cancelamento ou invalidação da ordem podem encerrar o link antes. Não compartilhe nem reutilize nextAction.url depois do vencimento.
+
+Link temporário e host externo
+
+Envie nextAction.url sem alterar, fazer scraping, rehospedar ou passar por reverse proxy. Um link curto da sua marca pode servir como primeiro salto, mas a barra do navegador poderá mostrar o host externo autorizado da experiência de pagamento. Se o link expirar, consulte o checkout e crie uma nova transação somente se a anterior continuar sem confirmação.
+
+Cobrar por UPI na Índia pelo checkout hospedado
+
+Crie o checkout server-to-server com country IN, currency INR e paymentMethod upi. A Zenith devolve nextAction.type = redirect e o checkout HTTPS oficial em nextAction.url. O comprador escolhe no checkout a modalidade UPI disponível para aquela ordem.
+
+Node.js · UPI em botão/card do WhatsApp
+Copiar
+const result = await createZenithCheckout({
+  amount: 20000,
+  currency: "INR",
+  country: "IN",
+  environment: "production",
+  paymentMethod: "upi",
+  referenceId: "pedido-123",
+  customerName: "Aarav Sharma",
+  customerEmail: "aarav@cliente.com",
+  returnUrl: "https://sualoja.com/obrigado",
+  cancelUrl: "https://sualoja.com/carrinho"
+});
+
+if (result.nextAction?.type !== "redirect" || !result.nextAction.url) {
+  throw new Error("UPI_HOSTED_CHECKOUT_NOT_AVAILABLE");
+}
+
+const checkoutUrl = new URL(result.nextAction.url);
+if (checkoutUrl.protocol !== "https:") {
+  throw new Error("UPI_HOSTED_CHECKOUT_INVALID_URL");
+}
+
+await savePaymentAttempt({
+  checkoutId: result.checkout.id,
+  referenceId: result.checkout.referenceId,
+  status: result.payment.status
+});
+
+await sendWhatsAppUrlButton({
+  to: buyer.whatsapp,
+  body: "Seu pagamento UPI está pronto.",
+  buttonText: "Pagar com UPI",
+  url: checkoutUrl.toString()
+});
+
+// Não marque o pedido como pago aqui. Aguarde o webhook assinado.
+Envie exatamente nextAction.url no recurso de botão ou card HTTPS suportado pelo seu provedor de WhatsApp.
+Em um checkout web próprio, abra o mesmo URL com window.location.assign(result.nextAction.url).
+Trate o URL como opaco, específico da ordem e sensível; não o publique em logs, analytics ou tickets.
+Não gere QR ou deep link no seu backend.
+Não faça scraping, iframe, reverse proxy ou reescrita do checkout externo.
+A barra do navegador poderá mostrar o host externo autorizado da experiência de pagamento.
+O status continua pending até a confirmação assinada.
+Limite e segurança
+
+A rota aceita INR 200,00 a INR 50.000,00 em rúpias inteiras. A Zenith aceita o cashier somente em origins HTTPS autorizadas da rota certificada e bloqueia captura se orderAmount ou moeda divergirem do checkout.
+
+Validade e nova tentativa
+
+A rota não publica uma duração fixa confiável para o link. Não reutilize o URL depois de um estado terminal nem em outra compra. Para uma nova tentativa real, crie uma nova intenção com nova Idempotency-Key; retries técnicos da mesma intenção devem manter a chave e o payload originais.
+
+Consultar e atualizar estado
+cURL
+Copiar
+curl "https://api.zenithworld.com.br/integrations/checkouts/checkout_..." \
+  -H "X-API-Key: $ZENITH_PUBLIC_KEY" \
+  -H "X-API-Secret: $ZENITH_SECRET_KEY"
+
+Estados públicos: pending, authorized, succeeded, failed, canceled e refunded.
+
+Consulta não substitui webhook
+
+Polling pode atualizar a tela, mas o backend deve confirmar o pedido pelo webhook assinado e processar o id do evento uma única vez.

@@ -1,0 +1,484 @@
+---
+name: criativo-ads
+description: Porta de entrada ÚNICA de criativo de anúncio (Meta/TikTok) — vídeo, imagem estática ou carrossel. Faz a estratégia (briefing, matriz persona × dor/bolha, escolha de formato, quantidade por fase da conta, regras do Kevones 2026) e depois puxa a mecânica certa — `criativo-ads-video-orq` para vídeo, `modelagem-escalados` + `gpt-imagem-playwright` para estático/carrossel, `narracao-hub-tts` para voz. Use sempre que o usuário pedir criativo, anúncio, ad, leva de criativos, hook, variação de criativo, novo ângulo, "criativo de vídeo", "criativo estático", carrossel, banner de anúncio, UGC, modelar um criativo que está escalando, "criativo estilo Rodrigo/Rodrigo Liedson", "leva 1-3-9", "leva de 9 criativos" (mix UGC carro/ambiente normal + expert + imagem clássica/impacto/antes-depois/só-texto), ou mencionar metodologia Kevones de criativo, bolhas, ângulos, gatilhos.
+---
+
+> **HUB DESATIVADO (02/10/2026, ordem da usuária):** NinjaBR Hub está SEM COTA e os perfis `hub`/`hubv2`/`hubts` foram removidos (backup em `~/.agent-profiles/_removidos-hub-2026-10-02/`). NÃO use Hub, NÃO rode `hub-livre.sh` (sai com erro), NÃO espere perfil do Hub liberar. Imagem: ChatGPT — se a cota de upload de uma conta acabar, troque de CONTA: `gpt-conta*` ↔ `gpt-conta*`. Vídeo: Google Flow (`flow-video-playwright`).
+
+
+# criativo-ads
+
+## ⛔ GATE 0 — leia a oferta ANTES de propor qualquer ângulo [regra da dona 10/10/2026]
+
+> **A ordem canônica completa** (persona → dor → demanda orgânica → oferta → página → criativo →
+> peças do funil, com as contraprovas e a regra de dor-fora-do-escopo) está em
+> `~/.claude/skills/criacao-low-ticket-mvt/references/ESTRUTURA-DE-PENSAMENTO.md`. Este Gate é a
+> versão dela na porta do criativo.
+
+**Não existe criativo sem ler a oferta.** Ângulo inventado a partir do nome da pasta é
+o buraco mais caro deste fluxo: produz peça que promete outra coisa e só descobre isso
+depois de gastar a verba.
+
+**Ordem obrigatória, nessa sequência:**
+
+1. `OFERTAS/<slug>/CLAUDE.md` + `STATUS.md`
+2. `OFERTAS/<slug>/pesquisa/PERSONA-E-ANGULOS.md` — **a obra de arte da oferta**: quem vendemos,
+   as dores medidas, **as dores fora do escopo do produto (matéria-prima de bump/upsell)** e o
+   banco de ângulos com o estado de cada um (feito/na fila/descartado+por quê). É o arquivo que
+   responde "minha oferta é essa, o que eu tenho que atacar?". Se não existir na oferta, ele é
+   **obrigatório criar** a partir de `MINERACAO/` + `pesquisa/` antes de continuar.
+3. `OFERTAS/<slug>/produto/MANIFESTO-ENTREGAVEIS.md` — **o que o cliente recebe**
+4. **A página de vendas** (`pagina/` ou `site/`): headline, `<h1>`, meta description
+5. `criativos/` — inventário das peças que já existem e o que **já foi descartado e por quê**
+
+**Antes de escrever qualquer briefing, Grave e responda em voz alta:**
+
+```
+O QUE VENDEMOS: <o produto, em uma frase, no que o cliente realmente recebe>
+NÃO É:         <o que este criativo NÃO pode parecer que seja>
+PERSONA:       <quem é, e a dor que ele tem hoje>
+DOR ATACADA:   <dor, e onde ela foi medida>
+```
+
+Sem essas quatro linhas, **para**. Se `NÃO É` não estiver claro, o briefing está errado.
+
+**Contraprova obrigatória:** pegue o ângulo e responda *"se o cliente comprar isso, o
+que ele recebe na mão?"*. Se a resposta não for um item do `MANIFESTO-ENTREGAVEIS.md`,
+o ângulo está errado — mesmo que o ângulo pareça bom.
+
+**Rubrica fixa + objeção medida (regra nova, 20/10/2026):** antes de montar a matriz dor×persona,
+rodar `criacao-low-ticket-mvt/references/4-alavancas.md` (nota 0-10 Transformação/Probabilidade/
+Tempo/Esforço na NOSSA oferta, aponta a mais fraca) e, quando houver concorrente modelado,
+`criacao-low-ticket-mvt/references/virar-o-lead.md` (simulação 1ª pessoa por etapa do funil dele —
+a objeção real vira matéria-prima do gancho, nunca objeção chutada). Cada gancho da leva cita qual
+alavanca ataca.
+
+**Contraprova de alinhamento com a landing (mesma regra, vista pelo lado do dado):** o
+anúncio promete uma coisa e a página entrega outra? A pessoa clica, chega e **"não tem nada
+a ver com aquilo"** — e sai sem comprar. Sinais: **CTR alto + IC zerado ou muito baixo**. Isso
+é **desalinhamento criativo↔página**, não criativo ruim: CTR ruim é problema do anúncio, IC
+ruim com CTR bom é problema da **promessa**.
+
+Pergunta que fecha: **"o que o anúncio promete é literalmente o que o `<h1>` da página
+promete?"** Se o anúncio fala em "facilitar o orçamento" e a página vende "+150 mapas
+visuais de eletricidade e eletrotécnica", o anúncio está vendendo outro produto — mesmo que
+CTR alto, ele só entrega clique caro.
+
+⚠️ **Erro que já aconteceu (10/10/2026, Mapas Visuais Eletrotecnia):** ângulo "serviço
+igual, preço diferente" e "cobra mais quem entende o diagrama" foram gerados a partir
+do nome do nicho, sem ler a oferta. A oferta **não é serviço** — é um sistema visual de
+consulta. As duas peças (CRIATIVO-9 e CRIATIVO-10) foram descartadas na hora, depois de
+já estarem prontas. Não repita.
+
+Quem delega **também** cumpre este gate antes de escrever o briefing do pane —
+o orquestrador junta a referência e a leitura da oferta (ver `PROMPT-PADRAO-PANE.md`,
+bloco `[OFERTA-PRIMEIRO]`).
+
+## ⛔ GATE 0.1 — SEM REFERÊNCIA REAL NÃO EXISTE CRIATIVO [regra da dona 10/10/2026]
+
+**Nenhum criativo começa sem antes material de verdade da oferta na mão.** Este gate vem
+logo depois do Gate 0 e vale tanto pra peça feita aqui quanto pra pane delegado.
+
+O que tem que estar **anexado** (arquivo, não descrição) antes de escrever o primeiro prompt:
+
+| Peça | Referência mínima obrigatória |
+|---|---|
+| Estático | capa do produto + **2 ou 3 páginas reais** do entregável |
+| Carrossel | idem, mais a página de cada card do carrossel |
+| Vídeo | idem + **frames de tela do produto** gravados (`MATERIAL-ENTREGAVEL/gravacoes-tela/`) |
+
+De onde sai a referência, nesta ordem:
+
+1. `produto/MVP/<item>/` — as páginas aprovadas da peça.
+2. `site/painel/conteudo/<item>/` — o que já está publicado pra o cliente ver.
+3. `produto/MOCKUPS-NOSSOS/` — mockup nosso (nunca o do concorrente cru).
+4. `site/` — página de vendas no ar (banner/capa).
+
+Checklist de gate (responde tudo **sim** ou não começa):
+
+- [ ] Abri os arquivos de referência e **vi** as páginas (não só li o nome do arquivo).
+- [ ] As imagens anexadas são **da nossa oferta**, não do concorrente.
+- [ ] Pelo menos uma referência é **página de dentro** do entregável, não só a capa.
+- [ ] O prompt leva **identidade visual explícita** (hex + fonte) — senão o GPT copia o
+      estilo da referência (`gpt-clona-referencia-prompt`).
+- [ ] No briefing está escrito **qual arquivo** é a referência de cada card/cena.
+
+Sem referência o GPT inventa uma página que a oferta não tem — e o criativo vende
+material que o cliente nunca vai receber. É o modo de erro que mais caro já custou aqui.
+
+> **Quem delega também cumpre este gate.** Se você é o orquestrador e vai spawnar um
+> pane de criativo: junte você mesmo as imagens/paths de referência e **cite os caminhos no
+> briefing**. Não mande o pane "descobrir a referência" — delegar cego é o mesmo defeito.
+
+## Texto do anúncio acompanha toda peça — regra da dona (03/10/2026)
+
+Todo criativo de vídeo, imagem ou carrossel deve ser entregue com `anuncio.md`
+na mesma pasta do arquivo final. Inclua: ângulo, persona/dor, texto principal,
+título/headline, descrição curta e CTA sugerido. Escreva cada campo para o
+ângulo daquela peça; não repita uma copy genérica na leva. Adapte texto e voz
+ao mercado: BR = pt-BR, PT = pt-PT, ES = espanhol do mercado. Leia
+`references/texto-anuncio-por-angulo.md` antes de escrever ou revisar a copy.
+O arquivo de mídia sozinho não conclui a entrega. Ao criar uma nova leva,
+confira também as peças existentes citadas pelo usuário e acrescente a copy
+que estiver faltando, sem alterar suas mídias.
+
+Uma porta só. **Esta skill decide O QUE fazer; as outras sabem COMO produzir.**
+A estratégia mora aqui e em `references/kevones-criativo.md`. As skills de
+mecânica não repetem regra de estratégia. Se alguma divergir desta, vale esta.
+
+> **Regras fixas da dona (29/09/2026):**
+> - **Antes de qualquer criativo, carregar as skills:** esta, `criativo-ads-video-orq`
+>   (edição, legenda, Modo E, gates), `get-brolls` (b-roll) e `narracao-hub-tts` (voz).
+>   Todo brief de pane de criativo manda ler as quatro ANTES de mexer em arquivo.
+> - **Narração/voz off = SEMPRE `narracao-hub-tts`** (API NinjaVoice do Hub: sem browser,
+>   sem login, sem cota; liberada pela dona). `languageCode` do mercado (`pt-BR`, `pt-PT`…).
+>   Mapa do Tarot PT usa a voz Daniela `9L8v6Oy5x46GlKUxRg6H`. O mp3/wav vai pra
+>   `intermediarios/` do criativo. Não usar MiniMax nem outro TTS sem pedido.
+> - **Criativo novo = do zero, material cru:** roteiro → locução → b-roll NOVO (`get-brolls`)
+>   → tela do entregável gravada agora → montagem. Nunca reaproveitar criativo já montado
+>   trocando só áudio e legenda. Um criativo por mercado, em `criativos/<MERCADO>/`.
+> - **Legenda:** só a KaraokeV2 canônica (ver `criativo-ads-video-orq`); a "fininha" é reprovada.
+>
+> **Regras da dona (05/10/2026, leva ES Mapa del Tarot):**
+> - **Gancho ≤ 2 frases curtas**, depois já fala do material MOSTRANDO o material.
+> - **Várias gravações do entregável = cada criativo usa as melhores cenas de TODAS**, em cortes
+>   curtos casando com a fala (nunca 1-2 gravações inteiras).
+> - Modelo de gancho que funciona: "Acha que a carta X é só sobre Y? Olha esse material."
+> - **B-roll: o pane escolhe sozinho** (Pexels/Pixabay, origem no `credits.md`), sem parar pra
+>   aprovação de prévia; a dona revisa no vídeo final.
+> - Detalhe e gate de legenda sobreposta: `criativo-ads-video-orq` E.2b ("Lições da leva ES").
+
+> **Regras da dona (11/10/2026 — o texto da peça de imagem é do GPT, nunca overlay de código):**
+> - **Estático e carrossel: o TEXTO é escrito pelo GPT DENTRO da foto.** Overlay de código
+>   com faixa/barra/bloco de cor atrás é **reprovado** — o texto do GPT sai com cara de legenda
+>   de Story (o que o feed premia); overlay sai "perfeito demais", cara de anúncio, e derruba o CPM.
+>   Dona, ao ver o lote do Jiu-Jitsu com o texto em faixa: *"os de imagem o texto já sai pelo gpt"*.
+>   No prompt: texto exato, **uma linha só e sem aspas duplas** (o `inserttext` trunca e o modelo
+>   volta perguntando o texto), pedindo **flutuante, sem nenhum bloco/barra/caixa de cor atrás**, com
+>   margem de ~12% no topo e ~15% embaixo e nada cortado na borda.
+> - **Ortografia é QA bloqueador, não ajuste:** o gerador erra acento com frequência
+>   (`VOCE`, `NAO`, `decisao`). Conferir palavra por palavra e **regenerar** o que saiu torto.
+> - **A página do produto que aparece na arte é o arquivo real** — conferir lado a lado com a
+>   referência (já saiu capa com produto de outra oferta assim, e passou por todo QA automático).
+> - **Vídeo NÃO entra nessa regra:** legenda karaokê no Remotion, sempre. São dois caminhos distintos.
+
+> **Regras da dona (08/10/2026 — capas reprovadas, Jiu-Jitsu/Eletrotecnia):**
+> - **Sem "faixa branca e azul" no criativo** — nem em imagem nem em texto de anúncio
+>   (`anuncio.md`: texto principal, título, descrição curta). A página do Jiu-Jitsu foi
+>   refazida sem o eyebrow "Para faixas brancas e azuis" e foi depois dela que começou a
+>   vender; o criativo acompanha a página. O campo interno persona/dor pode seguir
+>   citando a faixa — ele não aparece no anúncio. Vale pra peça nova e pra leva nova;
+>   anúncio já no ar não é editado.
+> - **Capa com cara de "inventada" reprovada** (foto de banco, título pequeno, CTA
+>   fraco). Padrão aprovado de low ticket: **`references/capa-referencia-low-ticket-jj.png`**
+>   (capa do CRIATIVO-7 do Jiu-Jitsu, aprovada pela dona 08/10) — título grande e
+>   direto, a entrega real visível (produto na tela + material espalhado), ambiente
+>   orgânico que faz sentido, CTA claro. **Todo briefing de pane de criativo cita
+>   esse arquivo como referência de capa/estilo** e repete a regra do carrossel:
+>   capa = a **única** arte gerada; os demais cards = **páginas reais do entregável**,
+>   uma por card, **sem moldura**, recortadas **do início ao fim** (corta onde
+>   precisar, um por um, começo → fim).
+> - **Card de página real sem moldura** (borda branca sobre fundo escuro = feio) —
+>   recorte livre pra preencher o card; regra completa em `modelagem-escalados`
+>   ("Regras que não se negociam", item 12).
+> - **Apresentação do entregável varia entre criativos:** pode aparecer impresso
+>   (folha/página na mão, na obra), no celular, no notebook, no tablet, dois aparelhos
+>   juntos ou um só — misture os formatos de peça a peça. Não repetir sempre as mesmas
+>   imagens de entrega; o que importa é mostrar material real, não o mesmo mockup.
+> - **Imagem de criativo: referência = CAPA + 2 a 3 PÁGINAS REAIS de entrega, sempre
+>   (09/10, Tarô).** Anexar só a capa foi reprovado ("só a capa?" — o produto não
+>   aparece na arte). Anexa a capa **e** 2/3 páginas reais do entregável e escreve no
+>   prompt que **o modelo escolhe 2 das páginas** pra mostrar na cena — "nem muito,
+>   nem pouco". As páginas visíveis na arte são SEMPRE arquivo real do produto; o
+>   modelo não desenha página. Detalhe do encaixe e das refs em
+>   `modelagem-escalados` (item 13) e a mecânica de anexo em `gpt-imagem-playwright`.
+> - **Cor do título não precisa ser branca (09/10, Tarô):** pode ser amarelo, azul,
+>   ou a cor que for da **marca** — o que for adequado. O que não vale é título
+>   pequeno/fraco (regra 08/10). Na prática: define a paleta do produto (marca) e
+>   manda o título nessa cor, com sombra/contorno onde a foto for clara.
+> - **Vídeo de leva ABRE com o material de frente (09/10, combinado Jiu-Jitsu +
+>   Elétrica):** o 1º beat é a gravação real do produto na tela (tela cheia, com
+>   zoom/varredura) e o gancho fala por cima — não abrir com b-roll genérico (de obra,
+>   de luta). **Proibido imagem parada com zoom (Ken Burns) como cena de produto em
+>   vídeo:** onde usaria PNG estático, usa a gravação de tela real em movimento
+>   (zoom/varredura/cortes). B-roll de vídeo continua valendo; imagem parada só em
+>   peça de imagem (estático/carrossel), nunca em vídeo. Dona: "não quero imagem
+>   parada — tenho gravações de tela aí, usa elas com zoom".
+> - **Fonte única de imagem de produto em vídeo = gravações da dona (09/10, regra
+>   dura):** o material visual do produto vem SEMPRE das gravações que ela mesma
+>   grava e deixa em `criativos/MATERIAL-ENTREGAVEL/gravacoes-tela/` de cada oferta
+>   (JJ: `OFERTAS/jiujitsu-sem-forca/criativos/MATERIAL-ENTREGAVEL/gravacoes-tela/` ·
+>   Elétrica: `OFERTAS/mapas-visuais-eletrotecnia/criativos/MATERIAL-ENTREGAVEL/gravacoes-tela/`).
+>   **Nunca criar/substituir com print, PNG ou imagem gerada** — "sempre vai ser a
+>   minha gravação". **Se não encontrar a gravação, PERGUNTE** (volte pro Randolph/
+>   orquestrador perguntando onde está) em vez de inventar material. Exceção única:
+>   ela pedir explicitamente imagem parada/estática naquele momento.
+> - **Imagem do entregável: 2–3 arquivos diferentes, nunca repetir a mesma (09/10):**
+>   quando a cena usa imagem do material, usa 2–3 imagens DIFERENTES do produto.
+>   Proibido pegar UMA imagem e repetir no celular e de novo na versão impressa.
+>   Se só há uma à mão, busque mais (`produto/principal/`, `produto/MVP/`,
+>   `MATERIAL-ENTREGAVEL/`); se não achar, pergunte — não duplique.
+> - **Prompt de geração NUNCA solto (09/10, reprovou no Tarot):** todo prompt de
+>   imagem anexa **2–3 imagens do entregável** (referência do produto real, nas
+>   pastas da oferta) e traz a direção EXPLÍCITA: **estilo orgânico** (foto crua /
+>   post de verdade, como a capa aprovada do JJ — nada de arte decorada inventada),
+>   **título**, **estilo** e **história**. A receita (`modelagem-escalados`) é lida
+>   ANTES de gerar — prompt não substitui a receita. Salva o prompt usado em
+>   `intermediarios/` (prompt-*.txt) e o GPT **nunca desenha página do produto**:
+>   página real entra como arquivo encaixado.
+> - **Carrossel =1 arte gerada + páginas reais (09/10):** no carrossel, a **única**
+>   imagem gerada é o **card 1 (capa)**; todos os cards seguintes são **páginas
+>   reais do entregável**, recortadas full bleed (sem moldura), na sequência do
+>   início ao fim, uma depois da outra. "Cortar onde precisar, um por um, do começo
+>   ao fim" — e acabou.
+
+## Fluxo
+
+1. **Briefing mínimo.** Produto/oferta, ticket, público, em que fase a conta está
+   (sem nada validado / já vende e quer escalar / criativo saturou), se existe
+   criativo vencedor, se tem rosto/expert, verba diária. O que não estiver no
+   pedido, pergunte numa mensagem só.
+2. **Mapa de dores → matriz.** Liste TODAS as funcionalidades/dores que o produto
+   resolve. Cada uma vira um ângulo, cada ângulo puxa uma persona. Dentro do
+   público validado, cada dor é uma **bolha**. Uma célula = um criativo. Duas
+   células com a mesma persona **e** a mesma dor = o mesmo anúncio, refaça.
+3. **Formato de cada célula** (tabela abaixo).
+4. **Quantidade pela fase da conta** (tabela abaixo). Diga ao usuário em que fase a
+   leva entra.
+5. **Rotear para a mecânica** e produzir.
+6. **Entregar** com: mídia final e `anuncio.md` específico do ângulo, nome de cada peça, a dor/persona que ela carrega, formato e
+   onde entra na conta (campanha nova com público validado; nunca na que já vende).
+   Tráfego/corte/escala: `metaads-kevones`.
+
+## Regras de estratégia (Kevones 2026, resumo)
+
+Arquivo completo com fontes: `references/kevones-criativo.md`. Leia antes de
+montar leva de variação ou decidir quantidade.
+
+- **Não pode parecer anúncio.** Estrutura de trailer: entretém → problema → solução
+  → produto em uso → chamada suave ("o link tá aí"). Orgânico, nada clean de agência.
+- **O criativo é a segmentação.** O Meta lê o contexto do anúncio e entrega pra
+  bolha certa. Criativo que não nomeia pra quem é = leilão largo, CPM caro.
+- **Não fazer variação rasa do vencedor** (gancho, música, voz, tom, cor, headline
+  reescrita com a mesma dor). O Meta agrupa como o mesmo anúncio. **Repete o
+  formato, troca o conteúdo** (dor/persona/objeção).
+- **Um ângulo, três formatos:** a mesma dor vira vídeo → carrossel → estático
+  (uma frase). A leva de teste mistura formatos.
+- **Remarketing** usa peça de objeção/depoimento/cupom, nunca a mesma do frio.
+- **Não minta.** Benefício real do produto; nicho saúde/dinheiro/místico sem
+  promessa falsa.
+
+## Qual formato
+
+| Situação | Formato | Mecânica |
+|---|---|---|
+| Produto cabe numa frase de banner | **estático direto** (produto + o que faz + CTA) | `modelagem-escalados` → `gpt-imagem-playwright` |
+| Tem objeção forte ou precisa de prova | **carrossel de objeção** ou **de história** | `modelagem-escalados` (formatos + copy) → `gpt-imagem-playwright` (1 card por imagem) |
+| Produto complexo/nichado, precisa demonstrar | **vídeo** TikTok/indicação/demonstrativo | `criativo-ads-video-orq` (Modos A–E) |
+| Já existe um vídeo vencedor | vídeo com **hook novo e dor nova** sobre o body (B/B2/C) | `criativo-ads-video-orq` |
+| Quer copiar um formato que está escalando | estático da biblioteca de 103 | `modelagem-escalados` (Modo D no vídeo) |
+| Entregável digital (PDF/guia/app/ferramenta), em imagem | **carrossel demonstrativo "iPhone cru"** (promessa + mockup → benefícios + garantia/vitalício → ~4 páginas do entregável) | `modelagem-escalados` (`references/carrossel-demonstrativo-iphone.md`) → `gpt-imagem-playwright` |
+| Entregável digital (PDF/guia/app) | demonstrativo: b-roll + tela + narração (Modo E) | `criativo-ads-video-orq` + `narracao-hub-tts` + `get-brolls` |
+| Entregável digital (PDF/guia/app), SEM gravação de tela disponível (ou pra alternar com a de Modo E) | **demonstrativo "mesa real" por IMAGEM→VÍDEO**: gera foto realista (pessoa+aparelho+páginas reais do entregável) e anima no Flow | `criativo-ads-video-orq` §E.0c + `gpt-imagem-playwright` (imagem) + `mecanica-flow.md` (animação) |
+
+**Tamanho:** estático e carrossel saem em **1:1 (1080×1080)** em todos os cards, por
+padrão (regra da dona, 04/10/2026). 4:5 ou 9:16 só se o usuário pedir. Vídeo continua
+9:16. No carrossel demonstrativo, as páginas do entregável são arquivos reais
+encaixados no 1:1; GPT não desenha página do produto.
+| Expert com rosto | reels orgânicos → campanha de seguidores → conversão | `criativo-ads-video-orq` + regra em `references/kevones-criativo.md` |
+| TikTok Shop / achadinho | — | `tiktok-shop` (orquestradora própria) |
+| Banner de checkout / imagens da página | não é criativo de anúncio | `banner-checkout-gpt` / `imagens-pagina-low` |
+
+Mecânica de browser sempre pela skill dela: ChatGPT → `gpt-imagem-playwright`
+(perfil livre via `gpt-livre.sh`); vídeo → `hub-video-playwright` (via `hub-livre.sh`).
+Nunca tocar o browser sem invocar a skill de mecânica antes.
+
+## Quantidade pela fase da conta
+
+| Fase | Quantas peças | Estrutura na conta |
+|---|---|---|
+| Oferta nova, nada validado, verba < R$ 1 mil/dia | **3 a 5**, formatos misturados | 1 campanha, 2–3 conjuntos, mesmas peças em todos |
+| Público validado, quer achar novo criativo | **3** de dores diferentes | 1 campanha, 1 conjunto (público validado), 3 peças (1-1-3) |
+| Já vende, construindo ecossistema | **~3 por semana**, nunca por dia | cada vencedora isolada em campanha 1-1-1 |
+| Criativo saturou (CPA subindo em 14 dias) | 1+ de **ângulo novo** | campanha nova, público validado |
+
+Meta de ecossistema: ~10 criativos validados antes de verba forte; 20 dão
+constância; ele chega a 40–60. Muito teste ao mesmo tempo derruba o ROI da conta
+inteira.
+
+## Como montar a matriz 1-1-3 (regra da dona, 11/10/2026 — vale pra TODA leva)
+
+> *"isso sempre que eu pedi 3 campanhas 1-1-3 é isso pegar o que vende e fazer isso e obviamente
+> considerar a análise de persona e oferta e tais tbm"*
+
+**1. A dor que já VENDE entra em TODAS as campanhas — uma peça em cada.** E é sempre a peça mais
+forte da campanha (é a que leva a promessa no gancho/título). Campanha nova que não carrega o
+ângulo que vende tá betting do zero, e não tem por que.
+
+Variação entre as peças de spine é o **ângulo de ataque**, nunca a dor: volume (78 cartas),
+bloco específico (combinações), formato (vídeo / estático / carrossel).
+
+**2. Dentro de uma campanha NUNCA se repete a mesma dor.** As outras N−1 peças pegam dores
+diferentes do banco. Mesma persona + mesma dor = o mesmo anúncio pro Meta, que agrupa e não aprende.
+Os dois erros são simétricos: repetir dor demais (agrupa) ou ângulo novo demais (tábetando do zero).
+
+Exemplo que virou padrão (Mapa do Tarot BR, 11/10): D1 "são 78 cartas, não vou decorar tudo" é a
+espinha (base dos 3 vencedores, CPA R$ 8,55–13,82) e aparece em CT-33, CT-36 e CT-40 — uma em cada
+campanha. As outras 6 peças pegam D4, D5, D6, D7, D8.
+
+**3. A matriz sai da análise, não da cabeça.** Antes de escrever a matriz, obrigatoriamente:
+
+| Fonte | O que tira |
+|---|---|
+| `pesquisa/PERSONA-E-ANGULOS.md` | o banco de dores e ângulos com o estado de cada um |
+| `produto/MANIFESTO-ENTREGAVEIS.md` | a contraprova — a peça promete item que existe? |
+| `<h1>` da landing | o anúncio promete o que a página promete? |
+| `trafego/ANALISES.md` (última entrada) | **qual é a dor que vende** — é daqui que sai a espinha |
+
+Dor sem contagem e data não entra na matriz. Duas peças com a mesma persona e mesma dor = refaça.
+
+Plano modelo: `OFERTAS/mapa-do-tarot/criativos/PLANO-CRIATIVOS-BR-2026-10-11.md`.
+
+## ⭐ TESTE EM GRUPOS — a pergunta padrão quando a dona pede "3 campanhas" (11/10/2026)
+
+> *"sempre que eu pedi 3 campanhas 1-1-3 é isso... separar em grupos. E pode até me perguntar:
+> quer fazer o teste em grupos assim?"*
+
+**Antes de montar qualquer matriz 1-1-3, pergunte:** *"quer fazer o teste em grupos?"*
+Se sim, o agrupamento é por **PREÇO × FORMATO**, não só por dor:
+
+| Campanha | Preço no criativo | Formatos |
+|---|---|---|
+| **C1** | **com valor** | peça-espinha + 2 formatos diferentes (ex.: vídeo + carrossel + estático) |
+| **C2** | **sem valor** | **só vídeos** |
+| **C3** | **sem valor** | **só imagens** (1 estático + 2 carrosséis) |
+
+Cada campanha muda **UMA** variável — o que se aprender é da variável, não de peça sorteada.
+Dentro de C2/C3 as 3 peças ainda são de **3 dores diferentes**.
+
+**E cada campanha leva uma variação do criativo que JÁ VENDE** (a lógica do copo azul): mesmo
+produto, mesma promessa, formato diferente conforme a campanha. **A espinha nunca some da leva.**
+Sem ela na C3, a campanha vira 3× o mesmo ângulo e o Meta agrupa.
+
+**Antes de escolher a espinha, abrir o tracker e ler a última entrada de `trafego/ANALISES.md`:**
+qual anúncio está vendendo, com quantas vendas, CPA e CTR. Esse é o criativo a replicar — e o que
+**não** está vendendo diz o que não repetir. Se a última análise mandar "1-1-3 de imagem com o CT 4,
+criativo novo = campanha nova", a espinha é o CT 4.
+
+Plano modelo: `OFERTAS/jiujitsu-sem-forca/criativos/PLANO-TESTE-GRUPOS-2026-10-11.md`.
+
+## Acabamento aprovado — Número Mestre AR/LATAM
+
+Para vídeo, leia também `../criativo-ads-video-orq/references/acabamento-natural-audio-cortes.md`: cortes por fala e gesto, repetição do Flow, ruído, volume, música, legenda na timeline final e verificação do master. A referência inclui clareza psicológica: benefício concreto por item, introdução curta e CTA de desejo. **Regra da dona (04/10/2026): no VÍDEO/VO, o fecho (fala e texto na tela) é só o comando curto, sem condição de compra** (garantia, preço, vitalício, termos); condição fica na página e no `anuncio.md`. **Estático e carrossel podem mostrar garantia/vitalício** (ex.: `modelagem-escalados/references/carrossel-demonstrativo-iphone.md`). Tom do fecho: curiosidade, ex.: "Clica aqui embaixo e descobre como." — ver `criativo-ads-video-orq` e `narracao-hub-tts`. Use estes princípios em novos criativos sem copiar timestamps, alegações ou filtros cegamente.
+
+## "Criativo estilo Rodrigo" / leva 1-3-9 (método Rodrigo Liedson, saga Europa 21/10/2026)
+
+**Nome pra pedir:** "criativo estilo Rodrigo", "leva 1-3-9", "leva de 9 nesse estilo" — qualquer um
+chama esta seção. **Continua passando pelo GATE 0/0.1 do topo desta skill**: personagem, cenário,
+benefício e preço de cada slot vêm da oferta REAL (`pesquisa/PERSONA-E-ANGULOS.md`,
+`produto/MANIFESTO-ENTREGAVEIS.md`, preço real do checkout) — o método dá a FORMA de cada slot (que
+estilo, que cor, que cenário), nunca o CONTEÚDO (isso nunca é inventado, é a oferta de verdade).
+
+### 3 tipos de criativo + fórmula gancho-corpo-CTA
+
+Fonte: `MINERACAO/referencia-rodrigoliedson/METODO-RODRIGO-EUROPA-139-SAGA-COMPLETA.md` (4 vídeos,
+transcrições completas em `CONHECIMENTO/FONTES-DE-CONHECIMENTO/RODRIGO-LIEDSON/TRANSCRICOES/`).
+Técnica de CRIATIVO — a estrutura de campanha/tráfego dele ("1-3-9") **não** entra aqui, segue sempre
+`metaads-kevones` (memória `trafego-segue-kevones`); só documentada na referência pra consulta.
+
+**Leva de 9 (mix de formato × cor × função), não 9 iguais — tabela completa de slots em
+`METODO-RODRIGO-EUROPA-139-SAGA-COMPLETA.md`. Só 1 peça em 9 mostra preço.**
+
+**2 estilos de VÍDEO, nunca só 1 (correção da dona, 21/10/2026):**
+- **UGC comprador comum** — pessoa fala em 1ª pessoa, relato ("isso aconteceu comigo, tal e tal").
+- **Estilo "expert"** — personagem com autoridade do nicho (ex.: psicóloga explicando o mecanismo,
+  não a compradora comum). Os dois precisam de personagem DIFERENTE um do outro.
+
+**Regra de casamento do personagem (vale pros 2 estilos de vídeo e pro UGC em imagem):** a
+pessoa/cena de referência tem que combinar com **(a) o país/mercado de destino do anúncio** e
+**(b) o nicho/oferta anunciado** — nunca só "achar imagem bonita no Pinterest"; etnia/contexto da
+pessoa tem que fazer sentido pro público daquele país, e o papel dela (comprador × expert) tem que
+casar com o que o produto promete.
+
+**Cenário por slot de UGC (correção da dona, 21/10/2026) — 3 cenários diferentes na mesma leva, não repete:**
+- **UGC 1 — no carro** (pessoa dirigindo ou dentro do carro parado).
+- **UGC 2 — ambiente normal/cotidiano** (casa, dia a dia, nada montado).
+- **Expert — ambiente que FAZ SENTIDO com o papel dela** (ex.: psicóloga → consultório/escritório;
+  nunca o mesmo cenário genérico do comprador comum — o ambiente é parte da prova de autoridade).
+
+**Estilos de imagem por COR (não é genérico, a cor define o estilo):**
+- **"Fase de impacto"** = fundo BRANCO + texto PRETO e VERMELHO.
+- **"Clássica"** = fundo PRETO + mockup + headline em cima + subheadline + mockup de novo + **preço**
+  (única peça da leva com valor visível).
+- **Antes/depois** = puxado direto da Biblioteca de Anúncios (referência real já rodando), não
+  gerado do zero sem referência.
+- **Original** = depende se a oferta já tem uma — normalmente mockup do produto ou imagem de 1
+  benefício + CTA; se a referência já validou um VÍDEO de outra pessoa, modela o vídeo também, não
+  só imagem.
+
+**3 tipos (formato), usar os 3 misturados numa leva (não só um):**
+1. **Imagem = variação do criativo JÁ validado** (nosso ou do concorrente modelado) — nunca do zero;
+   gerador recria "imagem idêntica, só traduz/troca o texto", depois varia fundo + headline.
+2. **UGC = pessoa com o produto na mão, falando** — imagem de referência de cena coerente (Pinterest:
+   "mulher dirigindo" pra segurar livro no carro, por ex.) + copy curta (até 15s) gerada primeiro em
+   PT e só depois traduzida/adaptada (nunca criar direto no idioma de destino que não domina).
+3. **Vídeo clássico GANCHO → CORPO → CTA:**
+   - Gancho (fórmula reaproveitável): *"A maior pressão não é [X esperado], é [Y real que ninguém
+     fala]"* / *"Se você é [público], precisa ver isso"* / *"Veja isso antes de [ação cotidiana do
+     nicho]"*.
+   - Corpo = nomeia o problema de novo + apresenta a solução **gravando a TELA do entregável por
+     dentro** (área de membros/app) — produto bem entregue vira o próprio corpo do criativo, sem
+     precisar atuação.
+   - CTA = comando curto, sem condição de compra (já é a nossa regra de fecho, seção acima).
+
+**Regra de corte — nunca corte seco no fim do CTA.** Deixa a pessoa "pensando" com a imagem do
+produto parada + seta apontando pra baixo por 1-2s antes de acabar — mantém a decisão/retenção em vez
+de cortar na hora do CTA.
+
+**Produção de áudio em lote.** Em vez de gerar um áudio por criativo, cola todas as copies da leva
+num texto só, gera UM áudio corrido no TTS, baixa uma vez e corta peça por peça no CapCut — mais
+rápido que gerar/baixar/editar criativo por criativo.
+
+**Não desativa criativo no dia 1 por "não vendeu".** Analogia do time de futebol: cada criativo tem
+uma função (um sobe nível de consciência, outro fecha a venda) — decisão por CTR (bom a partir de
+~2%) + no mínimo 3 dias rodando antes de cortar, nunca corte no 1º dia (reforça o que já está na
+seção "Quantidade pela fase da conta" — aqui é o motivo).
+
+## Quando ler outra skill
+
+- **`criacao-low-ticket-mvt/references/ESTRUTURA-DE-PENSAMENTO.md`** — a ordem canônica
+  `persona → dor → demanda orgânica → oferta → página → criativo → peças do funil`, com a dor em
+  3 camadas (**sintoma / cena / custo**). O criativo é a última ponta da cadeia: ele não inventa a
+  dor, ele **traduz** a cena e o custo que a persona já mediu. Leia antes do Gate 0 se a oferta
+  ainda não tem `pesquisa/PERSONA-E-ANGULOS.md`.
+- `criativo-ads-video-orq`: toda produção de vídeo (imagem de referência, prompt
+  Veo, QA de clipe, montagem, legenda, tarja). A estratégia da leva vem daqui.
+- `modelagem-escalados`: biblioteca de 103 formatos + 12 prompts de estático
+  (brandkit, dossiê, arte 9:16, leva de headlines, QA).
+- `metaads-kevones`: estrutura de campanha, corte, escala, lance, e o que é novo no
+  YouTube dele (`references/YOUTUBE-NOVIDADES.md`).
+- `narracao-hub-tts`: voz off. `get-brolls`: b-roll com origem registrada.
+
+## B-roll/real do TikTok — vídeos virais em inglês (regra da dona, 16/10/2026)
+
+- **Material real = também TikTok.** Além do banco (`get-brolls`), usar **vídeos orgânicos virais em INGLÊS** do TikTok como cena real (sessão, cuidador, idoso, terapia). É o que faz o criativo parecer orgânico — os originais que modelamos **intercalam MUITA cena real** com o material do produto em cortes curtos.
+- **Buscar com ~5 termos em inglês ligados ao PRODUTO.** Ex. (GeriNeuro / idoso / demência): `dementia activities` · `caregiver grandma moment` · `occupational therapy elderly` · `memory care activities` · `elderly cognitive games`. Priorizar **muitas views** (contagem no próprio TikTok).
+- **⛔ REGRA DURA: o vídeo NÃO pode ter TEXTO ESCRITO / legenda queimada** — nada de caption embutida, watermark de app, ou texto em outro idioma. Só **cena limpa**; a legenda é a NOSSA (KaraokeV2). **Descarta o clipe que tiver texto.**
+- **Perfil logado:** usar o perfil de browser **`tiktok`** (porta 9255). Baixar com **`yt-dlp`** (cookies do perfil quando precisar). Registrar em **`credits.md`**: termo, URL, @autor, **views**, arquivo.
+- **Uso na montagem (receita dos originais):** **~15–20 cortes curtos (~2–3s)** alternando o **material do produto** (gravações de tela/fichas) com as **cenas reais** do TikTok, reforçando a fala com overlay de texto.
+
+## Mapa do pacote (tudo linkado por aqui)
+
+**Estratégia e produção de criativo**
+- `criativo-ads` (esta) → decide o quê. `criativo-ads-video-orq` → orquestra vídeo (Hub/Flow).
+- `modelagem-escalados` + `biblioteca-escalados` → estático/carrossel a partir de 103 formatos.
+- `gpt-imagem-playwright` (imagem no ChatGPT) · `hub-video-playwright` (vídeo no Hub) · Flow em `criativo-ads-video-orq/references/mecanica-flow.md`.
+- `narracao-hub-tts` (voz) · `get-brolls` (b-roll) · `yt-transcricao` (transcrever referência) · `metaads-kevones` (tráfego).
+
+**Edição e composição de vídeo**
+- `video-use` · `remotion-*` · `hyperframes-*` · `embedded-captions` · `captions-overlay` · `talking-head-recut` · `cut-the-curve` · `motion-doctrine` · `motion-graphics` · `seam-craft` · `media-use`.
+
+**Orquestradoras e operacionais de nicho**
+- `tiktok-shop` · `tiktok-ads` · `influenciadora-ia-instagram` · `depoimentos-video` · `depoimentos-comentarios-social` · `depoimentos-pagina-de-vendas` · `gerador-depoimentos-instagram-gpt` · `imagens-pagina-low` · `banner-checkout-gpt` · `competitive-ads-extractor` · `brandkit`.
+
+**Infra de browser**: `agent-browser` · `browser-cloudflare` · `browser-harness` + `criativo-ads-video-orq/references/browser-setup.md`.

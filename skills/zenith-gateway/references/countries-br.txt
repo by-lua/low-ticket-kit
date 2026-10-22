@@ -1,0 +1,76 @@
+Brasil — BRL
+Brasil — BRL
+
+Formas de pagamento certificadas e exemplos de integração para Brasil.
+
+A resposta da sua conta é a autoridade final
+
+Esta página descreve o contrato que a Zenith consegue representar. Um método só pode ser usado quando GET /integrations/payment-methods o devolver para este seller, país, moeda, produto e ambiente.
+
+Formas de pagamento em Brasil
+
+PIX e cartão hospedado, conforme a configuração comercial da conta.
+
+PIX
+pix
+QR Code
+BRL · Elements + Payments API
+Cartão
+card
+Redirecionamento seguro
+Cobertura global condicionada à conta
+1. Consulte a disponibilidade
+
+Faça esta chamada no backend antes de montar sua interface. Não mantenha uma lista fixa e não envie identificador de adquirente.
+
+cURL · BR/BRL
+Copiar
+curl "https://api.zenithworld.com.br/integrations/payment-methods?country=BR&currency=BRL&environment=sandbox" \
+  -H "X-API-Key: $ZENITH_PUBLIC_KEY" \
+  -H "X-API-Secret: $ZENITH_SECRET_KEY"
+2. Crie o checkout
+
+Use exatamente um dos códigos retornados. Gere uma chave de idempotência por intenção lógica e preserve a mesma chave e o mesmo payload em cada retry.
+
+PARÂMETRO	REGRA
+amount	Inteiro em unidade minoritária. Mínimo global 1; o método pode impor um piso maior.
+country	BR
+currency	BRL
+paymentMethod	Um código devolvido pela consulta de disponibilidade atual.
+Idempotency-Key	8–120 caracteres.
+3. Confirme por webhook
+
+pending, redirecionamento concluído ou evento do navegador não liquidam o pedido. Confirme somente após validar um webhook definitivo e processar o id do evento uma única vez.
+
+Validar webhooks
+PIX · BR
+Copiar
+cURL
+Node.js
+Python
+PHP
+curl -X POST "https://api.zenithworld.com.br/integrations/checkouts" \
+  -H "X-API-Key: $ZENITH_PUBLIC_KEY" \
+  -H "X-API-Secret: $ZENITH_SECRET_KEY" \
+  -H "Idempotency-Key: $PAYMENT_INTENT_ID" \
+  -H "Content-Type: application/json" \
+  --data '{
+  "amount": 10990,
+  "currency": "BRL",
+  "country": "BR",
+  "environment": "sandbox",
+  "paymentMethod": "pix",
+  "referenceId": "pedido-123",
+  "customerName": "Ana Silva",
+  "customerEmail": "voce@exemplo.com",
+  "metadata": {
+    "customerName": "Ana Silva",
+    "customerEmail": "voce@exemplo.com",
+    "customerDocument": "12345678909",
+    "customerPhone": "3001234567"
+  },
+  "returnUrl": "https://sualoja.com/obrigado",
+  "cancelUrl": "https://sualoja.com/carrinho"
+}'
+
+Substitua apenas valores de exemplo. Nunca envie a secret ao navegador.

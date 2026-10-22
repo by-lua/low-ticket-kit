@@ -1,0 +1,82 @@
+Peru — PEN
+Peru — PEN
+
+Formas de pagamento certificadas e exemplos de integração para Peru.
+
+A resposta da sua conta é a autoridade final
+
+Esta página descreve o contrato que a Zenith consegue representar. Um método só pode ser usado quando GET /integrations/payment-methods o devolver para este seller, país, moeda, produto e ambiente.
+
+Formas de pagamento em Peru
+
+Checkout hospedado agregado: Yape, Plin, transferência e dinheiro são escolhidos pelo comprador entre os canais disponíveis para a ordem.
+
+Transferência por CVU (compatível com CBU)
+bank-transfer
+Redirecionamento seguro + Instruções de transferência
+PEN · Elements + Payments API
+Yape
+yape
+Redirecionamento seguro
+PEN · Elements + Payments API
+Plin
+plin
+Redirecionamento seguro
+PEN · Elements + Payments API
+Pagamento em dinheiro
+cash
+Redirecionamento seguro
+PEN · Elements + Payments API
+Cartão
+card
+Redirecionamento seguro
+Cobertura global condicionada à conta
+1. Consulte a disponibilidade
+
+Faça esta chamada no backend antes de montar sua interface. Não mantenha uma lista fixa e não envie identificador de adquirente.
+
+cURL · PE/PEN
+Copiar
+curl "https://api.zenithworld.com.br/integrations/payment-methods?country=PE&currency=PEN&environment=sandbox" \
+  -H "X-API-Key: $ZENITH_PUBLIC_KEY" \
+  -H "X-API-Secret: $ZENITH_SECRET_KEY"
+2. Crie o checkout
+
+Use exatamente um dos códigos retornados. Gere uma chave de idempotência por intenção lógica e preserve a mesma chave e o mesmo payload em cada retry.
+
+PARÂMETRO	REGRA
+amount	Inteiro em unidade minoritária. Mínimo global 1; o método pode impor um piso maior.
+country	PE
+currency	PEN
+paymentMethod	Um código devolvido pela consulta de disponibilidade atual.
+Idempotency-Key	8–120 caracteres.
+3. Confirme por webhook
+
+pending, redirecionamento concluído ou evento do navegador não liquidam o pedido. Confirme somente após validar um webhook definitivo e processar o id do evento uma única vez.
+
+Validar webhooks
+Yape · PE
+Copiar
+cURL
+Node.js
+Python
+PHP
+curl -X POST "https://api.zenithworld.com.br/integrations/checkouts" \
+  -H "X-API-Key: $ZENITH_PUBLIC_KEY" \
+  -H "X-API-Secret: $ZENITH_SECRET_KEY" \
+  -H "Idempotency-Key: $PAYMENT_INTENT_ID" \
+  -H "Content-Type: application/json" \
+  --data '{
+  "amount": 10990,
+  "currency": "PEN",
+  "country": "PE",
+  "environment": "sandbox",
+  "paymentMethod": "yape",
+  "referenceId": "pedido-123",
+  "customerName": "Ana Silva",
+  "customerEmail": "voce@exemplo.com",
+  "returnUrl": "https://sualoja.com/obrigado",
+  "cancelUrl": "https://sualoja.com/carrinho"
+}'
+
+Substitua apenas valores de exemplo. Nunca envie a secret ao navegador.

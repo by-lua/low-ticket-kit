@@ -1,0 +1,896 @@
+{
+  "geradoEm": "2026-09-07T00:00:00-03:00",
+  "cursoId": 15,
+  "origem": "INDICE.md pré-remapeamento",
+  "modulos": [
+    {
+      "id": null,
+      "titulo": "Comece aqui! (Obrigatório)",
+      "ordem": 1,
+      "aulas": [
+        {
+          "id": "75",
+          "titulo": "Por onde Começar?",
+          "ordem": 1,
+          "modulo": "Comece aqui! (Obrigatório)",
+          "youtubeId": null
+        }
+      ]
+    },
+    {
+      "id": null,
+      "titulo": "Replays das Lives",
+      "ordem": 2,
+      "aulas": [
+        {
+          "id": "271",
+          "titulo": "Pegue seu ingresso",
+          "ordem": 1,
+          "modulo": "Replays das Lives",
+          "youtubeId": null
+        },
+        {
+          "id": "224",
+          "titulo": "Tudo sobre a ANDROMEDA! (Meta Ads 2025) - 14/11/25",
+          "ordem": 2,
+          "modulo": "Replays das Lives",
+          "youtubeId": null
+        },
+        {
+          "id": "223",
+          "titulo": "Facebook ADS 2025 - Call Insana! (30/09/25)",
+          "ordem": 3,
+          "modulo": "Replays das Lives",
+          "youtubeId": null
+        },
+        {
+          "id": "180",
+          "titulo": "Live - Otimizando e Escalando Infoprodutos",
+          "ordem": 4,
+          "modulo": "Replays das Lives",
+          "youtubeId": null
+        },
+        {
+          "id": "152",
+          "titulo": "+40 Gestores em uma Call Otimizando Campanhas",
+          "ordem": 5,
+          "modulo": "Replays das Lives",
+          "youtubeId": null
+        },
+        {
+          "id": "153",
+          "titulo": "Pov: Otimizando Campanhas de INFOPRODUTOS ao VIVO!",
+          "ordem": 6,
+          "modulo": "Replays das Lives",
+          "youtubeId": null
+        },
+        {
+          "id": "154",
+          "titulo": "Facebook Ads: Lucrei +100K em 6 meses!",
+          "ordem": 7,
+          "modulo": "Replays das Lives",
+          "youtubeId": null
+        },
+        {
+          "id": "155",
+          "titulo": "Otimizando e ESCALANDO no FACEBOOK ADS na prática!",
+          "ordem": 8,
+          "modulo": "Replays das Lives",
+          "youtubeId": null
+        },
+        {
+          "id": "156",
+          "titulo": "Como testar um OFERTA no Facebook Ads (Sem muito DINHEIRO)",
+          "ordem": 9,
+          "modulo": "Replays das Lives",
+          "youtubeId": null
+        },
+        {
+          "id": "164",
+          "titulo": "Call de Otimização ao VIVO!",
+          "ordem": 10,
+          "modulo": "Replays das Lives",
+          "youtubeId": null
+        },
+        {
+          "id": "332",
+          "titulo": "aaaaa",
+          "ordem": 11,
+          "modulo": "Replays das Lives",
+          "youtubeId": null
+        }
+      ]
+    },
+    {
+      "id": null,
+      "titulo": "Curso de Tráfego do Zero",
+      "ordem": 3,
+      "aulas": [
+        {
+          "id": "78",
+          "titulo": "Introdução",
+          "ordem": 1,
+          "modulo": "Curso de Tráfego do Zero",
+          "youtubeId": null
+        },
+        {
+          "id": "79",
+          "titulo": "Preparativos Práticos",
+          "ordem": 2,
+          "modulo": "Curso de Tráfego do Zero",
+          "youtubeId": null
+        },
+        {
+          "id": "80",
+          "titulo": "Como criar um gerenciador de negócios profissional",
+          "ordem": 3,
+          "modulo": "Curso de Tráfego do Zero",
+          "youtubeId": null
+        },
+        {
+          "id": "81",
+          "titulo": "Entendendo a hierarquia e seus ativos",
+          "ordem": 4,
+          "modulo": "Curso de Tráfego do Zero",
+          "youtubeId": null
+        },
+        {
+          "id": "82",
+          "titulo": "Criando e conectando seus ativos",
+          "ordem": 5,
+          "modulo": "Curso de Tráfego do Zero",
+          "youtubeId": null
+        },
+        {
+          "id": "83",
+          "titulo": "Pixel! Como funciona e como instalar",
+          "ordem": 6,
+          "modulo": "Curso de Tráfego do Zero",
+          "youtubeId": null
+        },
+        {
+          "id": "305",
+          "titulo": "Como as Campanhas funcionam na Prática!",
+          "ordem": 7,
+          "modulo": "Curso de Tráfego do Zero",
+          "youtubeId": null
+        },
+        {
+          "id": "306",
+          "titulo": "Como definir seu Objetivo de Campanha!",
+          "ordem": 8,
+          "modulo": "Curso de Tráfego do Zero",
+          "youtubeId": null
+        },
+        {
+          "id": "307",
+          "titulo": "Tudo sobre Conjuntos de Anúncios",
+          "ordem": 9,
+          "modulo": "Curso de Tráfego do Zero",
+          "youtubeId": null
+        },
+        {
+          "id": "308",
+          "titulo": "Orçamento! (CBO, ABO, Diário e Vitalício)",
+          "ordem": 10,
+          "modulo": "Curso de Tráfego do Zero",
+          "youtubeId": null
+        },
+        {
+          "id": "309",
+          "titulo": "Entendendo os Anúncios",
+          "ordem": 11,
+          "modulo": "Curso de Tráfego do Zero",
+          "youtubeId": null
+        },
+        {
+          "id": "310",
+          "titulo": "Criando uma Campanha na Prática",
+          "ordem": 12,
+          "modulo": "Curso de Tráfego do Zero",
+          "youtubeId": null
+        },
+        {
+          "id": "311",
+          "titulo": "Otimizando Campanhas na Prática",
+          "ordem": 13,
+          "modulo": "Curso de Tráfego do Zero",
+          "youtubeId": null
+        }
+      ]
+    },
+    {
+      "id": null,
+      "titulo": "Criando um Infoproduto",
+      "ordem": 4,
+      "aulas": [
+        {
+          "id": "314",
+          "titulo": "Minerando Infoprodutos validados",
+          "ordem": 1,
+          "modulo": "Criando um Infoproduto",
+          "youtubeId": null
+        },
+        {
+          "id": "315",
+          "titulo": "Modelando seu Site",
+          "ordem": 2,
+          "modulo": "Criando um Infoproduto",
+          "youtubeId": null
+        },
+        {
+          "id": "316",
+          "titulo": "Criando seu Infoproduto",
+          "ordem": 3,
+          "modulo": "Criando um Infoproduto",
+          "youtubeId": null
+        },
+        {
+          "id": "317",
+          "titulo": "Cadastrando seu Infoproduto",
+          "ordem": 4,
+          "modulo": "Criando um Infoproduto",
+          "youtubeId": null
+        },
+        {
+          "id": "318",
+          "titulo": "Modelando Criativos",
+          "ordem": 5,
+          "modulo": "Criando um Infoproduto",
+          "youtubeId": null
+        }
+      ]
+    },
+    {
+      "id": null,
+      "titulo": "Meta Ads 2026 (Machine learning - Andromeda)",
+      "ordem": 5,
+      "aulas": [
+        {
+          "id": "239",
+          "titulo": "Como configurar sua conta de anúncios (Andromeda)",
+          "ordem": 1,
+          "modulo": "Meta Ads 2026 (Machine learning - Andromeda)",
+          "youtubeId": null
+        }
+      ]
+    },
+    {
+      "id": null,
+      "titulo": "Sua oferta converte?",
+      "ordem": 6,
+      "aulas": [
+        {
+          "id": "312",
+          "titulo": "Sua oferta converte?",
+          "ordem": 1,
+          "modulo": "Sua oferta converte?",
+          "youtubeId": null
+        }
+      ]
+    },
+    {
+      "id": null,
+      "titulo": "Teste, otimização e Validação (Meta 2026)",
+      "ordem": 7,
+      "aulas": [
+        {
+          "id": "237",
+          "titulo": "Estrutura de Campanhas (Atualizado)",
+          "ordem": 1,
+          "modulo": "Teste, otimização e Validação (Meta 2026)",
+          "youtubeId": null
+        },
+        {
+          "id": "238",
+          "titulo": "Metrícas e Otimização na Prática",
+          "ordem": 2,
+          "modulo": "Teste, otimização e Validação (Meta 2026)",
+          "youtubeId": null
+        }
+      ]
+    },
+    {
+      "id": null,
+      "titulo": "Metodologia de Escala (Meta 2026)",
+      "ordem": 8,
+      "aulas": [
+        {
+          "id": "240",
+          "titulo": "Isolamento inteligente (Pré- Escala)",
+          "ordem": 1,
+          "modulo": "Metodologia de Escala (Meta 2026)",
+          "youtubeId": null
+        },
+        {
+          "id": "241",
+          "titulo": "Escala diária e Progressiva",
+          "ordem": 2,
+          "modulo": "Metodologia de Escala (Meta 2026)",
+          "youtubeId": null
+        },
+        {
+          "id": "242",
+          "titulo": "Ecossistema de Campanhas",
+          "ordem": 3,
+          "modulo": "Metodologia de Escala (Meta 2026)",
+          "youtubeId": null
+        },
+        {
+          "id": "288",
+          "titulo": "Escalando com Meta de Custo!",
+          "ordem": 4,
+          "modulo": "Metodologia de Escala (Meta 2026)",
+          "youtubeId": null
+        }
+      ]
+    },
+    {
+      "id": null,
+      "titulo": "Empilhamento de BidCap",
+      "ordem": 9,
+      "aulas": [
+        {
+          "id": "281",
+          "titulo": "Empilhamento de BidCap",
+          "ordem": 1,
+          "modulo": "Empilhamento de BidCap",
+          "youtubeId": null
+        }
+      ]
+    },
+    {
+      "id": null,
+      "titulo": "Tráfego para SaaS",
+      "ordem": 10,
+      "aulas": [
+        {
+          "id": "313",
+          "titulo": "Tráfego para SaaS",
+          "ordem": 1,
+          "modulo": "Tráfego para SaaS",
+          "youtubeId": null
+        }
+      ]
+    },
+    {
+      "id": null,
+      "titulo": "Tráfego para Expert",
+      "ordem": 11,
+      "aulas": [
+        {
+          "id": "319",
+          "titulo": "Tráfego para Expert",
+          "ordem": 1,
+          "modulo": "Tráfego para Expert",
+          "youtubeId": null
+        }
+      ]
+    },
+    {
+      "id": null,
+      "titulo": "LowTicket em Dólar na Prática",
+      "ordem": 12,
+      "aulas": [
+        {
+          "id": "247",
+          "titulo": "Low ticket em Dólar - Introdução",
+          "ordem": 1,
+          "modulo": "LowTicket em Dólar na Prática",
+          "youtubeId": null
+        },
+        {
+          "id": "248",
+          "titulo": "Estrutura Básica para vender em dólar",
+          "ordem": 2,
+          "modulo": "LowTicket em Dólar na Prática",
+          "youtubeId": null
+        },
+        {
+          "id": "249",
+          "titulo": "Espionagem de Ofertas",
+          "ordem": 3,
+          "modulo": "LowTicket em Dólar na Prática",
+          "youtubeId": null
+        },
+        {
+          "id": "250",
+          "titulo": "Criando e Instalando o seu produto",
+          "ordem": 4,
+          "modulo": "LowTicket em Dólar na Prática",
+          "youtubeId": null
+        },
+        {
+          "id": "251",
+          "titulo": "Modelagem com IA (Página de vendas)",
+          "ordem": 5,
+          "modulo": "LowTicket em Dólar na Prática",
+          "youtubeId": null
+        },
+        {
+          "id": "252",
+          "titulo": "Configurações Gerais (Pixels, fun page, utm)",
+          "ordem": 6,
+          "modulo": "LowTicket em Dólar na Prática",
+          "youtubeId": null
+        },
+        {
+          "id": "253",
+          "titulo": "Fazendo os Criativos",
+          "ordem": 7,
+          "modulo": "LowTicket em Dólar na Prática",
+          "youtubeId": null
+        },
+        {
+          "id": "254",
+          "titulo": "Subindo a Campanha de vendas internacional",
+          "ordem": 8,
+          "modulo": "LowTicket em Dólar na Prática",
+          "youtubeId": null
+        }
+      ]
+    },
+    {
+      "id": null,
+      "titulo": "Crie um SaaS em 30 minutos",
+      "ordem": 13,
+      "aulas": [
+        {
+          "id": "244",
+          "titulo": "Criando um SaaS em 30 minutos",
+          "ordem": 1,
+          "modulo": "Crie um SaaS em 30 minutos",
+          "youtubeId": null
+        },
+        {
+          "id": "245",
+          "titulo": "Construindo a Página de Vendas",
+          "ordem": 2,
+          "modulo": "Crie um SaaS em 30 minutos",
+          "youtubeId": null
+        },
+        {
+          "id": "246",
+          "titulo": "Conheça o SaasBuild",
+          "ordem": 3,
+          "modulo": "Crie um SaaS em 30 minutos",
+          "youtubeId": null
+        }
+      ]
+    },
+    {
+      "id": null,
+      "titulo": "Segredos do Tráfego (Avançado)",
+      "ordem": 14,
+      "aulas": [
+        {
+          "id": "243",
+          "titulo": "Essa aula vai colocar 10k/Mês no seu Bolso! - Meta Ads 2025 o OURO do Tráfego Pago",
+          "ordem": 1,
+          "modulo": "Segredos do Tráfego (Avançado)",
+          "youtubeId": null
+        },
+        {
+          "id": "109",
+          "titulo": "Como criar Campanhas de WhatsApp que Vendem!",
+          "ordem": 2,
+          "modulo": "Segredos do Tráfego (Avançado)",
+          "youtubeId": null
+        },
+        {
+          "id": "110",
+          "titulo": "Campanhas para Seguidores na Prática!",
+          "ordem": 3,
+          "modulo": "Segredos do Tráfego (Avançado)",
+          "youtubeId": null
+        },
+        {
+          "id": "111",
+          "titulo": "Remarketing de Alta Frequência",
+          "ordem": 4,
+          "modulo": "Segredos do Tráfego (Avançado)",
+          "youtubeId": null
+        }
+      ]
+    },
+    {
+      "id": null,
+      "titulo": "MasterClass: Criativos Milionários",
+      "ordem": 15,
+      "aulas": [
+        {
+          "id": "98",
+          "titulo": "Como criar criativos que convertem",
+          "ordem": 1,
+          "modulo": "MasterClass: Criativos Milionários",
+          "youtubeId": null
+        },
+        {
+          "id": "99",
+          "titulo": "Criativos estilo TikTok",
+          "ordem": 2,
+          "modulo": "MasterClass: Criativos Milionários",
+          "youtubeId": null
+        },
+        {
+          "id": "100",
+          "titulo": "Criativos Diretos",
+          "ordem": 3,
+          "modulo": "MasterClass: Criativos Milionários",
+          "youtubeId": null
+        },
+        {
+          "id": "101",
+          "titulo": "Criativos de Catálogo",
+          "ordem": 4,
+          "modulo": "MasterClass: Criativos Milionários",
+          "youtubeId": null
+        },
+        {
+          "id": "102",
+          "titulo": "Criativos de Dicas",
+          "ordem": 5,
+          "modulo": "MasterClass: Criativos Milionários",
+          "youtubeId": null
+        }
+      ]
+    },
+    {
+      "id": null,
+      "titulo": "Desafio do Infoproduto!",
+      "ordem": 16,
+      "aulas": [
+        {
+          "id": "141",
+          "titulo": "Desafio do Infoproduto - Aula 01",
+          "ordem": 1,
+          "modulo": "Desafio do Infoproduto!",
+          "youtubeId": null
+        },
+        {
+          "id": "142",
+          "titulo": "Desafio do Infoproduto - Aula 02",
+          "ordem": 2,
+          "modulo": "Desafio do Infoproduto!",
+          "youtubeId": null
+        },
+        {
+          "id": "143",
+          "titulo": "Desafio do Infoproduto - Aula 03",
+          "ordem": 3,
+          "modulo": "Desafio do Infoproduto!",
+          "youtubeId": null
+        },
+        {
+          "id": "144",
+          "titulo": "Desafio do Infoproduto - Aula 04",
+          "ordem": 4,
+          "modulo": "Desafio do Infoproduto!",
+          "youtubeId": null
+        }
+      ]
+    },
+    {
+      "id": null,
+      "titulo": "Curso: Agência Milionária",
+      "ordem": 17,
+      "aulas": [
+        {
+          "id": "112",
+          "titulo": "Como gerenciar campanhas de clientes",
+          "ordem": 1,
+          "modulo": "Curso: Agência Milionária",
+          "youtubeId": null
+        },
+        {
+          "id": "113",
+          "titulo": "As 3 melhores maneiras de fechar contratos.",
+          "ordem": 2,
+          "modulo": "Curso: Agência Milionária",
+          "youtubeId": null
+        },
+        {
+          "id": "114",
+          "titulo": "Captação Porta a Porta",
+          "ordem": 3,
+          "modulo": "Curso: Agência Milionária",
+          "youtubeId": null
+        },
+        {
+          "id": "115",
+          "titulo": "Captação com Anúncios on-line",
+          "ordem": 4,
+          "modulo": "Curso: Agência Milionária",
+          "youtubeId": null
+        },
+        {
+          "id": "116",
+          "titulo": "Captação com Produção de Conteúdo",
+          "ordem": 5,
+          "modulo": "Curso: Agência Milionária",
+          "youtubeId": null
+        },
+        {
+          "id": "117",
+          "titulo": "O script SECRETO para Fechar Contratos de Tráfego Pago!",
+          "ordem": 6,
+          "modulo": "Curso: Agência Milionária",
+          "youtubeId": null
+        },
+        {
+          "id": "118",
+          "titulo": "Fechando um Contrato de 4k/mês ao VIVO!",
+          "ordem": 7,
+          "modulo": "Curso: Agência Milionária",
+          "youtubeId": null
+        },
+        {
+          "id": "119",
+          "titulo": "Fechando um Contrato de 2.2k mês!",
+          "ordem": 8,
+          "modulo": "Curso: Agência Milionária",
+          "youtubeId": null
+        },
+        {
+          "id": "120",
+          "titulo": "Como Fechar Contratos de R$1.200 na Prática!",
+          "ordem": 9,
+          "modulo": "Curso: Agência Milionária",
+          "youtubeId": null
+        },
+        {
+          "id": "121",
+          "titulo": "Como Gerar Resultados para Clientes de Tráfego Pago",
+          "ordem": 10,
+          "modulo": "Curso: Agência Milionária",
+          "youtubeId": null
+        },
+        {
+          "id": "122",
+          "titulo": "Como Fidelizar Clientes!",
+          "ordem": 11,
+          "modulo": "Curso: Agência Milionária",
+          "youtubeId": null
+        },
+        {
+          "id": "123",
+          "titulo": "Ferramentas que todo Gestor precisar conhecer",
+          "ordem": 12,
+          "modulo": "Curso: Agência Milionária",
+          "youtubeId": null
+        },
+        {
+          "id": "124",
+          "titulo": "Processos (Captação, fechamento, pós venda e gerenciamento)",
+          "ordem": 13,
+          "modulo": "Curso: Agência Milionária",
+          "youtubeId": null
+        }
+      ]
+    },
+    {
+      "id": null,
+      "titulo": "MasterClass - Contenção",
+      "ordem": 18,
+      "aulas": [
+        {
+          "id": "130",
+          "titulo": "Contenção no Meta Ads! O que você irá aprender!",
+          "ordem": 1,
+          "modulo": "MasterClass - Contenção",
+          "youtubeId": null
+        },
+        {
+          "id": "131",
+          "titulo": "O que é e como funciona uma contenção",
+          "ordem": 2,
+          "modulo": "MasterClass - Contenção",
+          "youtubeId": null
+        },
+        {
+          "id": "132",
+          "titulo": "Tipos de Bloqueios no Meta Ads",
+          "ordem": 3,
+          "modulo": "MasterClass - Contenção",
+          "youtubeId": null
+        },
+        {
+          "id": "133",
+          "titulo": "Como Blindar sua BM na Prática",
+          "ordem": 4,
+          "modulo": "MasterClass - Contenção",
+          "youtubeId": null
+        },
+        {
+          "id": "134",
+          "titulo": "Como nunca ter Criativos Bloqueados no Meta Ads",
+          "ordem": 5,
+          "modulo": "MasterClass - Contenção",
+          "youtubeId": null
+        }
+      ]
+    },
+    {
+      "id": null,
+      "titulo": "Tráfego Para E-commerce",
+      "ordem": 19,
+      "aulas": [
+        {
+          "id": "145",
+          "titulo": "Mensurando os dados",
+          "ordem": 1,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "146",
+          "titulo": "Estética e Confiabilidade",
+          "ordem": 2,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "147",
+          "titulo": "Campanhas de compra de dados",
+          "ordem": 3,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "148",
+          "titulo": "Qual criativo você deve usar?",
+          "ordem": 4,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "149",
+          "titulo": "Campanhas de Conversão",
+          "ordem": 5,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "150",
+          "titulo": "Otimizando na Prática",
+          "ordem": 6,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "151",
+          "titulo": "Públicos quente e Remarketing",
+          "ordem": 7,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "230",
+          "titulo": "Como as Campanhas funcionam na Prática!",
+          "ordem": 8,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "231",
+          "titulo": "Como definir seu Objetivo de Campanha!",
+          "ordem": 9,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "232",
+          "titulo": "Tudo sobre Conjuntos de Anúncios",
+          "ordem": 10,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "233",
+          "titulo": "Orçamento! (CBO, ABO, Diário e Vitalício)",
+          "ordem": 11,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "234",
+          "titulo": "Entendendo os Anúncios",
+          "ordem": 12,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "235",
+          "titulo": "Criando uma Campanha na Prática",
+          "ordem": 13,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "135",
+          "titulo": "Comece aqui! Tudo que você irá aprender!",
+          "ordem": 14,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "125",
+          "titulo": "Domine os Infoprodutos no Meta Ads",
+          "ordem": 15,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "126",
+          "titulo": "Como Testar Públicos na Prática",
+          "ordem": 16,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "136",
+          "titulo": "O objetivo certo para Campanhas de Delivery",
+          "ordem": 17,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "158",
+          "titulo": "Modelos de Contratos",
+          "ordem": 18,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "137",
+          "titulo": "Orçamento de Campanhas para Delivery!",
+          "ordem": 19,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "127",
+          "titulo": "Teste de Criativos para Infoprodutos",
+          "ordem": 20,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "138",
+          "titulo": "Quais Públicos você deve utilizar!",
+          "ordem": 21,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "128",
+          "titulo": "Otimização para Infoprodutos",
+          "ordem": 22,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "129",
+          "titulo": "Escala de Infoprodutos no Meta Ads",
+          "ordem": 23,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "139",
+          "titulo": "Criativos Vencedores para Delivery!",
+          "ordem": 24,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        },
+        {
+          "id": "140",
+          "titulo": "Otimização! e Escala!",
+          "ordem": 25,
+          "modulo": "Tráfego Para E-commerce",
+          "youtubeId": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+
+Trate respostas de forma previsível sem criar pagamentos duplicados.
+
+Como tratar respostas
+
+Use o status HTTP para a classe do problema e o campo code para uma decisão específica. Mensagens são para diagnóstico e podem evoluir; não condicione a lógica a elas.
+
+STATUS	TRATAMENTO
+400	Corrija payload, campos obrigatórios ou formato; chave de idempotência ausente aparece em missingFields.
+401	Verifique credenciais sem registrá-las em log.
+403	Produto, ambiente, escopo, KYC ou origem não autorizados.
+409	Corrija uma chave inválida/divergente ou consulte o checkout já criado antes de decidir.
+422	Meio indisponível para a combinação solicitada.
+429	Aplique backoff exponencial com jitter.
+5xx	Resultado incerto: consulte pelo id ou referência antes de repetir.
+Idempotência sem duplicidade
+
+Envie Idempotency-Key com 8 a 120 caracteres em cada criação de checkout. A chave identifica uma intenção lógica, não uma chamada de rede.
+
+Gere e persista um UUID ou ULID imprevisível para cada nova intenção.
+Repetição da mesma intenção: reutilize a mesma chave e o mesmo payload.
+Novo pedido ou nova intenção: gere outra chave.
+Timeout ou 5xx: consulte o estado antes de criar novamente.
+Nunca use uma chave constante para todos os pedidos.
+A chave pertence à conta seller; trocar a credencial não cria outro namespace.
+
+Alterar valor, moeda, método, referenceId, URLs ou dados do comprador exige uma nova chave. Enviar a mesma chave com payload diferente retorna 409 IDEMPOTENCY_KEY_CONFLICT.
+
+Códigos importantes
+CÓDIGO	SIGNIFICADO
+PAYMENT_METHOD_REQUIRED	Informe um código público de meio de pagamento.
+PAYMENT_ROUTE_NOT_PUBLIC	gatewayId não faz parte do contrato Zenith Payments API.
+PAYMENT_METHOD_NOT_AVAILABLE	O método não está liberado ou não é compatível com o produto.
+PAYMENT_PAYLOAD_FIELDS_REQUIRED	Leia missingFields e complete o payload.
+PAYMENT_AMOUNT_BELOW_MINIMUM	O método publicou um piso monetário específico; leia details.minimumAmount e amountUnit.
+PAYMENT_AMOUNT_ABOVE_MAXIMUM	O valor excedeu o máximo técnico ou o teto da rota.
+CUSTOMER_EMAIL_INVALID	Envie o e-mail real e válido do comprador; endereços de teste, exemplo, temporários ou descartáveis são recusados.
+CUSTOMER_NAME_REQUIRED	Informe customerName com nome e sobrenome reais do comprador.
+CUSTOMER_NAME_INVALID	O nome não passou pela validação de formato e qualidade; remova números, repetições, iniciais isoladas e dados fictícios.
+CUSTOMER_PHONE_REQUIRED	O método exige telefone do titular; informe metadata.customerPhone.
+CUSTOMER_PHONE_INVALID	Para Nequi, envie 10 dígitos nacionais começando por 3; o prefixo +57 é opcional.
+IDEMPOTENCY_KEY_CONFLICT	A chave é inválida, diverge entre header e corpo ou já foi usada com outro payload.
+ORIGIN_NOT_ALLOWED	A origem exata do Elements não está autorizada.
+ELEMENT_REFERENCE_BINDING_CONFLICT	O referenceId já está vinculado a outra combinação de sessão.
+ELEMENT_CONTEXT_TOO_LARGE	O contexto Elements serializado excede 24.000 bytes.
+API_RATE_LIMIT_EXCEEDED	A cota da credencial foi excedida; respeite Retry-After.
+PAYMENT_PROCESSING_ERROR	Consulte o checkout antes de decidir por uma nova tentativa.

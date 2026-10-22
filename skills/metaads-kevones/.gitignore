@@ -1,0 +1,13 @@
+# Local course access information; never commit.
+references/LOCAL-ACESSO.md
+
+# Snapshots from scraping; audit trails only, not production data.
+references/snapshots/
+
+# Codex debugging artifacts.
+.codex/
+
+# Editor and operating-system artifacts.
+.DS_Store
+*.swp
+*.swo

@@ -1,0 +1,7 @@
+.last-update
+*.bak-*
+.DS_Store
+__pycache__/
+node_modules/
+.venv/
+.env

@@ -1,0 +1,92 @@
+
+Incorpore uma experiência de pagamento segura com sessão efêmera e origem exata autorizada.
+
+O limite de segurança
+
+Seu backend autentica a criação da sessão. O navegador recebe apenas elementSessionId, clientToken efêmero e a URL do elemento. A API secret nunca atravessa essa fronteira.
+
+Sessão curta e origem exata
+
+A sessão inicial expira em 15 minutos. Em produção, a origem deve ser HTTPS e corresponder exatamente a uma origem autorizada no painel seller.
+
+1. Crie a sessão no backend
+cURL
+Copiar
+curl -X POST "https://api.zenithworld.com.br/elements/sessions" \
+  -H "X-API-Key: $ZENITH_PUBLIC_KEY" \
+  -H "X-API-Secret: $ZENITH_SECRET_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "referenceId": "pedido-123",
+    "amount": 10990,
+    "currency": "MXN",
+    "country": "MX",
+    "environment": "sandbox",
+    "origin": "https://checkout.sualoja.com",
+    "returnUrl": "https://sualoja.com/obrigado",
+    "cancelUrl": "https://sualoja.com/carrinho",
+    "appearance": { "theme": "light" }
+  }'
+
+A resposta inclui elementSessionId, clientToken, elementUrl, sdkUrl e expiresAt.
+
+CAMPO	TIPO E LIMITE	OBRIGATÓRIO
+referenceId	String, 1–120	Sim
+amount	Integer, 1–2.000.000.000 na menor unidade	Sim
+currency	String, 3 letras ISO 4217	Sim
+country	String, 2–3 letras	Não
+environment	sandbox | production	Não; padrão do ambiente da API
+origin	URL, até 512	Sim
+returnUrl / cancelUrl	URL, até 2000 cada	Sim
+customerEmail	E-mail, até 254	Não
+customerName	String, até 140	Não
+customerPhone	String, até 40	Não
+customerDocument	String, até 80	Não
+customerDocumentType	String, até 20	Não
+metadata + appearance	Contexto total serializado: até 24.000 bytes	Não
+Aparência permitida
+CAMPO	VALORES	PADRÃO
+appearance.theme	light | dark	light
+appearance.primaryColor	Cor hexadecimal #RRGGBB	Identidade Zenith
+appearance.borderRadius	Integer de 0 a 16	Definido pelo componente
+appearance.fontFamily	system | geist	Definido pelo componente
+appearance.showHeader	Boolean	false
+referenceId vincula a sessão
+
+Na mesma conta, reutilizar referenceId com valor, moeda, país, ambiente ou origem diferentes retorna 409 ELEMENT_REFERENCE_BINDING_CONFLICT. Uma sessão já processada não pode ser reciclada para outra compra.
+
+2. Monte no navegador
+HTML + JavaScript
+Copiar
+<script src="https://api.zenithworld.com.br/elements/sdk.js"></script>
+<div id="zenith-payment"></div>
+<script>
+  const element = ZenithElements.create({
+    elementSessionId: session.elementSessionId,
+    clientToken: session.clientToken,
+    elementUrl: session.elementUrl,
+    returnUrl: session.returnUrl
+  });
+
+  element.mount("#zenith-payment");
+</script>
+
+O Elements mostra somente os métodos compatíveis e liberados para a sessão. Dados adicionais são coletados pela experiência de acordo com o contrato publicado para o método.
+
+Ver todos os métodos suportados
+Idempotência gerenciada pelo SDK
+
+Use element.confirm(). A confirmação é vinculada à sessão efêmera e o SDK administra sua chave interna; não reutilize uma sessão Elements para uma nova compra. Essa chave não é a Idempotency-Key da Payments API.
+
+O contrato interno de confirmação aceita uma chave de 8 a 120 caracteres. customerFields e paymentData aceitam no máximo 20 chaves, com até 500 caracteres por valor; o SDK aplica esses limites.
+
+Expiração e limites de requisição
+LIMITE	VALOR	ESCOPO
+Criação de sessão	60/min	Rota POST /elements/sessions, além da cota da credencial.
+Sessão inicial	15 minutos	Até iniciar o fluxo; uma ação de pagamento pode publicar sua própria expiração.
+Contexto cifrado	24.000 bytes	Dados do comprador, metadata e aparência serializados.
+3. Confirme no backend
+
+Eventos do navegador servem para atualizar a experiência, não para liquidar um pedido. Confirme o resultado por webhook assinado antes de liberar produto, saldo ou serviço.
+
+Ler webhooks

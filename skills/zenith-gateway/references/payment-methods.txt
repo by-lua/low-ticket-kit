@@ -1,0 +1,301 @@
+
+Escolha um país ou método e implemente somente o contrato público certificado para Elements e Payments API.
+
+O catálogo e a disponibilidade da sua conta
+
+O contrato público compartilhado por Zenith Elements e Zenith Payments API admite os métodos abaixo. A lista efetiva é resolvida em tempo real por seller, produto, país, moeda, ambiente, configuração habilitada e certificação operacional.
+
+MÉTODOS PÚBLICOS
+20
+MERCADOS MAPEADOS
+7
+FLUXOS NORMALIZADOS
+5
+PRODUTOS
+2
+
+Fronteira técnica revisada em 19 de agosto de 2026. A disponibilidade operacional continua sendo consultada por conta e ambiente.
+
+Suportado não significa habilitado
+
+Um método constar nesta página significa que o contrato público sabe representá-lo. Sua conta recebe somente o subconjunto liberado para o produto e a operação atual; conflito ou certificação suspensa falha de forma fechada e remove o método.
+
+Consulte o que funciona para a sua conta
+
+Na Payments API, consulte pelo backend com uma credencial do produto que tenha CHECKOUT_READ. Use somente os itens da resposta atual; ela já exclui métodos que exigem uma experiência exclusiva do Elements.
+
+cURL · Zenith Payments API
+Copiar
+curl "https://api.zenithworld.com.br/integrations/payment-methods?country=MX&currency=MXN&environment=sandbox" \
+  -H "X-API-Key: $ZENITH_PUBLIC_KEY" \
+  -H "X-API-Secret: $ZENITH_SECRET_KEY"
+Resposta resumida
+Copiar
+{
+  "country": "MX",
+  "currency": "MXN",
+  "environment": "sandbox",
+  "items": [
+    {
+      "code": "spei",
+      "displayName": "SPEI",
+      "category": "bank",
+      "renderer": "confirmation",
+      "iconKey": "spei",
+      "iconUrl": "https://api.zenithworld.com.br/elements/icons/spei.svg",
+      "fields": [],
+      "customerFields": [
+        { "name": "firstName", "label": "Nome", "type": "text", "required": true, "autocomplete": "given-name", "maxLength": 70 },
+        { "name": "lastName", "label": "Sobrenome", "type": "text", "required": true, "autocomplete": "family-name", "maxLength": 70 },
+        { "name": "documentType", "label": "Tipo de documento", "type": "select", "required": true, "options": [{ "value": "rfc", "label": "RFC" }] },
+        { "name": "documentNumber", "label": "RFC", "type": "text", "required": true, "autocomplete": "off", "maxLength": 13, "placeholder": "XAXX010101000" },
+        { "name": "birthDate", "label": "Data de nascimento", "type": "date", "required": true, "autocomplete": "bday" },
+        { "name": "birthCountry", "label": "País de nascimento", "type": "select", "required": true, "options": [{ "value": "MX", "label": "México" }] }
+      ],
+      "requiredPayloadFields": [
+        "headers.Idempotency-Key", "amount", "currency", "country",
+        "environment", "paymentMethod", "referenceId", "customerName",
+        "customerEmail", "returnUrl", "cancelUrl", "metadata.firstName",
+        "metadata.lastName", "metadata.documentType", "metadata.documentNumber",
+        "metadata.birthDate", "metadata.birthCountry"
+      ],
+      "amountLimits": {
+        "currency": "MXN",
+        "minimumAmount": 1,
+        "maximumAmount": 2000000000,
+        "minimumAmountFormatted": "MXN 0,01",
+        "maximumAmountFormatted": "MXN 20.000.000,00"
+      },
+      "capabilities": {
+        "secureCard": false,
+        "redirect": true,
+        "asynchronous": true,
+        "hostedCheckout": true
+      }
+    }
+  ],
+  "conflicts": []
+}
+
+No Elements, o SDK recebe os métodos dentro da sessão autenticada e renderiza somente esse resultado. O painel Integrações Zenith mostra a projeção por produto para o seller; esse endpoint do painel não é uma API pública de integração.
+
+Não existe seleção pública de adquirente
+
+Nenhum dos dois produtos aceita gatewayId ou nome de adquirente no contrato público. A Payments API rejeita essa tentativa com PAYMENT_ROUTE_NOT_PUBLIC. Não persista uma rota interna nem use uma resposta antiga como garantia futura.
+
+Cobertura por mercado
+
+A matriz abaixo documenta a cobertura pública conhecida para métodos locais. Cartão é disponibilizado conforme o país, a moeda e a conta adquirente habilitada para o seller.
+
+MERCADO	MOEDA	MÉTODOS SUPORTADOS
+
+Argentina
+AR
+	ARS	QR interoperável, Mercado Pago, DEBIN, Transferência por CVU (compatível com CBU)
+
+Brasil
+BR
+	BRL	PIX
+
+Colômbia
+CO
+	COP	PSE, Nequi, Bre-B / Llave
+
+México
+MX
+	MXN	OXXO, PayCash, PayNet, SPEI, CoDi
+
+Peru
+PE
+	PEN	Transferência por CVU (compatível com CBU), Yape, Plin, Pagamento em dinheiro
+
+Filipinas
+PH
+	PHP	GCash, Maya
+
+Índia
+IN
+	INR	UPI
+Todos os métodos suportados
+
+Os códigos são estáveis e independentes da rota financeira. Use o código público e deixe a Zenith resolver a conexão ativa; nomes internos de provedor não fazem parte do contrato do comprador.
+
+Pagamentos instantâneos
+PIX
+pix
+Brasil · BRL
+QR Code
+Elements + Payments API · Marca aprovada no catálogo Zenith
+UPI
+upi
+Índia · INR
+Redirecionamento seguro
+Elements + Payments API · Marca aprovada no catálogo Zenith
+QR interoperável
+qr-interoperable
+Argentina · ARS
+QR Code
+Elements + Payments API · Marca aprovada no catálogo Zenith
+CoDi
+codi
+México · MXN
+QR Code
+Elements + Payments API · Marca aprovada no catálogo Zenith
+Transferências e bancos
+SPEI
+spei
+México · MXN
+Instruções de transferência
+Elements + Payments API · Marca aprovada no catálogo Zenith
+PSE
+pse
+Colômbia · COP
+Redirecionamento seguro
+Elements + Payments API · Marca aprovada no catálogo Zenith
+DEBIN
+debin
+Argentina · ARS
+Instruções de transferência
+Elements + Payments API · Glifo neutro Zenith
+Bre-B / Llave
+bre-b-llave
+Colômbia · COP
+Instruções de transferência
+Elements + Payments API · Marca aprovada no catálogo Zenith
+Transferência por CVU (compatível com CBU)
+bank-transfer
+Argentina · ARS · Peru · PEN
+Redirecionamento seguro + Instruções de transferência
+Elements + Payments API · Marca aprovada no catálogo Zenith
+Vouchers e pontos de pagamento
+OXXO
+oxxo
+México · MXN
+Voucher ou código de pagamento
+Elements + Payments API · Marca aprovada no catálogo Zenith
+PayCash
+paycash
+México · MXN
+Voucher ou código de pagamento
+Elements + Payments API · Marca aprovada no catálogo Zenith
+PayNet
+paynet
+México · MXN
+Voucher ou código de pagamento
+Elements + Payments API · Marca aprovada no catálogo Zenith
+Pagamento em dinheiro
+cash
+Peru · PEN
+Redirecionamento seguro
+Elements + Payments API · Glifo neutro Zenith
+Carteiras digitais
+Nequi
+nequi
+Colômbia · COP
+Aprovação no aplicativo + Redirecionamento seguro
+Elements + Payments API · Marca aprovada no catálogo Zenith
+GCash
+gcash
+Filipinas · PHP
+Redirecionamento seguro
+Elements + Payments API · Marca aprovada no catálogo Zenith
+Maya
+maya
+Filipinas · PHP
+Redirecionamento seguro
+Elements + Payments API · Marca aprovada no catálogo Zenith
+Mercado Pago
+mercado-pago
+Argentina · ARS
+QR Code + Instruções de transferência
+Elements + Payments API · Marca aprovada no catálogo Zenith
+Yape
+yape
+Peru · PEN
+Redirecionamento seguro
+Elements + Payments API · Marca aprovada no catálogo Zenith
+Plin
+plin
+Peru · PEN
+Redirecionamento seguro
+Elements + Payments API · Marca aprovada no catálogo Zenith
+Cartões
+Cartão
+card
+Disponibilidade internacional conforme a conta
+Redirecionamento seguro
+Elements + Payments API · Glifo neutro Zenith
+Como cada fluxo é apresentado
+FLUXO	COMPORTAMENTO DO ELEMENTS
+qr_code	Exibe QR Code e, quando fornecido, o código copiável para pagamento.
+voucher	Exibe código, referência e instruções para pagamento em boleto, caixa ou ponto físico.
+bank_transfer	Apresenta os dados normalizados da transferência, como referência e identificação bancária.
+app_approval	Orienta o comprador a aprovar a solicitação no aplicativo indicado e aguarda a confirmação assíncrona.
+redirect	Abre a experiência hospedada ou bancária autorizada e retorna pelas URLs configuradas na sessão.
+Cartão permanece fora do seu servidor
+
+O fluxo atual de cartão usa uma página hospedada autorizada. PAN, CVV e validade não são coletados por campos dinâmicos nem enviados ao backend do integrador.
+
+Campos comuns e condicionais
+
+Na Payments API, os campos comuns publicados em requiredPayloadFields são obrigatórios. No Elements,referenceId, amount, currency, origin, returnUrl e cancelUrlformam a sessão; country e environment refinam a resolução. Depois da seleção, o SDK coleta somente os campos declarados para a rota resolvida.
+
+MÉTODO	CAMINHO	TIPO	REGRA PUBLICADA
+pix	metadata.customerName
+Nome completo	text	obrigatório na rota que o publicar; máx. 140
+pix	metadata.customerEmail
+E-mail	email	obrigatório na rota que o publicar; máx. 254
+pix	metadata.customerDocument
+CPF	text
+inputMode: numeric	obrigatório na rota que o publicar; máx. 14
+pix	metadata.customerPhone
+Telefone	tel	obrigatório na rota que o publicar; máx. 20
+spei	metadata.firstName
+Nome	text	obrigatório na rota que o publicar; máx. 70
+spei	metadata.lastName
+Sobrenome	text	obrigatório na rota que o publicar; máx. 70
+spei	metadata.documentType
+Tipo de documento	select	obrigatório na rota que o publicar; opções: rfc
+spei	metadata.documentNumber
+RFC	text	obrigatório na rota que o publicar; máx. 13; exemplo XAXX010101000
+spei	metadata.birthDate
+Data de nascimento	date	obrigatório na rota que o publicar
+spei	metadata.birthCountry
+País de nascimento	select	obrigatório na rota que o publicar; opções: MX
+nequi	metadata.customerPhone
+Celular Nequi	tel
+inputMode: tel	obrigatório na rota que o publicar; máx. 13; exemplo 3001234567; padrão ^(?:\+?57)?3\d{9}$; 10 dígitos nacionais, começando por 3. O prefixo +57 é opcional.
+gcash	metadata.customerPhone
+Celular filipino	tel
+inputMode: tel	obrigatório na rota que o publicar; máx. 13; exemplo +639175550101; padrão ^(?:\+?63|0)?9\d{9}$; Número móvel filipino: 10 dígitos nacionais iniciando em 9. Os prefixos 0 ou +63 são opcionais.
+maya	metadata.customerPhone
+Celular filipino	tel
+inputMode: tel	obrigatório na rota que o publicar; máx. 13; exemplo +639175550101; padrão ^(?:\+?63|0)?9\d{9}$; Número móvel filipino: 10 dígitos nacionais iniciando em 9. Os prefixos 0 ou +63 são opcionais.
+
+Trate customerFields, fields, requiredPayloadFields, renderer ecapabilities como dados de runtime. Não replique essas regras em uma lista fixa no seu frontend.
+
+Valores mínimos e máximos
+ESCOPO	MÍNIMO	MÁXIMO	OBSERVAÇÃO
+Elements	1 unidade minoritária	2.000.000.000 unidades minoritárias	O método e a conta podem aplicar um intervalo mais restritivo.
+Payments API	1 unidade minoritária	2.000.000.000 unidades minoritárias	O catálogo publica amountLimits; a conta ou a rota pode impor teto menor.
+pse · nequi · bre-b-llave · COP	COP 10.000,00	2.000.000.000 unidades minoritárias	Erro PAYMENT_AMOUNT_BELOW_MINIMUM abaixo do piso.
+gcash · maya · PHP	PHP 300,00	PHP 50.000,00	Limite comercial da rota certificada aplicado antes da criação da ordem.
+upi · INR	INR 200,00	INR 50.000,00	Limite comercial da rota certificada aplicado antes da criação da ordem.
+Sem números inventados por método
+
+Quando não há limite específico na tabela, a Zenith não publica hoje um mínimo ou máximo fixo adicional para aquele código. O intervalo operacional pode mudar por conta e rota; trate a resposta da API em vez de apresentar um número não garantido.
+
+SVGs e identidade visual
+
+Cada item de runtime inclui iconKey e iconUrl. A URL aponta para /elements/icons/:iconKey.svg, uma whitelist local sanitizada, sem carregamento de SVG arbitrário ou dependência de domínio de terceiros.
+
+Marca aprovada no catálogo Zenith: o ativo SVG de marca foi admitido e é servido pela API.
+Glifo neutro Zenith: usado para conceitos genéricos ou quando não há SVG oficial aprovado para uso; a documentação não fabrica nem imita uma logomarca.
+Use a iconUrl recebida em runtime. Não monte uma URL com entrada livre e não hospede uma cópia desatualizada.
+Regras de integração
+Crie uma nova sessão para cada nova intenção de compra; a sessão inicial expira em 15 minutos.
+Mostre somente o que o SDK carregou para a sessão atual.
+Use os nomes, códigos, ícones, campos e ações publicados pela Zenith.
+Não tente descobrir ou expor adquirente, gateway, credencial financeira ou lógica de roteamento.
+Considere eventos do navegador informativos e confirme o pedido somente por webhook assinado e idempotente.
+Implementar o Elements

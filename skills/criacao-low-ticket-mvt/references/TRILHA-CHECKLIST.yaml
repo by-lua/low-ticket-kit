@@ -1,0 +1,1219 @@
+# TRILHA-CHECKLIST — todo passo e subpasso do método, com evidência VERIFICÁVEL por máquina.
+# Lido por scripts/gate.py. Fonte ÚNICA da lista de itens: a regra do item mora na skill_fonte;
+# aqui mora só "o que tem que existir" (evidência). Nada é "opcional": ou é `sempre`, ou tem condição explícita.
+#
+# Formato (subconjunto de YAML que o gate.py parseia sem dependência): lista de itens, chaves planas,
+# `evidencia` = lista de checagens `- tipo: valor`. TODAS as checagens do item têm que passar (AND).
+#
+# obrigatorio  (sempre | condição; condição falsa => item "N/A", nunca "opcional"):
+#   sempre                — todo modo
+#   r4_nicho              — R4 do ROTEADOR tem nicho/persona (não "amplo")
+#   cross                 — origem != destino (modos B, B2, C, P, ou D/E/F combinados com mercado)
+#   modo:A,E,F            — modo primário (R2) está na lista
+#   formato_mudou         — alguma modelagem tem elemento_mudado = formato
+#   comunicacao_mudou     — alguma modelagem tem elemento_mudado = comunicação (ou persona/dor/desejo)
+#   pivo                  — existe concepção/oferta que apareceu DEPOIS do T7 (Obra sem T7-T10 próprio) — ver REGRA DE PIVÔ
+#   oferta_app | oferta_app_sensivel — (por oferta) Obra é APP/calculadora/gerador | e tem `área sensível: SIM`
+#   cross_construcao      — cross (= cross) na fase de construção
+#   construcao            — a rodada chegou em T12 liberada (linha "Parada 3 LIBERADA" no ESTADO)
+# retroativo: sim — item de regra criada em 25/09/2026; rodada aberta antes dela aceita no ESTADO a linha
+#   "RETROATIVO: regra criada em DD/MM, passo feito antes; auditoria <arquivo> [itens: T4.2 T4.3]" (arquivo tem que existir)
+# Oferta com status perdeu/pausada/encerrada/descartada ou semáforo VERMELHA (Hub) sai [N/A — encerrada: motivo] nos itens de nível oferta.
+# nivel: rodada (pasta da rodada) | concepcao (--concepcao <id>; sem id = agregado no Hub) | oferta (OFERTAS/<id>; --oferta ou auto)
+#
+# Tipos de evidência:
+#   arquivo: glob         — existe (relativo à rodada; prefixo `oferta/` = OFERTAS/<id>/)
+#   arquivo_contem: "glob :: regex"   — algum arquivo do glob contém o regex (case/acento-insensitivo)
+#   arquivo_sem: "glob :: regex"      — NENHUM arquivo do glob contém o regex (checagem de padrão proibido)
+#   estado: regex         — ESTADO.md tem linha com o regex
+#   hub: <checagem>       — checagem nomeada do Hub (ver gate.py: HUB_CHECKS)
+#   mtime_antes: "a | b"   — arquivo a existe e é anterior (mtime) a b
+#   arquivo_recente: "glob :: horas" — arquivo modificado há ≤ N horas
+#   condicao_bloqueante: verde — Obra VERDE sem "com condição/ressalva", ou com linha `CONDIÇÃO →` no ESTADO
+#   oferta_coberta: <passo> — cada oferta com Obra tem artefato próprio daquele passo (ver gate.py: COBERTURA)
+
+# ───────────────────────── T0 ROTEAR ─────────────────────────
+- id: T0.1
+  passo: T0
+  titulo: Bloco ROTEADOR R1-R5 gravado no ESTADO antes de qualquer ação
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - estado: "^## ROTEADOR"
+    - estado: "^R1 tipo:"
+    - estado: "^R2 modo:"
+    - estado: "^R3 origem:"
+    - estado: "^R4 nicho/persona:"
+    - estado: "^R5 faixa de preço:"
+- id: T0.2
+  passo: T0
+  titulo: Eco ao dono em 1 linha + linha "ok do dono (data)" — T0 só fecha com o OK (decisão do dono 25/09/2026, revisão)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - estado: "^Eco ao dono"
+    - estado: "^ok do dono ?\\(?[0-9]{1,2}/[0-9]{1,2}"
+- id: T0.3
+  passo: T0
+  titulo: Herança de rodada anterior declarada no ESTADO — mineração nova é do ZERO (decisão do dono 25/09/2026)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - estado: "^herança de rodada anterior: (nenhuma|.+ \\(ok do dono [0-9]{1,2}/[0-9]{1,2}\\))"
+
+# ───────────────────────── T1 ABRIR (GATE 0) ─────────────────────────
+- id: T1.1
+  passo: T1
+  titulo: Método lido nesta rodada, com 1 regra citada no ESTADO
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - estado: "M[ée]todo lido"
+- id: T1.2
+  passo: T1
+  titulo: Hub aberto — cifrar.py --verificar deu "bate: True"
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - estado: "bate( com o original)?: ?True"
+    - hub: decifrado
+- id: T1.3
+  passo: T1
+  titulo: ESTADO com tabela de passos e "passo atual" datado
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - estado: "^\\| *T?[0-9]"
+
+# ───────────────────────── T2 MINERAR ─────────────────────────
+- id: T1.4
+  passo: T1
+  retroativo: sim
+  titulo: Método lido com nº de linha + mtime e 1 regra do passo a executar (evidência não-fraca)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - estado: "M[ée]todo lido.*(linha|l\\.) ?[0-9]+"
+- id: T2.1
+  passo: T2
+  titulo: Concepções registradas no Hub (total == lotes .md)
+  skill_fonte: mvt-minerar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - hub: concepcoes_no_hub
+    - arquivo: "lote-*.md"
+- id: T2.2
+  passo: T2
+  titulo: Checklist 100k em 100% (CABE / CABE COM RECORTE / NAO CABE + nível de consciência)
+  skill_fonte: mvt-minerar
+  obrigatorio: sempre
+  nivel: concepcao
+  evidencia:
+    - hub: sem_checklist_100k_0
+    - hub: sem_nivel_consciencia_0
+- id: T2.3
+  passo: T2
+  titulo: Cota por termo (≤~6 concepções/termo) — tabela termo→nº no ESTADO/TERMOS
+  skill_fonte: mvt-minerar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo: "TERMOS.md"
+    - estado: "termo|Termos|TERMOS"
+- id: T2.4
+  passo: T2
+  titulo: Seguidores IG na varredura (gate_origem preenchido em 100%)
+  skill_fonte: mvt-minerar
+  obrigatorio: sempre
+  nivel: concepcao
+  evidencia:
+    - hub: sem_gate_origem_0
+- id: T2.5
+  passo: T2
+  titulo: 2 links (Biblioteca + página, ou PENDENTE com motivo) em 100%
+  skill_fonte: mvt-minerar
+  obrigatorio: sempre
+  nivel: concepcao
+  evidencia:
+    - hub: sem_biblioteca_url_0
+    - hub: sem_pagina_vendas_0
+- id: T2.6
+  passo: T2
+  titulo: Print da página de vendas das que avançam
+  skill_fonte: mvt-minerar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo: "paginas-referencia/* | ../paginas-referencia/* | prints/*"
+- id: T2.7
+  passo: T2
+  titulo: Rota da concepção + direito autoral (origem_referencia em 100%)
+  skill_fonte: mvt-minerar
+  obrigatorio: sempre
+  nivel: concepcao
+  evidencia:
+    - hub: sem_origem_referencia_0
+- id: T2.8
+  passo: T2
+  titulo: Cards crus salvos por termo (raw-<termo>.json)
+  skill_fonte: mvt-minerar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo: "raw/*"
+- id: T2.9
+  passo: T2
+  titulo: Falso-zero descartado (zero gravado = 4 tentativas + controle bom)
+  skill_fonte: mvt-minerar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "*.md :: controle"
+- id: T2.10
+  passo: T2
+  titulo: Modo D (rastreador) — fonte e saída do leilão registradas
+  skill_fonte: mvt-minerar
+  obrigatorio: modo:D
+  nivel: rodada
+  evidencia:
+    - arquivo: "rastreador-*.md"
+- id: T2.11
+  passo: T2
+  titulo: Modo F (PDF→visual) — F1..F4 com saída (formato, território grande, versão visual, zero confirmado)
+  skill_fonte: mvt-minerar
+  obrigatorio: modo:F
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "*.md :: F4"
+- id: T2.12
+  passo: T2
+  titulo: Modo P (oferta pontual) — REFERENCIA.md salva antes de escolher destino
+  skill_fonte: mvt-cross-market
+  obrigatorio: modo:P
+  nivel: rodada
+  evidencia:
+    - arquivo: "REFERENCIA.md"
+
+# ───────────────────────── T3 GATE DE ORIGEM (cross) ─────────────────────────
+- id: T2.13
+  passo: T2
+  retroativo: sim
+  titulo: Volume 55-60 concepções OU aceite do dono com N e data
+  skill_fonte: mvt-minerar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - hub: "volume_55_60_ou_aceite"
+- id: T3.1
+  passo: T3
+  titulo: gate_origem em 100% (PASSA / NAO_PASSA+motivo / PENDENTE) — só PASSA segue como quase-clone
+  skill_fonte: mvt-cross-market
+  obrigatorio: cross
+  nivel: concepcao
+  evidencia:
+    - hub: sem_gate_origem_0
+    - arquivo_contem: "*.md :: PASSA"
+
+# ───────────────────────── T4 PARADA 1 ─────────────────────────
+- id: T4.1
+  passo: T4
+  titulo: PARADA-1.md com tabela (concepção · formato · mecanismo · público · 2 links+print · checklist 100k · cota)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo: "PARADA-1.md"
+    - arquivo_contem: "PARADA-1.md :: checklist|CABE"
+- id: T4.2
+  passo: T4
+  retroativo: sim
+  titulo: Saída do gate.py (--ate T3) colada no ESTADO antes de apresentar
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - estado: "gate\\.py.*T[0-9]+"
+- id: T4.3
+  passo: T4
+  retroativo: sim
+  titulo: Verificador Haiku rodou antes da Parada 1 (linha no ESTADO)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - estado: "Verificador Haiku.*(P1|Parada 1|T4)"
+- id: T4.4
+  passo: T4
+  titulo: Aprovação do dono da Parada 1 no ESTADO (data + lista que segue)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - estado: "T4.*APROVAD|PARADA 1.*APROVAD"
+
+# ───────────────────────── T5 DESTRINCHAR ─────────────────────────
+- id: T5.1
+  passo: T5
+  titulo: 9 elementos + ★ nos 4 principais em 100% das que seguem
+  skill_fonte: mvt-modelar
+  obrigatorio: sempre
+  nivel: concepcao
+  evidencia:
+    - hub: elementos_principais_100
+    - arquivo: "destrinchar-*.md"
+- id: T5.2
+  passo: T5
+  titulo: Prova de leitura (headline + subheadline + 3 bullets) nas que avançam
+  skill_fonte: mvt-modelar
+  obrigatorio: sempre
+  nivel: concepcao
+  evidencia:
+    - hub: prova_leitura_100
+- id: T5.3
+  passo: T5
+  titulo: Pensamento interno amplo ≥2 + técnico ≥2
+  skill_fonte: mvt-modelar
+  obrigatorio: sempre
+  nivel: concepcao
+  evidencia:
+    - hub: pensamento_interno_100
+- id: T5.4
+  passo: T5
+  titulo: Dor/desejo mais URGENTE marcada + querem×precisam + nível de consciência
+  skill_fonte: mvt-modelar
+  obrigatorio: sempre
+  nivel: concepcao
+  evidencia:
+    - hub: urgencia_100
+    - hub: querem_precisam_100
+- id: T5.5
+  passo: T5
+  titulo: Mapa de personas quando 2+ ofertas caem no mesmo subnicho
+  skill_fonte: mvt-modelar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo: "mapa-personas-*.md"
+
+# ───────────────────────── T6 GAP NO DESTINO (cross) ─────────────────────────
+- id: T5.6
+  passo: T5
+  retroativo: sim
+  titulo: Dedupe contra concepcoes+ofertas+proximas-levas de todas as rodadas (dup-check)
+  skill_fonte: mvt-modelar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - estado: "dup-check"
+- id: T6.1
+  passo: T6
+  titulo: ~10 termos NATIVOS por idioma de destino (lista no <slug>-cross/)
+  skill_fonte: mvt-cross-market
+  obrigatorio: cross
+  nivel: rodada
+  evidencia:
+    - arquivo: "*cross*/termos*.md"
+- id: T6.2
+  passo: T6
+  titulo: Biblioteca country=ALL em TODOS os destinos; cada destino classificado (gap puro · gap de ângulo · OCUPADO)
+  skill_fonte: mvt-cross-market
+  obrigatorio: cross
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "*cross*/*.md :: gap puro|gap de [aâ]ngulo|OCUPADO"
+- id: T6.3
+  passo: T6
+  titulo: OCUPADO não é descarte — tabela recortes × gap por destino ocupado
+  skill_fonte: mvt-cross-market
+  obrigatorio: cross
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "*cross*/*.md :: recorte"
+- id: T6.4
+  passo: T6
+  titulo: Saída da etapa 1 = lista de CANDIDATOS (proibido "destino nº1"/ranking)
+  skill_fonte: mvt-cross-market
+  obrigatorio: cross
+  nivel: rodada
+  evidencia:
+    - arquivo_sem: "*cross*/*.md :: destino n[ºo°] ?1|ranking final"
+
+# ───────────────────────── T7 MODELAR ─────────────────────────
+- id: T7.1
+  passo: T7
+  titulo: ELIMINAR primeiro os elementos que não fazem sentido modelar (descarte por método com motivo)
+  skill_fonte: mvt-modelar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "modelagem-*.md :: descart|elimin"
+    - hub: descartadas_com_nota
+- id: T7.2
+  passo: T7
+  titulo: Comando 4 COMPLETO por persona-alvo (dores, desejos, pensamentos internos amplos+técnicos, ~10 cada, MAIS URGENTES marcados)
+  skill_fonte: mvt-modelar
+  obrigatorio: r4_nicho
+  nivel: rodada
+  evidencia:
+    - arquivo: "persona-*.md"
+    - arquivo_contem: "persona-*.md :: Comando 4"
+    - arquivo_contem: "persona-*.md :: dores"
+    - arquivo_contem: "persona-*.md :: desejos"
+    - arquivo_contem: "persona-*.md :: pensamentos? internos? amplos?"
+    - arquivo_contem: "persona-*.md :: pensamentos? internos? t[eé]cnicos?"
+    - arquivo_contem: "persona-*.md :: urgen"
+- id: T7.3
+  passo: T7
+  titulo: PERSONA-FIRST (2c) — "para essa persona, que outra concepção?" → ~20 concepções a partir das dores urgentes
+  skill_fonte: mvt-modelar
+  obrigatorio: r4_nicho
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "persona-*.md :: persona-first|que outra concep"
+    - arquivo_contem: "persona-*.md :: 20 *(→|->|>) *10 *(→|->|>) *3|20.{0,4}10.{0,4}3"
+- id: T7.4
+  passo: T7
+  titulo: Funil 20→10→3 por concepção que avança (tabela ~20 · 10 · 3 + critério do corte + "alguém já vende?" + fonte de demanda)
+  skill_fonte: mvt-modelar
+  obrigatorio: sempre
+  nivel: concepcao
+  evidencia:
+    - arquivo_contem: "modelagem-*.md :: 20.{0,6}10.{0,6}3"
+    - arquivo_contem: "modelagem-*.md :: crit[eé]rio"
+- id: T7.5
+  passo: T7
+  titulo: Linha `o que é` (origem · para que serve · quem usa · pistas de formato) por concepção que avança
+  skill_fonte: mvt-modelar
+  obrigatorio: sempre
+  nivel: concepcao
+  evidencia:
+    - arquivo_contem: "modelagem-*.md :: o que [eé]"
+- id: T7.6
+  passo: T7
+  titulo: 1-3 modelagens por concepção com concepcao_frase + elemento_mudado Sim/Não nos 4 (nenhum Sim = CÓPIA)
+  skill_fonte: mvt-modelar
+  obrigatorio: sempre
+  nivel: concepcao
+  evidencia:
+    - arquivo_contem: "modelagem-*.md :: elemento[_ ]mudado"
+    - arquivo_contem: "modelagem-*.md :: concep[cç][aã]o[_ ]frase|frase"
+    - hub: comunicacoes_modeladas_100
+- id: T7.7
+  passo: T7
+  titulo: TERRITÓRIO (3-4 palavras) + 3 comunicações com pensamento interno por modelagem
+  skill_fonte: mvt-modelar
+  obrigatorio: sempre
+  nivel: concepcao
+  evidencia:
+    - arquivo_contem: "modelagem-*.md :: territ[oó]rio"
+    - arquivo_contem: "modelagem-*.md :: comunica[cç][aã]o"
+- id: T7.8
+  passo: T7
+  titulo: evidencia_formato quando elemento_mudado = formato
+  skill_fonte: mvt-modelar
+  obrigatorio: formato_mudou
+  nivel: concepcao
+  evidencia:
+    - arquivo_contem: "modelagem-*.md :: evid[eê]ncia[_ ]formato"
+- id: T7.9
+  passo: T7
+  titulo: Comunicação mudou — persona escolhida + Comando 4 (não reaproveitar dores do concorrente)
+  skill_fonte: mvt-modelar
+  obrigatorio: comunicacao_mudou
+  nivel: rodada
+  evidencia:
+    - arquivo: "persona-*.md"
+- id: T7.10
+  passo: T7
+  titulo: Raio X de 1-2 ofertas por concepção escolhida
+  skill_fonte: mvt-modelar
+  obrigatorio: sempre
+  nivel: concepcao
+  evidencia:
+    - arquivo_contem: "modelagem-*.md :: raio[-_ ]?x"
+- id: T7.11
+  passo: T7
+  titulo: Comando de decisão rodado (→ 1-3 que querem comprar, têm demanda, ninguém vende) com o porquê
+  skill_fonte: mvt-modelar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo: "finalistas.md"
+    - arquivo_contem: "*.md :: comando de decis"
+- id: T7.12
+  passo: T7
+  titulo: Cross — gap DO RECORTE na Biblioteca do destino → lista de CANDIDATOS
+  skill_fonte: mvt-cross-market
+  obrigatorio: cross
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "*cross*/*.md :: candidatos"
+- id: T7.13
+  passo: T7
+  titulo: PIVÔ — concepção/mecanismo NOVO surgido depois do T7 re-entrou em T7 (Comando 4/persona-first · 20→10→3 · elemento_mudado · território)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: pivo
+  nivel: oferta
+  evidencia:
+    - oferta_coberta: T7
+
+- id: T7.30
+  passo: T7
+  retroativo: sim
+  titulo: PROVA DE MERCADO por concepção GERADA (persona-first/Comando 4/brainstorm) — alguém já anuncia/vende o desejo/formato (Biblioteca, oferta concorrente real com URL) OU demanda medida com sinal de compra; sem prova = DESCARTE/PENDENTE, nunca Obra [decisão do dono 25/09/2026]
+  skill_fonte: mvt-modelar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "modelagem-*.md :: prova de mercado"
+    - hub: concepcoes_hipotese_fora_de_obra
+# ───────────────────────── T8 DEMANDA NO DESTINO (cross) ─────────────────────────
+- id: T7.14
+  passo: T7
+  retroativo: sim
+  titulo: decisao-<lote>.md (prompt + saída do comando de decisão + porquê de cada corte)
+  skill_fonte: mvt-modelar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo: "decisao-*.md"
+
+- id: T7.15
+  passo: T7
+  retroativo: sim
+  titulo: Tabela de descartes por método (regra citada) mostrada ao dono na Parada 2
+  skill_fonte: mvt-modelar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "PARADA-2.md :: descart"
+- id: T8.1
+  passo: T8
+  titulo: Demanda por candidato (YouTube distribuição + comentário recente até ~6m (≤3m quente + 3-6m ainda válido) + VÍDEO VIRAL ≥100k views no YouTube, sem exigir recência do vídeo (dono 10/10/2026) · TikTok orgânico · Trends) com os ~10 termos
+  skill_fonte: mvt-cross-market
+  obrigatorio: cross
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "demanda-*.md :: youtube"
+    - arquivo_contem: "demanda-*.md :: tiktok"
+    - arquivo_contem: "demanda-*.md :: trends"
+- id: T8.2
+  passo: T8
+  titulo: sinal_de_compra + urgência (fiel × obreiro) + gateway por candidato
+  skill_fonte: mvt-cross-market
+  obrigatorio: cross
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "demanda-*.md :: sinal"
+    - arquivo_contem: "demanda-*.md :: gateway"
+- id: T8.3
+  passo: T8
+  titulo: Ranking só com as 3 colunas (gap · demanda · urgência) preenchidas
+  skill_fonte: mvt-cross-market
+  obrigatorio: cross
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "PARADA-2.md :: gap"
+    - arquivo_contem: "PARADA-2.md :: urg"
+
+# ───────────────────────── T9 VALIDAR ─────────────────────────
+- id: T9.1
+  passo: T9
+  titulo: Território medido em TODAS as candidatas (sem territorio: 0; None = não medido)
+  skill_fonte: mvt-validar
+  obrigatorio: sempre
+  nivel: concepcao
+  evidencia:
+    - hub: sem_territorio_0
+    - arquivo: "validacao-*.md"
+- id: T9.2
+  passo: T9
+  titulo: Território de serviço local ("orçamento de X") marcado como possivelmente inflado por anúncio de serviço
+  skill_fonte: mvt-validar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - hub: territorio_servico_marcado
+- id: T9.3
+  passo: T9
+  titulo: ≤10 finalistas — Biblioteca específica + território + controle
+  skill_fonte: mvt-validar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "validacao-*.md :: espec[ií]fica"
+    - arquivo_contem: "validacao-*.md :: controle"
+- id: T9.4
+  passo: T9
+  titulo: As 3 fontes por finalista — YouTube (distribuição + comentário recente ordenado por data, até ~6m: ≤3m quente + 3-6m + vídeo viral ≥100k (dono 10/10/2026)) · TikTok orgânico · Trends
+  skill_fonte: mvt-validar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "demanda-*.md :: youtube"
+    - arquivo_contem: "demanda-*.md :: tiktok"
+    - arquivo_contem: "demanda-*.md :: trends"
+- id: T9.9
+  passo: T9
+  titulo: Comentário recente do YouTube separado em faixas "≤3m" (quente) e "3-6m" (ainda válido) + contagem de vídeos ≥100k (dono 10/10/2026)
+  skill_fonte: mvt-validar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "demanda-*.md :: [<≤]=? ?3 ?m"
+    - arquivo_contem: "demanda-*.md :: 3 ?[-–a] ?(9|12) ?m"
+- id: T9.10
+  passo: T9
+  retroativo: sim
+  titulo: Leitura FORTE/MÉDIA/FRACA com a EVIDÊNCIA colada (views, comentários com link, quem vende) — número é evidência, não corte (decisão do dono 25/09/2026, revisão)
+  skill_fonte: mvt-validar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "demanda-*.md :: (forte|media|fraca)[^\\n]{0,240}(http|views|visualiz|coment|print|vend)"
+
+- id: T9.12
+  passo: T9
+  retroativo: sim
+  titulo: Território × específica lido (deserto/vaga/disputada/ocupado) com a evidência colada, sem corte numérico (decisão do dono 25/09/2026, revisão)
+  skill_fonte: mvt-validar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "validacao-*.md :: (deserto|vaga|disputada|ocupad)"
+    - arquivo_contem: "validacao-*.md :: (http|print|anunciante|vend)"
+- id: T9.13
+  passo: T9
+  retroativo: sim
+  titulo: OCUPAÇÃO POR MECANISMO por finalista — `concorrencia-<id>.md` (~10 termos do COMPRADOR na Biblioteca + página aberta de TODO anunciante com "entrega:" + Google + marketplaces + lojas de app se app/ferramenta + criadores link-na-bio YouTube/TikTok) com veredito NINGUÉM/PARECIDO(diferença escrita)/MESMO; MESMO volta ao T7 [decisão do dono 25/09/2026]
+  skill_fonte: mvt-validar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo: "concorrencia-*.md"
+    - arquivo_contem: "concorrencia-*.md :: veredito"
+    - arquivo_contem: "concorrencia-*.md :: (NINGUEM|PARECIDO|MESMO)"
+    - arquivo_contem: "concorrencia-*.md :: termos?[^\\n]{0,40}(1[0-9]|10|dez)|(^|\\n)\\s*(10|dez)[ .)]"
+    - arquivo_contem: "concorrencia-*.md :: https?://"
+    - arquivo_contem: "concorrencia-*.md :: entrega"
+    - arquivo_contem: "concorrencia-*.md :: google"
+    - arquivo_contem: "concorrencia-*.md :: (hotmart|kiwify|eduzz)"
+    - arquivo_contem: "concorrencia-*.md :: (link na bio|youtube|tiktok)"
+    - arquivo_sem: "concorrencia-*.md :: veredito:? *\\**MESMO[^\\n]{0,80}(segue|avanca|parada 2|obra)"
+- id: T9.5
+  passo: T9
+  titulo: sinal_de_compra + teste de urgência (pneu furado × para-brisa; obreiro × fiel) por finalista
+  skill_fonte: mvt-validar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "demanda-*.md :: sinal"
+    - arquivo_contem: "demanda-*.md :: urg"
+- id: T9.6
+  passo: T9
+  titulo: Controle a cada ~12 buscas + falso-positivo (número idêntico ao controle = remedir)
+  skill_fonte: mvt-validar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "validacao-*.md :: controle"
+- id: T9.7
+  passo: T9
+  titulo: Tabela pane→perfil no ESTADO (máx 1-2 panes na Biblioteca)
+  skill_fonte: mvt-validar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - estado: "pane.*perfil|Pane \\| Perfil"
+- id: T9.8
+  passo: T9
+  titulo: PIVÔ — toda concepção/oferta que chegou à Obra tem as 3 fontes + sinal + urgência PRÓPRIAS (T9 completo)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: oferta
+  evidencia:
+    - oferta_coberta: T9
+
+# ───────────────────────── T10 PARADA 2 ─────────────────────────
+- id: T10.0
+  passo: T10
+  retroativo: sim
+  titulo: Parada 2 só abre com `concorrencia-<id>.md` (T9.13) de cada finalista citada; a Obra só é montada depois [decisão do dono 25/09/2026]
+  skill_fonte: mvt-validar
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo_contem: "PARADA-2*.md :: concorrencia"
+- id: T10.1
+  passo: T10
+  titulo: PARADA-2.md com modelagens, comando de decisão, medido × "não medido" por finalista
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - arquivo: "PARADA-2.md"
+    - arquivo_contem: "PARADA-2.md :: (n[aã]o medido|medido)"
+- id: T10.2
+  passo: T10
+  retroativo: sim
+  titulo: Saída do gate.py (--ate T9) colada no ESTADO + Verificador Haiku rodou
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - estado: "gate\\.py.*T9"
+    - estado: "Verificador Haiku.*(P2|Parada 2|T10)"
+- id: T10.3
+  passo: T10
+  titulo: Aprovação do dono da Parada 2 no ESTADO (data + direção)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - estado: "T10.*APROVAD|PARADA 2.*APROVAD"
+- id: T10.4
+  passo: T10
+  titulo: PIVÔ — cada oferta que chegou à Obra passou por uma Parada 2 que a cita (formal, com data)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: oferta
+  evidencia:
+    - oferta_coberta: T10
+
+# ───────────────────────── T11 OBRA DE ARTE 100K ─────────────────────────
+- id: T11.1
+  passo: T11
+  titulo: obra-de-arte.md existe (test -f) e abre com a frase da concepção + 4 principais + elemento_mudado
+  skill_fonte: mvt-obra-100k
+  obrigatorio: sempre
+  nivel: oferta
+  evidencia:
+    - arquivo: "oferta/obra-de-arte.md"
+    - arquivo_contem: "oferta/obra-de-arte.md :: elemento[_ ]mudado"
+- id: T11.2
+  passo: T11
+  titulo: 8 elementos da oferta (promessa · nome · produto · bônus · vantagens · valor · benefícios · copy base)
+  skill_fonte: mvt-obra-100k
+  obrigatorio: sempre
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/obra-de-arte.md :: promessa"
+    - arquivo_contem: "oferta/obra-de-arte.md :: b[oô]nus"
+    - arquivo_contem: "oferta/obra-de-arte.md :: valor|pre[cç]o"
+    - arquivo_contem: "oferta/obra-de-arte.md :: copy"
+- id: T11.3
+  passo: T11
+  titulo: Garantia com prazo + texto; bônus ~4 por oferta (padrão, decisão do dono 25/09/2026 revisão) — desvio registrado
+  skill_fonte: mvt-obra-100k
+  obrigatorio: sempre
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/obra-de-arte.md :: garantia.{0,80}(7|15|30) dias|(7|15|30) dias.{0,80}garantia"
+- id: T11.4
+  passo: T11
+  titulo: Nível de consciência da Obra (frase que mostra o público já no mercado)
+  skill_fonte: mvt-obra-100k
+  obrigatorio: sempre
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/obra-de-arte.md :: n[ií]vel de consci[eê]ncia"
+- id: T11.5
+  passo: T11
+  titulo: Mapa da vantagem — 10 linhas SIM/NÃO com justificativa + seção "onde o concorrente ganha"
+  skill_fonte: mvt-obra-100k
+  obrigatorio: sempre
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/obra-de-arte.md :: mapa da vantagem"
+    - arquivo_contem: "oferta/obra-de-arte.md :: onde o concorrente ganha"
+- id: T11.6
+  passo: T11
+  titulo: sustenta_preco (custo do problema) quando ticket acima da faixa base
+  skill_fonte: mvt-obra-100k
+  obrigatorio: sempre
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/obra-de-arte.md :: sustenta[_ ]pre[cç]o|custo do problema"
+- id: T11.7
+  passo: T11
+  titulo: Semáforo (VERDE|AMARELA|VERMELHA) + motivo, sem critério fora do método ("sobe a verde se o teste…")
+  skill_fonte: mvt-obra-100k
+  obrigatorio: sempre
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/obra-de-arte.md :: (VERDE|AMARELA|VERMELHA)"
+    - arquivo_sem: "oferta/obra-de-arte.md :: (?<!nao )sobe (a|para|p/) verde|vira verde se|verde (se|caso|quando) o teste|se o teste (der|passar|confirmar)|verde condicionad"
+- id: T11.8
+  passo: T11
+  titulo: Checagem de CONCORRENTE POR MECANISMO (o que o concorrente ENTREGA) com página aberta — antes da Parada 3
+  skill_fonte: mvt-obra-100k
+  obrigatorio: sempre
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/checagem-mecanismo*.md :: (p[aá]gina aberta|url|https?://)"
+    - arquivo_contem: "oferta/checagem-mecanismo*.md :: mecanismo"
+- id: T11.9
+  passo: T11
+  titulo: 8 erros do board — 1 linha OK/NÃO por erro em cada Obra verde
+  skill_fonte: mvt-obra-100k
+  obrigatorio: sempre
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/obra-de-arte.md :: 8 erros"
+
+# ───────────────────────── T12 PARADA 3 ─────────────────────────
+- id: T11.10
+  passo: T11
+  retroativo: sim
+  titulo: Área sensível declarada na Obra (SIM exige preparo+fonte oficial+data+aviso de responsabilidade)
+  skill_fonte: mvt-obra-100k
+  obrigatorio: sempre
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/obra-de-arte.md :: area sensivel ?: ?(sim|nao)"
+
+- id: T11.11
+  passo: T11
+  retroativo: sim
+  titulo: Semáforo VERDE sem "com condição/ressalva"; condição liberada pelo dono = CONDIÇÃO → item bloqueante no ESTADO
+  skill_fonte: mvt-obra-100k
+  obrigatorio: sempre
+  nivel: oferta
+  evidencia:
+    - condicao_bloqueante: "verde"
+
+- id: T11.12
+  passo: T11
+  retroativo: sim
+  titulo: formato_entrega + evidencia_uso na Obra
+  skill_fonte: mvt-obra-100k
+  obrigatorio: sempre
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/obra-de-arte.md :: formato[_ ]entrega"
+    - arquivo_contem: "oferta/obra-de-arte.md :: evid[eê]ncia[_ ]uso"
+
+- id: T11.13
+  passo: T11
+  retroativo: sim
+  titulo: Classe do entregável declarada na Obra (Rápido/Ferramenta/Completo), sem critério numérico
+  skill_fonte: mvt-obra-100k
+  obrigatorio: sempre
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/obra-de-arte.md :: (ferramenta|completo|r[aá]pido)"
+
+- id: T11.14
+  passo: T11
+  retroativo: sim
+  titulo: Preço final gravado no ESTADO (dono+data)
+  skill_fonte: mvt-obra-100k
+  obrigatorio: sempre
+  nivel: oferta
+  evidencia:
+    - estado: "pre[cç]o[^\\n]{0,80}r\\$ ?[0-9]"
+- id: T12.1
+  passo: T12
+  titulo: Tabela do semáforo + Obra(s) verde(s) inteira(s) apresentadas; ≥1 Obra VERDE
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - estado: "VERDE"
+    - hub: oferta_verde_existe
+- id: T12.2
+  passo: T12
+  retroativo: sim
+  titulo: Saída do gate.py (--ate T11) colada no ESTADO + Verificador Haiku rodou
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - estado: "gate\\.py.*T11"
+    - estado: "Verificador Haiku.*(P3|Parada 3|T12)"
+- id: T12.3
+  passo: T12
+  titulo: "Parada 3 LIBERADA (data)" no ESTADO
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - estado: "PARADA 3.*LIBERAD|T12.*LIBERAD"
+
+# ───────────────────────── T13 CONSTRUÇÃO ─────────────────────────
+- id: T12.4
+  passo: T12
+  retroativo: sim
+  titulo: Menos de 3 Obras verdes: liberou N e segue a fila, registrado (decisão do dono 25/09/2026)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - hub: "verdes_ge3_ou_decisao"
+
+- id: T12.5
+  passo: T12
+  retroativo: sim
+  titulo: Aprovações de Parada com frase VERBATIM do dono + lista/IDs liberados
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - estado: "(t4|t10|t12)[^\\n]*(aprovad|liberad)[^\\n]*["“][^\\n]{8,}"
+- id: T13.0
+  passo: T13
+  retroativo: sim
+  titulo: GATE DE GASTO — nenhuma ação que custa dinheiro/horas (imagem, vídeo, app, página, checkout, contratação, tráfego) sem `gate.py --ate T12 --oferta <slug>` OK colado no ESTADO + T13.19; oferta em `producao` sem "Parada 3 LIBERADA <slug>" = FALTA [decisão do dono 25/09/2026]
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: sempre
+  nivel: rodada
+  evidencia:
+    - hub: producao_sem_parada3
+- id: T13.1
+  passo: T13
+  titulo: Entrada K — Parada 3 liberada + obra-de-arte.md + semáforo VERDE (+ cross: gate_origem PASSA + etapa 2 + gateway)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo: "oferta/obra-de-arte.md"
+    - hub: oferta_verde_existe
+- id: T13.2
+  passo: T13
+  titulo: Página — pagina/BLOCOS.md + pagina/COPY.md
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo: "oferta/pagina/BLOCOS.md"
+    - arquivo: "oferta/pagina/COPY.md"
+- id: T13.3
+  passo: T13
+  titulo: DESIGN-SYSTEM.md na raiz da oferta antes do visual da entrega
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo: "oferta/DESIGN-SYSTEM.md"
+- id: T13.4
+  passo: T13
+  titulo: Entrega — texto → amostra aprovada (IDENTIDADE-REF) → MVP ≥10 páginas por entregável
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo: "oferta/produto/ENTREGA/*"
+    - arquivo: "oferta/produto/IDENTIDADE-REF/*"
+    - estado: "MVP/MODELO: *[0-9]+ p[aá]ginas"
+- id: T13.5
+  passo: T13
+  titulo: Acesso pós-compra verificado (webhook→login, libera só o comprado, bloqueado abre checkout do item)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - estado: "acesso p[oó]s-compra.*(verificad|OK)"
+- id: T13.6
+  passo: T13
+  titulo: Mockups NOSSOS (só com MVP existente; sem arte do concorrente)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo: "oferta/produto/MOCKUPS-NOSSOS/*"
+- id: T13.7
+  passo: T13
+  titulo: Banner do checkout (só com mockups, sem preço queimado)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo: "oferta/assets/banner*"
+- id: T13.8
+  passo: T13
+  titulo: Checkout — página + link + banner + produto
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - estado: "checkout.*(https?://|no ar)"
+- id: T13.9
+  passo: T13
+  titulo: Criativo 3-5 demonstrativos, cada roteiro com as 11 linhas OK/NÃO (nenhuma NÃO)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo: "oferta/criativos/CRIATIVO-*/roteiro-*.md"
+
+- id: T13.10
+  passo: T13
+  retroativo: sim
+  titulo: App: SPEC.md (entradas · saídas · fórmulas · tabelas com fonte oficial+data)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: oferta_app
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/app/SPEC.md :: f[oó]rmula"
+    - arquivo_contem: "oferta/app/SPEC.md :: fonte"
+
+- id: T13.11
+  passo: T13
+  retroativo: sim
+  titulo: App área sensível: VALIDACAO-DADOS.md — validação FEITA POR NÓS com fontes públicas (oficial/fabricante + data) + casos de teste nossos; sem revisor contratado (decisão do dono 25/09/2026, revisão)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: oferta_app_sensivel
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/app/VALIDACAO-DADOS.md :: fonte"
+    - arquivo_contem: "oferta/app/VALIDACAO-DADOS.md :: (data|consult)"
+
+- id: T13.12
+  passo: T13
+  retroativo: sim
+  titulo: App: TESTES.md com casos esperado × obtido (casos nossos, fonte pública/cálculo manual; sem mínimo numérico)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: oferta_app
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/app/TESTES.md :: esperado"
+    - arquivo_contem: "oferta/app/TESTES.md :: obtido"
+
+- id: T13.13
+  passo: T13
+  retroativo: sim
+  titulo: App: DEPLOY.md com URL pública https + curl 200 + 1 caso real
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: oferta_app
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/app/DEPLOY.md :: https://"
+    - arquivo_contem: "oferta/app/DEPLOY.md :: 200"
+    - arquivo_contem: "oferta/app/DEPLOY.md :: coolify"
+
+- id: T13.13b
+  passo: T13
+  retroativo: sim
+  titulo: Página no ar (URL pública, curl 200, SSL, screenshot da URL pública)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/pagina/DEPLOY.md :: https://"
+    - arquivo_contem: "oferta/pagina/DEPLOY.md :: 200"
+    - arquivo_contem: "oferta/pagina/DEPLOY.md :: coolify"
+    - arquivo_contem: "oferta/pagina/DEPLOY.md :: InitiateCheckout"
+
+- id: T13.14
+  passo: T13
+  retroativo: sim
+  titulo: ACESSO-TESTE.md: compra-teste → 4 pontos de acesso com curl/print
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/ACESSO-TESTE.md :: webhook"
+    - arquivo_contem: "oferta/ACESSO-TESTE.md :: (curl|print)"
+
+- id: T13.15
+  passo: T13
+  retroativo: sim
+  titulo: Página final sem "Espaço da imagem"
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo_sem: "oferta/pagina/*.md :: espaco da imagem"
+
+- id: T13.16
+  passo: T13
+  retroativo: sim
+  titulo: PROVA-SOCIAL.md: cada prova com origem real ou PLACEHOLDER; nada fabricado (decisão do dono 25/09/2026)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/pagina/PROVA-SOCIAL.md :: origem"
+    - arquivo_sem: "oferta/pagina/*.md :: notificacao fake|contador falso|[0-9]+ pessoas (ja )?compraram"
+
+- id: T13.17
+  passo: T13
+  retroativo: sim
+  titulo: Texto/amostra aprovado pelo dono (frase verbatim) no ESTADO
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - estado: "(amostra|texto)[^\\n]*aprovad[^\\n]*["“][^\\n]{6,}"
+
+- id: T13.19
+  passo: T13
+  retroativo: sim
+  titulo: checagem-pre-construcao.md ≤48h antes de T13 (mecanismo + preço dos 2 concorrentes) [48h = janela de frescor nossa]
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo_recente: "oferta/checagem-pre-construcao.md :: 48"
+
+- id: T13.20
+  passo: T13
+  retroativo: sim
+  titulo: CONSISTENCIA.md: garantia/suporte/preço iguais em Obra=página=banner=checkout=criativo
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/CONSISTENCIA.md :: garantia"
+    - arquivo_contem: "oferta/CONSISTENCIA.md :: suporte"
+    - arquivo_contem: "oferta/CONSISTENCIA.md :: pre[cç]o"
+
+- id: T13.21
+  passo: T13
+  retroativo: sim
+  titulo: LICENCAS.md (PLR/música/b-roll/banco: direito de revenda)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo: "oferta/LICENCAS.md"
+
+- id: T13.22
+  passo: T13
+  retroativo: sim
+  titulo: POLITICA-META.md do criativo (checklist por categoria + print)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo: "oferta/criativos/POLITICA-META.md"
+
+- id: T13.23
+  passo: T13
+  retroativo: sim
+  titulo: DESIGN-SYSTEM.md anterior à página (mtime)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - mtime_antes: "oferta/DESIGN-SYSTEM.md | oferta/pagina/BLOCOS.md"
+
+- id: T13.24
+  passo: T13
+  retroativo: sim
+  titulo: FUNIL.md (raiz/checkout/pesquisa): bumps ≤3 relacionados ao principal + Upsell 1 + Upsell 2 + downsell, cada peça na próxima dor, preço declarado; botão 1ª dobra → seção
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/FUNIL.md :: bump"
+    - arquivo_contem: "oferta/FUNIL.md :: upsell"
+    - arquivo_contem: "oferta/FUNIL.md :: downsell"
+
+- id: T13.25
+  passo: T13
+  retroativo: sim
+  titulo: Plataforma de checkout no ESTADO (BR = Wiven, skill wiven-checkout; outro só por decisão do dono — decisão do dono 25/09/2026, revisão)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - estado: "checkout[^\\n]*plataforma[^\\n]*(wiven|dono|decis)"
+
+- id: T13.26
+  passo: T13
+  retroativo: sim
+  titulo: ANTI-ARTE.md: comando do gate + saída + frases idênticas = 0
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/ANTI-ARTE.md :: (comando|saida)"
+
+- id: T13.27
+  passo: T13
+  retroativo: sim
+  titulo: Criativo em imagem: checklist próprio (ou roteiro de vídeo)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo: "oferta/criativos/CRIATIVO-*/checklist-imagem.md | oferta/criativos/CRIATIVO-*/roteiro-*.md"
+
+- id: T13.28
+  passo: T13
+  retroativo: sim
+  titulo: Cross: IDIOMA.md (nossa passada de revisão do idioma do destino; sem checklist legal de país)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: cross_construcao
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/IDIOMA.md :: idioma"
+
+- id: T13.29
+  passo: T13
+  retroativo: sim
+  titulo: 1º criativo aprovado pelo dono antes de exportar 3-5 (frase verbatim)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - estado: "criativo[^\\n]*aprovad[^\\n]*["“][^\\n]{6,}"
+
+# ───────────────────────── T14 CONFIG TÉCNICA ─────────────────────────
+- id: T14.1
+  passo: T14
+  titulo: Checklist do board (Protectfy/plataforma/FB Ads/UTMify) linha a linha no ESTADO
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: rodada
+  evidencia:
+    - estado: "Protectfy"
+    - estado: "UTMify"
+
+- id: T14.2
+  passo: T14
+  retroativo: sim
+  titulo: Config técnica COM PROVA (Events Manager PageView/InitiateCheckout/Purchase + UTMify venda-teste)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: oferta
+  evidencia:
+    - arquivo_contem: "oferta/CONFIG-TESTE.md :: initiatecheckout"
+    - arquivo_contem: "oferta/CONFIG-TESTE.md :: purchase"
+    - arquivo_contem: "oferta/CONFIG-TESTE.md :: utmify"
+
+# ───────────────────────── T15 TRÁFEGO ─────────────────────────
+- id: T15.1
+  passo: T15
+  titulo: Página no ar (URL testada) + checkout funcionando + 3-5 criativos exportados + GATE 6 inteiro
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: rodada
+  evidencia:
+    - estado: "p[aá]gina no ar"
+- id: T15.2
+  passo: T15
+  titulo: Hub atualizado (status + motivo em notas) com --verificar → bate: True; linha "entregue ao dono p/ tráfego"
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: rodada
+  evidencia:
+    - estado: "entregue ao dono p/ tr[aá]fego"
+- id: T15.3
+  passo: T15
+  retroativo: sim
+  titulo: Critério venceu/perdeu gravado (métrica·janela·fonte metaads-kevones)
+  skill_fonte: criacao-low-ticket-mvt
+  obrigatorio: construcao
+  nivel: rodada
+  evidencia:
+    - estado: "crit[eé]rio venceu/perdeu[^\\n]*metaads-kevones"

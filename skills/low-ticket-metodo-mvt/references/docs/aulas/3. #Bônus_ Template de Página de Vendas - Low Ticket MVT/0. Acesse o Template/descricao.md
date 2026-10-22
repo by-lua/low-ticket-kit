@@ -1,0 +1,1 @@
+Executor, o arquivo JSON para download está em anexo - na aba de: Materiais Complementares<div><br></div><div>=====</div><div><br></div><div>Importante:</div><div>- O formato do arquivo é JSON, ou seja, ele é exclusivamente para funcionar o WORDPRESS COM ELEMENTOR;</div>

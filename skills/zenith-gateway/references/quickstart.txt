@@ -1,0 +1,59 @@
+
+Do acesso liberado ao primeiro checkout confirmado por webhook.
+
+Antes de começar
+Produto e ambiente habilitados no painel seller.
+Credencial ativa com os escopos necessários.
+KYC aprovado para criar pagamentos.
+Um backend capaz de guardar secrets e receber webhooks HTTPS.
+1. Consulte os meios liberados
+
+Não mantenha uma lista fixa. A resposta é a fonte da disponibilidade e informa código público, ícone, campos obrigatórios e categoria.
+
+cURL
+Copiar
+curl "https://api.zenithworld.com.br/integrations/payment-methods?country=MX&currency=MXN&environment=sandbox" \
+  -H "X-API-Key: $ZENITH_PUBLIC_KEY" \
+  -H "X-API-Secret: $ZENITH_SECRET_KEY"
+2. Crie um checkout
+
+O valor é um inteiro na menor unidade monetária. No exemplo, 10990 representa MXN 109,90.
+
+cURL
+Copiar
+# Gere um UUID/ULID uma vez e persista-o com esta intenção.
+# Em retry, mantenha PAYMENT_INTENT_ID e o payload exatamente iguais.
+curl -X POST "https://api.zenithworld.com.br/integrations/checkouts" \
+  -H "X-API-Key: $ZENITH_PUBLIC_KEY" \
+  -H "X-API-Secret: $ZENITH_SECRET_KEY" \
+  -H "Content-Type: application/json" \
+  -H "Idempotency-Key: $PAYMENT_INTENT_ID" \
+  -d '{
+    "amount": 10990,
+    "currency": "MXN",
+    "country": "MX",
+    "environment": "sandbox",
+    "paymentMethod": "spei",
+    "referenceId": "pedido-123",
+    "customerName": "Ana Silva",
+    "customerEmail": "voce@exemplo.com",
+    "metadata": {
+      "firstName": "Ana",
+      "lastName": "Silva",
+      "documentType": "rfc",
+      "documentNumber": "XAXX010101000",
+      "birthDate": "1990-01-15",
+      "birthCountry": "MX"
+    },
+    "returnUrl": "https://sualoja.com/obrigado",
+    "cancelUrl": "https://sualoja.com/carrinho"
+  }'
+Use sandbox primeiro
+
+O exemplo usa sandbox. Uma loja de teste deve bloquear produção até que essa liberação seja uma decisão explícita.
+
+3. Confirme o resultado
+
+Use a resposta imediata e a consulta de status para experiência do usuário. A confirmação definitiva do pedido vem de um webhook assinado payment.captured ou checkout.succeeded.
+
+Configurar webhooks
