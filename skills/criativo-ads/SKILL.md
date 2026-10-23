@@ -13,6 +13,23 @@ description: Porta de entrada ÚNICA de criativo de anúncio (Meta/TikTok) — v
 > `pesquisa/PERSONA-E-ANGULOS.md` no modelo `MODELOS/_MODELO-PERSONA-E-ANGULOS.md` (MERCADO na Biblioteca ≥5 anúncios,
 > QUEM COMPRA DE VERDADE, dores com contagem+data, RECORTES com "por que está na oferta"). Casos: Elétrica estudou o
 > estudante (comprador = eletricista na obra); Jiu usou "faixa branca/azul" (só vendeu quando tirou da página).
+> **Pesquisa que alimenta (lição Atlas 23/10):** `criacao-low-ticket-mvt/references/PESQUISA-PADRAO-OFERTA.md` —
+> Biblioteca 5 palavras + hashtag por idioma, YouTube/TikTok/Trends com contagem. O gate também cobra TERMOS DE
+> BUSCA (nome do produto quase nunca é termo: "atlas" = 0 no Trends AR), unidade da peça, cena da dor,
+> NARRATIVAS QUE RODAM (dias no ar) e ÂNCORA DE PREÇO.
+>
+> **⛔ GATES DA LEVA (dona, 23/10/2026):**
+> 1. Plano em texto → `python3 ~/.claude/skills/criativo-ads/scripts/gate-plano-leva.py OFERTAS/<slug>` antes de
+>    mostrar pra dona; com `--producao` antes de gerar qualquer peça (exige `- [x] OK da dona`). Cobra: persona
+>    LIBERADA, **DESIGN-SYSTEM.md** (cor/fonte — sem ele a cor sai errada), 3 formatos e ≥2 vídeos por campanha,
+>    imagem ≥ vídeo, alternar 7+3/6+4, zero "PDF"/"mockup", ângulo existe no banco, personagens com voz,
+>    orçamento, 4:5, gravação de tela antes de vídeo.
+> 2. **Preço no criativo = SEMPRE o plano mais barato** quando a página tem 2 planos (linha
+>    `**Preço no criativo:**` no plano; popup/saída/bump não contam).
+> 3. **Cada peça:** takes de vídeo + imagens que entram (capa + páginas) em `CRIATIVO-N/selecionados/`, separados
+>    de `intermediarios/`. **Nada repete:** PC, celular, tablet e folha solta mostram cada um uma página
+>    DIFERENTE (capa + 3-5 páginas distintas). Prova: `python3 ~/.claude/skills/criativo-ads/scripts/gate-pecas-criativo.py <pasta do criativo>`
+>    antes de gerar a cena no GPT/Flow.
 
 ## ⛔ GATE 0 — leia a oferta ANTES de propor qualquer ângulo [regra da dona 10/10/2026]
 
@@ -329,6 +346,14 @@ montar leva de variação ou decidir quantidade.
 padrão (regra da dona, 23/10/2026 — antes era 1:1). 9:16 só se o usuário pedir. Vídeo continua
 9:16. No carrossel demonstrativo, as páginas do entregável são arquivos reais
 encaixados no 4:5; GPT não desenha página do produto.
+
+**Estático = foto orgânica de celular, SEMPRE (dona, 23/10/2026):** todo estático e todo carrossel é cena real
+com cara de foto de iPhone, com fundo orgânico que faça sentido pra persona (academia, sala de aula, mesa de estudo,
+carro). **Única exceção: fase de impacto estilo Rodrigo** (fundo branco, texto preto/vermelho), que é formato
+específico. Pessoa respondendo caixa de perguntas também vale em imagem. **Texto = sempre texto de Stories**, na
+fonte nativa do Instagram Stories (Classic, sans tipo SF/Helvetica, branco em caixa preta arredondada ou preto em caixa
+branca), como se a pessoa tivesse digitado no story. Nunca arte de designer. **Sempre anexar as referências** (cena-modelo
++ capa + páginas reais) no GPT.
 
 **Mix por campanha + carrossel (regra da dona, 23/10/2026):** toda campanha de teste (1-1-10 ou
 1-1-3) leva **vídeo + estático + carrossel no mesmo conjunto** (metaads-kevones §21). **Proporção da

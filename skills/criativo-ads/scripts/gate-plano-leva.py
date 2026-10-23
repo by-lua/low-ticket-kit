@@ -93,7 +93,7 @@ def main():
     # 5 · ângulos × banco
     pers = of / 'pesquisa/PERSONA-E-ANGULOS.md'
     ptxt = n(pers.read_text(encoding='utf-8')) if pers.exists() else ''
-    banco = re.search(r'^##+ .*banco de angulos(.*?)(?=^## |\Z)', ptxt, re.M | re.S)
+    banco = re.search(r'^##+ [^\n]*banco de angulos(.*?)(?=^## |\Z)', ptxt, re.M | re.S)
     banco = banco.group(1) if banco else ''
     usados = sorted(set(re.findall(r'\ba(\d{1,2})\b', ' '.join(todas))), key=int)
     for a in usados:
@@ -106,7 +106,7 @@ def main():
         oks.append(f'ângulos do plano existem no banco: {", ".join("A" + a for a in usados)}')
 
     # 6 · termos sem busca no gancho
-    termos = re.search(r'^##+ .*termos de busca(.*?)(?=^## |\Z)', ptxt, re.M | re.S)
+    termos = re.search(r'^##+ [^\n]*termos de busca(.*?)(?=^## |\Z)', ptxt, re.M | re.S)
     for l in (termos.group(1).splitlines() if termos else []):
         if l.startswith('|') and re.search(r'so nome do produto|descartad', l):
             for t in re.split(r'\s*/\s*', l.strip('|').split('|')[0].strip()):
@@ -134,7 +134,7 @@ def main():
     # 10 · preço do criativo = plano mais barato
     def valores(t):
         return [float(x.replace('.', '').replace(',', '.')) for x in re.findall(r'(?:ars|r\$|us\$|usd|eur|€|\$|mxn|cop|clp)\s*([\d.]+(?:,\d{1,2})?)', t)]
-    vend = re.search(r'^##+ .*o que vendemos(.*?)(?=^## |\Z)', ptxt, re.M | re.S)
+    vend = re.search(r'^##+ [^\n]*o que vendemos(.*?)(?=^## |\Z)', ptxt, re.M | re.S)
     planos = []
     for l in (vend.group(1).splitlines() if vend else []):
         if l.lstrip().startswith('- ') and not re.search(r'popup|saida|exit|bump|upsell|downsell|combo|upgrade', l):

@@ -10,6 +10,10 @@ description: MECÂNICA chamada pela skill `criacao-low-ticket-mvt` (T13.24) — 
 > `pesquisa/PERSONA-E-ANGULOS.md` no modelo `MODELOS/_MODELO-PERSONA-E-ANGULOS.md` (MERCADO na Biblioteca ≥5 anúncios,
 > QUEM COMPRA DE VERDADE, dores com contagem+data, RECORTES com "por que está na oferta"). Casos: Elétrica estudou o
 > estudante (comprador = eletricista na obra); Jiu usou "faixa branca/azul" (só vendeu quando tirou da página).
+> **Pesquisa que alimenta (lição Atlas 23/10):** `criacao-low-ticket-mvt/references/PESQUISA-PADRAO-OFERTA.md` —
+> Biblioteca 5 palavras + hashtag por idioma, YouTube/TikTok/Trends com contagem. O gate também cobra TERMOS DE
+> BUSCA (nome do produto quase nunca é termo: "atlas" = 0 no Trends AR), unidade da peça, cena da dor,
+> NARRATIVAS QUE RODAM (dias no ar) e ÂNCORA DE PREÇO.
 
 
 Regra da skill-mãe (`criacao-low-ticket-mvt`): **o funil é projetado junto com a oferta (T11 → T13),
