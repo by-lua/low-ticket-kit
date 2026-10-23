@@ -13,6 +13,11 @@ Confere em OFERTAS/<slug>/pesquisa/PERSONA-E-ANGULOS.md (modelo: MODELOS/_MODELO
   4. RECORTES: recorte "sem dado" não pode aparecer no <h1>/headline da página
   5. QUEM COMPRA: tem evidência ou "sem vendas ainda" + plano de medição
   6. data do arquivo <= 30 dias (aviso)
+  7. TERMOS DE BUSCA (lição Atlas 23/10): >= 2 termos com fonte+índice, >= 1 veredito "gancho";
+     "Unidade da peça" e "Cena da dor" preenchidas. Nome do produto não é termo de busca.
+  8. NARRATIVAS QUE RODAM: >= 2 linhas com dias no ar
+  9. ÂNCORA DE PREÇO: >= 2 vizinhos com preço + linha "Decisão:"
+Receita da pesquisa: references/PESQUISA-PADRAO-OFERTA.md
 """
 import datetime, re, sys, unicodedata
 from pathlib import Path
@@ -31,6 +36,9 @@ SECOES = {
     'DORES': r'^##+ .*dores',
     'RECORTES': r'^##+ .*recortes',
     'ÂNGULOS': r'^##+ .*angulos',
+    'TERMOS DE BUSCA': r'^##+ .*termos de busca',
+    'NARRATIVAS QUE RODAM': r'^##+ .*narrativas',
+    'ÂNCORA DE PREÇO': r'^##+ .*ancora de preco',
 }
 
 
@@ -126,6 +134,31 @@ def main():
     qc = secao(txt, SECOES['QUEM COMPRA DE VERDADE']) or ''
     if qc and not re.search(r'sem vendas ainda|venda|vendas|comentario|pergunta|trackeador|suporte', qc):
         falhas.append('QUEM COMPRA: sem evidência nem "sem vendas ainda" + plano de medição')
+
+    # 7 · termos de busca
+    bt = secao(txt, SECOES['TERMOS DE BUSCA'])
+    if bt is not None:
+        termos = [c for c in linhas_tabela(bt) if c and c[0]]
+        validos = [c for c in termos if len(c) > 2 and re.search(r'\d', c[2])]
+        (oks if len(validos) >= 2 else falhas).append(f'termos de busca com índice/contagem: {len(validos)} (mín. 2)')
+        if not any('gancho' in ' '.join(c[3:]) for c in termos):
+            falhas.append('TERMOS DE BUSCA: nenhum termo com veredito "gancho" — o gancho fica sem termo validado')
+        for rot in ('unidade da peca', 'cena da dor'):
+            mm = re.search(r'\*\*' + rot + r':\*\*\s*(.+)', bt)
+            if not mm or mm.group(1).strip().startswith('(') or len(mm.group(1).strip()) < 4:
+                falhas.append(f'TERMOS DE BUSCA: "{rot}" não preenchida')
+    # 8 · narrativas
+    bn = secao(txt, SECOES['NARRATIVAS QUE RODAM'])
+    if bn is not None:
+        narr = [c for c in linhas_tabela(bn) if c and c[0] and len(c) > 2 and re.search(r'\d', c[2])]
+        (oks if len(narr) >= 2 else falhas).append(f'narrativas com dias no ar: {len(narr)} (mín. 2)')
+    # 9 · âncora de preço
+    ba = secao(txt, SECOES['ÂNCORA DE PREÇO'])
+    if ba is not None:
+        viz = [c for c in linhas_tabela(ba) if c and c[0] and len(c) > 1 and re.search(r'\d', c[1])]
+        (oks if len(viz) >= 2 else falhas).append(f'âncora de preço: {len(viz)} vizinhos (mín. 2)')
+        if not re.search(r'decisao:\**\s*\w', ba):
+            falhas.append('ÂNCORA DE PREÇO: falta a linha "Decisão:"')
 
     m = re.search(r'\*\*data:\*\*\s*(\d{4}-\d{2}-\d{2})', txt)
     if m:
