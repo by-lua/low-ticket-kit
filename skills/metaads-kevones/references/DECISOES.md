@@ -217,6 +217,10 @@ Legenda: `YT:id` = vídeo (`INDICE-YOUTUBE.md`); `Aula N` = `INDICE-CURSO-RESUMO
   — [regra do Trackeador] (diagnóstico G3). A regra de detecção precisa reconhecer "esquenta",
   "remarketing" e "base", não só "seguidor/engaj/aquec".
 - **Engajado + comprador** configurados são pré-requisito; renovar a cada 30 dias. — METODO.
+- **Campanha de "pacote"** (exemplo concreto, `hM2qQA1B6NY` 17/10/2026, caso SaaS ticket R$297):
+  uma campanha com vários conjuntos, cada um um público combinado: (1) engajado Instagram 7d +
+  PageView 180d; (2) IniciouCheckout 7/15/30d **excluindo purchase**; (3) PageView+IC sem compra.
+  Precisa de perfil no Instagram ativo pro conjunto (1) funcionar (camada de confiança).
 
 ## 10. Ticket baixo (gate de ticket)
 
@@ -530,6 +534,13 @@ teste+isolamento+escala, não vídeo isolado. **Onde diverge do que já estava a
   aqui só confirma que não é regra rígida.)
 - **Oferta oscilando 0x0/lucro/prejuízo nos primeiros dias ainda é oferta validada** — ajusta
   oferta (ticket médio com bump, ou IC/CPA mais barato) antes de desistir.
+- ✅ **Confirmado em `myAmzdSfkmg` (10/10/2026) e `Fo3EFSn7LeI` (23/10/2026) — limiar concreto pro
+  "ponto de contato":** só mata um criativo que estourou o custo por compra **e** não gera
+  finalização de compra barata em volume **SE** a conta tiver **menos de 10 anúncios validados**
+  (mantendo CPA). Com **10+ validados**, pode manter mesmo um criativo que não gera nem IC — ele
+  ainda vale como impressão/consciência ("compra de mídia"), porque as outras campanhas já
+  deixam a operação positiva. Decide sempre pela janela de 7-14 dias, nunca pelo dia isolado.
+  Confirma e dá número ao conceito de ponto de contato do caso "Marco".
 
 ## Ponte com observação própria da dona sobre CPA-alvo por ticket médio (22/10/2026, não é do Kevones)
 

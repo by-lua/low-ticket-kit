@@ -137,11 +137,10 @@ Pontos principais:
   exceções (164 e 332, sem transcrição útil). Índice: `INDICE-CALLS.md`.
 - **Close Friends (id=13):** 5 aulas (ids 66, 67, 68, 69, 72) com transcrição. Índice:
   `INDICE-CLOSE-FRIENDS.md`.
-- **YouTube @1kevones:** 166 transcrições (160 vídeos + 6 lives). Novo nesta rodada:
-  `Hwu1hmmM4_Q` (08/10/2026, "LowTicket de R$47: 2 mil de Lucro com ROAS 2x" — conta dedicada
-  pra meta de custo + variação de criativo por formato, promovido pro `DECISOES.md` §5/§1).
-  **Pendentes (18/10):** `myAmzdSfkmg` (10/10) e `hM2qQA1B6NY` (17/10, SaaS — baixa prioridade),
-  sem legenda disponível no momento da checagem (rate limit do YouTube); ver `YOUTUBE-NOVIDADES.md`.
+- **YouTube @1kevones:** 169 transcrições (163 vídeos + 6 lives), atualizado 23/10/2026.
+  Fechados os pendentes de 18/10 (`myAmzdSfkmg`, `hM2qQA1B6NY`) + novo `Fo3EFSn7LeI` (23/10,
+  "Você só precisa de 1hr pra ESCALAR" — metodologia completa, `DECISOES.md` §21). Ver
+  `YOUTUBE-NOVIDADES.md`.
 - **Caso contínuo de set/2026** (`viLhlrcJPhU` 21/09, `bzsllO6ereY` 22/09, `Vtjdg86wDxA`
   29/09): playbook em `ESTUDO-DE-CASO-24-REAIS.md`, regras em `DECISOES.md`.
 - **Lacunas de resumo:** 30 vídeos do YouTube têm resumo automático (início da transcrição),

@@ -1,13 +1,16 @@
 # Kevones YouTube (@1kevones): o que tem de novo e importante
 
-Gerado em 2026-10-02, atualizado 2026-10-18 — 160 transcrições (vídeos; canal vai até 17/10/2026).
+Gerado em 2026-10-02, atualizado 2026-10-23 — 163 transcrições (vídeos; canal vai até 23/10/2026).
 Notas detalhadas por vídeo: `notas-A.md` … `notas-E.md`. Cruzado com o curso `../../Kevones-2026/`.
 
-**Pendente (18/10):** 2 vídeos novos sem legenda disponível (rate limit do YouTube na hora da
-checagem) — `myAmzdSfkmg` "Passei 1 HORA Otimizando Campanhas no Novo Meta Ads!" (10/10) e
-`hM2qQA1B6NY` "SaaS: 10k de Lucro em 7 dias" (17/10, é SaaS não low ticket — baixa prioridade).
-Pra fechar: `~/.claude/skills/yt-transcricao/scripts/yt-txt.sh` de novo (passou do rate limit) ou
-`/watch` com chave Groq/OpenAI configurada.
+**Fechado em 23/10/2026** (estavam pendentes desde 18/10, sem legenda por rate limit): `myAmzdSfkmg`
+"Passei 1 HORA Otimizando Campanhas no Novo Meta Ads!" (10/10) e `hM2qQA1B6NY` "SaaS: 10k de Lucro
+em 7 dias" (17/10). Resumo: otimização ao vivo (regra nova — só mata criativo sem IC se a conta
+tiver **menos de 10 anúncios validados**; com 10+, mantém mesmo sem IC, é "compra de mídia"/
+impressão) e caso SaaS (públicos de pacote: engajado 7d + PageView 180d / IC 7-15-30d excluindo
+purchase). Ver `DECISOES.md` §9/§21.
+**Novo em 23/10/2026:** `Fo3EFSn7LeI` "Você só precisa de 1hr pra ESCALAR no facebook Ads (Aula
+completa)" — metodologia completa de teste/isolamento/escala, promovido pro `DECISOES.md` §21.
 
 ## Só no YouTube (não está no curso)
 
