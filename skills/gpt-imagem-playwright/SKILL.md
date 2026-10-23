@@ -1440,28 +1440,43 @@ exemplo de modelador que já teve exercícios assim — ver `pesquisa/` da ofert
 registrada). Nunca inventar o layout do zero sem referência quando o tipo de exercício for
 visualmente específico (grade de letras, labirinto com caminho).
 
-### Lote de página-de-atividade NÃO escala como lote de capa — confirme antes de prometer N de uma vez
+### Lote de página-de-atividade NÃO escala como lote de capa — confirmado em produção, use 1 por vez
 
 Capas de produto (mesmo layout, só troca título/cor) saíram 9-10 de 9-10 numa mensagem só. Página
 de atividade (cada uma com layout e conteúdo DIFERENTE — grid, linhas de resposta, tabela) **não
-tem o mesmo comportamento**: testado em produção (NeuroActiva V5, 23/10/2026), um pedido de 8
-atividades diferentes numa mensagem só devolveu **1**. Um "continua as outras" no mesmo chat
-devolveu só mais **1** (às vezes repetiu/variou a MESMA ficha em vez de avançar pra próxima).
+tem o mesmo comportamento**, testado repetidas vezes em produção (NeuroActiva V5, 23/10/2026):
 
-**Não prometa ao usuário "N de uma vez" pra página de atividade.** Planeje 1 imagem nova por
-rodada de "próxima", mesmo pedindo "generate the next ones" — e sempre cheque o `md5` de cada
-download contra os anteriores antes de aceitar, porque o modelo pode devolver uma REPETIÇÃO da
-ficha anterior com nome de arquivo novo em vez da próxima.
+- Pedido de 8 atividades diferentes numa mensagem só → devolveu **1**.
+- "Continua as outras" no mesmo chat → só mais **1** (às vezes REPETIU/variou a mesma ficha em
+  vez de avançar).
+- Prompt reforçado com densidade visual + "6 SEPARATE image attachments" explícito, pedindo 6 de
+  uma vez → de novo só **1-2** novas, resto repetição.
+- Pedido de 3 com o TEXTO COMPLETO E EXATO de cada uma (título exato, instrução exata, valores
+  exatos) em chat novo → também só **1** de cada vez, mas cada uma saiu perfeita.
 
-Fluxo que funciona: 1) chat novo no projeto, anexa 1-2 referências de estilo (card aprovado +
-piloto de atividade aprovado); 2) manda o pedido completo com todas as N fichas descritas (não
-custa nada, mesmo que só a primeira saia); 3) pede "ahora genera las siguientes" repetidamente,
-baixando e conferindo hash a cada resposta; 4) se vier repetida, pede explicitamente "wait, that
-was HOJA 00X again, now generate HOJA 00Y" citando o número que falta.
+**Conclusão fechada: não tem prompt mágico que faça o lote de atividade funcionar. O fluxo
+confirmado e que SEMPRE funciona é 1 imagem por mensagem, pedindo explicitamente a próxima pelo
+número**, mesmo que o primeiro pedido descreva todas as N (não atrapalha, só a 1ª sai). Nunca
+prometa "N de uma vez" pro usuário nessa tarefa — avise que é 1-por-1, ~1-2min cada.
+
+Fluxo:
+1. Chat novo no projeto, anexa 1-2 referências de estilo (card aprovado + 1 atividade já aprovada).
+2. Manda o pedido com a descrição completa de todas as N fichas (serve de contexto pro resto do
+   chat, mesmo que só a 1ª saia).
+3. A cada resposta: baixa, confere `md5` contra os já baixados (pega repetição disfarçada de
+   nome novo), e manda "HOJA 00X foi perfeita, agora gera HOJA 00Y" citando sempre o número exato
+   que falta — nunca "continua"/"as outras" genérico, isso é o que mais repete.
+4. **Atenção especial:** a resposta pode vir como "documento"/canvas em vez de `<img>` solto — a
+   skill `gpt-imagem-playwright` detecta isso quando o filtro de `querySelectorAll('img')` não
+   cresce mas a UI mostra "NeuroActiva_Hoja_00X.png" com botão "Baixar arquivo"/"Abrir prévia" em
+   vez do preview inline. Quando acontecer, peça pro próprio modelo "resend exactly those as
+   plain standalone PNG image attachments using the image generator, not a document or canvas" —
+   resolve, mas conta como mais 1 rodada "1 por vez".
+5. Reporte ao usuário em marcos (a cada 5-8 prontas), nunca uma por uma — mas publique/commite
+   em lotes menores pra não acumular risco.
 
 Essa é uma tarefa de MUITAS gerações (um módulo de 32 fichas = ~32 rodadas de "próxima"). Avise o
-usuário do volume real antes de começar um lote grande, e reporte em marcos (a cada 5-8 prontas),
-nunca uma por uma.
+usuário do volume real antes de começar.
 
 ---
 
