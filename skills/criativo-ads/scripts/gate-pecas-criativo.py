@@ -9,7 +9,7 @@ Regra da dona (23/10/2026):
   - Nada repete: PC, celular, tablet e folha solta mostram cada um uma página DIFERENTE.
     Capa + 3-5 páginas distintas que façam sentido juntas. Nunca a mesma imagem em vários aparelhos.
 
-Confere: selecionados/ existe; >= 3 imagens distintas (capa conta); nenhuma duplicata
+Confere: selecionados/ existe; REF-FORMATO-* presente; cena (não impacto) com >= 4 páginas reais; >= 3 imagens distintas (capa conta); nenhuma duplicata
 (md5 e, com Pillow, hash visual — o GPT re-renderiza a mesma página com bytes diferentes).
 """
 import hashlib, sys
@@ -54,9 +54,13 @@ def main():
         for j in range(i + 1, len(hs)):
             if bin(hs[i][1] ^ hs[j][1]).count('1') <= 8:  # ~3% de 256 bits
                 falhas.append(f'imagens quase iguais (mesma página?): {hs[i][0]} × {hs[j][0]}')
-    distintas = len(imgs) - sum(len(v) - 1 for v in md5.values())
-    if distintas < 3:
-        falhas.append(f'só {distintas} imagem(ns) distinta(s) — usar capa + 3-5 páginas diferentes')
+    refs = [p for p in imgs if p.name.upper().startswith('REF-FORMATO')]
+    paginas = [p for p in imgs if p not in refs and not p.name.lower().startswith('gpt-')]
+    if not refs:
+        falhas.append('sem REF-FORMATO-* em selecionados/ — anexar a referência de estilo/formato (receita §5)')
+    impacto = 'impacto' in d.name.lower()
+    if not impacto and len(paginas) < 4:
+        falhas.append(f'só {len(paginas)} página(s) real(is) — cena com produto = 1-2 aparelhos + 3-4 folhas impressas, todas diferentes')
     for x in oks:
         print('OK    ', x)
     for x in falhas:

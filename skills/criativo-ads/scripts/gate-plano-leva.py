@@ -15,6 +15,7 @@ Regras da dona (23/10/2026) que este script cobra:
   7. tabela de personagens com voz; orçamento por campanha escrito; feed 4:5
   8. vídeo no plano → criativos/MATERIAL-ENTREGAVEL/ com gravação de tela
   9. 1 peça com preço por campanha (aviso)
+ 12. regra digital + impresso escrita no plano
  10. preço no criativo = SEMPRE o do plano mais barato quando a página tem 2 planos (dona, 23/10/2026).
      Plano da leva traz a linha "**Preço no criativo:** <moeda> <valor>"; o valor tem que ser o menor
      plano do O QUE VENDEMOS (popup/saída/bump não contam como plano).
@@ -154,6 +155,11 @@ def main():
         for v in valores(l):
             if menor and v != menor:
                 falhas.append(f'peça com preço {v:,.0f} ≠ plano mais barato: {l[:70]}'.replace(',', '.'))
+
+    # 12 · digital + impresso
+    di = re.search(r'impress', txt) and re.search(r'celular|tablet|notebook', txt)
+    (oks if di else falhas).append('regra digital + impresso escrita' if di
+        else 'plano sem a regra: toda imagem com material = 1+ aparelho E folhas impressas (página diferente em cada)')
 
     # aprovação
     aprovado = re.search(r'- \[x\] \**ok da dona', txt)

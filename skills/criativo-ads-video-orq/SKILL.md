@@ -6,6 +6,9 @@ description: "Mecânica de produção e edição de anúncios em vídeo, chamada
 > **HUB DESATIVADO (02/10/2026, ordem da usuária):** NinjaBR Hub está SEM COTA e os perfis `hub`/`hubv2`/`hubts` foram removidos (backup em `~/.agent-profiles/_removidos-hub-2026-10-02/`). NÃO use Hub, NÃO rode `hub-livre.sh` (sai com erro), NÃO espere perfil do Hub liberar. Imagem: ChatGPT — se a cota de upload de uma conta acabar, troque de CONTA: `gpt-conta*` ↔ `gpt-conta*`. Vídeo: Google Flow (`flow-video-playwright`).
 
 
+
+> **Leva inteira de uma oferta:** antes dos vídeos, seguir `criativo-ads/references/RECEITA-LEVA-PONTA-A-PONTA.md` (persona → plano → gates → estáticos → vídeos).
+
 # criativo-ads-video-orq
 
 ## Lições fixas da sessão de QA 2026-10-04 (mapas-visuais-eletrotecnia) — leia antes de tudo
@@ -328,6 +331,7 @@ Comandos: `/get-brolls-brief`, `/get-brolls-review`, `/get-brolls-status`.
 `get-brolls` NÃO edita/renderiza o final — só coleta e entrega os trechos.
 
 **Atualização 23/10/2026 (dona) — vale por cima do bloco abaixo:**
+- **Cena com material = digital + impresso** (1 aparelho no mínimo + folhas impressas soltas, página diferente em cada). Regra completa em `criativo-ads`.
 - **Idioma da busca = o que faz sentido pro contexto**, não sempre inglês: se o objeto aparece na
   cena com texto (ex.: carta de tarô), buscar no **idioma da persona** (Tarot AR → espanhol).
 - **Rápido:** pega os **mais vistos sem texto**; se o texto aparece só no começo, **corta o começo**

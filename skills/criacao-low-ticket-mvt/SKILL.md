@@ -545,7 +545,7 @@ Depois de escolhida a concepção vencedora (Parada 3 liberada; trilha K confere
 | 4 | Banner | `banner-checkout-gpt` |
 | 5 | Checkout | **BR = `wiven-checkout` (Wiven; decisão do dono 25/09/2026 (revisão))**; hospedagem de página/app = **Coolify**. Alternativas só por decisão do dono: `checkout-premium` · `ggcheckout-produto` · `hotmart-produto-playwright` |
 | 5b | **Funil de venda — bônus, order bump, Upsell 1 (barato), Upsell 2 (cara), downsell, combo e a peça de FERRAMENTA/microSaaS** (decisão da dona 09/10/2026: pesquisado e definido JUNTO com a oferta, não depois) | **`mvt-funil`** + regras em `references/PECAS-DO-FUNIL.md` · gateway `wiven-checkout` · entrega `area-membros-netflix` · gate `T13.24` (+ `T13.10-14` se for app) |
-| 6 | Criativo (3-5) | `criativo-ads` (porta única; puxa `narracao-hub-tts`, `gpt-imagem-playwright`, `criativo-ads-video-orq`/`hub-video-playwright`). **Ler antes: `references/LICOES-CRIATIVOS-2026-10-09.md`** |
+| 6 | Criativo (leva de teste = 30, Kevones §21) | `criativo-ads` — receita `~/.claude/skills/criativo-ads/references/RECEITA-LEVA-PONTA-A-PONTA.md` (porta única; puxa `narracao-hub-tts`, `gpt-imagem-playwright`, `criativo-ads-video-orq`/`hub-video-playwright`). **Ler antes: `references/LICOES-CRIATIVOS-2026-10-09.md`** |
 | 7 | Config técnica | `hotmart-produto-playwright` · `ggcheckout-produto` · `trackeador` · receitas em `~/.claude/browser-workspace/domain-skills/` |
 | 8 | Tráfego | `metaads-kevones` (nenhuma metodologia de tráfego aqui) · `analytics-tracking` |
 

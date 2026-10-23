@@ -8,6 +8,12 @@ description: Porta de entrada ÚNICA de criativo de anúncio (Meta/TikTok) — v
 
 # criativo-ads
 
+> **🎯 "Faz os criativos da oferta X" (leva inteira, ponta a ponta):** siga
+> `references/RECEITA-LEVA-PONTA-A-PONTA.md` na ordem — persona com dado → material/DESIGN-SYSTEM → plano →
+> gates → peça a peça (ugly iPhone, digital + impresso 3-4 folhas + 1-2 aparelhos, nada repete, texto de
+> Stories, preço do plano mais barato, REF-FORMATO anexada) → gerar (`scripts/gerar-imagem-gpt.sh`) → mostrar à
+> dona → gravar. Molde de prompt: `references/PROMPT-ESTATICO-ORGANICO.md`. Exemplo vivo: Atlas AR (23/10/2026).
+
 > **⛔ GATE DE PERSONA MECÂNICO (dona, 23/10/2026 — erro que não se repete):** antes de página, criativo,
 > peça do funil ou preço, rodar `python3 ~/.claude/skills/criacao-low-ticket-mvt/scripts/gate-persona.py OFERTAS/<slug>`. **BLOQUEADO = não começa**; completa o
 > `pesquisa/PERSONA-E-ANGULOS.md` no modelo `MODELOS/_MODELO-PERSONA-E-ANGULOS.md` (MERCADO na Biblioteca ≥5 anúncios,
@@ -350,10 +356,16 @@ encaixados no 4:5; GPT não desenha página do produto.
 **Estático = foto orgânica de celular, SEMPRE (dona, 23/10/2026):** todo estático e todo carrossel é cena real
 com cara de foto de iPhone, com fundo orgânico que faça sentido pra persona (academia, sala de aula, mesa de estudo,
 carro). **Única exceção: fase de impacto estilo Rodrigo** (fundo branco, texto preto/vermelho), que é formato
-específico. Pessoa respondendo caixa de perguntas também vale em imagem. **Texto = sempre texto de Stories**, na
+específico. Caixa de perguntas também vale em imagem, e **quem responde é sempre o expert** da leva (nunca o UGC). **Texto = sempre texto de Stories**, na
 fonte nativa do Instagram Stories (Classic, sans tipo SF/Helvetica, branco em caixa preta arredondada ou preto em caixa
 branca), como se a pessoa tivesse digitado no story. Nunca arte de designer. **Sempre anexar as referências** (cena-modelo
 + capa + páginas reais) no GPT.
+
+**Digital + impresso, SEMPRE (dona, 23/10/2026):** toda imagem com material (estático, foto principal de carrossel,
+Henrique, cena de vídeo que mostra o produto) mostra **os dois mundos**: pelo menos 1 aparelho (celular, tablet ou
+notebook) **e** folhas impressas soltas. Combinações: celular + impresso · tablet + impresso · celular + tablet +
+impresso. Cada aparelho e cada folha com uma página diferente. Nunca só digital, nunca só impresso. Fora da regra:
+fase de impacto (só texto) e carrossel tipo 2 (só páginas).
 
 **Mix por campanha + carrossel (regra da dona, 23/10/2026):** toda campanha de teste (1-1-10 ou
 1-1-3) leva **vídeo + estático + carrossel no mesmo conjunto** (metaads-kevones §21). **Proporção da
