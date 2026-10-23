@@ -204,6 +204,12 @@ async def _run_images(page, request, *, project_id):
 
 async def _run_video(page, request, **kw):
     _pending[:] = [Path(request.start_image)] if request.start_image else []
+    # FLOW_EXTRA_REFS="a.png:b.png" = imagens de referência DEPOIS do quadro inicial (ex.: a peça
+    # inteira, pra peça escondida na embalagem não virar outra roupa — 23/10/2026)
+    import os
+
+    for x in filter(None, os.environ.get("FLOW_EXTRA_REFS", "").split(":")):
+        _pending.append(Path(x))
     return await _orig_run_video(page, request, **kw)
 
 

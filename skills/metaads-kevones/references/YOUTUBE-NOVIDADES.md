@@ -5,10 +5,13 @@ Notas detalhadas por vídeo: `notas-A.md` … `notas-E.md`. Cruzado com o curso 
 
 **Fechado em 23/10/2026** (estavam pendentes desde 18/10, sem legenda por rate limit): `myAmzdSfkmg`
 "Passei 1 HORA Otimizando Campanhas no Novo Meta Ads!" (10/10) e `hM2qQA1B6NY` "SaaS: 10k de Lucro
-em 7 dias" (17/10). Resumo: otimização ao vivo (regra nova — só mata criativo sem IC se a conta
-tiver **menos de 10 anúncios validados**; com 10+, mantém mesmo sem IC, é "compra de mídia"/
-impressão) e caso SaaS (públicos de pacote: engajado 7d + PageView 180d / IC 7-15-30d excluindo
-purchase). Ver `DECISOES.md` §9/§21.
+em 7 dias" (17/10). Resumo: otimização ao vivo e caso SaaS (públicos de pacote: engajado 7d +
+PageView 180d / IC 7-15-30d excluindo purchase). Ver `DECISOES.md` §9/§21.
+
+**Corrigido 23/10/2026:** esta nota chegou a citar aqui um limiar "só mata criativo sem IC se a
+conta tiver menos de 10 anúncios validados". Busca textual completa não confirma esse número em
+nenhuma transcrição revisada (nem `myAmzdSfkmg`, nem `Fo3EFSn7LeI`) — removido. Ver nota em
+`DECISOES.md` § (linha logo acima da ponte com CPA-alvo por ticket médio).
 **Novo em 23/10/2026:** `Fo3EFSn7LeI` "Você só precisa de 1hr pra ESCALAR no facebook Ads (Aula
 completa)" — metodologia completa de teste/isolamento/escala, promovido pro `DECISOES.md` §21.
 

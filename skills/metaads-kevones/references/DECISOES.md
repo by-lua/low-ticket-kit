@@ -534,13 +534,16 @@ teste+isolamento+escala, não vídeo isolado. **Onde diverge do que já estava a
   aqui só confirma que não é regra rígida.)
 - **Oferta oscilando 0x0/lucro/prejuízo nos primeiros dias ainda é oferta validada** — ajusta
   oferta (ticket médio com bump, ou IC/CPA mais barato) antes de desistir.
-- ✅ **Confirmado em `myAmzdSfkmg` (10/10/2026) e `Fo3EFSn7LeI` (23/10/2026) — limiar concreto pro
-  "ponto de contato":** só mata um criativo que estourou o custo por compra **e** não gera
-  finalização de compra barata em volume **SE** a conta tiver **menos de 10 anúncios validados**
-  (mantendo CPA). Com **10+ validados**, pode manter mesmo um criativo que não gera nem IC — ele
-  ainda vale como impressão/consciência ("compra de mídia"), porque as outras campanhas já
-  deixam a operação positiva. Decide sempre pela janela de 7-14 dias, nunca pelo dia isolado.
-  Confirma e dá número ao conceito de ponto de contato do caso "Marco".
+- ❌ **CORRIGIDO 23/10/2026:** esta seção chegou a afirmar um limiar "conta com 10+ validados não
+  mata criativo sem IC" como confirmado em `Fo3EFSn7LeI`. Busca textual completa na transcrição
+  dessa aula (`/tmp/claude-1000/kevones-aula-metodo.txt`) **não encontrou essa regra em nenhum
+  lugar** — não existe limiar de 10 validados nela. Regra removida por falta de fonte. O que a
+  aula de fato diz sobre "ponto de contato" (sem número de conta): matar criativo que ainda gera
+  IC (mesmo sem venda, ou com CPA alto) pode derrubar até o vencedor isolado, porque cada
+  criativo ativo é ponto de contato que reforça consciência (caso "Marco", ver §18/20 e
+  `METODO-DESTILADO.md`). Decisão continua pela janela de 48h (teste) / 7 dias (campanha
+  validada), nunca pelo dia isolado — isso sim é regra fixa. Se alguém encontrar essa regra numa
+  aula específica, cite id/minuto antes de reinstaurar.
 
 ## Ponte com observação própria da dona sobre CPA-alvo por ticket médio (22/10/2026, não é do Kevones)
 
