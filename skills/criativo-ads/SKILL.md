@@ -8,6 +8,12 @@ description: Porta de entrada ÚNICA de criativo de anúncio (Meta/TikTok) — v
 
 # criativo-ads
 
+> **⛔ GATE DE PERSONA MECÂNICO (dona, 23/10/2026 — erro que não se repete):** antes de página, criativo,
+> peça do funil ou preço, rodar `python3 ~/.claude/skills/criacao-low-ticket-mvt/scripts/gate-persona.py OFERTAS/<slug>`. **BLOQUEADO = não começa**; completa o
+> `pesquisa/PERSONA-E-ANGULOS.md` no modelo `MODELOS/_MODELO-PERSONA-E-ANGULOS.md` (MERCADO na Biblioteca ≥5 anúncios,
+> QUEM COMPRA DE VERDADE, dores com contagem+data, RECORTES com "por que está na oferta"). Casos: Elétrica estudou o
+> estudante (comprador = eletricista na obra); Jiu usou "faixa branca/azul" (só vendeu quando tirou da página).
+
 ## ⛔ GATE 0 — leia a oferta ANTES de propor qualquer ângulo [regra da dona 10/10/2026]
 
 > **A ordem canônica completa** (persona → dor → demanda orgânica → oferta → página → criativo →
@@ -79,6 +85,13 @@ bloco `[OFERTA-PRIMEIRO]`).
 Antes de planejar qualquer leva (ex.: 30 do teste 3× 1-1-10):
 1. **Persona atualizada e conferida:** `PERSONA-E-ANGULOS.md` da oferta bate com a página no ar
    (o que vende / não é / preços / bônus) e as dores têm medida. Resumo da oferta errado = para aqui.
+2a. **Começa pelo anunciante MODELADO (a página da Biblioteca que a dona passou):** é a oferta que já
+   vende. Listar todos os anúncios dele e, pra cada **narrativa**, contar em quantos anúncios ela se repete
+   e há quantos dias roda. **A narrativa que roda há mais tempo e mais se repete é a que vende** (ex.: Atlas —
+   "recém-formado começando como personal / no consultório" repetida em vários anúncios) → vira peça da
+   leva em imagem E em vídeo. Dissecar como foi feito: visual, ângulo, gancho, sequência, personagem.
+   Ela também diz **quem compra de verdade** (entra no PERSONA-E-ANGULOS, seção QUEM COMPRA/MERCADO).
+   Registro: `OFERTAS/<slug>/pesquisa/BIBLIOTECA-<data>.md` (anúncio · narrativa · repetições · dias · formato).
 2. **Biblioteca de Anúncios:** buscar infoprodutos do **mesmo nicho e de nichos vizinhos**, em
    **qualquer idioma/mercado** (US em inglês, BR em português, LATAM em espanhol — o que roda lá a
    gente modela e adapta). Foco nos anúncios **ativos há mais tempo** (os que estão funcionando) e
@@ -89,6 +102,9 @@ Antes de planejar qualquer leva (ex.: 30 do teste 3× 1-1-10):
    produtos parecidos (ex.: "aprender tarot visual") em ES/EN/PT, pega os ativos há mais tempo e
    **disseca** o gancho (ex.: "saber o significado da carta é uma coisa, mas quando sai X com Y…") e a
    sequência (mostrou cartas → mostrou o material → abriu uma página…) — e adapta.
+3b. **Primeiro o que JÁ vence pra gente:** olha os vencedores das nossas ofertas (mesmo idioma ou outro,
+   mesmo nicho ou outro ângulo — ex.: Atlas AR modela a oferta BR) e entende POR QUE funcionou. Muitas
+   vezes copiar e adaptar o vencedor já é uma peça da leva (já é um teste); o planejamento vai pras outras.
 4. **Plano em texto primeiro, dona aprova, só então produz:** plano da leva peça a peça + ficha de
    cada personagem (expert: quem é, gênero, idade, visual, ambiente, voz — casado com o produto e o
    país). Nada é gerado antes do OK.

@@ -5,6 +5,13 @@ description: MECÂNICA chamada pela skill `criacao-low-ticket-mvt` (T13.24) — 
 
 # mvt-funil — peças do funil (bump · upsell · downsell · bônus · ferramenta)
 
+> **⛔ GATE DE PERSONA MECÂNICO (dona, 23/10/2026 — erro que não se repete):** antes de página, criativo,
+> peça do funil ou preço, rodar `python3 ~/.claude/skills/criacao-low-ticket-mvt/scripts/gate-persona.py OFERTAS/<slug>`. **BLOQUEADO = não começa**; completa o
+> `pesquisa/PERSONA-E-ANGULOS.md` no modelo `MODELOS/_MODELO-PERSONA-E-ANGULOS.md` (MERCADO na Biblioteca ≥5 anúncios,
+> QUEM COMPRA DE VERDADE, dores com contagem+data, RECORTES com "por que está na oferta"). Casos: Elétrica estudou o
+> estudante (comprador = eletricista na obra); Jiu usou "faixa branca/azul" (só vendeu quando tirou da página).
+
+
 Regra da skill-mãe (`criacao-low-ticket-mvt`): **o funil é projetado junto com a oferta (T11 → T13),
 não depois**. As regras de concepção/preço/gates estão em
 `~/.claude/skills/criacao-low-ticket-mvt/references/PECAS-DO-FUNIL.md` — **ler antes de começar**;

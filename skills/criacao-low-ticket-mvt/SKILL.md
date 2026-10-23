@@ -3,6 +3,12 @@ name: criacao-low-ticket-mvt
 description: Conduz a criação de uma oferta Low Ticket MVT do zero até o criativo pronto, na ordem exata do método "O Processo" (Heitor Nogueira). ORQUESTRADORA (porta de entrada): SEMPRE começa pelo `## ROTEADOR` (tipo de trabalho → modo → mercado → nicho → preço, gravados no ESTADO), segue a TRILHA do modo (T0-T15) com ENTRADA/SAÍDA verificável, as 3 PARADAS e o GATE DE PASSAGEM, e chama as MECÂNICAS `mvt-minerar`, `mvt-modelar`, `mvt-validar`, `mvt-cross-market`, `mvt-obra-100k` e, na construção, as skills que já existem (imagens-pagina-low, area-membros-netflix, banner-checkout-gpt, checkout-premium, ggcheckout-produto, wiven-checkout, hotmart-produto-playwright, criativo-ads, metaads-kevones). Registra tudo no Hub de Ofertas. Use quando o usuário pedir para criar uma oferta low ticket nova, minerar concepções, "vamos achar um produto para vender", rodar o processo do zero, retomar "onde paramos", "terminar/completar a entrega" (mapear promessa × área de membros e gerar o que falta — receita `references/TERMINAR-ENTREGA.md`), ou mencionar o Hub de Ofertas.
 ---
 
+> **⛔ GATE DE PERSONA MECÂNICO (dona, 23/10/2026 — erro que não se repete):** antes de página, criativo,
+> peça do funil ou preço, rodar `python3 ~/.claude/skills/criacao-low-ticket-mvt/scripts/gate-persona.py OFERTAS/<slug>`. **BLOQUEADO = não começa**; completa o
+> `pesquisa/PERSONA-E-ANGULOS.md` no modelo `MODELOS/_MODELO-PERSONA-E-ANGULOS.md` (MERCADO na Biblioteca ≥5 anúncios,
+> QUEM COMPRA DE VERDADE, dores com contagem+data, RECORTES com "por que está na oferta"). Casos: Elétrica estudou o
+> estudante (comprador = eletricista na obra); Jiu usou "faixa branca/azul" (só vendeu quando tirou da página).
+
 > **TROCAR PÁGINA DE OFERTA (14/10/2026):** publicar página nova (V2, layout
 > clonado, troca de funil) no lugar da atual = sempre levar o bloco fbq e o
 > loader do Trackeador e rodar `adstrackeador pagina comparar <atual> <nova>`
