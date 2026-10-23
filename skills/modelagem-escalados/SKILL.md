@@ -1,6 +1,6 @@
 ---
 name: modelagem-escalados
-description: MECÂNICA de estático/carrossel chamada pela skill `criativo-ads` (porta de entrada de todo criativo; estratégia e quantidade moram lá). Modela criativos de anúncio a partir de uma biblioteca local de 103 formatos que já estão escalando (87 estáticos, 16 vídeos, 47 categorias) — anexa a referência real no ChatGPT e adapta para a marca do usuário via pipeline de 12 prompts (brandkit, dossiê, matriz de ângulos, seleção de formato, leitura estrutural, copy, arte 1:1 1080×1080 (9:16 só se pedido), leva de headlines, reenquadramento, gate de QA, ponte para vídeo, nomenclatura). Use quando o usuário pedir criativo estático, modelar/clonar um criativo que está escalando, "modelagem de escalados", leva de anúncios, variação de headline, banco de formatos, biblioteca de anúncios, ou mencionar Antonio Ferriani, formatos escalados, antes e depois, print de WhatsApp, caixa de perguntas, Reclame Aqui, notícia, ilustração como formato de anúncio.
+description: MECÂNICA de estático/carrossel chamada pela skill `criativo-ads` (porta de entrada de todo criativo; estratégia e quantidade moram lá). Modela criativos de anúncio a partir de uma biblioteca local de 103 formatos que já estão escalando (87 estáticos, 16 vídeos, 47 categorias) — anexa a referência real no ChatGPT e adapta para a marca do usuário via pipeline de 12 prompts (brandkit, dossiê, matriz de ângulos, seleção de formato, leitura estrutural, copy, arte 4:5 1080×1350 (9:16 só se pedido), leva de headlines, reenquadramento, gate de QA, ponte para vídeo, nomenclatura). Use quando o usuário pedir criativo estático, modelar/clonar um criativo que está escalando, "modelagem de escalados", leva de anúncios, variação de headline, banco de formatos, biblioteca de anúncios, ou mencionar Antonio Ferriani, formatos escalados, antes e depois, print de WhatsApp, caixa de perguntas, Reclame Aqui, notícia, ilustração como formato de anúncio.
 ---
 
 # modelagem-escalados
@@ -48,8 +48,8 @@ funciona:
 - **Texto com cara de Stories:** fonte tipo legenda de Story, linha fina, texto
   simples por cima da foto — não banner de oferta gigante.
 - **Rosto humano ou alto contraste no topo** para parar o scroll.
-- **Formato padrão de estático e carrossel = 1:1 (1080×1080), todos os cards** (regra
-  da dona, 04/10/2026). Monte direto nesse canvas; 4:5 ou 9:16 só se o usuário pedir.
+- **Formato padrão de estático e carrossel = 4:5 (1080×1350), todos os cards** (regra
+  da dona, 23/10/2026 — antes era 1:1). Monte direto nesse canvas; 9:16 só se o usuário pedir.
   Vídeo continua 9:16 (ver `criativo-ads-video-orq`).
 - **1 público por peça.** Dois públicos na mesma arte = algoritmo não estreita = caro.
   Se o produto serve QUALQUER nicho (ex. SiteExpress), mire o **bucket largo**
@@ -184,9 +184,9 @@ copy travada antes de gastar geração, gate de QA, e ponte para vídeo.
 | 04 | `selecao-formatos` | você, não o GPT | tabela ângulo × formato × arquivo |
 | 05 | `leitura-referencia` | com refs anexadas | 13 eixos + mecanismo de cada formato |
 | 06 | `adaptacao-copy` | antes de gerar | copy por peça, aprovada por você |
-| 07 | `arte-stories` | gera | 1:1 1080×1080 (9:16 1080×1920 só se a dona pedir Stories/Reels) |
+| 07 | `arte-stories` | gera | 4:5 1080×1350 (9:16 1080×1920 só se a dona pedir Stories/Reels) |
 | 08 | `leva-headlines` | pós-vencedor | N headlines na mesma arte, **cada uma com outra dor/persona** |
-| 09 | `feed-e-outras-proporcoes` | **sempre** | 1:1 1080×1080 (padrão de estático/carrossel); 4:5 se pedido |
+| 09 | `feed-e-outras-proporcoes` | **sempre** | 4:5 1080×1350 (padrão de estático/carrossel) |
 | 10 | `gate-qa` | você, não o GPT | aprovada / reprovada / refazer copy |
 | 11 | `modelagem-video` | formatos de vídeo | briefing p/ `criativo-ads-video-orq` |
 | 12 | `nomenclatura-entrega` | fim | nomes + `leva.md` + conferência |
@@ -209,7 +209,7 @@ Ordem mínima de uma leva do zero:
 7. `06` → aprove a copy
 8. `07` → **anexe a referência de novo** e gera as artes
 9. `10` → gate. Reprovada volta pro 06 ou 07, não sobe "pra testar"
-10. `09` → confirma formatos: 1:1 padrão; 9:16 extra só se pedido
+10. `09` → confirma formatos: 4:5 padrão; 9:16 extra só se pedido
 11. `12` → nomeia e entrega
 
 ## Regras que não se negociam
@@ -246,9 +246,9 @@ Ordem mínima de uma leva do zero:
    diz `OMITIR` — nunca vira "investimento acessível".
 8. **A referência vai anexada também no 07.** O 05 lê, o 07 gera; gerar sem o arquivo
    à vista faz a peça escorrer para template genérico.
-9. **Estático e carrossel saem em 1:1 (1080×1080) por padrão, todos os cards.** 9:16
+9. **Estático e carrossel saem em 4:5 (1080×1350) por padrão, todos os cards.** 9:16
    só entra como formato extra quando o usuário pedir. Carrossel demonstrativo: as
-   páginas do entregável são arquivos reais encaixados no 1:1; GPT nunca desenha
+   páginas do entregável são arquivos reais encaixados no 4:5; GPT nunca desenha
    página do produto (ver `references/carrossel-demonstrativo-iphone.md`).
    **Só o card 1 (capa) é arte gerada** — os demais cards são só páginas reais do
    entregável, recortadas full bleed em sequência do início ao fim (dona, 09/10).

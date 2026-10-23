@@ -22,6 +22,10 @@ pelas 4 perguntas abaixo primeiro — elas são os 4 erros reais que já custara
 direta** ("você está errando aqui: X. Faz Y."), não deixo enterrado em regra genérica.
 
 1. **O orçamento de teste está proporcional ao ticket DELA, não ao do Kevones?**
+   **REGRA ATUAL (23/10/2026, supera o texto abaixo):** oferta < R$47 → orçamento por campanha =
+   **CPA ideal = 60-65% do ticket médio** (ticket médio = real com bump se já vendeu; senão
+   (oferta A + oferta B da página) ÷ 2, sem bump). ≥ R$47 → R$30-35/campanha do Kevones.
+   Detalhe: `DECISOES.md` seção "Ponte com observação própria da dona".
    Ticket dela costuma ser R$17-27 (ou equivalente em US$/€). Orçamento de teste correto =
    **~1x o ticket mais baixo da régua** (R$15-20), nunca o R$30-50/R$100 fixo dos vídeos — esses
    são calibrados pro ticket de R$47+ dele. Orçamento alto demais pro ticket baixo = o próximo

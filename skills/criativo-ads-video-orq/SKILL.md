@@ -327,6 +327,28 @@ e origem+licença registradas). Ela entra em DUAS fases:
 Comandos: `/get-brolls-brief`, `/get-brolls-review`, `/get-brolls-status`.
 `get-brolls` NÃO edita/renderiza o final — só coleta e entrega os trechos.
 
+**Atualização 23/10/2026 (dona) — vale por cima do bloco abaixo:**
+- **Idioma da busca = o que faz sentido pro contexto**, não sempre inglês: se o objeto aparece na
+  cena com texto (ex.: carta de tarô), buscar no **idioma da persona** (Tarot AR → espanhol).
+- **Rápido:** pega os **mais vistos sem texto**; se o texto aparece só no começo, **corta o começo**
+  e usa o resto. Tira **3–4 cenas que façam sentido** e reaproveita em vários criativos; baixa mais
+  só se precisar. Ordem de fonte: **TikTok > Pexels > YouTube** (YouTube costuma ser ruim).
+- **Imagem da cena SEMPRE primeiro** (GPT), com prompt pensado pra não aparecer/sumir nada estranho e
+  a pessoa ficar igual — só depois anima no Flow (o Flow é instável).
+- **Layout do expert:** tela cheia quando fala e/ou **meio a meio com o material** em algum momento.
+- **Expert no Flow:** o Flow segura no máximo **8s** e a continuação sai ruim → o expert aparece só
+  nos **primeiros segundos** (ex.: lendo a caixa de perguntas em formato story) e depois entra o
+  material + narração. **Voz do expert é sempre a mesma:** escolhe a voz no Flow, ou gera com
+  qualquer voz e troca o áudio pela nossa voz (`narracao-hub-tts`). O prompt diz **o idioma** em
+  que ela fala, pra sair claro na língua da persona.
+- **CTA final (estilo Rodrigo):** nos últimos segundos, imagem do material + setinha "tocá en
+  más información" rodando uns segundos.
+- **Formato "imagem animada" (estilo slide do Canva):** título + elemento que se mexe e faz
+  sentido (ex.: mão embaralhando o tarô) — conta como vídeo na leva.
+- **Antes de gerar qualquer vídeo:** a **gravação de tela do entregável** (área de membros por
+  dentro) tem que existir, e os takes no estilo Flow com as páginas em vários aparelhos/formatos
+  (`§E.0c`, takes A–K). Sem isso, não começa.
+
 **TikTok — vídeos virais em INGLÊS (regra da dona, 16/10/2026).** Além do stock, usar **vídeos orgânicos que
 já viralizaram** no TikTok como b-roll (é o que parece nativo — os originais que modelamos intercalam MUITA
 cena real com o material). Buscar no perfil logado **`tiktok`** (porta 9255) com **~5 termos em inglês ligados

@@ -550,13 +550,20 @@ teste+isolamento+escala, não vídeo isolado. **Onde diverge do que já estava a
 Anotação feita durante a mesma sessão, **extensão nossa pra produtos de ticket mais baixo/
 qualidade menor que o padrão dele** — não confundir com regra dele:
 
-- **Ticket médio de referência:** soma o preço dos dois planos (ex.: principal + upgrade) e
-  divide por 2. Ex.: R$30 + R$33 → ticket médio R$31,50.
-- **CPA-alvo (orçamento de campanha) = 60% do ticket médio.** Ex.: ticket médio R$31,50 →
-  CPA-alvo ~R$16-19 por campanha.
+- ⚠️ **REGRA FIXA DA DONA (23/10/2026) — orçamento de campanha pra oferta abaixo de R$47.**
+  O R$30-35/campanha do Kevones (§21) é calibrado pras ofertas dele de R$47-97. Abaixo de R$47
+  (convertido em R$ no câmbio do dia, se a oferta é em ARS/US$/€):
+  1. **Ticket médio:**
+     - **já tem vendas** → usa o **ticket médio real com order bump** (Trackeador/gateway);
+     - **ainda não tem** → soma as duas ofertas da página inicial (sem bump) e divide por 2.
+       Ex.: R$17 + R$27 = 44 ÷ 2 → **R$22**. Uma oferta só na página → ela é o ticket médio.
+  2. **CPA ideal = 60-65% do ticket médio.** Ex.: R$22 → R$13,20-14,30 → **R$14-15**.
+  3. **O CPA ideal é o orçamento de cada campanha** do teste (3× 1-1-10 ou 10× 1-1-3).
+  4. **Sem centavos: arredonda sempre PRA CIMA** pro real inteiro. Ex.: R$13,20 → R$14; R$14,30 → R$15.
+  - Oferta de R$47 ou mais → vale o R$30-35/campanha do Kevones direto.
 - Isso é **diferente** da regra do Kevones (IC ≤ 10% do ticket, decidido só depois de 48h) —
   aqui é um jeito de calcular o **orçamento de partida** da campanha a partir do ticket médio,
-  não o limite de IC. As duas regras não se substituem: usar o CPA-alvo (60% do ticket médio)
+  não o limite de IC. As duas regras não se substituem: usar o CPA ideal (60-65% do ticket médio)
   pra dimensionar verba, e IC ≤10% do ticket pra decidir manter/matar depois de 48h.
 - Já existe uma régua parecida em §10 (CPA-alvo da meta de custo = 60-80% do ticket médio) —
   esta observação bate com a ponta de baixo desse intervalo (60%). Tratar como o mesmo

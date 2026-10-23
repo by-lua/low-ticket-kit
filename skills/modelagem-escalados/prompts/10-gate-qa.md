@@ -14,7 +14,7 @@ Abra a imagem. Não avalie pela descrição que o modelo deu dela.
 - [ ] Nome de terceiro, logo de terceiro ou rosto de pessoa real da referência
 - [ ] Capa/mockup com texto, cor ou proporção alterados
 - [ ] Promessa fora do que o dossiê sustenta, ou termo da lista de restrição
-- [ ] Dimensão errada (não é 1080×1080 exatos; 1080×1920 só na variação 9:16 pedida)
+- [ ] Dimensão errada (não é 1080×1350 exatos; 1080×1920 só na variação 9:16 pedida)
 - [ ] Preço, prazo de garantia ou condição da oferta **diferentes** do bloco canônico
       do 02 — valor errado na arte é peça queimada, não é ajuste
 - [ ] Selo de oferta inventado numa peça marcada `OMITIR` / `NÃO CABE` no 06
@@ -37,6 +37,6 @@ Abra a imagem. Não avalie pela descrição que o modelo deu dela.
 - [ ] Os primeiros 3 elementos visuais diferem entre peças (a Meta lê similaridade)
 - [ ] **Ao menos uma peça da leva carrega oferta, preço e garantia visíveis.** Leva
       inteira sem oferta não sobe
-- [ ] **Toda peça aprovada está em 1:1 (1080×1080).** 9:16 só entra como extra quando pedido
+- [ ] **Toda peça aprovada está em 4:5 (1080×1350).** 9:16 só entra como extra quando pedido
 
 Registre o resultado por peça: `APROVADA` / `REPROVADA — motivo` / `REFAZER COPY`.

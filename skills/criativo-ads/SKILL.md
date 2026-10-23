@@ -74,6 +74,34 @@ Quem delega **também** cumpre este gate antes de escrever o briefing do pane �
 o orquestrador junta a referência e a leitura da oferta (ver `PROMPT-PADRAO-PANE.md`,
 bloco `[OFERTA-PRIMEIRO]`).
 
+## ⛔ GATE 0.2 — LEVA EM VOLUME: PERSONA EM DIA + BIBLIOTECA ANTES [regra da dona 23/10/2026]
+
+Antes de planejar qualquer leva (ex.: 30 do teste 3× 1-1-10):
+1. **Persona atualizada e conferida:** `PERSONA-E-ANGULOS.md` da oferta bate com a página no ar
+   (o que vende / não é / preços / bônus) e as dores têm medida. Resumo da oferta errado = para aqui.
+2. **Biblioteca de Anúncios:** buscar infoprodutos do **mesmo nicho e de nichos vizinhos**, em
+   **qualquer idioma/mercado** (US em inglês, BR em português, LATAM em espanhol — o que roda lá a
+   gente modela e adapta). Foco nos anúncios **ativos há mais tempo** (os que estão funcionando) e
+   em **que formato** eles usam (vídeo/estático/carrossel, UGC, expert, caixa de perguntas, antes/
+   depois…). Registra em `OFERTAS/<slug>/pesquisa/BIBLIOTECA-<data>.md` (link, dias ativo, formato,
+   gancho) e usa como referência real da leva (Gate 0.1). Mecânica: `mvt-minerar` (falso-zero,
+   `validar-robusto.sh`). A Biblioteca é o nosso "acervo vivo" de formato e gancho: busca
+   produtos parecidos (ex.: "aprender tarot visual") em ES/EN/PT, pega os ativos há mais tempo e
+   **disseca** o gancho (ex.: "saber o significado da carta é uma coisa, mas quando sai X com Y…") e a
+   sequência (mostrou cartas → mostrou o material → abriu uma página…) — e adapta.
+4. **Plano em texto primeiro, dona aprova, só então produz:** plano da leva peça a peça + ficha de
+   cada personagem (expert: quem é, gênero, idade, visual, ambiente, voz — casado com o produto e o
+   país). Nada é gerado antes do OK.
+3. **Leva com variedade máxima:** formatos e ângulos o mais variados possível; nenhum tipo se
+   repete dentro da mesma campanha. Variar em 3 eixos, em vídeo E imagem:
+   - **origem do gancho:** corte de vídeo do YouTube · cena orgânica estilo TikTok · o material
+     direto na tela;
+   - **função da peça:** mostra o material · ataca a dor/ângulo · **quebra de objeção** ·
+     **narrativa/história** · combinação delas;
+   - **formato** (vídeo/estático/carrossel e seus tipos).
+   Porquê: a pessoa vê o ecossistema inteiro — um compra na quebra de objeção, outro (pra quem a
+   objeção não faz sentido) compra numa peça específica. Cada peça é ponto de contato (§21).
+
 ## ⛔ GATE 0.1 — SEM REFERÊNCIA REAL NÃO EXISTE CRIATIVO [regra da dona 10/10/2026]
 
 **Nenhum criativo começa sem antes material de verdade da oferta na mão.** Este gate vem
@@ -281,10 +309,36 @@ montar leva de variação ou decidir quantidade.
 | Entregável digital (PDF/guia/app) | demonstrativo: b-roll + tela + narração (Modo E) | `criativo-ads-video-orq` + `narracao-hub-tts` + `get-brolls` |
 | Entregável digital (PDF/guia/app), SEM gravação de tela disponível (ou pra alternar com a de Modo E) | **demonstrativo "mesa real" por IMAGEM→VÍDEO**: gera foto realista (pessoa+aparelho+páginas reais do entregável) e anima no Flow | `criativo-ads-video-orq` §E.0c + `gpt-imagem-playwright` (imagem) + `mecanica-flow.md` (animação) |
 
-**Tamanho:** estático e carrossel saem em **1:1 (1080×1080)** em todos os cards, por
-padrão (regra da dona, 04/10/2026). 4:5 ou 9:16 só se o usuário pedir. Vídeo continua
+**Tamanho:** estático e carrossel saem em **4:5 (1080×1350)** em todos os cards, por
+padrão (regra da dona, 23/10/2026 — antes era 1:1). 9:16 só se o usuário pedir. Vídeo continua
 9:16. No carrossel demonstrativo, as páginas do entregável são arquivos reais
-encaixados no 1:1; GPT não desenha página do produto.
+encaixados no 4:5; GPT não desenha página do produto.
+
+**Mix por campanha + carrossel (regra da dona, 23/10/2026):** toda campanha de teste (1-1-10 ou
+1-1-3) leva **vídeo + estático + carrossel no mesmo conjunto** (metaads-kevones §21). **Proporção da
+leva: 70% imagem / 30% vídeo ou 50/50 — NUNCA 70% vídeo** (dá trabalho demais) (ex.: 10 por
+campanha = 6-7 imagens + 3-4 vídeos). **Sem mockup:** imagem = páginas reais do entregável em cena orgânica estilo iPhone, texto
+como de story, em **vários aparelhos** (celular, tablet, notebook), nunca só impresso. **Anúncio
+nunca fala "PDF"** — vendemos material organizado na área de membros; PDF não é benefício.
+**Vibe das imagens (dona 23/10):** todas orgânicas estilo iPhone (derruba CPM), exceto a "fase de
+impacto" (fundo branco, texto preto e vermelho). Sem moldura, sem cara de anúncio montado.
+**Caixa de perguntas em story:** pergunta na imagem + alguém (de preferência o expert) respondendo
+com o material na mão, orgânico. **Safe area:** ou gera 2 imagens (9:16 e 4:5), ou monta a 1ª já
+pensando no corte do feed 4:5 (nada importante fora da faixa central).
+**Dentro da MESMA campanha, varia o tipo de cada formato** — nunca 3 carrosséis iguais nem 4
+vídeos do mesmo estilo. Carrossel, tipos:
+1. **Imagem principal + páginas:** card 1 = a arte principal (a que já usamos/validou) e o resto =
+   páginas reais do entregável (regra "1 arte gerada + páginas reais" acima).
+2. **Só páginas, sem imagem principal:** todos os cards são páginas reais do entregável.
+3. **Estilo Henrique:** estático por card — as páginas reais em vários aparelhos (sem mockup), a dor
+   que a gente está usando, e card de CTA "mirá por dentro" (ver o produto por dentro).
+- Página do entregável é A4 (1:1,414) → recorta **do topo até a altura do 4:5** (≈ 88% de cima),
+  full bleed, sem moldura.
+Vídeo e estático também variam (método Rodrigo abaixo): UGC com o entregável impresso na mão
+mostrando/indicando, **expert reagindo/montando o material** (Flow, personagem casado com país e
+nicho), antes/depois, peça com preço × sem preço, e os formatos da biblioteca `modelagem-escalados`
+(caixa de perguntas, expert respondendo a caixa de perguntas, print de WhatsApp, notícia etc.).
+
 | Expert com rosto | reels orgânicos → campanha de seguidores → conversão | `criativo-ads-video-orq` + regra em `references/kevones-criativo.md` |
 | TikTok Shop / achadinho | — | `tiktok-shop` (orquestradora própria) |
 | Banner de checkout / imagens da página | não é criativo de anúncio | `banner-checkout-gpt` / `imagens-pagina-low` |

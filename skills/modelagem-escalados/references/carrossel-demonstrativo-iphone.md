@@ -7,8 +7,8 @@ ferramenta). É o irmão estático do criativo demonstrativo em vídeo (Modo E d
 **Estética "ugly iPhone":** imagem que parece foto/print de celular, não arte de
 agência. Print nativo, enquadramento meio torto, luz de ambiente, sem gradiente,
 sem moldura polida, sem fonte de design. O feio é proposital: é o que faz o Meta
-e a pessoa lerem como orgânico. **Proporção 1:1 (1080×1080) em todos os cards**, tudo
-dentro da safe area (regra da dona, 04/10/2026; 4:5 só se pedido).
+e a pessoa lerem como orgânico. **Proporção 4:5 (1080×1350) em todos os cards**, tudo
+dentro da safe area (regra da dona, 23/10/2026 — antes era 1:1).
 
 ## Card 1 (capa) — DUAS estruturas válidas (regra da dona, 2026-10-04)
 
@@ -43,7 +43,8 @@ reais do entregável**. Os cards de benefício vêm antes das páginas, não dep
 
 Regras:
 - **Os cards 3–6 são o entregável de verdade** (print/gravação/páginas exportadas), nunca imagem gerada de "como seria". Mascare e-mail, nome, token e dado pessoal.
-- **Encaixe das páginas reais no 1:1:** preencha o card de ponta a ponta (full bleed),
+- **Página A4 → 4:5 (23/10/2026):** entregável é A4; recorta do topo pra baixo até fechar o 4:5 (≈ 88% de cima da página).
+- **Encaixe das páginas reais no 4:5:** preencha o card de ponta a ponta (full bleed),
   **sem moldura/borda** — página centralizada "com respiro" e borda branca sobre fundo
   escuro foi reprovada pela dona ("borda feia", 08/10). Recorte é livre: corte um
   pedaço da imagem, inclusive o fim, se a fonte for longa/PDF — o que importa é o

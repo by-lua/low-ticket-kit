@@ -1,4 +1,4 @@
-# PROMPT 07 — GERAÇÃO DA ARTE (estático 1:1, 1080×1080)
+# PROMPT 07 — GERAÇÃO DA ARTE (estático 4:5, 1080×1350)
 
 > O prompt que efetivamente gera. Só rode com copy aprovada (06) e brandkit colado.
 
@@ -65,14 +65,14 @@ inventar moldura, inventar ícone, mudar o formato do botão.
 
 ## Formato
 
-**Padrão: uma peça 1:1 (1080 × 1080 px) para feed.** Estático e carrossel saem em
-1:1 por padrão (regra da dona, 04/10/2026). Não se gera 4:5 separado.
+**Padrão: uma peça 4:5 (1080 × 1080 px) para feed.** Estático e carrossel saem em
+4:5 por padrão (regra da dona, 23/10/2026 — antes era 1:1). Não se gera 4:5 separado.
 
-- **Formato:** Feed (1:1)
-- **Dimensões:** 1080 × 1080 px · **Proporção:** 1:1 · **Idioma:** PT-BR
+- **Formato:** Feed (4:5)
+- **Dimensões:** 1080 × 1080 px · **Proporção:** 4:5 · **Idioma:** PT-BR
 - **Quantidade de versões:** [QUANTIDADE]
 
-### Área segura (1:1)
+### Área segura (4:5)
 
 - **Margem: 60 px** em todos os lados. Headline, copy, mockup, rosto, logo, selo e CTA
   ficam **inteiros** dentro dela. Se não couber, corta elemento — não reduz tudo até
@@ -86,7 +86,7 @@ inventar moldura, inventar ícone, mudar o formato do botão.
 Gerar 1080 × 1920 **somente** quando a dona pedir Stories ou Reels. Nesse caso, reserve
 **290 px no topo** e **360 px na base** para interface (nome de perfil, legenda, botões),
 e mantenha o conteúdo essencial na caixa 960 × 1270 centralizada. Essa variação é extra:
-não substitui o 1:1.
+não substitui o 4:5.
 
 ## Resultado esperado
 
