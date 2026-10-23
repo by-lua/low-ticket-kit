@@ -19,7 +19,8 @@ Legenda: `YT:id` = vídeo (`INDICE-YOUTUBE.md`); `Aula N` = `INDICE-CURSO-RESUMO
 6 horário · 7 CPA subindo · 8 fadiga · 9 público de base e seguidores · 10 ticket baixo ·
 11 bloqueio · 12 volume · 13 produto novo (lançamento) · 14 campanha pausada ·
 15 densidade e contradição · 16 gargalo (régua) · 17 ritmo de teste (quantos 1-1-3 por dia) · 18 escalar do criativo validado (CPA/BidCap/1-1-10) ·
-19 mineração por demanda (vídeo escalado → produto) · 20 meta de custo por resultado.
+19 mineração por demanda (vídeo escalado → produto) · 20 meta de custo por resultado ·
+21 metodologia completa 22/10/2026 (teste 3×1-1-10, ponto de contato, fases de escala).
 
 ---
 
@@ -469,6 +470,83 @@ de lucro, 30d R$ 6.000. Uma campanha sozinha: 59 vendas, CPA R$ 19, R$ 1.140 de 
   validado, não uma cópia. — `YT:Hwu1hmmM4_Q`.
 
 ---
+
+## 21. Metodologia completa — live de conteúdo 22/10/2026
+
+Fonte: call `12-Live_de_conteudo_metodologia_completa_22_10_26.md` (transcrição completa,
+`SKILL-KEVONES/transcricoes/calls-lives/`). Ele mesmo trata como atualização consolidada de
+teste+isolamento+escala, não vídeo isolado. **Onde diverge do que já estava aqui, vale esta
+(mais nova, 22/10/2026).**
+
+- ⚠️ **Estrutura de teste atualizada — SUPERA §1 e §17.** Duas opções, mesmo total de 30
+  criativos testados:
+  - Pouca verba: **3 campanhas, 1 conjunto (Advantage+) cada, 10 criativos por conjunto**
+    (1-1-10). ~R$30-35/campanha → ~R$100-105 total em 48h.
+  - Mais verba: **10 campanhas 1-1-3** (3 criativos cada). Mesmos 30 criativos, pulveriza
+    menos, mais rápido. ~R$300-350/dia.
+  - §1 dizia "1 campanha, 2-3 conjuntos, até 3 criativos por conjunto" (`RQsTWULE0KQ`,
+    05/09/2026) — isso é **sub-dimensionado** frente a esta regra nova: volume mínimo de teste
+    por oferta é 30 criativos (3×10 ou 10×3), não 3-9. §17 (3× 1-1-3 no mesmo dia = 9 criativos)
+    também fica abaixo do piso de 30 — tratar §17 como "pelo menos, não o ideal".
+  - Mix de formato (vídeo + estático + carrossel) dentro do MESMO conjunto, não em conjuntos
+    separados.
+- **Métrica única pra decisão em 48h: IC ≤ 10% do ticket.** Confirma e reforça §2/§12 (não
+  contradiz). Não decide nada antes de 48h completas — mesmo com CPA estourado, se ainda não
+  fechou 48h não mata.
+- ⚠️ **Isolamento — refina §4.** "Estourou CPA mesmo vendendo → mata" é absoluto aqui (teste),
+  sem exceção por ROI de ecossistema (§4 último item fala de não matar só por ROAS baixo
+  quando HÁ finalização — são momentos diferentes: §4 é depois de validado, isto aqui é dentro
+  do teste de 48h). **Toda campanha nasce pra virar 1-1-1, EXCETO quando mais de um criativo
+  mantém o CPA** — nesse caso NÃO force pra 1-1-1, fica 1-1-N com todos que mantêm CPA. Isolar
+  errado (matar os que ainda geram IC/vendem, deixando só "o melhor") quebra o **ponto de
+  contato** e pode fazer até o vencedor isolado parar de vender (caso real citado: aluno
+  "Marco"). Mantém ativo todo criativo que gera IC barato em volume, mesmo sem vender aquele
+  dia — ele sustenta consciência pros outros.
+- **Gargalo por correlação de métricas (reforça §16):** IC caro + CTR<2% + custo de LPV>R$1,30
+  → problema é **criativo**. IC caro mesmo com CTR alto e LPV barato → problema é **oferta/
+  página mal explicada** (não é estética — "a página pode ser horrorosa, se a oferta é boa ela
+  vende").
+- **Fases de escala, combináveis simultaneamente (reforça/detalha §5, §18, §20):**
+  1. Volume de criativo primeiro, sempre (nunca escale só verba de criativo velho).
+  2. Escala diária: sobe orçamento a partir da 2ª venda do dia, até o valor já faturado; desce
+     quando IC do dia > média 7d, redireciona a diferença pra campanha que performa melhor.
+  3. Escala progressiva: campanha mantendo CPA por 7 dias seguidos já **começa** o dia com
+     orçamento maior (não precisa subir devagar).
+  4. BidCap: duplica validados 1-1-1, lance = CPA médio 7d. Só criativo já validado, nunca
+     testa criativo novo em BidCap. Verba de partida R$100, sobe 10x até achar ponto de gasto,
+     recua pra um meio-termo.
+  5. Meta de custo: duplica de novo, mesmo orçamento do teste, lance R$2-3 abaixo da média paga.
+  6. Lateralização: contas de anúncio separadas (pixel compartilhado da matriz), uma só BidCap,
+     uma só meta de custo, uma só campanha padrão — só com criativos JÁ validados na matriz,
+     nunca testa nelas.
+  - Exemplo-ordem de grandeza: 30 testados → 5 validados → até 15 campanhas de escala (5+5+5)
+    rodando ao mesmo tempo.
+- **Variação de hook em criativo validado: confirma que NÃO funciona** (mesmo conteúdo, só
+  "look" diferente, não aumenta consciência) — alinhado com §18/§20 (variar cena/ambiente, não
+  copy). CTR cair com o tempo rodando é esperado, não é sinal de matar.
+- **Sem fórmula fixa de "quantos criativos novos por semana"** — depende do ecossistema já
+  entregar o retorno desejado; quer mais lucro, sobe volume. (§7 continua valendo como
+  referência numérica concreta: 3-5 a cada 2 dias na montagem, 2-3/semana com volume — isto
+  aqui só confirma que não é regra rígida.)
+- **Oferta oscilando 0x0/lucro/prejuízo nos primeiros dias ainda é oferta validada** — ajusta
+  oferta (ticket médio com bump, ou IC/CPA mais barato) antes de desistir.
+
+## Ponte com observação própria da dona sobre CPA-alvo por ticket médio (22/10/2026, não é do Kevones)
+
+Anotação feita durante a mesma sessão, **extensão nossa pra produtos de ticket mais baixo/
+qualidade menor que o padrão dele** — não confundir com regra dele:
+
+- **Ticket médio de referência:** soma o preço dos dois planos (ex.: principal + upgrade) e
+  divide por 2. Ex.: R$30 + R$33 → ticket médio R$31,50.
+- **CPA-alvo (orçamento de campanha) = 60% do ticket médio.** Ex.: ticket médio R$31,50 →
+  CPA-alvo ~R$16-19 por campanha.
+- Isso é **diferente** da regra do Kevones (IC ≤ 10% do ticket, decidido só depois de 48h) —
+  aqui é um jeito de calcular o **orçamento de partida** da campanha a partir do ticket médio,
+  não o limite de IC. As duas regras não se substituem: usar o CPA-alvo (60% do ticket médio)
+  pra dimensionar verba, e IC ≤10% do ticket pra decidir manter/matar depois de 48h.
+- Já existe uma régua parecida em §10 (CPA-alvo da meta de custo = 60-80% do ticket médio) —
+  esta observação bate com a ponta de baixo desse intervalo (60%). Tratar como o mesmo
+  princípio, não como regra nova conflitante.
 
 ## Como manter
 

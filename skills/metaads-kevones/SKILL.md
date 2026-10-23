@@ -65,6 +65,15 @@ o checklist acima, todo dia.
    fadiga (CPA subindo 14+ dias no mesmo criativo), pico de horário mudando, veredito por
    campanha. Compara com a semana anterior antes de decidir subir volume.
 
+## Estrutura de teste atual (22/10/2026, supera o número antigo do checklist)
+
+Volume mínimo de teste por oferta nova: **30 criativos**, em uma das duas formas (`DECISOES.md`
+§21): **3 campanhas 1-1-10** (pouca verba, ~R$100-105 total) ou **10 campanhas 1-1-3** (mais
+verba, ~R$300-350/dia). Mix vídeo+estático+carrossel no mesmo conjunto. Decide só depois de 48h,
+só pelo IC (≤10% do ticket). Isolamento: 1-1-1 só quando um único criativo indiscutivelmente
+mantém o CPA — se mais de um mantém, fica 1-1-N (matar os que ainda geram IC quebra ponto de
+contato, pode derrubar até o "vencedor"). Ler §21 inteiro antes de montar teste novo.
+
 ## Como usar
 
 1. **Campanha em análise → `references/DECISOES.md` primeiro.** Regras SE→ENTÃO por

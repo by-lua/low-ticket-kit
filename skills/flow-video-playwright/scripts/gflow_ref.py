@@ -72,11 +72,35 @@ async def _clear_ingredients(page) -> None:
         raise UiSelectorDriftError(detail="gflow_ref: não consegui limpar anexos antigos do composer")
 
 
+async def _close_overlays(page) -> None:
+    """Seletor/prévia do anexo anterior às vezes fica aberto por cima do "+" e o próximo
+    clique dá timeout (medido 23/10/2026). Fecha com Escape até sumir o fundo do overlay."""
+    for _ in range(4):
+        if not await page.locator(".cdk-overlay-backdrop, .cdk-overlay-pane [role=option]").count():
+            return
+        await page.keyboard.press("Escape")
+        await page.wait_for_timeout(700)
+
+
+async def _click_add(page) -> None:
+    for tentativa in range(3):
+        await _close_overlays(page)
+        try:
+            await page.locator(ADD_BUTTON).first.click(timeout=8000)
+            return
+        except Exception:
+            if tentativa == 2:
+                raise
+            _log("botão + coberto, fechando overlay e tentando de novo")
+            await page.mouse.click(5, 5)
+            await page.wait_for_timeout(1000)
+
+
 async def _attach(page, path: Path) -> None:
     before = await _ingredients(page)
     name = f"pov-{path.stem}-{secrets.token_hex(3)}{path.suffix.lower()}"
     stem = name.rsplit(".", 1)[0]
-    await page.locator(ADD_BUTTON).first.click(timeout=8000)
+    await _click_add(page)
     up = page.locator(f'{OVERLAY} button:has(mat-icon:text-is("upload"))').first
     await up.wait_for(state="visible", timeout=10000)
     dialogs = await page.locator("mat-dialog-container").count()
@@ -124,7 +148,7 @@ async def _attach(page, path: Path) -> None:
         if tentativa > 0:  # seletor fechou ou não incluiu: reabre e procura o item já enviado
             _log(f"anexo não entrou, tentando de novo ({tentativa})")
             if not await page.locator(f"{OVERLAY} [role=option]").count():
-                await page.locator(ADD_BUTTON).first.click(timeout=8000)
+                await _click_add(page)
                 await page.wait_for_timeout(2000)
         # Dois comportamentos medidos 22/10: clicar no item já inclui no comando, OU abre a
         # prévia com o botão "Incluir no comando". Trata os dois.
@@ -139,9 +163,7 @@ async def _attach(page, path: Path) -> None:
             if await inc.count():
                 await inc.click(timeout=8000)
                 await page.wait_for_timeout(1500)
-    if await page.locator(f"{OVERLAY} [role=option]").count():
-        await page.keyboard.press("Escape")  # fecha o seletor se ficou aberto
-        await page.wait_for_timeout(600)
+    await _close_overlays(page)  # fecha seletor/prévia se ficou aberto
     after = await _ingredients(page)
     if after != before + 1:
         raise UiSelectorDriftError(
