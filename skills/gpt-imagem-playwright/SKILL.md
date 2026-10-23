@@ -1424,3 +1424,44 @@ Mova para `HOOK/IMG/cena-N.png` (ou `IMG/cena-N.png` no Modo A).
 
 ---
 
+## Páginas de ATIVIDADE (folha "w" — worksheet imprimível) de entregável low ticket
+
+Entregável com fichas de atividade (NeuroActiva e o mesmo padrão em qualquer oferta do gênero)
+tem DOIS arquivos por ficha: `pagina-NNN` (card de instrução pro profissional, foto real — já
+é gerado no GPT) e `pagina-NNNw` (a folha que a PESSOA imprime pra FAZER a atividade — sopa de
+letras, labirinto, sequência, cálculo, ordenar passos). O "w" **nunca** pode ser código/Pillow
+desenhado (regra da dona, 23/10/2026 — ficou com ícone de arco-íris chapado, "psicodélico") —
+tem que ser gerado no GPT no mesmo padrão visual navy/dourado das fichas.
+
+**Referência de qualidade pra sopa de letras / word search e similares:** quando faltar um bom
+modelo visual pra um tipo de exercício, procurar referência no Pinterest (busca de imagem) ou
+nos materiais do mineirador/concorrente que já foi modelado pra oferta (a dona cita "o Kim" como
+exemplo de modelador que já teve exercícios assim — ver `pesquisa/` da oferta ou a mineração
+registrada). Nunca inventar o layout do zero sem referência quando o tipo de exercício for
+visualmente específico (grade de letras, labirinto com caminho).
+
+### Lote de página-de-atividade NÃO escala como lote de capa — confirme antes de prometer N de uma vez
+
+Capas de produto (mesmo layout, só troca título/cor) saíram 9-10 de 9-10 numa mensagem só. Página
+de atividade (cada uma com layout e conteúdo DIFERENTE — grid, linhas de resposta, tabela) **não
+tem o mesmo comportamento**: testado em produção (NeuroActiva V5, 23/10/2026), um pedido de 8
+atividades diferentes numa mensagem só devolveu **1**. Um "continua as outras" no mesmo chat
+devolveu só mais **1** (às vezes repetiu/variou a MESMA ficha em vez de avançar pra próxima).
+
+**Não prometa ao usuário "N de uma vez" pra página de atividade.** Planeje 1 imagem nova por
+rodada de "próxima", mesmo pedindo "generate the next ones" — e sempre cheque o `md5` de cada
+download contra os anteriores antes de aceitar, porque o modelo pode devolver uma REPETIÇÃO da
+ficha anterior com nome de arquivo novo em vez da próxima.
+
+Fluxo que funciona: 1) chat novo no projeto, anexa 1-2 referências de estilo (card aprovado +
+piloto de atividade aprovado); 2) manda o pedido completo com todas as N fichas descritas (não
+custa nada, mesmo que só a primeira saia); 3) pede "ahora genera las siguientes" repetidamente,
+baixando e conferindo hash a cada resposta; 4) se vier repetida, pede explicitamente "wait, that
+was HOJA 00X again, now generate HOJA 00Y" citando o número que falta.
+
+Essa é uma tarefa de MUITAS gerações (um módulo de 32 fichas = ~32 rodadas de "próxima"). Avise o
+usuário do volume real antes de começar um lote grande, e reporte em marcos (a cada 5-8 prontas),
+nunca uma por uma.
+
+---
+
