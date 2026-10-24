@@ -258,6 +258,12 @@ provedor até a primeira venda paga"**:
      Por isso: **conferir por GET** e, se tiver zerado `description`/`domain`, **restaurar com o objeto completo**.
   5. **Prova:** `curl -s orbit.cooud.com/prices/<offerId> | jq '.course.thumbnail_url'` (GET é público) +
      `curl -o /dev/null -w '%{http_code}' https://avatars.cooud.com/<id>` → **200 image/webp**.
+- **"Imagem embaçada" no checkout = quase sempre display, não upload:** a thumb do produto renderiza
+  pequena (~70px) no resumo do pedido; print com zoom borra qualquer imagem nítida. **Antes de reupar,
+  provar com a fonte real:** `GET orbit.cooud.com/prices/<offerId>` → `course.thumbnail_url` →
+  baixar (`curl`) e checar `identify` (resolução/peso). Se a fonte bate com o arquivo local
+  (`checkout/banners/...`) e tá nítida, **não é bug de upload** — fecha sem reupar. (GeriNeuro combo,
+  24/10/2026: fonte 1080×1080 253KB, idêntica à local — blur era só o zoom do print.)
 - **Banner do checkout:** campos de metadata **`banner_url`** e **`checkout_bg_image`**. O upload
   NÃO apareceu no bloco Visual (só Explorar temas / Personalizar / Mais opções / Textos).
   Para subir imagem do produto, usar o `input[type=file]` acima.
