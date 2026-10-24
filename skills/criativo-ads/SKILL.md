@@ -33,14 +33,11 @@ description: Porta de entrada ÚNICA de criativo de anúncio (Meta/TikTok) — v
 > | Pedido | Ler nesta ordem |
 > |---|---|
 > | "3 campanhas", 1-1-3, 1-1-10, teste em grupos | GATE 0→0.2 → `⭐ TESTE EM GRUPOS` → `🗺️ AS 3 TRILHAS` → `Como montar a matriz 1-1-3` |
-> | Estático avulso ou de leva | GATE 0.1 → `Qual formato` → regras de estático (orgânico iPhone, margem de segurança, digital+impresso, peça de preço) → `modelagem-escalados` → `gpt-imagem-playwright` |
-> | Carrossel | igual ao estático + os 3 tipos de carrossel (`Dentro da MESMA campanha`) |
-> | Vídeo demonstrativo (sem personagem, ou b-roll+tela) | GATE 0.1 → `Qual formato` → `criativo-ads-video-orq` E.0 → **E.0b** → **E.2b** (receita completa: 1 clipe/frase, split 70/30, 1.15x timeline) |
-> | Vídeo com expert/UGC no hook | mesma linha acima — expert/UGC é só a FONTE do hook (camada "Guia" do Modo E), **o resto segue E.2b igual**, nunca "modo à parte" |
-> | "Criativo estilo Rodrigo" / leva 1-3-9 | seção `"Criativo estilo Rodrigo"` abaixo (3 tipos + catálogo de cor/cenário) → **E.0b/E.2b** pro vídeo |
+> | Qualquer peça de IMAGEM (estático, carrossel, peça de preço, antes/depois) | GATE 0.1 → **`references/tipos-de-imagem.md`** (índice único, qual tipo + checklist) → `modelagem-escalados` → `gpt-imagem-playwright` |
+> | Qualquer peça de VÍDEO (demonstrativo, expert, UGC, 1-3-9, caixa de perguntas, hook-sobre-vencedor) | GATE 0.1 → **`criativo-ads-video-orq/references/estilos-de-video.md`** (índice único, qual estilo + checklist) → E.2b |
+> | "Criativo estilo Rodrigo" / leva 1-3-9 | seção `"Criativo estilo Rodrigo"` abaixo (3 tipos + catálogo de cor/cenário) → `estilos-de-video.md` linha "1-3-9" |
 > | Reaproveitar formato que já escala (biblioteca) | `modelagem-escalados` (103 formatos) ou tabela de 16 vídeos escalados em `criativo-ads-video-orq` (busca ANTES de inventar corte) |
 > | Vídeo "mesa real" (imagem→Flow, sem gravação de tela) | `criativo-ads-video-orq` §E.0c (catálogo de takes A-O) |
-> | UGC puro (pessoa relato, 1ª pessoa) | `🗺️ AS 3 TRILHAS` (trilha UGC) → `Qual formato` linha "Expert com rosto" |
 >
 > **Checagem de repetição (regra da dona, 24/10/2026):** antes de fechar a leva, relistar as peças
 > já feitas (tipo+ângulo+formato) e confirmar que nenhuma repete tipo+estrutura dentro da mesma
