@@ -14,6 +14,33 @@ seco) — o que muda de estilo pra estilo é só a FONTE do hook e quem aparece.
 | **Hook novo sobre vencedor (B/B2/C)** | já existe vídeo vencedor, só troca ângulo | hook novo gravado/gerado | reaproveita o CORPO do vencedor, sem remontar do zero |
 | **Caixa de perguntas em vídeo** | formato da biblioteca de escalados | expert respondendo pergunta em tela | curto, geralmente sem split — 1 cena só, não força E.2b inteiro |
 
+## Passo 0 — mapear TODOS os assets da oferta antes de montar (regra da dona, 24/10/2026)
+
+Erro repetido nesta sessão: montar com só 1-2 fontes achadas de cara, quando a pasta tinha mais
+— ou gerar card CTA com lâmina avulsa quando a página já tinha mockup completo pronto pra baixar.
+Antes de escrever o primeiro comando de ffmpeg, varrer e listar (não confiar em memória de sessão
+anterior, a pasta muda):
+
+```bash
+find criativos/MATERIAL-ENTREGAVEL -iname "*.mp4"        # gravações reais de tela (celular/PC)
+find criativos/FLOW-TAKES -iname "*.mp4"                  # takes "mesa real" já gerados no Flow
+find criativos/BROLL-3D -iname "*.mp4"                    # b-roll 3D (todos os clipes, não só 1)
+find criativos/*/VIDEO -iname "cta-card*.mp4"              # card CTA já montado em OUTRA peça (reusa, não regenera)
+curl -s "<url-da-página>" | grep -oiE '(src|srcset)="[^"]*\.(jpg|png|webp)[^"]*"' | grep -iE "mockup|cover|capa|portada|producto"  # mockup real da página, se existir
+```
+
+Regras fixas desse mapeamento:
+- **Gravação real de celular/PC:** `MATERIAL-ENTREGAVEL/` é sempre a 1ª parada — nunca gerar
+  substituto, nunca usar só a 1ª encontrada se houver mais de uma (usar TODAS, variedade de cena).
+- **Takes Flow:** se `FLOW-TAKES/` já tem um pronto que serve pra cena, reusar — nunca gerar de
+  novo sem checar primeiro (`criativo-ads-video-orq` §E.0c é pra gerar quando NÃO existe).
+- **B-roll 3D:** a pasta normalmente tem vários clipes (ex. 5), cada um de um exercício/ângulo —
+  usar o que casa com o roteiro daquele vídeo, nunca sempre o mesmo clipe pra todos os criativos.
+- **Card CTA:** se outra peça da MESMA leva já montou o card (fundo preto+mockup+seta), reusar o
+  arquivo, só recopiar pra pasta nova — nunca remontar do zero. Mockup: pasta local
+  `produto/MOCKUPS-NOSSOS/` primeiro, **página de vendas no ar** depois (baixar a imagem real via
+  `curl`), lâmina avulsa só se nenhum dos dois existir.
+
 ## Checklist antes de montar QUALQUER um destes
 
 1. Qual estilo da tabela acima? (nomeia antes de começar, não decide no meio)

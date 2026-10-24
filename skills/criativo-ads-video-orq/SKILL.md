@@ -84,7 +84,10 @@ permanente abaixo. Nenhum se repete.
     revisado só no papel não basta — o defeito nasce na escrita.
 
 11. **⛔ GATE DE VÍDEO COMPLETO — checklist obrigatório antes de marcar qualquer vídeo como
-    pronto (regra da dona, 24/10/2026, caso CRIATIVO-02 Atlas).** **Todo criativo de vídeo tem
+    pronto (regra da dona, 24/10/2026, caso CRIATIVO-02 Atlas). Regra permanente: toda vez que
+    um ajuste pedido pela dona não estiver coberto por este gate, ele entra aqui na hora — nunca
+    fica só no histórico da conversa pra "lembrar depois". A skill é o que o próximo criativo lê,
+    não o chat.** **Todo criativo de vídeo tem
     hook → desenvolve mecanismo → toca a dor → CTA, sempre — a FORMA varia (expert fala tudo em
     1 clipe longo, expert fala o hook e corta pro material, 2 cenas de 8s coladas), o conteúdo
     não. Qualquer caminho serve desde que o resultado faça sentido e fique bom — monte, assista
@@ -101,7 +104,9 @@ permanente abaixo. Nenhum se repete.
       dona, 24/10/2026, ref. visual anexada):** fundo PRETO, **mockup COMPLETO do produto**
       centralizado no topo — este card é a ÚNICA exceção da regra "nunca mockup" (essa regra vale
       pro MEIO do vídeo, material real; o card de fechamento é peça de marca, sempre mockup
-      polido) —, faixa com texto do CTA em branco sobre bloco de cor (roxo/marca), **seta
+      polido) —, faixa com texto do CTA em branco sobre bloco de cor (roxo/marca) — **texto é só
+      comando, NUNCA nome do produto** ("Clica aquí abajo y descubrí", nunca "Atlas Visual, mirá
+      por dentro" — regra da dona 24/10/2026, vale pro texto do card E pro VO falado) —, **seta
       VERMELHA embaixo com animação simples de descida (bounce down)**, formato Stories vertical,
       tudo bem centralizado. 1-2s de sobra no fim, nunca corta na última palavra. É um card
       dedicado (asset único reusado em toda a leva), não congelamento do último frame do vídeo.
@@ -114,6 +119,16 @@ permanente abaixo. Nenhum se repete.
       meio). Banco: `OFERTAS/mapa-do-tarot/criativos/BR/_ASSETS/trilhas/` (reusar entre ofertas,
       instrumental e livre de direitos).
     Vídeo que falha em qualquer um dos 4 não está pronto, mesmo com áudio+legenda+QA de boca OK.
+    - [ ] **Corte sincronizado ao CONTEÚDO da fala, não por duração arbitrária (regra da dona,
+      24/10/2026, caso CRIATIVO-01 — "você não está considerando a fala").** Antes de cortar
+      qualquer cena, leia os timestamps reais do `words.json`/alinhamento forçado e identifique O
+      QUE cada frase fala — a cena que entra naquele intervalo tem que ILUSTRAR aquela frase
+      especificamente, não ser um bloco de duração redonda (3s, 4s, 5s) encaixado na ordem que
+      sobrou. Ex.: a frase "es que nadie te mostró el movimiento" pede a cena que mostra o
+      movimento sendo mostrado — não a cena seguinte da fila só porque "deu a vez dela". Processo
+      certo: 1) gerar/alinhar o VO primeiro, 2) ler linha por linha o que cada trecho diz, 3) só
+      então escolher e cortar a cena no tamanho EXATO daquele trecho (não arredondar pra 3-4s
+      fixo — a duração do corte é a duração da frase).
     - [ ] **Variedade de cena, nunca segurar 1 take muito tempo (regra da dona, 24/10/2026, caso
       CRIATIVO-01).** Demonstrativo usa TODAS as gravações/takes disponíveis (ex.: 5 no total —
       3 gravações reais de tela + 2 takes Flow), nunca deixa 1-2 carregando o vídeo inteiro
