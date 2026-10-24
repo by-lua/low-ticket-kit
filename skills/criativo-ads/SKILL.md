@@ -117,7 +117,12 @@ Antes de planejar qualquer leva (ex.: 30 do teste 3× 1-1-10):
    Registro: `OFERTAS/<slug>/pesquisa/BIBLIOTECA-<data>.md` (anúncio · narrativa · repetições · dias · formato).
 2. **Biblioteca de Anúncios:** buscar infoprodutos do **mesmo nicho e de nichos vizinhos**, em
    **qualquer idioma/mercado** (US em inglês, BR em português, LATAM em espanhol — o que roda lá a
-   gente modela e adapta). Foco nos anúncios **ativos há mais tempo** (os que estão funcionando) e
+   gente modela e adapta). **Não é 1-2 termos soltos: é 5 palavras-chave + 1 hashtag por idioma**
+   (mercado + PT + EN no mínimo), igual ao passo 1.2 de
+   `criacao-low-ticket-mvt/references/PESQUISA-PADRAO-OFERTA.md` — mesma régua, não uma pesquisa
+   à parte. E a dor pesquisada é a da PERSONA ampla ("iniciante trava em quê"), nunca só o ângulo
+   que já foi sugerido na conversa — pesquisa estreita demais confirma o que já se queria achar,
+   não descobre dor nova (lição 24/10/2026, Mapa do Tarot BR). Foco nos anúncios **ativos há mais tempo** (os que estão funcionando) e
    em **que formato** eles usam (vídeo/estático/carrossel, UGC, expert, caixa de perguntas, antes/
    depois…). Registra em `OFERTAS/<slug>/pesquisa/BIBLIOTECA-<data>.md` (link, dias ativo, formato,
    gancho) e usa como referência real da leva (Gate 0.1). Mecânica: `mvt-minerar` (falso-zero,
