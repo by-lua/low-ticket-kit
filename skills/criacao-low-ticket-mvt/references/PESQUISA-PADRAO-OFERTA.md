@@ -14,10 +14,25 @@ Saída: 2 arquivos datados em `OFERTAS/<slug>/pesquisa/` + `PERSONA-E-ANGULOS.md
    no ar. A que mais repete e mais dura é a espinha da leva (Atlas: N1 = 23 de 26 vídeos).
 2. **5 palavras-chave + 1 hashtag por idioma** (idioma do mercado + PT + EN, mais o que fizer
    sentido), `active_status=active`, `country=ALL`. Palavras = **o que a pessoa procura**, não o
-   nome do produto.
+   nome do produto — em 3 camadas: **produto direto** (nome do nosso formato) · **sinônimo de
+   formato** (como o cliente chama de outro jeito) · **nicho vizinho** (mesma persona, outro
+   produto/método — é aí que aparece o formato que a gente não tinha pensado).
+   **Contador sozinho não é pesquisa:** ler os CARDS de verdade (não só o número) nas buscas
+   qualificadas (as com volume baixo/médio, onde mora o player de infoproduto, não o volume
+   genérico dominado por ruído) — mínimo 15-20 buscas no total, lendo cards reais na maioria delas
+   (lição 24/10/2026, Mapa do Tarot BR: pegar só contador em quase todo termo perdeu o concorrente
+   "Do Tarô à Renda", achado só quando finalmente abri os cards de um termo).
 3. Falso-zero: conferir `q` não-vazio e ler o contador aceitando `resultados`/`results`.
 4. Tabela de **anunciantes relevantes** (país, link, dias ativo, nº de anúncios, preço, pra quem
-   vende, formato/gancho) + descartados com motivo.
+   vende, formato/gancho) + descartados com motivo. **Preço sempre lido abrindo a landing do
+   anunciante, nunca só do texto do anúncio** (o texto às vezes omite ou mostra preço antigo).
+   Separe explicitamente **concorrência direta** × **vertical adjacente** × peças que só servem
+   de **"modelo de formato"** ou **"modelo de copy"** (nem todo achado é pra copiar o produto
+   inteiro, às vezes é só a estrutura). Modelo de tabela completo: `OFERTAS/luciola-atlas-movimiento/
+   pesquisa/BIBLIOTECA-AMPLIADA-2026-10-23.md` — esse arquivo (ou equivalente datado) é obrigatório
+   em `pesquisa/`, não é suficiente só preencher a seção MERCADO do `PERSONA-E-ANGULOS.md` com
+   contagem (o gate mecânico confere link ≥5 ali, mas não confere se os concorrentes foram lidos
+   de verdade — essa leitura é responsabilidade de quem pesquisa, não só do script).
 5. Tabela **narrativas × quem repete × dias** — o que roda há mais tempo em vários anunciantes.
 6. Tabela **âncora de preço**: quanto os vizinhos cobram e por quanto (unidades). Decide se o preço
    muda ou se muda só o argumento.
