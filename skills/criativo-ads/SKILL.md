@@ -356,7 +356,8 @@ encaixados no 4:5; GPT não desenha página do produto.
 **Estático = foto orgânica de celular, SEMPRE (dona, 23/10/2026):** todo estático e todo carrossel é cena real
 com cara de foto de iPhone, com fundo orgânico que faça sentido pra persona (academia, sala de aula, mesa de estudo,
 carro). **Única exceção: fase de impacto estilo Rodrigo** (fundo branco, texto preto/vermelho), que é formato
-específico. Caixa de perguntas também vale em imagem, e **quem responde é sempre o expert** da leva (nunca o UGC). **Texto = sempre texto de Stories**, na
+específico — **fundo branco OU preto** (varia peça a peça; texto preto+vermelho no branco, texto
+branco+vermelho no preto; regra da dona, 24/10/2026). Caixa de perguntas também vale em imagem, e **quem responde é sempre o expert** da leva (nunca o UGC). **Texto = sempre texto de Stories**, na
 fonte nativa do Instagram Stories (Classic, sans tipo SF/Helvetica, branco em caixa preta arredondada ou preto em caixa
 branca), como se a pessoa tivesse digitado no story. Nunca arte de designer. **Sempre anexar as referências** (cena-modelo
 + capa + páginas reais) no GPT.
@@ -366,6 +367,21 @@ Henrique, cena de vídeo que mostra o produto) mostra **os dois mundos**: pelo m
 notebook) **e** folhas impressas soltas. Combinações: celular + impresso · tablet + impresso · celular + tablet +
 impresso. Cada aparelho e cada folha com uma página diferente. Nunca só digital, nunca só impresso. Fora da regra:
 fase de impacto (só texto) e carrossel tipo 2 (só páginas).
+
+**Peça de preço — 2 tipos, nunca preço sozinho sem produto (regra da dona, 24/10/2026):**
+1. **Impacto com produto:** fase de impacto (fundo branco, texto preto/vermelho) onde a frase
+   NOMEIA o produto + o valor na mesma peça — nunca só "150 MAPAS · $10.900" solto sem dizer de
+   onde é (frase solta sem marca vira curiosidade vaga, não intenção de compra). Ex.: "Atlas
+   Visual: 150 mapas de anatomía y ejercicio. $10.900, acceso inmediato."
+   Vale também pra ganchos de impacto que NÃO são de preço (tipo #16 "No quieras ser ese
+   profesional…"): se a frase é solta sem contexto do produto, idem — adiciona nome do produto +
+   valor no fecho pra não ficar só curiosidade sem intenção.
+2. **Orgânico + preço:** reaproveita a MESMA composição ugly iPhone já aprovada de outra peça da
+   leva (cena, aparelhos, lâminas) e troca só o texto Stories pra incluir o valor — pode ser
+   **mais geral** (preço + nome do produto) ou **mais específico** (preço + a dor daquela cena).
+   Varia peça a peça, já que a leva tem muitas peças pra testar. Não precisa gerar cena nova: usa
+   os arquivos de `selecionados/` de uma peça já pronta como referência e só manda o prompt com o
+   texto novo.
 
 **Mix por campanha + carrossel (regra da dona, 23/10/2026):** toda campanha de teste (1-1-10 ou
 1-1-3) leva **vídeo + estático + carrossel no mesmo conjunto** (metaads-kevones §21). **Proporção da
@@ -378,6 +394,14 @@ impacto" (fundo branco, texto preto e vermelho). Sem moldura, sem cara de anúnc
 **Caixa de perguntas em story:** pergunta na imagem + alguém (de preferência o expert) respondendo
 com o material na mão, orgânico. **Safe area:** ou gera 2 imagens (9:16 e 4:5), ou monta a 1ª já
 pensando no corte do feed 4:5 (nada importante fora da faixa central).
+
+**⛔ Margem de segurança — TODO formato, sempre (regra da dona, 24/10/2026):** em qualquer
+criativo (estático 4:5, Stories 9:16, carrossel, vídeo), nada essencial (texto, rosto, produto,
+CTA) fica na faixa de cima (~top 14%) nem na de baixo (~bottom 20%) do quadro, nem muito perto das
+bordas laterais — é onde o botão de seguir/curtir/compartilhar, o nome do perfil, a legenda e a
+barra de progresso do Story cobrem a imagem. Vale pro texto Stories (já embutido no prompt) e
+também pra cena/produto/rosto do vídeo (framing da cena, não deixar personagem cortado perto do
+topo/base). Checar em TODA peça antes de fechar.
 **Dentro da MESMA campanha, varia o tipo de cada formato** — nunca 3 carrosséis iguais nem 4
 vídeos do mesmo estilo. Carrossel, tipos:
 1. **Imagem principal + páginas:** card 1 = a arte principal (a que já usamos/validou) e o resto =
