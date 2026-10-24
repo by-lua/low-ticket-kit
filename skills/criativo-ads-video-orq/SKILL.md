@@ -98,14 +98,18 @@ permanente abaixo. Nenhum se repete.
       mostra o movimento — com o mapa visual você vê os dois juntos"). Sem isso o criativo tem
       hook e nada depois.
     - [ ] **CTA nunca corta seco — tela final padrão fixa, usar em TODO vídeo da leva (regra da
-      dona, 24/10/2026, ref. visual anexada):** fundo PRETO, **mockup COMPLETO do produto
-      (capa renderizada limpa, não lâmina crua)** centralizado no topo — este card é a ÚNICA
-      exceção da regra "nunca mockup" (essa regra vale pro MEIO do vídeo, material real; o card
-      de fechamento é peça de marca, sempre mockup polido) —, faixa com texto do CTA em branco
-      sobre bloco de cor (roxo/marca), **seta VERMELHA embaixo com animação simples de descida
-      (bounce down)**, formato Stories vertical, tudo bem centralizado. 1-2s de sobra no fim,
-      nunca corta na última palavra. É um card dedicado (asset único reusado em toda a leva),
-      não congelamento do último frame do vídeo.
+      dona, 24/10/2026, ref. visual anexada):** fundo PRETO, **mockup COMPLETO do produto**
+      centralizado no topo — este card é a ÚNICA exceção da regra "nunca mockup" (essa regra vale
+      pro MEIO do vídeo, material real; o card de fechamento é peça de marca, sempre mockup
+      polido) —, faixa com texto do CTA em branco sobre bloco de cor (roxo/marca), **seta
+      VERMELHA embaixo com animação simples de descida (bounce down)**, formato Stories vertical,
+      tudo bem centralizado. 1-2s de sobra no fim, nunca corta na última palavra. É um card
+      dedicado (asset único reusado em toda a leva), não congelamento do último frame do vídeo.
+      **Onde achar o mockup (nessa ordem):** `produto/MOCKUPS-NOSSOS/` da oferta → se não
+      existir local, **a própria página de vendas no ar já tem** (ex. `/images/producto-portada.*`
+      — inspecionar o HTML da página com `curl`/grep por `mockup|cover|capa|portada|producto` nos
+      `src`/`srcset`) → baixar de lá antes de considerar "não existe mockup" e cair pra lâmina
+      avulsa. Lâmina real só é substituto quando a página também não tiver mockup nenhum.
     - [ ] **Trilha de fundo instrumental**, -18/-22dB, do início ao fim, contínua (nunca troca no
       meio). Banco: `OFERTAS/mapa-do-tarot/criativos/BR/_ASSETS/trilhas/` (reusar entre ofertas,
       instrumental e livre de direitos).
