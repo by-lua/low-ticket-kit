@@ -21,6 +21,14 @@ Skill `low-ticket-painel` (estado do negócio) → `OFERTAS/<slug>/CLAUDE.md` + 
 - `DESIGN-SYSTEM.md` da oferta (cores/fonte tirados da página no ar). Sem ele a cor sai errada.
 - Páginas REAIS do entregável em `criativos/PAGINAS-REAIS/` (do painel, da página no ar ou do `produto/`).
   Capa sem selo de PDF. Gravação de tela em `criativos/MATERIAL-ENTREGAVEL/` antes de qualquer vídeo.
+- **Checklist de vídeo (lembrete, não script):** antes de produzir vídeo demonstrativo, duas coisas têm
+  que existir — (1) gravação de tela do entregável (celular, dona grava, nunca gerada) e (2) 2-3 takes
+  "mesa real" no Flow (catálogo A-O, `criativo-ads-video-orq` §E.0c). Faltando qualquer uma, produz ela
+  primeiro — não é uma peça separada, é insumo de todo vídeo da leva.
+- **Todo vídeo da leva mostra os DOIS, sempre (regra da dona):** cada peça de vídeo monta gravação de
+  tela (mostra o app/painel de verdade, dá visibilidade/credibilidade) **+** take mesa real (material
+  físico, digital+impresso). Nunca só um dos dois — vídeo só com tela, ou só com mesa, está incompleto.
+  Mandatório em todo vídeo, não opcional por peça.
 
 ## 3 · Plano em texto → `gate-plano-leva.py` → OK da dona
 - 30 peças: 3 campanhas 1-1-10 (alternar 7 img + 3 vídeo / 6 + 4) ou 10 × 1-1-3. Toda campanha tem vídeo,

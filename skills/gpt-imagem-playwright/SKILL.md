@@ -696,11 +696,18 @@ cat <<'EOF' | agent-browser --session $S eval --stdin
 })()
 EOF
 sleep 3
-~/.claude/bin/lane.sh collect <lane>                 # ~/Downloads/<lane>-* → ~/Downloads/PLAYWRIGHT/<lane>/
-~/.claude/bin/lane.sh collect <lane> /caminho/do/projeto/assets   # e depois pro projeto
+~/.claude/bin/lane.sh collect <lane>                              # ~/Downloads/<lane>-* → ~/Downloads/PLAYWRIGHT/<lane>/
+~/.claude/bin/lane.sh collect <lane> /caminho/do/projeto/assets   # e JÁ de cara pro destino final do projeto
 ```
 
-**Staging obrigatório:** todo download passa por `~/Downloads/PLAYWRIGHT/<lane>/`. Quando o entregável estiver aprovado, mova pra pasta do projeto — nada fica largado em `~/Downloads`.
+**Collect é parte do download, não um passo depois — rode os dois `lane.sh collect` na mesma
+chamada, logo após o `sleep 3` (regra da dona, 24/10/2026: "não pode ficar na Downloads, tem que
+cair na pasta do projeto").** Sem o 2º `collect` (com o caminho do projeto), o arquivo fica preso em
+`~/Downloads/PLAYWRIGHT/<lane>/` e vira exatamente o erro que mais acontece: imagem baixada mas
+nunca entregue na pasta certa. **Nunca espere "aprovação" pra mover** — mova pro destino do
+projeto assim que validar o arquivo (seção 6 logo abaixo); se depois for reprovada, apaga de lá
+mesmo. `ls ~/Downloads/*.png ~/Downloads/*.webp 2>/dev/null` antes de dar a tarefa por pronta — se
+aparecer algo, é um `collect` que faltou.
 
 **Pediram webp?** `cwebp` **não está instalado** nesta máquina — use o ffmpeg,
 que está. Entregue os dois arquivos, o PNG é o master:
@@ -1399,7 +1406,7 @@ cat <<'EOF' | agent-browser --session $G eval --stdin
 })()
 EOF
 sleep 3
-~/.claude/bin/lane.sh collect $LANE $PROJETO/IMG    # ~/Downloads/$LANE-* → staging → projeto
+~/.claude/bin/lane.sh collect $LANE $PROJETO/IMG    # ~/Downloads/$LANE-* → staging → projeto, SEMPRE com destino — nunca só `collect $LANE` sozinho
 ```
 
 Para descobrir os ids: `document.querySelectorAll('img')` filtrando por `naturalWidth > 200`.

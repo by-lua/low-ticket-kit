@@ -226,12 +226,15 @@ o principal.
   Português (BR)`. Nunca o genérico "Upgrade Essencial → Completo …" sozinho — na lista de
   produtos ninguém sabe de que oferta é. Sufixo de mercado quando aplicável; preço só no campo
   de valor.
-- **Capa do produto de upgrade (dona, 16/10/2026):** leva uma arte "**UPGRADE PARA COMPLETO**" —
-  mockup do pacote **COMPLETO** (4 capas de bônus + cards + manual + páginas internas) com faixa
-  vermelho/amarela "UPGRADE PARA COMPLETO" no topo e seta amarela, no navy da oferta. Referência
-  aprovada: `MODELOS/REFERENCIAS-VISUAIS/upgrade-para-completo-exemplo-jiujitsu.png` (a que a dona
-  subiu no Jiu-Jitsu). Subir a capa pelo fluxo da seção 1b (só por API de `fetch`, campo `files`,
-  montar `photos` no `save`).
+- **Capa do produto de upgrade (dona, 16/10/2026, corrigido 24/10/2026):** leva uma arte "**UPGRADE
+  PARA COMPLETO**" — mockup do pacote **COMPLETO** (4 capas de bônus + cards + manual + páginas
+  internas) com faixa vermelho/amarela "UPGRADE PARA COMPLETO" no topo e seta amarela, no navy da
+  oferta. **Gerar do ZERO no GPT** (anexar as capas/mockups reais dos itens do Completo como
+  referência de conteúdo + pedir o título "UPGRADE PARA COMPLETO" já nascendo integrado na arte) —
+  **nunca pegar o mockup do Completo já pronto e colar/recortar o texto por cima** (ficou errado
+  assim no Jiu-Jitsu; a dona corrigiu). Referência aprovada (texto bem integrado, do jeito certo):
+  `~/Downloads/d26cc3d0-ad69-4505-bb35-5502b746943d.png`. Subir a capa pelo fluxo da seção 1b
+  (só por API de `fetch`, campo `files`, montar `photos` no `save`).
 - **Mesmo fluxo da seção 2** (produto próprio + funil com página final externa `<site>/painel`
   + webhook) — a oferta precisa entrar no mapeamento do webhook que libera o Completo
   (`COMPLETO_OFFERS`/equivalente), senão paga e não libera.
@@ -242,10 +245,11 @@ o principal.
   oferta BÁSICA** — no form do order bump, o SELECT de oferta = a **Básica** (nunca "todas as
   ofertas"): quem escolhe o **Completo** NÃO vê o upgrade (dona, 16/10/2026: "só a oferta básica
   aparece, não aparece no completo").
-- **Capa do upgrade = o mockup do COMPLETO com "UPGRADE PARA COMPLETO" por cima** (dona,
-  16/10/2026) — a arte do pacote completo (4 bônus + cards + manual + páginas) com a faixa
-  vermelho/amarela "UPGRADE PARA COMPLETO" e a seta. Ref. aprovada:
-  `MODELOS/REFERENCIAS-VISUAIS/upgrade-para-completo-exemplo-jiujitsu.png`. Não é produto duplicado —
+- **Capa do upgrade = arte regerada no GPT, nunca mockup pronto + texto colado por cima** (dona,
+  16/10/2026, corrigido 24/10/2026) — a arte do pacote completo (4 bônus + cards + manual + páginas)
+  com a faixa vermelho/amarela "UPGRADE PARA COMPLETO" e a seta, gerada inteira de novo no GPT com os
+  mockups reais anexados como referência. Ref. aprovada:
+  `~/Downloads/d26cc3d0-ad69-4505-bb35-5502b746943d.png`. Não é produto duplicado —
   é o mesmo produto/oferta usado em dois lugares: order bump no checkout (ancoragem = preço
   normal do Completo, ex. R$27,90) E link de upgrade nos cards bloqueados da área de membros.
   Vincular em Personalizar checkout do produto PRINCIPAL → Order Bumps → Adicionar order bump
