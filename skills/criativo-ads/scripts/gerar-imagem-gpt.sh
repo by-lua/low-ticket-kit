@@ -3,6 +3,7 @@
 # Sessão: S=$(~/.claude/bin/gpt-livre.sh <lane> | tail -1). Mecânica/erros: skill gpt-imagem-playwright.
 # uso: gen1.sh <session> <prompt.txt> <saida.png> <ref1> [ref2...]
 S=$1; P=$2; OUT=$3; shift 3
+[ -s "$OUT" ] && { echo "salvou (ja existia) $OUT"; exit 0; }
 AB="agent-browser --session $S"
 T0=$(date +%s); ts(){ echo "[$(( $(date +%s)-T0 ))s] $1"; }
 m=$(echo "(()=>document.querySelectorAll('.bg-user-message').length)()" | $AB eval --stdin | tr -dc '0-9')
