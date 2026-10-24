@@ -115,21 +115,14 @@ Antes de planejar qualquer leva (ex.: 30 do teste 3× 1-1-10):
    leva em imagem E em vídeo. Dissecar como foi feito: visual, ângulo, gancho, sequência, personagem.
    Ela também diz **quem compra de verdade** (entra no PERSONA-E-ANGULOS, seção QUEM COMPRA/MERCADO).
    Registro: `OFERTAS/<slug>/pesquisa/BIBLIOTECA-<data>.md` (anúncio · narrativa · repetições · dias · formato).
-2. **Biblioteca de Anúncios:** buscar infoprodutos do **mesmo nicho e de nichos vizinhos**, em
-   **qualquer idioma/mercado** (US em inglês, BR em português, LATAM em espanhol — o que roda lá a
-   gente modela e adapta). **Não é 1-2 termos soltos: é 5 palavras-chave + 1 hashtag por idioma**
-   (mercado + PT + EN no mínimo), igual ao passo 1.2 de
-   `criacao-low-ticket-mvt/references/PESQUISA-PADRAO-OFERTA.md` — mesma régua, não uma pesquisa
-   à parte. E a dor pesquisada é a da PERSONA ampla ("iniciante trava em quê"), nunca só o ângulo
-   que já foi sugerido na conversa — pesquisa estreita demais confirma o que já se queria achar,
-   não descobre dor nova (lição 24/10/2026, Mapa do Tarot BR). Foco nos anúncios **ativos há mais tempo** (os que estão funcionando) e
-   em **que formato** eles usam (vídeo/estático/carrossel, UGC, expert, caixa de perguntas, antes/
-   depois…). Registra em `OFERTAS/<slug>/pesquisa/BIBLIOTECA-<data>.md` (link, dias ativo, formato,
-   gancho) e usa como referência real da leva (Gate 0.1). Mecânica: `mvt-minerar` (falso-zero,
-   `validar-robusto.sh`). A Biblioteca é o nosso "acervo vivo" de formato e gancho: busca
-   produtos parecidos (ex.: "aprender tarot visual") em ES/EN/PT, pega os ativos há mais tempo e
-   **disseca** o gancho (ex.: "saber o significado da carta é uma coisa, mas quando sai X com Y…") e a
-   sequência (mostrou cartas → mostrou o material → abriu uma página…) — e adapta.
+2. **Biblioteca de Anúncios + demanda orgânica = o LOOP ÚNICO de
+   `criacao-low-ticket-mvt/references/PESQUISA-PADRAO-OFERTA.md`**, mesma régua, nunca uma pesquisa
+   à parte, nunca resumido aqui de novo — ler aquele arquivo inteiro antes de buscar. Rodar o loop
+   com a dor da PERSONA ampla ("iniciante trava em quê"), nunca só o ângulo já sugerido na conversa
+   — pesquisa estreita confirma o que já se queria achar, não descobre dor nova (lição 24/10/2026,
+   Mapa do Tarot BR). Registra em `OFERTAS/<slug>/pesquisa/BIBLIOTECA-AMPLIADA-<data>.md` +
+   `DEMANDA-ORGANICA-<data>.md` e usa como referência real da leva (Gate 0.1). Mecânica de browser:
+   `mvt-minerar` (falso-zero, perfis, headed).
 3b. **Primeiro o que JÁ vence pra gente:** olha os vencedores das nossas ofertas (mesmo idioma ou outro,
    mesmo nicho ou outro ângulo — ex.: Atlas AR modela a oferta BR) e entende POR QUE funcionou. Muitas
    vezes copiar e adaptar o vencedor já é uma peça da leva (já é um teste); o planejamento vai pras outras.
