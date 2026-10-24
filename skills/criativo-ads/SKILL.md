@@ -8,6 +8,44 @@ description: Porta de entrada ÚNICA de criativo de anúncio (Meta/TikTok) — v
 
 # criativo-ads
 
+> **⚠️ CRIATIVO É O 80/20 DA OPERAÇÃO (regra da dona, 24/10/2026).** Entre tudo que se faz numa
+> oferta low ticket, o criativo é o que mais pesa no resultado — raso aqui custa mais caro que
+> em qualquer outra etapa. **Nenhum vídeo é "pronto" só por ter áudio+legenda+QA de boca OK** —
+> passa pelo ⛔ GATE DE VÍDEO COMPLETO (hook com dor real → corpo que desenvolve MECANISMO, não só
+> repete benefício → CTA sem corte seco → trilha de fundo → variedade de cena), em
+> `criativo-ads-video-orq` item 11. Raso = script com só o gancho resumido do plano copiado
+> direto (ver `plano-video-ganho-nao-e-roteiro-completo`). Checar o gate ANTES de declarar
+> qualquer vídeo entregue, não depois.
+>
+> **Toda vez que for criativo novo, carrega as 3 coisas juntas, sempre (regra da dona,
+> 24/10/2026):** (1) **estúdio/estratégia** — esta skill (persona, matriz, formato); (2)
+> **casting** — `pesquisa/PERSONA-E-ANGULOS.md` da oferta (quem é a persona, personagens já
+> fichados); (3) **mecânica** — `criativo-ads-video-orq` se for vídeo, `gpt-imagem-playwright` +
+> `modelagem-escalados` se for imagem. Nunca carregar só a skill-porta e deixar a mecânica pra
+> depois — é isso que produz vídeo com script mas sem produção completa (gate acima).
+
+> **🗺️ MAPA DE DECISÃO — qual seção ler, pra cada tipo de pedido (índice, 24/10/2026).** Antes de
+> montar QUALQUER peça, ache a linha certa aqui e leia as seções na ordem dada — nenhuma decisão
+> de formato/estrutura se toma sem passar por essas seções primeiro. Isso existe porque informação
+> certa espalhada sem índice = buraco (caso real: receita E.2b já existia, não foi lida pro
+> expert hook — CRIATIVO-02 Atlas, 24/10).
+>
+> | Pedido | Ler nesta ordem |
+> |---|---|
+> | "3 campanhas", 1-1-3, 1-1-10, teste em grupos | GATE 0→0.2 → `⭐ TESTE EM GRUPOS` → `🗺️ AS 3 TRILHAS` → `Como montar a matriz 1-1-3` |
+> | Estático avulso ou de leva | GATE 0.1 → `Qual formato` → regras de estático (orgânico iPhone, margem de segurança, digital+impresso, peça de preço) → `modelagem-escalados` → `gpt-imagem-playwright` |
+> | Carrossel | igual ao estático + os 3 tipos de carrossel (`Dentro da MESMA campanha`) |
+> | Vídeo demonstrativo (sem personagem, ou b-roll+tela) | GATE 0.1 → `Qual formato` → `criativo-ads-video-orq` E.0 → **E.0b** → **E.2b** (receita completa: 1 clipe/frase, split 70/30, 1.15x timeline) |
+> | Vídeo com expert/UGC no hook | mesma linha acima — expert/UGC é só a FONTE do hook (camada "Guia" do Modo E), **o resto segue E.2b igual**, nunca "modo à parte" |
+> | "Criativo estilo Rodrigo" / leva 1-3-9 | seção `"Criativo estilo Rodrigo"` abaixo (3 tipos + catálogo de cor/cenário) → **E.0b/E.2b** pro vídeo |
+> | Reaproveitar formato que já escala (biblioteca) | `modelagem-escalados` (103 formatos) ou tabela de 16 vídeos escalados em `criativo-ads-video-orq` (busca ANTES de inventar corte) |
+> | Vídeo "mesa real" (imagem→Flow, sem gravação de tela) | `criativo-ads-video-orq` §E.0c (catálogo de takes A-O) |
+> | UGC puro (pessoa relato, 1ª pessoa) | `🗺️ AS 3 TRILHAS` (trilha UGC) → `Qual formato` linha "Expert com rosto" |
+>
+> **Checagem de repetição (regra da dona, 24/10/2026):** antes de fechar a leva, relistar as peças
+> já feitas (tipo+ângulo+formato) e confirmar que nenhuma repete tipo+estrutura dentro da mesma
+> campanha — ver `Dentro da MESMA campanha, varia o tipo` mais abaixo.
+
 > **🎯 "Faz os criativos da oferta X" (leva inteira, ponta a ponta):** siga
 > `references/RECEITA-LEVA-PONTA-A-PONTA.md` na ordem — persona com dado → material/DESIGN-SYSTEM → plano →
 > gates → peça a peça (ugly iPhone, digital + impresso 3-4 folhas + 1-2 aparelhos, nada repete, texto de
@@ -468,6 +506,27 @@ Dor sem contagem e data não entra na matriz. Duas peças com a mesma persona e 
 
 Plano modelo: `OFERTAS/mapa-do-tarot/criativos/PLANO-CRIATIVOS-BR-2026-10-11.md`.
 
+## 🗺️ AS 3 TRILHAS DA LEVA — vale pro Rodrigo E pro 1-1-3/1-1-10 do Kevones (reforço 24/10/2026)
+
+Toda leva, qualquer método de campanha, distribui as peças em **3 trilhas** — cada uma com função
+própria, nenhuma substitui a outra:
+
+| Trilha | Função | Regra fixa |
+|---|---|---|
+| **Imagem** | benefício + **entregável real** + preço → variações do que já validou | nunca mockup 3D, sempre lâmina/página real estilo ugly iPhone (`anuncio-sem-mockup-sem-pdf`) |
+| **Vídeo** | toca na dor → **desenvolve o mecanismo** → CTA | corpo não pode só repetir a promessa — explica POR QUE funciona (ex.: "não é que você não estudou, é que decorar nome não mostra o movimento"); CTA nunca corta seco: produto parado + seta 1-2s |
+| **UGC** | usuário que usou o produto, 1ª pessoa, indicando | selfie segurando o material (carro/casa/cotidiano), sem roteiro de vendedor — é relato |
+
+Isso é o mesmo framework dos 3 tipos do Rodrigo (seção abaixo) e da matriz 1-1-3/1-1-10 do
+Kevones — não são métodos concorrentes, é a mesma distribuição vista por duas portas. Ao montar
+QUALQUER leva (campanha nova, 1-1-3, 1-1-10, estilo Rodrigo), checar que as 3 trilhas estão
+representadas, não só 1 ou 2.
+
+**Erro mais caro da trilha vídeo (CRIATIVO-02 Atlas, 24/10):** hook toca a dor, mas o corpo só
+repete o benefício ("com mapa visual você entende") em vez de desenvolver o mecanismo. Hook sem
+mecanismo no corpo = criativo incompleto mesmo com script inteiro escrito. Ver
+`plano-video-ganho-nao-e-roteiro-completo`.
+
 ## ⭐ TESTE EM GRUPOS — a pergunta padrão quando a dona pede "3 campanhas" (11/10/2026)
 
 > *"sempre que eu pedi 3 campanhas 1-1-3 é isso... separar em grupos. E pode até me perguntar:
@@ -534,11 +593,24 @@ casar com o que o produto promete.
 - **UGC 2 — ambiente normal/cotidiano** (casa, dia a dia, nada montado).
 - **Expert — ambiente que FAZ SENTIDO com o papel dela** (ex.: psicóloga → consultório/escritório;
   nunca o mesmo cenário genérico do comprador comum — o ambiente é parte da prova de autoridade).
+  **2 modos de câmera pro expert, variar entre eles:** (a) tela cheia falando, produto aparece
+  depois em corte de tela; (b) **segura o entregável como capa de livro perto do rosto/peito,
+  falando olhando pra câmera** (ref. UGC "segura capa", mesma pose do selfie-recomendação —
+  `exemplo-criativo-demonstrativo-multipaginas` tem exemplo). O item (b) funciona pro expert E pro
+  UGC comprador comum — a diferença é só ambiente+tom, não a pose.
+  **Duração do clipe lip-sync define onde o mecanismo mora (24/10/2026):** clipe **8s** (padrão
+  Flow i2v) só carrega o HOOK em lip-sync — mecanismo/dor desenvolvidos NÃO cabem falados por ele
+  nesse tempo, então o corpo vira material/tela + VO off, cortando do rosto pro produto. Clipe
+  **~12s** (se gerado mais longo) pode carregar hook+mecanismo inteiro na própria fala do
+  personagem — aí o corte pro material vem só depois, pra CTA/entrega. Não force mecanismo
+  inteiro dentro de 8s de lip-sync; é isso que sai raso.
 
 **Estilos de imagem por COR (não é genérico, a cor define o estilo):**
 - **"Fase de impacto"** = fundo BRANCO + texto PRETO e VERMELHO.
-- **"Clássica"** = fundo PRETO + mockup + headline em cima + subheadline + mockup de novo + **preço**
-  (única peça da leva com valor visível).
+- **"Clássica"** = fundo PRETO + **imagem do entregável (lâmina real, estilo ugly iPhone — nunca
+  mockup 3D limpo)** + headline em cima + subheadline + imagem de novo + **preço** (única peça da
+  leva com valor visível). "Mockup" aqui é figura de linguagem do método — na prática é SEMPRE
+  página/lâmina real, regra do portfólio (`anuncio-sem-mockup-sem-pdf`).
 - **Antes/depois** = puxado direto da Biblioteca de Anúncios (referência real já rodando), não
   gerado do zero sem referência.
 - **Original** = depende se a oferta já tem uma — normalmente mockup do produto ou imagem de 1
@@ -559,6 +631,9 @@ casar com o que o produto promete.
      dentro** (área de membros/app) — produto bem entregue vira o próprio corpo do criativo, sem
      precisar atuação.
    - CTA = comando curto, sem condição de compra (já é a nossa regra de fecho, seção acima).
+   - **O gancho ser expert/UGC falando não isenta o corpo da receita padrão do demonstrativo** —
+     `criativo-ads-video-orq` E.2b (1 clipe por frase, split 70/30, timeline inteira a 1.15x, não
+     só 4-5 blocos fixos). Ver E.0b lá — buraco real encontrado no Atlas AR, 24/10/2026.
 
 **Regra de corte — nunca corte seco no fim do CTA.** Deixa a pessoa "pensando" com a imagem do
 produto parada + seta apontando pra baixo por 1-2s antes de acabar — mantém a decisão/retenção em vez

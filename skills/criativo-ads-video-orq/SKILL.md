@@ -83,6 +83,41 @@ permanente abaixo. Nenhum se repete.
     acento, OU extrair 2-3 frames e **olhar** a legenda renderizada. Roteiro
     revisado só no papel não basta — o defeito nasce na escrita.
 
+11. **⛔ GATE DE VÍDEO COMPLETO — checklist obrigatório antes de marcar qualquer vídeo como
+    pronto (regra da dona, 24/10/2026, caso CRIATIVO-02 Atlas).** **Todo criativo de vídeo tem
+    hook → desenvolve mecanismo → toca a dor → CTA, sempre — a FORMA varia (expert fala tudo em
+    1 clipe longo, expert fala o hook e corta pro material, 2 cenas de 8s coladas), o conteúdo
+    não. Qualquer caminho serve desde que o resultado faça sentido e fique bom — monte, assista
+    de novo como se fosse o cliente vendo pela 1ª vez, e só então declare pronto.** Script escrito e áudio gerado
+    NÃO bastam — o roteiro do plano traz só o gancho resumido (ver `plano-video-ganho-nao-e-
+    roteiro-completo`), e script completo sem estes 4 pontos ainda sai raso:
+    - [ ] **Hook** nomeia a dor/pergunta real da persona (não genérico).
+    - [ ] **Corpo desenvolve o MECANISMO, não só repete o benefício.** Teste: se tirar a frase do
+      corpo e ela ainda disser só "o produto é bom/você vai entender", falta mecanismo. Mecanismo
+      = explica O PORQUÊ funciona (ex.: "não é que você não estudou, é que decorar nome não
+      mostra o movimento — com o mapa visual você vê os dois juntos"). Sem isso o criativo tem
+      hook e nada depois.
+    - [ ] **CTA nunca corta seco — tela final padrão fixa, usar em TODO vídeo da leva (regra da
+      dona, 24/10/2026, ref. visual anexada):** fundo PRETO, **mockup COMPLETO do produto
+      (capa renderizada limpa, não lâmina crua)** centralizado no topo — este card é a ÚNICA
+      exceção da regra "nunca mockup" (essa regra vale pro MEIO do vídeo, material real; o card
+      de fechamento é peça de marca, sempre mockup polido) —, faixa com texto do CTA em branco
+      sobre bloco de cor (roxo/marca), **seta VERMELHA embaixo com animação simples de descida
+      (bounce down)**, formato Stories vertical, tudo bem centralizado. 1-2s de sobra no fim,
+      nunca corta na última palavra. É um card dedicado (asset único reusado em toda a leva),
+      não congelamento do último frame do vídeo.
+    - [ ] **Trilha de fundo instrumental**, -18/-22dB, do início ao fim, contínua (nunca troca no
+      meio). Banco: `OFERTAS/mapa-do-tarot/criativos/BR/_ASSETS/trilhas/` (reusar entre ofertas,
+      instrumental e livre de direitos).
+    Vídeo que falha em qualquer um dos 4 não está pronto, mesmo com áudio+legenda+QA de boca OK.
+    - [ ] **Variedade de cena, nunca segurar 1 take muito tempo (regra da dona, 24/10/2026, caso
+      CRIATIVO-01).** Demonstrativo usa TODAS as gravações/takes disponíveis (ex.: 5 no total —
+      3 gravações reais de tela + 2 takes Flow), nunca deixa 1-2 carregando o vídeo inteiro
+      enquanto o resto fica parado no disco. **Regra prática: nenhuma cena única passa de ~3-4s
+      sem corte** — segurar um take mais tempo que isso cansa, mesmo que o conteúdo mude dentro
+      dele (zoom/pan não substitui corte de cena). Se há 5 takes pra um vídeo de ~25-30s, o corte
+      médio é 1 a cada 5-6s — todos entram, nenhum fica de fora só porque "já deu pra mostrar".
+
 **Tool `agent-browser record` não herda sessão de login** (contexto novo, cookie
 httpOnly não propaga, mesmo documentado como "preserves cookies"). Se precisar
 operar página autenticada, faça login real pela UI (digitar+clicar) na MESMA
@@ -818,6 +853,28 @@ em cima, b-roll embaixo) → CTA em b-roll tela cheia** + VO off + legenda karao
   cuidador|tu ser querido" pagina/index.html`. Se a página fala com o
   cuidador, a narração fala com o cuidador — sempre, sem exceção.
 
+
+### E.0b — Expert/UGC no hook NÃO isenta o resto da receita E.2b (regra da dona, 24/10/2026)
+
+**Buraco real encontrado:** CRIATIVO-02 (Atlas, expert Martín) abriu com personagem falando e,
+a partir daí, o resto do vídeo foi montado "livre" — 4-5 cenas fixas, sem split, sem 1 clipe por
+frase, sem acelerar a timeline. Isso é o erro: **expert/UGC no "Guia" é só a FONTE do hook, não
+um modo à parte.** O resto do vídeo (do fim da fala do expert até o CTA) segue a receita **E.2b**
+igualzinho a qualquer demonstrativo:
+
+- **1 clipe por frase da VO**, não 4-5 blocos fixos pro vídeo inteiro.
+- **Split 70/30 ou 50/50** (entregável em cima/b-roll embaixo) na frase de mecanismo — não corte
+  sempre em tela cheia.
+- **Timeline inteira acelerada 1.15x no Remotion** (playbackRate, pitch preservado) — não só o
+  áudio da narração isolado via `atempo`. Isso vale mesmo quando o início é um clipe de lip-sync
+  (o clipe falado entra no 1.15x igual ao resto, senão o ritmo quebra na transição).
+- Trilha de fundo, CTA sem corte seco (card preto+mockup+seta vermelha, ver gate item 11) — iguais
+  pra qualquer modo.
+
+**Regra de leitura da skill:** ao montar QUALQUER vídeo (1-3-9, 1-1-10, demonstrativo puro,
+expert, UGC carro, qualquer um), ler E.0 → E.0b → E.2b nessa ordem ANTES de montar — a escolha de
+quem fala no hook (b-roll, expert, UGC) é só um dos 4 blocos da receita, nunca motivo pra
+abandonar o resto dela.
 
 ### E.1 — Coleta do b-roll
 

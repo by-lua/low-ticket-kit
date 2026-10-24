@@ -71,7 +71,7 @@ BR, 24/10). Rodar o loop inteiro 2x: uma vez por **keyword direto** (passo 1), o
    relacionadas e em ascensão) — busca aberta pela dor, não espelho da Biblioteca.
 10. **Mesma lógica no TikTok** (volume de comentários + caption; texto de comentário exige perfil
     logado, sem isso registra a limitação, nunca estima).
-11. **Repete o loop INTEIRO (passos 1-10) em ES e EN — nunca traduzindo literal.** Pra cada idioma,
+11. **Repete o loop INTEIRO (passos 1-6b, 7, 8, 9, 10) em ES e EN — nunca traduzindo literal.** Pra cada idioma,
     PENSA de novo nas 3 camadas de keyword (passo 1 e 7) **como o nativo fala aquilo**, não a tradução
     da palavra PT: gíria, termo de mercado, sinônimo que só existe naquela língua. Ex.: "aprender tarot
     sozinha" em espanhol vira "no entiendo el tarot" (frase de dor crua, não tradução de "sozinha"); em
@@ -99,7 +99,7 @@ de compra registrado à parte, conclusões em tabela). Ambos existem mesmo quand
 `PERSONA-E-ANGULOS.md` já tem link ≥5 — o gate mecânico confere a contagem, não se o concorrente foi
 lido de verdade; essa leitura é responsabilidade de quem pesquisa.
 
-## 3 · O que tem que sair escrito no PERSONA-E-ANGULOS (o gate confere)
+## 2 · O que tem que sair escrito no PERSONA-E-ANGULOS (o gate confere)
 - `## TERMOS DE BUSCA`: termo · fonte (Trends/YouTube/Biblioteca) · índice/contagem · veredito
   (**gancho** / só nome do produto / descartado). **Nome do produto quase nunca é termo de busca**
   (Atlas: "atlas" = dados insuficientes; o gancho virou "kinesiología" / "qué músculos trabajan").
@@ -112,5 +112,5 @@ lido de verdade; essa leitura é responsabilidade de quem pesquisa.
 - Recorte sem dado (ninguém do mercado fala com ele) fica fora da headline, só ângulo de teste.
 - **Prova social do concorrente não se copia** antes da 1ª venda nossa.
 
-## 4 · Depois da pesquisa
+## 3 · Depois da pesquisa
 `gate-persona.py` → LIBERADO → plano de leva em texto → `gate-plano-leva.py` → OK da dona → produção.
