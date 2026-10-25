@@ -27,17 +27,22 @@ BR, 24/10). Rodar o loop inteiro 2x: uma vez por **keyword direto** (passo 1), o
   gente não tinha pensado (é ela que acha o "curso" quando a gente só buscava "PDF").
 - Abaixo desse piso, a pesquisa não está pronta pro `gate-persona.py` — mesmo que o script passe.
 
-1. **Keyword direto — 3 termos, não 1-2 (correção dona, 25/10/2026).** Nome genérico do nicho
-   SOZINHO não acha concorrente quase idêntico — é largo demais, devolve tudo e nada
-   (ex.: "tarot" sozinho não serve). Keyword direto é **variação do produto/formato**, a mesma
-   lógica de quando a dona pede isso ao GPT direto: manda o site/oferta nossa pro GPT e pede
-   literalmente "me dá 3 palavras-chave diretas pra eu achar ofertas parecidas com essa" — ele
-   devolve variações tipo "tarot visual" / "mapa de tarot" / "leitura de tarot em mapa", não só
-   "tarot". **Teste antes de aceitar uma keyword direta: ela sozinha, sem mais contexto, devolveria
-   um concorrente que vende A MESMA COISA, ou devolve ruído do nicho inteiro?** Se é ruído, a
-   keyword é larga demais — ainda não é "direto", é "amplo" disfarçado. As 3 servem só pra achar
-   os primeiros concorrentes **quase idênticos** (passo 2-6), não pra minerar volume — isso é o
-   passo 7.
+1. **Keyword direto — 5 por idioma (PT+EN+ES = 15 no total), correção dona 25/10/2026 (substitui
+   qualquer contagem anterior deste arquivo).** Nome genérico do nicho SOZINHO não acha concorrente
+   quase idêntico — é largo demais, devolve tudo e nada (ex.: "tarot" sozinho não serve). Keyword
+   direto é **variação do produto/formato**: manda o site/oferta nossa pro GPT e pede literalmente
+   "analisa essa oferta — o que entrega, pra quem, que problema resolve, que transformação promete —
+   e me dá 5 palavras-chave em português, 5 em inglês e 5 em espanhol pra achar produtos parecidos,
+   sem ficar preso ao nome/formato do nosso produto". Ele devolve variações tipo "tarot visual" /
+   "mapa de tarot" / "leitura de tarot em mapa", não só "tarot". **Teste antes de aceitar uma
+   keyword direta: ela sozinha, sem mais contexto, devolveria um concorrente que vende A MESMA
+   COISA, ou devolve ruído do nicho inteiro?** Se é ruído, a keyword é larga demais — ainda não é
+   "direto", é "amplo" disfarçado. As 15 servem pra achar os primeiros concorrentes **quase
+   idênticos** (passo 2-6) nos 3 mercados de uma vez, não pra minerar volume — isso é o passo 7.
+   **+ 1-2 keyword de AUDIÊNCIA, separado das 15** (dona, 25/10/2026): não é variação de produto
+   nem de dor — é o substantivo que nomeia QUEM é a pessoa (papel/profissão/identidade), tipo
+   "eletricista", "vendedor", "tarotista". Serve pra achar anúncio/conteúdo que fala com essa
+   pessoa em QUALQUER contexto, não só o nosso nicho — outra camada de descoberta de público.
 2. **Abre o 1º anúncio relevante** que o termo achou. Confere **"Veiculação iniciada em"** no card:
    **< 7 dias = ignora** (pode ser teste que ainda vai morrer); **≥ 7 dias = narrativa validada**
    (continuam pagando, então funciona) — só então vale a pena analisar.
@@ -67,15 +72,16 @@ BR, 24/10). Rodar o loop inteiro 2x: uma vez por **keyword direto** (passo 1), o
    querer fazer "nossa oferta com ângulo X" sem checar se X cabe no que a gente realmente entrega.
    Registra tabela sub-tema × nº de anúncios × dias no ar em `BIBLIOTECA-AMPLIADA-<data>.md` como
    leitura de mercado — a decisão de usar (bônus, copy, ou nada) é sempre posterior e conferida.
-7. **Agora pensa AMPLO — 2 termos** (completa as 5 keywords do passo 1+7, correção dona 25/10/2026):
-   que outras palavras acham o MESMO público, mesmo sem ser o mesmo produto — inclusive produto
-   totalmente diferente (curso, mentoria, app) que ataca a MESMA dor. Ex.: quem busca "aprender
-   tarot sozinha" também é alcançado por "curso de autoconhecimento online" se a dor for a mesma.
-   É a mesma pergunta que a dona faz ao GPT depois de já ter achado os concorrentes diretos: "agora
-   me dá palavras mais abertas pra eu entender esse público, achar outros produtos/dores do mesmo
-   nicho". Gera essas 2 palavras amplas e roda o **MESMO loop (passos 1-6b) com elas** — é a camada
-   "nicho vizinho", nunca pulada. **Resumo do mix (5 no total): 3 diretas (acham concorrente quase
-   idêntico) + 2 amplas (acham a dor/público maior)** — nunca as 5 do mesmo tipo.
+7. **Agora pensa AMPLO** — que outras palavras acham o MESMO público, mesmo sem ser o mesmo
+   produto — inclusive produto totalmente diferente (curso, mentoria, app) que ataca a MESMA dor.
+   Ex.: quem busca "aprender tarot sozinha" também é alcançado por "curso de autoconhecimento
+   online" se a dor for a mesma. É a mesma pergunta que a dona faz ao GPT depois de já ter achado
+   os concorrentes diretos: "agora me dá palavras mais abertas pra eu entender esse público, achar
+   outros produtos/dores do mesmo nicho". Gera essas palavras amplas (sem teto fixo — o quanto
+   esgotar fizer sentido) e roda o **MESMO loop (passos 1-6b) com elas** — é a camada "nicho
+   vizinho", nunca pulada. **Resumo do mix completo de keyword: 5 diretas por idioma (passo 1,
+   acham concorrente quase idêntico) + 1-2 de audiência (passo 1, quem é a pessoa: profissão/papel)
+   + N amplas (passo 7, dor/público maior)** — nunca só um tipo.
 8. **Depois de esgotar a Biblioteca** (direto + amplo), vai pro **YouTube com busca ABERTA** — termos
    da DOR, não os mesmos termos já usados na Biblioteca (repetir termo é confirmar o que já se sabia,
    não achar dor nova). Vê os vídeos **mais vistos**, lê **comentários**, registra contagem + data do
@@ -84,7 +90,11 @@ BR, 24/10). Rodar o loop inteiro 2x: uma vez por **keyword direto** (passo 1), o
    relacionadas e em ascensão) — busca aberta pela dor, não espelho da Biblioteca.
 10. **Mesma lógica no TikTok** (volume de comentários + caption; texto de comentário exige perfil
     logado, sem isso registra a limitação, nunca estima).
-11. **Repete o loop INTEIRO (passos 1-6b, 7, 8, 9, 10) em ES e EN — nunca traduzindo literal.** Pra cada idioma,
+10b. **Mesma lógica no Threads (dona, 25/10/2026, nova fonte)** — busca aberta pela dor, vê posts
+    com engajamento, lê os comentários/respostas (texto nativo, direto, sem filtro de algoritmo de
+    vídeo) — costuma expor objeção e pergunta crua que YouTube/TikTok não mostram tão literal.
+    Exige perfil logado pra ver resposta; sem isso registra a limitação.
+11. **Repete o loop INTEIRO (passos 1-6b, 7, 8, 9, 10, 10b) em ES e EN — nunca traduzindo literal.** Pra cada idioma,
     PENSA de novo nas 3 camadas de keyword (passo 1 e 7) **como o nativo fala aquilo**, não a tradução
     da palavra PT: gíria, termo de mercado, sinônimo que só existe naquela língua. Ex.: "aprender tarot
     sozinha" em espanhol vira "no entiendo el tarot" (frase de dor crua, não tradução de "sozinha"); em
