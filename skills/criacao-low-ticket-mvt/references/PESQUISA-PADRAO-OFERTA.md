@@ -43,6 +43,12 @@ BR, 24/10). Rodar o loop inteiro 2x: uma vez por **keyword direto** (passo 1), o
    nem de dor — é o substantivo que nomeia QUEM é a pessoa (papel/profissão/identidade), tipo
    "eletricista", "vendedor", "tarotista". Serve pra achar anúncio/conteúdo que fala com essa
    pessoa em QUALQUER contexto, não só o nosso nicho — outra camada de descoberta de público.
+   **+ busca por PROMESSA, não só por nome (dona, 25/10/2026, exemplo real Mapa do Tarot):** além
+   das 5+5+5 de produto, buscar também pela frase da promessa/benefício do nosso próprio anúncio —
+   "aprenda a ler as cartas sem memorizar" / "learn tarot without memorizing" / "aprende a leer el
+   tarot sin memorizar". Acha concorrente que vende a MESMA solução com nome de produto totalmente
+   diferente, coisa que keyword de produto nunca pega sozinha. Gera 1 frase de promessa por idioma
+   a partir do nosso próprio gancho/headline.
 2. **Abre o 1º anúncio relevante** que o termo achou. Confere **"Veiculação iniciada em"** no card:
    **< 7 dias = ignora** (pode ser teste que ainda vai morrer); **≥ 7 dias = narrativa validada**
    (continuam pagando, então funciona) — só então vale a pena analisar.
