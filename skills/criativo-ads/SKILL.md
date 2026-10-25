@@ -441,17 +441,33 @@ impacto" (fundo branco, texto preto e vermelho). Sem moldura, sem cara de anúnc
 **Caixa de perguntas em story:** pergunta na imagem + alguém (de preferência o expert) respondendo
 com o material na mão, orgânico.
 
-**⛔ MÉTODO ÚNICO, não dois métodos à escolher (regra da dona, 25/10/2026 — erro real: montei
-CT3/CT22 pensando "isso é demonstrativo" OU "isso é GC", escolhendo um e abandonando o outro).**
-Esta skill é UM orquestrador só. Pra toda peça de **vídeo** com pessoa (GC/UGC/expert), os dois
-blocos abaixo **se somam, nunca se substituem**:
-1. **O QUE a pessoa mostra/como ela aparece** — regra desta seção (Rodrigo: pose "capa de livro",
-   segura o material, cenário que casa com o papel, 2 estilos de vídeo, etc).
-2. **COMO o corpo é editado** — receita `criativo-ads-video-orq` E.2b/E.0b: split 70/30 na frase
-   de mecanismo, 1 clipe por frase (não full-screen sequencial), fade nas junções, trilha, CTA sem
-   corte seco. **O gancho ter GC/UGC falando não troca a receita de edição por "montar livre"** —
-   isso já está escrito em E.0b e repetiu hoje mesmo depois de ler a seção no mesmo dia.
-Nunca escolher 1 e ignorar o outro — toda peça de vídeo com pessoa carrega os dois ao mesmo tempo.
+**⛔ MÉTODO ÚNICO — 3 camadas que SEMPRE se somam, nunca são métodos alternativos pra escolher
+(regra da dona, 25/10/2026, reforçada 25/10/2026 — erro real repetido 2x no mesmo dia: CT3/CT22
+"isso é demonstrativo OU isso é GC"; depois peça de expert falando+cortando pro material sem
+nenhuma técnica de edição, porque tratei "expert fala" como formato que dispensa a receita).**
+Esta skill é UM orquestrador só, com 3 camadas que **sempre se aplicam juntas** em toda peça de
+vídeo, não 3 métodos onde se escolhe 1:
+
+1. **QUANTIDADE/DISTRIBUIÇÃO (Kevones)** — quantas peças, campanhas, mix vídeo/imagem/estático,
+   proporção 50/50 ou 70/30 por campanha/fase da conta (seção "Quantidade pela fase da conta" e
+   `references/kevones-criativo.md`). Isso decide O VOLUME e A MISTURA da leva.
+2. **FORMATO/PAPEL DE CADA PEÇA (Rodrigo)** — o que a pessoa mostra e como aparece: pose "capa de
+   livro", segura o material, cenário que casa com o papel (GC comprador / UGC cotidiano / expert
+   ambiente-apropriado), peça de preço sem mockup (reaproveita a MESMA composição orgânica
+   iPhone + preço), fim de vídeo = card preto/fundo liso + mockup completo + CTA em texto (nunca
+   falado) + seta. Isso decide QUEM aparece e O QUE a tela/mão mostra em CADA peça — regra desta
+   seção.
+3. **TÉCNICA DE EDIÇÃO (demonstrativo/E.2b, `criativo-ads-video-orq`)** — split 70/30 na frase de
+   mecanismo, 1 clipe por frase (nunca corte sequencial full-screen bloco a bloco), transição com
+   fade (nunca corte seco), trilha mixada, CTA como acréscimo sem cortar a fala. **Isso é uma
+   CAIXA DE FERRAMENTA de montagem, não um "formato de criativo" separado do GC/UGC/expert** — toda
+   peça de vídeo usa essa técnica pra montar o corpo, **mesmo quando quem fala é o expert ou é um
+   UGC**, mesmo quando o gancho já tem a pessoa falando. "Tem alguém falando no gancho" NUNCA
+   dispensa split/1-clipe-por-frase/fade no corpo — isso já está em E.0b e repetiu no mesmo dia em
+   que a seção foi lida.
+
+As 3 camadas respondem perguntas diferentes (quanto/quando, quem/o-quê, como-monta) e **sempre
+coexistem na mesma peça** — nunca escolher uma e ignorar as outras.
 
 **⛔ TODO GC/UGC mostra o material SEMPRE — nunca pessoa vazia, mãos nuas, sem produto (regra da
 dona, 25/10/2026 — achado real: 6/6 peças estáticas da leva Atlas AR não tinham isso, só
