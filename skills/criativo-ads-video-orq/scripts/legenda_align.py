@@ -36,20 +36,40 @@ def extrai_wav(src):
 
 
 def alinha(wav, palavras_alinhar, lang):
-    # API alta-nível do pacote ctc-forced-aligner instalado (PyPI, 2026) — a API
-    # antiga (load_alignment_model/preprocess_text/get_alignments/get_spans/
-    # postprocess_results) não existe mais nessa versão; get_word_stamps faz
-    # tudo isso internamente e lê o roteiro de um ARQUIVO, não de uma lista de
-    # tokens. Escreve um .txt temporário com as palavras já expandidas (números
-    # por extenso) e chama a API nova.
-    from ctc_forced_aligner import get_word_stamps
-    fd, roteiro_tmp = tempfile.mkstemp(suffix=".txt")
-    with os.fdopen(fd, "w", encoding="utf-8") as f:
-        f.write(" ".join(palavras_alinhar))
+    # ⚠️ 25/10/2026: a versão instalada em ~/Developer/legenda-karaoke/.venv NÃO
+    # tem get_word_stamps (nem a antiga API alta-nível) — tem a API de baixo
+    # nível (load_alignment_model/load_audio/generate_emissions/preprocess_text/
+    # get_alignments/get_spans/postprocess_results). Tentamos a alta-nível
+    # primeiro (se algum dia a lib for atualizada com ela) e caímos pra
+    # baixo-nível, que é a que funciona hoje nesta máquina. Confirmado em
+    # produção (Mapa do Tarot CRIATIVO-7/30, 25/10/2026).
     try:
-        word_stamps, _model, _lyrics = get_word_stamps(wav, roteiro_tmp)
-    finally:
-        os.remove(roteiro_tmp)
+        from ctc_forced_aligner import get_word_stamps
+        fd, roteiro_tmp = tempfile.mkstemp(suffix=".txt")
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            f.write(" ".join(palavras_alinhar))
+        try:
+            word_stamps, _model, _lyrics = get_word_stamps(wav, roteiro_tmp)
+        finally:
+            os.remove(roteiro_tmp)
+        return [{"start": w["start"], "end": w["end"], "score": w.get("score", 0.0)} for w in word_stamps]
+    except ImportError:
+        pass
+
+    import torch
+    from ctc_forced_aligner import (
+        load_audio, load_alignment_model, generate_emissions,
+        preprocess_text, get_alignments, get_spans, postprocess_results,
+    )
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    model, tokenizer = load_alignment_model(device, dtype=torch.float32)
+    audio_waveform = load_audio(wav, model.dtype, model.device)
+    emissions, stride = generate_emissions(model, audio_waveform, batch_size=8)
+    text = " ".join(palavras_alinhar)
+    tokens_starred, text_starred = preprocess_text(text, romanize=True, language=lang)
+    segments, scores, blank_token = get_alignments(emissions, tokens_starred, tokenizer)
+    spans = get_spans(tokens_starred, segments, blank_token)
+    word_stamps = postprocess_results(text_starred, spans, stride, scores)
     return [{"start": w["start"], "end": w["end"], "score": w.get("score", 0.0)} for w in word_stamps]
 
 
