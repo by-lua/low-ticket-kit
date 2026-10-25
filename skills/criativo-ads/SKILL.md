@@ -435,6 +435,14 @@ GC/UGC (comprador OU expert) mostra a pessoa **segurando o material**: impresso 
 tablet/celular "acolchoado como cartão-postal" mostrando a capa, perto do rosto/peito, olhando pra
 câmera, como se desse opinião — pose "capa de livro" (ver `criativo-ads-video-orq` catálogo de
 takes, letra **N**; mesma pose vale pro estático: capa visível, ou abrindo mostrando 2 páginas).
+
+**⛔ O que vai na tela/mão: CAPA primeiro, página real só se não existir capa (regra da dona,
+25/10/2026).** "Capa" aqui é a arte de capa LIMPA do produto (o mockup 3D do livro/produto
+sozinho, sem grid de bônus ao redor, sem texto de oferta tipo "+7 BONOS" por cima) — não confundir
+com arte de página de vendas/hero (essas costumam vir com grid de bônus e preço, não servem).
+Se a oferta não tem capa própria gerada ainda, **só então** usa um print real de uma página do
+entregável (área de membros, gravação de tela) como conteúdo da tela. Nunca o inverso (página real
+quando a capa existe) nem o mockup-com-grid-de-bônus no lugar da capa simples.
 **Nunca** a cena GC ser só mesa/produto parado sem a pessoa segurando e reagindo — isso deixa de
 ser GC e vira peça de produto. Sem isso a leva perde o gancho de atenção do 1º frame que só
 rosto+produto dá. **Checar peça por peça ao fechar o plano da leva**, não só confiar que

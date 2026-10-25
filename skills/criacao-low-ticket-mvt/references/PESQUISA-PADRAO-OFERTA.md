@@ -27,6 +27,16 @@ BR, 24/10). Rodar o loop inteiro 2x: uma vez por **keyword direto** (passo 1), o
   gente não tinha pensado (é ela que acha o "curso" quando a gente só buscava "PDF").
 - Abaixo desse piso, a pesquisa não está pronta pro `gate-persona.py` — mesmo que o script passe.
 
+0. **DIVISÃO DE TRABALHO (dona, 25/10/2026, NeuroActiva AR — substitui "eu minero tudo sozinho"):**
+   a Biblioteca (passos 2-7) é **mineração manual da dona**: o agente entrega **5 keywords por idioma
+   (PT/ES/EN) + 1-2 de audiência + 1 frase de promessa por idioma**, a dona roda na Biblioteca, separa
+   os anúncios e manda. O agente **não gasta o pane varrendo a Biblioteca em série** — enquanto a dona
+   minera, o agente roda a **camada orgânica (passos 8, 9, 10, 10b)** nos 3 idiomas: YouTube (vídeo
+   mais visto + comentário lido), TikTok (caption + volume), Trends e Threads. A pesquisa só fecha
+   quando as duas metades voltam e são cruzadas (passo 12). Motivo: keyword de Biblioteca é decisão de
+   compra (a dona vê o card e sabe na hora se é concorrente); dor/persona é leitura de comentário, e
+   isso é o que o agente faz melhor sem depender de clique manual.
+
 1. **Keyword direto — 5 por idioma (PT+EN+ES = 15 no total), correção dona 25/10/2026 (substitui
    qualquer contagem anterior deste arquivo).** Nome genérico do nicho SOZINHO não acha concorrente
    quase idêntico — é largo demais, devolve tudo e nada (ex.: "tarot" sozinho não serve). Keyword
