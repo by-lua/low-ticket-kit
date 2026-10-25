@@ -262,6 +262,20 @@ mecânica não repetem regra de estratégia. Se alguma divergir desta, vale esta
 >   referência (já saiu capa com produto de outra oferta assim, e passou por todo QA automático).
 > - **Vídeo NÃO entra nessa regra:** legenda karaokê no Remotion, sempre. São dois caminhos distintos.
 
+> **Regra da dona (25/10/2026 — peça documentada mas nunca gerada, Mapa del Tarot AR):** um pane
+> escreveu `anuncio.md` descrevendo a capa de um carrossel ("tarotar-img-8-capa.png... headline X")
+> que nunca foi salva em disco — só documentou o planejado, não verificou o resultado. Em outras 2
+> peças da mesma leva, o brief pedia explicitamente "+ texto de story" e o pane entregou só a foto
+> do material, sem o texto — pulou a parte difícil sob pressão de tempo/escopo.
+> - **Antes do handoff, `ls` CADA arquivo citado no próprio `anuncio.md`** — documentar peça sem
+>   `ls` confirmando que o arquivo existe no caminho exato é proibido. Arquivo ausente = peça NÃO
+>   está pronta, não escrever como se estivesse.
+> - **Todo requisito explícito do brief (ex. "+ texto de story", "+ headline") é item de checklist,
+>   não detalhe opcional.** Se faltou tempo pra fazer, PARA e reporta o que ficou de fora — nunca
+>   entrega menos do que foi pedido sem avisar.
+> - Quem recebe o handoff (orquestrador) abre pelo menos 1 imagem de cada peça reportada como
+>   "pronta" antes de repassar "feito" pra dona — não confiar só no texto do handoff.
+
 > **Regras da dona (08/10/2026 — capas reprovadas, Jiu-Jitsu/Eletrotecnia):**
 > - **Sem "faixa branca e azul" no criativo** — nem em imagem nem em texto de anúncio
 >   (`anuncio.md`: texto principal, título, descrição curta). A página do Jiu-Jitsu foi

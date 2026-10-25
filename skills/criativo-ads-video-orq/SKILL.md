@@ -931,6 +931,12 @@ em cima, b-roll embaixo) → CTA em b-roll tela cheia** + VO off + legenda karao
 
 ### E.0b — Expert/UGC no hook NÃO isenta o resto da receita E.2b (regra da dona, 24/10/2026)
 
+**⛔ REPETIU 25/10/2026 (CT3 Sofi, CT22 Nico) — mesmo buraco do CRIATIVO-02, mesmo dia que a regra
+foi lida inteira.** Montei o corpo em cortes full-screen sequenciais simples (`ffmpeg -f concat`
+cru), sem split 70/30, sem 1-clipe-por-frase pensado, sem fade nas junções — exatamente o erro que
+este item já documentava. Ler a regra não bastou; a próxima vez que montar corpo de UGC/expert,
+**abrir este item ANTES de escrever o primeiro `ffmpeg concat`**, não depois de montar errado.
+
 **Buraco real encontrado:** CRIATIVO-02 (Atlas, expert Martín) abriu com personagem falando e,
 a partir daí, o resto do vídeo foi montado "livre" — 4-5 cenas fixas, sem split, sem 1 clipe por
 frase, sem acelerar a timeline. Isso é o erro: **expert/UGC no "Guia" é só a FONTE do hook, não
