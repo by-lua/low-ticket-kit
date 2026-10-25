@@ -1,5 +1,9 @@
 # Skills que entram no Low Ticket Kit (uma por linha). O sync copia de ~/.claude/skills.
 # Método e oferta
+low-ticket-painel
+low-ticket-abrir
+low-ticket-salvar
+low-ticket-atualizar
 criacao-low-ticket-mvt
 low-ticket-metodo-mvt
 mvt-minerar

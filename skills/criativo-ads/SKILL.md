@@ -425,7 +425,22 @@ nunca fala "PDF"** — vendemos material organizado na área de membros; PDF nã
 **Vibe das imagens (dona 23/10):** todas orgânicas estilo iPhone (derruba CPM), exceto a "fase de
 impacto" (fundo branco, texto preto e vermelho). Sem moldura, sem cara de anúncio montado.
 **Caixa de perguntas em story:** pergunta na imagem + alguém (de preferência o expert) respondendo
-com o material na mão, orgânico. **Safe area:** ou gera 2 imagens (9:16 e 4:5), ou monta a 1ª já
+com o material na mão, orgânico.
+
+**⛔ TODO GC/UGC mostra o material SEMPRE — nunca pessoa vazia, mãos nuas, sem produto (regra da
+dona, 25/10/2026 — achado real: 6/6 peças estáticas da leva Atlas AR não tinham isso, só
+mesa/mockup sem rosto).** "UGC com o entregável na mão" não é peça opcional perdida no meio do
+texto, é a definição do formato GC/UGC neste portfólio (mesmo padrão do Rodrigo) — **toda** peça
+GC/UGC (comprador OU expert) mostra a pessoa **segurando o material**: impresso na mão, OU
+tablet/celular "acolchoado como cartão-postal" mostrando a capa, perto do rosto/peito, olhando pra
+câmera, como se desse opinião — pose "capa de livro" (ver `criativo-ads-video-orq` catálogo de
+takes, letra **N**; mesma pose vale pro estático: capa visível, ou abrindo mostrando 2 páginas).
+**Nunca** a cena GC ser só mesa/produto parado sem a pessoa segurando e reagindo — isso deixa de
+ser GC e vira peça de produto. Sem isso a leva perde o gancho de atenção do 1º frame que só
+rosto+produto dá. **Checar peça por peça ao fechar o plano da leva**, não só confiar que
+"variedade" cobre sozinha.
+
+**Safe area:** ou gera 2 imagens (9:16 e 4:5), ou monta a 1ª já
 pensando no corte do feed 4:5 (nada importante fora da faixa central).
 
 **⛔ Margem de segurança — TODO formato, sempre (regra da dona, 24/10/2026):** em qualquer

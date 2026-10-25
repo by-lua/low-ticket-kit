@@ -963,6 +963,14 @@ bonitos.
   limpa (Pexels/Pixabay/Mixkit/Coverr liberam uso comercial sem atribuição).
   Pinterest é **descoberta**, não fonte — o pin quase sempre reaponta pra origem;
   baixe da origem.
+- **Correção (dona, 25/10/2026): Pinterest É fonte direta válida, não só descoberta, quando o
+  conteúdo é ESTILIZADO/3D** (render 3D de exercício/anatomia, animação, ilustração) — é onde o
+  banco público costuma faltar (ver `OFERTAS/luciola-atlas-movimiento/STATUS.md`, "B-roll externo
+  resolvido 12/10": os 5 clipes 3D do Atlas vieram de busca direta no Pinterest em inglês, não de
+  banco público). **Divisão de fonte por tipo de conteúdo:** Pinterest = 3D/estilizado/render;
+  TikTok = orgânico/viral (cena real, não encenada); YouTube = secundário (geralmente pior
+  qualidade/mais clichê que os outros dois, usar só quando os outros não têm). Buscar sempre em
+  inglês nos três.
 - Nunca use clipe com marca, logo, rosto reconhecível de celebridade ou legenda
   queimada. Corta o anúncio no review da Meta.
 - **TikTok também é fonte — dupla função (buraco fechado 2026-09-09).**
