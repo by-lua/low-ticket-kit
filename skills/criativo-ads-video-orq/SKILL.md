@@ -122,6 +122,15 @@ permanente abaixo. Nenhum se repete.
       recortada depois dos timestamps do `words.json` já gerados, trunque a legenda pra nunca
       ultrapassar a duração real do corpo (`[w for w in words if w['end'] <= duração_do_corpo]`)
       — senão a palavra fica "pendurada" renderizada em cima do card CTA.
+      **⛔ Legenda de OUTRO criativo (bug real, 25/10/2026, CT13 Atlas): reaproveitar a pasta
+      `remotion/` de outro criativo (copiar `node_modules`/`package.json`/`KaraokeV2.jsx` pra
+      economizar setup) é válido, mas o `words.json` daquela pasta é SEMPRE do criativo de
+      origem — nunca copia sozinho com o resto.** Antes de rodar `npx remotion render`, imprime a
+      1ª e a última linha do `words.json` que vai renderizar e compara com a 1ª/última frase do
+      `roteiro*.txt` DESTE criativo — se não bater, está renderizando a legenda de outro vídeo.
+      Vale também quando o `remotion/src/words.json` já existia na pasta de uma sessão anterior
+      (pane interrompido, retomada): nunca assume que está certo só porque o arquivo existe —
+      confere o texto antes de renderizar, sempre, mesmo em retomada.
       **Onde achar o mockup (nessa ordem):** `produto/MOCKUPS-NOSSOS/` da oferta → se não
       existir local, **a própria página de vendas no ar já tem** (ex. `/images/producto-portada.*`
       — inspecionar o HTML da página com `curl`/grep por `mockup|cover|capa|portada|producto` nos
