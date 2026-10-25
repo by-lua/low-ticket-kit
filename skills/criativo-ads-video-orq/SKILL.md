@@ -11,6 +11,19 @@ description: "Mecânica de produção e edição de anúncios em vídeo, chamada
 
 # criativo-ads-video-orq
 
+> **⛔ ISTO VALE PRA TODO CRIATIVO DE VÍDEO DO PORTFÓLIO, QUALQUER OFERTA, QUALQUER AGENTE —
+> NUNCA É ESPECÍFICO DE UM PROJETO (regra da dona, 25/10/2026, reforçada depois de um agente de
+> OUTRA oferta inventar o próprio método de legenda em vez de usar este).** Não existe "legenda
+> daquela oferta" nem "edição desse criativo" — existe UMA receita só, usada em TODO vídeo de
+> anúncio deste portfólio: **legenda = sempre `scripts/legenda_align.py` (alinhamento forçado,
+> venv em `~/Developer/legenda-karaoke/.venv` — conferir que existe ANTES de instalar outro)
+> → Remotion KaraokeV2** (tamanho de fonte, cor, posição, blocos de 2-4 palavras — tudo fixo,
+> nunca reinventado); **b-roll/edição = sempre a receita E.0d/E.2b** (split 70/30, 1 clipe por
+> frase, fade nas junções). Se você é um agente chegando numa oferta nova e precisa de legenda ou
+> edição de vídeo: você **já está na skill certa** — não existe outra pra isso, não invente
+> substituto (proporcional, Whisper, overlay de código) só porque uma dependência faltou. Falta
+> dependência = resolve a dependência (confira o venv acima primeiro), nunca troca de método.
+
 ## Lições fixas da sessão de QA 2026-10-04 (mapas-visuais-eletrotecnia) — leia antes de tudo
 
 Seis defeitos achados numa única rodada de revisão da dona, todos virando regra
@@ -170,9 +183,19 @@ de UGC feminino no meio do vídeo — só apareceu porque o QA amostrou frames e
 bem o segundo exato onde a cena errada entrava; CT4/CT13/CT23 tinham CTA/card entrando ANTES do
 corpo/legenda terminar de verdade — card sobrepondo legenda, às vezes por 1-2s, só visível
 assistindo contínuo; CT12 saiu com a trilha ALTA DEMAIS, nunca medida, só "ouvida por cima";
-CT13 tinha palavra repetida 2x no meio da fala.** Frame em número redondo (0, 3, 6, 9...) pula
-exatamente o segundo onde o defeito mora. Antes de declarar QUALQUER vídeo pronto (novo ou
-reaproveitado de sessão anterior):
+CT13 tinha palavra repetida 2x no meio da fala. CT11/CT21 (25/10 noite) tinham ÁUDIO ERRADO
+inteiro — o `src/index.jsx` do Remotion apontava pra um arquivo velho (`"final-v2.mp4"`,
+sobra de uma iteração anterior) enquanto o roteiro/áudio novo só foi escrito em `"final.mp4"` —
+render saiu silencioso: nenhum erro, só o áudio/roteiro antigo tocando com a legenda nova por
+cima, sem bater.** Frame em número redondo (0, 3, 6, 9...) pula exatamente o segundo onde o
+defeito mora. Antes de declarar QUALQUER vídeo pronto (novo ou reaproveitado de sessão anterior):
+- [ ] **Confira o `src:` dentro de `src/index.jsx` contra o arquivo que você DE FATO acabou de
+  escrever** — reusar uma pasta `remotion/` (própria ou de outro criativo) pode deixar o `src`
+  apontando pro nome antigo (`final-v2.mp4`, `final-v3.mp4`...) enquanto você só atualiza
+  `final.mp4`. `grep "src:" src/index.jsx` e compare o nome antes de rodar `npx remotion render`.
+- [ ] **Transcreva o ÁUDIO DO ARQUIVO JÁ RENDERIZADO (depois do `remotion render`, não antes)**
+  com Whisper (`watch` skill tem chave Groq configurada) e confira contra o roteiro palavra por
+  palavra — provar o arquivo ANTES de renderizar não garante que o render usou esse mesmo arquivo.
 - [ ] **Verifique CADA fonte do `list-body.txt`/lista de concat ANTES de concatenar** — abra 1
   frame de CADA arquivo `s*.mp4`/`c*.mp4` individualmente e confirme que a pessoa/conteúdo bate
   com o criativo (nunca confie em nome de arquivo nem em "já tava lá"). Clipe órfão de outra
