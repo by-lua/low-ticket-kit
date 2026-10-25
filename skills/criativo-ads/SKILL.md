@@ -674,6 +674,57 @@ uma função (um sobe nível de consciência, outro fecha a venda) — decisão 
 ~2%) + no mínimo 3 dias rodando antes de cortar, nunca corte no 1º dia (reforça o que já está na
 seção "Quantidade pela fase da conta" — aqui é o motivo).
 
+## 🔗 MATRIZ ÚNICA — 1-1-10 do Kevones × 1-3-9 do Rodrigo (regra da dona, 25/10/2026)
+
+> *"o 1-1-10 do Kevones tem regras, o 1-3-9 do Rodrigo fala de ângulos, formatos… um complementa o
+> outro"* — e na skill não existia a junção. Esta é a junção.
+
+**Divisão de trabalho:** o **Kevones dá a QUANTIDADE e a DISTRIBUIÇÃO** (10 criativos por conjunto,
+1 conjunto Advantage+ por campanha, 3 campanhas; nenhuma campanha repete a mesma dor; a dor que vende
+entra em todas; nada de variação rasa). O **Rodrigo dá o PAPEL de cada slot** (que formato, que tipo,
+que cor, que função: UGC, expert, clássica com preço, só-texto, antes/depois, objeção).
+
+### Os 10 slots de um conjunto (preenche o 1-1-10 com o repertório do 1-3-9)
+| Slot | Formato | Papel | Regra que manda |
+|---|---|---|---|
+| 1 | vídeo | **expert** — gancho → mecanismo → CTA | corpo desenvolve o mecanismo, não repete a promessa |
+| 2 | vídeo | **UGC comprador comum** — 1ª pessoa, material na mão | cenário diferente do expert |
+| 3 | vídeo | **demonstrativo** — tela do entregável por dentro | é o mecanismo que segura o corpo |
+| 4 | estático | **UGC** — pessoa com o material (capa ou 2 páginas) | mão nua = reprovado |
+| 5 | estático | **só texto** — frase de impacto, sem produto | sobe consciência, não vende sozinha |
+| 6 | estático | **original** — 1 benefício + CTA | sem história |
+| 7 | estático | **fase de impacto** — fundo branco + texto preto/vermelho | só a cor define o estilo |
+| 8 | estático | **clássica** — fundo preto + produto + **PREÇO** | **única peça do conjunto com preço** |
+| 9 | carrossel | **objeção** — 1 card por objeção → CTA | quebra objeção, não apresenta produto |
+| 10 | carrossel | **história** ou **catálogo** (escolhe 1) | história = 5-10 cards; catálogo = acervo |
+
+**Como as 3 campanhas variam sem repetir dor:** os 10 papéis se mantêm, mas **a dor de cada slot muda**
+e a **espinha (dor que vende) troca de slot** entre campanhas (C1 no slot 6, C2 no slot 8, C3 no slot 1,
+por exemplo). Formato repetido é permitido; **conteúdo repetido não** (regra anti-variação-rasa).
+Se a campanha tiver 9 peças em vez de 10, cai o slot 10 — os outros 9 são o 1-3-9 clássico.
+
+**Exceção legítima:** peça **traduzida de criativo já validado** (ex.: vencedor EN → es-AR) entra como
+slot 2/6 sem contar como variação rasa — é reaproveitar validação em outro mercado, não recolorir a
+mesma ideia no mesmo mercado.
+
+**⛔ NÃO replicar gancho com o mesmo corpo trocando só o objeto** (correção da dona, 25/10/2026,
+sobre a leva do Atlas): pegar o gancho vencedor e repetir o anúncio mudando só o exercício/o exemplo
+é **errado** — é a mesma peça com outra etiqueta, e o Meta entrega como uma só. Peça nova = **gancho E
+corpo/dor diferentes**. Reaproveitar take, gravação ou b-roll serve para montar **outro corpo**, nunca
+para repetir o mesmo anúncio com outro exemplo.
+
+**Duas regras da mesma call que fecham a matriz:**
+- **Variação de hook NÃO funciona** (22/10): mexer só no texto/gancho do criativo validado, com o mesmo
+  conteúdo e o mesmo "look", não sobe consciência — o Meta entrega como o mesmo anúncio. O que varia é
+  **cena/ambiente e a dor** (consultório → cozinha → sala da residência → carro), nunca só a frase de
+  abertura. Tradução de peça já validada para outro mercado é a única exceção.
+- **A leva inteira é ponto de contato:** criativo que gera IC barato em volume fica ativo mesmo sem
+  vender — é ele que sustenta a consciência dos outros. Corte só por **IC > 10% do ticket e volume
+  baixo, depois de 48h**; nunca no dia 1, nunca por "não vendeu hoje".
+
+**Cobrado pelo script:** `scripts/gate-plano-leva.py` reprova leva sem UGC (com material na mão) e sem
+peça só-texto.
+
 ## Quando ler outra skill
 
 - **`criacao-low-ticket-mvt/references/ESTRUTURA-DE-PENSAMENTO.md`** — a ordem canônica

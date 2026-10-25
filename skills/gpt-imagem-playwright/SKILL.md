@@ -228,6 +228,22 @@ Medido: ~7s numa ref de 220 KB, ~40s numa de 627 KB.
 > `V-O-C-E-ACENTUADO` fez o ChatGPT responder *"o que gostaria que eu criasse?"* — o prompt não
 > chegou. Escreva as palavras normalmente e peça o acento **por extenso** ("com o acento
 > circunflexo no O de VOCE"), sem separadores.
+>
+> **⚠️ Isso NÃO significa tirar o acento do texto do prompt (confundido 25/10/2026, Mapa do
+> Tarot BR — 7 peças saíram sem acentuação e tiveram que ser regeradas).** O bug é só o
+> hífen-pra-soletrar; escrever a palavra inteira **com acento normal** (`será`, `só`, `não`,
+> `é`) no meio da frase passa numa boa. Se o prompt tirar o acento pra "evitar problema", a
+> imagem sai **sem acento** — não evita nada, só produz peça errada. **Declare o idioma e peça
+> acento explicitamente**: `written in correct Brazilian Portuguese WITH proper accent marks,
+> render the accent marks (á, ó, ã, ê...) clearly and correctly` (PT) ou `texto en español con
+> tildes correctas: é, á, í, ó, ú, ñ` (ES). Confira sempre com crop da área do texto em
+> full-res antes de aprovar — ver memória `acentuacao-espanhol-declarar-prompt`.
+
+> **Declare o IDIOMA do texto explicitamente no prompt, sempre** (dona, 25/10/2026 — Mapa del Tarot
+> AR). Nunca assumir que o modelo acerta acento sozinho fora do português: peça "texto en español
+> rioplatense con tildes correctas (á, é, í, ó, ú, ñ)" / "texto in English" explicitamente, mesmo
+> quando o resto do prompt já está no idioma certo. Confira palavra por palavra antes de aceitar a
+> peça — acento errado é QA bloqueador, regenera.
 
 Escreva o prompt num arquivo e use `keyboard inserttext` — `fill` quebra com texto longo e caractere especial.
 

@@ -161,6 +161,23 @@ def main():
     (oks if di else falhas).append('regra digital + impresso escrita' if di
         else 'plano sem a regra: toda imagem com material = 1+ aparelho E folhas impressas (página diferente em cada)')
 
+    # 13 · TRILHAS da leva — UGC e só-texto são obrigatórios (Rodrigo 21/10, cobrado pela dona 25/10)
+    if len(todas) >= 5:
+        ugc = [l for l in todas if 'ugc' in n(l)]
+        stx = [l for l in todas if re.search(r'so[- ]?texto', n(l))]
+        if not ugc:
+            falhas.append('leva sem peça UGC — trilha UGC é obrigatória (pessoa com o material na mão, 1 a cada 9)')
+        elif not any(re.search(r'na mao|material|pasta|folha|ficha', n(l)) for l in ugc):
+            falhas.append('peça UGC sem o material na mão (regra 25/10: pessoa vazia/mão nua = reprovado)')
+        else:
+            oks.append(f'trilha UGC presente ({len(ugc)} peça[s] com material)')
+        if not stx:
+            falhas.append('leva sem peça SÓ TEXTO (frase de impacto sem produto, 1 a cada 9) — método Rodrigo')
+        else:
+            oks.append(f'peça só-texto presente ({len(stx)})')
+        if 'mecanismo' not in txt:
+            avisos.append('plano não diz que o corpo do vídeo desenvolve o mecanismo (gancho -> mecanismo -> CTA)')
+
     # aprovação
     aprovado = re.search(r'- \[x\] \**ok da dona', txt)
     if aprovado:
