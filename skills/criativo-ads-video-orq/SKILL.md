@@ -648,147 +648,27 @@ desde a FASE 0 — nunca pular direto pra "gere a cena X".
 
 Só depois disso, decida o modo. Se não estiver claro no pedido, **pergunte**:
 
-**Modo A — Criativo completo do zero.** Todas as cenas são geradas: hook, corpo, oferta e CTA. Use quando não existe criativo vencedor, ou quando o vencedor vai ser substituído.
+**Modo A — Criativo completo do zero.** Todas as cenas são geradas: hook, corpo,
+oferta e CTA. **É o modo padrão desde 25/10/2026** (B/B2/C removidos — ver nota
+abaixo). Toda dor/ângulo novo vira peça nova do zero, nunca reaproveitando body
+de vencedor com variação de superfície.
 
-**Modo B — Hook novo sobre body existente.** Só o hook é gerado; o corpo é um criativo que já converte, cortado no ponto certo. Use para escalar um vencedor testando ângulos e públicos diferentes. Mais barato e mais seguro.
-
-**Modo B2 — Body variado (a "v2").** Vários bodies em vez de um só, para quebrar a
-similaridade criativa que o Modo B carrega (ver FASE 1). Cada body muda pelo menos
-uma variável do conceito além do ângulo:
-
-- **recut** — o mesmo vencedor cortado em outro ponto, ou com blocos reordenados
-- **promessa trocada** — mesma oferta apresentada por outra dor/benefício
-- **persona trocada** — quem conduz o corpo do vídeo muda (a filha, o cético, o marido)
-- **prova trocada** — depoimento no lugar da explicação, ou vice-versa
-- **CTA trocado** — teste grátis vs. diagnóstico vs. consulta
-
-Custa mais geração, mas é o que faz a leva virar **conceitos distintos** em vez de
-variações do mesmo anúncio.
-
-**Modo C — Variação do vencedor (metodologia Kevones).** Não é um pipeline novo:
-é **o Modo B (ou B2) com a matriz gatilho × ângulo do Kevones no lugar do
-briefing**. A produção é a mesma — hook novo por criativo, body vencedor emendado
-depois. O que muda é de onde saem os hooks: em vez de inventados um a um, eles
-nascem de uma matriz que garante que nenhum repita o do lado.
-
-Use quando a leva nasce de um criativo que **já tem venda**, e não de um briefing.
-
-**Como a matriz gera os hooks:** 3 gatilhos × 4 ângulos = 12 combinações possíveis.
-Escolha N delas, uma por criativo, e cada uma vira a cena de hook:
-
-| | Surpresa | Novidade | Mudança de vida |
-|---|---|---|---|
-| **TikTok** | criativo 1 | criativo 2 | criativo 3 |
-| **Direto** | criativo 4 | criativo 5 | criativo 6 |
-| **Dicas** | criativo 7 | criativo 8 | criativo 9 |
-| **Catálogo** | *só e-commerce* | | |
-
-Regras de preenchimento:
-
-- **Uma célula, um criativo.** Duas células iguais é o mesmo hook com roupa
-  diferente — a Meta lê como um anúncio só.
-- **O ângulo manda no visual, o gatilho manda na fala.** Cada linha da matriz
-  ganha um look próprio (luz, superfície, hora, o que está em quadro); cada coluna
-  ganha a abertura da frase. É isso que faz os N primeiros frames serem distintos.
-- **O body fixa persona e oferta** — a matriz só varia o ângulo. Continua valendo
-  o teto de ~60% de body compartilhado da FASE 1: acima disso, a leva é uma
-  família de conceitos. Meça e informe ao entregar.
-- **O hook carrega a PERSONA; o body carrega mecanismo e CTA.** Cada hook tem
-  pessoa, rosto, idade, sexo e ambiente próprios. É a persona que a Meta lê como
-  conceito distinto — variar só a superfície da mesa não engana ninguém.
-- **Não replique o território visual do body nos hooks.** Se o body é overhead de
-  mãos numa mesa, nove hooks de mãos numa mesa são um criativo com nove nomes,
-  por mais que a luz e a madeira mudem. Erro cometido em produção: as âncoras de
-  continuidade (mesmas mãos, mesma voz) foram copiadas para todos os hooks e
-  zeraram a diversidade que era o objetivo da leva.
-- **Continuidade não se resolve repetindo o personagem — se resolve mudando de
-  registro.** Hook em 1ª pessoa com rosto, body em narração demonstrativa, são dois
-  registros que o espectador aceita. O que denuncia montagem é a MESMA narradora
-  soar diferente entre duas cenas, não o hook ter outra pessoa que o body.
-- **Body narrado sem rosto (VO off) é justamente o caso que mais pede rosto no
-  hook:** cena sem rosto sorteia timbre, e rosto em quadro fixa. Herdar a narração
-  do body no hook soma o risco de sorteio ao custo de zerar a diversidade.
-
-
-### Estratégia da leva (gatilho × ângulo, dor, bolhas, quantidade, corte) — mora na skill `criativo-ads`
-
-A metodologia Kevones de criativo (curso 2025 + YouTube 2025/26) saiu daqui e foi
-para `~/.claude/skills/criativo-ads/references/kevones-criativo.md`. **Leia o arquivo
-antes de montar a matriz do Modo C.** Resumo do que muda a produção:
-
-- **Não fazer variação rasa do vencedor** (trocar só gancho, música, voz, tom ou cor):
-  desde a Andrômeda o Meta agrupa como o mesmo anúncio. Cada célula da matriz tem
-  que trazer **outra dor/persona/motivo de compra**. Repete o formato, não o conteúdo.
-- Gatilhos (Surpresa / Novidade / Mudança de vida) abrem a fala; ângulos (TikTok /
-  Direto / Dicas / Indicação / Conteúdo de valor) decidem a estrutura e o visual.
-- Quantidade por fase: teste de low ticket com 3–5; público validado com 3
-  criativos (1-1-3); depois ~3 novos por semana.
-- A peça entra em **campanha nova** com o público validado, nunca na que já vende.
-
-Detalhe completo de tráfego na skill `metaads-kevones` — esta aqui só produz o
-vídeo. Não replique a régua de campanha aqui; ela muda e a fonte é aquela.
-
-**Pergunte sempre, antes de planejar a leva:**
-
-> Esta leva vai ser **1 body com N hooks** (teste limpo de hook, mais barato, mas
-> ~70-80% de cada vídeo é o mesmo arquivo) ou **v2 com bodies variados** (mais
-> caro, abre bolsões de público novos porque muda persona/promessa/prova, não só
-> o gancho)?
-
-Essa é a **única** pergunta desta decisão. Quantidade de bodies, variáveis e
-distribuição são derivadas por você a partir do número de criativos — ver abaixo.
-
-**No v2, o dimensionamento é decisão sua, não do usuário.** Ele pede a quantidade
-de criativos; você deriva o resto e só informa o plano. Não pergunte quantos
-bodies, quantas personas ou qual variável — decida:
-
-| Criativos pedidos | Bodies | Hooks por body |
-|---|---|---|
-| até 3 | 1 | todos (não compensa fatiar) |
-| 4 a 6 | 2 | 2 a 3 |
-| 7 a 9 | 3 | 2 a 3 |
-| 10 a 15 | 4 | 3 a 4 |
-| 16+ | 5, e pare aí | 3 a 4 |
-
-Regra: **um body a cada ~3 criativos**, teto de 5 — acima disso a produção
-explode e o ganho de diversidade satura.
-
-Qual variável cada body muda, nesta ordem de prioridade (o body 1 é sempre o
-vencedor original, intacto):
-
-1. **promessa** — outra dor/benefício da mesma oferta
-2. **persona** — quem conduz o corpo do vídeo
-3. **prova** — depoimento no lugar da explicação
-4. **CTA** — teste grátis vs. diagnóstico vs. consulta
-5. **recut** — só se ainda faltar body depois dos quatro acima
-
-Distribuição dos hooks: **hooks do mesmo território semântico vão para bodies
-diferentes**, nunca empilhados no mesmo. É isso que impede a leva inteira de
-conversar com o mesmo bolsão.
-
-Apresente a matriz pronta (body × variável × hooks) e siga; só pare se o usuário
-quiser mudar.
-
-Levante também, perguntando o que não souber:
-
-- **Oferta** — o que vende, preço, promessa, garantia
-- **Público** — quem, idade, dor, nível de consciência
-- **Idioma e sotaque** — ex: espanhol rioplatense com voseo, PT-BR
-- **Duração alvo** do criativo e do hook
-- **Referência visual** — existe criativo vencedor? tem atriz/persona a manter?
-- **Plataforma** — Meta feed/stories, YouTube, TikTok
-
-**Acervo de modelos: conte TERRITÓRIOS, não arquivos.** Num acervo de 20 vídeos
-de referência, **7 eram o mesmo roteiro** com corte e duração diferentes — o
-acervo real tinha 10 ideias, não 20. Transcreva tudo antes de planejar a leva
-(`faster-whisper` resolve em minutos) e agrupe por território semântico. Planejar
-"6 criativos" sobre um acervo que você achou que tinha 20 opções e tem 10 leva a
-repetir mecanismo sem perceber.
-
-Mantenha um `MODELOS-USADOS.md` no projeto: qual modelo virou qual criativo, e
-quais territórios seguem livres. Sem isso a leva seguinte recicla o mesmo ângulo.
-
-No Modo B, **assista ao criativo vencedor antes de escrever qualquer coisa.** Extraia a transcrição (das legendas queimadas, se não houver script) e mapeie a estrutura em blocos com timestamps. Sem isso o hook não encaixa.
+> **⛔ Modo B, B2 e C REMOVIDOS (regra da dona, 25/10/2026).** Os três dependiam
+> de reaproveitar o body de um vencedor trocando só o hook/gancho (matriz
+> gatilho×ângulo do Kevones, ou "v2" com body variado). Confirmado em
+> `criativo-ads/references/kevones-criativo.md` linhas 11-38: **o próprio Kevones
+> abandonou essa lógica depois da Andrômeda** (out/2025) — o Meta passou a agrupar
+> por IDEIA/CONTEXTO, não por superfície, então trocar gancho/voz/cor/matriz de
+> abertura sobre o mesmo body é a variação rasa que ele hoje condena. O que ele
+> ensina agora é **"um anúncio por dor/benefício"**: lista as dores do produto,
+> 1 peça nova (gerada do zero, Modo A) por dor — é exatamente o que GATE 0.2 /
+> MATRIZ ÚNICA de `criativo-ads` já fazem. A única variação de vencedor que ele
+> ainda autoriza é o **"copo azul"** (mesmo produto+copy, troca quem/onde —
+> `copo-azul-variacao-vencedor`), que é uma peça nova mesmo assim, não corte de
+> hook sobre body velho.
+>
+> Se encontrar `HOOK/`, `CRIATIVO-N` com body reaproveitado, ou qualquer menção a
+> "Modo B/C" em oferta antiga: é legado, não reproduzir o padrão numa leva nova.
 
 **Modo D — Modelagem de escalados.** A leva não nasce de briefing nem de vencedor
 próprio: nasce de um **formato que já está escalando na conta de outra pessoa**, com o
@@ -809,7 +689,7 @@ Fluxo de vídeo no Modo D:
    13 têm transcrição `.txt` ao lado do arquivo.
 2. Prompt `11` decupa o vídeo escalado em blocos (hook / agitação / mecanismo / prova /
    oferta / CTA), acha o corte de atenção e nomeia o mecanismo do hook.
-3. O briefing que sai dali entra aqui como **Modo A ou B**, já com persona, ângulo e
+3. O briefing que sai dali entra aqui como **Modo A**, já com persona, ângulo e
    falas por cena. Todas as regras desta skill continuam valendo — 16 palavras por cena
    no Veo, rosto em quadro, bloco de dentes, anti-morphing.
 
@@ -1282,7 +1162,7 @@ ele está seguro"), não pela ótica de quem usa.
 homens (serralheria, mecânica, pesca, obra) → voz masculina. Nicho majoritariamente
 feminino (cozinha, artesanato, maternidade, beleza) → voz feminina. Voz fora do
 nicho lê como anúncio de fora, não como alguém de dentro. Na dúvida, teste as duas
-como variação — é uma variável trocada, cabe no Modo C.
+como variação — teste as duas em peças diferentes da leva.
 
 A narração é gerada pela skill **`narracao-hub-tts`** (API do NinjaVoice, sem
 browser, 82 vozes, pt-BR nativo, WAV síncrono). Invoque-a, não reescreva a
@@ -1479,34 +1359,31 @@ Na prática: quando a copy velha não presta mas o acervo tem talking-head, **n�
 tente salvar a cena de rosto reescrevendo o áudio por cima** — trate o projeto como
 Modo E do zero. As cenas mudas do acervo antigo (mão com material, gravação de
 tela, inserts) entram como b-roll pronto; as cenas de rosto ficam de fora ou viram
-referência de persona para uma leva futura de talking-head genuíno (Modo A/B/C).
+referência de persona para uma leva futura de talking-head genuíno (Modo A).
 Narração nova, off-screen, carrega o criativo inteiro — ver E.4b.
 
-### E.7 — Leva de N criativos em Modo E usa a mesma matriz do Modo C
+### E.7 — Leva de N criativos em Modo E: 1 dor por célula (matriz gatilho×ângulo removida 25/10/2026)
 
 O Modo E não tem estrutura de teste própria. Para gerar uma **leva** (não um
-criativo isolado), a matriz gatilho × ângulo do Modo C (ver seção "Modo C —
-Variação do vencedor" nesta mesma skill, transcrita do curso do Kevones,
-módulo `15-masterclass-criativos-milionarios` — skill `metaads-kevones`) é a
-fonte de diversidade — ela só troca de motor de produção, não de método:
+criativo isolado), a fonte de diversidade é a **lista de dores/ângulos reais do
+banco da oferta** (`pesquisa/PERSONA-E-ANGULOS.md` — ver GATE 0.2/MATRIZ ÚNICA em
+`criativo-ads`), **não** mais a matriz gatilho×ângulo do extinto Modo C:
 
-- **O gatilho (Surpresa / Novidade / Mudança de vida)** decide como o roteiro
-  narrado abre — a primeira frase da narração off, não uma fala de personagem.
-- **O ângulo (TikTok / Direto / Dicas)** decide a estrutura do roteiro inteiro
-  (história pessoal vs. produto+CTA vs. ensina-um-passo) **e** o look do
-  b-roll daquele criativo — termos de busca e composição mudam por linha do
-  ângulo, não só a fala.
-- Sem produto físico pra catálogo, a coluna **Catálogo** fica de fora: a matriz
-  usada é 3 gatilhos × 3 ângulos = até 9 criativos, um por célula.
+- **Uma dor, uma célula.** Cada criativo da leva ataca uma dor/motivo de compra
+  DIFERENTE do banco — nunca repete dor com roteiro reescrito (isso é a variação
+  rasa que o próprio Kevones condena hoje, ver nota no Modo A).
+- **A dor decide a abertura E a estrutura do roteiro** daquele criativo (história
+  pessoal vs. produto+CTA vs. ensina-um-passo) — não uma célula fixa de gatilho.
 - **Persona da narração é sempre quem decide a compra** (ver FASE 0/§E.4), igual
-  em toda a matriz — o que muda célula a célula é o gatilho e o ângulo, nunca pra
-  quem a narração fala.
-- O corpo de mundo (b-roll + tela) pode repetir entre células do mesmo ângulo — é
-  o **roteiro e o gatilho** que fazem cada criativo ser um conceito distinto, não
-  a obrigação de b-roll 100% exclusivo por criativo.
+  em toda a leva — o que muda célula a célula é a dor atacada, nunca pra quem a
+  narração fala.
+- O corpo de mundo (b-roll + tela) pode repetir entre células de dor parecida — é
+  o **roteiro e a dor** que fazem cada criativo ser um conceito distinto, não a
+  obrigação de b-roll 100% exclusivo por criativo.
 
-Preencha a matriz (roteiro por célula) **antes** de sair atrás de b-roll — só
-então a busca de clipes por termo (E.1) sabe o que cada criativo precisa mostrar.
+Preencha a lista (roteiro por célula, 1 por dor) **antes** de sair atrás de
+b-roll — só então a busca de clipes por termo (E.1) sabe o que cada criativo
+precisa mostrar.
 
 **Qual material B usar depende do formato do produto, não é escolha livre por
 criativo:**
@@ -1546,18 +1423,17 @@ Regras que não mudam:
   nunca é o clipe de talking-head reaproveitado de uma leva anterior com áudio
   trocado (isso quebra lip-sync, ver §E.6). Se não há orçamento/cota pra gerar UGC
   novo, a célula fica 100% narração off.
-- **Custo sobe** nas células com UGC: viram Modo A/B de verdade (imagem+vídeo no
+- **Custo sobe** nas células com UGC: viram Modo A de verdade (imagem+vídeo no
   GPT/Hub) por dentro do Modo E — não são "grátis" como o resto da leva.
-- Escolha essas células **pelo ângulo**, não ao acaso: TikTok (história pessoal) é
-  onde UGC rende mais — a pessoa em quadro reforça "isso aconteceu comigo/com
-  alguém que eu conheço". Direto e Dicas seguem bem só com narração off.
-- **Default recomendado pra leva 3×3 completa (9 criativos):** UGC só na coluna
-  **TikTok** (3 células — uma por gatilho), as colunas **Direto** e **Dicas**
-  (6 células) ficam 100% narração off + demonstração do entregável + b-roll.
-  Isso mantém 6 de 9 criativos no custo baixo do Modo E puro e concentra a
-  geração paga (imagem+vídeo de pessoa) só onde ela mais rende. Ajuste pra cima
-  ou pra baixo conforme orçamento, mas comece daqui e pergunte ao usuário antes
-  de mudar a proporção.
+- Escolha essas células **pela dor**: dor com relato pessoal forte ("isso
+  aconteceu comigo/com alguém que eu conheço") rende mais com UGC; dor mais
+  técnica/direta segue bem só com narração off.
+- **Default recomendado numa leva de 9-10 (matriz da MATRIZ ÚNICA):** UGC nos
+  slots que já são UGC/expert por definição (slots 1-2), o resto fica 100%
+  narração off + demonstração do entregável + b-roll. Isso mantém a maioria da
+  leva no custo baixo do Modo E puro e concentra a geração paga (imagem+vídeo de
+  pessoa) só onde ela mais rende. Ajuste conforme orçamento, pergunte ao usuário
+  antes de mudar a proporção.
 - Persona do UGC segue a mesma regra de sempre (FASE 0/§E.4): fala como quem
   decide a compra (filho/cuidador), nunca como o idoso.
 
@@ -1602,28 +1478,6 @@ Escreva as falas dos hooks lado a lado e conte:
 # conta a repetição da ideia central nas falas dos hooks da leva
 grep -h "exact words\|says exactly" */HOOK/PROMPTS/*.txt | tr A-Z a-z | grep -c "<palavra-central>"
 ```
-
-### No Modo B, o body fixa persona e oferta — planeje a leva sabendo disso
-
-Emendar hooks num body vencedor varia **só o ângulo**: persona, promessa, CTA e
-normalmente 70-80% da duração são o mesmo arquivo em todos os criativos. Isso é
-ótimo para **testar hook** (uma variável isolada), e é o teto de diversidade que
-nenhum hook novo rompe.
-
-Meça a proporção e diga isso ao usuário ao entregar a leva:
-
-```bash
-# quanto do criativo final é body compartilhado
-b=$(ffprobe -v error -show_entries format=duration -of csv=p=0 body.mp4)
-f=$(ffprobe -v error -show_entries format=duration -of csv=p=0 CRIATIVO-N.mp4)
-awk -v b=$b -v f=$f 'BEGIN{printf "body = %.0f%% do video\n", 100*b/f}'
-```
-
-Acima de ~60% de body compartilhado, a leva é **uma família de conceitos**, não
-várias. Para diversidade real, a leva seguinte precisa de **body alternativo**
-(recut diferente, versão com depoimento, outro ritual) e/ou **outra promessa** —
-não de mais hooks. É exatamente isso que o **Modo B2** faz; ofereça a escolha ao
-usuário no briefing em vez de decidir sozinho.
 
 ### Ficha de cada criativo
 
@@ -2902,8 +2756,8 @@ Causa secundária, se o texto cabia: **instrução meta dentro do prompt** — v
 Defeito oposto do anterior, e mais traiçoeiro porque **passa despercebido no
 QA de imagem e no ffprobe** — só aparece assistindo a transição entre cenas.
 
-O corte de silêncio por RMS (usado no Modo B/C pra achar onde a fala do hook
-termina) mede energia de áudio, não fala. Numa pessoa que "esvai" a voz aos
+O corte de silêncio por RMS (usado pra achar onde a fala de uma cena termina)
+mede energia de áudio, não fala. Numa pessoa que "esvai" a voz aos
 poucos em vez de calar abruptamente, o resíduo de respiração/eco continua
 acima do limiar por 1-2s **depois** que ela já parou de falar e já está
 sorrindo de boca fechada. O corte então:
@@ -3232,10 +3086,10 @@ ffmpeg -ss 0 -to $end -i clipe.mp4 \
   -c:a aac -b:a 192k -ar 48000 -ac 2 -y sN.mp4
 ```
 
-### Modo B: o fps do CRIATIVO é o do motor, e o BODY é que se adapta
+### Concat de cenas com fps diferente: o fps do CRIATIVO é o do motor, o resto se adapta
 
-No Modo B você emenda hook do Veo (24fps) num body que quase sempre é 30fps. Um dos
-dois tem que ceder, e a escolha não é opinião — se mede:
+Cenas geradas em motores diferentes (Veo 24fps, outra fonte 30fps) dentro do
+mesmo criativo. Uma tem que ceder, e a escolha não é opinião — se mede:
 
 ```bash
 # para cada candidato: total de frames vs frames únicos
@@ -3428,20 +3282,6 @@ sobra tempo no clipe.
 
 Deixe o aviso visível no log da montagem. Defeito silencioso que ninguém vê é defeito
 que chega ao cliente.
-
-### Modo B — emendar no body
-
-Ache o ponto de corte do criativo vencedor e corte **dentro de um silêncio entre frases**, nunca no meio de uma. Com key: transcreva o body no video-use e leia o `takes_packed.md` — as frases já vêm com `[ini-fim]` e quebra em silêncio ≥0,5s, o corte sai da fronteira da frase. Sem key: `silencedetect`.
-
-**Cheque redundância:** se o hook acabou de dizer algo e o body repete logo em seguida, corte mais adiante. É o erro mais fácil de cometer aqui.
-
-Mapeie a abertura do body frame a frame antes de decidir:
-
-```bash
-ffmpeg -ss 0 -to 9 -i body.mp4 -vf "fps=2,crop=iw:ih*0.55:0:ih*0.40,scale=380:-1,tile=1x18" -frames:v 1 head.jpg
-```
-
-Depois upscale o body para casar com o hook e concatene.
 
 ### Toda cena é a MESMA pessoa em quadro falando — não peça edição ao modelo
 
@@ -3731,25 +3571,15 @@ software; a viagem lê como decisão de edição.
 
 ## Estrutura de pastas
 
-**Vocabulário — não confunda:**
-
-- **Hook** = os primeiros ~10s novos, gerados cena a cena. Varia entre criativos.
-- **Body** = o criativo vencedor existente, cortado no ponto de entrada. Igual em todos.
-- **Criativo** = hook + body. É o que sobe pro Meta.
-
 ```
 <PROJETO>/ANUNCIO/<DD-MM>/
-  REFERENCIA/                frames do criativo vencedor (persona, look)
+  REFERENCIA/                frames de referência (persona, look)
   CRIATIVO-<N>/
-    HOOK/                    (só no Modo B)
-      IMG/     cena-1.png ...
-      VIDEO/   cena-1.mp4 ...
-      PROMPTS/ cena-1.md  ...
-      HOOK-<N>.mp4
+    IMG/     cena-1.png ...
+    VIDEO/   cena-1.mp4 ...
+    PROMPTS/ cena-1.md  ...
     CRIATIVO-<N>.mp4         entregável final
 ```
-
-No Modo A, `IMG/ VIDEO/ PROMPTS/` ficam direto em `CRIATIVO-<N>/`, sem a pasta `HOOK/`.
 
 **Numeração: continue a série do projeto, não recomece do 1.** Antes de criar as pastas, veja até que número os anúncios já chegaram e siga daí. Se o projeto já tem AD1…AD9, os novos são CRIATIVO-10, 11, 12. Recomeçar do 1 gera colisão de nome no gerenciador de anúncios e some com o histórico de qual criativo é qual.
 
@@ -3777,7 +3607,6 @@ ls <PROJETO>/ANUNCIO/*/ | grep -oE "(AD|CRIATIVO-)[0-9]+" | sort -uV | tail -3
 | Legenda queimada no clipe | Não foi proibido | `no subtitles, no burned-in text` |
 | Vídeo horizontal | Formato não travado na imagem | `vertical 9:16 story format` desde o GPT |
 | Total do hook estourou o alvo | Cenas escritas soltas e somadas no fim | Orçamento de tempo na FASE 1 |
-| Body repete o que o hook disse | Corte no lugar errado | Corte mais adiante, ver Modo B |
 | Cena gerada com o prompt da cena anterior | Hub não limpa o textarea | sequência canônica de envio em `hub-video-playwright` |
 | Loop de espera trava para sempre | src do `<video>` vira `blob:` | ver `hub-video-playwright` |
 | Rosto vira careta ao animar | Imagem de origem estourada ou com expressão exagerada | Gere o rosto em repouso e exposição correta; a emoção vai no `ACTION` do vídeo |
@@ -3821,7 +3650,7 @@ Se um seletor mudar, corrija **na skill-filha**. Nunca aqui.
 ## Referências
 
 - `scripts/browsers.sh` — sobe e conecta os dois browsers persistentes
-- `references/caso-numero-mestre.md` — caso real completo (projeto NUMERO-MESTRE, Modo B): oferta, escolha do body, corte, os 3 hooks, erros cometidos e comandos usados
+- `references/caso-numero-mestre.md` — caso real histórico (projeto NUMERO-MESTRE, extinto Modo B): consulta de erro antigo, não reproduzir o mecanismo
 - Skill `browser-cloudflare` — detalhe de por que o Chromium do sistema
 - Skills `remotion-create`, `remotion-captions`, `remotion-render` — montagem final e legenda canônica
 - Skill `video-use` (`~/Developer/video-use`) — transcript Scribe por palavra, EDL, corte/concat com fade (FASE 7)

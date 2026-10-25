@@ -30,12 +30,12 @@ entrega: o CPM sobe, o criativo morre em uma semana e o ROI cai.
 - Exemplo de ângulo de verdade: "compre seu iPhone novo" e "as melhores fotos são
   feitas no iPhone" são ângulos diferentes. Trocar a cor do banner não é.
 
-Isso muda o **Modo C**: a matriz gatilho × ângulo continua gerando a leva, mas
-cada célula tem que carregar uma **dor/motivo de compra diferente**, não só outra
-abertura de frase. A lista de funcionalidades → ângulo → persona (FASE 1) é
-exatamente esse exercício. Uma leva de "N hooks sobre o mesmo body" (Modo B) com
-a mesma dor em todos é a variação rasa que ele condena. Nesse caso, avise o
-usuário e prefira o B2 (bodies com promessa/dor trocada).
+**Modo B/B2/C (reaproveitar body de vencedor com matriz gatilho×ângulo) foram
+REMOVIDOS da skill (25/10/2026)** — eram exatamente a variação de superfície que
+este trecho mostra que o próprio Kevones abandonou. No lugar: cada criativo novo
+nasce do zero (Modo A), 1 peça por dor/motivo de compra real do banco da oferta
+(lista de funcionalidades → ângulo → persona, FASE 1) — nunca reescrevendo
+abertura de frase sobre o mesmo corpo.
 
 ### Onde as variações entram — campanha NOVA, sempre
 

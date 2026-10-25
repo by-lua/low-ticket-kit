@@ -34,8 +34,8 @@ description: Porta de entrada ÚNICA de criativo de anúncio (Meta/TikTok) — v
 > |---|---|
 > | "3 campanhas", 1-1-3, 1-1-10, teste em grupos | GATE 0→0.2 → `⭐ TESTE EM GRUPOS` → `🗺️ AS 3 TRILHAS` → `Como montar a matriz 1-1-3` |
 > | Qualquer peça de IMAGEM (estático, carrossel, peça de preço, antes/depois) | GATE 0.1 → **`references/tipos-de-imagem.md`** (índice único, qual tipo + checklist) → `modelagem-escalados` → `gpt-imagem-playwright` |
-> | Qualquer peça de VÍDEO (demonstrativo, expert, UGC, 1-3-9, caixa de perguntas, hook-sobre-vencedor) | GATE 0.1 → **`criativo-ads-video-orq/references/estilos-de-video.md`** (índice único, qual estilo + checklist) → E.2b |
-> | "Criativo estilo Rodrigo" / leva 1-3-9 | seção `"Criativo estilo Rodrigo"` abaixo (3 tipos + catálogo de cor/cenário) → `estilos-de-video.md` linha "1-3-9" |
+> | Qualquer peça de VÍDEO (demonstrativo, expert, UGC, 1-3-9, caixa de perguntas) | GATE 0.1 → **`references/ROTEIRO-POR-FORMATO.md`** (como ESCREVER o roteiro: página→GPT→gancho/desenvolvimento/CTA por formato) → `criativo-ads-video-orq/references/estilos-de-video.md` (qual estilo+checklist) → E.2b/E.0d (edição, sempre, qualquer formato) |
+> | "Criativo estilo Rodrigo" / leva 1-3-9 | seção `"Criativo estilo Rodrigo"` abaixo (3 tipos + catálogo de cor/cenário) → **`references/ROTEIRO-POR-FORMATO.md`** (escrever o script) → `estilos-de-video.md` linha "1-3-9" |
 > | Reaproveitar formato que já escala (biblioteca) | `modelagem-escalados` (103 formatos) ou tabela de 16 vídeos escalados em `criativo-ads-video-orq` (busca ANTES de inventar corte) |
 > | Vídeo "mesa real" (imagem→Flow, sem gravação de tela) | `criativo-ads-video-orq` §E.0c (catálogo de takes A-O) |
 >
@@ -441,33 +441,16 @@ impacto" (fundo branco, texto preto e vermelho). Sem moldura, sem cara de anúnc
 **Caixa de perguntas em story:** pergunta na imagem + alguém (de preferência o expert) respondendo
 com o material na mão, orgânico.
 
-**⛔ MÉTODO ÚNICO — 3 camadas que SEMPRE se somam, nunca são métodos alternativos pra escolher
-(regra da dona, 25/10/2026, reforçada 25/10/2026 — erro real repetido 2x no mesmo dia: CT3/CT22
-"isso é demonstrativo OU isso é GC"; depois peça de expert falando+cortando pro material sem
-nenhuma técnica de edição, porque tratei "expert fala" como formato que dispensa a receita).**
-Esta skill é UM orquestrador só, com 3 camadas que **sempre se aplicam juntas** em toda peça de
-vídeo, não 3 métodos onde se escolhe 1:
-
-1. **QUANTIDADE/DISTRIBUIÇÃO (Kevones)** — quantas peças, campanhas, mix vídeo/imagem/estático,
-   proporção 50/50 ou 70/30 por campanha/fase da conta (seção "Quantidade pela fase da conta" e
-   `references/kevones-criativo.md`). Isso decide O VOLUME e A MISTURA da leva.
-2. **FORMATO/PAPEL DE CADA PEÇA (Rodrigo)** — o que a pessoa mostra e como aparece: pose "capa de
-   livro", segura o material, cenário que casa com o papel (GC comprador / UGC cotidiano / expert
-   ambiente-apropriado), peça de preço sem mockup (reaproveita a MESMA composição orgânica
-   iPhone + preço), fim de vídeo = card preto/fundo liso + mockup completo + CTA em texto (nunca
-   falado) + seta. Isso decide QUEM aparece e O QUE a tela/mão mostra em CADA peça — regra desta
-   seção.
-3. **TÉCNICA DE EDIÇÃO (demonstrativo/E.2b, `criativo-ads-video-orq`)** — split 70/30 na frase de
-   mecanismo, 1 clipe por frase (nunca corte sequencial full-screen bloco a bloco), transição com
-   fade (nunca corte seco), trilha mixada, CTA como acréscimo sem cortar a fala. **Isso é uma
-   CAIXA DE FERRAMENTA de montagem, não um "formato de criativo" separado do GC/UGC/expert** — toda
-   peça de vídeo usa essa técnica pra montar o corpo, **mesmo quando quem fala é o expert ou é um
-   UGC**, mesmo quando o gancho já tem a pessoa falando. "Tem alguém falando no gancho" NUNCA
-   dispensa split/1-clipe-por-frase/fade no corpo — isso já está em E.0b e repetiu no mesmo dia em
-   que a seção foi lida.
-
-As 3 camadas respondem perguntas diferentes (quanto/quando, quem/o-quê, como-monta) e **sempre
-coexistem na mesma peça** — nunca escolher uma e ignorar as outras.
+**⛔ MÉTODO ÚNICO, 3 camadas sempre somadas — nunca escolher 1 e ignorar as outras (erro real
+repetido 2x no mesmo dia, 25/10/2026: CT3/CT22 tratados como "demonstrativo OU GC"; depois peça de
+expert falando+cortando pro material sem nenhuma técnica de edição, por tratar "expert fala" como
+formato que dispensa a receita).** Detalhe completo + tabela dos 10 slots: seção **🔗 MATRIZ ÚNICA**
+mais abaixo. Resumo das 3 camadas, válidas em TODA peça de vídeo com pessoa:
+1. **Quantidade/distribuição (Kevones)** — quanto e em que mix.
+2. **Formato/papel de cada peça (Rodrigo)** — quem aparece, o que a mão/tela mostra.
+3. **Técnica de edição (`criativo-ads-video-orq` E.2b/E.0b)** — split 70/30, 1 clipe por frase, fade
+   nas junções, CTA sem corte seco. **É caixa de ferramenta de montagem, não um 4º "formato"** —
+   usa SEMPRE, mesmo com expert/UGC falando no gancho. "Tem alguém falando" nunca dispensa isso.
 
 **⛔ TODO GC/UGC mostra o material SEMPRE — nunca pessoa vazia, mãos nuas, sem produto (regra da
 dona, 25/10/2026 — achado real: 6/6 peças estáticas da leva Atlas AR não tinham isso, só
@@ -721,10 +704,14 @@ seção "Quantidade pela fase da conta" — aqui é o motivo).
 > *"o 1-1-10 do Kevones tem regras, o 1-3-9 do Rodrigo fala de ângulos, formatos… um complementa o
 > outro"* — e na skill não existia a junção. Esta é a junção.
 
-**Divisão de trabalho:** o **Kevones dá a QUANTIDADE e a DISTRIBUIÇÃO** (10 criativos por conjunto,
-1 conjunto Advantage+ por campanha, 3 campanhas; nenhuma campanha repete a mesma dor; a dor que vende
-entra em todas; nada de variação rasa). O **Rodrigo dá o PAPEL de cada slot** (que formato, que tipo,
-que cor, que função: UGC, expert, clássica com preço, só-texto, antes/depois, objeção).
+**Divisão de trabalho (3 camadas, sempre juntas):** o **Kevones dá a QUANTIDADE e a DISTRIBUIÇÃO**
+(10 criativos por conjunto, 1 conjunto Advantage+ por campanha, 3 campanhas; nenhuma campanha repete
+a mesma dor; a dor que vende entra em todas; nada de variação rasa). O **Rodrigo dá o PAPEL de cada
+slot** (que formato, que tipo, que cor, que função: UGC, expert, clássica com preço, só-texto,
+antes/depois, objeção). E, **em todo slot de vídeo** (1, 2, 3 da tabela abaixo), a **técnica de
+edição do demonstrativo** (`criativo-ads-video-orq` E.2b/E.0b — split 70/30, 1 clipe por frase, fade,
+CTA sem corte seco) monta o corpo, **independente de quem fala no gancho** (expert/UGC/sem ninguém).
+Isso não é um 4º slot — é COMO qualquer um dos 3 slots de vídeo é fisicamente montado.
 
 ### Os 10 slots de um conjunto (preenche o 1-1-10 com o repertório do 1-3-9)
 | Slot | Formato | Papel | Regra que manda |
@@ -744,6 +731,12 @@ que cor, que função: UGC, expert, clássica com preço, só-texto, antes/depoi
 e a **espinha (dor que vende) troca de slot** entre campanhas (C1 no slot 6, C2 no slot 8, C3 no slot 1,
 por exemplo). Formato repetido é permitido; **conteúdo repetido não** (regra anti-variação-rasa).
 Se a campanha tiver 9 peças em vez de 10, cai o slot 10 — os outros 9 são o 1-3-9 clássico.
+
+**Economia de geração (confirmado /watch, método Rodrigo):** nem todo slot precisa de arquivo
+novo gerado do zero — pelo menos 1 dos 9/10 pode ser **reaproveite literal** de um arquivo já
+pronto da mesma leva (reposicionado noutra campanha/conjunto), contanto que o PAPEL dele na
+tabela continue preenchido. Isso é diferente de repetir CONTEÚDO (dor/ângulo) — é só não gerar
+2x o mesmo tipo de arquivo quando 1 já serve aos 2 lugares.
 
 **Exceção legítima:** peça **traduzida de criativo já validado** (ex.: vencedor EN → es-AR) entra como
 slot 2/6 sem contar como variação rasa — é reaproveitar validação em outro mercado, não recolorir a
