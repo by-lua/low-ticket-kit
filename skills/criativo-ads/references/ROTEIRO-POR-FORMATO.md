@@ -12,7 +12,7 @@
 1. **Pega a página de vendas real** da oferta — headline, benefícios, objeções,
    garantia, preço, bônus. Nunca inventa benefício que a página não promete
    (mesma régua do Gate 0 de `criativo-ads`).
-2. **Vai no GPT e PEDE o roteiro**, um prompt por FORMATO (GC, expert, demonstrativo
+2. **Vai no GPT e PEDE o roteiro**, um prompt por FORMATO (UGC, expert, demonstrativo
    — nunca um prompt genérico "faz um roteiro de anúncio"). O prompt já embute a
    estrutura de blocos daquele formato (abaixo) e a dor/ângulo real daquela peça.
 3. **Monta/edita por cima** do que o GPT devolveu — ajusta fala, corta o que ficou
@@ -27,37 +27,56 @@ Todo prompt de roteiro leva: a dor/ângulo real da peça (do `PERSONA-E-ANGULOS.
 o benefício/preço/garantia reais (da página), e a estrutura de blocos do formato —
 nunca pede "escreve um roteiro" solto.
 
-### GC / UGC comprador — relato em 1ª pessoa
+### UGC / UGC comprador — relato em 1ª pessoa
 - **Gancho:** frase de identificação ("eu também [dor]" / "isso aconteceu comigo").
-- **Relato:** conta a situação, em 1ª pessoa, sem tom de vendedor.
-- **Mostra o material:** aponta/segura o entregável, dizendo o que viu/usou
-  (pose "capa de livro" — ver `criativo-ads` seção Rodrigo).
-- **CTA:** comando curto, sem nome do produto nem condição de compra.
+- **Promessa/mecanismo:** "existe uma maneira de [resultado]".
+- **Prova pessoal:** "foi exatamente isso que aprendi/usei".
+- **Gatilho de ação:** condição que te faz precisar disso agora.
+- **CTA:** comando curto — no nosso caso sem nome do produto/condição de compra
+  (CTA do Rodrigo é mais falado/pessoal "vou deixar o link aqui…"; a nossa regra de
+  fecho sem nome do produto continua valendo, é a nossa adaptação).
+- **⛔ UGC não tem exibição de entrega** — ele só SEGURA o material na pose "capa
+  de livro", nunca mostra o produto por dentro/navegando páginas. Mostrar o
+  entregável por dentro é papel do **expert/demonstrativo**, não do UGC — misturar
+  os dois dilui o formato (UGC vira demonstrativo disfarçado).
 
 ### Expert — autoridade que desenvolve o mecanismo
 - **Gancho:** afirmação de autoridade ou contraste ("a maioria faz X, o certo é Y").
 - **Desenvolve o mecanismo:** explica POR QUE funciona (não só repete o benefício —
   erro mais caro documentado, CRIATIVO-02 Atlas).
 - **Mostra o material:** corta pra tela/página real enquanto explica.
-- **CTA:** comando curto, mesma regra do GC.
+- **CTA:** comando curto, mesma regra do UGC.
 
 ### Demonstrativo — tela do entregável por dentro
-- **Gancho:** toca a dor em b-roll, sem produto ainda.
-- **Corpo:** nomeia o problema de novo → mostra a solução gravando a TELA do
-  entregável por dentro (área de membros/app) — o produto bem entregue é o próprio
-  corpo, sem precisar atuação.
-- **CTA:** comando curto.
+- **Gancho — pega a pressão UM NÍVEL MAIS FUNDO, nunca a dor óbvia de superfície**
+  (confirmado /watch, vídeo HUB TEOLÓGICO — b-roll/gancho falado → mostra
+  entregável por dentro → CTA, sem personagem/expert em quadro). Ex.: produto de
+  receita sem açúcar — a dor óbvia seria "comer sem açúcar"; o gancho real é "não
+  saber QUAIS receitas dá pra comer" — o atrito adjacente que a pessoa sente de
+  verdade, não o resumo genérico do nicho. Testar: "isso é o sintoma ou é o
+  atrito real do dia a dia?" — se é sintoma, cavar mais fundo.
+- **Corpo = ECO de uma palavra/frase específica do gancho**, nunca "aqui está a
+  solução" genérica solta. Ex.: gancho fala "preparar sermão toda semana" → corpo
+  entra com "é por isso que grandes pastores usam o hub teológico" — repete a
+  palavra do gancho (sermão/pastor) de propósito, costurando as duas partes.
+  Escrever o corpo SEM reler o gancho quebra esse link. Na prática: nomeia o problema de
+  novo (com a palavra do gancho) → mostra a solução gravando a TELA do entregável
+  por dentro (área de membros/app) — produto bem entregue é o próprio corpo, sem
+  precisar atuação/personagem.
+- **CTA — fórmula:** [ação] + [acessa/pega o produto] + palavra de urgência
+  ("agora mesmo"/"ahora mismo") — nunca cortar seco, produto parado + seta depois
+  (regra que já temos).
 
-## Escreve no idioma que você entende, traduz depois (confirmado /watch, 25/10/2026)
+## Por que Rodrigo escreve em PT e traduz — e por que NÃO é a nossa regra (corrigido 25/10/2026)
 
-Rodrigo nunca escreve o roteiro direto no idioma do mercado de destino quando não
-domina esse idioma — ele pede ao GPT no idioma que ELE entende (ex. português,
-vendendo em francês), lê as 5 opções, escolhe a melhor, edita, e SÓ ENTÃO traduz
-(DeepL + revisão manual, às vezes traduz 2x pra limpar tradução literal estranha).
-Motivo: impossível julgar qualidade de copy num idioma que você não lê bem.
-Aplica aqui: roteiro de oferta ES/outro idioma nasce em PT, aprova o melhor, só
-depois vai pro espanhol/francês/etc — nunca gerar direto no idioma de destino
-achando que economiza um passo.
+Rodrigo escreve em PT primeiro e traduz depois **porque ele não lê o idioma de
+destino** (ele mesmo diz: "não entendo quase nada de francês") — é uma limitação
+pessoal dele, não um passo do método. **No nosso caso isso NÃO se aplica**: o
+roteiro nasce DIRETO no idioma do mercado de venda, já culturalmente adaptado
+(voseo rioplatense pra AR, pt-PT pra Portugal, etc.) — nunca escreve em PT-BR pra
+"traduzir depois" quando o idioma de destino já é dominado. Rodrigo não é referência
+de IDIOMA, é referência de ESTRUTURA (gancho→desenvolvimento→CTA) — essa parte sim
+se aplica sempre, só o passo de tradução-por-limitação não existe aqui.
 
 ## O mesmo roteiro base flexiona entre UGC e expert (confirmado /watch)
 
@@ -113,6 +132,21 @@ Checar a naturalidade da fala logo depois de gerar o clipe, ainda na ferramenta 
 imagem→vídeo, é um passo a mais no catálogo de QA de clipe (`criativo-ads-video-orq`
 QA de clipes) — antes de levar o clipe pra montagem.
 
+## Exemplo real — fase de impacto com estrutura completa (Atlas AR, 25/10/2026)
+
+Gerado a partir de dor medida (D4, 321 comentários — "aluno pergunta na frente,
+profe/estudante trava"), nunca inventado:
+
+- **Sem preço:** Gancho "El alumno pregunta por qué ese ejercicio y te quedás en
+  blanco." → Desenvolvimento "150 mapas visuales te muestran el músculo y el
+  movimiento juntos, al toque." → CTA "Mirá por dentro."
+- **Com preço (peça de preço):** Gancho "El alumno pregunta por qué ese
+  ejercicio." → Desenvolvimento "Atlas Visual: 150 mapas de anatomía y
+  ejercicio, acceso inmediato." → CTA "$10.900 — mirá por dentro."
+
+Modelo de como aplicar gancho→desenvolvimento→CTA numa peça de impacto/texto
+curto — nunca 1 frase solta sem as 3 partes.
+
 ## Depois do roteiro: a edição é camada separada, sempre a mesma
 
 Qual dos 3 formatos acima o roteiro seguiu NÃO muda a receita de montagem — todo
@@ -120,7 +154,7 @@ vídeo com entregável aparecendo por dentro usa `criativo-ads-video-orq` E.0d/E
 (split 70/30, 1 clipe por frase, fade, CTA sem corte seco), **independente do
 formato do roteiro**. Formato = O QUE o roteiro diz; edição = COMO a tela monta
 o que o roteiro diz. Nunca confundir os dois nem pular a edição achando que o
-roteiro de GC/expert "já basta".
+roteiro de UGC/expert "já basta".
 
 ## Imagem NÃO usa o banco de 5 copies do GPT — texto é curto e tem 2 fontes só (confirmado /watch)
 
@@ -154,7 +188,7 @@ isolada, sem produto) — os 3 já existem na nossa tabela de slots, confirmados
 ## Imagem segue o mesmo caminho de produção (não é exclusivo de vídeo)
 
 Peça estática também nasce de roteiro curto (texto de Stories) escrito a partir da
-página real + a mesma lógica de formato (GC mostra material, impacto só frase,
+página real + a mesma lógica de formato (UGC mostra material, impacto só frase,
 clássica com preço) — ver `criativo-ads` seção "Estático = foto orgânica de celular"
 e `references/PROMPT-ESTATICO-ORGANICO.md`. A cena SEMPRE orgânica estilo iPhone,
 material em 2 formatos (digital+impresso) — isso é regra de produção da imagem,

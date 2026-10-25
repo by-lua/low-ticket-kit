@@ -12,6 +12,15 @@ para a marca do usuário.
 O que esta skill tem que um prompt solto não tem: **as referências estão em disco**.
 103 arquivos baixados, organizados por tipo e categoria, com transcrição dos vídeos.
 
+**⛔ "Mockup" neste portfólio NUNCA é um 3D/render gerado — é SEMPRE a lâmina/página
+real do entregável em cena orgânica estilo iPhone (regra fixa, `criativo-ads` +
+`anuncio-sem-mockup-sem-pdf`).** Sempre que uma referência modelada (Rodrigo, ou
+qualquer um dos 103 formatos da biblioteca) usar a palavra "mockup" no sentido de
+produto renderizado/3D limpo, aqui ela SE TRADUZ em: página real do entregável +
+pelo menos 1 aparelho (celular/tablet/notebook) + folha impressa, nunca um objeto
+3D inventado. Essa troca é automática, não precisa perguntar — é a adaptação
+padrão do método pra este portfólio, igual troca-se idioma/moeda.
+
 ## DOUTRINA — o criativo valida o público (regra 2026-09-21)
 
 **PRINCÍPIO-MÃE:** o criativo tem que SAIR como se fosse orgânico. Nada inventado

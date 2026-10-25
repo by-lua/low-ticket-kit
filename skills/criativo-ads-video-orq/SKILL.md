@@ -405,7 +405,7 @@ só a capa) e produza as 2-3 até vídeo final, avisando no fim quais letras sa�
 **⛔ UGC não usa take genérico do banco compartilhado (regra da dona, 25/10/2026, caso CT22
 Atlas/Nico).** `FLOW-TAKES/take-geral`/`take-C` (§E.0c, "reaproveitáveis em todos os 10 vídeos")
 servem pro **demonstrativo** (mão anônima, sem persona — mesa real sem rosto). Peça rotulada
-**UGC/GC** é outra coisa: é recomendação de UMA pessoa específica — o corpo tem que mostrar ESSA
+**UGC/UGC** é outra coisa: é recomendação de UMA pessoa específica — o corpo tem que mostrar ESSA
 pessoa segurando o material, cena gerada só pra ela (imagem GPT da persona segurando o produto +
 Flow i2v), nunca o clipe de mão genérica do banco. Usar o take compartilhado numa peça UGC quebra
 o formato: hook mostra rosto, corpo vira mão anônima sem conexão — lê como demonstrativo, não
@@ -814,7 +814,7 @@ em cima, b-roll embaixo) → CTA em b-roll tela cheia** + VO off + legenda karao
 **⛔ REPETIU 25/10/2026 (CT3 Sofi, CT22 Nico) — mesmo buraco do CRIATIVO-02, mesmo dia que a regra
 foi lida inteira.** Montei o corpo em cortes full-screen sequenciais simples (`ffmpeg -f concat`
 cru), sem split 70/30, sem 1-clipe-por-frase pensado, sem fade nas junções — exatamente o erro que
-este item já documentava. Ler a regra não bastou; a próxima vez que montar corpo de UGC/expert,
+este item já documentava. Ler a regra não bastou; a próxima vez que montar corpo de UUGC/expert,
 **abrir este item ANTES de escrever o primeiro `ffmpeg concat`**, não depois de montar errado.
 
 **Buraco real encontrado:** CRIATIVO-02 (Atlas, expert Martín) abriu com personagem falando e,
@@ -1429,7 +1429,7 @@ Regras que não mudam:
   aconteceu comigo/com alguém que eu conheço") rende mais com UGC; dor mais
   técnica/direta segue bem só com narração off.
 - **Default recomendado numa leva de 9-10 (matriz da MATRIZ ÚNICA):** UGC nos
-  slots que já são UGC/expert por definição (slots 1-2), o resto fica 100%
+  slots que já são UUGC/expert por definição (slots 1-2), o resto fica 100%
   narração off + demonstração do entregável + b-roll. Isso mantém a maioria da
   leva no custo baixo do Modo E puro e concentra a geração paga (imagem+vídeo de
   pessoa) só onde ela mais rende. Ajuste conforme orçamento, pergunte ao usuário

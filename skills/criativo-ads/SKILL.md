@@ -24,6 +24,37 @@ description: Porta de entrada ÚNICA de criativo de anúncio (Meta/TikTok) — v
 > `modelagem-escalados` se for imagem. Nunca carregar só a skill-porta e deixar a mecânica pra
 > depois — é isso que produz vídeo com script mas sem produção completa (gate acima).
 
+## 🧭 FLUXO ÚNICO — do pedido à peça pronta (uma mecânica só, leia de cima a baixo)
+
+Isso existe porque pedir criativo não pode virar "escrevo um roteiro solto e gero
+imagem/vídeo sem pensar no resto". É UM mecanismo, com etapas que sempre acontecem
+NESSA ordem — nenhuma pulada, nenhuma decidida sozinha sem olhar as outras:
+
+1. **Quanto/quando (Kevones) — decide o volume da leva.** Em que fase a conta está
+   (3-5 teste / 1-1-3 validado / rotina semanal), quantas campanhas (1-3-9 ou
+   1-1-10), mix vídeo/imagem/carrossel por campanha (`Quantidade pela fase da
+   conta` + `references/kevones-criativo.md`).
+2. **Quem/o-quê em cada slot (Rodrigo + biblioteca) — decide o PAPEL de cada
+   peça.** A tabela de 10 slots (`MATRIZ ÚNICA`) preenchida com dor real do banco
+   (`PERSONA-E-ANGULOS.md`) — Rodrigo é o mínimo, não o teto: a biblioteca
+   `modelagem-escalados` (103 formatos) entra pra diversificar além dele. Decide
+   AQUI, antes de escrever roteiro, porque o formato muda a receita de produção.
+3. **O que escrever (`references/ROTEIRO-POR-FORMATO.md`) — decide o ROTEIRO.**
+   Página real → GPT → gancho+desenvolvimento+CTA por formato (UGC/expert/
+   demonstrativo têm estrutura própria, nunca frase solta). Escreve no idioma que
+   você entende, traduz depois.
+4. **Como produzir e montar (mecânica) — decide a TÉCNICA.** Vídeo:
+   `criativo-ads-video-orq` (E.2b/E.0d — split 70/30, 1 clipe/frase, fade, CTA
+   card sem corte seco). Imagem/carrossel: `modelagem-escalados` (doutrina
+   orgânico+headline+12 prompts, NUNCA mockup 3D — sempre lâmina real). **Mecânica
+   se carrega E se aplica peça por peça, nunca só se cita no briefing** (Fluxo,
+   passo 5 abaixo).
+5. **Entrega** — `anuncio.md` + onde entra na conta. Tráfego/corte/escala:
+   `metaads-kevones`.
+
+As 4 primeiras etapas são camadas de UMA decisão, não 4 métodos pra escolher —
+nenhuma peça nasce sem passar pelas 4.
+
 > **🗺️ MAPA DE DECISÃO — qual seção ler, pra cada tipo de pedido (índice, 24/10/2026).** Antes de
 > montar QUALQUER peça, ache a linha certa aqui e leia as seções na ordem dada — nenhuma decisão
 > de formato/estrutura se toma sem passar por essas seções primeiro. Isso existe porque informação
@@ -138,42 +169,6 @@ Quem delega **também** cumpre este gate antes de escrever o briefing do pane �
 o orquestrador junta a referência e a leitura da oferta (ver `PROMPT-PADRAO-PANE.md`,
 bloco `[OFERTA-PRIMEIRO]`).
 
-## ⛔ GATE 0.2 — LEVA EM VOLUME: PERSONA EM DIA + BIBLIOTECA ANTES [regra da dona 23/10/2026]
-
-Antes de planejar qualquer leva (ex.: 30 do teste 3× 1-1-10):
-1. **Persona atualizada e conferida:** `PERSONA-E-ANGULOS.md` da oferta bate com a página no ar
-   (o que vende / não é / preços / bônus) e as dores têm medida. Resumo da oferta errado = para aqui.
-2a. **Começa pelo anunciante MODELADO (a página da Biblioteca que a dona passou):** é a oferta que já
-   vende. Listar todos os anúncios dele e, pra cada **narrativa**, contar em quantos anúncios ela se repete
-   e há quantos dias roda. **A narrativa que roda há mais tempo e mais se repete é a que vende** (ex.: Atlas —
-   "recém-formado começando como personal / no consultório" repetida em vários anúncios) → vira peça da
-   leva em imagem E em vídeo. Dissecar como foi feito: visual, ângulo, gancho, sequência, personagem.
-   Ela também diz **quem compra de verdade** (entra no PERSONA-E-ANGULOS, seção QUEM COMPRA/MERCADO).
-   Registro: `OFERTAS/<slug>/pesquisa/BIBLIOTECA-<data>.md` (anúncio · narrativa · repetições · dias · formato).
-2. **Biblioteca de Anúncios + demanda orgânica = o LOOP ÚNICO de
-   `criacao-low-ticket-mvt/references/PESQUISA-PADRAO-OFERTA.md`**, mesma régua, nunca uma pesquisa
-   à parte, nunca resumido aqui de novo — ler aquele arquivo inteiro antes de buscar. Rodar o loop
-   com a dor da PERSONA ampla ("iniciante trava em quê"), nunca só o ângulo já sugerido na conversa
-   — pesquisa estreita confirma o que já se queria achar, não descobre dor nova (lição 24/10/2026,
-   Mapa do Tarot BR). Registra em `OFERTAS/<slug>/pesquisa/BIBLIOTECA-AMPLIADA-<data>.md` +
-   `DEMANDA-ORGANICA-<data>.md` e usa como referência real da leva (Gate 0.1). Mecânica de browser:
-   `mvt-minerar` (falso-zero, perfis, headed).
-3b. **Primeiro o que JÁ vence pra gente:** olha os vencedores das nossas ofertas (mesmo idioma ou outro,
-   mesmo nicho ou outro ângulo — ex.: Atlas AR modela a oferta BR) e entende POR QUE funcionou. Muitas
-   vezes copiar e adaptar o vencedor já é uma peça da leva (já é um teste); o planejamento vai pras outras.
-4. **Plano em texto primeiro, dona aprova, só então produz:** plano da leva peça a peça + ficha de
-   cada personagem (expert: quem é, gênero, idade, visual, ambiente, voz — casado com o produto e o
-   país). Nada é gerado antes do OK.
-3. **Leva com variedade máxima:** formatos e ângulos o mais variados possível; nenhum tipo se
-   repete dentro da mesma campanha. Variar em 3 eixos, em vídeo E imagem:
-   - **origem do gancho:** corte de vídeo do YouTube · cena orgânica estilo TikTok · o material
-     direto na tela;
-   - **função da peça:** mostra o material · ataca a dor/ângulo · **quebra de objeção** ·
-     **narrativa/história** · combinação delas;
-   - **formato** (vídeo/estático/carrossel e seus tipos).
-   Porquê: a pessoa vê o ecossistema inteiro — um compra na quebra de objeção, outro (pra quem a
-   objeção não faz sentido) compra numa peça específica. Cada peça é ponto de contato (§21).
-
 ## ⛔ GATE 0.1 — SEM REFERÊNCIA REAL NÃO EXISTE CRIATIVO [regra da dona 10/10/2026]
 
 **Nenhum criativo começa sem antes material de verdade da oferta na mão.** Este gate vem
@@ -209,6 +204,42 @@ material que o cliente nunca vai receber. É o modo de erro que mais caro já cu
 > **Quem delega também cumpre este gate.** Se você é o orquestrador e vai spawnar um
 > pane de criativo: junte você mesmo as imagens/paths de referência e **cite os caminhos no
 > briefing**. Não mande o pane "descobrir a referência" — delegar cego é o mesmo defeito.
+
+## ⛔ GATE 0.2 — LEVA EM VOLUME: PERSONA EM DIA + BIBLIOTECA ANTES [regra da dona 23/10/2026]
+
+Antes de planejar qualquer leva (ex.: 30 do teste 3× 1-1-10):
+1. **Persona atualizada e conferida:** `PERSONA-E-ANGULOS.md` da oferta bate com a página no ar
+   (o que vende / não é / preços / bônus) e as dores têm medida. Resumo da oferta errado = para aqui.
+2a. **Começa pelo anunciante MODELADO (a página da Biblioteca que a dona passou):** é a oferta que já
+   vende. Listar todos os anúncios dele e, pra cada **narrativa**, contar em quantos anúncios ela se repete
+   e há quantos dias roda. **A narrativa que roda há mais tempo e mais se repete é a que vende** (ex.: Atlas —
+   "recém-formado começando como personal / no consultório" repetida em vários anúncios) → vira peça da
+   leva em imagem E em vídeo. Dissecar como foi feito: visual, ângulo, gancho, sequência, personagem.
+   Ela também diz **quem compra de verdade** (entra no PERSONA-E-ANGULOS, seção QUEM COMPRA/MERCADO).
+   Registro: `OFERTAS/<slug>/pesquisa/BIBLIOTECA-<data>.md` (anúncio · narrativa · repetições · dias · formato).
+2. **Biblioteca de Anúncios + demanda orgânica = o LOOP ÚNICO de
+   `criacao-low-ticket-mvt/references/PESQUISA-PADRAO-OFERTA.md`**, mesma régua, nunca uma pesquisa
+   à parte, nunca resumido aqui de novo — ler aquele arquivo inteiro antes de buscar. Rodar o loop
+   com a dor da PERSONA ampla ("iniciante trava em quê"), nunca só o ângulo já sugerido na conversa
+   — pesquisa estreita confirma o que já se queria achar, não descobre dor nova (lição 24/10/2026,
+   Mapa do Tarot BR). Registra em `OFERTAS/<slug>/pesquisa/BIBLIOTECA-AMPLIADA-<data>.md` +
+   `DEMANDA-ORGANICA-<data>.md` e usa como referência real da leva (Gate 0.1). Mecânica de browser:
+   `mvt-minerar` (falso-zero, perfis, headed).
+3b. **Primeiro o que JÁ vence pra gente:** olha os vencedores das nossas ofertas (mesmo idioma ou outro,
+   mesmo nicho ou outro ângulo — ex.: Atlas AR modela a oferta BR) e entende POR QUE funcionou. Muitas
+   vezes copiar e adaptar o vencedor já é uma peça da leva (já é um teste); o planejamento vai pras outras.
+4. **Plano em texto primeiro, dona aprova, só então produz:** plano da leva peça a peça + ficha de
+   cada personagem (expert: quem é, gênero, idade, visual, ambiente, voz — casado com o produto e o
+   país). Nada é gerado antes do OK.
+3. **Leva com variedade máxima:** formatos e ângulos o mais variados possível; nenhum tipo se
+   repete dentro da mesma campanha. Variar em 3 eixos, em vídeo E imagem:
+   - **origem do gancho:** corte de vídeo do YouTube · cena orgânica estilo TikTok · o material
+     direto na tela;
+   - **função da peça:** mostra o material · ataca a dor/ângulo · **quebra de objeção** ·
+     **narrativa/história** · combinação delas;
+   - **formato** (vídeo/estático/carrossel e seus tipos).
+   Porquê: a pessoa vê o ecossistema inteiro — um compra na quebra de objeção, outro (pra quem a
+   objeção não faz sentido) compra numa peça específica. Cada peça é ponto de contato (§21).
 
 ## Texto do anúncio acompanha toda peça — regra da dona (03/10/2026)
 
@@ -356,10 +387,22 @@ mecânica não repetem regra de estratégia. Se alguma divergir desta, vale esta
    resolve. Cada uma vira um ângulo, cada ângulo puxa uma persona. Dentro do
    público validado, cada dor é uma **bolha**. Uma célula = um criativo. Duas
    células com a mesma persona **e** a mesma dor = o mesmo anúncio, refaça.
-3. **Formato de cada célula** (tabela abaixo).
+3. **Formato de cada célula** (tabela abaixo) — **⛔ já escolhendo com a mecânica em
+   mente, não só o nome do formato.** Antes de fechar o plano em texto, confira em
+   `criativo-ads-video-orq`/`modelagem-escalados` o que aquele formato EXIGE pra
+   sair certo (ex.: vídeo demonstrativo exige split 70/30 + 1 clipe/frase; imagem
+   exige orgânico-iPhone + digital+impresso, nunca mockup 3D) — um plano que não
+   sabe disso sai errado mesmo antes de produzir qualquer arquivo.
 4. **Quantidade pela fase da conta** (tabela abaixo). Diga ao usuário em que fase a
    leva entra.
-5. **Rotear para a mecânica** e produzir.
+5. **Rotear para a mecânica — carrega E APLICA, nunca só roteia de nome.**
+   ⛔ Nunca produzir sem ter aberto a skill de mecânica certa (vídeo:
+   `criativo-ads-video-orq` E.2b/E.0d; imagem: `modelagem-escalados`) e checado,
+   peça por peça, que o formato (quem aparece, o que a mão mostra — Rodrigo) E a
+   técnica de produção (edição/split/fade pro vídeo; orgânico-iPhone/digital+
+   impresso pra imagem) foram realmente seguidos — não basta ter "citado" a skill
+   no briefing. Ler a regra e não aplicar na hora de montar é o erro mais caro já
+   documentado aqui (`concat-cru-ignora-stack-edicao`).
 6. **Entregar** com: mídia final e `anuncio.md` específico do ângulo, nome de cada peça, a dor/persona que ela carrega, formato e
    onde entra na conta (campanha nova com público validado; nunca na que já vende).
    Tráfego/corte/escala: `metaads-kevones`.
@@ -404,7 +447,24 @@ encaixados no 4:5; GPT não desenha página do produto.
 com cara de foto de iPhone, com fundo orgânico que faça sentido pra persona (academia, sala de aula, mesa de estudo,
 carro). **Única exceção: fase de impacto estilo Rodrigo** (fundo branco, texto preto/vermelho), que é formato
 específico — **fundo branco OU preto** (varia peça a peça; texto preto+vermelho no branco, texto
-branco+vermelho no preto; regra da dona, 24/10/2026). Caixa de perguntas também vale em imagem, e **quem responde é sempre o expert** da leva (nunca o UGC). **Texto = sempre texto de Stories**, na
+branco+vermelho no preto; regra da dona, 24/10/2026).
+
+**⛔ Fase de impacto e carrossel tipo 2 (só lâminas) também levam estrutura
+gancho→desenvolvimento→CTA, nunca frase solta de curiosidade (regra da dona,
+25/10/2026).** Uma frase isolada sem desenvolvimento vira curiosidade vaga, não
+intenção de compra (mesmo erro já documentado na regra de "peça de preço" acima
+— vale pra TODO texto curto, não só preço):
+- **Gancho/headline** — a frase de abertura, o que para o scroll.
+- **Desenvolvimento/benefício** — 1 linha que entrega o porquê, o mecanismo ou o
+  benefício (nunca pula direto pro CTA sem isso).
+- **CTA** — comando curto. **Preço só entra se a peça É de preço** (gate "Peça de
+  preço" abaixo); peça de impacto sem preço não força o valor, mas continua
+  precisando das 3 partes (gancho+desenvolvimento+CTA), nunca só 1 frase.
+- Vale pro carrossel tipo 2 inteiro como sequência: 1º card = gancho, cards do
+  meio = desenvolvimento (as lâminas reais fazem esse papel), último card = CTA —
+  nunca um carrossel de páginas soltas sem fechamento.
+
+Caixa de perguntas também vale em imagem, e **quem responde é sempre o expert** da leva (nunca o UGC). **Texto = sempre texto de Stories**, na
 fonte nativa do Instagram Stories (Classic, sans tipo SF/Helvetica, branco em caixa preta arredondada ou preto em caixa
 branca), como se a pessoa tivesse digitado no story. Nunca arte de designer. **Sempre anexar as referências** (cena-modelo
 + capa + páginas reais) no GPT.
@@ -442,7 +502,7 @@ impacto" (fundo branco, texto preto e vermelho). Sem moldura, sem cara de anúnc
 com o material na mão, orgânico.
 
 **⛔ MÉTODO ÚNICO, 3 camadas sempre somadas — nunca escolher 1 e ignorar as outras (erro real
-repetido 2x no mesmo dia, 25/10/2026: CT3/CT22 tratados como "demonstrativo OU GC"; depois peça de
+repetido 2x no mesmo dia, 25/10/2026: CT3/CT22 tratados como "demonstrativo OU UGC"; depois peça de
 expert falando+cortando pro material sem nenhuma técnica de edição, por tratar "expert fala" como
 formato que dispensa a receita).** Detalhe completo + tabela dos 10 slots: seção **🔗 MATRIZ ÚNICA**
 mais abaixo. Resumo das 3 camadas, válidas em TODA peça de vídeo com pessoa:
@@ -452,11 +512,11 @@ mais abaixo. Resumo das 3 camadas, válidas em TODA peça de vídeo com pessoa:
    nas junções, CTA sem corte seco. **É caixa de ferramenta de montagem, não um 4º "formato"** —
    usa SEMPRE, mesmo com expert/UGC falando no gancho. "Tem alguém falando" nunca dispensa isso.
 
-**⛔ TODO GC/UGC mostra o material SEMPRE — nunca pessoa vazia, mãos nuas, sem produto (regra da
+**⛔ TODO UGC mostra o material SEMPRE — nunca pessoa vazia, mãos nuas, sem produto (regra da
 dona, 25/10/2026 — achado real: 6/6 peças estáticas da leva Atlas AR não tinham isso, só
 mesa/mockup sem rosto).** "UGC com o entregável na mão" não é peça opcional perdida no meio do
-texto, é a definição do formato GC/UGC neste portfólio (mesmo padrão do Rodrigo) — **toda** peça
-GC/UGC (comprador OU expert) mostra a pessoa **segurando o material**: impresso na mão, OU
+texto, é a definição do formato UGC neste portfólio (mesmo padrão do Rodrigo) — **toda** peça
+UGC (comprador OU expert) mostra a pessoa **segurando o material**: impresso na mão, OU
 tablet/celular "acolchoado como cartão-postal" mostrando a capa, perto do rosto/peito, olhando pra
 câmera, como se desse opinião — pose "capa de livro" (ver `criativo-ads-video-orq` catálogo de
 takes, letra **N**; mesma pose vale pro estático: capa visível, ou abrindo mostrando 2 páginas).
@@ -468,13 +528,13 @@ com arte de página de vendas/hero (essas costumam vir com grid de bônus e pre�
 Se a oferta não tem capa própria gerada ainda, **só então** usa um print real de uma página do
 entregável (área de membros, gravação de tela) como conteúdo da tela. Nunca o inverso (página real
 quando a capa existe) nem o mockup-com-grid-de-bônus no lugar da capa simples.
-**Nunca** a cena GC ser só mesa/produto parado sem a pessoa segurando e reagindo — isso deixa de
-ser GC e vira peça de produto. Sem isso a leva perde o gancho de atenção do 1º frame que só
+**Nunca** a cena UGC ser só mesa/produto parado sem a pessoa segurando e reagindo — isso deixa de
+ser UGC e vira peça de produto. Sem isso a leva perde o gancho de atenção do 1º frame que só
 rosto+produto dá. **Checar peça por peça ao fechar o plano da leva**, não só confiar que
 "variedade" cobre sozinha.
 
 **Exceção (dona, 25/10/2026): produto "vibe"/não-material (ex.: número mestre, numerologia,
-qualquer oferta que não entrega guia/PDF/manual pra segurar) pode usar GC estilo "entrevista de
+qualquer oferta que não entrega guia/PDF/manual pra segurar) pode usar UGC estilo "entrevista de
 rua"** — sem segurar material, porque não tem o que segurar. A regra de SEMPRE segurar vale pro
 padrão do portfólio (produto tipo guia/manual/apostila low ticket); quando o entregável não é algo
 físico/visual pra mostrar na mão, o formato de entrevista/depoimento solto é válido.
@@ -489,6 +549,9 @@ bordas laterais — é onde o botão de seguir/curtir/compartilhar, o nome do pe
 barra de progresso do Story cobrem a imagem. Vale pro texto Stories (já embutido no prompt) e
 também pra cena/produto/rosto do vídeo (framing da cena, não deixar personagem cortado perto do
 topo/base). Checar em TODA peça antes de fechar.
+**Carrossel: mínimo 5 cards (regra da dona, 25/10/2026 — leva Atlas tinha 3, poucos).**
+3 cards é raso demais; todo carrossel novo sai com **5 ou mais**, qualquer tipo abaixo.
+
 **Dentro da MESMA campanha, varia o tipo de cada formato** — nunca 3 carrosséis iguais nem 4
 vídeos do mesmo estilo. Carrossel, tipos:
 1. **Imagem principal + páginas:** card 1 = a arte principal (a que já usamos/validou) e o resto =
@@ -604,6 +667,23 @@ qual anúncio está vendendo, com quantas vendas, CPA e CTR. Esse é o criativo 
 **não** está vendendo diz o que não repetir. Se a última análise mandar "1-1-3 de imagem com o CT 4,
 criativo novo = campanha nova", a espinha é o CT 4.
 
+**⛔ Checagem simétrica, antes de reusar QUALQUER persona/ângulo num plano novo — não só puxar o
+que vende, excluir o que já falhou (regra da dona, 25/10/2026):**
+1. **Nesta oferta:** abrir o `PERSONA-E-ANGULOS.md` e checar a coluna Estado do banco de ângulos —
+   qualquer linha **descartado** fica de fora do plano. A fonte do descarte **não precisa ser
+   tráfego pago** — mineração/pesquisa orgânica (YouTube, comentários, Trends, Biblioteca) que já
+   mostrou que o recorte não faz sentido pra vender também descarta, mesmo sem `ANALISES.md` ainda
+   (oferta nova, sem tráfego rodado). "Teste/minoria" não é "descartado" — mas se você já sabe, por
+   fora do arquivo (precedente de portfólio, pesquisa orgânica já feita, feedback da dona), que
+   aquele recorte não fecha, **registra o descartado no arquivo primeiro**, com a fonte (que tipo de
+   medição, não só "a dona falou"), antes de montar o plano — nunca carrega conhecimento não escrito
+   só na cabeça pra próxima sessão perder.
+2. **No portfólio:** checar `recorte-precisa-dado-licao-eletrica-jiu` (memória) — recorte de
+   "estudante/aprendiz" em vez do comprador real que decide já falhou 2x (Elétrica, Jiu-Jitsu).
+   Oferta nova com esse mesmo padrão (estudante vs. profissional formado) entra com o recorte
+   formado como principal por padrão, estudante nunca mais que peça de teste residual — a menos
+   que a oferta tenha prova real em contrário.
+
 Plano modelo: `OFERTAS/jiujitsu-sem-forca/criativos/PLANO-TESTE-GRUPOS-2026-10-11.md`.
 
 ## Acabamento aprovado — Número Mestre AR/LATAM
@@ -617,6 +697,27 @@ chama esta seção. **Continua passando pelo GATE 0/0.1 do topo desta skill**: p
 benefício e preço de cada slot vêm da oferta REAL (`pesquisa/PERSONA-E-ANGULOS.md`,
 `produto/MANIFESTO-ENTREGAVEIS.md`, preço real do checkout) — o método dá a FORMA de cada slot (que
 estilo, que cor, que cenário), nunca o CONTEÚDO (isso nunca é inventado, é a oferta de verdade).
+
+**⛔ Rodrigo é referência, não teto (regra da dona, 25/10/2026).** O catálogo dele (UGC/
+expert/demonstrativo + imagem clássica/impacto/antes-depois) é o MÍNIMO, não o limite. Numa leva
+grande (ex. 20-30 peças), a biblioteca `modelagem-escalados` (103 formatos: caixa de perguntas,
+print de WhatsApp, notícia, Reclame Aqui etc.) está igualmente disponível — usa ela pra diversificar
+além do catálogo Rodrigo, não só repetir os mesmos papéis dele em loop.
+**Nunca dobrar o mesmo papel DENTRO da mesma campanha/conjunto de 10 — vale pra qualquer um dos
+formatos (UGC, UGC, expert, demonstrativo, caixa de perguntas, qualquer um da biblioteca), não só
+UGC.** 1 de cada papel por campanha é o teto; se ia repetir um 2º (ex. 2º UGC), troca a vaga por um
+formato que ainda não apareceu nesse conjunto — **demonstrativo é o que mais costuma faltar**, dá
+prioridade a ele quando sobrar vaga.
+
+**Regra prática pro par UGC×demonstrativo (dona, 25/10/2026):** se a leva "pediria" 2 UGC, prioriza
+**1 UGC em vídeo + 1 demonstrativo em vídeo**, e o 2º UGC vira peça de **imagem** (não vídeo) —
+nunca 2 UGC em vídeo no mesmo conjunto. Caixa de perguntas pode ser imagem OU vídeo, conforme a vaga. **Repetir o mesmo papel ENTRE campanhas diferentes é normal**
+(1 UGC na C1, 1 UGC na C2, 1 UGC na C3 — isso não é duplicar, é cada campanha tendo seu próprio
+conjunto completo). Distribui largo dentro de
+cada conjunto: UGC, demonstrativo, expert, caixa de perguntas, e o que mais couber da biblioteca, cada
+um puxando sua própria técnica de produção (UGC = Rodrigo pose; demonstrativo = E.0d; estático de
+biblioteca = `modelagem-escalados`). **Caixa de perguntas: quem responde é sempre o expert**, nunca
+o UGC (regra já fixada acima, reforçada aqui porque é um dos formatos de diversificação).
 
 ### 3 tipos de criativo + fórmula gancho-corpo-CTA
 

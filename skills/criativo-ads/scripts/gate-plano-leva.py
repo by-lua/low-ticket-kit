@@ -125,12 +125,19 @@ def main():
         else 'orçamento por campanha não escrito (regra: <R$47 = 60-65% do ticket médio; >=R$47 = R$30-35)')
     (oks if '4:5' in txt else falhas).append('feed 4:5' if '4:5' in txt else 'formato 4:5 do feed não citado')
 
-    # 8 · gravação de tela antes de vídeo
+    # 8 · base de vídeo: gravação de tela OU páginas reais (receita E.0d, sem tela)
     if any('video' in l for l in todas):
         mat = of / 'criativos/MATERIAL-ENTREGAVEL'
         tem = mat.exists() and any(p.suffix.lower() in ('.mp4', '.mov', '.webm', '.mkv') for p in mat.rglob('*'))
-        (oks if tem else falhas).append('gravação de tela do entregável existe' if tem
-                                        else 'sem gravação de tela em criativos/MATERIAL-ENTREGAVEL/ — gravar antes de qualquer vídeo')
+        paginas = of / 'site/painel/conteudo'
+        n_pag = sum(1 for p in paginas.rglob('*.webp')) if paginas.exists() else 0
+        if tem:
+            oks.append('gravação de tela do entregável existe')
+        elif n_pag >= 20:
+            oks.append(f'vídeo sem tela: {n_pag} páginas reais em site/painel/conteudo (receita E.0d)')
+        else:
+            falhas.append('sem base de vídeo: nem gravação em criativos/MATERIAL-ENTREGAVEL/ '
+                          'nem >=20 páginas reais em site/painel/conteudo/')
 
     # 10 · preço do criativo = plano mais barato
     def valores(t):
