@@ -440,6 +440,12 @@ ser GC e vira peça de produto. Sem isso a leva perde o gancho de atenção do 1
 rosto+produto dá. **Checar peça por peça ao fechar o plano da leva**, não só confiar que
 "variedade" cobre sozinha.
 
+**Exceção (dona, 25/10/2026): produto "vibe"/não-material (ex.: número mestre, numerologia,
+qualquer oferta que não entrega guia/PDF/manual pra segurar) pode usar GC estilo "entrevista de
+rua"** — sem segurar material, porque não tem o que segurar. A regra de SEMPRE segurar vale pro
+padrão do portfólio (produto tipo guia/manual/apostila low ticket); quando o entregável não é algo
+físico/visual pra mostrar na mão, o formato de entrevista/depoimento solto é válido.
+
 **Safe area:** ou gera 2 imagens (9:16 e 4:5), ou monta a 1ª já
 pensando no corte do feed 4:5 (nada importante fora da faixa central).
 
