@@ -304,6 +304,17 @@ mecânica não repetem regra de estratégia. Se alguma divergir desta, vale esta
 > - **Todo requisito explícito do brief (ex. "+ texto de story", "+ headline") é item de checklist,
 >   não detalhe opcional.** Se faltou tempo pra fazer, PARA e reporta o que ficou de fora — nunca
 >   entrega menos do que foi pedido sem avisar.
+> - **"Texto de story" = texto ESCRITO DENTRO DA FOTO pelo GPT (hook curto, estilo caption de story),
+>   nunca a "copy do anúncio" do `anuncio.md`** (essa é a legenda de FORA, que acompanha o post — as
+>   duas coisas são diferentes e sempre existem as duas).
+> - **PADRÃO, não exceção: toda peça estática de imagem leva texto/gancho dentro da foto.** Não é algo
+>   que só vale quando o brief escreve "+ texto de story" explicitamente — isso é óbvio, é como criativo
+>   de imagem funciona (ver [[texto-estatico-imagem-nunca-overlay]]). Única exceção é quando o plano diz
+>   explicitamente "só páginas" / sem gancho (ex. peça 9 do Mapa del Tarot AR, carrossel limpo de
+>   páginas reais). Reincidência real (Mapa del Tarot AR, peça 5, 25/10/2026): pane escreveu copy no
+>   `anuncio.md`, achou que cumpriu, entregou imagem limpa sem nada escrito na cena. Se a peça é imagem
+>   e não está marcada "só páginas", ela SAI com texto na foto — conferir visualmente antes do handoff,
+>   nunca só ler se o `anuncio.md` tem seção de copy.
 > - Quem recebe o handoff (orquestrador) abre pelo menos 1 imagem de cada peça reportada como
 >   "pronta" antes de repassar "feito" pra dona — não confiar só no texto do handoff.
 

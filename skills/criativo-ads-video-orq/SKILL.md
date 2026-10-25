@@ -872,14 +872,21 @@ estático e carrossel com página real.
 3. **split 70/30 ou 50/50** (entregável EM CIMA) na frase de mecanismo;
 4. **b-roll** no desejo até o CTA — produto parado + seta 1-2 s, nunca corte seco.
 
-**Checklist que vale pra qualquer peça com o entregável dentro** (cada item já custou uma versão
-reprovada):
+**Checklist que vale pra qualquer peça com o entregável dentro, não só a rotulada "demonstrativo"
+(regra da dona, 25/10/2026 — reforçada: isso inclui legenda e velocidade, não só b-roll/split)**
+(cada item já custou uma versão reprovada):
 - **1 clipe/take por frase da VO**; nenhum take nem b-roll repetido na mesma peça; peças irmãs da leva
   usam b-rolls diferentes.
 - **Página real full bleed**, sem moldura e sem tarja, na sequência do início ao fim; cortar barra de
   status/URL antes de compor.
 - **B-roll com o assunto no quadro**, cover 1080×1920 (cortar borda preta embutida), origem registrada
   pela `get-brolls`.
+- **Legenda:** KaraokeV2 em blocos CURTOS (2-4 palavras por linha, nunca a frase inteira numa linha
+  só — fica estática/lenta na tela), sincronizada palavra a palavra com o VO. Vale em TODO vídeo,
+  mesmo os sem b-roll.
+- **Velocidade:** timeline no ritmo natural do VO por padrão (sem acelerar); ajuste de velocidade
+  só na FALA GERADA antes de montar (regra do catálogo de clipe, E.0b), nunca acelerando a edição
+  já montada. Vale em TODO vídeo, independente de ter personagem, b-roll ou só gravação de tela.
 - **Cortes de 1,5-3 s**, transição ~0,3 s, **sem aceleração** por padrão (playbackRate 1.0).
 - **Legenda karaokê** por cima: 70% (62-64% no split), sem palavra encostando/sobrepondo; gancho em
   **até 2 frases curtas** — 3-4 frases de dor antes do produto = reprovado.
