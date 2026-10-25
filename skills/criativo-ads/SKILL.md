@@ -296,6 +296,13 @@ mecânica não repetem regra de estratégia. Se alguma divergir desta, vale esta
 >   No prompt: texto exato, **uma linha só e sem aspas duplas** (o `inserttext` trunca e o modelo
 >   volta perguntando o texto), pedindo **flutuante, sem nenhum bloco/barra/caixa de cor atrás**, com
 >   margem de ~12% no topo e ~15% embaixo e nada cortado na borda.
+> - **⛔ Primeiro confirme que o texto EXISTE, só depois confira ortografia (achado real,
+>   Mapa del Tarot AR, CRIATIVO-07, 25/10/2026).** O prompt pedia 2 caixas de texto Stories com
+>   texto exato — a imagem saiu **sem nenhuma das duas**, só com o preço em pill, e foi aprovada
+>   assim. "QA de ortografia" sozinho não pega isso: palavra por palavra só funciona quando as
+>   palavras existem. Checklist em 2 passos: (1) o texto pedido no prompt está fisicamente visível
+>   na imagem? conte as caixas de texto, compare com o que o prompt pediu — se faltar 1, já reprova,
+>   nem olha ortografia ainda; (2) só então confere acento palavra por palavra.
 > - **Ortografia é QA bloqueador, não ajuste:** o gerador erra acento com frequência
 >   (`VOCE`, `NAO`, `decisao`). Conferir palavra por palavra e **regenerar** o que saiu torto.
 > - **A página do produto que aparece na arte é o arquivo real** — conferir lado a lado com a
@@ -483,6 +490,19 @@ intenção de compra (mesmo erro já documentado na regra de "peça de preço" a
 - Vale pro carrossel tipo 2 inteiro como sequência: 1º card = gancho, cards do
   meio = desenvolvimento (as lâminas reais fazem esse papel), último card = CTA —
   nunca um carrossel de páginas soltas sem fechamento.
+
+**⛔ Gate mecânico antes de escrever QUALQUER prompt de peça de impacto/só-texto
+(reincidiu 25/10/2026, NeuroActiva AR C1-4 — regra lida e mesmo assim pulada):**
+o prompt escrito tinha só gancho ("El problema no es tu paciencia. Es la hoja en
+blanco.") + CTA, sem nenhuma linha citando o produto/mecanismo — saiu curiosidade
+solta, a dona corrigiu na hora: *"quando é frase de impacto, não pode ser solta
+assim pra atrair curiosidade pra minha página — tem que ter a mesma vibe de hook,
+desenvolvimento e CTA, falando em contexto do meu produto"*. Antes de mandar
+QUALQUER prompt de texto-só pro GPT, **conte os blocos de texto no próprio
+prompt**: se só tem 2 (gancho + CTA), falta o do meio — escreva a linha de
+desenvolvimento citando o produto/mecanismo (ex.: "400 fichas ilustradas, listas
+para aplicar en la sesión.") ANTES de enviar, nunca corrija só depois que a
+peça já saiu errada.
 
 Caixa de perguntas também vale em imagem, e **quem responde é sempre o expert** da leva (nunca o UGC). **Texto = sempre texto de Stories**, na
 fonte nativa do Instagram Stories (Classic, sans tipo SF/Helvetica, branco em caixa preta arredondada ou preto em caixa

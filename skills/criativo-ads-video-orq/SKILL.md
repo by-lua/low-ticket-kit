@@ -3356,6 +3356,22 @@ grotesca** — `WebkitTextStroke` fica centrado na borda da letra, come o desenh
 serrilha as quinas, e o chroma-key do fundo `#0000FF` deixava halo; (3) **pequena e
 chapada**, sem profundidade. Aprovado visualmente em `mapa-do-tarot/criativos/v4_imperatriz_KARAOKE-V2.mp4`.
 
+**⛔ NUNCA REIMPLEMENTAR A LEGENDA DE CABEÇA (regra da dona, 25/10/2026 — erro repetido 3x no
+mesmo dia, Mapa do Tarot CRIATIVO-7/30: tamanho errado, depois chunk errado, depois contorno
+errado).** A tabela de spec abaixo (fonte, tamanho, posição) é **descrição**, não a fonte da
+verdade — a fonte da verdade é o **projeto Remotion já aprovado**:
+`mapa-do-tarot/criativos/BR/CRIATIVO-1/intermediarios/remotion-cap` (componente `KaraokeV2.jsx`
++ `words.json`). Traduzir a tabela de cabeça pra outra ferramenta (ffmpeg/ASS, CSS reescrito,
+qualquer coisa) SEMPRE perde detalhe — tamanho de fonte CSS não bate 1:1 com outro motor de
+render, chunk de palavras vira "parece bom" em vez do valor exato, contorno vira chute.
+**Se o criativo já tem (ou pode copiar) um projeto Remotion: usa esse projeto, roda
+`npx remotion render` nele, não reescreve o componente.** Só quando literalmente não existe
+Remotion disponível (ambiente sem Node, sem tempo de setup) é que entra um fallback — e mesmo
+nesse caso, **copia os valores exatos do componente `.jsx` linha por linha** (abre o arquivo,
+lê o JSX, transpõe cada número pro novo formato) em vez de reconstruir a partir da tabela
+resumida desta página. A tabela serve pra CONFERIR depois (bateu com o `.jsx`?), nunca pra
+GERAR o prompt/script do zero.
+
 **Passo 1 — tempo de cada palavra: `scripts/legenda_align.py` (alinhamento forçado, NÃO whisper).**
 A gente sempre tem o texto falado (roteiro/prompt do Veo/texto do TTS). O alinhador
 (wav2vec2/MMS via `ctc-forced-aligner`, local, grátis, CPU ~45s pra 30s de áudio)

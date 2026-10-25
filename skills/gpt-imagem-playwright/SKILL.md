@@ -245,6 +245,14 @@ Medido: ~7s numa ref de 220 KB, ~40s numa de 627 KB.
 > quando o resto do prompt já está no idioma certo. Confira palavra por palavra antes de aceitar a
 > peça — acento errado é QA bloqueador, regenera.
 
+> **O texto que VOCÊ escreve dentro do prompt (o texto que vai aparecer na imagem/anúncio) tem que
+> sair já com acentuação correta no idioma certo — o modelo reproduz fielmente o que você digitou,
+> inclusive o erro** (dona, 25/10/2026). Bug real: prompt escrito "Diagnostico"/"Medico"/"Tarjeta
+> Rapida"/"linea" (sem acento) saiu assim na imagem, sem nenhum defeito do GPT — a imagem só copiou
+> o texto exatamente como foi mandado. Antes de enviar qualquer prompt com texto em espanhol/
+> português/francês etc dentro de aspas, releia cada palavra com acento (á, é, í, ó, ú, ñ, ã, ê, ç)
+> e corrija no PRÓPRIO arquivo do prompt — não deixe pra corrigir só depois de ver a imagem errada.
+
 Escreva o prompt num arquivo e use `keyboard inserttext` — `fill` quebra com texto longo e caractere especial.
 
 > **`inserttext` trunca na primeira quebra de linha/aspas (medido 2026-10-09, Tarô).**
