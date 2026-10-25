@@ -122,6 +122,12 @@ permanente abaixo. Nenhum se repete.
       recortada depois dos timestamps do `words.json` já gerados, trunque a legenda pra nunca
       ultrapassar a duração real do corpo (`[w for w in words if w['end'] <= duração_do_corpo]`)
       — senão a palavra fica "pendurada" renderizada em cima do card CTA.
+      **Causa já vista (CT13 Atlas, 25/10/2026): o `legenda_align.py` estica a ÚLTIMA palavra até o
+      fim do áudio** — se o áudio passado inclui o silêncio/trilha do card, "dentro." fica com `end`
+      no fim do vídeo e vaza em cima do card. Rode o alinhador só na trilha de VOZ e, depois, prenda
+      o `end` da última palavra ao fim real da fala (silencedetect/transcrição) antes do truncamento.
+      **E o Flow repete a frase do hook** quando sobra tempo no clipe de 8s (CT13: "no es tu memoria"
+      2x) — cortar o hook no fim da 1ª ocorrência lendo a transcrição do clipe cru, nunca pelo RMS.
       **⛔ Legenda de OUTRO criativo (bug real, 25/10/2026, CT13 Atlas): reaproveitar a pasta
       `remotion/` de outro criativo (copiar `node_modules`/`package.json`/`KaraokeV2.jsx` pra
       economizar setup) é válido, mas o `words.json` daquela pasta é SEMPRE do criativo de
