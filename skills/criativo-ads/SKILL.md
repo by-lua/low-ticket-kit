@@ -23,6 +23,15 @@ description: Porta de entrada ÚNICA de criativo de anúncio (Meta/TikTok) — v
 > fichados); (3) **mecânica** — `criativo-ads-video-orq` se for vídeo, `gpt-imagem-playwright` +
 > `modelagem-escalados` se for imagem. Nunca carregar só a skill-porta e deixar a mecânica pra
 > depois — é isso que produz vídeo com script mas sem produção completa (gate acima).
+>
+> **Regra dura (dona, 25/10/2026 — texto de peça saiu flutuante sem caixa e formato saiu 9:16
+> numa peça 4:5, os dois inventados de memória em vez de copiados da regra escrita):** ninguém
+> — orquestrador nem pane — escreve prompt de texto/formato pro GPT de cabeça. Antes de
+> escrever QUALQUER prompt de imagem, copia e cola literalmente a definição de texto ("Texto =
+> sempre texto de Stories, na fonte nativa do Instagram Stories...") e a proporção ("estático e
+> carrossel = 4:5, 1080x1350") mais abaixo nesta skill. Perguntar ao usuário "que estilo você
+> quer" quando a resposta já está escrita aqui é o MESMO erro — não é escolha de gosto, é regra
+> fixa. Todo brief de pane de imagem cola essas linhas inteiras, não resume nem parafraseia.
 
 ## 🧭 FLUXO ÚNICO — do pedido à peça pronta (uma mecânica só, leia de cima a baixo)
 

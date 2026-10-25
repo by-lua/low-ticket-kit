@@ -877,6 +877,11 @@ estático e carrossel com página real.
 (cada item já custou uma versão reprovada):
 - **1 clipe/take por frase da VO**; nenhum take nem b-roll repetido na mesma peça; peças irmãs da leva
   usam b-rolls diferentes.
+- **⛔ Sempre mistura fonte de cena, nunca só uma (regra da dona, 25/10/2026 — achado real: CT3
+  saiu só b-roll 3D + celular, sem nenhum take Flow).** Toda peça demonstrativa combina pelo menos
+  2 fontes diferentes: gravação de tela real (celular/`MATERIAL-ENTREGAVEL/`) + take Flow de mesa
+  (`FLOW-TAKES/take-geral-flow.mp4`/`take-C-flow.mp4`, mandatório junto — ver §E.0c) + b-roll 3D
+  quando a oferta tiver (`BROLL-3D/`). Nunca uma peça 100% só-celular nem 100% só-Flow.
 - **Página real full bleed**, sem moldura e sem tarja, na sequência do início ao fim; cortar barra de
   status/URL antes de compor.
 - **B-roll com o assunto no quadro**, cover 1080×1920 (cortar borda preta embutida), origem registrada

@@ -36,16 +36,21 @@ def extrai_wav(src):
 
 
 def alinha(wav, palavras_alinhar, lang):
-    import torch
-    from ctc_forced_aligner import (load_audio, load_alignment_model, generate_emissions,
-                                    preprocess_text, get_alignments, get_spans, postprocess_results)
-    model, tok = load_alignment_model("cpu", dtype=torch.float32)
-    audio = load_audio(wav, model.dtype, model.device)
-    emissions, stride = generate_emissions(model, audio, batch_size=4)
-    tokens, text = preprocess_text(" ".join(palavras_alinhar), romanize=True, language=lang)
-    segs, scores, blank = get_alignments(emissions, tokens, tok)
-    spans = get_spans(tokens, segs, blank)
-    return postprocess_results(text, spans, stride, scores)
+    # API alta-nível do pacote ctc-forced-aligner instalado (PyPI, 2026) — a API
+    # antiga (load_alignment_model/preprocess_text/get_alignments/get_spans/
+    # postprocess_results) não existe mais nessa versão; get_word_stamps faz
+    # tudo isso internamente e lê o roteiro de um ARQUIVO, não de uma lista de
+    # tokens. Escreve um .txt temporário com as palavras já expandidas (números
+    # por extenso) e chama a API nova.
+    from ctc_forced_aligner import get_word_stamps
+    fd, roteiro_tmp = tempfile.mkstemp(suffix=".txt")
+    with os.fdopen(fd, "w", encoding="utf-8") as f:
+        f.write(" ".join(palavras_alinhar))
+    try:
+        word_stamps, _model, _lyrics = get_word_stamps(wav, roteiro_tmp)
+    finally:
+        os.remove(roteiro_tmp)
+    return [{"start": w["start"], "end": w["end"], "score": w.get("score", 0.0)} for w in word_stamps]
 
 
 def main():
