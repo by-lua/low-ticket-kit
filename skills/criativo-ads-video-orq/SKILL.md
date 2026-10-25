@@ -110,6 +110,18 @@ permanente abaixo. Nenhum se repete.
       VERMELHA embaixo com animação simples de descida (bounce down)**, formato Stories vertical,
       tudo bem centralizado. 1-2s de sobra no fim, nunca corta na última palavra. É um card
       dedicado (asset único reusado em toda a leva), não congelamento do último frame do vídeo.
+      **O card é ACRÉSCIMO depois do vídeo, nunca substituição da cena do CTA falado (regra da
+      dona, 24/10/2026, caso CT2 Atlas/expert Martín — bug real: cortou a cena onde ela fala o CTA
+      e pôs o card no lugar dela).** O vídeo sempre termina do jeito normal, ela falando o CTA até
+      o fim (como sempre foi) — nunca encurtar essa cena pra caber o card. SÓ DEPOIS que o vídeo
+      original termina é que o card (seta+mockup) entra, como um trecho A MAIS, ficando **~5s**
+      com a trilha de fundo seguindo tocando. Timeline certa: `[vídeo inteiro até o fim natural da
+      fala do CTA] → [+5s do card, música contínua]`. Errado: cortar o vídeo antes do fim e pôr o
+      card no espaço que sobrou.
+      **Legenda nunca vaza pro card (bug real, 24/10/2026):** se alguma cena do corpo for
+      recortada depois dos timestamps do `words.json` já gerados, trunque a legenda pra nunca
+      ultrapassar a duração real do corpo (`[w for w in words if w['end'] <= duração_do_corpo]`)
+      — senão a palavra fica "pendurada" renderizada em cima do card CTA.
       **Onde achar o mockup (nessa ordem):** `produto/MOCKUPS-NOSSOS/` da oferta → se não
       existir local, **a própria página de vendas no ar já tem** (ex. `/images/producto-portada.*`
       — inspecionar o HTML da página com `curl`/grep por `mockup|cover|capa|portada|producto` nos
@@ -884,14 +896,23 @@ igualzinho a qualquer demonstrativo:
 - **1 clipe por frase da VO**, não 4-5 blocos fixos pro vídeo inteiro.
 - **Split 70/30 ou 50/50** (entregável em cima/b-roll embaixo) na frase de mecanismo — não corte
   sempre em tela cheia.
-- **Timeline inteira acelerada 1.1x no Remotion (padrão — regra da dona, 24/10/2026, ajustado
-  depois de 1.15x soar rápido demais em criativo com personagem/lip-sync)**, playbackRate, pitch
-  preservado — não só o áudio da narração isolado via `atempo`. Isso vale mesmo quando o início é
-  um clipe de lip-sync (o clipe falado entra no mesmo fator igual ao resto, senão o ritmo quebra
-  na transição). **1.15x só em criativo 100% b-roll/tela, sem personagem falando** — ver tabela de
-  velocidade por tipo de conteúdo mais abaixo (seção de aceleração, ~linha 3478+).
+- **SEM aceleração por padrão (regra da dona, 24/10/2026 — revertido depois de 1.1x E 1.15x os
+  dois soarem rápido demais, repetidas vezes, em criativo com personagem/narração falada).**
+  Timeline no ritmo natural do VO, playbackRate 1.0. Só acelera se a dona pedir explicitamente
+  pra aquela peça, e mesmo assim testa 1.05-1.1x primeiro, nunca direto 1.15x. **1.15x/1.30-1.40x
+  continuam válidos só pro caso documentado da receita v10_imperatriz** (100% b-roll/tela, zero
+  narração de personagem, ver tabela de velocidade mais abaixo ~linha 3478) — não é o padrão
+  geral, é exceção de um formato específico.
 - Trilha de fundo, CTA sem corte seco (card preto+mockup+seta vermelha, ver gate item 11) — iguais
   pra qualquer modo.
+- **⛔ Antes de aplicar QUALQUER velocidade, confirme que a base é a RAW, não um render já
+  acelerado (regra da dona, 24/10/2026 — bug real: #11/#21 ficaram a ~1,25x porque o `out.mp4`
+  reusado já vinha com ~1,13x embutido de uma passada anterior, e o 1.1x novo somou em cima).**
+  Checagem obrigatória antes de qualquer `setpts`/`atempo`: `ffprobe` a duração do áudio CRU
+  (`vo.wav`/narração original) × a duração do vídeo mudo cru (`muted.mp4`/`body-visual.mp4` sem
+  nenhum playbackRate) — as duas têm que bater (±0.3s). Se o arquivo que você ia acelerar já é
+  mais curto que o áudio cru, ele JÁ tem velocidade aplicada — acelere a partir do raw, nunca em
+  cima de um render que não é garantidamente 1:1.
 
 **Regra de leitura da skill:** ao montar QUALQUER vídeo (1-3-9, 1-1-10, demonstrativo puro,
 expert, UGC carro, qualquer um), ler E.0 → E.0b → E.2b nessa ordem ANTES de montar — a escolha de
