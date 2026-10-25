@@ -376,6 +376,15 @@ só a capa) e produza as 2-3 até vídeo final, avisando no fim quais letras sa�
   o áudio final da fala é sempre trocado pela nossa voz fixa (`narracao-hub-tts`, Rocha) antes de entregar —
   nunca a voz do Flow fica no criativo final.
 
+**⛔ UGC não usa take genérico do banco compartilhado (regra da dona, 25/10/2026, caso CT22
+Atlas/Nico).** `FLOW-TAKES/take-geral`/`take-C` (§E.0c, "reaproveitáveis em todos os 10 vídeos")
+servem pro **demonstrativo** (mão anônima, sem persona — mesa real sem rosto). Peça rotulada
+**UGC/GC** é outra coisa: é recomendação de UMA pessoa específica — o corpo tem que mostrar ESSA
+pessoa segurando o material, cena gerada só pra ela (imagem GPT da persona segurando o produto +
+Flow i2v), nunca o clipe de mão genérica do banco. Usar o take compartilhado numa peça UGC quebra
+o formato: hook mostra rosto, corpo vira mão anônima sem conexão — lê como demonstrativo, não
+recomendação. Sinal de que errou: a mesma mão/mesa aparece em UGC de personas diferentes na leva.
+
 **Preferência padrão: pessoa de COSTAS/over-the-shoulder, não de frente (regra da dona,
 20/10/2026).** Quando a take tiver pessoa (A, C, G, K…), o padrão é rosto NÃO aparecer — só
 cabelo/ombro/mão, como a K. Rosto de frente só entra se o criativo realmente precisar (ex.:
