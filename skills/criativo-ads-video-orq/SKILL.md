@@ -969,6 +969,40 @@ expert, UGC carro, qualquer um), ler E.0 → E.0b → E.2b nessa ordem ANTES de 
 quem fala no hook (b-roll, expert, UGC) é só um dos 4 blocos da receita, nunca motivo pra
 abandonar o resto dela.
 
+### E.0d — REGRA GERAL: quem mostra o entregável por dentro segue esta receita (dona, 25/10/2026)
+
+> *"quando for um criativo que mostra o entregável por dentro sim, precisa ser tipo o demonstrativo —
+> o demonstrativo tem muitas regras de edição e b-roll; bom ele ser mais geral do que só pro
+> demonstrativo"*
+
+**A receita do demonstrativo não é um modo entre outros: é o padrão de edição de TODA peça em que o
+entregável aparece por dentro** — rotulada ou não de demonstrativo. Encaixa em: expert segurando/abrindo
+o material, UGC com o produto na mão, vídeo IDA cobrindo o áudio com páginas, corte de tela, e também
+estático e carrossel com página real.
+
+**Arco obrigatório (o de §E.2b), nesta ordem:**
+1. **b-roll em tela cheia** no hook (assunto/dor em movimento) — sem produto parado;
+2. **entregável em tela cheia** quando a fala diz "este material";
+3. **split 70/30 ou 50/50** (entregável EM CIMA) na frase de mecanismo;
+4. **b-roll** no desejo até o CTA — produto parado + seta 1-2 s, nunca corte seco.
+
+**Checklist que vale pra qualquer peça com o entregável dentro** (cada item já custou uma versão
+reprovada):
+- **1 clipe/take por frase da VO**; nenhum take nem b-roll repetido na mesma peça; peças irmãs da leva
+  usam b-rolls diferentes.
+- **Página real full bleed**, sem moldura e sem tarja, na sequência do início ao fim; cortar barra de
+  status/URL antes de compor.
+- **B-roll com o assunto no quadro**, cover 1080×1920 (cortar borda preta embutida), origem registrada
+  pela `get-brolls`.
+- **Cortes de 1,5-3 s**, transição ~0,3 s, **sem aceleração** por padrão (playbackRate 1.0).
+- **Legenda karaokê** por cima: 70% (62-64% no split), sem palavra encostando/sobrepondo; gancho em
+  **até 2 frases curtas** — 3-4 frases de dor antes do produto = reprovado.
+- **Vários takes do entregável**, não um take único rolando a página.
+- Nunca mockup 3D, nunca "PDF" na fala, nunca tarja vermelha; trilha **-18 a -22 dB**.
+- **Carrossel:** card 1 é a única arte gerada; os demais são páginas reais recortadas em sequência.
+- **QA antes da dona ver:** contact sheet 1 fps, `cropdetect` em cada b-roll, frames a cada 0,5 s na
+  legenda, F0 da voz antes×depois.
+
 ### E.1 — Coleta do b-roll
 
 **Todo b-roll mostra o ASSUNTO do produto no quadro — e só entra clipe ENTREGUE pela

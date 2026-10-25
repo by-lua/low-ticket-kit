@@ -441,6 +441,18 @@ impacto" (fundo branco, texto preto e vermelho). Sem moldura, sem cara de anúnc
 **Caixa de perguntas em story:** pergunta na imagem + alguém (de preferência o expert) respondendo
 com o material na mão, orgânico.
 
+**⛔ MÉTODO ÚNICO, não dois métodos à escolher (regra da dona, 25/10/2026 — erro real: montei
+CT3/CT22 pensando "isso é demonstrativo" OU "isso é GC", escolhendo um e abandonando o outro).**
+Esta skill é UM orquestrador só. Pra toda peça de **vídeo** com pessoa (GC/UGC/expert), os dois
+blocos abaixo **se somam, nunca se substituem**:
+1. **O QUE a pessoa mostra/como ela aparece** — regra desta seção (Rodrigo: pose "capa de livro",
+   segura o material, cenário que casa com o papel, 2 estilos de vídeo, etc).
+2. **COMO o corpo é editado** — receita `criativo-ads-video-orq` E.2b/E.0b: split 70/30 na frase
+   de mecanismo, 1 clipe por frase (não full-screen sequencial), fade nas junções, trilha, CTA sem
+   corte seco. **O gancho ter GC/UGC falando não troca a receita de edição por "montar livre"** —
+   isso já está escrito em E.0b e repetiu hoje mesmo depois de ler a seção no mesmo dia.
+Nunca escolher 1 e ignorar o outro — toda peça de vídeo com pessoa carrega os dois ao mesmo tempo.
+
 **⛔ TODO GC/UGC mostra o material SEMPRE — nunca pessoa vazia, mãos nuas, sem produto (regra da
 dona, 25/10/2026 — achado real: 6/6 peças estáticas da leva Atlas AR não tinham isso, só
 mesa/mockup sem rosto).** "UGC com o entregável na mão" não é peça opcional perdida no meio do
