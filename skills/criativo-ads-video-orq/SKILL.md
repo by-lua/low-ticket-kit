@@ -884,9 +884,12 @@ igualzinho a qualquer demonstrativo:
 - **1 clipe por frase da VO**, não 4-5 blocos fixos pro vídeo inteiro.
 - **Split 70/30 ou 50/50** (entregável em cima/b-roll embaixo) na frase de mecanismo — não corte
   sempre em tela cheia.
-- **Timeline inteira acelerada 1.15x no Remotion** (playbackRate, pitch preservado) — não só o
-  áudio da narração isolado via `atempo`. Isso vale mesmo quando o início é um clipe de lip-sync
-  (o clipe falado entra no 1.15x igual ao resto, senão o ritmo quebra na transição).
+- **Timeline inteira acelerada 1.1x no Remotion (padrão — regra da dona, 24/10/2026, ajustado
+  depois de 1.15x soar rápido demais em criativo com personagem/lip-sync)**, playbackRate, pitch
+  preservado — não só o áudio da narração isolado via `atempo`. Isso vale mesmo quando o início é
+  um clipe de lip-sync (o clipe falado entra no mesmo fator igual ao resto, senão o ritmo quebra
+  na transição). **1.15x só em criativo 100% b-roll/tela, sem personagem falando** — ver tabela de
+  velocidade por tipo de conteúdo mais abaixo (seção de aceleração, ~linha 3478+).
 - Trilha de fundo, CTA sem corte seco (card preto+mockup+seta vermelha, ver gate item 11) — iguais
   pra qualquer modo.
 

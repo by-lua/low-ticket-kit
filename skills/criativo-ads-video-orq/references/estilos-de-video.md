@@ -18,6 +18,14 @@ seco) — o que muda de estilo pra estilo é só a FONTE do hook e quem aparece.
 
 Erro repetido nesta sessão: montar com só 1-2 fontes achadas de cara, quando a pasta tinha mais
 — ou gerar card CTA com lâmina avulsa quando a página já tinha mockup completo pronto pra baixar.
+
+**Toda oferta com criativos em produção mantém `criativos/ASSETS-MAPA.md`** (registro vivo: o que
+existe em `MATERIAL-ENTREGAVEL/`, `FLOW-TAKES/`, `BROLL-3D/`, qual card CTA já tá pronto, qual
+trilha usar, estrutura dos vídeos já fechados). **Ler esse arquivo primeiro.** E **atualizar na
+hora** sempre que algo mudar — take novo gerado, card CTA remontado, vídeo fechado — nunca deixar
+só no histórico da conversa. Se o arquivo não existir na oferta, criar antes de montar o 1º vídeo
+(exemplo vivo: `OFERTAS/luciola-atlas-movimiento/criativos/ASSETS-MAPA.md`).
+
 Antes de escrever o primeiro comando de ffmpeg, varrer e listar (não confiar em memória de sessão
 anterior, a pasta muda):
 
