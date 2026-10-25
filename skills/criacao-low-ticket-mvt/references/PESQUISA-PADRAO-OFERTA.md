@@ -27,8 +27,17 @@ BR, 24/10). Rodar o loop inteiro 2x: uma vez por **keyword direto** (passo 1), o
   gente não tinha pensado (é ela que acha o "curso" quando a gente só buscava "PDF").
 - Abaixo desse piso, a pesquisa não está pronta pro `gate-persona.py` — mesmo que o script passe.
 
-1. **Keyword direto** — 1-2 termos que descrevem o NOSSO produto quase literal (ex.: "tarot para
-   iniciantes"). Serve só pra achar 1-2 concorrentes **quase idênticos**, não pra minerar volume.
+1. **Keyword direto — 3 termos, não 1-2 (correção dona, 25/10/2026).** Nome genérico do nicho
+   SOZINHO não acha concorrente quase idêntico — é largo demais, devolve tudo e nada
+   (ex.: "tarot" sozinho não serve). Keyword direto é **variação do produto/formato**, a mesma
+   lógica de quando a dona pede isso ao GPT direto: manda o site/oferta nossa pro GPT e pede
+   literalmente "me dá 3 palavras-chave diretas pra eu achar ofertas parecidas com essa" — ele
+   devolve variações tipo "tarot visual" / "mapa de tarot" / "leitura de tarot em mapa", não só
+   "tarot". **Teste antes de aceitar uma keyword direta: ela sozinha, sem mais contexto, devolveria
+   um concorrente que vende A MESMA COISA, ou devolve ruído do nicho inteiro?** Se é ruído, a
+   keyword é larga demais — ainda não é "direto", é "amplo" disfarçado. As 3 servem só pra achar
+   os primeiros concorrentes **quase idênticos** (passo 2-6), não pra minerar volume — isso é o
+   passo 7.
 2. **Abre o 1º anúncio relevante** que o termo achou. Confere **"Veiculação iniciada em"** no card:
    **< 7 dias = ignora** (pode ser teste que ainda vai morrer); **≥ 7 dias = narrativa validada**
    (continuam pagando, então funciona) — só então vale a pena analisar.
@@ -58,11 +67,15 @@ BR, 24/10). Rodar o loop inteiro 2x: uma vez por **keyword direto** (passo 1), o
    querer fazer "nossa oferta com ângulo X" sem checar se X cabe no que a gente realmente entrega.
    Registra tabela sub-tema × nº de anúncios × dias no ar em `BIBLIOTECA-AMPLIADA-<data>.md` como
    leitura de mercado — a decisão de usar (bônus, copy, ou nada) é sempre posterior e conferida.
-7. **Agora pensa AMPLO**: que outras palavras acham o MESMO público, mesmo sem ser o mesmo produto —
-   inclusive produto totalmente diferente (curso, mentoria, app) que ataca a MESMA dor. Ex.: quem
-   busca "aprender tarot sozinha" também é alcançado por "curso de autoconhecimento online" se a dor
-   for a mesma. Gera essas palavras amplas e roda o **MESMO loop (passos 1-6b) com elas** — é a camada
-   "nicho vizinho", nunca pulada.
+7. **Agora pensa AMPLO — 2 termos** (completa as 5 keywords do passo 1+7, correção dona 25/10/2026):
+   que outras palavras acham o MESMO público, mesmo sem ser o mesmo produto — inclusive produto
+   totalmente diferente (curso, mentoria, app) que ataca a MESMA dor. Ex.: quem busca "aprender
+   tarot sozinha" também é alcançado por "curso de autoconhecimento online" se a dor for a mesma.
+   É a mesma pergunta que a dona faz ao GPT depois de já ter achado os concorrentes diretos: "agora
+   me dá palavras mais abertas pra eu entender esse público, achar outros produtos/dores do mesmo
+   nicho". Gera essas 2 palavras amplas e roda o **MESMO loop (passos 1-6b) com elas** — é a camada
+   "nicho vizinho", nunca pulada. **Resumo do mix (5 no total): 3 diretas (acham concorrente quase
+   idêntico) + 2 amplas (acham a dor/público maior)** — nunca as 5 do mesmo tipo.
 8. **Depois de esgotar a Biblioteca** (direto + amplo), vai pro **YouTube com busca ABERTA** — termos
    da DOR, não os mesmos termos já usados na Biblioteca (repetir termo é confirmar o que já se sabia,
    não achar dor nova). Vê os vídeos **mais vistos**, lê **comentários**, registra contagem + data do
