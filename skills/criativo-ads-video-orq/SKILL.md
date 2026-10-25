@@ -158,6 +158,32 @@ permanente abaixo. Nenhum se repete.
       dele (zoom/pan não substitui corte de cena). Se há 5 takes pra um vídeo de ~25-30s, o corte
       médio é 1 a cada 5-6s — todos entram, nenhum fica de fora só porque "já deu pra mostrar".
 
+**⛔ GATE QA FINAL — assistir o vídeo INTEIRO, não só frames em número redondo (regra da dona,
+25/10/2026 — achados reais na revisão da leva Atlas AR: CT3 tinha um HOMEM contaminando um corpo
+de UGC feminino no meio do vídeo — só apareceu porque o QA amostrou frames em 0/3/6/9s e pulou
+bem o segundo exato onde a cena errada entrava; CT4/CT13/CT23 tinham CTA/card entrando ANTES do
+corpo/legenda terminar de verdade — card sobrepondo legenda, às vezes por 1-2s, só visível
+assistindo contínuo; CT12 saiu com a trilha ALTA DEMAIS, nunca medida, só "ouvida por cima";
+CT13 tinha palavra repetida 2x no meio da fala.** Frame em número redondo (0, 3, 6, 9...) pula
+exatamente o segundo onde o defeito mora. Antes de declarar QUALQUER vídeo pronto (novo ou
+reaproveitado de sessão anterior):
+- [ ] **Verifique CADA fonte do `list-body.txt`/lista de concat ANTES de concatenar** — abra 1
+  frame de CADA arquivo `s*.mp4`/`c*.mp4` individualmente e confirme que a pessoa/conteúdo bate
+  com o criativo (nunca confie em nome de arquivo nem em "já tava lá"). Clipe órfão de outra
+  sessão/outro criativo entra fácil numa pasta `VIDEO/` cheia de versões.
+- [ ] **Timing do card:** meça a duração EXATA do corpo (`ffprobe` do arquivo final `body-*.mp4`
+  usado no concat) e confirme que o card começa EXATAMENTE nesse ponto, nunca antes — frame a
+  ~0.3s antes do corte e ~0.3s depois, os dois tem que mostrar a transição limpa, sem legenda
+  vazando em cima do card.
+- [ ] **Áudio medido, não só ouvido:** `volumedetect` da trilha sozinha vs. da voz sozinha —
+  trilha tem que estar nitidamente mais baixa (ver tabela de mix em FASE 7); nunca aceitar "parece
+  ok" sem o número.
+- [ ] **Palavra repetida:** ler o `words.json` renderizado inteiro (lista de texto) procurando
+  qualquer palavra/frase consecutiva duplicada antes de aceitar a legenda.
+- [ ] **Vídeo herdado de sessão anterior (sem intermediarios/roteiro):** não presuma que passou
+  no gate só porque já estava publicado — ele pode ser de antes dessas regras existirem. Rode este
+  gate nele também antes de reafirmar "pronto".
+
 **Tool `agent-browser record` não herda sessão de login** (contexto novo, cookie
 httpOnly não propaga, mesmo documentado como "preserves cookies"). Se precisar
 operar página autenticada, faça login real pela UI (digitar+clicar) na MESMA
