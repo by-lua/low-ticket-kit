@@ -22,7 +22,8 @@ Molde de prompt da cena orgânica: `PROMPT-ESTATICO-ORGANICO.md`. Formato da bib
    Nos tipos com visual próprio (impacto, clássica, biblioteca) o texto segue o visual do tipo.
 3. **Toda peça tem gancho → desenvolvimento → CTA**, inclusive impacto, só-texto e carrossel de páginas.
    Conte os blocos no prompt antes de enviar: 2 blocos = falta o desenvolvimento (citando produto/mecanismo).
-4. **Conferir que o texto EXISTE na imagem** (contar caixas × prompt) e só então a ortografia palavra por palavra
+4. **Clareza em 1 segundo:** dá pra saber o que é, pra quem é e a entrega concreta? Curiosidade pode abrir, nunca esconder o produto.
+4b. **Conferir que o texto EXISTE na imagem** (contar caixas × prompt) e só então a ortografia palavra por palavra
    (acentos: declarar o idioma no prompt; nunca tirar acento).
 5. **Páginas do produto = arquivo real** anexado (capa + 2–3 páginas). GPT nunca desenha página. Nada repete:
    cada aparelho e cada folha mostram página diferente. Nunca "PDF", nunca mockup 3D na peça (o mockup só existe no card CTA do vídeo).
@@ -42,8 +43,8 @@ Molde de prompt da cena orgânica: `PROMPT-ESTATICO-ORGANICO.md`. Formato da bib
 | **UGC estático** (slot 4) | orgânico iPhone com pessoa | pessoa comum **com o material**, apresentação variada peça a peça: segurando como livro (fechado com a capa ou aberto em 2 páginas), na estante, impresso na mão, tablet/celular com a capa — olhando pra câmera, como quem dá opinião | mão nua = reprovado; capa limpa primeiro, página real só se não houver capa |
 | **Fase de impacto** (slot 7) | fundo **branco** (texto preto + vermelho) ou **preto** (branco + vermelho) | só texto | gancho + desenvolvimento citando o produto + CTA; varia branco/preto peça a peça |
 | **Só texto** (slot 5) | nota/tweet/frase de impacto em visual nativo | só texto | sobe consciência; mesmo assim 3 blocos e cita o produto no desenvolvimento |
-| **Original** (slot 6) | orgânico iPhone | 1 benefício + material (impresso + digital) + CTA | sem história, sem mockup |
-| **Peça de preço** (slot 8 — a "clássica" do Rodrigo na nossa versão) | **orgânico iPhone** (padrão): digital + impresso + texto Stories com o valor — de preferência reaproveitando a cena já aprovada de outra peça e trocando só o texto | gancho + desenvolvimento + valor do plano mais barato + CTA | **sem mockup e sem fundo preto de catálogo**; alternativa: impacto com nome do produto + valor; nunca preço solto sem produto; única peça do conjunto com valor |
+| **Benefício central** (slot 6, antes "original") | orgânico iPhone | **maior texto = o benefício/quantidade verdadeira** ("78 mapas, uma página por carta"), 1 linha de apoio (como recebe/usa), CTA; material impresso + digital | sem história, sem mockup; só número real do produto (Rodrigo, estudo `CONHECIMENTO/ESTUDOS/2026-10-26-delta-criativo-rodrigo.md`) |
+| **Peça de preço** (slot 8 — a "clássica" do Rodrigo na nossa versão) | **orgânico iPhone** (padrão): digital + impresso + texto Stories com o valor — de preferência reaproveitando a cena já aprovada de outra peça e trocando só o texto | gancho + desenvolvimento + valor do plano mais barato + CTA | **sem mockup e sem fundo preto de catálogo**; alternativa: impacto com nome do produto + valor; nunca preço solto sem produto; única peça do conjunto com valor; é **pré-qualificação**: CTR menor com conversão maior é o esperado, não reprova |
 | **Caixa de perguntas / expert respondendo** | story nativo + orgânico iPhone | caixa de pergunta (dor/objeção real) + **expert** respondendo com o material na mão (impresso/tablet) e texto Stories com a resposta | nunca UGC respondendo; resposta com mecanismo |
 | **Antes/depois** | o da referência | puxado da Biblioteca de Anúncios (anúncio real rodando) | nunca inventado do zero |
 | **Formato da biblioteca** (print WhatsApp, notícia, story nativo, tweet…) | **o da referência** (`modelagem-escalados`, fidelidade: layout, cor, fonte iguais) | nosso conteúdo real dentro | prova não se fabrica: sem depoimento real, sem formato de prova social |

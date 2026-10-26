@@ -190,6 +190,8 @@ def main():
             falhas.append('leva sem peça SÓ TEXTO (frase de impacto sem produto, 1 a cada 9) — método Rodrigo')
         else:
             oks.append(f'peça só-texto presente ({len(stx)})')
+        if not re.search(r'papel|consciencia', txt):
+            avisos.append('plano sem o papel de consciência de cada peça (apresentação/mecanismo, dor, objeção, prova real, oferta/preço, demonstração) — Kevones 23/10/2026')
         if 'mecanismo' not in txt:
             avisos.append('plano não diz que o corpo do vídeo desenvolve o mecanismo (gancho -> mecanismo -> CTA)')
 

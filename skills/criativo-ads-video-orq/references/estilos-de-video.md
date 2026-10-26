@@ -29,6 +29,10 @@ Onde cada coisa mora:
 | **Print + POV + Meme** | prova/resultado sem rosto | POV em 1–2 linhas | print real (topo) + texto POV (meio) + meme recortado (base), fundo preto | sem voz (som opcional) | só com print REAL (prova não se fabrica) |
 | **Copo azul (variação do vencedor)** | mesmo produto + copy do vencedor, troca quem/onde | o do vencedor | o do modo do vencedor, com outra pessoa/ambiente | idem | peça nova, campanha nova; nunca só trocar gancho |
 
+**Variante opcional do demonstrativo — headline fixa (dona, 26/10/2026: só como teste, quando ela pedir):**
+uma linha curta e fixa com o entregável concreto ("78 mapas", "150 fichas") durante o vídeo, dentro da
+área segura e sem brigar com a legenda KaraokeV2. Não é o padrão; o demonstrativo que funciona continua sem ela.
+
 Produto "vibe"/não-material (ex.: número mestre): UGC pode ser "entrevista de rua", sem segurar material.
 
 ## Passo 0 — mapear TODOS os assets antes de montar

@@ -3,7 +3,7 @@
 > Fonte: Rodrigo Liedson, transcrições em
 > `MINERACAO/referencia-rodrigoliedson/METODO-RODRIGO-EUROPA-139-SAGA-COMPLETA.md`.
 > Isto é a camada que faltava entre ESTRATÉGIA (`criativo-ads` Gate 0, qual dor/ângulo)
-> e EDIÇÃO (`criativo-ads-video-orq` E.2b/E.0d, como montar o corpo). Sem ela, o
+> e EDIÇÃO (`criativo-ads-video-orq/references/EDICAO-PADRAO.md`, como montar o corpo). Sem ela, o
 > roteiro sai raso — gancho copiado do plano, sem desenvolvimento, sem CTA escrito
 > (ver `plano-video-ganho-nao-e-roteiro-completo`).
 
@@ -19,7 +19,21 @@
    cheio, mas a ESTRUTURA (gancho→desenvolvimento→CTA) já vem do prompt, não é
    inventada na montagem.
 4. **Só então entra a produção** (imagem/vídeo) e a **edição** (split 70/30, 1
-   clipe por frase, fade — regra universal, `criativo-ads-video-orq` E.0d).
+   clipe por frase, fade — regra universal, `criativo-ads-video-orq/references/EDICAO-PADRAO.md`).
+
+## AIDA dentro de gancho → desenvolvimento → CTA (Rodrigo, estudo `CONHECIMENTO/ESTUDOS/2026-10-26-delta-criativo-rodrigo.md`)
+
+A forma externa continua gancho → desenvolvimento → CTA. Por dentro, conferir as 4 funções do AIDA,
+que o Rodrigo usa em todo roteiro:
+- **Atenção** = gancho (a dor/pergunta real da persona);
+- **Interesse** = problema + mecanismo (POR QUE funciona);
+- **Desejo** = transformação concreta + o produto EM USO (o que muda na vida dela com aquilo na mão);
+- **Ação** = CTA (só comando).
+Corpo que explica o mecanismo mas não mostra a transformação/produto em uso ainda está faltando o **desejo**.
+
+**Clareza antes de curiosidade (gate de 1 segundo):** low ticket é direto. Em 1 s dá pra saber **o que
+é**, **pra quem é** e **qual entrega/benefício concreto** (quantidade verdadeira: "78 mapas", "150 fichas")?
+Curiosidade pode abrir o gancho, nunca esconder o produto. Peça que só gera curiosidade = reprovada.
 
 ## Estrutura do prompt por formato (o que pedir ao GPT)
 
@@ -127,7 +141,7 @@ troque o pronome.
 Depois de gerar o clipe falado (i2v/lip-sync), se a voz saiu rápida/apressada,
 Rodrigo ajusta a **velocidade do próprio clipe de fala** (ferramenta de geração,
 ex. slider de speed) ANTES de entrar na montagem — não é a mesma coisa que acelerar
-a timeline editada (isso é proibido por padrão, ver `criativo-ads-video-orq` E.0b).
+a timeline editada (isso é proibido por padrão, ver `criativo-ads-video-orq/references/EDICAO-PADRAO.md`).
 Checar a naturalidade da fala logo depois de gerar o clipe, ainda na ferramenta de
 imagem→vídeo, é um passo a mais no catálogo de QA de clipe (`criativo-ads-video-orq`
 QA de clipes) — antes de levar o clipe pra montagem.
@@ -150,7 +164,7 @@ curto — nunca 1 frase solta sem as 3 partes.
 ## Depois do roteiro: a edição é camada separada, sempre a mesma
 
 Qual dos 3 formatos acima o roteiro seguiu NÃO muda a receita de montagem — todo
-vídeo com entregável aparecendo por dentro usa `criativo-ads-video-orq` E.0d/E.2b
+vídeo com entregável aparecendo por dentro usa `criativo-ads-video-orq/references/EDICAO-PADRAO.md`
 (split 70/30, 1 clipe por frase, fade, CTA sem corte seco), **independente do
 formato do roteiro**. Formato = O QUE o roteiro diz; edição = COMO a tela monta
 o que o roteiro diz. Nunca confundir os dois nem pular a edição achando que o

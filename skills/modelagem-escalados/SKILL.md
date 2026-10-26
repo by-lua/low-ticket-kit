@@ -117,7 +117,7 @@ antes de abrir novas dores, valide se dor+público comunicam.
 - **Um ângulo, três formatos:** a mesma dor vira vídeo, carrossel e estático (uma
   frase). A leva de teste mistura formatos.
 - **Quantidade:** teste de low ticket com 3 a 5 peças no máximo; depois de validar,
-  ~3 peças novas por semana, cada uma com dor nova. Não suba 10 de uma vez numa
+  ~3 peças novas por semana (exemplo, não teto — Kevones 23/10/2026: cadência depende do ecossistema), cada uma com dor nova. Não suba 10 de uma vez numa
   conta que já vende.
 - **Remarketing** usa peça de objeção, depoimento ou cupom, nunca a mesma peça do
   público frio.

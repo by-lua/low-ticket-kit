@@ -60,7 +60,7 @@ Quantidade (atualizado 2025/26, YouTube):
   "5-10 / 7-15" do curso de 2025 (`18/72`) ficaram grandes demais para low ticket.
 - **Com público validado: 1 campanha, esse público, 3 criativos diferentes** (1-1-3);
   o vencedor vai para campanha própria 1-1-1. [tTJNpAVAs5I, 7n2jP39qbxU]
-- **Ritmo depois de validar: cerca de 3 criativos novos POR SEMANA, não por dia.**
+- **Ritmo depois de validar: cerca de 3 criativos novos POR SEMANA, não por dia.** *(Kevones 23/10/2026, `Fo3EFSn7LeI`: não existe cadência universal — depende de ticket, lucro e ecossistema; 2–3/semana é só exemplo conservador antigo, não teto. Volume maior só depois de validar.)*
   Muitos testes ao mesmo tempo derrubam o ROI da conta inteira (caso de aluno: −R$ 2,5 mil
   em 7 dias testando 14 campanhas → +R$ 6,4 mil em 14 dias com a rotina semanal).
   "Poucos mais bons criativos." [nkRg5Xsnxis]
