@@ -13,9 +13,10 @@ pular, não fazer fora de sequência. A ordem inteira em memória `ordem-execuca
        físico/imprimível (caça-palavra, labirinto, sequência, recibo, cartões para recortar,
        pôster, tabuleiro, ligar-colunas…) precisa da **página de instrução** (a ficha) **e** da
        **página de atividade** (a folha que a pessoa imprime e faz). Sem a segunda, o exercício
-       não é aplicável. Gera-se a folha de forma **determinística** (conteúdo correto: palavra
-       escondida de verdade, labirinto resolvível); GPT-image só para arte (pôster/rostos).
-       Regra e receita: `references/PAGINAS-DE-ATIVIDADE.md`;
+       não é aplicável. **As duas páginas são escritas JUNTAS no texto da entrega** (conteúdo exato
+       + composição + gabarito da folha `w`) e **as duas são imagem GPT**, 1 por mensagem — nunca
+       HTML/SVG/Pillow (reprovado pela dona 23/10/2026). Conferir o conteúdo exato na imagem contra
+       o gabarito. Regra, modelo de texto e receita: `references/PAGINAS-DE-ATIVIDADE.md`;
    (a) DEFINIR TODA a entrega **em texto** (sessões, capa, textos, item principal + bônus) — dono
        monta/aprova;
    (b) só então **referências visuais** + direção visual (a mecânica é da skill `imagens-pagina-low`).
@@ -54,6 +55,10 @@ pular, não fazer fora de sequência. A ordem inteira em memória `ordem-execuca
           bumps) e cada entregável prometido → escrever o texto de principal (essencial + completo), bônus e
           order bumps — **texto INTEGRAL de TODAS as páginas do completo** (não só do MVP; dono 27/09) — ANTES de
           gerar qualquer imagem. **Só a GERAÇÃO é MVP** (~10 págs por item); o texto já fica todo pronto.
+          **Texto = composição da entrega:** cada página escrita com o que vai nela e onde (título,
+          ilustração/cena, área de conteúdo). Exercício, pôster, cartão de recortar, tabuleiro → já
+          escreve a página `w` junto (conteúdo exato + composição + gabarito), modelo em
+          `PAGINAS-DE-ATIVIDADE.md` § "A composição nasce no TEXTO". Texto sem a `w` = incompleto.
        2. **Começa pelo mais básico** (principal): referência visual (páginas do produto já adaptadas; no
           cross-market, as DELE adaptadas) + texto MVP → GPT Work mode gera **só 2-3 páginas de teste**;
           orquestrador + dono conferem. Aprovado → gera o resto do MVP (~7 págs, fechando ~10). Depois o

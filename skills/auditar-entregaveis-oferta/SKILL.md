@@ -157,13 +157,16 @@ vê o buraco: a página do card existe e conta.
 correspondente no painel (não só o card de instrução). Ex.: GeriNeuro V5 (subtítulo *"+ printable
 worksheets"*) tem **8 cards `Printable …`** e nenhuma folha.
 
-**Correção — gerar por CÓDIGO, não por IA de imagem:** grid de caça-palavras, labirinto,
-sequência e *spot the difference* exigem **letra/elemento exato** — modelo de imagem erra letra.
-Renderize programaticamente (PIL / HTML→PDF) na identidade do `DESIGN-SYSTEM.md` (fontes +
-cores) e publique como **página nova** do módulo, pelo mesmo fluxo (checagens B/E valem). Gerador
-de referência: `gerineuro-us/scripts/gera-worksheet.py` (word search; estender p/ maze/sequence/
-spot-the-difference). Título de página deixa claro o que é: `WORKSHEET` + nome do exercício, e a
-página é **só o exercício** (sem a explicação, que fica no card).
+**Correção — texto primeiro, depois imagem GPT (nunca código; regra da dona 23/10/2026):**
+1. Faltou a página `w` no **texto** (`produto/texto/`)? Escrever antes: conteúdo exato + composição +
+   gabarito, modelo em `criacao-low-ticket-mvt/references/PAGINAS-DE-ATIVIDADE.md` § "A composição
+   nasce no TEXTO". Ficha só com explicação = texto incompleto.
+2. Gerar a `w` no GPT, 1 por mensagem (`gpt-imagem-playwright` § "Páginas de ATIVIDADE"), conferir o
+   conteúdo exato contra o gabarito, publicar como página nova logo depois do card (checagens B/E valem).
+**Proibido HTML/SVG/Pillow/HTML→PDF** — reprovado ("psicodélico"). `gera-worksheet.py`,
+`gera-atividades.py`, `gera-printables.py` estão obsoletos: só inventário, não gerador. Página `w`
+feita por código já publicada conta como **pendente**. Título deixa claro o que é: `WORKSHEET` +
+nome do exercício, e a página é **só o exercício** (sem a explicação, que fica no card).
 
 ## Publicação — gerar ≠ publicar (medido Eletrotecnia, 16/10/2026)
 

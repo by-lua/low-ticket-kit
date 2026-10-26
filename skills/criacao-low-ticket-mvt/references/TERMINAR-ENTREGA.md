@@ -15,6 +15,11 @@ Saída: `produto/MAPA-GAPS-<data>.md` = tabela item | plano/preço | promessa | 
 
 ## 2. Escrever o que falta de texto
 Item sem texto integral → escrever ANTES de gerar (todas as páginas, não só MVP). Texto pronto = segue.
+**Texto pronto inclui a composição:** ficha que pede material (exercício, pôster, cartão, tabuleiro,
+folha pra imprimir) tem a página `w` escrita junto, com conteúdo exato + composição + gabarito
+(`PAGINAS-DE-ATIVIDADE.md`). Ficha só com a explicação = texto incompleto, volta e escreve.
+No mapa (passo 1), contar as `w` que o texto pede × as que existem no painel.
+A `w` também é imagem GPT 1×1 (passo 4), **nunca HTML/Pillow**.
 
 ## 3. Ordem
 1º item que entrega ZERO e é vendido (bump/bônus vazio) → MVP 10 págs + capa → publica.
