@@ -470,6 +470,32 @@ padrão (regra da dona, 23/10/2026 — antes era 1:1). 9:16 só se o usuário pe
 9:16. No carrossel demonstrativo, as páginas do entregável são arquivos reais
 encaixados no 4:5; GPT não desenha página do produto.
 
+> **⛔ PAGE REAL EM PAISAGEM — como virar card 4:5 sem virar slide (25/10/2026, Mapa del Tarot AR).**
+> Quando o entregável tem página **horizontal** (ex.: mapa mental 1200×848), "4:5" não se resolve
+> encaixando a página no card. As três tentativas erradas que um pane entregou como prontas:
+> **(a)** página centralizada com **tarja branca** em cima/embaixo (= cara de PowerPoint, a dona
+> reprovou); **(b)** página **crua** no card, com proporção 1200×848 dentro de um carrossel 4:5
+> (o Meta corta); **(c)** **crop pequeno** de uma coluna da página ampliado (480×483 → borrado,
+> cortando a carta). Certo:
+> - página ocupa a **largura inteira** do card, na **resolução nativa** (texto legível) e a sobra
+>   vertical é preenchida com o **próprio papel da página** (repete a faixa limpa da borda; nunca
+>   espelhar conteúdo, nunca chapar branco) — é o que `criativos/scripts/montar-cards.py` faz
+>   (referência viva: `OFERTAS/luciola-mapatarot-ar/criativos/scripts/montar-cards.py`);
+> - ou **recorte full-bleed** que preencha o card, se a página inteira não couber — mas só quando
+>   a fonte tiver resolução pra isso (nunca ampliar crop de ~480px).
+> **Todos os cards da mesma peça com o MESMO tamanho** (1080×1350). Card de tamanho diferente
+> reprova a peça inteira.
+
+> **⛔ GATE DA IMAGEM FINAL — antes de dizer "pronta" (25/10/2026).** O `gate-pecas-criativo.py`
+> olha o que ENTRA na cena; ele **não** olha o que sai — foi por isso que cards de 480×483 e
+> página 1200×848 passaram como entregues. Rodar sempre, nos arquivos finais:
+> `python3 ~/.claude/skills/criativo-ads/scripts/gate-imagens-finais.py <finais...> --pasta CRIATIVO-N/`
+> (opções: `--story` pra 9:16, `--sem-texto` pra fase de impacto/carrossel só de páginas).
+> Ele cobra: proporção 4:5, largura ≥ 1080, mesmo tamanho em todos os cards e **prompt salvo em
+> `intermediarios/prompt*.txt` pedindo o texto como "Instagram Stories text sticker"** — sem
+> prompt salvo ninguém audita se o texto foi pedido ao modelo ou colado por cima em código, e
+> colado por cima é reprovado. **BLOQUEADO = não é peça pronta**, nem entra em handoff.
+
 **Estático = foto orgânica de celular, SEMPRE (dona, 23/10/2026):** todo estático e todo carrossel é cena real
 com cara de foto de iPhone, com fundo orgânico que faça sentido pra persona (academia, sala de aula, mesa de estudo,
 carro). **Única exceção: fase de impacto estilo Rodrigo** (fundo branco, texto preto/vermelho), que é formato

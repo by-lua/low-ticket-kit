@@ -63,7 +63,11 @@ Pasta `criativos/CRIATIVO-NN-<slug>/`:
   - impacto: `organico-iphone/ref-impacto-layout-texto.jpg` (inverter pra branco/preto/vermelho)
   - outros formatos: `~/.claude/biblioteca-escalados/CATALOGO.md` (recortar a UI do print antes)
 - `intermediarios/prompt-vN.txt` no molde `PROMPT-ESTATICO-ORGANICO.md` (inglês, uma linha, sem aspas).
-- Prova: `python3 ~/.claude/skills/criativo-ads/scripts/gate-pecas-criativo.py <pasta>` = LIBERADO.
+- Prova 1 (o que entra): `python3 ~/.claude/skills/criativo-ads/scripts/gate-pecas-criativo.py <pasta>` = LIBERADO.
+- Prova 2 (o que sai, depois de gerar): `python3 ~/.claude/skills/criativo-ads/scripts/gate-imagens-finais.py <finais...> --pasta <pasta>`
+  = LIBERADO. Cobra 4:5 1080×1350, cards do mesmo tamanho e prompt salvo pedindo o texto como sticker de Stories.
+  Página horizontal do entregável: montar o card com `scripts/montar-cards.py` do projeto (página na largura
+  nativa + sobra = papel da própria página) — nunca tarja branca, página crua em outra proporção ou crop ampliado.
 
 ## 6 · Gerar
 - Sessão: `S=$(~/.claude/bin/gpt-livre.sh <lane> | tail -1)` → `agent-browser --session $S navigate https://chatgpt.com/`
@@ -77,6 +81,8 @@ Pasta `criativos/CRIATIVO-NN-<slug>/`:
 Olhar cada imagem em tamanho cheio: texto e acentos certos, páginas reais (não redesenhadas), nada repetido,
 digital + impresso, sem botão/UI. Recortar pra 4:5. Final na raiz da pasta da peça. **Mostrar toda peça pronta
 pra dona**; a 1ª de cada etapa (estático, caixinha, impacto, carrossel, vídeo) é aprovada antes do resto.
+Rodar o `gate-imagens-finais.py` nas finais antes de mostrar (4:5, 1080×1350, mesmo tamanho nos cards, prompt
+salvo com o texto pedido). Versão antiga vai pra `_arquivo/<data>-antes-redo/`, nunca fica ao lado da nova.
 
 ## 8 · Gravar
 Progresso no `PLANO-LEVA-1.md` + `_memoria/planos-criativos.md` + `STATUS.md` da oferta e da raiz; hub
