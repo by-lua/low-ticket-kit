@@ -33,55 +33,40 @@ description: Porta de entrada ÚNICA de criativo de anúncio (Meta/TikTok) — v
 > quer" quando a resposta já está escrita aqui é o MESMO erro — não é escolha de gosto, é regra
 > fixa. Todo brief de pane de imagem cola essas linhas inteiras, não resume nem parafraseia.
 
-## 🧭 FLUXO ÚNICO — do pedido à peça pronta (uma mecânica só, leia de cima a baixo)
+## 🧭 TRILHA DO CRIATIVO — um caminho só, passo a passo (regra da dona, 26/10/2026)
 
-Isso existe porque pedir criativo não pode virar "escrevo um roteiro solto e gero
-imagem/vídeo sem pensar no resto". É UM mecanismo, com etapas que sempre acontecem
-NESSA ordem — nenhuma pulada, nenhuma decidida sozinha sem olhar as outras:
+Pedir criativo = andar ESTA trilha, nessa ordem. Cada passo tem UMA fonte; não se inventa
+regra no caminho e não se pula passo. (Antes do passo 1: `low-ticket-abrir` da oferta + GATE 0/0.1/0.2 abaixo.)
 
-1. **Quanto/quando (Kevones) — decide o volume da leva.** Em que fase a conta está
-   (3-5 teste / 1-1-3 validado / rotina semanal), quantas campanhas (1-3-9 ou
-   1-1-10), mix vídeo/imagem/carrossel por campanha (`Quantidade pela fase da
-   conta` + `references/kevones-criativo.md`).
-2. **Quem/o-quê em cada slot (Rodrigo + biblioteca) — decide o PAPEL de cada
-   peça.** A tabela de 10 slots (`MATRIZ ÚNICA`) preenchida com dor real do banco
-   (`PERSONA-E-ANGULOS.md`) — Rodrigo é o mínimo, não o teto: a biblioteca
-   `modelagem-escalados` (103 formatos) entra pra diversificar além dele. Decide
-   AQUI, antes de escrever roteiro, porque o formato muda a receita de produção.
-3. **O que escrever (`references/ROTEIRO-POR-FORMATO.md`) — decide o ROTEIRO.**
-   Página real → GPT → gancho+desenvolvimento+CTA por formato (UGC/expert/
-   demonstrativo têm estrutura própria, nunca frase solta). Escreve no idioma que
-   você entende, traduz depois.
-4. **Como produzir e montar (mecânica) — decide a TÉCNICA.** Vídeo:
-   `criativo-ads-video-orq` (E.2b/E.0d — split 70/30, 1 clipe/frase, fade, CTA
-   card sem corte seco). Imagem/carrossel: `modelagem-escalados` (doutrina
-   orgânico+headline+12 prompts, NUNCA mockup 3D — sempre lâmina real). **Mecânica
-   se carrega E se aplica peça por peça, nunca só se cita no briefing** (Fluxo,
-   passo 5 abaixo).
-5. **Entrega** — `anuncio.md` + onde entra na conta. Tráfego/corte/escala:
-   `metaads-kevones`.
+| Passo | Decide | Fonte única |
+|---|---|---|
+| **1 · Kevones — quantidade e mistura** | 3 campanhas 1-1-10; mistura **imagem/vídeo diferente por campanha: C1 70/30 (7+3), C2 50/50 (5+5), C3 60/40 (6+4)**; dor que vende em todas; nenhuma dor repete dentro da campanha | `references/kevones-criativo.md` + seções "MATRIZ ÚNICA" e "Como montar a matriz 1-1-3" abaixo |
+| **2 · Rodrigo (base) + nossos formatos — papel de cada peça** | o método do Rodrigo vale INTEIRO como base (UGC dando a experiência, expert, gancho→desenvolvimento→CTA, cenários, regras de corte); por cima entram os formatos que a dona já fixou (caixa de perguntas, expert respondendo em imagem e vídeo, demonstrativo, frase de impacto, imagem orgânica mostrando o material). A biblioteca de escalados é **opção extra** pra diversificar. Nenhum papel repete na campanha | seção "Os 10 slots" (MATRIZ ÚNICA) + "Criativo estilo Rodrigo" abaixo; extras em `modelagem-escalados` |
+| **3 · Plano em texto** | tabela peça a peça (modo + dor + formato) → `gate-plano-leva.py` → OK da dona | `references/RECEITA-LEVA-PONTA-A-PONTA.md` |
+| **4 · Roteiro / texto de cada peça** | gancho → desenvolvimento (mecanismo) → CTA, pela estrutura do MODO | `references/ROTEIRO-POR-FORMATO.md` |
+| **5a · Imagem** | o tipo dita visual e conteúdo; texto do GPT, páginas reais, 4:5, margens, preço | **`references/tipos-de-imagem.md` (GUIA DE IMAGEM)** → `modelagem-escalados` (formato da biblioteca) → `gpt-imagem-playwright` |
+| **5b · Vídeo** | o modo dita roteiro e cenas; **a edição é sempre a mesma**, em qualquer modo | **`criativo-ads-video-orq/references/estilos-de-video.md` (GUIA DE VÍDEO)** + **`EDICAO-PADRAO.md`** (corte, legenda, velocidade, trilha, card CTA, QA) |
+| **6 · Entrega** | `anuncio.md` por peça, gates finais, registrar no STATUS e em `_memoria/planos-criativos.md` | `references/texto-anuncio-por-angulo.md`, `low-ticket-salvar` |
 
-As 4 primeiras etapas são camadas de UMA decisão, não 4 métodos pra escolher —
-nenhuma peça nasce sem passar pelas 4.
+**Quem manda em quê:** Kevones = quantidade e mistura. **Rodrigo = a base, considerada inteira** (papéis,
+estrutura do texto gancho → desenvolvimento → CTA, como a pessoa conta a experiência); um complementa o
+outro. Os formatos que a dona já fixou (caixa de perguntas, expert respondendo em imagem e em vídeo,
+demonstrativo, frase de impacto, imagem animada…) somam-se aos dele. Biblioteca de escalados = opções a mais. **Visual = sempre o nosso:** imagem
+orgânica de iPhone, texto de Stories, material impresso + digital, nunca mockup — onde Rodrigo usa
+mockup ("clássica"), a nossa versão é a orgânica (com preço, se for peça de preço).
 
-> **🗺️ MAPA DE DECISÃO — qual seção ler, pra cada tipo de pedido (índice, 24/10/2026).** Antes de
-> montar QUALQUER peça, ache a linha certa aqui e leia as seções na ordem dada — nenhuma decisão
-> de formato/estrutura se toma sem passar por essas seções primeiro. Isso existe porque informação
-> certa espalhada sem índice = buraco (caso real: receita E.2b já existia, não foi lida pro
-> expert hook — CRIATIVO-02 Atlas, 24/10).
->
-> | Pedido | Ler nesta ordem |
-> |---|---|
-> | "3 campanhas", 1-1-3, 1-1-10, teste em grupos | GATE 0→0.2 → `⭐ TESTE EM GRUPOS` → `🗺️ AS 3 TRILHAS` → `Como montar a matriz 1-1-3` |
-> | Qualquer peça de IMAGEM (estático, carrossel, peça de preço, antes/depois) | GATE 0.1 → **`references/tipos-de-imagem.md`** (índice único, qual tipo + checklist) → `modelagem-escalados` → `gpt-imagem-playwright` |
-> | Qualquer peça de VÍDEO (demonstrativo, expert, UGC, 1-3-9, caixa de perguntas) | GATE 0.1 → **`references/ROTEIRO-POR-FORMATO.md`** (como ESCREVER o roteiro: página→GPT→gancho/desenvolvimento/CTA por formato) → `criativo-ads-video-orq/references/estilos-de-video.md` (qual estilo+checklist) → E.2b/E.0d (edição, sempre, qualquer formato) |
-> | "Criativo estilo Rodrigo" / leva 1-3-9 | seção `"Criativo estilo Rodrigo"` abaixo (3 tipos + catálogo de cor/cenário) → **`references/ROTEIRO-POR-FORMATO.md`** (escrever o script) → `estilos-de-video.md` linha "1-3-9" |
-> | Reaproveitar formato que já escala (biblioteca) | `modelagem-escalados` (103 formatos) ou tabela de 16 vídeos escalados em `criativo-ads-video-orq` (busca ANTES de inventar corte) |
-> | Vídeo "mesa real" (imagem→Flow, sem gravação de tela) | `criativo-ads-video-orq` §E.0c (catálogo de takes A-O) |
->
-> **Checagem de repetição (regra da dona, 24/10/2026):** antes de fechar a leva, relistar as peças
-> já feitas (tipo+ângulo+formato) e confirmar que nenhuma repete tipo+estrutura dentro da mesma
-> campanha — ver `Dentro da MESMA campanha, varia o tipo` mais abaixo.
+**Modo ≠ edição.** UGC, expert e demonstrativo são modos (o que se diz e o que aparece). A edição
+(corte por frase, split, legenda KaraokeV2, velocidade 1.0, trilha, card CTA) é uma camada só e vale pra
+todos — ninguém precisa pedir "edita no estilo do demonstrativo". Mesma lógica na imagem: o tipo muda,
+as regras de texto/página/formato do GUIA DE IMAGEM não.
+
+**Quando duas regras desta skill se contradizem, vale a mais recente (data da regra da dona)**, e a
+correção vai pro arquivo-fonte do passo (GUIA DE IMAGEM, GUIA DE VÍDEO, EDICAO-PADRAO) — nunca só no histórico.
+**Exceção a regra da dona só com ordem dela, com data e citação** — agente não escreve exceção pra
+justificar a própria peça (caso Tarot AR, 25/10: "peça 9 sem texto").
+
+**Checagem de repetição:** antes de fechar a leva, relistar peças feitas (modo + dor + formato) e
+confirmar que nenhuma repete modo+estrutura dentro da mesma campanha.
 
 > **🎯 "Faz os criativos da oferta X" (leva inteira, ponta a ponta):** siga
 > `references/RECEITA-LEVA-PONTA-A-PONTA.md` na ordem — persona com dado → material/DESIGN-SYSTEM → plano →
@@ -325,11 +310,12 @@ mecânica não repetem regra de estratégia. Se alguma divergir desta, vale esta
 >   duas coisas são diferentes e sempre existem as duas).
 > - **PADRÃO, não exceção: toda peça estática de imagem leva texto/gancho dentro da foto.** Não é algo
 >   que só vale quando o brief escreve "+ texto de story" explicitamente — isso é óbvio, é como criativo
->   de imagem funciona (ver [[texto-estatico-imagem-nunca-overlay]]). Única exceção é quando o plano diz
->   explicitamente "só páginas" / sem gancho (ex. peça 9 do Mapa del Tarot AR, carrossel limpo de
->   páginas reais). Reincidência real (Mapa del Tarot AR, peça 5, 25/10/2026): pane escreveu copy no
+>   de imagem funciona (ver [[texto-estatico-imagem-nunca-overlay]]). Não existe peça de imagem sem
+>   texto: até o carrossel "só páginas" tem card de gancho e card de CTA gerados (GUIA DE IMAGEM,
+>   carrossel tipo 2). (A exceção "peça 9 do Tarot AR sem texto" foi escrita por um agente, não pela
+>   dona — removida 26/10/2026.) Reincidência real (Mapa del Tarot AR, peça 5, 25/10/2026): pane escreveu copy no
 >   `anuncio.md`, achou que cumpriu, entregou imagem limpa sem nada escrito na cena. Se a peça é imagem
->   e não está marcada "só páginas", ela SAI com texto na foto — conferir visualmente antes do handoff,
+>   ela SAI com texto na foto — conferir visualmente antes do handoff,
 >   nunca só ler se o `anuncio.md` tem seção de copy.
 > - Quem recebe o handoff (orquestrador) abre pelo menos 1 imagem de cada peça reportada como
 >   "pronta" antes de repassar "feito" pra dona — não confiar só no texto do handoff.
@@ -490,7 +476,7 @@ encaixados no 4:5; GPT não desenha página do produto.
 > olha o que ENTRA na cena; ele **não** olha o que sai — foi por isso que cards de 480×483 e
 > página 1200×848 passaram como entregues. Rodar sempre, nos arquivos finais:
 > `python3 ~/.claude/skills/criativo-ads/scripts/gate-imagens-finais.py <finais...> --pasta CRIATIVO-N/`
-> (opções: `--story` pra 9:16, `--sem-texto` pra fase de impacto/carrossel só de páginas).
+> (opção `--story` pra 9:16; não existe mais dispensa de texto — impacto também tem prompt de texto, e carrossel só de páginas tem cards de gancho/CTA gerados).
 > Ele cobra: proporção 4:5, largura ≥ 1080, mesmo tamanho em todos os cards e **prompt salvo em
 > `intermediarios/prompt*.txt` pedindo o texto como "Instagram Stories text sticker"** — sem
 > prompt salvo ninguém audita se o texto foi pedido ao modelo ou colado por cima em código, e
@@ -557,9 +543,9 @@ fase de impacto (só texto) e carrossel tipo 2 (só páginas).
    texto novo.
 
 **Mix por campanha + carrossel (regra da dona, 23/10/2026):** toda campanha de teste (1-1-10 ou
-1-1-3) leva **vídeo + estático + carrossel no mesmo conjunto** (metaads-kevones §21). **Proporção da
-leva: 70% imagem / 30% vídeo ou 50/50 — NUNCA 70% vídeo** (dá trabalho demais) (ex.: 10 por
-campanha = 6-7 imagens + 3-4 vídeos). **Sem mockup:** imagem = páginas reais do entregável em cena orgânica estilo iPhone, texto
+1-1-3) leva **vídeo + estático + carrossel no mesmo conjunto** (metaads-kevones §21). **Proporção por
+campanha (dona, 26/10/2026): C1 70/30 (7 imagens + 3 vídeos), C2 50/50 (5+5), C3 60/40 (6+4) —
+imagem nunca menos que vídeo** (vídeo dá trabalho demais). **Sem mockup:** imagem = páginas reais do entregável em cena orgânica estilo iPhone, texto
 como de story, em **vários aparelhos** (celular, tablet, notebook), nunca só impresso. **Anúncio
 nunca fala "PDF"** — vendemos material organizado na área de membros; PDF não é benefício.
 **Vibe das imagens (dona 23/10):** todas orgânicas estilo iPhone (derruba CPM), exceto a "fase de
@@ -825,9 +811,9 @@ casar com o que o produto promete.
 
 **Estilos de imagem por COR (não é genérico, a cor define o estilo):**
 - **"Fase de impacto"** = fundo BRANCO + texto PRETO e VERMELHO.
-- **"Clássica"** = fundo PRETO + **imagem do entregável (lâmina real, estilo ugly iPhone — nunca
-  mockup 3D limpo)** + headline em cima + subheadline + imagem de novo + **preço** (única peça da
-  leva com valor visível). "Mockup" aqui é figura de linguagem do método — na prática é SEMPRE
+- **"Clássica"** (dele) = fundo PRETO + mockup + headline + subheadline + **preço**. **Na nossa versão
+  (dona, 26/10/2026): orgânico iPhone (impresso + digital) + texto Stories com o preço, sem mockup e sem
+  fundo de catálogo** — é a "peça de preço" do GUIA DE IMAGEM (única peça da leva com valor visível). "Mockup" aqui é figura de linguagem do método — na prática é SEMPRE
   página/lâmina real, regra do portfólio (`anuncio-sem-mockup-sem-pdf`).
 - **Antes/depois** = puxado direto da Biblioteca de Anúncios (referência real já rodando), não
   gerado do zero sem referência.
@@ -890,7 +876,7 @@ Isso não é um 4º slot — é COMO qualquer um dos 3 slots de vídeo é fisica
 | 5 | estático | **só texto** — frase de impacto, sem produto | sobe consciência, não vende sozinha |
 | 6 | estático | **original** — 1 benefício + CTA | sem história |
 | 7 | estático | **fase de impacto** — fundo branco + texto preto/vermelho | só a cor define o estilo |
-| 8 | estático | **clássica** — fundo preto + produto + **PREÇO** | **única peça do conjunto com preço** |
+| 8 | estático | **peça de preço** — orgânico iPhone (impresso + digital) + texto Stories com o **PREÇO** (a "clássica" do Rodrigo na nossa versão, sem mockup) | **única peça do conjunto com preço** |
 | 9 | carrossel | **objeção** — 1 card por objeção → CTA | quebra objeção, não apresenta produto |
 | 10 | carrossel | **história** ou **catálogo** (escolhe 1) | história = 5-10 cards; catálogo = acervo |
 

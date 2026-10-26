@@ -11,6 +11,17 @@ description: "Mecânica de produção e edição de anúncios em vídeo, chamada
 
 # criativo-ads-video-orq
 
+> **🧭 COMO LER ESTA SKILL (26/10/2026) — são 3 coisas separadas, leia só a que precisa:**
+> 1. **QUAL vídeo (modo):** demonstrativo, expert, UGC, caixa de perguntas, imagem animada… →
+>    **`references/estilos-de-video.md` (GUIA DE VÍDEO)**. O modo decide roteiro, quem fala e quais cenas.
+> 2. **COMO editar (igual em TODO modo):** corte por frase, layouts, legenda KaraokeV2, velocidade,
+>    trilha, card CTA, QA → **`references/EDICAO-PADRAO.md`**. Ele MANDA sobre qualquer trecho abaixo
+>    que diga outra coisa (velocidade, duração de corte, trilha, CTA). Ninguém precisa pedir "edita no
+>    estilo do demonstrativo" — pediu vídeo, a edição é essa.
+> 3. **COMO gerar cena com IA** (personagem/take no Flow: imagem de referência, dentes, voz,
+>    anti-morphing, QA de clipe) → FASE 2–5 e §E.0c abaixo.
+> A estratégia (quantas peças, qual modo em qual slot) vem de `criativo-ads` (TRILHA DO CRIATIVO).
+
 > **⛔ ISTO VALE PRA TODO CRIATIVO DE VÍDEO DO PORTFÓLIO, QUALQUER OFERTA, QUALQUER AGENTE —
 > NUNCA É ESPECÍFICO DE UM PROJETO (regra da dona, 25/10/2026, reforçada depois de um agente de
 > OUTRA oferta inventar o próprio método de legenda em vez de usar este).** Não existe "legenda
@@ -18,8 +29,8 @@ description: "Mecânica de produção e edição de anúncios em vídeo, chamada
 > anúncio deste portfólio: **legenda = sempre `scripts/legenda_align.py` (alinhamento forçado,
 > venv em `~/Developer/legenda-karaoke/.venv` — conferir que existe ANTES de instalar outro)
 > → Remotion KaraokeV2** (tamanho de fonte, cor, posição, blocos de 2-4 palavras — tudo fixo,
-> nunca reinventado); **b-roll/edição = sempre a receita E.0d/E.2b** (split 70/30, 1 clipe por
-> frase, fade nas junções). Se você é um agente chegando numa oferta nova e precisa de legenda ou
+> nunca reinventado); **edição = sempre `references/EDICAO-PADRAO.md`** (1 clipe por
+> frase, split 70/30, fade nas junções, velocidade 1.0, trilha, card CTA) — em qualquer modo. Se você é um agente chegando numa oferta nova e precisa de legenda ou
 > edição de vídeo: você **já está na skill certa** — não existe outra pra isso, não invente
 > substituto (proporcional, Whisper, overlay de código) só porque uma dependência faltou. Falta
 > dependência = resolve a dependência (confira o venv acima primeiro), nunca troca de método.
@@ -309,8 +320,7 @@ performa:
   `captions-overlay`). Amarelo destaca a palavra-gancho da fala.
 - Gravação de tela real, PiP falante, b-roll de banco — tudo que quebra o
   acabamento "comercial" e aproxima de UGC.
-- **Palette da marca:** azul é a identidade/paleta (IPP); laranja SÓ no CTA/botão,
-  não espalhado. (MinhaEmpresa — não o violeta velho.)
+- **Cores:** sempre as do `DESIGN-SYSTEM.md` da oferta (a antiga "azul + laranja" era de outro negócio, MinhaEmpresa — não vale aqui).
 - **Texto no estático/thumb: prefira o GPT colocar o texto**, não overlay de
   código — texto do GPT sai orgânico (legenda de Story), overlay de código sai
   "perfeito demais", cara de anúncio. Diga o texto exato + fonte estilo Story +
@@ -603,7 +613,7 @@ regeração.
 | **Acessório no CHARACTER** | só o que está na imagem | o objeto **brota no meio do criativo** e fica |
 | **Corte de silêncio** | cabeça, cauda **e pausas internas** | sobra respiração; o criativo arrasta |
 | **`ffmpeg` em laço** | `-nostdin` | come o stdin e corrompe os cortes em silêncio |
-| **Duração de cada corte (formato multi-cena curto)** | **≥6s por cena**, não trim agressivo pra caber na VO | menos que isso lê como "corte nervoso/rápido demais" mesmo com velocidade normal — usuário reclamou em 2026-09-07 (3 vídeos "Detalhe" com corte ~4s cada) |
+| ~~Duração de cada corte (formato multi-cena curto)~~ **OBSOLETO 26/10 — corte = duração da frase, 1,5–3 s (`EDICAO-PADRAO.md` §2)** | ~~≥6s por cena~~ | menos que isso lê como "corte nervoso/rápido demais" mesmo com velocidade normal — usuário reclamou em 2026-09-07 (3 vídeos "Detalhe" com corte ~4s cada) |
 | **Mão manuseando roupa no prompt** | negar clipping e flutuação | sem isso a mão **entra dentro** do tecido ou a peça **flutua sem apoio** — adicionar `hand clipping through fabric, fingers penetrating garment, garment floating unsupported, garment defying gravity` no NEGATIVE |
 
 Antes de aceitar um clipe, confirme que **sobrou respiro**: se
@@ -629,7 +639,7 @@ reportar como feita uma correção que um script em background nunca executou.
    duplicar, derreter ou deformar. Cena parada demais lê como boneco falante;
    cena com objeto brotando lê como IA. As duas queimam o criativo do mesmo jeito.
 7. **Sem legenda na geração.** Legenda é pós-produção — queimada pelo modelo fica horrível.
-8. **Só Grok.** É ilimitado na assinatura do Hub; os outros modelos consomem o pool geral.
+8. ~~**Só Grok.**~~ Obsoleto: Hub desativado; vídeo vai no Flow (Veo).
 9. **Orçamento de tempo antes de escrever as cenas.** Nunca some no fim.
 10. **O Hub NÃO limpa o prompt nem a imagem entre gerações.** O texto da cena anterior fica no campo e a próxima cena sai gerada com ele, sem aviso nenhum. Limpe à mão e **confirme que zerou** antes de digitar — a sequência canônica está em `hub-video-playwright`.
 11. **A cena de ação usa a imagem do estado que a fala dela descreve.** Gerar as
@@ -799,6 +809,10 @@ pro prompt do Veo ("cena dividida ao meio", "tela no canto") é o erro que gera
 clipe quebrado — o modelo tenta desenhar a divisão dentro da própria imagem.
 
 ### E.0 — Modo padrão é DEMONSTRATIVO, UGC só se pedido
+
+> ⚠️ **SUPERADO (25–26/10/2026):** o modo de cada vídeo vem do plano da leva (slots de
+> `criativo-ads`: cada campanha tem expert, UGC e demonstrativo). O que continua valendo daqui:
+> demonstrar com páginas REAIS e falar com quem COMPRA (ler a página antes).
 
 Regra do usuário (2026-09-06). **Sem instrução em contrário, o criativo é
 demonstrativo** — mostra o entregável por dentro, prova tangível do que o
@@ -1083,7 +1097,7 @@ Regras que fizeram dar certo (cada uma custou uma versão):
 - B-roll: objeto do nicho visível, cover real 1080×1920 (cortar borda preta embutida
   do arquivo-fonte antes), nenhum clipe repetido, e criativo irmão da mesma leva usa
   b-rolls DIFERENTES (mesma base de tela, só troca VO + b-rolls).
-- Final acelerado 1.15x no Remotion (ver "Acelerar é padrão").
+- ~~Final acelerado 1.15x~~ — **obsoleto**: velocidade 1.0 (`EDICAO-PADRAO.md` §4).
 - QA do orquestrador antes de mostrar: contact sheet 1fps, cropdetect em cada b-roll,
   frames a cada 0.1s na troca hook→tela, karaokê mudando de palavra, F0 da voz antes×depois.
 
@@ -1210,6 +1224,10 @@ browser, 82 vozes, pt-BR nativo, WAV síncrono). Invoque-a, não reescreva a
 mecânica aqui. Escolhida a voz do projeto, ela não muda entre cenas.
 
 ### GATE FINAL — obrigatório antes de chamar qualquer vídeo de "pronto"/"final"
+
+> ⚠️ **OBSOLETO em parte (26/10/2026):** a checagem "aceleração aplicada", o 1.35x e a trilha
+> `duration=first` (que corta a música no fim da fala) NÃO valem mais. O gate atual é a seção 9 de
+> `references/EDICAO-PADRAO.md` (trilha contínua até o fim do card, velocidade 1.0).
 
 Erro real (2026-09-09): 8 vídeos (calça jeans, vestido, camisola) foram entregues
 e subidos pro Drive como "final" faltando voz certa, trilha e aceleração — regra
@@ -3491,6 +3509,7 @@ Duas armadilhas medidas em produção:
    projeto AstroDicas (1.15x, corte de respiração, legenda dourada estável).
 
 #### Acelerar é padrão, não opcional
+> ⚠️ **OBSOLETO (26/10/2026)** — vale `references/EDICAO-PADRAO.md` (velocidade 1.0, sem aceleração).
 
 **Todo criativo final acelera na pós-produção — sempre, em todos os modos.** É o
 que faz a fala soar mais rápida e a peça não arrastar; sem isso o ritmo fica de
@@ -3562,7 +3581,7 @@ troca de layout, e a peça inteira precisa ser remontada.
 
 1. **Pré-final** — concatenar as cenas aprovadas no gate. É um vídeo assistível,
    com a fala inteira, sem nenhuma edição de layout.
-2. **Pós-produção base** — acelerar (1.15x é o padrão medido), cortar respiração e
+2. **Pós-produção base** — ~~acelerar~~ (obsoleto: velocidade 1.0, `EDICAO-PADRAO.md`), cortar respiração e
    fala repetida, queimar legenda dentro da caixa viva. Só aqui o **tempo final de
    cada fala** existe de verdade.
 3. **Modos de edição** — agora sim, com os segundos reais em mãos.

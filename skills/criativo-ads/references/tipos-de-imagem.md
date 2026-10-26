@@ -1,37 +1,64 @@
-# Tipos de imagem/carrossel — índice único (24/10/2026)
+# GUIA DE IMAGEM — tipos de estático e carrossel (índice único, revisado 26/10/2026)
 
-Toda peça de imagem da leva é UM destes tipos. Escolhe pela linha, segue a regra —
-nenhum tipo pula GATE 0.1 (referência real anexada) nem a margem de segurança.
+**Quem manda em quê (dona, 26/10/2026):** o método do Rodrigo é a base (vale inteiro), somado aos
+formatos que a dona já fixou; Kevones dá a quantidade; a biblioteca é opção extra. Eles dão os PAPÉIS
+e a estrutura do texto (gancho → desenvolvimento → CTA); **o visual é sempre o nosso**: foto orgânica de
+iPhone, texto de Stories, material impresso + digital (tablet, notebook, celular), **nunca mockup**.
+Onde uma referência pede mockup (ex.: "clássica" do Rodrigo), a nossa versão é a orgânica com o
+mesmo papel — com preço, se for peça de preço.
+
+Toda peça de imagem da leva é UM tipo desta página. **O tipo decide o visual e o que aparece;
+as regras da seção "Vale pra todo tipo" valem sempre** — igual o vídeo: modo muda, edição não.
+Mecânica de geração: `gpt-imagem-playwright` (`scripts/gerar-imagem-gpt.sh` / `gen2.sh`).
+Molde de prompt da cena orgânica: `PROMPT-ESTATICO-ORGANICO.md`. Formato da biblioteca:
+`modelagem-escalados` (prompts 05–07, fidelidade à referência).
+
+## Vale pra todo tipo (a "edição" da imagem)
+
+1. **4:5, 1080×1350**, todos os cards iguais (9:16 só se a dona pedir).
+2. **Texto escrito PELO GPT dentro da imagem**, nunca overlay de código com faixa/bloco. Prompt salvo em
+   `intermediarios/prompt*.txt`. Na cena orgânica, o texto é pedido só como
+   `Instagram Stories text sticker, as if typed by the person in the app, in <idioma>` — sem descrever cor/fonte/caixa.
+   Nos tipos com visual próprio (impacto, clássica, biblioteca) o texto segue o visual do tipo.
+3. **Toda peça tem gancho → desenvolvimento → CTA**, inclusive impacto, só-texto e carrossel de páginas.
+   Conte os blocos no prompt antes de enviar: 2 blocos = falta o desenvolvimento (citando produto/mecanismo).
+4. **Conferir que o texto EXISTE na imagem** (contar caixas × prompt) e só então a ortografia palavra por palavra
+   (acentos: declarar o idioma no prompt; nunca tirar acento).
+5. **Páginas do produto = arquivo real** anexado (capa + 2–3 páginas). GPT nunca desenha página. Nada repete:
+   cada aparelho e cada folha mostram página diferente. Nunca "PDF", nunca mockup 3D na peça (o mockup só existe no card CTA do vídeo).
+6. **Margem de segurança SEMPRE (dona, 26/10/2026), em todo formato:** feed 4:5 → nada essencial
+   (texto, rosto, material, preço, CTA) no topo ~14%, na base ~20% nem colado nas laterais (~5%); Stories/vídeo
+   9:16 → idem (290 px topo, 360 px base, 60 px laterais). Sobra respiro em volta, nada cortado na borda.
+   Pedir no prompt e conferir na imagem final.
+7. **Preço:** só em peça de preço, sempre o **plano mais barato**.
+8. Gates: `gate-pecas-criativo.py <CRIATIVO-N>` antes de gerar; `gate-imagens-finais.py <finais> --pasta <CRIATIVO-N>`
+   depois; abrir 1 imagem de cada peça antes de dizer "pronta".
 
 ## Estático
 
-| Tipo | Composição | Regra específica |
-|---|---|---|
-| **Orgânico iPhone (padrão)** | cena real, digital+impresso, texto Stories | `PROMPT-ESTATICO-ORGANICO.md` |
-| **Fase de impacto** | fundo BRANCO ou PRETO, só texto preto+vermelho (ou branco+vermelho) | única exceção à regra digital+impresso |
-| **Caixa de perguntas** | pergunta + expert respondendo, material na mão | sempre o expert da leva, nunca UGC |
-| **Peça de preço — impacto** | fase de impacto + nome do produto + valor na mesma peça | nunca preço solto sem produto |
-| **Peça de preço — orgânico** | reaproveita composição já aprovada, troca só o texto Stories pro valor | não gera cena nova |
-| **Antes/depois** | puxado direto da Biblioteca de Anúncios, referência real já rodando | nunca gerado do zero sem referência |
+| Tipo (slot) | Visual | O que aparece | Regra específica |
+|---|---|---|---|
+| **Orgânico iPhone** (padrão) | foto feia de celular, luz real, torta, grão | **digital + impresso**: 1–2 aparelhos + 3–4 folhas, cada um com página diferente, cenário da persona | `PROMPT-ESTATICO-ORGANICO.md` + REF-FORMATO anexada |
+| **UGC estático** (slot 4) | orgânico iPhone com pessoa | pessoa comum **com o material**, apresentação variada peça a peça: segurando como livro (fechado com a capa ou aberto em 2 páginas), na estante, impresso na mão, tablet/celular com a capa — olhando pra câmera, como quem dá opinião | mão nua = reprovado; capa limpa primeiro, página real só se não houver capa |
+| **Fase de impacto** (slot 7) | fundo **branco** (texto preto + vermelho) ou **preto** (branco + vermelho) | só texto | gancho + desenvolvimento citando o produto + CTA; varia branco/preto peça a peça |
+| **Só texto** (slot 5) | nota/tweet/frase de impacto em visual nativo | só texto | sobe consciência; mesmo assim 3 blocos e cita o produto no desenvolvimento |
+| **Original** (slot 6) | orgânico iPhone | 1 benefício + material (impresso + digital) + CTA | sem história, sem mockup |
+| **Peça de preço** (slot 8 — a "clássica" do Rodrigo na nossa versão) | **orgânico iPhone** (padrão): digital + impresso + texto Stories com o valor — de preferência reaproveitando a cena já aprovada de outra peça e trocando só o texto | gancho + desenvolvimento + valor do plano mais barato + CTA | **sem mockup e sem fundo preto de catálogo**; alternativa: impacto com nome do produto + valor; nunca preço solto sem produto; única peça do conjunto com valor |
+| **Caixa de perguntas / expert respondendo** | story nativo + orgânico iPhone | caixa de pergunta (dor/objeção real) + **expert** respondendo com o material na mão (impresso/tablet) e texto Stories com a resposta | nunca UGC respondendo; resposta com mecanismo |
+| **Antes/depois** | o da referência | puxado da Biblioteca de Anúncios (anúncio real rodando) | nunca inventado do zero |
+| **Formato da biblioteca** (print WhatsApp, notícia, story nativo, tweet…) | **o da referência** (`modelagem-escalados`, fidelidade: layout, cor, fonte iguais) | nosso conteúdo real dentro | prova não se fabrica: sem depoimento real, sem formato de prova social |
 
-## Carrossel (3 tipos, nunca repete tipo na mesma campanha)
+## Carrossel (mínimo 5 cards; nunca 2 do mesmo tipo na mesma campanha)
 
-| Tipo | Card 1 | Cards seguintes |
-|---|---|---|
-| **1 — Imagem principal + páginas** | arte gerada (a validada) | páginas reais do entregável, full bleed |
-| **2 — Só páginas** | página real (sem arte gerada) | páginas reais, início ao fim |
-| **3 — Estilo Henrique** | páginas reais em vários aparelhos, sem mockup | card final = CTA "mirá por dentro" |
+| Tipo | Card 1 | Meio | Último |
+|---|---|---|---|
+| **1 · Imagem principal + páginas** | arte gerada (orgânico iPhone com texto) | páginas reais full bleed, em sequência | página real ou card CTA |
+| **2 · Só páginas** | **card de gancho gerado** (texto Stories sobre cena orgânica, ou impacto) | páginas reais (são o desenvolvimento) | **card de CTA gerado** — nunca páginas soltas sem gancho nem fechamento |
+| **3 · Henrique** | páginas em vários aparelhos (sem mockup) + a dor | idem, 1 por card | card CTA "mirá por dentro" |
+| **Objeção** (slot 9) | a objeção | 1 objeção por card, respondida | CTA |
+| **História / catálogo** (slot 10) | gancho | história em 5–10 cards ou acervo | CTA |
+| **Demonstrativo iPhone** | capa estilo A (promessa + material + benefícios + garantia/vitalício) ou B (promessa + material + CTA) | ~4 páginas reais | — (`modelagem-escalados/references/carrossel-demonstrativo-iphone.md`) |
 
-## Checklist antes de montar QUALQUER peça de imagem
-
-1. GATE 0.1 — capa + 2-3 páginas reais do entregável ANEXADAS no prompt (nunca só descrição)
-2. Formato: 4:5 (1080×1350) padrão; 9:16 só se pedido
-3. Digital + impresso (exceto fase de impacto e carrossel tipo 2)
-4. Texto = sempre Stories, pedido curto e sem cor/forma no prompt
-   (`texto-stories-gpt-curto-sem-cor`)
-5. Margem de segurança: nada essencial no top 14%/bottom 20%
-6. QA de ortografia palavra por palavra (gerador erra acento)
-7. Dentro da mesma campanha, nenhum tipo se repete — relistar antes de fechar
-
-Isso organiza o que já estava certo mas espalhado em `criativo-ads/SKILL.md` —
-nenhuma regra nova aqui, só agrupada por tipo em vez de por data de correção.
+Página real no card: largura inteira na resolução nativa; página em paisagem → sobra preenchida com o
+papel da própria página (`criativos/scripts/montar-cards.py` do Tarot AR é a referência); A4 em retrato →
+recorte do topo até 4:5. Sem moldura, sem tarja branca, sem crop pequeno ampliado.

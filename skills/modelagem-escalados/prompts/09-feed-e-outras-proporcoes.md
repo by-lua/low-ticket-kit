@@ -1,6 +1,6 @@
 # PROMPT 09 — FORMATOS (4:5 padrão; 9:16 opcional)
 
-> **Padrão de estático e carrossel: 4:5 (1080 × 1080).** Não há reenquadramento
+> **Padrão de estático e carrossel: 4:5 (1080 × 1350).** Não há reenquadramento
 > obrigatório: o prompt 07 já gera a peça em 4:5.
 
 O que fazer:

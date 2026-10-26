@@ -8,7 +8,7 @@ Abra a imagem. Não avalie pela descrição que o modelo deu dela.
 ## Bloqueadores — reprova direto
 
 - [ ] Texto com erro de ortografia, letra deformada ou palavra inventada pelo gerador
-- [ ] Headline ou CTA dentro da faixa de 250 px do topo / 350-400 px da base
+- [ ] Headline ou CTA fora do topo 14% e da base 20% da peça
 - [ ] Prova fabricada: número, depoimento, avaliação, selo ou "mais de X alunos" que
       não veio do dossiê
 - [ ] Nome de terceiro, logo de terceiro ou rosto de pessoa real da referência

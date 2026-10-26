@@ -8,7 +8,7 @@ Regras da dona (23/10/2026) que este script cobra:
   1. gate-persona.py da oferta LIBERADO (persona, termos de busca, narrativas, âncora de preço)
   2. DESIGN-SYSTEM.md na oferta (cor/fonte vêm dele; sem ele o GPT inventa cor)
   3. por campanha (## Campanha N): os 3 formatos (vídeo, estático, carrossel); >= 2 vídeos;
-     imagens >= vídeos (70/30 ou 50/50, nunca 70% vídeo); alternar 7+3 / 6+4 entre campanhas (aviso)
+     imagens >= vídeos; 3 campanhas de 10 = 7+3, 5+5 e 6+4 (uma de cada, dona 26/10/2026)
   4. nenhuma linha de peça com "PDF" ou "mockup" (vendemos material organizado na área de membros)
   5. ângulo citado (A0, A1…) existe no BANCO DE ÂNGULOS e não está DESCARTADO
   6. termo marcado "só nome do produto"/"descartado" em TERMOS DE BUSCA não vira gancho (aviso)
@@ -83,8 +83,13 @@ def main():
         (falhas if erros else oks).append(tag + (' — ' + ', '.join(erros) if erros else ''))
         if not any(re.search(r'preco|precio|price', l) for l in linhas):
             avisos.append(f'C{k}: nenhuma peça com preço')
-    if len(splits) > 1 and len(set(splits)) == 1:
-        avisos.append(f'todas as campanhas com o mesmo split {splits[0]} — alternar 7+3 / 6+4')
+    # mistura por campanha (dona, 26/10/2026): C1 70/30, C2 50/50, C3 60/40 (imagem+vídeo)
+    alvo = {(7, 3), (5, 5), (6, 4)}
+    dez = [x for x in splits if sum(x) == 10]
+    if len(dez) >= 3 and set(dez[:3]) != alvo:
+        falhas.append(f'mistura imagem+vídeo das 3 campanhas = {dez[:3]} — tem que ser 7+3, 5+5 e 6+4 (uma de cada)')
+    elif len(splits) > 1 and len(set(splits)) == 1:
+        avisos.append(f'todas as campanhas com o mesmo split {splits[0]} — usar 7+3 / 5+5 / 6+4')
 
     # 4 · PDF / mockup
     for l in todas:
@@ -172,7 +177,10 @@ def main():
     if len(todas) >= 5:
         ugc = [l for l in todas if 'ugc' in n(l)]
         stx = [l for l in todas if re.search(r'so[- ]?texto', n(l))]
-        if not ugc:
+        sem_ugc = re.search(r'sem ugc[^\n]*dona', txt)  # decisão da dona escrita no plano/STATUS (ex.: NeuroActiva 25/10)
+        if not ugc and sem_ugc:
+            avisos.append('leva sem UGC por decisão da dona escrita no plano — conferir que ainda vale')
+        elif not ugc:
             falhas.append('leva sem peça UGC — trilha UGC é obrigatória (pessoa com o material na mão, 1 a cada 9)')
         elif not any(re.search(r'na mao|material|pasta|folha|ficha', n(l)) for l in ugc):
             falhas.append('peça UGC sem o material na mão (regra 25/10: pessoa vazia/mão nua = reprovado)')

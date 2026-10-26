@@ -5,7 +5,7 @@ O `gate-pecas-criativo.py` olha o que ENTRA na cena (páginas, referência, repe
 Este olha o que SAI: tamanho, proporção e se o texto foi pedido ao modelo.
 
 Uso:
-  python3 gate-imagens-finais.py <final1> [final2 ...] --pasta CRIATIVO-N/ [--story] [--sem-texto] [--só-páginas]
+  python3 gate-imagens-finais.py <final1> [final2 ...] --pasta CRIATIVO-N/ [--story]
 
 Confere:
   1. Proporção 4:5 (0.800 ± 0.010) em toda imagem final — 9:16 (0.5625) com --story.
@@ -14,8 +14,8 @@ Confere:
   3. Todas as imagens da MESMA peça com o MESMO tamanho (carrossel com cards de tamanhos
      diferentes o Meta rejeita / corta).
   4. `intermediarios/prompt*.txt` existe e pede o texto como "Instagram Stories text sticker"
-     — texto aplicado por overlay de código não é criativo pronto. Pular com --sem-texto
-     (fase de impacto, carrossel só de páginas) ou --só-páginas.
+     — texto aplicado por overlay de código não é criativo pronto. Não há dispensa (26/10/2026):
+     impacto tem texto gerado; carrossel "só páginas" tem card de gancho e card de CTA gerados.
 
 Saída: OK/FALHA por checagem, veredito na última linha. Exit 1 quando alguma falha.
 """
@@ -40,7 +40,8 @@ def main(argv):
         elif a == '--story':
             formato = '9:16'
         elif a in ('--sem-texto', '--só-páginas', '--so-paginas'):
-            sem_texto = True
+            sys.exit(f'{a} não existe mais (26/10/2026): toda peça de imagem tem texto escrito pelo modelo — '
+                     'até o carrossel só de páginas tem card de gancho e card de CTA gerados (GUIA DE IMAGEM).')
         elif a.startswith('--'):
             sys.exit(f'opção desconhecida: {a}')
         else:

@@ -62,7 +62,10 @@ EXTRAS = {
         'gates': ['python3 ~/.claude/skills/criacao-low-ticket-mvt/scripts/gate-persona.py {o}',
                   # plano da leva só trava quando a tarefa é planejar/produzir leva; em correção de peça vira aviso
                   ('python3 ~/.claude/skills/criativo-ads/scripts/gate-plano-leva.py {o}', r'leva|plano|nova|novos|novas')],
-        'depois': ['python3 ~/.claude/skills/criativo-ads/scripts/gate-pecas-criativo.py <CRIATIVO-N>  (cada peça)',
+        'depois': ['LER ANTES DE PRODUZIR — trilha: `criativo-ads` seção "TRILHA DO CRIATIVO" (Kevones → Rodrigo → roteiro → imagem/vídeo)',
+                   'imagem: ~/.claude/skills/criativo-ads/references/tipos-de-imagem.md (GUIA DE IMAGEM) inteiro',
+                   'vídeo: ~/.claude/skills/criativo-ads-video-orq/references/estilos-de-video.md (modo) + EDICAO-PADRAO.md (edição, igual em todo modo) inteiros',
+                   'python3 ~/.claude/skills/criativo-ads/scripts/gate-pecas-criativo.py <CRIATIVO-N>  (cada peça)',
                    'python3 ~/.claude/skills/criativo-ads/scripts/gate-imagens-finais.py <finais> --pasta <CRIATIVO-N>  (imagem)',
                    'ABRIR 1 imagem de cada peça e conferir o texto escrito na foto antes de dizer "pronto"'],
     },

@@ -5,6 +5,15 @@ description: MECÂNICA de estático/carrossel chamada pela skill `criativo-ads` 
 
 # modelagem-escalados
 
+> **🧭 ONDE ESTA SKILL ENTRA (26/10/2026):** ela é a mecânica dos **formatos da biblioteca**
+> (print de WhatsApp, notícia, story nativo, caixa de perguntas, antes/depois, tweet…) — aí vale a
+> fidelidade à referência (layout/cor/fonte iguais, nosso conteúdo real dentro). **A peça padrão do
+> portfólio (orgânico iPhone, texto de Stories, impresso + digital, nunca mockup) NÃO se modela por
+> aqui:** segue o GUIA DE IMAGEM `criativo-ads/references/tipos-de-imagem.md` + o molde
+> `criativo-ads/references/PROMPT-ESTATICO-ORGANICO.md`. Qual tipo cada peça é, quem decide é o GUIA.
+> Cores sempre do `DESIGN-SYSTEM.md` da oferta. Os exemplos AD06/AD07 abaixo são de outro negócio
+> (SiteExpress/MinhaEmpresa): servem de FORMATO, as cores azul/laranja deles não valem aqui.
+
 Produção de criativo **por modelagem**: em vez de inventar layout, você parte de um
 formato que já está rodando com verba, anexa o arquivo real como referência e adapta
 para a marca do usuário.
@@ -64,7 +73,7 @@ funciona:
   Se o produto serve QUALQUER nicho (ex. SiteExpress), mire o **bucket largo**
   (empresário, dono de comércio, autônomo, prestador de serviço) — **não** um nicho
   específico. Fixar em "nutri"/"advogado" joga fora o resto do público que compra.
-- Palette da marca atual: **azul é a identidade/paleta (IPP); laranja SÓ no CTA/botão**, não espalhado. (MinhaEmpresa — não o violeta velho.)
+- **Cores:** as do `DESIGN-SYSTEM.md` da oferta (nunca a paleta azul/laranja do exemplo MinhaEmpresa).
 
 **"Empresário" é só um exemplo — a persona varia.** Método pra gerar as headlines
 de uma leva (alimenta a matriz de ângulos do prompt 03):
@@ -117,7 +126,7 @@ Detalhe e fontes: `criativo-ads` (`references/kevones-criativo.md`) e `metaads-k
 **Quem coloca o texto: prefira o próprio GPT (texto orgânico), não overlay de
 código.** Peça pro GPT já gerar a imagem COM o texto — headline/CTA — no estilo
 **legenda de Story do Instagram** (fonte sans nativa de Story, do jeito que uma
-pessoa escreveria num Story), com as cores da marca (azul + gancho/CTA laranja).
+pessoa escreveria num Story). Na peça orgânica, pedir só "Instagram Stories text sticker" + idioma, sem descrever cor/fonte/caixa (o modelo já sabe como é; descrever demais faz sumir o texto — `PROMPT-ESTATICO-ORGANICO.md`).
 Texto colocado pelo GPT sai com cara de post orgânico; overlay de código sai
 "perfeito demais", com cara de anúncio. No prompt do GPT, diga o texto exato, a
 fonte estilo Story, as cores e a banda segura. **QA de ortografia obrigatório:**
@@ -244,7 +253,7 @@ Ordem mínima de uma leva do zero:
    preferência estética.
 3. **Nenhuma identidade de terceiro sobrevive.** Nome, rosto, logo ou perfil que
    aparecem na referência saem da peça final.
-4. **Safelines são medidas, não aproximação.** 250 px topo, 350-400 px base, 50 px
+4. **Safelines são medidas, não aproximação.** No 4:5: nada essencial no topo 14% nem na base 20% (no 9:16: 290 px topo, 360 px base); 50 px
    laterais. CTA nunca na base.
 5. **Abra o arquivo.** Antes de escolher a referência e antes de aprovar a peça.
    Avaliar pela descrição que o modelo deu da própria imagem é como o erro entra.
@@ -271,7 +280,7 @@ Ordem mínima de uma leva do zero:
    pé mostrando a capa, cercado de 3-5 páginas reais espalhadas (nunca empilhadas
    retas) + props do nicho, nunca fundo vazio — é a fartura de objetos que vende
    "material completo" sem precisar dizer isso em texto. Referência completa e os
-   arquivos reais na skill `criativo-ads-video-orq`, §E.0b — pasta global
+   arquivos reais na skill `criativo-ads-video-orq` — pasta global
    `references/composicao-mesa-entregavel/` dentro dela (9 `ref-demonstrativo-*.png`
    + mockups tablet+folhas). Vale tanto pra estático (aqui) quanto pra vídeo (lá) —
    é a mesma composição. **Variação livre (dona, 08/10):** nem toda peça usa a

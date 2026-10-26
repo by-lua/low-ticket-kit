@@ -65,11 +65,11 @@ inventar moldura, inventar ícone, mudar o formato do botão.
 
 ## Formato
 
-**Padrão: uma peça 4:5 (1080 × 1080 px) para feed.** Estático e carrossel saem em
+**Padrão: uma peça 4:5 (1080 × 1350 px) para feed.** Estático e carrossel saem em
 4:5 por padrão (regra da dona, 23/10/2026 — antes era 1:1). Não se gera 4:5 separado.
 
 - **Formato:** Feed (4:5)
-- **Dimensões:** 1080 × 1080 px · **Proporção:** 4:5 · **Idioma:** PT-BR
+- **Dimensões:** 1080 × 1350 px · **Proporção:** 4:5 · **Idioma:** o do mercado da peça (pt-BR, es-AR, pt-PT…)
 - **Quantidade de versões:** [QUANTIDADE]
 
 ### Área segura (4:5)

@@ -1,72 +1,54 @@
-# Estilos de vídeo — índice único (24/10/2026)
+# GUIA DE VÍDEO — modos de criativo (índice único, revisado 26/10/2026)
 
-Todo vídeo da leva é UM destes estilos. Escolhe o estilo pela linha, lê a receita
-apontada, monta. **Nenhum estilo isenta a receita E.2b do corpo** (1 clipe por
-frase, split 70/30 na frase de mecanismo, timeline inteira 1.15x, CTA sem corte
-seco) — o que muda de estilo pra estilo é só a FONTE do hook e quem aparece.
+Os modos vêm do método do Rodrigo (a base, vale inteiro: UGC contando a experiência, expert,
+demonstrativo) somado ao que a dona já fixou (caixa de perguntas, expert respondendo, imagem
+animada…); a biblioteca de escalados é opção extra. Rodrigo ensina a estrutura do texto;
+visual e edição seguem as NOSSAS regras.
 
-| Estilo | Quando usar | Fonte do hook | Receita do corpo |
-|---|---|---|---|
-| **Demonstrativo puro** | padrão, sem instrução em contrário (E.0) | b-roll de banco, tela cheia | E.2b igual, do início ao fim |
-| **Expert hook + demonstrativo** | tem personagem fichado (`PERSONA-E-ANGULOS.md`), quer autoridade no abre | expert fala em lip-sync (clipe Flow/Hub, 8-12s) | E.2b a partir do fim da fala — ver E.0b |
-| **UGC puro** | pedido ou aceito pela dona (nunca decisão própria, E.0) | pessoa relato 1ª pessoa, tempo do vídeo = tempo da fala dela | corta/estica b-roll pra caber na fala; não força E.2b por cima de UGC falado inteiro |
-| **1-3-9 estilo Rodrigo** | leva "estilo Rodrigo"/1-3-9 pedida | mix UGC+expert (2 estilos diferentes, nunca só 1) — ver `criativo-ads` seção Rodrigo | E.2b no corpo de cada um dos 2 vídeos |
-| **Hook novo sobre vencedor (B/B2/C)** | já existe vídeo vencedor, só troca ângulo | hook novo gravado/gerado | reaproveita o CORPO do vencedor, sem remontar do zero |
-| **Caixa de perguntas em vídeo** | formato da biblioteca de escalados | expert respondendo pergunta em tela | curto, geralmente sem split — 1 cena só, não força E.2b inteiro |
+Todo vídeo da leva é UM modo desta tabela. **O modo decide O QUE:** o roteiro, quem fala e
+quais cenas entram. **A edição é sempre a mesma** — `EDICAO-PADRAO.md` (corte por frase,
+layouts, legenda KaraokeV2, velocidade 1.0, trilha, card CTA, QA). Nenhum modo tem edição
+própria e nenhum dispensa a edição padrão. Ninguém precisa dizer "edita no estilo X".
 
-## Passo 0 — mapear TODOS os assets da oferta antes de montar (regra da dona, 24/10/2026)
+Onde cada coisa mora:
+- **Roteiro de cada modo** → `criativo-ads/references/ROTEIRO-POR-FORMATO.md`
+- **Edição de todos** → `EDICAO-PADRAO.md`
+- **Gerar personagem/take no Flow** (imagem → vídeo, dentes, voz, anti-morphing) → `SKILL.md` FASE 3–5 + `mecanica-flow.md`
+- **Takes "mesa real" (catálogo A–O)** → `SKILL.md` §E.0c
 
-Erro repetido nesta sessão: montar com só 1-2 fontes achadas de cara, quando a pasta tinha mais
-— ou gerar card CTA com lâmina avulsa quando a página já tinha mockup completo pronto pra baixar.
+## Os modos
 
-**Toda oferta com criativos em produção mantém `criativos/ASSETS-MAPA.md`** (registro vivo: o que
-existe em `MATERIAL-ENTREGAVEL/`, `FLOW-TAKES/`, `BROLL-3D/`, qual card CTA já tá pronto, qual
-trilha usar, estrutura dos vídeos já fechados). **Ler esse arquivo primeiro.** E **atualizar na
-hora** sempre que algo mudar — take novo gerado, card CTA remontado, vídeo fechado — nunca deixar
-só no histórico da conversa. Se o arquivo não existir na oferta, criar antes de montar o 1º vídeo
-(exemplo vivo: `OFERTAS/luciola-atlas-movimiento/criativos/ASSETS-MAPA.md`).
+| Modo | O que é | Roteiro | Cenas que entram (arco) | Quem fala | Não confundir |
+|---|---|---|---|---|---|
+| **Demonstrativo** | mostra o entregável por dentro | gancho um nível mais fundo → corpo ecoa a palavra do gancho → CTA | b-roll do assunto (hook) → entregável tela cheia ("olha esse material") → split 70/30 no mecanismo → b-roll até o CTA. Fontes misturadas: gravação de tela real + take mesa real (Flow) + b-roll | voz off | gancho ≤ 2 frases curtas, já mostrando o material |
+| **Expert** | autoridade do nicho explica o mecanismo | afirmação de autoridade/contraste → mecanismo (POR QUE funciona) → mostra material → CTA | expert em lip-sync no hook (8 s do Flow; ~12 s se couber o mecanismo) em ambiente de autoridade → a partir do fim da fala, o arco do demonstrativo (tela, split, b-roll) com a MESMA voz | expert (lip-sync) + voz off igual | 2 modos de câmera: tela cheia falando, ou segurando o material como capa de livro |
+| **UGC comprador** | 1 pessoa comum dá relato em 1ª pessoa | identificação ("eu também…") → "existe um jeito" → prova pessoal → gatilho → CTA | a pessoa com o material — apresentação varia: segurando como livro (fechado/aberto), pegando da estante, impresso na mão, tablet/celular com a capa — em cenário cotidiano (carro / casa), cenas geradas SÓ pra ela + cortes de b-roll do contexto | a própria pessoa | **NÃO mostra o entregável por dentro** (isso é expert/demonstrativo); nunca take genérico de mão do banco; mão nua = reprovado; cenário diferente do expert |
+| **Caixa de perguntas / expert respondendo** | pergunta de story + expert responde | pergunta real (dor/objeção) → resposta com mecanismo → CTA | caixa de pergunta estilo story → expert respondendo com material na mão → material | sempre o **expert** (nunca UGC) | — |
+| **Imagem animada** | slide estilo Canva que se mexe | título-gancho + desenvolvimento + CTA | título + elemento que se move e faz sentido (mão embaralhando, carta virando) → páginas | voz off ou só texto | conta como vídeo na leva |
+| **Corte TikTok / b-roll viral** | abre com cena orgânica real que já viralizou | gancho falado por cima da cena → material → CTA | 15–20 cortes curtos alternando cena real (TikTok, sem texto queimado) e material | voz off | origem em `credits.md` |
+| **Print + POV + Meme** | prova/resultado sem rosto | POV em 1–2 linhas | print real (topo) + texto POV (meio) + meme recortado (base), fundo preto | sem voz (som opcional) | só com print REAL (prova não se fabrica) |
+| **Copo azul (variação do vencedor)** | mesmo produto + copy do vencedor, troca quem/onde | o do vencedor | o do modo do vencedor, com outra pessoa/ambiente | idem | peça nova, campanha nova; nunca só trocar gancho |
 
-Antes de escrever o primeiro comando de ffmpeg, varrer e listar (não confiar em memória de sessão
-anterior, a pasta muda):
+Produto "vibe"/não-material (ex.: número mestre): UGC pode ser "entrevista de rua", sem segurar material.
+
+## Passo 0 — mapear TODOS os assets antes de montar
+
+Toda oferta com criativo em produção mantém `criativos/ASSETS-MAPA.md` (o que existe em
+`MATERIAL-ENTREGAVEL/`, `FLOW-TAKES/`, `BROLL-3D/`, card CTA pronto, trilha). Ler primeiro e
+atualizar na hora. Se não existir, criar antes do 1º vídeo (exemplo: `OFERTAS/luciola-atlas-movimiento/criativos/ASSETS-MAPA.md`).
 
 ```bash
-find criativos/MATERIAL-ENTREGAVEL -iname "*.mp4"        # gravações reais de tela (celular/PC)
-find criativos/FLOW-TAKES -iname "*.mp4"                  # takes "mesa real" já gerados no Flow
-find criativos/BROLL-3D -iname "*.mp4"                    # b-roll 3D (todos os clipes, não só 1)
-find criativos/*/VIDEO -iname "cta-card*.mp4"              # card CTA já montado em OUTRA peça (reusa, não regenera)
-curl -s "<url-da-página>" | grep -oiE '(src|srcset)="[^"]*\.(jpg|png|webp)[^"]*"' | grep -iE "mockup|cover|capa|portada|producto"  # mockup real da página, se existir
+find criativos/MATERIAL-ENTREGAVEL -iname "*.mp4"   # gravações reais de tela (sempre a 1ª parada, usar TODAS)
+find criativos/FLOW-TAKES -iname "*.mp4"             # takes mesa real já gerados (reusar antes de gerar)
+find criativos/BROLL-3D -iname "*.mp4"               # b-roll 3D (o clipe que casa com o roteiro)
+find criativos/*/VIDEO -iname "cta-card*.mp4"         # card CTA de outra peça da leva (reusar)
 ```
+Gravação de tela é SEMPRE da dona — faltou, pede; nunca gerar substituto.
 
-Regras fixas desse mapeamento:
-- **Gravação real de celular/PC:** `MATERIAL-ENTREGAVEL/` é sempre a 1ª parada — nunca gerar
-  substituto, nunca usar só a 1ª encontrada se houver mais de uma (usar TODAS, variedade de cena).
-- **Takes Flow:** se `FLOW-TAKES/` já tem um pronto que serve pra cena, reusar — nunca gerar de
-  novo sem checar primeiro (`criativo-ads-video-orq` §E.0c é pra gerar quando NÃO existe).
-- **B-roll 3D:** a pasta normalmente tem vários clipes (ex. 5), cada um de um exercício/ângulo —
-  usar o que casa com o roteiro daquele vídeo, nunca sempre o mesmo clipe pra todos os criativos.
-- **Card CTA:** se outra peça da MESMA leva já montou o card (fundo preto+mockup+seta), reusar o
-  arquivo, só recopiar pra pasta nova — nunca remontar do zero. Mockup: pasta local
-  `produto/MOCKUPS-NOSSOS/` primeiro, **página de vendas no ar** depois (baixar a imagem real via
-  `curl`), lâmina avulsa só se nenhum dos dois existir.
+## Checklist por vídeo
 
-## Checklist antes de montar QUALQUER um destes
-
-1. Qual estilo da tabela acima? (nomeia antes de começar, não decide no meio)
-2. `pesquisa/PERSONA-E-ANGULOS.md` — quem fala, que dor, que ângulo (nunca inventa)
-3. Roteiro completo escrito ANTES do TTS/Flow: hook (dor) → corpo (MECANISMO, não só
-   benefício) → CTA (comando, sem condição de compra) — nunca só a frase resumida
-   do plano (`plano-video-ganho-nao-e-roteiro-completo`)
-4. Duração do clipe de personagem (se houver) define onde mora o mecanismo — 8s só
-   carrega hook, ~12s pode carregar hook+mecanismo inteiro (ver seção Rodrigo)
-5. Montar: E.2b (1 clipe/frase, split, 1.15x timeline)
-6. CTA sem corte seco: card preto+mockup completo+seta vermelha animada (gate item 11)
-7. Trilha de fundo instrumental -18/-22dB, contínua, banco em
-   `OFERTAS/mapa-do-tarot/criativos/BR/_ASSETS/trilhas/`
-8. Legenda KaraokeV2, forced-alignment (`legenda_align.py`), nunca whisper
-9. QA: assistir inteiro como se fosse a 1ª vez — faz sentido? fica bom? (não só
-   checklist mecânico — ver fechamento do gate item 11)
-
-Isso substitui decidir "ah esse tem rosto, deve ser outro jeito de montar" — regra
-real descoberta 24/10/2026 (CRIATIVO-02 Atlas): expert no hook levou a abandonar a
-receita inteira por engano. Nunca mais — a fonte do hook é 1 linha da tabela, o
-resto do vídeo é sempre a mesma receita.
+1. Nomear o modo (linha da tabela) antes de começar.
+2. `pesquisa/PERSONA-E-ANGULOS.md`: quem fala, que dor, que ângulo, personagem fichado.
+3. Roteiro completo (hook → mecanismo → CTA) pelo `ROTEIRO-POR-FORMATO.md` — nunca só a frase do plano.
+4. Gerar o que o modo pede (voz, clipe de personagem, take) — mecânica no `SKILL.md`.
+5. **Montar pelo `EDICAO-PADRAO.md`, do 1 ao 9.**
