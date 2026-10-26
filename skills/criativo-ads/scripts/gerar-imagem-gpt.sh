@@ -56,6 +56,12 @@ ts "geracao terminou (sem botao Parar)"
 sleep 6
 NEW=$(echo "(()=>[...document.querySelectorAll('img')].filter(i=>i.naturalWidth>1020&&i.complete).map(i=>i.src).join('|'))()" | $AB eval --stdin | tr -d '"' | tr '|' '\n' | grep -vxF -f /tmp/claude-1000/pre.txt | grep -v '^$' | tail -1)
 ts "gerou"
+# ⛔ 26/10/2026: outro agente no MESMO perfil pode navegar a aba durante a geração (caso Tarot AR p08:
+# baixou imagem da NeuroActiva). Reconfere o dono do chat ANTES de baixar; alheio = não baixa.
+own2=$(cat <<EOF2 | $AB eval --stdin | tr -d '"'
+(()=>{const m=document.querySelectorAll('.bg-user-message');if(!m.length)return 'vazio';return (m[0].innerText||'').indexOf("$SIG")>=0?'MINHA':'ALHEIA';})()
+EOF2
+); [ "$own2" = "MINHA" ] || { echo "FAIL dono mudou durante a geracao ($own2) — aba tomada por outra lane"; exit 1; }
 cat <<EOF | $AB eval --stdin | tr -d '"' | sed 's/^data:image\/[a-z]*;base64,//' | base64 -d > "$OUT"
 (async()=>{const r=await fetch("$NEW");const b=await r.blob();return await new Promise(res=>{const f=new FileReader();f.onload=()=>res(f.result);f.readAsDataURL(b);});})()
 EOF

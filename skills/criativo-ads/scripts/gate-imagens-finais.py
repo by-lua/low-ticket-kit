@@ -19,6 +19,7 @@ Confere:
 
 Saída: OK/FALHA por checagem, veredito na última linha. Exit 1 quando alguma falha.
 """
+import re
 import sys
 from pathlib import Path
 
@@ -94,12 +95,14 @@ def main(argv):
                     'auditável (foi assim que o Tarot AR recebeu texto por overlay)')
             else:
                 alvo = 'Instagram Stories text sticker'
-                if not any(alvo in p.read_text(errors='ignore') for p in prompts):
+                # visual próprio (fase de impacto, biblioteca): texto pedido ao modelo por linha/texto exato também vale
+                pede = lambda t: alvo in t or re.search(r'(exact text|line 1\b)', t, re.I)
+                if not any(pede(p.read_text(errors='ignore')) for p in prompts):
                     falhas.append(
                         f'nenhum prompt pede o texto como "{alvo}" — se o texto não foi pedido ao '
                         f'modelo, ele foi aplicado por cima (reprovado); corrigir o prompt e regerar')
                 else:
-                    oks.append('prompt pede o texto como sticker de Stories')
+                    oks.append('prompt pede o texto ao modelo (sticker de Stories ou texto exato)')
     else:
         oks.append('texto na foto dispensado (--sem-texto): peça de impacto / só páginas')
 
