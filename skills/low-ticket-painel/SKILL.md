@@ -29,6 +29,10 @@ defasado e um manifestoVier "vazio" com 30 imagens no ar.
 
 ## FASE 0 · Carrega (obrigatória, antes de qualquer outra coisa)
 
+**Faz-se rodando a skill `low-ticket-abrir`** (`scripts/abrir.py "<oferta>" "<tarefa>"`): ela
+lê a lista abaixo já recortada, roda os gates, lista as skills e cobra o RECIBO. A lista fica
+aqui como referência do que o script cobre.
+
 Navegando até a raiz `LOW-TICKET` e lendo, nesta ordem:
 
 1. `CLAUDE.md` (raiz) — regras da casa. Já vem no contexto; mesmo assim, as regras
