@@ -78,7 +78,9 @@ EXTRAS = {
     'entrega': {
         'ler': ['{o}/produto/MANIFESTO-ENTREGAVEIS.md', '{o}/produto/ENTREGAVEIS.yaml#resumo'],
         'gates': ['python3 ~/.claude/skills/auditar-entregaveis-oferta/scripts/audita.py {o} --retomar'],
-        'depois': ['node scripts/check-download-pdf.mjs <url> <email-teste>  (no ar, depois do deploy)',
+        'depois': ['Texto da entrega = composição: ficha com exercício/pôster/folha de imprimir já escreve a página w '
+                   '(conteúdo exato + composição + gabarito) — PAGINAS-DE-ATIVIDADE.md; toda página é imagem GPT, nunca HTML/Pillow',
+                   'node scripts/check-download-pdf.mjs <url> <email-teste>  (no ar, depois do deploy)',
                    'audita.py {o} --registrar'],
     },
     'checkout': {
@@ -255,6 +257,40 @@ def idade(txt):
     return (date.today() - d).days
 
 
+# Regra 26/10/2026: ficha que pede material tem a página "w" escrita NO TEXTO e gerada no GPT (nunca código).
+MARCA_W = re.compile(r'worksheet|printable|imprim|hoja para|folha para|sopa de letras|ca[cç]a.?palavra|'
+                     r'word search|laberint|labirint|\bmaze\b|recortar|\bcut.?out|tabuleiro|tablero|'
+                     r'p[oó]ster|cartel|ligar.?colunas|spot the difference', re.I)
+SPEC_W = re.compile(r'\b\d{1,3}w\b|p[aá]gina\s*w\b|folha\s*w\b|hoja\s*w\b', re.I)
+GERADORES_CODIGO = ('gera-worksheet.py', 'gera-atividades.py', 'gera-printables.py')
+
+
+def checa_folhas_w(od):
+    """Sugestões de alteração p/ oferta existente: folha w faltando no texto ou feita por código."""
+    sug = []
+    textos = [p for pat in ('produto/texto*/**/*.md', 'produto/TEXTO*/**/*.md') for p in od.glob(pat)]
+    sem_spec, total = [], 0
+    for p in textos:
+        txt = ler(p) or ''
+        blocos = re.split(r'(?m)^(?=#{2,4} )', txt)
+        faltam = [b.splitlines()[0].lstrip('# ').strip()[:60] for b in blocos
+                  if re.match(r'#{2,4} ', b) and MARCA_W.search(b) and not SPEC_W.search(b)]
+        total += len(faltam)
+        if faltam:
+            sem_spec.append(f'{p.relative_to(od)} ({len(faltam)}: {"; ".join(faltam[:2])}…)')
+    if total:
+        sug.append(f'{total} ficha(s) pedem material imprimível e o TEXTO não traz a página w '
+                   f'(conteúdo exato + composição + gabarito) → escrever antes de gerar: '
+                   + ' | '.join(sem_spec[:4]))
+    w_painel = len(list(od.glob('site/painel/conteudo/**/pagina-*w.webp')))
+    cod = [g for g in GERADORES_CODIGO if (od / 'scripts' / g).exists()]
+    if w_painel and (cod or (od / 'produto/ATIVIDADES.json').exists()):
+        sug.append(f'{w_painel} página(s) w no painel e a oferta tem gerador por código '
+                   f'({", ".join(cod) or "ATIVIDADES.json"}) → provavelmente feitas em Pillow/HTML; '
+                   f'conferir contact sheet e regerar no GPT 1 por mensagem (scripts obsoletos, não rodar)')
+    return sug
+
+
 def main(argv):
     global RAIZ
     RAIZ = achar_raiz()
@@ -322,6 +358,15 @@ def main(argv):
         mostrar('STATUS.md da raiz — linha da oferta', '\n'.join(corta(l, 800) for l in linha_raiz))
     if (od / 'DESIGN-SYSTEM.md').exists():
         print(f'\n(design: {o_rel}/DESIGN-SYSTEM.md — ler antes de gerar qualquer visual)')
+
+    sug_w = checa_folhas_w(od)
+    if sug_w:
+        titulo('SUGESTÃO DE ALTERAÇÃO — exercício/pôster sem folha w no texto ou feito por código')
+        print('Regra: criacao-low-ticket-mvt/references/PAGINAS-DE-ATIVIDADE.md (texto traz as 2 páginas; '
+              'tudo imagem GPT). Oferecer à dona no RECIBO, não corrigir sem OK.')
+        for s in sug_w:
+            print(f'   - {s}')
+        avisos += [f'SUGESTÃO: {s}' for s in sug_w]
 
     # ---------- 3. ROTA DA TAREFA ----------
     tipos = [t for t, (kw, _, _) in TIPOS.items() if tarefa and re.search(kw, norm(tarefa))]

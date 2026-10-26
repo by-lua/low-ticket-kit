@@ -1,6 +1,6 @@
 ---
 name: banner-checkout-gpt
-description: Gera banner de produto pro checkout (imagem via GPT/ChatGPT) sempre com título, objetivo/produto real, garantia, entrega imediata, acesso vitalício e — quando fizer sentido — mockup do produto. Sai em desktop (16:9) e mobile (1:1/retrato). Use quando o usuário pedir "banner de checkout", "banner do produto", "arte pro checkout", ou mencionar título+garantia+entrega+vitalício numa imagem.
+description: Gera banner de produto pro checkout (imagem via GPT/ChatGPT) sempre com título, objetivo/produto real, garantia, entrega imediata, acesso vitalício e — quando fizer sentido — mockup do produto. Sai em desktop (16:9) e mobile (1:1/retrato). Use quando o usuário pedir "banner de checkout", "banner do produto", "arte pro checkout", ou mencionar título+garantia+entrega+vitalício numa imagem. Também a CAPA DE PRODUTO de upgrade (UPGRADE PARA COMPLETO), combo (COMBO ESPECIAL) e order bump — receita em references/CAPA-PRODUTO-UPGRADE-COMBO.md.
 ---
 
 # banner-checkout-gpt
@@ -11,6 +11,10 @@ Gera a arte de banner que fica no topo do checkout — a imagem em si carrega te
 só depois do **MVP entregue**. Sem mockup do produto, não tem banner. Ordem completa da oferta em
 memória `ordem-execucao-oferta`. Sair sempre organizado, os 3: **checkout desktop** (16:9), **checkout
 mobile** (1:1/retrato) e **imagem do produto**.
+
+**Capa de produto de UPGRADE, COMBO ou BUMP (imagem do item no checkout):** receita única em
+`references/CAPA-PRODUTO-UPGRADE-COMBO.md` — ler antes de gerar. Imagem inteira nasce no GPT com o
+título integrado; colar/recortar texto por cima é proibido (erro real Tarot 16/10, dona 26/10).
 
 Mecânica de browser (lane, anexo, envio, download, QA) é 100% da skill `gpt-imagem-playwright` — leia ela antes de gerar qualquer imagem. Esta skill só define O QUE entra no prompt e onde salvar.
 

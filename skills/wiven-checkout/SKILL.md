@@ -233,7 +233,7 @@ o principal.
   referência de conteúdo + pedir o título "UPGRADE PARA COMPLETO" já nascendo integrado na arte) —
   **nunca pegar o mockup do Completo já pronto e colar/recortar o texto por cima** (ficou errado
   assim no Jiu-Jitsu; a dona corrigiu). Referência aprovada (texto bem integrado, do jeito certo):
-  `~/Downloads/d26cc3d0-ad69-4505-bb35-5502b746943d.png`. Subir a capa pelo fluxo da seção 1b
+  `LOW-TICKET/MODELOS/REFERENCIAS-VISUAIS/upgrade-para-completo-exemplo-jiujitsu.png` (combo: `combo-especial-exemplo-jiujitsu.png`) — receita completa em `banner-checkout-gpt/references/CAPA-PRODUTO-UPGRADE-COMBO.md`. Subir a capa pelo fluxo da seção 1b
   (só por API de `fetch`, campo `files`, montar `photos` no `save`).
 - **Mesmo fluxo da seção 2** (produto próprio + funil com página final externa `<site>/painel`
   + webhook) — a oferta precisa entrar no mapeamento do webhook que libera o Completo
@@ -249,7 +249,7 @@ o principal.
   16/10/2026, corrigido 24/10/2026) — a arte do pacote completo (4 bônus + cards + manual + páginas)
   com a faixa vermelho/amarela "UPGRADE PARA COMPLETO" e a seta, gerada inteira de novo no GPT com os
   mockups reais anexados como referência. Ref. aprovada:
-  `~/Downloads/d26cc3d0-ad69-4505-bb35-5502b746943d.png`. Não é produto duplicado —
+  `LOW-TICKET/MODELOS/REFERENCIAS-VISUAIS/upgrade-para-completo-exemplo-jiujitsu.png` (combo: `combo-especial-exemplo-jiujitsu.png`) — receita completa em `banner-checkout-gpt/references/CAPA-PRODUTO-UPGRADE-COMBO.md`. Não é produto duplicado —
   é o mesmo produto/oferta usado em dois lugares: order bump no checkout (ancoragem = preço
   normal do Completo, ex. R$27,90) E link de upgrade nos cards bloqueados da área de membros.
   Vincular em Personalizar checkout do produto PRINCIPAL → Order Bumps → Adicionar order bump

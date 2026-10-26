@@ -49,6 +49,12 @@ Oferta aceita apelido ("tarot ar", "jiu", "atlas"). Ambíguo → o script lista 
 5. **Avisos** (oferta sem CLAUDE.md, arquivo faltando, STATUS velho) entram no recibo e viram
    pendência — não se ignora aviso.
 
+6. **SUGESTÃO DE ALTERAÇÃO** (bloco que o script imprime em oferta já existente): ficha com
+   exercício/pôster/folha de imprimir cujo texto não traz a página `w`, ou página `w` feita por
+   código (Pillow/HTML). Levar ao recibo como sugestão e **oferecer** a correção à dona (texto da
+   `w` primeiro, depois imagem GPT 1 por mensagem). Não corrigir sem OK. Oferta nova já nasce
+   certa pela regra de `criacao-low-ticket-mvt/references/PAGINAS-DE-ATIVIDADE.md`.
+
 ## Durante e depois (o resto do ciclo MazyOS)
 
 - Correção da dona ("na verdade é assim", "não faz mais isso", "sempre que…") → perguntar
