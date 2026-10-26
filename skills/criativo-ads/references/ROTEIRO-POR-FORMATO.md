@@ -35,6 +35,15 @@ Corpo que explica o mecanismo mas não mostra a transformação/produto em uso a
 é**, **pra quem é** e **qual entrega/benefício concreto** (quantidade verdadeira: "78 mapas", "150 fichas")?
 Curiosidade pode abrir o gancho, nunca esconder o produto. Peça que só gera curiosidade = reprovada.
 
+> **⛔ O "pra quem é" do gancho da peça (imagem/vídeo) NÃO é o mesmo "pra quem" do `anuncio.md`
+> (regra da dona, 26/10/2026 — reincidência real, NeuroActiva AR, igual em vídeo e imagem).** O
+> gancho da ARTE pode ser só produto ("400 fichas, organizadas por nivel"). Mas a **primeira frase
+> do Texto principal do `anuncio.md`** (o texto que acompanha o post, lido em
+> `references/texto-anuncio-por-angulo.md`) sempre ENDEREÇA quem compra — "Si coordinás sesiones
+> para...", "Si tu mamá...", "¿Trabajás con...?" — nunca abre descrevendo o produto. Escreva as duas
+> coisas NA MESMA PASSADA deste passo 4, nunca deixando o `anuncio.md` pro fim: esperar o passo 6 pra
+> abrir `texto-anuncio-por-angulo.md` é o que já fez a copy sair sem endereçar ninguém.
+
 ## Estrutura do prompt por formato (o que pedir ao GPT)
 
 Todo prompt de roteiro leva: a dor/ângulo real da peça (do `PERSONA-E-ANGULOS.md`),

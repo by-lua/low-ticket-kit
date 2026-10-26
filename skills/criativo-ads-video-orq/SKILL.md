@@ -31,14 +31,18 @@ Apoio, quando o passo pedir:
 
 ## Fluxo de um vídeo
 
-1. **Modo** — achar a linha no GUIA DE VÍDEO (vem do plano da leva). Roteiro completo pelo
-   `criativo-ads/references/ROTEIRO-POR-FORMATO.md`: hook (dor) → mecanismo → CTA (só comando).
+1. **Modo + `anuncio.md` na mesma passada (regra 26/10/2026, não deixar pro fim)** — achar a linha no
+   GUIA DE VÍDEO (vem do plano da leva). Roteiro completo pelo
+   `criativo-ads/references/ROTEIRO-POR-FORMATO.md`: hook (dor) → mecanismo → CTA (só comando) **+
+   `criativo-ads/references/texto-anuncio-por-angulo.md`** pra já escrever a 1ª frase do Texto
+   principal do `anuncio.md` endereçando quem compra ("Si sos...", "Si tu mamá...") — o hook do
+   VÍDEO pode ser só a dor/cena; o texto de FORA (o post) sempre chama a persona, não só descreve.
 2. **Assets** — Passo 0 do GUIA (gravações da dona, takes Flow, b-roll 3D, card CTA). Tela é sempre da dona.
 3. **Gerar o que falta** — voz (`narracao-hub-tts`, voz fixa da leva, conferir gênero), personagem/take
    (geração 1 → 2, Flow), b-roll (`get-brolls`).
 4. **Montar pelo `EDICAO-PADRAO.md`** — do §1 ao §9.
-5. **Entregar** — final solto na raiz de `CRIATIVO-N/`, resto em `intermediarios/`, `anuncio.md`
-   (`criativo-ads/references/texto-anuncio-por-angulo.md`), registrar no STATUS da oferta.
+5. **Entregar** — final solto na raiz de `CRIATIVO-N/`, resto em `intermediarios/`, confere o
+   `anuncio.md` já escrito no passo 1 (gate da 1ª frase), registrar no STATUS da oferta.
 
 ## Regras de execução (curtas)
 

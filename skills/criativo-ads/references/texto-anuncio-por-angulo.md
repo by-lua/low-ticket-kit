@@ -4,6 +4,16 @@ Regra solicitada pela dona em 03/10/2026: todo criativo em vídeo, imagem ou
 carrossel acompanha título e descrição de anúncio coerentes com seu ângulo.
 Salvar `anuncio.md` junto à mídia final; não deixar o texto só no chat.
 
+> **⛔ GATE BLOQUEADOR (dona, 26/10/2026 — reincidência real, NeuroActiva AR):**
+> antes de marcar qualquer `anuncio.md` como pronto, releia a **primeira frase** do
+> "Texto principal" em voz alta e responda: **ela chama quem compra, ou só descreve
+> o produto?** "400 fichas, 5 volúmenes..." descreve; "Si coordinás sesiones para
+> adultos mayores..." chama. Headline da imagem (gancho) pode ser só o produto —
+> mas o texto de FORA (o post) sempre abre endereçando a persona/situação
+> ("Si sos...", "Si tu mamá...", "¿Trabajás con...?"). Isso já estava escrito na
+> seção "Como alinhar a copy" abaixo e foi pulado por ler a skill por cima em vez de
+> inteira antes do 1º prompt — não repita o pulo, não só o texto.
+
 ## Modelo de entrega
 
 ```markdown
@@ -61,4 +71,5 @@ roteiro nem a legenda; em imagens e carrosséis, não substitui o texto da arte.
 
 Confira se cada mídia tem seu `anuncio.md`, se o arquivo citado existe, se a
 headline expressa o ângulo específico, se texto/voz estão no idioma e sotaque
-do mercado e se todas as alegações correspondem à oferta real.
+do mercado, se todas as alegações correspondem à oferta real, **e se a primeira
+frase do Texto principal chama a persona/situação (gate acima) — não só o produto.**

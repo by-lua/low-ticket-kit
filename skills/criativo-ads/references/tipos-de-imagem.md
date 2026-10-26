@@ -23,6 +23,14 @@ Molde de prompt da cena orgânica: `PROMPT-ESTATICO-ORGANICO.md`. Formato da bib
 3. **Toda peça tem gancho → desenvolvimento → CTA**, inclusive impacto, só-texto e carrossel de páginas.
    Conte os blocos no prompt antes de enviar: 2 blocos = falta o desenvolvimento (citando produto/mecanismo).
 4. **Clareza em 1 segundo:** dá pra saber o que é, pra quem é e a entrega concreta? Curiosidade pode abrir, nunca esconder o produto.
+5. **Produto é UMA coisa só (dona, 26/10/2026 — vale igual em vídeo).** Nunca fragmentar a copy ou a
+   cena em "o Bono 1 faz isso, o Bono 2 faz aquilo, o Completo tem isso, o Básico tem aquilo" — isso
+   é característica de PÁGINA (compara planos), não de criativo. O criativo mostra/fala do material
+   como um todo ("una sola colección", "el material completo"); detalhe de bônus específico só
+   aparece se a PÁGINA real que acompanha a peça mostrar esse bônus — nunca inventado pela copy.
+   Mesma regra proíbe **grid/mosaico de capas separadas** como peça de prova (reprovado 26/10,
+   NeuroActiva AR) — prova de volume mostra 1 objeto físico (livro/pasta) + 1 página real, nunca um
+   grid recortando o produto em pedaços.
 4b. **Conferir que o texto EXISTE na imagem** (contar caixas × prompt) e só então a ortografia palavra por palavra
    (acentos: declarar o idioma no prompt; nunca tirar acento).
 5. **Páginas do produto = arquivo real** anexado (capa + 2–3 páginas). GPT nunca desenha página. Nada repete:
