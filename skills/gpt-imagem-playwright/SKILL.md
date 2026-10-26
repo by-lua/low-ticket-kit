@@ -408,6 +408,14 @@ paralelo, as duas — vazia antes, e "MINHA" depois.
 
 ### 4. Esperar
 
+> **⛔ 26/10/2026 — causa raiz das "imagens sem texto" (Tarot AR, 25–26/10): o GPT gera em DUAS
+> passadas.** A foto aparece primeiro (já com `naturalWidth > 1020`, `blob:`), e o texto de Stories é
+> escrito DEPOIS, numa segunda renderização da mesma imagem. Script que baixa quando a 1ª imagem
+> aparece salva a versão SEM TEXTO — e ela passa em dimensão, hash e contagem. **Só baixe quando a
+> geração TERMINOU:** botão `Parar` / `stop-button` sumiu do composer; aí espere ~6 s e pegue a última
+> imagem grande. Já aplicado em `criativo-ads-imagem/scripts/gerar-imagem-gpt.sh`. Sintoma pra
+> reconhecer: imagem perfeita, sem nenhuma caixa de texto, e o chat ainda com o botão "Parar".
+
 ```bash
 bash -c "sleep 8; for i in \$(seq 1 120); do
   > **Espera pela imagem pronta, não pelo "Parar de responder" (11/10/2026).** Esse botão não existe

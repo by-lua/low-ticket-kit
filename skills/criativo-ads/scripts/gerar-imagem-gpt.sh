@@ -45,6 +45,14 @@ for i in $(seq 1 120); do
   [ -n "$NEW" ] && break; sleep 5
 done
 [ -n "$NEW" ] || { echo "FAIL sem imagem"; echo "(()=>document.body.innerText.slice(-400))()" | $AB eval --stdin; exit 1; }
+# ⛔ 26/10/2026 (Tarot AR): o GPT gera em 2 passadas — a FOTO aparece primeiro e o TEXTO é escrito depois.
+# Baixar quando a 1ª imagem aparece = peça SEM TEXTO (foi a causa das "imagens sem texto" de 25/10).
+# Esperar o botão "Parar" sumir (geração terminou) e a imagem ficar estável antes de baixar.
+busy="(()=>!!(document.querySelector('[data-testid=\"stop-button\"]')||[...document.querySelectorAll('button')].find(b=>/^(Parar|Stop)/i.test(((b.getAttribute('aria-label')||'')+' '+(b.innerText||'')).trim()))))()"
+for i in $(seq 1 120); do
+  [ "$(echo "$busy" | $AB eval --stdin | tr -d '"')" = "false" ] && break; sleep 5
+done
+ts "geracao terminou (sem botao Parar)"
 sleep 6
 NEW=$(echo "(()=>[...document.querySelectorAll('img')].filter(i=>i.naturalWidth>1020&&i.complete).map(i=>i.src).join('|'))()" | $AB eval --stdin | tr -d '"' | tr '|' '\n' | grep -vxF -f /tmp/claude-1000/pre.txt | grep -v '^$' | tail -1)
 ts "gerou"
