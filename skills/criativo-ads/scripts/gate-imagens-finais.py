@@ -16,6 +16,8 @@ Confere:
   4. `intermediarios/prompt*.txt` existe e pede o texto como "Instagram Stories text sticker"
      — texto aplicado por overlay de código não é criativo pronto. Não há dispensa (26/10/2026):
      impacto tem texto gerado; carrossel "só páginas" tem card de gancho e card de CTA gerados.
+  5. `anuncio.md` existe e o Título fala da dor/pessoa — rótulo de produto ("Lado luz y lado
+     sombra", "Cada símbolo, explicado") reprova (dona 27/10/2026).
 
 Saída: OK/FALHA por checagem, veredito na última linha. Exit 1 quando alguma falha.
 """
@@ -27,6 +29,39 @@ ALVOS = {  # nome: (razão alvo, tolerância, largura mínima)
     '4:5': (1080 / 1350, 0.010, 1080),
     '9:16': (1080 / 1920, 0.010, 1080),
 }
+
+
+def ler_titulo(md):
+    """Título do anuncio.md: '**Título:** X' ou '## Título ...' seguido da linha."""
+    if not md.is_file():
+        return None
+    linhas = md.read_text(errors='ignore').splitlines()
+    for i, l in enumerate(linhas):
+        m = re.match(r'\s*\*\*T[ií]tulo[^*]*\*\*\s*:?\s*(.+)', l, re.I)
+        if m and m.group(1).strip():
+            return m.group(1).strip()
+        if re.match(r'\s*#+\s*T[ií]tulo', l, re.I):
+            for nxt in linhas[i + 1:]:
+                if nxt.strip():
+                    return nxt.strip()
+    return None
+
+
+# Sinais de que a frase fala com/sobre a pessoa ou nega a dor. Rótulo de produto não tem nenhum.
+SINAL_DOR = re.compile(
+    r'\?|\b(voc[eê]|vc|seu|sua|te|tu|t[uú]|vos|ti|le|ela|ele|ella|[eé]l|mi|meu|minha|'
+    r'n[aã]o|no|nunca|nem|ni|sem|sin|cero|nada|ningu[eé]m|nadie|nenhuma?|ninguna?|'
+    r'trava|travou|traba|olvid\w*|esquec\w*|decorar|memorizar|erro|err\w+|medo|miedo|'
+    r'pare de|para de|deja de|dej[aá] de|cans\w+|outra vez|otra vez|de novo|de nuevo|'
+    r'pergunta\w*|pregunta\w*|adivinh\w*|adivin\w*|'
+    # promessa (Rodrigo: headline = promessa/benefício) e entrega pronta pra usar
+    r'aprend\w*|descubr\w*|entend\w*|domin\w*|consig\w*|pront[oa]s?|list[oa]s?|ready|learn\w*|discover\w*)\b'
+    r'|\b\w+(aste|iste|ás|és|ís)\b',  # voseo / 2ª pessoa (sabés, comprás, diste, armaste)
+    re.I)
+
+
+def eh_rotulo(titulo):
+    return not SINAL_DOR.search(titulo)
 
 
 def main(argv):
@@ -105,6 +140,19 @@ def main(argv):
                     oks.append('prompt pede o texto ao modelo (sticker de Stories ou texto exato)')
     else:
         oks.append('texto na foto dispensado (--sem-texto): peça de impacto / só páginas')
+
+    # 5. Título = dor virada frase, nunca rótulo do produto (dona 27/10/2026, Tarot AR leva 9)
+    if pasta:
+        titulo = ler_titulo(pasta / 'anuncio.md')
+        if titulo is None:
+            falhas.append('sem anuncio.md com Título — escrever junto do prompt (passo 4) antes de chamar de pronta')
+        elif eh_rotulo(titulo):
+            falhas.append(
+                f'título-rótulo: "{titulo}" — só descreve uma parte do material. Headline = promessa/'
+                f'benefício ligado à dor (ou a dor medida em frase) + texto de baixo com mecanismo/entrega '
+                f'(criativo-ads/references/texto-anuncio-por-angulo.md §1)')
+        else:
+            oks.append(f'título fala da dor/pessoa: "{titulo}"')
 
     for x in oks:
         print('OK    ', x)

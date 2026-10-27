@@ -37,7 +37,8 @@ Curiosidade pode abrir o gancho, nunca esconder o produto. Peça que só gera cu
 
 > **⛔ O "pra quem é" do gancho da peça (imagem/vídeo) NÃO é o mesmo "pra quem" do `anuncio.md`
 > (regra da dona, 26/10/2026 — reincidência real, NeuroActiva AR, igual em vídeo e imagem).** O
-> gancho da ARTE pode ser só produto ("400 fichas, organizadas por nivel"). Mas a **primeira frase
+> texto da ARTE segue os 3 andares (headline promessa/benefício + texto de baixo mecanismo/entrega +
+> CTA — método em `texto-anuncio-por-angulo.md`; "400 fichas" sozinho reprova). E a **primeira frase
 > do Texto principal do `anuncio.md`** (o texto que acompanha o post, lido em
 > `references/texto-anuncio-por-angulo.md`) sempre ENDEREÇA quem compra — "Si coordinás sesiones
 > para...", "Si tu mamá...", "¿Trabajás con...?" — nunca abre descrevendo o produto. Escreva as duas

@@ -181,8 +181,9 @@ reescreva antes de gerar.
 
 E ele detalha o que é o teste completo, que quase todo resumo omite: criativo
 direto + TikTok + dicas, **mais 5 textos, 5 títulos e 5 descrições diferentes**,
-"abordando diferentes dores do teu público comprador". Isso é metade do teste, e é
-trabalho de gerenciador, não de geração — entregue a lista junto com os vídeos.
+"abordando diferentes dores do teu público comprador". **NÃO usamos (dona, 27/10/2026):**
+cada peça sai com 1 copy fechada; a variedade vem de peças com narrativas diferentes. Método
+de copy: `texto-anuncio-por-angulo.md`.
 
 Bate com o que esta skill mede por conta própria (FASE 1): acima de ~60% de body
 compartilhado a leva é uma família de conceitos. Kevones chega no mesmo lugar pelo
