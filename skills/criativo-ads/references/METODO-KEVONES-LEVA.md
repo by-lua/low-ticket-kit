@@ -66,6 +66,19 @@ mais abaixo. Resumo das 3 camadas, válidas em TODA peça de vídeo com pessoa:
 | Banner de checkout / imagens da página | não é criativo de anúncio | `banner-checkout-gpt` / `imagens-pagina-low` |
 
 
+## ⭐ LEVA 1-1-3 — o trio base (método da dona, 27/10/2026)
+
+**1 campanha · 1 conjunto · 3 criativos = o trio base, sempre:**
+1. **vídeo demonstrativo**;
+2. **carrossel só com páginas do entregável** (sem card gerado, sem preço);
+3. **estático ugly iPhone**.
+
+**2 ou 3 campanhas 1-1-3:** a **C1 é sempre o trio base**. As outras podem variar — vídeo de expert ou
+UGC no lugar do demonstrativo, imagem de outro tipo (só texto, caixinha, antes e depois, ugly com valor) —
+e vão variando mais conforme a leva cresce. Uma campanha só = trio base, sem exceção.
+Mesmas regras: dor que vende em 1 peça de cada campanha, nada de bônus/contagem na copy, carrossel sem
+preço, caixinha vídeo + imagem nunca na mesma campanha. `gate-plano-leva.py` cobra o trio.
+
 ## ⭐ LEVA 1-1-5 — 1 ou 2 campanhas de 5 peças (método da dona, 27/10/2026)
 
 Formato enxuto de teste, quando a dona pede "1-1-5" ou "2 × 1-1-5": **1 campanha · 1 conjunto

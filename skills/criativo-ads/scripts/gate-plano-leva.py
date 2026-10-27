@@ -74,7 +74,10 @@ def main():
         todas += linhas
         tag = f'C{k}: {img} img ({e} estático + {c} carrossel) + {v} vídeo'
         erros = []
-        if v < 2:
+        if len(linhas) <= 3:   # 1-1-3: 1 vídeo + 1 estático + 1 carrossel (trio base, dona 27/10/2026)
+            if v < 1:
+                erros.append('1-1-3 sem vídeo')
+        elif v < 2:
             erros.append('< 2 vídeos')
         if img < v:
             erros.append('mais vídeo que imagem (nunca 70% vídeo)')
@@ -86,6 +89,21 @@ def main():
             falhas.append(f'C{k}: {len(cx)} peças de caixinha de perguntas na mesma campanha — vídeo e imagem de caixinha vão em campanhas diferentes (dona 27/10/2026)')
         if not any(re.search(r'preco|precio|price', l) for l in linhas):
             avisos.append(f'C{k}: nenhuma peça com preço')
+    # trio base (dona, 27/10/2026): campanha de 3 ou 5 peças = demonstrativo + carrossel só páginas + ugly iPhone.
+    # 1-1-3: uma campanha só = trio; com 2-3 campanhas, pelo menos a C1 é o trio. 1-1-5: toda campanha tem o trio.
+    def trio(linhas):
+        tx = ' '.join(linhas)
+        return {'demonstrativo': bool(re.search(r'video[^|]*\|[^|]*demonstrativ', tx)),
+                'carrossel so paginas': bool(re.search(r'carross[^|]*\|[^|]*so (com )?paginas', tx)),
+                'ugly iphone': bool(re.search(r'ugly', tx))}
+    peq = {k: l for k, l in camp.items() if len(l) in (3, 5)}
+    for k, l in peq.items():
+        falta = [x for x, ok in trio(l).items() if not ok]
+        obrig = len(l) == 5 or len(camp) == 1 or k == min(camp, key=int)
+        if falta and obrig:
+            falhas.append(f'C{k}: trio base incompleto — falta {", ".join(falta)} (1-1-3/1-1-5, dona 27/10/2026)')
+        elif not falta:
+            oks.append(f'C{k}: trio base (demonstrativo + carrossel só páginas + ugly iPhone)')
     # mistura por campanha (dona, 26/10/2026): C1 70/30, C2 50/50, C3 60/40 (imagem+vídeo)
     alvo = {(7, 3), (5, 5), (6, 4)}
     dez = [x for x in splits if sum(x) == 10]
