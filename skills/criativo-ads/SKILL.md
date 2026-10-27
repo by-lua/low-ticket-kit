@@ -72,6 +72,10 @@ confirmar que nenhuma repete modo+estrutura dentro da mesma campanha.
 > NARRATIVAS QUE RODAM (dias no ar) e ÂNCORA DE PREÇO.
 >
 > **⛔ GATES DA LEVA (dona, 23/10/2026):**
+> 0. **Corpo de vídeo nunca se repete** (gancho trocado + mesmo desenvolvimento = mesma peça; caso Atlas
+>    01/02/12/13/22): `python3 ~/.claude/skills/criativo-ads/scripts/gate-corpo-video.py OFERTAS/<slug>` antes de
+>    produzir e antes de entregar vídeo. UGC/expert = pessoa segurando o material falando a copy inteira
+>    (`references/ROTEIRO-POR-FORMATO.md`).
 > 1. Plano em texto → `python3 ~/.claude/skills/criativo-ads/scripts/gate-plano-leva.py OFERTAS/<slug>` antes de
 >    mostrar pra dona; com `--producao` antes de gerar qualquer peça (exige `- [x] OK da dona`). Cobra: persona
 >    LIBERADA, **DESIGN-SYSTEM.md** (cor/fonte — sem ele a cor sai errada), 3 formatos e ≥2 vídeos por campanha,
@@ -221,14 +225,17 @@ Antes de planejar qualquer leva (ex.: 30 do teste 3× 1-1-10):
    1. Abre a **página do anunciante** na Biblioteca (`view_all_page_id=<id>`, ativos, todos os
       países) — perfil de browser livre e headed, mecânica de `mvt-minerar`.
    2. Vê **todos** os criativos dele: copy (texto principal + título), imagem, vídeo, carrossel.
-   3. **Printa cada um** (vídeo: print da abertura, do meio e do fim). Prints vão pra
-      `PROJETOS-MIDIA/CRIATIVOS-CONCORRENTES/<OFERTA>-<anunciante>/` com symlink em
-      `OFERTAS/<slug>/pesquisa/referencia/` (regra de mídia de terceiro da pasta PROJETOS).
-   4. **Descreve cada um em 1 linha:** formato (demo, UGC, expert, estático, carrossel, só texto) ·
-      como abre · o que faz no meio · como fecha · headline/copy literal · há quantos dias roda.
-   5. Agrupa por **narrativa**: quantos anúncios repetem e há quantos dias. **A que mais repete e mais
+   3. **Descreve TODOS em texto, 1 linha cada (sem print):** formato (demo, UGC, expert, estático,
+      carrossel, só texto) · como abre · o que faz no meio · como fecha · headline/copy literal · há
+      quantos dias roda · ID/link do anúncio.
+   4. Agrupa por **narrativa**: quantos anúncios repetem e há quantos dias. **A que mais repete e mais
       dura é a que vende** — entre essas, marca as que dá pra **modelar com o que a gente TEM** (sem
       rosto proprietário, prova inventada ou material que a oferta não tem).
+   5. **Print SÓ dos marcados pra modelar** (dona, 27/10/2026 — print de tudo não serve pra nada):
+      imagem = print do criativo; vídeo = print da abertura, do meio e do fim. O print é a
+      **REF-FORMATO** da peça: vai pra `PROJETOS-MIDIA/CRIATIVOS-CONCORRENTES/<OFERTA>-<anunciante>/`
+      (mídia de terceiro, regra da pasta PROJETOS) com symlink em `CRIATIVO-N/selecionados/REF-FORMATO-*`
+      quando a peça nascer — é o que se anexa no GPT na hora de gerar.
    Registro: `OFERTAS/<slug>/pesquisa/ANUNCIANTES-<data>.md` (anunciante · link · tabela peça a peça ·
    narrativas · "modelar: sim/não + por quê"). Ele também diz **quem compra de verdade** (vai pro
    PERSONA-E-ANGULOS, seção QUEM COMPRA/MERCADO).

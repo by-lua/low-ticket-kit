@@ -11,7 +11,7 @@ Skill `low-ticket-painel` (estado do negócio) → `OFERTAS/<slug>/CLAUDE.md` + 
 ## 1 · Persona com dado → `gate-persona.py`
 - Pesquisa: caminho fixo do **Gate 0.2 passo 2 do `criativo-ads/SKILL.md`** (dona, 27/10/2026) — agente tira
   5 keywords por idioma (PT/EN/ES) do site no ar → **a dona busca na Biblioteca** e manda os anunciantes →
-  agente abre a página de cada anunciante, printa e descreve **todos** os criativos, agrupa por narrativa
+  agente abre a página de cada anunciante, descreve **todos** os criativos em texto, printa só os que vai modelar, agrupa por narrativa
   (`pesquisa/ANUNCIANTES-<data>.md`) → em paralelo, agente mede YouTube (viral + comentários)/TikTok/Trends
   com termos da pessoa (`DEMANDA-ORGANICA-<data>.md`) → cruza. O agente não busca termo na Biblioteca.
 - Arquivo: `pesquisa/PERSONA-E-ANGULOS.md` no modelo `MODELOS/_MODELO-PERSONA-E-ANGULOS.md`.
@@ -40,7 +40,23 @@ Skill `low-ticket-painel` (estado do negócio) → `OFERTAS/<slug>/CLAUDE.md` + 
 - `criativos/PLANO-LEVA-1.md` + `criativos/CRONOGRAMA-LEVA-1.md` (peça por peça: como fica, quais páginas em qual
   aparelho/folha, texto). Variar gancho (corte YouTube / cena TikTok / material) × função (dor, objeção, narrativa,
   material) × formato. 1 peça com preço por campanha.
-- Prova: `python3 ~/.claude/skills/criativo-ads/scripts/gate-plano-leva.py OFERTAS/<slug>` → mostrar pra dona →
+- **A copy de TODAS as peças nasce junto com o plano, antes de produzir qualquer arquivo** (dona,
+  27/10/2026 — "desde o começo faz tudo certo", o gate é só a rede de segurança). Ordem:
+  1. **Banco da página:** da página de vendas no ar, listar em `criativos/BANCO-COPY-LEVA-N.md` os
+     **mecanismos** (por que funciona), **benefícios concretos**, **objeções** e **entregas** — cada um
+     uma linha, com a frase da página. Junto, as **dores medidas** do `PERSONA-E-ANGULOS.md`.
+  2. **Distribuir** (formatos = CATÁLOGO DA CASA no topo de `ROTEIRO-POR-FORMATO.md`: demonstrativo, UGC cliente,
+     expert, caixinha com expert em vídeo e imagem, ugly iPhone, ugly iPhone com valor, antes e depois, frase
+     direta fundo branco, frase direta com preço): cada peça da leva recebe **1 dor + 1 mecanismo/benefício + 1 cena** do banco. O
+     mesmo mecanismo não vai em 2 vídeos; se o banco acabar antes das peças, a peça vira outro papel
+     (objeção, prova, preço) em vez de repetir corpo.
+  3. **Escrever por formato** (método Rodrigo, `ROTEIRO-POR-FORMATO.md`): trecho da página + o formato
+     no pedido ("5 copies de UGC de até 15 s" / "gancho, mecanismo e CTA, 15 s" / expert = + frase de
+     autoridade) → escolhe → ajusta pro idioma do mercado. Imagem pelos 3 andares
+     (`texto-anuncio-por-angulo.md`). `anuncio.md` de cada peça na mesma passada.
+  4. Tudo num arquivo só, `criativos/ROTEIROS-LEVA-N.md` (peça · formato · dor · mecanismo · cena ·
+     copy completa) — é o que a dona aprova junto com o plano.
+- Prova: `python3 ~/.claude/skills/criativo-ads/scripts/gate-plano-leva.py OFERTAS/<slug>` + `gate-corpo-video.py OFERTAS/<slug>` (corpo de vídeo repetido = BLOQUEADO) → mostrar pra dona →
   `- [x] OK da dona` → `--producao` = LIBERADO.
 
 ## 4 · Regras de cada imagem (o que mais erra)

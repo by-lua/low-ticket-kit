@@ -61,17 +61,13 @@ casar com o que o produto promete.
 - **UGC 2 — ambiente normal/cotidiano** (casa, dia a dia, nada montado).
 - **Expert — ambiente que FAZ SENTIDO com o papel dela** (ex.: psicóloga → consultório/escritório;
   nunca o mesmo cenário genérico do comprador comum — o ambiente é parte da prova de autoridade).
-  **2 modos de câmera pro expert, variar entre eles:** (a) tela cheia falando, produto aparece
-  depois em corte de tela; (b) **segura o entregável como capa de livro perto do rosto/peito,
-  falando olhando pra câmera** (ref. UGC "segura capa", mesma pose do selfie-recomendação —
-  `exemplo-criativo-demonstrativo-multipaginas` tem exemplo). O item (b) funciona pro expert E pro
-  UGC comprador comum — a diferença é só ambiente+tom, não a pose.
-  **Duração do clipe lip-sync define onde o mecanismo mora (24/10/2026):** clipe **8s** (padrão
-  Flow i2v) só carrega o HOOK em lip-sync — mecanismo/dor desenvolvidos NÃO cabem falados por ele
-  nesse tempo, então o corpo vira material/tela + VO off, cortando do rosto pro produto. Clipe
-  **~12s** (se gerado mais longo) pode carregar hook+mecanismo inteiro na própria fala do
-  personagem — aí o corte pro material vem só depois, pra CTA/entrega. Não force mecanismo
-  inteiro dentro de 8s de lip-sync; é isso que sai raso.
+  **Pose única pro UGC e pro expert (dona 27/10/2026, Rodrigo `HBPMwsVGpRc`):** a pessoa **segura o
+  material como um livro** (UGC: capa pra câmera; expert: livro aberto com as duas mãos) e **fala a
+  copy inteira em quadro** — gancho, desenvolvimento e CTA. Não é "rosto no gancho e depois voz off
+  em cima da tela" (erro Atlas 24-25/10). Diferença entre os dois = ambiente + tom + a frase de
+  autoridade, nunca a pose. Detalhe e copies reais: `ROTEIRO-POR-FORMATO.md`.
+  **Clipe de 8 s do Flow:** a copy de 15 s não cabe num clipe — gerar **2 clipes da mesma pessoa,
+  mesma roupa, cenário e material** e juntar; nunca trocar a pessoa por voz off pra caber.
 
 **Estilos de imagem por COR (não é genérico, a cor define o estilo):**
 - **"Fase de impacto"** = fundo BRANCO + texto PRETO e VERMELHO.

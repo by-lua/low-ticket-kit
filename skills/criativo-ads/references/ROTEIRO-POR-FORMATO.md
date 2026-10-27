@@ -7,6 +7,31 @@
 > roteiro sai raso — gancho copiado do plano, sem desenvolvimento, sem CTA escrito
 > (ver `plano-video-ganho-nao-e-roteiro-completo`).
 
+## ⭐ CATÁLOGO DE FORMATOS DA CASA — todos com GANCHO → DESENVOLVIMENTO (mecanismo) → CTA (dona, 27/10/2026)
+
+A leva sai daqui. **Todo formato tem as 3 partes**, inclusive imagem: no vídeo elas são faladas;
+na imagem viram os 3 andares (headline = gancho · texto de baixo = mecanismo/entrega · CTA).
+
+| # | Formato | Mídia | Gancho | Desenvolvimento (mecanismo) | CTA | Quem/o quê em cena |
+|---|---|---|---|---|---|---|
+| 1 | **Demonstrativo** | vídeo | dor medida, 1-2 frases | por que funciona + o material por dentro (tela + mesa real, split 70/30) | comando + produto parado + seta ~5 s | ninguém em quadro; tela do painel + mesa real |
+| 2 | **UGC cliente** | vídeo | conselho/identificação com a dor ("você não precisa…") | "existe uma maneira de…" + "foi isso que aprendi nesse material" + gatilho | comando pessoal | cliente segurando o material como livro, falando tudo (§ UGC) |
+| 3 | **Expert** | vídeo | dor ou contraste de autoridade | mecanismo + frase de autoridade ("estudei X anos… coloquei tudo aqui") | comando | especialista com o material aberto nas mãos, ambiente do papel (§ Expert) |
+| 4 | **Caixinha de perguntas — expert** | vídeo | a pergunta da caixinha (objeção/dor real) | expert responde com o mecanismo, material na mão | comando | expert lendo a caixinha e respondendo |
+| 5 | **Caixinha de perguntas — expert** | imagem | caixinha com a pergunta | resposta do expert em 1-2 linhas (mecanismo) | CTA curto | expert segurando o material + caixinha de Stories |
+| 6 | **Ugly iPhone** | imagem | headline: promessa/dor | texto de baixo: mecanismo ou entrega concreta | CTA curto | foto feia de celular, 1-2 aparelhos + 3-4 folhas reais |
+| 7 | **Ugly iPhone com valor** | imagem | headline: promessa/dor | entrega concreta + **preço do plano mais barato** | CTA | igual ao 6 + preço (única peça de preço da campanha) |
+| 8 | **Antes e depois** | imagem | o "antes" (a dor em cena) | o "depois" + o que mudou (o material) | CTA | modelado de antes/depois que roda na Biblioteca |
+| 9 | **Frase direta — fundo branco** (impacto) | imagem | frase de impacto (dor/promessa) em preto+vermelho | 1 linha com o mecanismo | CTA | só texto, sem produto, fundo branco |
+| 10 | **Frase direta — preço** | imagem | promessa | entrega concreta | preço + CTA | fundo + produto real (clássica do Rodrigo, versão orgânica) |
+
+Regras que valem em todos:
+- **Cada peça da leva usa 1 dor + 1 mecanismo + 1 cena do banco** (`RECEITA-LEVA-PONTA-A-PONTA.md` §3) —
+  formato pode repetir entre campanhas, **conteúdo não**. Corpo repetido = `gate-corpo-video.py` bloqueia.
+- **Mecanismo não é repetir a promessa**: "existe uma forma de [X] que faz [Y]" / "não é [culpa dela], é que [causa real]".
+- CTA só comando, sem nome do produto nem preço falado; preço só nos formatos 7 e 10.
+- Texto de imagem: `texto-anuncio-por-angulo.md`. Visual: orgânico iPhone, nunca mockup.
+
 ## O que ele faz, na ordem (nunca pula etapa)
 
 1. **Pega a página de vendas real** da oferta — headline, benefícios, objeções,
@@ -51,25 +76,75 @@ Todo prompt de roteiro leva: a dor/ângulo real da peça (do `PERSONA-E-ANGULOS.
 o benefício/preço/garantia reais (da página), e a estrutura de blocos do formato —
 nunca pede "escreve um roteiro" solto.
 
-### UGC / UGC comprador — relato em 1ª pessoa
-- **Gancho:** frase de identificação ("eu também [dor]" / "isso aconteceu comigo").
-- **Promessa/mecanismo:** "existe uma maneira de [resultado]".
-- **Prova pessoal:** "foi exatamente isso que aprendi/usei".
-- **Gatilho de ação:** condição que te faz precisar disso agora.
-- **CTA:** comando curto — no nosso caso sem nome do produto/condição de compra
-  (CTA do Rodrigo é mais falado/pessoal "vou deixar o link aqui…"; a nossa regra de
-  fecho sem nome do produto continua valendo, é a nossa adaptação).
-- **⛔ UGC não tem exibição de entrega** — ele só SEGURA o material na pose "capa
-  de livro", nunca mostra o produto por dentro/navegando páginas. Mostrar o
-  entregável por dentro é papel do **expert/demonstrativo**, não do UGC — misturar
-  os dois dilui o formato (UGC vira demonstrativo disfarçado).
+### ⛔ UGC e expert = PESSOA SEGURANDO O MATERIAL E FALANDO (dona, 27/10/2026)
 
-### Expert — autoridade que desenvolve o mecanismo
-- **Gancho:** afirmação de autoridade ou contraste ("a maioria faz X, o certo é Y").
-- **Desenvolve o mecanismo:** explica POR QUE funciona (não só repete o benefício —
-  erro mais caro documentado, CRIATIVO-02 Atlas).
-- **Mostra o material:** corta pra tela/página real enquanto explica.
-- **CTA:** comando curto, mesma regra do UGC.
+Erro real (Atlas, 24-25/10): a pessoa aparecia só no gancho (ex.: Sofi no carro, Martín tela
+cheia) e depois o vídeo virava demonstrativo com voz off — e na leva seguinte UGC/expert foram
+convertidos em demonstrativo puro. Isso não é UGC nem expert.
+
+**Como é (Rodrigo, saga Europa parte 2: "mulher segurando o livro e falando: [copy]", 15 s):**
+- A pessoa **segura o material como um livro/caderno** (capa de frente pra câmera, perto do
+  peito/rosto) — mesmo o produto sendo digital, ele é apresentado como um livro que chegou. Ela
+  fica **em quadro falando a copy inteira** (gancho → desenvolvimento → CTA), olhando pra câmera.
+- **UGC** = usuária comum dando **a opinião dela sobre o material** ("comprei isso aqui e…").
+  Não conta a vida dela, não faz história longa, não navega páginas: é a opinião de quem usou.
+- **Expert** = especialista do nicho segurando o material **do mesmo jeito** e falando com
+  autoridade — explica o mecanismo e indica o material. Muda a voz e o cenário (consultório,
+  sala de aula), não a pose.
+- Cortes pro material por dentro (tela/página) são **opcionais e curtos**, no máximo 1-2 no
+  desenvolvimento; a pessoa volta pro CTA. O corpo do vídeo é ela falando.
+- **Limite do Flow (clipe de 8 s):** a copy inteira não cabe num clipe. Gera **2 clipes da
+  mesma pessoa, mesma roupa e cenário, segurando o mesmo material** (gancho+desenvolvimento /
+  desenvolvimento+CTA) e junta com corte invisível, ou 1 clipe de ~12-15 s quando der. Nunca
+  resolver o limite trocando a pessoa por voz off.
+
+**De onde sai a copy (Rodrigo):** copia o trecho denso da página de vendas → GPT com o formato no
+pedido ("5 copies de UGC de até 15 s" / "copies de expert com gancho, mecanismo e CTA") → escolhe
+1 e ajusta. Estrutura sempre **gancho → desenvolvimento → CTA**.
+
+### UGC — quem comprou, com o material na mão, dando a opinião (Rodrigo `HBPMwsVGpRc`, relido 27/10)
+Definição dele: *"a pessoa já comprou o produto, ela tá com o produto na mão e vai falar sobre esse
+produto: encontrei esse livro na internet, um livro muito bom que me ajudou em tal coisa"* — depoimento
+gerado pelo usuário.
+**Pedido ao GPT:** trecho da página de vendas + *"crie 5 copies pra vídeos de no máximo 15 segundos,
+copy de criativo UGC"* → escolhe a melhor → edita.
+**Copy real dele (a que "tá pingando venda"), bloco a bloco:**
+| Bloco | Fala |
+|---|---|
+| Gancho (fala direto com a dor, como conselho de amiga) | "Amiga, você não precisa implorar pela atenção dele." |
+| Mecanismo ("existe uma maneira de…") | "Existe uma maneira de fazer com que qualquer homem perceba a sua ausência e volte a valorizar a sua presença." |
+| Prova pessoal | "Foi exatamente isso que eu aprendi nesse livro aqui." |
+| Gatilho (condição de agora) | "Se ele está distante, talvez você devesse descobrir isso." |
+| CTA pessoal | "Vou deixar aqui o link desse livro que me ajudou a deixar meu marido louco por mim." |
+Na nossa versão o CTA falado fica só comando (memória `cta-video-so-comando`), mas o tom pessoal
+de quem indica continua.
+**Produção dele:** foto de pessoa em cena do dia a dia (Pinterest, ex. "mulher dirigindo") + capa
+do produto colada ao lado (Canva) → imagem→vídeo com o prompt **"mulher segurando o livro e
+falando: '<copy>'"**, 15 s → CapCut: corta o começo antes dela pegar o livro, ajusta a velocidade
+se a fala saiu rápida, texto pequeno no topo pra parecer orgânico, e no fim a imagem do produto
+parada em silêncio + seta + "baixa agora mesmo" (tempo de decidir).
+
+### Expert — mesma copy, voz de autoridade, segurando o material aberto
+Ele não escreve outro roteiro: pega a copy do vídeo "gancho → mecanismo → CTA" e **insere a frase de
+autoridade** antes do CTA. Copy real:
+| Bloco | Fala |
+|---|---|
+| Gancho (dor) | "Quer saber como fazer ele sentir sua falta sem ficar correndo atrás?" |
+| Mecanismo | "Existe uma forma de criar um espaço emocional que faz ele perceber sua ausência e começar a valorizar novamente sua presença." |
+| Autoridade | "Eu passei mais de 5 anos estudando a mente masculina e descobri os principais gatilhos que fazem qualquer homem sentir sua falta. Coloquei tudo nesse livro." |
+| CTA | "Clique pra conhecer." |
+Sem a linha de autoridade ("Eu descobri nesse livro") a mesma copy vira UGC.
+**Produção:** foto de **especialista que casa com o público** (Pinterest: "psicóloga") com o **livro
+aberto, segurando com as duas mãos** → "mulher segura o livro e fala: '<copy>'" → no topo, **headline
+fixa com a promessa** ("Descubra como fazer ele sentir sua falta") → fim com produto + CTA + seta.
+**Pedido ao GPT:** *"copies curtas com gancho, desenvolvimento do mecanismo e CTA, criativos de 15 s"*.
+
+### ⛔ Corpo nunca se repete entre vídeos (dona, 25 e 27/10/2026)
+Trocar só o gancho e manter o desenvolvimento é a mesma peça pro Meta. Caso real: Atlas,
+CRIATIVO-01, 02, 12, 13 e 22 com o mesmo corpo ("No es que no estudiaste. Es que memorizar el
+nombre del músculo…"), e 11 × 21 idênticos. Cada vídeo tem **dor, mecanismo e cena próprios**.
+Prova mecânica antes de produzir e antes de entregar:
+`python3 ~/.claude/skills/criativo-ads/scripts/gate-corpo-video.py OFERTAS/<slug>` → BLOQUEADO = reescrever.
 
 ### Demonstrativo — tela do entregável por dentro
 - **⛔ O código da dor (D1, D2...) não é um título livre — é um PONTEIRO pro texto medido
