@@ -19,17 +19,18 @@ na imagem viram os 3 andares (headline = gancho · texto de baixo = mecanismo/en
 | 3 | **Expert** | vídeo | dor ou contraste de autoridade | mecanismo + frase de autoridade ("estudei X anos… coloquei tudo aqui") | comando | especialista com o material aberto nas mãos, ambiente do papel (§ Expert) |
 | 4 | **Caixinha de perguntas — expert** | vídeo | a pergunta da caixinha (objeção/dor real) | expert responde com o mecanismo, material na mão | comando | expert lendo a caixinha e respondendo |
 | 5 | **Caixinha de perguntas — expert** | imagem | caixinha com a pergunta | resposta do expert em 1-2 linhas (mecanismo) | CTA curto | expert segurando o material + caixinha de Stories |
-| 6 | **Ugly iPhone** | imagem | headline: promessa/dor | texto de baixo: mecanismo ou entrega concreta | CTA curto | foto feia de celular, 1-2 aparelhos + 3-4 folhas reais |
-| 7 | **Ugly iPhone com valor** | imagem | headline: promessa/dor | entrega concreta + **preço do plano mais barato** | CTA | igual ao 6 + preço (única peça de preço da campanha) |
+| 6 | **Ugly iPhone** | imagem | headline: promessa/dor | texto de baixo: mecanismo (o que o produto faz) | CTA curto | foto feia de celular, 1-2 aparelhos + 3-4 folhas reais |
+| 7 | **Ugly iPhone com valor** | imagem | headline: promessa/dor | o que o produto faz + **preço do plano mais barato** | CTA | igual ao 6 + preço (única peça de preço da campanha) |
 | 8 | **Antes e depois** | imagem | o "antes" (a dor em cena) | o "depois" + o que mudou (o material) | CTA | modelado de antes/depois que roda na Biblioteca |
 | 9 | **Frase direta — fundo branco** (impacto) | imagem | frase de impacto (dor/promessa) em preto+vermelho | 1 linha com o mecanismo | CTA | só texto, sem produto, fundo branco |
-| 10 | **Frase direta — preço** | imagem | promessa | entrega concreta | preço + CTA | fundo + produto real (clássica do Rodrigo, versão orgânica) |
+| 10 | **Frase direta — preço** | imagem | promessa | o que o produto faz | preço + CTA | fundo + produto real (clássica do Rodrigo, versão orgânica) |
 
 Regras que valem em todos:
 - **Cada peça da leva usa 1 dor + 1 mecanismo + 1 cena do banco** (`RECEITA-LEVA-PONTA-A-PONTA.md` §3) —
   formato pode repetir entre campanhas, **conteúdo não**. Corpo repetido = `gate-corpo-video.py` bloqueia.
 - **Mecanismo não é repetir a promessa**: "existe uma forma de [X] que faz [Y]" / "não é [culpa dela], é que [causa real]".
 - CTA só comando, sem nome do produto nem preço falado; preço só nos formatos 7 e 10.
+- **Fala do produto, nunca de bônus, contagem ("400 fichas") nem nome de módulo** (`texto-anuncio-por-angulo.md`, dona 27/10).
 - **Todo vídeo (1-4) fecha igual:** depois da fala, card ~5 s **em silêncio** — fundo preto, mockup do
   plano Completo parado, setinha pra baixo com o CTA escrito (`EDICAO-PADRAO.md` §7).
 - Texto de imagem: `texto-anuncio-por-angulo.md`. Visual: orgânico iPhone, nunca mockup.
@@ -59,7 +60,7 @@ que o Rodrigo usa em todo roteiro:
 Corpo que explica o mecanismo mas não mostra a transformação/produto em uso ainda está faltando o **desejo**.
 
 **Clareza antes de curiosidade (gate de 1 segundo):** low ticket é direto. Em 1 s dá pra saber **o que
-é**, **pra quem é** e **qual entrega/benefício concreto** (quantidade verdadeira: "78 mapas", "150 fichas")?
+é**, **pra quem é** e **qual benefício concreto** o produto dá? (sem contagem nem bônus — `texto-anuncio-por-angulo.md`)
 Curiosidade pode abrir o gancho, nunca esconder o produto. Peça que só gera curiosidade = reprovada.
 
 > **⛔ O "pra quem é" do gancho da peça (imagem/vídeo) NÃO é o mesmo "pra quem" do `anuncio.md`

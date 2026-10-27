@@ -14,6 +14,16 @@ Fontes (reescrito 27/10/2026, a pedido da dona — "pega o conceito"):
 > o Kevones citando isso num curso antigo. Cada peça sai com **1 copy fechada**; a variedade vem de
 > peças com narrativas diferentes, não de variar título no gerenciador.
 
+## ⛔ O criativo fala do PRODUTO, não de bônus nem de volume (dona, 27/10/2026 — já tinha dito antes)
+
+O que a pessoa compra é **um produto só**. A copy (arte, fala e `anuncio.md`) fala **do material e do que
+ele faz por ela** — nunca lista **bônus** ("+100 actividades del bonus Etapa avanzada", "4 bonus"),
+**contagem/volume** ("400 fichas", "5 módulos", "1.395 páginas", "150 mapas") nem **nome de módulo/volume**
+("Volumen 2", "Armador de Sesiones"). Bônus e quantidade são assunto da página de vendas, não do anúncio.
+Certo: "fichas ordenadas por nivel: abrís, elegís y aplicás" · "sirve también para etapa avanzada".
+Errado: "400 fichas, 5 volúmenes y 4 bonus" · "el bonus con +100 actividades".
+A peça pode **mostrar** o material inteiro (páginas, aparelhos, folhas) — só não **fala** contagem nem bônus.
+
 ## 0 · De onde sai a copy (antes de escrever)
 
 1. **Página de vendas** da oferta: `<h1>`, promessa, mecanismo, o que recebe. O Rodrigo cola a
@@ -34,7 +44,7 @@ todas as aulas:
 | Andar | O que é | Exemplo dele | Exemplo nosso |
 |---|---|---|---|
 | **Headline** (maior texto) | a **promessa** ou o **benefício principal**, ligado à dor medida | "Faça qualquer homem ficar obcecado por você" | "Aprenda a ler o Tarot sem decorar nenhuma carta" (AD 03, 32 vendas) |
-| **Texto de baixo** (1 linha) | o **mecanismo** ou a **entrega concreta** — COMO a promessa acontece / o que a pessoa recebe | "princípios psicológicos que fazem ele sentir sua falta" · "5.000 esboços prontos pra pregar" | "um mapa por carta: significado, símbolos e combinações" |
+| **Texto de baixo** (1 linha) | o **mecanismo** — COMO a promessa acontece / o que o produto faz por ela (sem contagem, sem bônus) | "princípios psicológicos que fazem ele sentir sua falta" · "5.000 esboços prontos pra pregar" | "um mapa por carta: significado, símbolos e combinações" |
 | **CTA** | comando curto | "baixe agora" | "toca em saiba mais" |
 
 - **Variante "dor em cima"** (Rodrigo, sermões): headline = a dor do público ("dificuldade pra
@@ -83,7 +93,7 @@ Exemplo literal dele (15 s):
 - **Texto principal:** 1ª frase endereça a persona/situação → mesmo ângulo da peça (dor ou objeção)
   → mecanismo em 1 frase → convite. Curto.
 - **Título:** a headline da peça (promessa/benefício) ou a dor em frase. Mesmas regras do §1.
-- **Descrição:** a entrega concreta, sem repetir o título.
+- **Descrição:** o que o produto faz pela pessoa, sem repetir o título (sem contagem, sem bônus).
 - **1 copy por peça** — sem lista de 5 variações.
 
 ```markdown
@@ -100,7 +110,7 @@ Arquivo: [nome exato da mídia]
 [promessa ou dor em frase — nunca rótulo]
 
 ## Descrição curta
-[entrega concreta]
+[o que o produto faz — sem contagem nem bônus]
 
 ## CTA sugerido
 Saiba mais

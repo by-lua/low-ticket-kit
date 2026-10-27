@@ -137,7 +137,7 @@ de status/URL antes de compor. Imagem parada com Ken Burns nunca é cena de prod
 ## 9 · QA antes de "pronto" (bloqueante — assistir inteiro, não frames redondos)
 
 - [ ] Hook nomeia a dor real · corpo desenvolve o MECANISMO (não repete benefício) e mostra o produto EM USO (desejo — AIDA) · CTA só comando.
-- [ ] Clareza em 1 s: dá pra saber o que é, pra quem é e a entrega concreta? Curiosidade sem produto = reprovado.
+- [ ] Clareza em 1 s: dá pra saber o que é, pra quem é e o que o produto faz? (sem falar bônus nem contagem) Curiosidade sem produto = reprovado.
 - [ ] Cada corte casa com a frase falada; nenhuma cena > ~3–4 s; todas as fontes usadas; nada repetido.
 - [ ] `grep "src:" src/index.jsx` aponta pro arquivo que você ACABOU de gerar (não `final-v2.mp4` velho).
 - [ ] Transcrever o áudio do arquivo JÁ renderizado e conferir com o roteiro (palavra repetida, faltando, sem acento).

@@ -39,7 +39,8 @@ Molde de prompt da cena orgânica: `PROMPT-ESTATICO-ORGANICO.md`. Formato da bib
    (texto, rosto, material, preço, CTA) no topo ~14%, na base ~20% nem colado nas laterais (~5%); Stories/vídeo
    9:16 → idem (290 px topo, 360 px base, 60 px laterais). Sobra respiro em volta, nada cortado na borda.
    Pedir no prompt e conferir na imagem final.
-7. **Preço:** só em peça de preço, sempre o **plano mais barato**.
+7. **Preço:** só em peça de preço **estática**, sempre o **plano mais barato**. **Carrossel NUNCA tem preço** (dona, 27/10/2026), de nenhum tipo.
+7b. **Nenhuma peça cita bônus, módulo/volume nem contagem** ("4 bonus", "Volumen 2", "400 fichas") — fala do produto e do que ele faz (`criativo-ads/references/texto-anuncio-por-angulo.md`, dona 27/10/2026).
 8. Gates: `gate-pecas-criativo.py <CRIATIVO-N>` antes de gerar; `gate-imagens-finais.py <finais> --pasta <CRIATIVO-N>`
    depois; abrir 1 imagem de cada peça antes de dizer "pronta".
 
@@ -57,11 +58,12 @@ Molde de prompt da cena orgânica: `PROMPT-ESTATICO-ORGANICO.md`. Formato da bib
 | **Antes/depois** | o da referência | puxado da Biblioteca de Anúncios (anúncio real rodando) | nunca inventado do zero |
 | **Formato da biblioteca** (print WhatsApp, notícia, story nativo, tweet…) | **o da referência** (`modelagem-escalados`, fidelidade: layout, cor, fonte iguais) | nosso conteúdo real dentro | prova não se fabrica: sem depoimento real, sem formato de prova social |
 
-## Carrossel (mínimo 5 cards; nunca 2 do mesmo tipo na mesma campanha)
+## Carrossel (mínimo 5 cards; nunca 2 do mesmo tipo na mesma campanha; **nunca com preço**)
 
 | Tipo | Card 1 | Meio | Último |
 |---|---|---|---|
 | **1 · Imagem principal + páginas** | arte gerada (orgânico iPhone com texto) | páginas reais full bleed, em sequência | página real ou card CTA |
+| **2b · Só páginas puro** (padrão da vaga fixa do 1-1-5, dona 27/10/2026) | página real | páginas reais inteiras, uma por card | página real — **sem card gerado, sem preço**; a mensagem vai no texto do anúncio |
 | **2 · Só páginas** | **card de gancho gerado** (texto Stories sobre cena orgânica, ou impacto) | páginas reais (são o desenvolvimento) | **card de CTA gerado** — nunca páginas soltas sem gancho nem fechamento |
 | **3 · Henrique** | páginas em vários aparelhos (sem mockup) + a dor | idem, 1 por card | card CTA "mirá por dentro" |
 | **Objeção** (slot 9) | a objeção | 1 objeção por card, respondida | CTA |

@@ -46,7 +46,7 @@ mockup**. Rodrigo/biblioteca dão o papel da peça; o visual segue esta skill. O
    escrito pelo molde + gate de `criativo-ads/references/texto-anuncio-por-angulo.md` — **1ª frase do
    Texto principal endereça quem compra** ("Si coordinás...", "Si tu mamá..."), nunca só descreve o
    produto. **Texto da ARTE = 3 andares do Rodrigo: headline (promessa/benefício ligado à dor) +
-   texto de baixo (mecanismo ou entrega concreta) + CTA; nunca rótulo de seção sozinho**
+   texto de baixo (mecanismo — o que o produto faz, sem bônus nem contagem) + CTA; nunca rótulo de seção sozinho**
    ("Lado luz y lado sombra" reprova; "Aprenda a ler o Tarot sem decorar nenhuma carta" passa) —
    método completo em `criativo-ads/references/texto-anuncio-por-angulo.md` —,
    `ls` de cada arquivo citado, registrar no STATUS da oferta e em `_memoria/planos-criativos.md`.

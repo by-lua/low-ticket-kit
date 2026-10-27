@@ -110,15 +110,24 @@ def main():
             r = difflib.SequenceMatcher(None, corpos[ks[i]], corpos[ks[j]]).ratio()
             if r >= limite:
                 falhas.append((r, ks[i], ks[j]))
+    proibidos = []
+    proib = re.compile(r'\bb[oô]n(o|u)s\b|\bvol[uú]me(n|s)?\b|\bm[oó]dulos?\b|'
+                       r'\+?\d{2,}[.\d]*\s*(fichas|p[aá]ginas|mapas|actividades|atividades|hojas)', re.I)
+    for k, v in pecas.items():
+        h = proib.search(v)
+        if h:
+            proibidos.append(f'{k}: fala cita bônus/módulo/contagem "{h.group(0)}" — fala do produto (dona 27/10/2026)')
     print(f'OK     {len(corpos)} vídeo(s) com corpo falado lido(s)')
     for r, a, b in sorted(falhas, reverse=True):
         print(f'FALHA  corpo {r:.0%} igual: {a}  ×  {b}')
-    if falhas:
-        print('\nBLOQUEADO — corpo repetido com gancho trocado é a mesma peça. Reescrever o corpo '
-              '(outra dor, outro mecanismo, outra cena) — criativo-ads/references/METODO-RODRIGO-SLOTS.md')
+    for x in proibidos:
+        print('FALHA ', x)
+    if falhas or proibidos:
+        print('\nBLOQUEADO — reescrever: corpo repetido = mesma peça; bônus/módulo/contagem na fala = proibido '
+              '(METODO-RODRIGO-SLOTS.md · texto-anuncio-por-angulo.md)')
     else:
         print('\nLIBERADO')
-    sys.exit(1 if falhas else 0)
+    sys.exit(1 if (falhas or proibidos) else 0)
 
 
 if __name__ == '__main__':

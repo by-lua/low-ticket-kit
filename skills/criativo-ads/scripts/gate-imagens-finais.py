@@ -60,6 +60,11 @@ SINAL_DOR = re.compile(
     re.I)
 
 
+# Copy nunca cita bônus, módulo/volume nem contagem (dona 27/10/2026): fala do produto.
+PROIBIDO_COPY = re.compile(r'\bb[oô]n(o|u)s\b|\bvol[uú]me(n|s)?\b|\bm[oó]dulos?\b|'
+                           r'\+?\d{2,}[.\d]*\s*(fichas|p[aá]ginas|mapas|actividades|atividades|cards|hojas|folhas)', re.I)
+
+
 def eh_rotulo(titulo):
     return not SINAL_DOR.search(titulo)
 
@@ -75,9 +80,11 @@ def main(argv):
             pasta = Path(argv[i])
         elif a == '--story':
             formato = '9:16'
+        elif a in ('--so-paginas-puro', '--só-páginas-puro'):
+            sem_texto = True  # carrossel 2b do GUIA DE IMAGEM: só páginas reais, sem card gerado (dona 27/10/2026)
         elif a in ('--sem-texto', '--só-páginas', '--so-paginas'):
-            sys.exit(f'{a} não existe mais (26/10/2026): toda peça de imagem tem texto escrito pelo modelo — '
-                     'até o carrossel só de páginas tem card de gancho e card de CTA gerados (GUIA DE IMAGEM).')
+            sys.exit(f'{a} não existe: peça com texto tem o texto escrito pelo modelo. Carrossel só de páginas '
+                     'reais, sem card gerado (tipo 2b, dona 27/10/2026) = use --so-paginas-puro.')
         elif a.startswith('--'):
             sys.exit(f'opção desconhecida: {a}')
         else:
@@ -139,7 +146,7 @@ def main(argv):
                 else:
                     oks.append('prompt pede o texto ao modelo (sticker de Stories ou texto exato)')
     else:
-        oks.append('texto na foto dispensado (--sem-texto): peça de impacto / só páginas')
+        oks.append('carrossel só páginas puro (tipo 2b, dona 27/10/2026): sem texto gerado — conferir que nenhum card tem preço')
 
     # 5. Título = dor virada frase, nunca rótulo do produto (dona 27/10/2026, Tarot AR leva 9)
     if pasta:
@@ -153,6 +160,12 @@ def main(argv):
                 f'(criativo-ads/references/texto-anuncio-por-angulo.md §1)')
         else:
             oks.append(f'título fala da dor/pessoa: "{titulo}"')
+        md = pasta / 'anuncio.md'
+        if md.is_file():
+            hit = PROIBIDO_COPY.search(md.read_text(errors='ignore'))
+            if hit:
+                falhas.append(f'anuncio.md cita bônus/módulo/contagem ("{hit.group(0)}") — o criativo fala do produto, '
+                              f'não de bônus nem de volume (texto-anuncio-por-angulo.md, dona 27/10/2026)')
 
     for x in oks:
         print('OK    ', x)

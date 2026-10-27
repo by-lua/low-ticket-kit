@@ -66,6 +66,30 @@ mais abaixo. Resumo das 3 camadas, válidas em TODA peça de vídeo com pessoa:
 | Banner de checkout / imagens da página | não é criativo de anúncio | `banner-checkout-gpt` / `imagens-pagina-low` |
 
 
+## ⭐ LEVA 1-1-5 — 1 ou 2 campanhas de 5 peças (método da dona, 27/10/2026)
+
+Formato enxuto de teste, quando a dona pede "1-1-5" ou "2 × 1-1-5": **1 campanha · 1 conjunto
+Advantage+ · 5 criativos** (ou duas campanhas assim). Referência viva: `OFERTAS/neuroactiva-ar/criativos/PLANO-LEVA-2.md`.
+
+**Toda campanha 1-1-5 tem 3 peças FIXAS + 2 livres:**
+
+| Vaga | Formato | Regra |
+|---|---|---|
+| **1 · fixa** | **vídeo demonstrativo** | gancho na dor → material por dentro (tela + mesa real, split 70/30) → CTA + card mudo |
+| **2 · fixa** | **carrossel só com páginas do entregável** | páginas reais inteiras, **sem card gerado e sem preço**; a mensagem vai no texto do anúncio |
+| **3 · fixa** | **estático ugly iPhone** | foto feia de celular, 1-2 aparelhos + 3-4 folhas impressas, 3 andares de texto |
+| 4 · livre | **vídeo** | UGC cliente, expert, caixinha com expert, outro demonstrativo — o que a oferta pedir |
+| 5 · livre | **imagem** | outro estático (só texto, caixinha com expert, ugly com valor, frase direta com preço) ou antes e depois |
+
+- Resultado: **2 vídeos + 3 imagens** por campanha (passa no gate: ≥2 vídeos, imagem ≥ vídeo, os 3 formatos).
+- **Com 2 campanhas:** as 3 fixas se repetem nas duas (com dor/página diferentes); as 2 livres **variam ao
+  máximo entre as campanhas** (ex.: C1 = UGC + só texto; C2 = expert + ugly com valor).
+- Mesmas regras de sempre: espinha (dor que vende) em 1 peça de cada campanha, nenhuma dor repete dentro da
+  campanha, corpo de vídeo nunca repete (`gate-corpo-video.py`), copy pelo catálogo da casa
+  (`ROTEIRO-POR-FORMATO.md`). Preço, quando entrar, só numa vaga livre e sempre o plano mais barato.
+- Orçamento: o mesmo da leva normal por campanha (`RECEITA-LEVA-PONTA-A-PONTA.md` §3), 48 h sem mexer, IC ≤ 10% do ticket.
+- `gate-plano-leva.py` cobra as 3 fixas em toda campanha de 5 peças.
+
 ## Quantidade pela fase da conta
 
 | Fase | Quantas peças | Estrutura na conta |
