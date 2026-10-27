@@ -9,9 +9,11 @@ Skill `low-ticket-painel` (estado do negócio) → `OFERTAS/<slug>/CLAUDE.md` + 
 (o que já vendeu ou não). Copiar os nossos vencedores (mesmo de outro idioma/nicho) já é peça de teste.
 
 ## 1 · Persona com dado → `gate-persona.py`
-- Pesquisa: `~/.claude/skills/criacao-low-ticket-mvt/references/PESQUISA-PADRAO-OFERTA.md`. Começa pela página do
-  anunciante modelado (narrativa que mais repete e mais dura = espinha da leva). Depois Biblioteca com 5 palavras +
-  1 hashtag por idioma, YouTube/TikTok/Trends com contagem e data.
+- Pesquisa: caminho fixo do **Gate 0.2 passo 2 do `criativo-ads/SKILL.md`** (dona, 27/10/2026) — agente tira
+  5 keywords por idioma (PT/EN/ES) do site no ar → **a dona busca na Biblioteca** e manda os anunciantes →
+  agente abre a página de cada anunciante, printa e descreve **todos** os criativos, agrupa por narrativa
+  (`pesquisa/ANUNCIANTES-<data>.md`) → em paralelo, agente mede YouTube (viral + comentários)/TikTok/Trends
+  com termos da pessoa (`DEMANDA-ORGANICA-<data>.md`) → cruza. O agente não busca termo na Biblioteca.
 - Arquivo: `pesquisa/PERSONA-E-ANGULOS.md` no modelo `MODELOS/_MODELO-PERSONA-E-ANGULOS.md`.
 - Prova: `python3 ~/.claude/skills/criacao-low-ticket-mvt/scripts/gate-persona.py OFERTAS/<slug>` = LIBERADO.
 - Lição: Elétrica estudou o estudante (quem compra é o eletricista); Jiu usou "faixa branca" (só vendeu sem isso).

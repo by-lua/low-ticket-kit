@@ -39,6 +39,7 @@ zenith-gateway
 publicos-meta-checkout
 # Criativo
 criativo-ads
+criativo-ads-imagem
 criativo-ads-video-orq
 modelagem-escalados
 gpt-imagem-playwright

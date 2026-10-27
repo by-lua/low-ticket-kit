@@ -36,6 +36,9 @@ BR, 24/10). Rodar o loop inteiro 2x: uma vez por **keyword direto** (passo 1), o
    quando as duas metades voltam e são cruzadas (passo 12). Motivo: keyword de Biblioteca é decisão de
    compra (a dona vê o card e sabe na hora se é concorrente); dor/persona é leitura de comentário, e
    isso é o que o agente faz melhor sem depender de clique manual.
+   **Quando a dona manda o anúncio/anunciante (27/10/2026):** o agente abre a página do anunciante,
+   printa e descreve TODOS os criativos (copy, imagem, vídeo: como abre, o que faz, como fecha) e
+   agrupa por narrativa — procedimento único no Gate 0.2 passo C do `criativo-ads/SKILL.md`.
 
 1. **Keyword direto — 5 por idioma (PT+EN+ES = 15 no total), correção dona 25/10/2026 (substitui
    qualquer contagem anterior deste arquivo).** Nome genérico do nicho SOZINHO não acha concorrente

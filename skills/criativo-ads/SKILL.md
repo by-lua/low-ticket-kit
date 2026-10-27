@@ -191,21 +191,61 @@ material que o cliente nunca vai receber. É o modo de erro que mais caro já cu
 Antes de planejar qualquer leva (ex.: 30 do teste 3× 1-1-10):
 1. **Persona atualizada e conferida:** `PERSONA-E-ANGULOS.md` da oferta bate com a página no ar
    (o que vende / não é / preços / bônus) e as dores têm medida. Resumo da oferta errado = para aqui.
-2a. **Começa pelo anunciante MODELADO (a página da Biblioteca que a dona passou):** é a oferta que já
-   vende. Listar todos os anúncios dele e, pra cada **narrativa**, contar em quantos anúncios ela se repete
-   e há quantos dias roda. **A narrativa que roda há mais tempo e mais se repete é a que vende** — e entre as que vendem, escolher a que dá pra **modelar com o que a gente TEM** (sem rosto proprietário, prova inventada ou material que a oferta não tem; Rodrigo, estudo `CONHECIMENTO/ESTUDOS/2026-10-26-delta-criativo-rodrigo.md`) (ex.: Atlas —
-   "recém-formado começando como personal / no consultório" repetida em vários anúncios) → vira peça da
-   leva em imagem E em vídeo. Dissecar como foi feito: visual, ângulo, gancho, sequência, personagem.
-   Ela também diz **quem compra de verdade** (entra no PERSONA-E-ANGULOS, seção QUEM COMPRA/MERCADO).
-   Registro: `OFERTAS/<slug>/pesquisa/BIBLIOTECA-<data>.md` (anúncio · narrativa · repetições · dias · formato).
-2. **Biblioteca de Anúncios + demanda orgânica = o LOOP ÚNICO de
-   `criacao-low-ticket-mvt/references/PESQUISA-PADRAO-OFERTA.md`**, mesma régua, nunca uma pesquisa
-   à parte, nunca resumido aqui de novo — ler aquele arquivo inteiro antes de buscar. Rodar o loop
-   com a dor da PERSONA ampla ("iniciante trava em quê"), nunca só o ângulo já sugerido na conversa
-   — pesquisa estreita confirma o que já se queria achar, não descobre dor nova (lição 24/10/2026,
-   Mapa do Tarot BR). Registra em `OFERTAS/<slug>/pesquisa/BIBLIOTECA-AMPLIADA-<data>.md` +
-   `DEMANDA-ORGANICA-<data>.md` e usa como referência real da leva (Gate 0.1). Mecânica de browser:
-   `mvt-minerar` (falso-zero, perfis, headed).
+2. **⛔ PESQUISA DO CRIATIVO — a BIBLIOTECA É DA DONA, a demanda orgânica é do agente (dona,
+   27/10/2026 — a medição do agente na Biblioteca saiu ruim; o que funciona é YouTube/TikTok/Trends).**
+   O agente **não abre a Biblioteca pra buscar por termo**. Caminho fixo quando a oferta ainda não tem
+   o estudo de criativo:
+
+   **Passo A · keywords (agente) — sai SEMPRE que a página de vendas fica pronta (no ar)**, sem a
+   dona pedir. Lê **todos os textos da página no ar** (headline, o que recebe, bônus, mecanismo, dores,
+   FAQ) pra pegar o **conceito inteiro** do que vendemos, e entrega as chaves pra achar ofertas
+   parecidas na Biblioteca, **em PT, EN e ES**, 5 por idioma, nesta ordem:
+   1. **Diretas = formato + tema** — como um concorrente chamaria o MESMO produto (Mapa do Tarot →
+      "mapa mental tarot", "tarot visual"; ES "mapa mental tarot", "tarot visual"; EN "tarot cheat
+      sheet", "visual tarot guide"). São as que mais acham concorrente.
+   2. **Promessa** (o resultado: "aprender tarot sem decorar").
+   3. **Dor/tema amplo** ("significado das cartas de tarot").
+   + 1-2 de audiência. Nunca a **marca** nossa ("Mapa do Tarot" com maiúscula/nome de produto).
+   Formato: lista pronta pra colar. Grava em
+   `OFERTAS/<slug>/pesquisa/KEYWORDS-BIBLIOTECA-<data>.md`. É o mesmo que a dona faz no GPT mandando o site.
+
+   **Passo B · busca na Biblioteca — 2 modos:**
+   - **Modo dona (padrão no nosso portfólio):** a dona busca com as keywords e manda os
+     anúncios/anunciantes. Enquanto isso o agente roda o Passo D.
+   - **Modo agente (quem usa o kit e não sabe buscar, ou a dona pede "pesquisa você"):** o agente
+     busca cada keyword na Biblioteca (mecânica `mvt-minerar`: perfil livre headed, falso-zero, ativos
+     há mais tempo), separa os anunciantes de infoproduto parecido e segue pro Passo C com eles.
+     Registra na mesma `ANUNCIANTES-<data>.md` marcando "achado pelo agente".
+
+   **Passo C · dissecar cada anunciante que a dona mandar (agente).** Pra cada anúncio recebido:
+   1. Abre a **página do anunciante** na Biblioteca (`view_all_page_id=<id>`, ativos, todos os
+      países) — perfil de browser livre e headed, mecânica de `mvt-minerar`.
+   2. Vê **todos** os criativos dele: copy (texto principal + título), imagem, vídeo, carrossel.
+   3. **Printa cada um** (vídeo: print da abertura, do meio e do fim). Prints vão pra
+      `PROJETOS-MIDIA/CRIATIVOS-CONCORRENTES/<OFERTA>-<anunciante>/` com symlink em
+      `OFERTAS/<slug>/pesquisa/referencia/` (regra de mídia de terceiro da pasta PROJETOS).
+   4. **Descreve cada um em 1 linha:** formato (demo, UGC, expert, estático, carrossel, só texto) ·
+      como abre · o que faz no meio · como fecha · headline/copy literal · há quantos dias roda.
+   5. Agrupa por **narrativa**: quantos anúncios repetem e há quantos dias. **A que mais repete e mais
+      dura é a que vende** — entre essas, marca as que dá pra **modelar com o que a gente TEM** (sem
+      rosto proprietário, prova inventada ou material que a oferta não tem).
+   Registro: `OFERTAS/<slug>/pesquisa/ANUNCIANTES-<data>.md` (anunciante · link · tabela peça a peça ·
+   narrativas · "modelar: sim/não + por quê"). Ele também diz **quem compra de verdade** (vai pro
+   PERSONA-E-ANGULOS, seção QUEM COMPRA/MERCADO).
+
+   **Passo D · demanda orgânica (agente, em paralelo com o B).** Tira do produto os termos de busca da
+   pessoa — o que ela digita, não o nome do produto (Tarot: "como aprender tarot", "significado das
+   cartas", "tarot para iniciantes") — e mede nos 3 idiomas do mercado:
+   - **YouTube:** vídeos mais virais do termo (views + data), **comentários lidos** — copiar as frases
+     de dor literais com contagem;
+   - **TikTok:** vídeos e legendas com mais volume do termo;
+   - **Trends:** índice do termo e consultas relacionadas/em alta.
+   Regra e piso: `criacao-low-ticket-mvt/references/PESQUISA-PADRAO-OFERTA.md` (passos 8-10b). Rodar com
+   a dor da PERSONA ampla, nunca só o ângulo já sugerido na conversa (lição 24/10, Tarot BR).
+   Registro: `OFERTAS/<slug>/pesquisa/DEMANDA-ORGANICA-<data>.md`.
+
+   **Passo E · cruzar.** Narrativa que vende (C) × dor com contagem (D) → banco de dores e ângulos do
+   `PERSONA-E-ANGULOS.md` → plano da leva. Dor que só aparece num dos dois lados entra marcada.
 3b. **Primeiro o que JÁ vence pra gente:** olha os vencedores das nossas ofertas (mesmo idioma ou outro,
    mesmo nicho ou outro ângulo — ex.: Atlas AR modela a oferta BR) e entende POR QUE funcionou. Muitas
    vezes copiar e adaptar o vencedor já é uma peça da leva (já é um teste); o planejamento vai pras outras.

@@ -539,7 +539,7 @@ Depois de escolhida a concepção vencedora (Parada 3 liberada; trilha K confere
 
 | Ordem | Item | Skill/ponteiro |
 |---|---|---|
-| 1 | Página (`pagina/BLOCOS.md` + `COPY.md`) | `references/CONSTRUCAO.md` §6 · `imagens-pagina-low` (imagens) · `depoimentos-pagina-de-vendas` · `page-cro`/`popup-cro` |
+| 1 | Página (`pagina/BLOCOS.md` + `COPY.md`) — **página no ar = entregar na hora as keywords da Biblioteca em PT/EN/ES** (dona 27/10/2026; passo A do Gate 0.2 de `criativo-ads`, grava `pesquisa/KEYWORDS-BIBLIOTECA-<data>.md`) | `references/CONSTRUCAO.md` §6 · `imagens-pagina-low` (imagens) · `depoimentos-pagina-de-vendas` · `page-cro`/`popup-cro` |
 | 2 | Entrega: texto → DESIGN-SYSTEM/visual → amostra → MVP ≥10 págs → área de membros. **"Terminar a entrega"** = receita `references/TERMINAR-ENTREGA.md` (mapear → texto → GPT 1×1 com 2-3 refs → conferir → publicar) | `imagens-pagina-low` (mecânica de imagem) · `traduzir-entregavel-imagem` (oferta em outro idioma: entregável e imagens da página, sem regenerar) · `area-membros-netflix` (entrega final) · `signup-flow-cro` |
 | 3 | Mockups — **da página E do produto** (mesma mecânica; ver a regra grande abaixo) | `imagens-pagina-low` |
 | 4 | Banner | `banner-checkout-gpt` |
