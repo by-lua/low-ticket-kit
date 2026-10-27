@@ -38,6 +38,9 @@ Ler inteiro antes do primeiro `ffmpeg`/`remotion`. Cada linha já custou uma ver
 - **Cortes de tela/b-roll: 1,5–3 s.** Nenhuma cena passa de ~3–4 s sem corte (zoom/pan não substitui corte).
 - **Clipe de personagem falando (lip-sync)** dura a fala dele — corta no fim da 1ª ocorrência completa
   (o Flow repete a frase quando sobra tempo; ler a transcrição do clipe cru, nunca pelo RMS).
+- **UGC/expert em 2 clipes** (copy de 15 s em clipes de 8 s): mesma pessoa, roupa, cenário e material; junta com
+  fade curto no ponto em que ela respira. O instante antes de ela pegar o material é parte do gancho: suaviza
+  com efeito leve de entrada, não corta tarde (Rodrigo).
 - **Variedade:** usar TODAS as fontes de cena disponíveis (`criativos/ASSETS-MAPA.md`, `MATERIAL-ENTREGAVEL/`,
   `FLOW-TAKES/`, `BROLL-3D/`); nenhum take nem b-roll repete na mesma peça; peças irmãs usam b-rolls diferentes.
 - **Junções:** fade de áudio 30–50 ms em toda borda; troca de layout = transição animada ~0,3 s, nunca corte seco de tamanho.
@@ -88,6 +91,15 @@ de status/URL antes de compor. Imagem parada com Ken Burns nunca é cena de prod
   palavra vaza em cima do card. Truncar: `[w for w in words if w['end'] <= duração_do_corpo]`.
 - `words.json` copiado de outro criativo = legenda errada: conferir 1ª e última frase contra o roteiro DESTE vídeo.
 - Legenda é a ÚLTIMA camada. Clipe com texto queimado (TikTok, caption, watermark) é descartado.
+- **⛔ Mesma legenda em TODO modo — UGC, expert, caixinha, demonstrativo** (dona, 27/10/2026: no UGC o agente
+  inventava outro jeito de legendar). Pessoa falando em lip-sync não muda nada: mesmo KaraokeV2, mesmo projeto
+  copiado, mesmo `legenda_align.py` sobre a fala do clipe. Não existe "legenda de UGC".
+
+## 5b · Texto no topo (o único item que varia — e varia só por isto)
+
+- **UGC:** texto pequeno no topo, estilo legenda nativa de Story (disfarça de post real).
+- **Expert, demonstrativo, caixinha:** headline fixa com a **promessa** no topo ("Descubra como…") — aqui o texto vende.
+- Sempre dentro da margem de segurança e sem brigar com a legenda. Nada além disso muda entre modos.
 
 ## 6 · Áudio
 

@@ -220,18 +220,9 @@ troque o pronome.
   automático por posicionamento sem perder enquadramento. Isso é a MESMA lógica
   da nossa margem de segurança (`criativo-ads`), só que aplicada já na hora de
   GERAR a imagem, não só na hora de montar — vale testar como padrão de geração.
-- **Overlay de texto muda por formato, não é o mesmo tratamento pra tudo:**
-  - **UGC/testemunho:** texto pequeno e discreto no topo (estilo caption nativa
-    de Story) — a intenção é DISFARÇAR de post real, não parecer anúncio.
-  - **Vídeo gancho→mecanismo→CTA:** headline grande com a promessa por cima
-    ("descubra como…") — aqui o overlay É o argumento de venda, não disfarce.
-  - Escolher o estilo de overlay pelo PAPEL da peça (disfarçar vs. vender
-    explicitamente), nunca aplicar o mesmo texto-padrão em toda peça de vídeo.
-- **O respiro antes da pessoa pegar o material NÃO é descartado.** Ele suaviza
-  esse início com um efeito de transição leve, tratando aquele instante como
-  parte do próprio hook (a pessoa ainda não mostrou o produto = ainda é gancho de
-  atenção) — nunca cortar esse trecho achando que é sobra; é cortar que chega
-  tarde demais que é o erro (ver regra "gancho ≤2 frases, já mostra o material").
+- **Texto no topo do vídeo, legenda e o início antes da pessoa pegar o material** são EDIÇÃO —
+  moram em `criativo-ads-video-orq/references/EDICAO-PADRAO.md` (§5 legenda, §5b texto no topo,
+  §2 corte), iguais pra todo modo. Este arquivo é só do TEXTO falado.
 
 ## Velocidade da fala: ajusta na FALA gerada, antes de montar (não é regra de edição)
 
