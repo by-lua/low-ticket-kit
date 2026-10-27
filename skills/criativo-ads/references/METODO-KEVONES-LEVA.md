@@ -87,6 +87,7 @@ Advantage+ · 5 criativos** (ou duas campanhas assim). Referência viva: `OFERTA
 - Mesmas regras de sempre: espinha (dor que vende) em 1 peça de cada campanha, nenhuma dor repete dentro da
   campanha, corpo de vídeo nunca repete (`gate-corpo-video.py`), copy pelo catálogo da casa
   (`ROTEIRO-POR-FORMATO.md`). Preço, quando entrar, só numa vaga livre e sempre o plano mais barato.
+- **Caixinha de perguntas em vídeo e em imagem nunca na mesma campanha** (dona, 27/10/2026) — se as duas entrarem, uma vai em cada campanha.
 - Orçamento: o mesmo da leva normal por campanha (`RECEITA-LEVA-PONTA-A-PONTA.md` §3), 48 h sem mexer, IC ≤ 10% do ticket.
 - `gate-plano-leva.py` cobra as 3 fixas em toda campanha de 5 peças.
 

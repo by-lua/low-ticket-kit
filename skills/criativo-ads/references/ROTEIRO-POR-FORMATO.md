@@ -30,6 +30,7 @@ Regras que valem em todos:
   formato pode repetir entre campanhas, **conteúdo não**. Corpo repetido = `gate-corpo-video.py` bloqueia.
 - **Mecanismo não é repetir a promessa**: "existe uma forma de [X] que faz [Y]" / "não é [culpa dela], é que [causa real]".
 - CTA só comando, sem nome do produto nem preço falado; preço só nos formatos 7 e 10.
+- **Caixinha de perguntas: vídeo (4) e imagem (5) nunca na mesma campanha** — é o mesmo papel pro Meta (dona, 27/10/2026). Uma numa campanha, a outra em outra.
 - **Fala do produto, nunca de bônus, contagem ("400 fichas") nem nome de módulo** (`texto-anuncio-por-angulo.md`, dona 27/10).
 - **Todo vídeo (1-4) fecha igual:** depois da fala, card ~5 s **em silêncio** — fundo preto, mockup do
   plano Completo parado, setinha pra baixo com o CTA escrito (`EDICAO-PADRAO.md` §7).

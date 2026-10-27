@@ -81,6 +81,9 @@ def main():
         if not (v and e and c):
             erros.append('falta um dos 3 formatos')
         (falhas if erros else oks).append(tag + (' — ' + ', '.join(erros) if erros else ''))
+        cx = [l for l in linhas if re.search(r'caixinha|caixa de pergunta|caja de pregunta', l)]
+        if len(cx) > 1:
+            falhas.append(f'C{k}: {len(cx)} peças de caixinha de perguntas na mesma campanha — vídeo e imagem de caixinha vão em campanhas diferentes (dona 27/10/2026)')
         if not any(re.search(r'preco|precio|price', l) for l in linhas):
             avisos.append(f'C{k}: nenhuma peça com preço')
     # mistura por campanha (dona, 26/10/2026): C1 70/30, C2 50/50, C3 60/40 (imagem+vídeo)
