@@ -14,7 +14,7 @@ na imagem viram os 3 andares (headline = gancho · texto de baixo = mecanismo/en
 
 | # | Formato | Mídia | Gancho | Desenvolvimento (mecanismo) | CTA | Quem/o quê em cena |
 |---|---|---|---|---|---|---|
-| 1 | **Demonstrativo** | vídeo | dor medida, 1-2 frases | por que funciona + o material por dentro (tela + mesa real, split 70/30) | comando + produto parado + seta ~5 s | ninguém em quadro; tela do painel + mesa real |
+| 1 | **Demonstrativo** | vídeo | dor medida, 1-2 frases | por que funciona + o material por dentro (tela + mesa real, split 70/30) | comando falado | ninguém em quadro; tela do painel + mesa real |
 | 2 | **UGC cliente** | vídeo | conselho/identificação com a dor ("você não precisa…") | "existe uma maneira de…" + "foi isso que aprendi nesse material" + gatilho | comando pessoal | cliente segurando o material como livro, falando tudo (§ UGC) |
 | 3 | **Expert** | vídeo | dor ou contraste de autoridade | mecanismo + frase de autoridade ("estudei X anos… coloquei tudo aqui") | comando | especialista com o material aberto nas mãos, ambiente do papel (§ Expert) |
 | 4 | **Caixinha de perguntas — expert** | vídeo | a pergunta da caixinha (objeção/dor real) | expert responde com o mecanismo, material na mão | comando | expert lendo a caixinha e respondendo |
@@ -30,6 +30,8 @@ Regras que valem em todos:
   formato pode repetir entre campanhas, **conteúdo não**. Corpo repetido = `gate-corpo-video.py` bloqueia.
 - **Mecanismo não é repetir a promessa**: "existe uma forma de [X] que faz [Y]" / "não é [culpa dela], é que [causa real]".
 - CTA só comando, sem nome do produto nem preço falado; preço só nos formatos 7 e 10.
+- **Todo vídeo (1-4) fecha igual:** depois da fala, card ~5 s **em silêncio** — fundo preto, mockup do
+  plano Completo parado, setinha pra baixo com o CTA escrito (`EDICAO-PADRAO.md` §7).
 - Texto de imagem: `texto-anuncio-por-angulo.md`. Visual: orgânico iPhone, nunca mockup.
 
 ## O que ele faz, na ordem (nunca pula etapa)
@@ -84,7 +86,9 @@ convertidos em demonstrativo puro. Isso não é UGC nem expert.
 
 **Como é (Rodrigo, saga Europa parte 2: "mulher segurando o livro e falando: [copy]", 15 s):**
 - A pessoa **segura o material como um livro/caderno** (capa de frente pra câmera, perto do
-  peito/rosto) — mesmo o produto sendo digital, ele é apresentado como um livro que chegou. Ela
+  peito/rosto) — mesmo o produto sendo digital, ele é apresentado como um livro que chegou. Pode ser
+  também uma **apostila encadernada, meio grossa** (espiral ou capa dura, com a capa real da
+  oferta) — o volume na mão é parte da prova de que tem muito conteúdo. Ela
   fica **em quadro falando a copy inteira** (gancho → desenvolvimento → CTA), olhando pra câmera.
 - **UGC** = usuária comum dando **a opinião dela sobre o material** ("comprei isso aqui e…").
   Não conta a vida dela, não faz história longa, não navega páginas: é a opinião de quem usou.

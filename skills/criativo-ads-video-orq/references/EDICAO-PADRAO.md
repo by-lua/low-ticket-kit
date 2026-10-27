@@ -21,7 +21,7 @@ Ler inteiro antes do primeiro `ffmpeg`/`remotion`. Cada linha já custou uma ver
 3. **Alinhar** a voz: `scripts/legenda_align.py` → `words.json` (tempo de CADA frase).
 4. **Ler frase por frase o que a fala diz** e só então escolher a cena de cada trecho.
 5. **Montar** no Remotion (layouts + transições + legenda), ffmpeg só mede/normaliza/mixa.
-6. **Trilha** por baixo, **card CTA** depois do fim natural da fala.
+6. **Trilha** por baixo, **card CTA** depois do fim natural da fala (fundo preto, mockup do Completo, seta, em silêncio — §7).
 7. **QA** (seção 9) assistindo inteiro. Só então "pronto".
 
 ## 2 · Corte
@@ -80,7 +80,8 @@ de status/URL antes de compor. Imagem parada com Ken Burns nunca é cena de prod
 
 - **Uma única fonte de voz** (nunca voz embutida de render anterior + voz nova = eco/fase).
 - Voz final sempre a NOSSA (`narracao-hub-tts`), mesmo que o clipe do Flow tenha saído com voz dele.
-- **Trilha instrumental contínua -18 a -22 dB**, do 1º frame até o fim do card (não troca no meio, não corta no fim da fala).
+- **Trilha instrumental contínua -18 a -22 dB**, do 1º frame até o fim da fala do CTA (não troca no meio);
+  **para com fade de ~0,3 s quando o card entra — card é em silêncio** (§7, dona 27/10/2026).
   Banco: `OFERTAS/mapa-do-tarot/criativos/BR/_ASSETS/trilhas/`.
 - Medir, não ouvir: `volumedetect` voz sozinha × trilha sozinha; master ~-16 LUFS, true peak ≤ -2 dBTP.
 - B-roll sempre mudo (`-an` / `muted` no Remotion).
@@ -89,12 +90,15 @@ de status/URL antes de compor. Imagem parada com Ken Burns nunca é cena de prod
 ## 7 · Fecho e CTA
 
 - **Fala do CTA = só o comando curto**, sem nome do produto, sem preço/garantia/vitalício ("Clicá acá abajo y descubrí").
-- **O vídeo termina natural** (a fala do CTA inteira) e **DEPOIS entra o card, +~5 s** com a trilha seguindo.
-  Nunca cortar a cena do CTA pra caber o card.
-- **Card CTA (asset único da leva, reusado):** fundo preto · mockup COMPLETO do produto no topo (única exceção
-  do "nunca mockup") · faixa com o comando em branco sobre a cor da marca · **seta vermelha com bounce pra baixo**.
-  Mockup: `produto/MOCKUPS-NOSSOS/` → página de vendas no ar (curl no HTML) → lâmina real só se não houver nenhum.
-  Outra peça da leva já montou o card? Reusa o arquivo.
+- **O vídeo termina natural** (a fala do CTA inteira) e **DEPOIS entra o card, +~5 s, EM SILÊNCIO** — sem voz e
+  sem trilha (dona, 27/10/2026; Rodrigo: *"deixa essa parte em silêncio, mostrando o livro, pra ele ficar
+  pensando e decidir"*). Nunca cortar a cena do CTA pra caber o card.
+- **⛔ Vale em TODO vídeo nosso** — demonstrativo, UGC, expert, caixinha de perguntas, qualquer formato.
+- **Card CTA (asset único da leva, reusado):** **fundo preto** · **mockup do plano COMPLETO** parado (única
+  exceção do "nunca mockup") · **setinha apontando pra baixo** (vermelha, bounce) · texto curto do CTA
+  ("Tocá acá abajo" / "Clica aqui embaixo") em branco.
+  Mockup: `produto/MOCKUPS-NOSSOS/` (o do Completo) → página de vendas no ar (curl no HTML) → lâmina real só se
+  não houver nenhum. Outra peça da leva já montou o card? Reusa o arquivo.
 - Sem tarja de marca (só se o brief pedir).
 
 ## 8 · Formato e técnica
