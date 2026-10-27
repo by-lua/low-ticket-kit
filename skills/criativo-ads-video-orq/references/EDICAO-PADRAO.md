@@ -9,6 +9,13 @@
 > Este arquivo **manda** sobre qualquer trecho do `SKILL.md` que diga outra coisa sobre
 > velocidade, corte, legenda, trilha ou CTA. Os trechos antigos ficaram lá como histórico.
 > Mudou regra de edição? Muda AQUI, nunca só no SKILL.md.
+>
+> **⛔ Regra ditada no meio de uma edição vale pra TODO vídeo (dona, 27/10/2026).** Quando a dona fala
+> uma regra de legenda, corte, trilha, card, velocidade etc. enquanto um vídeo está sendo editado:
+> (1) aplica no vídeo; (2) **grava aqui na mesma hora**, na seção certa, com a data; (3) no
+> `roteiro.md`/`anuncio.md` da peça fica só "aplicada a regra X do EDICAO-PADRAO". Erro real: regras
+> de 09/10 (abrir no material, sem imagem parada) e de 16/10 (gravação sem selo "In update") ficaram
+> escritas só dentro do roteiro de 1 vídeo (Jiu-Jitsu, Elétrica, Geri US) — o vídeo seguinte não via.
 
 Ler inteiro antes do primeiro `ffmpeg`/`remotion`. Cada linha já custou uma versão reprovada.
 
@@ -36,6 +43,12 @@ Ler inteiro antes do primeiro `ffmpeg`/`remotion`. Cada linha já custou uma ver
 - **Junções:** fade de áudio 30–50 ms em toda borda; troca de layout = transição animada ~0,3 s, nunca corte seco de tamanho.
 - Cortar silêncio de cabeça, cauda e pausas internas inúteis; preservar pausa que dá sentido.
 - Nenhum frame de material velho vaza em transição (`startFrom` no 1º frame certo).
+- **Gancho ≤ 2 frases e o material entra na tela até a 3ª frase** (regra 09/10, Jiu-Jitsu/Elétrica: vídeo que
+  demora pra mostrar o produto não vende). Produto em vídeo = **gravação real em movimento**, nunca PNG parado.
+- **A fala não promete o que a cena não mostra** (regra B, Jiu-Jitsu CRIATIVO-15): se a voz diz "olha as
+  combinações", a tela está nas combinações naquele segundo.
+- **Gravação de tela limpa:** sem barra do navegador/status, sem URL, sem selo "EM BREVE"/"EM ATUALIZAÇÃO"/
+  "In update"/"18 of 100 published", sem "MVP" (casos Jiu 04/10, Geri US 16/10). Tem selo? A dona regrava, não usa.
 
 > Obsoleto: "≥6 s por cena" (tabela de números, 07/09) — era de outro formato; não vale mais.
 
@@ -119,6 +132,7 @@ de status/URL antes de compor. Imagem parada com Ken Burns nunca é cena de prod
 - [ ] Abrir 1 frame de CADA fonte da lista de concat (clipe de outro criativo/pessoa errada entra fácil).
 - [ ] Card começa exatamente no fim do corpo (frame ~0,3 s antes e depois), sem legenda vazando.
 - [ ] Karaokê: 1 palavra amarela por frame e ela MUDA entre frames; nada sobreposto (frames a cada 0,5 s).
-- [ ] Trilha presente do início ao fim e mais baixa que a voz (números do `volumedetect`).
+- [ ] Trilha presente do início até o fim da fala e mais baixa que a voz (números do `volumedetect`); **card em silêncio** (fundo preto, mockup do Completo, seta).
+- [ ] Gravações sem selo "EM BREVE/EM ATUALIZAÇÃO/In update", sem URL, sem barra do navegador; material na tela até a 3ª frase.
 - [ ] `cropdetect` 1080:1920 em cada b-roll; `freezedetect` zero; sem barra do navegador.
 - [ ] Assistir como cliente vendo pela 1ª vez: faz sentido? fica bom? Só então "pronto".
