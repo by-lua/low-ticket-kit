@@ -71,6 +71,14 @@ nunca pede "escreve um roteiro" solto.
 - **CTA:** comando curto, mesma regra do UGC.
 
 ### Demonstrativo — tela do entregável por dentro
+- **⛔ O código da dor (D1, D2...) não é um título livre — é um PONTEIRO pro texto medido
+  (regra da dona, 26/10/2026 — erro real, NeuroActiva AR: "D2" no plano virou "nível de
+  dificuldade" de cabeça, mas o D2 medido no `PERSONA-E-ANGULOS.md` era "não enxerga bem,
+  letra tem que ser grande" — coisa completamente diferente).** Antes de escrever
+  qualquer gancho, abra a tabela DORES do `PERSONA-E-ANGULOS.md` e **leia o texto exato**
+  daquele código — nunca invente o que o código "deveria" significar pelo nome que ele
+  tem no plano de leva. Se o gancho não usa uma palavra/cena do texto medido, não é
+  aquela dor, é outra coisa com o código errado.
 - **Gancho — pega a pressão UM NÍVEL MAIS FUNDO, nunca a dor óbvia de superfície**
   (confirmado /watch, vídeo HUB TEOLÓGICO — b-roll/gancho falado → mostra
   entregável por dentro → CTA, sem personagem/expert em quadro). Ex.: produto de
