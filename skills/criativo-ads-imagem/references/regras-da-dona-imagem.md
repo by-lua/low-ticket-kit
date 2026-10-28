@@ -167,9 +167,21 @@ carro). **Única exceção: fase de impacto estilo Rodrigo** (fundo branco, text
 específico — **fundo branco OU preto** (varia peça a peça; texto preto+vermelho no branco, texto
 branco+vermelho no preto; regra da dona, 24/10/2026).
 
+**⛔ SUPERSEDE a regra de 25/10 abaixo nas peças de IMPACTO (texto puro, fundo branco/preto) —
+regra da dona, 27/10/2026:** gancho→desenvolvimento→CTA em 3 blocos lê devagar, texto comprido demais
+pra entender rápido rolando o feed. **Pra fase de impacto, é só 2 blocos: PRODUTO + CTA**, direto —
+nome do produto + o que ele entrega (+ preço, se for peça de preço) numa frase só, e o CTA logo
+embaixo. Nada de linha de desenvolvimento/benefício separada. Exemplo bom (referência aprovada):
+"ATLAS VISUAL: 150 MAPAS DE ANATOMÍA Y EJERCICIO." + "$10.900, ACCESO INMEDIATO." Continua valendo
+nomear o produto (não pode ser frase solta de curiosidade sem dizer o quê) — só a estrutura de 3
+blocos foi derrubada. **A regra de 3 blocos (gancho→desenvolvimento→CTA) continua valendo só pro
+carrossel tipo 2** (sequência de lâminas, onde cada card já é um bloco separado, não lê tudo de
+uma vez).
+
 **⛔ Fase de impacto e carrossel tipo 2 (só lâminas) também levam estrutura
 gancho→desenvolvimento→CTA, nunca frase solta de curiosidade (regra da dona,
-25/10/2026).** Uma frase isolada sem desenvolvimento vira curiosidade vaga, não
+25/10/2026 — SUPERSEDIDA pra fase de impacto pela regra de 27/10 acima; continua valendo pro
+carrossel tipo 2).** Uma frase isolada sem desenvolvimento vira curiosidade vaga, não
 intenção de compra (mesmo erro já documentado na regra de "peça de preço" acima
 — vale pra TODO texto curto, não só preço):
 - **Gancho/headline** — a frase de abertura, o que para o scroll.
@@ -183,17 +195,13 @@ intenção de compra (mesmo erro já documentado na regra de "peça de preço" a
   nunca um carrossel de páginas soltas sem fechamento.
 
 **⛔ Gate mecânico antes de escrever QUALQUER prompt de peça de impacto/só-texto
-(reincidiu 25/10/2026, NeuroActiva AR C1-4 — regra lida e mesmo assim pulada):**
-o prompt escrito tinha só gancho ("El problema no es tu paciencia. Es la hoja en
-blanco.") + CTA, sem nenhuma linha citando o produto/mecanismo — saiu curiosidade
-solta, a dona corrigiu na hora: *"quando é frase de impacto, não pode ser solta
-assim pra atrair curiosidade pra minha página — tem que ter a mesma vibe de hook,
-desenvolvimento e CTA, falando em contexto do meu produto"*. Antes de mandar
-QUALQUER prompt de texto-só pro GPT, **conte os blocos de texto no próprio
-prompt**: se só tem 2 (gancho + CTA), falta o do meio — escreva a linha de
-desenvolvimento citando o produto/mecanismo (ex.: "400 fichas ilustradas, listas
-para aplicar en la sesión.") ANTES de enviar, nunca corrija só depois que a
-peça já saiu errada.
+(regra original 25/10/2026, AJUSTADA 27/10/2026 pra 2 blocos):** o erro documentado em
+25/10 (NeuroActiva AR C1-4) foi gancho de curiosidade SEM nomear o produto — isso continua
+proibido. O que mudou é a estrutura: não é mais gancho+desenvolvimento+CTA (3 blocos, lento de
+ler), é **PRODUTO (nomeado, com o que entrega) + CTA** (2 blocos, direto). Antes de mandar
+QUALQUER prompt de texto-só pro GPT, **conte os blocos**: tem que ter exatamente 2 — (1) o nome
+do produto + o que entrega (+ preço se for peça de preço) e (2) o CTA. Nunca gancho solto sem
+nomear o produto, e nunca um 3º bloco de desenvolvimento separado inflando o texto.
 
 Caixa de perguntas também vale em imagem, e **quem responde é sempre o expert** da leva (nunca o UGC). **Texto = sempre texto de Stories**, na
 fonte nativa do Instagram Stories (Classic, sans tipo SF/Helvetica, branco em caixa preta arredondada ou preto em caixa
@@ -221,6 +229,14 @@ fase de impacto (só texto) e carrossel tipo 2 (só páginas).
    os arquivos de `selecionados/` de uma peça já pronta como referência e só manda o prompt com o
    texto novo.
 
+
+**Fase de impacto é o formato PREFERIDO pra clareza direta (dona, 27/10/2026):** quando a dúvida é
+"qual formato deixa mais claro o que é o produto", a resposta é fase de impacto — fundo branco (ou
+preto), **texto só**, sem cena, sem material aparecendo. Continua gancho→desenvolvimento→CTA (regra
+de 25/10 acima) e **preço é opcional**, não obrigatório — o que importa é nomear o produto com
+clareza total ("o quê, exatamente"). Nunca trocar essa clareza por algo "mais bonito"/vago tipo
+fundo colorido sem produto nomeado (a dona citou "o azul" como exemplo do que NÃO fazer: visual
+bonito mas sem dizer o produto direto).
 
 **Vibe das imagens (dona 23/10):** todas orgânicas estilo iPhone (derruba CPM), exceto a "fase de
 impacto" (fundo branco, texto preto e vermelho). Sem moldura, sem cara de anúncio montado.
