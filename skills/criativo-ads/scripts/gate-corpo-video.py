@@ -81,6 +81,19 @@ def n(s):
     return norm(s).strip()
 
 
+def termos_obrigatorios(of):
+    """Lê 'TERMOS OBRIGATÓRIOS DO CRIATIVO' do PERSONA-E-ANGULOS.md da oferta."""
+    cand = of / 'pesquisa' / 'PERSONA-E-ANGULOS.md'
+    if not cand.is_file():
+        return None
+    txt = cand.read_text(errors='ignore')
+    m = re.search(r'## TERMOS OBRIGAT[ÓO]RIOS DO CRIATIVO(.*?)(?=\n## |\Z)', txt, re.S | re.I)
+    if not m:
+        return None
+    m2 = re.search(r'^`([^`]+)`\s*$', m.group(1), re.M)
+    return [t.strip() for t in m2.group(1).split(',') if t.strip()] if m2 else None
+
+
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith('--')]
     if not args:
@@ -117,17 +130,30 @@ def main():
         h = proib.search(v)
         if h:
             proibidos.append(f'{k}: fala cita bônus/módulo/contagem "{h.group(0)}" — fala do produto (dona 27/10/2026)')
+    # Termo obrigatório do produto (dona 30/10/2026, mesmo buraco da imagem — vídeo nunca conferia)
+    sem_termo = []
+    termos = termos_obrigatorios(Path(args[0]).resolve())
+    if termos is not None:
+        for k, v in pecas.items():
+            if not any(t.lower() in v.lower() for t in termos):
+                sem_termo.append(f'{k}: fala não cita nenhum termo obrigatório do produto '
+                                  f'("{", ".join(termos)}") — mecanismo genérico (PERSONA-E-ANGULOS.md '
+                                  f'§ TERMOS OBRIGATÓRIOS DO CRIATIVO)')
+
     print(f'OK     {len(corpos)} vídeo(s) com corpo falado lido(s)')
     for r, a, b in sorted(falhas, reverse=True):
         print(f'FALHA  corpo {r:.0%} igual: {a}  ×  {b}')
     for x in proibidos:
         print('FALHA ', x)
-    if falhas or proibidos:
-        print('\nBLOQUEADO — reescrever: corpo repetido = mesma peça; bônus/módulo/contagem na fala = proibido '
-              '(METODO-RODRIGO-SLOTS.md · texto-anuncio-por-angulo.md)')
+    for x in sem_termo:
+        print('FALHA ', x)
+    if falhas or proibidos or sem_termo:
+        print('\nBLOQUEADO — reescrever: corpo repetido = mesma peça; bônus/módulo/contagem na fala = proibido; '
+              'fala sem termo obrigatório do produto = genérica demais '
+              '(METODO-RODRIGO-SLOTS.md · texto-anuncio-por-angulo.md · ROTEIRO-POR-FORMATO.md)')
     else:
         print('\nLIBERADO')
-    sys.exit(1 if (falhas or proibidos) else 0)
+    sys.exit(1 if (falhas or proibidos or sem_termo) else 0)
 
 
 if __name__ == '__main__':

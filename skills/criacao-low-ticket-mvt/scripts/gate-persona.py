@@ -39,6 +39,7 @@ SECOES = {
     'TERMOS DE BUSCA': r'^##+ .*termos de busca',
     'NARRATIVAS QUE RODAM': r'^##+ .*narrativas',
     'ÂNCORA DE PREÇO': r'^##+ .*ancora de preco',
+    'TERMOS OBRIGATÓRIOS DO CRIATIVO': r'^##+ .*termos obrigat[oó]rios do criativo',
 }
 
 
@@ -159,6 +160,17 @@ def main():
         (oks if len(viz) >= 2 else falhas).append(f'âncora de preço: {len(viz)} vizinhos (mín. 2)')
         if not re.search(r'decisao:\**\s*\w', ba):
             falhas.append('ÂNCORA DE PREÇO: falta a linha "Decisão:"')
+
+    # 10 · termos obrigatórios do criativo (dona 30/10/2026 — caso GeriNeuro CRIATIVO-14 genérico)
+    bto = secao(txt, SECOES['TERMOS OBRIGATÓRIOS DO CRIATIVO'])
+    if bto is not None:
+        mt = re.search(r'^`([^`]+)`\s*$', bto, re.M)
+        termos = [t.strip() for t in mt.group(1).split(',') if t.strip()] if mt else []
+        (oks if len(termos) >= 2 else falhas).append(
+            f'termos obrigatórios do criativo: {len(termos)} (mín. 2)' if len(termos) >= 2 else
+            'TERMOS OBRIGATÓRIOS DO CRIATIVO: lista vazia ou mal formatada — precisa de uma linha só '
+            'com crase, ex.: `Alzheimer, dementia, cognitive`. Sem isso o criativo sai genérico '
+            '(reprovado depois por gate-imagens-finais.py / gate-corpo-video.py).')
 
     m = re.search(r'\*\*data:\*\*\s*(\d{4}-\d{2}-\d{2})', txt)
     if m:

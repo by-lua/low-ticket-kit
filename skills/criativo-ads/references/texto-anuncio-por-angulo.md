@@ -36,6 +36,18 @@ criativo é quem guia o público — headline da arte, fala do vídeo, título/t
 ter uma arte falando de um jeito e uma descrição de anúncio falando de outro ângulo — quem lê o
 anúncio inteiro (arte + texto de fora) tem que sentir 1 mensagem só, não duas coladas.
 
+**A 1ª frase do Texto principal do `anuncio.md` ENDEREÇA quem compra, nunca descreve o produto
+primeiro** (regra já existente, reforçada 30/10/2026 — erro real, GeriNeuro CRIATIVO-11: "A full
+library organized by level..." abre descrevendo, não endereça). Testa: a frase começa com "se
+você...", "você que...", uma pergunta direta pra pessoa, ou um comando que só faz sentido pra quem
+já tem aquela rotina? Se começa descrevendo o que o produto É, reescreve.
+
+**Cada gancho/mecanismo é rastreável até uma fonte real, nunca escrito solto (ponte com
+`ROTEIRO-POR-FORMATO.md` § alavanca+fonte):** antes de fechar a copy de qualquer peça, a dupla
+pergunta é (1) qual alavanca (`4-alavancas.md`) e (2) de onde veio o mecanismo — anúncio modelado
+real ou demanda orgânica medida. Sem isso registrado, a copy não está pronta, mesmo passando no
+gate mecânico de sinal de dor.
+
 ## ⛔ O criativo fala do PRODUTO, não de bônus nem de volume (dona, 27/10/2026 — já tinha dito antes)
 
 O que a pessoa compra é **um produto só**. A copy (arte, fala e `anuncio.md`) fala **do material e do que

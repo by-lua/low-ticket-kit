@@ -216,6 +216,95 @@ def main():
         if 'mecanismo' not in txt:
             avisos.append('plano não diz que o corpo do vídeo desenvolve o mecanismo (gancho -> mecanismo -> CTA)')
 
+    # 14 · COPY NASCE DA OFERTA E DA PESQUISA (dona, 29/10/2026 — caso GeriNeuro: método todo escrito no
+    #      Gate 0.2 + RECEITA §3, agente pulou banco/roteiros/YouTube e a copy saiu genérica; nada travava).
+    #      Cobra os ARQUIVOS que a receita já manda fazer, não regra nova.
+    pq = of / 'pesquisa'
+    pastas = [plano.parent, of / 'criativos']
+
+    def acha(pad):
+        return sorted({p for d in pastas if d.exists() for p in d.glob(pad)})
+
+    tb = re.search(r'^##+ [^\n]*termos obrigat[oó]rios do criativo(.*?)(?=^## |\Z)', ptxt, re.M | re.S)
+    tm = re.search(r'^`([^`]+)`\s*$', tb.group(1), re.M) if tb else None
+    termos_ob = [t.strip() for t in tm.group(1).split(',') if t.strip()] if tm else []
+
+    anun = sorted(pq.glob('ANUNCIANTES-*.md'))
+    atxt = n(' '.join(p.read_text(errors='ignore') for p in anun))
+    if not anun:
+        falhas.append('pesquisa/ANUNCIANTES-<data>.md ausente — Gate 0.2 Passo B/C (anunciantes dissecados, TODOS os ativos de cada um)')
+    elif not re.search(r'mandado pela dona|achado pelo agente', atxt):
+        falhas.append('ANUNCIANTES sem seção "Mandado pela dona" (links crus) nem "achado pelo agente"')
+    else:
+        oks.append(f'anunciantes dissecados ({anun[-1].name})')
+    # tudo que a dona mandou (pesquisa/da-dona/) tem que estar no ANUNCIANTES
+    dd = pq / 'da-dona'
+    if dd.exists():
+        ids = set()
+        for p in dd.rglob('*'):
+            if p.is_file() and p.suffix.lower() in ('.md', '.txt'):
+                ids |= set(re.findall(r'(?:view_all_page_id|[?&]id)=(\d{6,})', p.read_text(errors='ignore')))
+        faltam = sorted(i for i in ids if i not in atxt)
+        (falhas if faltam else oks).append(
+            f'material da dona sem uso: {len(faltam)} link(s) de pesquisa/da-dona/ fora do ANUNCIANTES ({", ".join(faltam[:4])})'
+            if faltam else f'todos os {len(ids)} link(s) de pesquisa/da-dona/ estão no ANUNCIANTES')
+
+    dem = sorted(pq.glob('DEMANDA-ORGANICA-*.md'))
+    dtxt = n(dem[-1].read_text(errors='ignore')) if dem else ''
+    if not dem:
+        falhas.append('pesquisa/DEMANDA-ORGANICA-<data>.md ausente — Gate 0.2 Passo D (YouTube top vídeos + comentários, TikTok, Trends)')
+    elif not ('youtube' in dtxt and 'coment' in dtxt):
+        falhas.append(f'{dem[-1].name} sem YouTube + comentários lidos (Passo D)')
+    else:
+        oks.append(f'demanda orgânica medida ({dem[-1].name})')
+
+    est = acha('ESTUDO-LEVA-*.md')
+    if not est:
+        falhas.append('criativos/ESTUDO-LEVA-N.md ausente — raciocínio da leva em 7 passos (oferta → Biblioteca → orgânico → '
+                      'virar o lead → alavancas → ângulos → roteiros), molde LOW-TICKET/MODELOS/_MODELO-ESTUDO-LEVA.md')
+    else:
+        eraw = est[-1].read_text(errors='ignore')
+        et = n(eraw)
+        passos = {'1 oferta': r'1\W*a oferta', '2 biblioteca': r'2\W*biblioteca', '3 organico': r'3\W*organico',
+                  '4 virar o lead': r'4\W*virar o lead', '5 alavancas': r'5\W*alavancas', '6 angulos': r'6\W*transforma',
+                  '7 roteiros': r'7\W*roteiros'}
+        # conteúdo = linhas que NÃO vieram do molde (instrução do molde não conta como trabalho feito)
+        molde = of.parents[1] / 'MODELOS/_MODELO-ESTUDO-LEVA.md'
+        do_molde = {l.strip() for l in n(molde.read_text(errors='ignore')).splitlines()} if molde.exists() else set()
+        vazios = []
+        for k, rx in passos.items():
+            m = re.search(rf'^## +{rx}[^\n]*\n(.*?)(?=^## |\Z)', et, re.M | re.S)
+            novas = [l for l in (m.group(1).splitlines() if m else []) if l.strip() and l.strip() not in do_molde]
+            if not m or len(re.sub(r'\s|\|', '', ''.join(novas))) < 120:
+                vazios.append(k)
+        (falhas if vazios else oks).append(
+            f'{est[-1].name}: passo(s) vazio(s) ou ausente(s): {", ".join(vazios)}' if vazios
+            else f'{est[-1].name}: 7 passos preenchidos')
+        sec1 = re.search(r'^## +1\W*a oferta(.*?)(?=^## |\Z)', et, re.M | re.S)
+        if termos_ob and sec1 and not any(n(t) in sec1.group(1) for t in termos_ob):
+            falhas.append('passo 1 não cita nenhum termo obrigatório do produto — a oferta não foi lida')
+        r7 = re.search(r'^## +7\W*roteiros(.*)', et, re.M | re.S)
+        pecas = re.split(r'^### ', r7.group(1), flags=re.M)[1:] if r7 else []
+        if len(pecas) < len(todas):
+            falhas.append(f'passo 7: {len(pecas)} roteiro(s) escritos × {len(todas)} peças no plano')
+        campos = {'gancho': r'gancho', 'mecanismo': r'mecanismo', 'cta': r'cta', 'na imagem/cena': r'na imagem',
+                  'titulo': r'titulo', 'texto principal': r'texto principal', 'fonte': r'fonte', 'pt': r'pt'}
+        for pc in pecas:
+            nome = pc.splitlines()[0][:40]
+            faltam = [k for k, rx in campos.items() if not re.search(rf'^\s*[-*]\s*\*\*{rx}[^*]*:\*\*\s*\S', pc, re.M)]
+            if faltam:
+                falhas.append(f'roteiro "{nome}": falta/vazio {", ".join(faltam)}')
+            if termos_ob and not any(n(t) in pc for t in termos_ob):
+                falhas.append(f'roteiro "{nome}": nenhum termo obrigatório do produto — copy genérica')
+            if not re.search(r'passo [1-6]', pc):
+                falhas.append(f'roteiro "{nome}": fonte não aponta pra um passo do estudo (1-6)')
+        if pecas and not [f for f in falhas if 'roteiro "' in f]:
+            oks.append(f'{len(pecas)} roteiros completos, com termo do produto e fonte no estudo')
+        rev = re.search(r'- \[x\] \**revisor', et)
+        (oks if rev else (falhas if producao else avisos)).append(
+            'revisor de copy aprovou (pane limpo)' if rev else
+            'estudo sem "- [x] Revisor" — rodar o revisor em pane limpo (criativo-ads/references/REVISOR-COPY.md) antes de produzir')
+
     # aprovação
     aprovado = re.search(r'- \[x\] \**ok da dona', txt)
     if aprovado:

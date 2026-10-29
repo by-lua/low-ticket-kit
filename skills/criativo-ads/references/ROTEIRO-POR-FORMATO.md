@@ -25,6 +25,34 @@ na imagem viram os 3 andares (headline = gancho · texto de baixo = mecanismo/en
 | 9 | **Frase direta — fundo branco** (impacto) | imagem | frase de impacto (dor/promessa) em preto+vermelho | 1 linha com o mecanismo | CTA | só texto, sem produto, fundo branco |
 | 10 | **Frase direta — preço** | imagem | promessa | o que o produto faz | preço + CTA | fundo + produto real (clássica do Rodrigo, versão orgânica) |
 
+## ⛔ Cada gancho+mecanismo ataca UMA alavanca nomeada, vinda de anúncio real (dona, 30/10/2026)
+
+**Buraco estrutural achado no GeriNeuro CRIATIVO-14:** este arquivo (onde o roteiro É ESCRITO)
+nunca citava `4-alavancas.md`/`virar-o-lead.md`/SpyX — só o Gate 0 do `SKILL.md` citava, na parte
+de ESTRATÉGIA. Resultado: a alavanca ficava só na decisão do ângulo, nunca chegava na escrita da
+frase — copy saiu genérica, sem mecanismo real por trás.
+
+**Passo 0, antes de escrever QUALQUER palavra (não é checagem de depois, é o início do processo —
+dona, 30/10/2026): abre `PERSONA-E-ANGULOS.md` da oferta, lê `O QUE VENDEMOS` e
+`TERMOS OBRIGATÓRIOS DO CRIATIVO` inteiros, e escreve o gancho JÁ usando um desses termos — nunca
+escreve genérico pra "ajustar depois". O gate mecânico (`gate-imagens-finais.py`) existe como rede
+de segurança, não como o lugar onde a copy devia ter nascido certa.**
+
+**Depois do passo 0, antes de escrever QUALQUER gancho+mecanismo (qualquer formato, vídeo ou imagem):**
+1. Qual alavanca essa peça ataca (Transformação/Probabilidade/Tempo/Esforço,
+   `4-alavancas.md`)? Escreve isso ANTES da frase, não depois como rótulo decorativo.
+2. O mecanismo vem de onde — anúncio real modelado (Biblioteca, `ANUNCIANTES-<data>.md`) ou demanda
+   orgânica medida (`DEMANDA-ORGANICA-<data>.md`)? **Cita a fonte.** Gancho sem fonte real = achismo,
+   mesmo que pareça bom.
+3. Se a oferta já tem concorrente modelado com virar-o-lead rodado: a objeção que o lead simulado
+   sentiu NAQUELA etapa é a matéria-prima do gancho daquela peça — não inventa objeção nova sem
+   checar se já foi simulada.
+4. **Pra cada gancho, confere TAMBÉM de quem é a voz** (regra em `texto-anuncio-por-angulo.md` §
+   "A VOZ é sempre a persona confirmada") — alavanca certa com voz errada ainda reprova.
+
+Registro: a tabela de peças do plano da leva ganha 1 coluna a mais — "Alavanca + fonte do
+mecanismo" — ao lado de ângulo/dor, não só no `anuncio.md` de cada peça isolada.
+
 Regras que valem em todos:
 - **Cada peça da leva usa 1 dor + 1 mecanismo + 1 cena do banco** (`RECEITA-LEVA-PONTA-A-PONTA.md` §3) —
   formato pode repetir entre campanhas, **conteúdo não**. Corpo repetido = `gate-corpo-video.py` bloqueia.

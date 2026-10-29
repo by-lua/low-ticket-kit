@@ -69,6 +69,26 @@ def eh_rotulo(titulo):
     return not SINAL_DOR.search(titulo)
 
 
+def termos_obrigatorios(pasta):
+    """Sobe de CRIATIVO-N/ até achar OFERTAS/<slug>/pesquisa/PERSONA-E-ANGULOS.md e lê
+    '## TERMOS OBRIGATÓRIOS DO CRIATIVO' — lista separada por vírgula na linha de crase única."""
+    cur = pasta.resolve()
+    for _ in range(8):
+        cand = cur / 'pesquisa' / 'PERSONA-E-ANGULOS.md'
+        if cand.is_file():
+            txt = cand.read_text(errors='ignore')
+            m = re.search(r'## TERMOS OBRIGAT[ÓO]RIOS DO CRIATIVO(.*?)(?=\n## |\Z)', txt, re.S | re.I)
+            if m:
+                m2 = re.search(r'^`([^`]+)`\s*$', m.group(1), re.M)
+                if m2:
+                    return [t.strip() for t in m2.group(1).split(',') if t.strip()]
+            return None  # seção não existe nesta oferta ainda — não bloqueia (retrocompat)
+        if cur.parent == cur:
+            break
+        cur = cur.parent
+    return None
+
+
 def main(argv):
     arquivos, pasta = [], None
     formato, sem_texto = '4:5', False
@@ -162,10 +182,25 @@ def main(argv):
             oks.append(f'título fala da dor/pessoa: "{titulo}"')
         md = pasta / 'anuncio.md'
         if md.is_file():
-            hit = PROIBIDO_COPY.search(md.read_text(errors='ignore'))
+            conteudo_md = md.read_text(errors='ignore')
+            hit = PROIBIDO_COPY.search(conteudo_md)
             if hit:
                 falhas.append(f'anuncio.md cita bônus/módulo/contagem ("{hit.group(0)}") — o criativo fala do produto, '
                               f'não de bônus nem de volume (texto-anuncio-por-angulo.md, dona 27/10/2026)')
+
+            # 6. Termos obrigatórios do produto (dona 30/10/2026, caso CRIATIVO-14 genérico demais)
+            termos = termos_obrigatorios(pasta)
+            if termos is not None:
+                texto_busca = (titulo or '') + ' ' + conteudo_md
+                achou = [t for t in termos if t.lower() in texto_busca.lower()]
+                if not achou:
+                    falhas.append(
+                        f'copy genérica — nenhum termo obrigatório do produto ("{", ".join(termos)}") '
+                        f'aparece no título/texto. Gancho+mecanismo tem que citar o produto de verdade, '
+                        f'não um mecanismo genérico que serviria pra qualquer oferta (PERSONA-E-ANGULOS.md '
+                        f'§ TERMOS OBRIGATÓRIOS DO CRIATIVO)')
+                else:
+                    oks.append(f'cita termo obrigatório do produto: "{achou[0]}"')
 
     for x in oks:
         print('OK    ', x)

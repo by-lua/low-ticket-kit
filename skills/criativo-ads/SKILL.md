@@ -5,6 +5,24 @@ description: Porta de entrada ÚNICA e ORQUESTRADORA de criativo de anúncio (Me
 
 # criativo-ads
 
+## ⛔ ANTES DE TUDO: O ESTUDO DA LEVA — o raciocínio, nessa ordem (dona, 29/10/2026)
+
+A copy não se escreve "da cabeça" nem a partir do plano. Ela é o último passo de um raciocínio só,
+no molde SpyX, num arquivo só: **`OFERTAS/<slug>/criativos/ESTUDO-LEVA-N.md`** (molde
+`LOW-TICKET/MODELOS/_MODELO-ESTUDO-LEVA.md`). Cada passo usa o que o anterior achou:
+
+1. **A oferta:** memória da oferta (O QUE VENDEMOS, QUEM COMPRA, MANIFESTO) + página no ar até o checkout → mecanismo real em 1 frase.
+2. **Biblioteca:** links da dona (Gate 0.2 B/C) → todos os ativos do anunciante → copy literal + transcrição → **nossa versão modelada** (engenharia reversa, caso Atlas BR→AR).
+3. **Orgânico:** termos pensados + traduzidos → top vídeos YouTube, transcrição, comentários com contagem.
+4. **Virar o lead** (`criacao-low-ticket-mvt/references/virar-o-lead.md`) no NOSSO anúncio, página e checkout.
+5. **4 alavancas + brechas** (`4-alavancas.md`) — servem a copy, a página e a oferta irresistível.
+6. **Transformações e ângulos:** cada ângulo = brecha + alavanca + fonte (2 ou 3) + cena.
+7. **Roteiros** peça a peça (método Rodrigo, `references/ROTEIRO-POR-FORMATO.md`), cada um apontando o passo de origem, com PT.
+
+Depois: revisor em pane limpo (`references/REVISOR-COPY.md`) → dona aprova → só então Kevones decide a
+mistura e se produz. `gate-plano-leva.py` recusa leva sem o estudo; `gerar-imagem-gpt.sh` recusa gerar sem
+o plano liberado. Copy genérica (vale pra qualquer produto) = voltar ao passo 1.
+
 > **⚠️ CRIATIVO É O 80/20 DA OPERAÇÃO (regra da dona, 24/10/2026).** Entre tudo que se faz numa
 > oferta low ticket, o criativo é o que mais pesa no resultado — raso aqui custa mais caro que
 > em qualquer outra etapa. **Nenhum vídeo é "pronto" só por ter áudio+legenda+QA de boca OK** —
