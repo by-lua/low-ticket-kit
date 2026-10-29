@@ -141,9 +141,10 @@ Pontos principais:
   exceções (164 e 332, sem transcrição útil). Índice: `INDICE-CALLS.md`.
 - **Close Friends (id=13):** 5 aulas (ids 66, 67, 68, 69, 72) com transcrição. Índice:
   `INDICE-CLOSE-FRIENDS.md`.
-- **YouTube @1kevones:** 169 transcrições (163 vídeos + 6 lives), atualizado 23/10/2026.
-  Fechados os pendentes de 18/10 (`myAmzdSfkmg`, `hM2qQA1B6NY`) + novo `Fo3EFSn7LeI` (23/10,
-  "Você só precisa de 1hr pra ESCALAR" — metodologia completa, `DECISOES.md` §21). Ver
+- **YouTube @1kevones:** 170 transcrições (164 vídeos + 6 lives), atualizado 28/10/2026.
+  Fechados os pendentes de 18/10 (`myAmzdSfkmg`, `hM2qQA1B6NY`) + `Fo3EFSn7LeI` (23/10,
+  "Você só precisa de 1hr pra ESCALAR" — metodologia completa, `DECISOES.md` §21) + novo
+  `5SIIYn_7Z08` (28/10, caso de R$59,90 com 3×1-1-3 + BidCap, reforça §18). Ver
   `YOUTUBE-NOVIDADES.md`.
 - **Caso contínuo de set/2026** (`viLhlrcJPhU` 21/09, `bzsllO6ereY` 22/09, `Vtjdg86wDxA`
   29/09): playbook em `ESTUDO-DE-CASO-24-REAIS.md`, regras em `DECISOES.md`.

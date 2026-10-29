@@ -1,6 +1,13 @@
 # Kevones YouTube (@1kevones): o que tem de novo e importante
 
-Gerado em 2026-10-02, atualizado 2026-10-23 — 163 transcrições (vídeos; canal vai até 23/10/2026).
+Gerado em 2026-10-02, atualizado 2026-10-28 — 164 transcrições (vídeos; canal vai até 28/10/2026).
+
+**Novo em 28/10/2026:** `5SIIYn_7Z08` "LowTicket: R$4.950 em 7 dias com apenas 5 Campanhas!" —
+caso concreto, não regra nova: oferta R$59,90, 3 campanhas 1-1-3 (9 narrativas/pontos de contato,
+Advantage+, públicos engajado+comprador configurados na conta) + 1 campanha de BidCap só com os
+9 anúncios já validados. CPA cai de R$20 (nas 1-1-3) pra R$11 (no BidCap) com os MESMOS criativos.
+7 dias: R$1.375 investido, R$4.953 retorno, ROAS 3,6. Confirma `DECISOES.md` §18 (BidCap nunca
+testa criativo novo, só recebe validado) com número real novo — não substitui regra, reforça.
 Notas detalhadas por vídeo: `notas-A.md` … `notas-E.md`. Cruzado com o curso `../../Kevones-2026/`.
 
 **Fechado em 23/10/2026** (estavam pendentes desde 18/10, sem legenda por rate limit): `myAmzdSfkmg`

@@ -403,6 +403,13 @@ O criativo que já validou é o ativo mais barato que existe: **não se testa de
   começo (ex.: **R$ 100/dia no CPA**) — individual é permitido quando o criativo já vendeu.
 - **SE** monta BidCap **ENTÃO** o lance vai na casa do CPA-alvo, nunca abaixo: ticket R$ 37 →
   **BidCap 15** é o exemplo de "valor que funciona" (abaixo do CPA do anúncio, acima do piso do Meta).
+- **Caso novo confirma a regra (28/10/2026, `5SIIYn_7Z08`):** oferta R$59,90, 3 campanhas
+  1-1-3 (9 narrativas/pontos de contato, Advantage+, mix vídeo+estático+carrossel) rodando com
+  engajados+compradores configurado (públicos de base, §já existente) → os **9 anúncios
+  validados** jogados numa **única campanha de BidCap** cortam o CPA **à metade**: R$11 no
+  BidCap contra R$20 nas 1-1-3 com os mesmos criativos. 7 dias: R$1.375 investido, R$4.953
+  retorno, ROAS 3,6. Reforça: BidCap nunca testa criativo novo, só recebe o que já validou —
+  quanto mais narrativas validadas (ele já fala em escalar pra 20-30), mais barato o BidCap fica.
 - **SE** o criativo vencedor é **imagem** e a oferta já tem ROAS 1,5 **ENTÃO** escale com
   **1-1-10**: três campanhas, cada uma com variações do criativo vencedor. *(`YT:viLhlrcJPhU`:
   40 anúncios, todos modelados sobre o que já vendeu na validação — nunca o mesmo anúncio duplicado.)*
