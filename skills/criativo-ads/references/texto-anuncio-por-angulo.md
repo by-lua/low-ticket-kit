@@ -14,6 +14,28 @@ Fontes (reescrito 27/10/2026, a pedido da dona — "pega o conceito"):
 > o Kevones citando isso num curso antigo. Cada peça sai com **1 copy fechada**; a variedade vem de
 > peças com narrativas diferentes, não de variar título no gerenciador.
 
+## ⛔ A VOZ é sempre a persona confirmada, nunca um terceiro — e tudo da peça bate junto (dona, 30/10/2026)
+
+**Erro real (GeriNeuro, CRIATIVO-14):** headline "Why does this photo bring back a whole memory?"
+tem "?" e passou no gate mecânico (`eh_rotulo` só olha sinal de pergunta/negação) — mas fala na voz
+de QUEM ESQUECE (paciente/família), quando a persona confirmada da oferta (`QUEM COMPRA DE VERDADE`
+no `PERSONA-E-ANGULOS.md`) é o **profissional que aplica** a ficha. O gate mecânico não checa DE
+QUEM é a fala, só se tem sinal de dor — isso deixa passar peça com a pessoa errada falando.
+
+**Regra, sem exceção:** antes de escrever QUALQUER texto da peça (headline, texto de baixo, fala do
+vídeo, título/texto/descrição/CTA do `anuncio.md`), reler a seção `QUEM COMPRA DE VERDADE` do
+`PERSONA-E-ANGULOS.md` da oferta e escrever a pergunta/frase **na voz dessa pessoa especificamente**
+— nunca na voz genérica do tema (ex.: oferta de memória não significa a peça fala sobre esquecer;
+significa a peça fala com quem PROFISSIONALMENTE lida com isso). Teste de 1 linha: "se eu lesse essa
+frase em voz alta, ela soa como algo que **a persona confirmada diria**, ou como algo que qualquer
+pessoa do tema diria?" Se for a segunda, reescreve.
+
+**Tudo na peça é UM ângulo só, coerente ponta a ponta (regra da dona, Andrômeda/Kevones):** o
+criativo é quem guia o público — headline da arte, fala do vídeo, título/texto/descrição/CTA do
+`anuncio.md` **têm que bater com o MESMO ângulo e a MESMA pessoa**, nunca peças soltas. Não dá pra
+ter uma arte falando de um jeito e uma descrição de anúncio falando de outro ângulo — quem lê o
+anúncio inteiro (arte + texto de fora) tem que sentir 1 mensagem só, não duas coladas.
+
 ## ⛔ O criativo fala do PRODUTO, não de bônus nem de volume (dona, 27/10/2026 — já tinha dito antes)
 
 O que a pessoa compra é **um produto só**. A copy (arte, fala e `anuncio.md`) fala **do material e do que
