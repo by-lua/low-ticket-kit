@@ -1552,6 +1552,20 @@ agent-browser --session $S snapshot -i -c | grep -i baixar   # acha o ref, ex. [
 agent-browser --session $S download @e5 "/caminho/absoluto/saida.png"
 ```
 
+**Se o toolbar do lightbox vier SEM o ícone "Baixar"** (só mostra `Imagem ▾ | %zoom | Abrir no painel
+lateral | X`, faltando Baixar e Compartilhar) — a aba caiu num estado de "chat flutuante" (acontece
+depois de clicar em "Abrir no painel lateral" ou em certas transições de navegação dentro do SPA).
+Sintoma extra: `eval` nos botões do dialog mostra `"Restaurar chat flutuante"` / `"Acoplar chat"`.
+Não adianta `navigate` de novo (é navegação dentro do SPA, não reseta o widget). **Corrige com F5
+(hard refresh de verdade):**
+```bash
+agent-browser --session $S key "F5"; sleep 4
+agent-browser --session $S snapshot -i -c | grep -i "imagem.*gerada"   # confirma toolbar normal
+agent-browser --session $S click 'button[aria-label="Imagem 1 gerada"]'
+sleep 1.5
+agent-browser --session $S snapshot -i -c | grep -i baixar   # agora aparece
+```
+
 Confirmar que salvou: `ls -la` no caminho — o comando `download` só imprime "✓ Download saved to
 ..." quando funcionou de verdade (edição do agent-browser já espera o evento de download).
 
