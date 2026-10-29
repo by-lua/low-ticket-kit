@@ -88,6 +88,19 @@ confirmar que nenhuma repete modo+estrutura dentro da mesma campanha.
 >    DIFERENTE (capa + 3-5 páginas distintas). Prova: `python3 ~/.claude/skills/criativo-ads/scripts/gate-pecas-criativo.py <pasta do criativo>`
 >    antes de gerar a cena no GPT/Flow.
 
+## Criativo segmenta, não o Ads Manager [regra da dona, 30/10/2026 — caso GeriNeuro]
+
+**Quem filtra QUEM responde ao anúncio é o CRIATIVO (copy + gancho), não a configuração de público/
+interesse do Meta Ads.** Quando a oferta quer falar só com uma persona específica dentro de um
+público maior (ex.: GeriNeuro quer só profissional — OT/SLP/activity director —, não cuidador
+família), a campanha roda com **público ABERTO** (sem travar interesse fechado tipo "occupational
+therapy" no Ads Manager) e é a **copy** que faz o trabalho de segmentação: uma frase que só quem
+está naquela função reconhece como sua ("Do you work with older adults and run out of ideas for
+every session?" já exclui sozinha quem não trabalha com isso). Mesmo princípio do país aberto +
+idioma do `metodo-rodrigo-liedson` (`references/MODELAGEM-EUROPA.md`/SKILL.md § Segmentação de
+país) — aqui aplicado a público, não geografia. Vale pra todo ângulo com persona específica dentro
+de nicho maior: o gancho PROVA que fala com aquela pessoa, não a config de targeting.
+
 ## ⛔ GATE 0 — leia a oferta ANTES de propor qualquer ângulo [regra da dona 10/10/2026]
 
 > **A ordem canônica completa** (persona → dor → demanda orgânica → oferta → página → criativo →
@@ -172,6 +185,17 @@ O que tem que estar **anexado** (arquivo, não descrição) antes de escrever o 
 | Estático | capa do produto + **2 ou 3 páginas reais** do entregável |
 | Carrossel | idem, mais a página de cada card do carrossel |
 | Vídeo | idem + **frames de tela do produto** gravados (`MATERIAL-ENTREGAVEL/gravacoes-tela/`) |
+
+**Gancho/copy SEMPRE da página no ar, nunca inventado/parafraseado (erro real, GeriNeuro,
+30/10/2026):** se a oferta já tem página publicada, o headline/subheadline/copy de cada seção JÁ é
+a referência — ler o `site/index.html` (ou a URL no ar) ANTES de escrever qualquer gancho, e citar
+literalmente. Eu inventei frase em inglês parecida com a copy modelada do concorrente em vez de
+abrir a própria página que eu mesmo tinha editado nesta sessão — a dona teve que colar a copy real
+duas vezes. **Checklist antes de escrever o 1º gancho:** a página desta oferta já existe publicada?
+Se sim, abri e copiei o texto de lá (headline, bullets, seções) palavra por palavra — não é
+permitido "lembrar de memória" nem reescrever parecido. Copy modelada de concorrente (`AUDITORIA-
+IRRESISTIBILIDADE.md`, `MODELAGEM-RAPIDA-1-PASSADA.md`) informa o MECANISMO do ângulo, mas o texto
+final do gancho é sempre o da nossa página real, quando ela existe.
 
 De onde sai a referência, nesta ordem:
 
