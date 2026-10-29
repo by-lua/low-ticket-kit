@@ -185,7 +185,22 @@ muita visualização = audiência durável, evergreen — demanda que não morre
 busca no Google** — nenhuma fonte sozinha decide; o conjunto (Biblioteca + vídeo viral + views de vídeo
 antigo + Trends + Google) forma a lógica de que o tema vende e tem gente querendo comprar agora.
 
-**Onde pescar (o Heitor lista 4 lugares, não só a Biblioteca)** [YT -UTDJP5eSrc]: (1) Biblioteca de Anúncios; (2) ferramentas de espionagem (Guru Killer, ED Miner — puxam a Biblioteca com mais dado) e a extensão **Spar** (filtra as páginas com mais anúncios); (3) **YouTube**: vídeos mais vistos + comentários, com as MESMAS palavras das 5 famílias; (4) **ChatGPT** para persona/dores/desejos/pensamentos internos. Volume de busca de uma palavra: **Uber Suggest** (3 buscas grátis/dia) e Google Trends [YT e7MDJ2OgMNE].
+**Onde pescar (o Heitor lista 4 lugares, não só a Biblioteca)** [YT -UTDJP5eSrc]: (1) Biblioteca de Anúncios; (2) ferramentas de espionagem (Guru Killer, ED Miner — puxam a Biblioteca com mais dado), extensão **Spar** (filtra as páginas com mais anúncios) e **SpyX** (extensão da dona, registrada 30/10/2026 — ao abrir um anúncio na Biblioteca, extrai metadado estruturado direto: curtidas da página, dias no ar, criativos duplicados, nº de anúncios do anunciante na busca, plataformas, CTA, link de destino; também dá a **transcrição do vídeo** do criativo sob pedido — usar como fonte de transcrição em vez de rodar Whisper manual quando o anúncio já foi puxado por ela); (3) **YouTube**: vídeos mais vistos + comentários, com as MESMAS palavras das 5 famílias; (4) **ChatGPT** para persona/dores/desejos/pensamentos internos. Volume de busca de uma palavra: **Uber Suggest** (3 buscas grátis/dia) e Google Trends [YT e7MDJ2OgMNE].
+
+**Prompt de modelagem via SpyX (dona, 30/10/2026) — já é a metodologia da casa, fonte única `4-alavancas.md` +
+`virar-o-lead.md`:** quando a dona manda o dado estruturado do SpyX pra modelar um anúncio achado, o fluxo é:
+(a) abrir o link de destino de verdade e ler a página inteira (checklist de extração do `virar-o-lead.md`);
+(b) virar o lead por etapa (anúncio→página→checkout), 6 perguntas fixas; (c) nota 0-10 por alavanca
+(`4-alavancas.md`) + a mais fraca; (d) brechas a explorar a partir das objeções do passo (b); (e) montar a
+oferta modelada puxando as 4 alavancas, cada item marcado com a alavanca que move; (f) ganchos/roteiros de
+criativo, cada um marcado com a alavanca atacada; (g) **nunca analisar o criativo (vídeo/imagem) sem a dona
+mandar** — pede a transcrição (via SpyX) ou a imagem antes de analisar gancho/ângulo/prova/CTA, nunca inventa.
+**Pra cross-market (outro idioma/mercado), roda em 2 ETAPAS, nunca junta:** Etapa 1 só diagnóstico — a dor é
+UNIVERSAL ou depende do país de origem (cultura, religião, sistema escolar, datas, leis, moeda, referências
+locais)? nota 0-10 por MERCADO candidato (não só por alavanca), marca 🔥 os de potencial forte, lista o que não
+se traduz e os riscos (concorrência, saturação, política de anúncio). **PARA e pergunta pra qual mercado
+modelar — espera a confirmação da dona antes de começar a Etapa 2 (modelagem).** Esse gate de pausa evita
+modelar o mercado errado antes de validar a tese.
 
 > ⚠️ **GOOGLE TRENDS = PERFIL `trends` (9234), NO BROWSER, HEADED. NUNCA POR HTTP.** Duas rodadas de
 > pesquisa (Elétrica e Jiu Jitsu, 10/10/2026) pediram volume no Trends e voltaram com **HTTP 429** em

@@ -76,6 +76,14 @@ BR, 24/10). Rodar o loop inteiro 2x: uma vez por **keyword direto** (passo 1), o
    esgotar a página dela. É aqui que aparece a narrativa que ela mais repete (a espinha da oferta dela).
 5. **Abre o site/página de vendas dela** pra entender a oferta por dentro (preço, estrutura, bônus) —
    sem isso o passo 4 fica incompleto, porque o anúncio só mostra o gancho, não o produto.
+   **Escreve o mecanismo real em 1 frase (30/10/2026):** o que ela REALMENTE vende, além do objeto —
+   ex. "não vende PDF, vende redução do trabalho de preparar atividades". É essa frase, não o nome
+   do produto, que decide se o concorrente é narrativa forte ou só mais um PDF genérico.
+   **Registra "Limitações" explicitamente (30/10/2026):** qualquer trecho do funil que não abriu até
+   o fim (tela de pagamento externa, método de pagamento, confirmação de transação) e qualquer dado
+   de prova social da página (nº de vendas, nota, depoimento) — escreve como **"alegação da própria
+   página, não verificada"**, nunca como fato. Isso não é opcional nem preguiça: é o que distingue
+   "li a página" de "copiei o que a página afirma sobre si mesma".
 6. **Volta pro passo 1-5 pra CADA um dos "quase idênticos" achados** (repetir o ciclo completo por
    concorrente, não só no primeiro). Isso fecha a camada "produto direto".
 6b. **Mapeia as PORTAS dentro do mesmo nicho** (dona, 24/10/2026): nicho largo puxa anúncio em
@@ -105,14 +113,22 @@ BR, 24/10). Rodar o loop inteiro 2x: uma vez por **keyword direto** (passo 1), o
    da DOR, não os mesmos termos já usados na Biblioteca (repetir termo é confirmar o que já se sabia,
    não achar dor nova). Vê os vídeos **mais vistos**, lê **comentários**, registra contagem + data do
    comentário mais recente.
+   **Ficha padrão por vídeo (30/10/2026, espelha o dado estruturado que o SpyX dá pra anúncio —
+   orgânico merece o mesmo rigor, não prosa solta):** canal · título · views · data de publicação ·
+   dias desde publicação · nº de comentários · data do comentário mais recente · formato (tutorial/
+   vlog/shorts/review) · trecho de dor literal mais repetido nos comentários, com contagem de quantos
+   comentários dizem a mesma coisa. Um vídeo sem essa ficha completa não conta pro piso de ≥5-6.
 9. **Mesma lógica no Google Trends** (12 meses, país, termos candidatos a gancho, consultas
    relacionadas e em ascensão) — busca aberta pela dor, não espelho da Biblioteca.
 10. **Mesma lógica no TikTok** (volume de comentários + caption; texto de comentário exige perfil
-    logado, sem isso registra a limitação, nunca estima).
+    logado, sem isso registra a limitação, nunca estima). **Mesma ficha padrão do passo 8**
+    (criador · caption · views/curtidas · data · dias desde publicação · nº comentários · data do
+    mais recente · trecho de dor literal + contagem).
 10b. **Mesma lógica no Threads (dona, 25/10/2026, nova fonte)** — busca aberta pela dor, vê posts
     com engajamento, lê os comentários/respostas (texto nativo, direto, sem filtro de algoritmo de
     vídeo) — costuma expor objeção e pergunta crua que YouTube/TikTok não mostram tão literal.
-    Exige perfil logado pra ver resposta; sem isso registra a limitação.
+    Exige perfil logado pra ver resposta; sem isso registra a limitação. **Mesma ficha padrão**
+    (autor · texto do post · data · nº respostas · trecho de dor literal + contagem).
 11. **Repete o loop INTEIRO (passos 1-6b, 7, 8, 9, 10, 10b) em ES e EN — nunca traduzindo literal.** Pra cada idioma,
     PENSA de novo nas 3 camadas de keyword (passo 1 e 7) **como o nativo fala aquilo**, não a tradução
     da palavra PT: gíria, termo de mercado, sinônimo que só existe naquela língua. Ex.: "aprender tarot

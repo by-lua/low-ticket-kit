@@ -154,6 +154,12 @@ Quem delega **também** cumpre este gate antes de escrever o briefing do pane �
 o orquestrador junta a referência e a leitura da oferta (ver `PROMPT-PADRAO-PANE.md`,
 bloco `[OFERTA-PRIMEIRO]`).
 
+**Oferta já no ar há tempo e nunca passou por auditoria de irresistibilidade (dona, 30/10/2026):**
+"tem muitas coisas antes do criativo" — criativo bom não salva oferta fraca. Antes do plano da leva,
+rodar `criacao-low-ticket-mvt/references/AUDITORIA-IRRESISTIBILIDADE.md` (vira o lead na NOSSA
+página, acha a alavanca mais fraca, melhora produto/bônus/bump/upsell, não só copy). O criativo da
+leva então já nasce atacando a alavanca que a auditoria corrigiu — não pula direto pro gancho.
+
 ## ⛔ GATE 0.1 — SEM REFERÊNCIA REAL NÃO EXISTE CRIATIVO [regra da dona 10/10/2026]
 
 **Nenhum criativo começa sem antes material de verdade da oferta na mão.** Este gate vem
@@ -227,15 +233,29 @@ Antes de planejar qualquer leva (ex.: 30 do teste 3× 1-1-10):
 
    **Passo C · dissecar cada anunciante que a dona mandar (agente).** Pra cada anúncio recebido:
    1. Abre a **página do anunciante** na Biblioteca (`view_all_page_id=<id>`, ativos, todos os
-      países) — perfil de browser livre e headed, mecânica de `mvt-minerar`.
+      países) — perfil de browser livre e headed, mecânica de `mvt-minerar`. **Nunca olha só o
+      anúncio que a dona linkou — abre TODOS os ativos daquele anunciante**, é o conjunto que dá o
+      conceito, não a peça isolada.
    2. Vê **todos** os criativos dele: copy (texto principal + título), imagem, vídeo, carrossel.
+      **Vídeo sempre TRANSCREVE** (não só "tem vídeo") — o áudio é parte da narrativa.
    3. **Descreve TODOS em texto, 1 linha cada (sem print):** formato (demo, UGC, expert, estático,
-      carrossel, só texto) · como abre · o que faz no meio · como fecha · headline/copy literal · há
-      quantos dias roda · ID/link do anúncio.
-   4. Agrupa por **narrativa**: quantos anúncios repetem e há quantos dias. **A que mais repete e mais
+      carrossel, só texto, **POV** — citar o formato explícito, ele é um sinal de modelagem por si
+      só: muitos anúncios no mesmo FORMATO pro mesmo público = o formato converte pra aquele
+      público, não só a copy) · como abre · o que faz no meio · como fecha · headline/copy literal ·
+      há quantos dias roda · ID/link do anúncio.
+   4. **Abre a página de vendas dele** (quando o anúncio linkar) e escreve **por que vende**: oferta,
+      prova, preço, estrutura — não só a copy do anúncio isolada.
+   5. **Critério de narrativa validada (regra fixa):** **1 anunciante com 1 único criativo rodando
+      ≥30 dias** OU **1 anunciante com ≥3 criativos, cada um ≥7 dias** = narrativa passou da fase de
+      teste, considerar pra modelar. Abaixo disso é teste ainda rodando, não vira base.
+   6. **Modelagem NÃO se limita ao nicho idêntico.** Nicho adjacente que compartilha PÚBLICO (ex.:
+      "atividades pra idoso" em geral, não só Alzheimer) com narrativa validada pelo critério acima
+      também entra — modela o MECANISMO (por que convence aquele público) e a estrutura/formato,
+      nunca a oferta literal. É engenharia reversa de copy validada num público parecido, não cópia.
+   7. Agrupa por **narrativa**: quantos anúncios repetem e há quantos dias. **A que mais repete e mais
       dura é a que vende** — entre essas, marca as que dá pra **modelar com o que a gente TEM** (sem
       rosto proprietário, prova inventada ou material que a oferta não tem).
-   5. **Print SÓ dos marcados pra modelar** (dona, 27/10/2026 — print de tudo não serve pra nada):
+   8. **Print SÓ dos marcados pra modelar** (dona, 27/10/2026 — print de tudo não serve pra nada):
       imagem = print do criativo; vídeo = print da abertura, do meio e do fim. O print é a
       **REF-FORMATO** da peça: vai pra `PROJETOS-MIDIA/CRIATIVOS-CONCORRENTES/<OFERTA>-<anunciante>/`
       (mídia de terceiro, regra da pasta PROJETOS) com symlink em `CRIATIVO-N/selecionados/REF-FORMATO-*`

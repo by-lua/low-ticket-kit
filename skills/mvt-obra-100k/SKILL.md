@@ -36,6 +36,16 @@ Documento `OFERTAS/<id>/pesquisa/obra-de-arte.md` `[T11.1–T11.6]` (nome de arq
 - **Timebox:** ≈30 min por modelagem selecionada com o agente de oferta [05:29:03] "a gente consegue montar em 30 minutinhos"; a energia vai para escolher bem e para a vantagem [05:48:23] "gaste a sua energia nisso aqui". Passou de meio dia → você está fazendo operacional cedo.
 - **Mudou mecanismo/produto/promessa → muda em tudo** [06:29:35] "você vai ter que modificar em tudo": página, criativo e mockups na mesma passada; registre no ESTADO.
 
+**Virar o lead na Obra — prática recomendada antes do Semáforo (dona, 30/10/2026, "melhor dos dois
+mundos": mapa da vantagem é comparativo SIM/NÃO, falta a simulação de objeção em 1ª pessoa).**
+Depois do mapa da vantagem, roda `criacao-low-ticket-mvt/references/virar-o-lead.md` NA PRÓPRIA
+Obra (promessa + 8 elementos + preço, mesmo sem página pronta ainda): na pele do comprador, por
+etapa prevista (anúncio→promessa→oferta→preço), as 6 perguntas fixas (o que fisga, o que desconfia,
+dúvida sem resposta, objeção de desistência, o que falta pra confiar, momento exato de desistir).
+Objeção encontrada que o mapa da vantagem não cobriu vira ajuste ANTES de montar o Semáforo — não é
+gate bloqueante no `gate.py` ainda (recomendação de prática, registra no `obra-de-arte.md` numa
+seção "Virei o lead" se rodou).
+
 **`[T11.7]` Semáforo das Decisões — obrigatório antes de selecionar (regra NOSSA, vinda do extra YT `M4cT8gIfilo`; não está na aula)** (método §10, "Semáforo das Decisões";
 YT `M4cT8gIfilo`). **Origem: não é da aula** (0 ocorrências nas 11h43); vem do YT `M4cT8gIfilo`. Na aula a seleção é sem cor: 3-5 modelagens → Obras → 3-5 Obras + ordem de execução [04:12:50] "vai montar aqui de umas três a cinco obras de arte" [06:25:55] "de todas aquelas, selecionamos de 3 a 5 obras de arte" [06:07:50] "você vai definir uma ordem de execução". O semáforo roda só sobre as Obras JÁ MONTADAS (as modelagens selecionadas, ~10-20), nunca sobre a leva inteira de 55-60 concepções. Classificar cada uma em 🟢/🟡/🔴
 pela tabela do método (tipo de produto · 10 mandamentos · demanda · intenção querem×precisam ·
@@ -97,6 +107,13 @@ atendimento). Mercado grande não é mercado fechado — é mercado com um ângu
 qualquer coisa: comunicação genérica não conecta com dor e o criativo fica sem o que mostrar.
 Quando as comunicações livres apontarem para públicos diferentes, escolha UMA e construa a oferta
 inteira nela.
+
+**7. Mapa da vantagem (SIM/NÃO) e virar-o-lead (1ª pessoa) respondem perguntas diferentes — rodar os
+dois, nunca só um (30/10/2026).** O mapa mostra ONDE a Obra ganha/perde do concorrente; virar o lead
+mostra ONDE o comprador desconfia mesmo numa linha "SIM" do mapa (ex.: garantia existe = SIM no
+mapa, mas o lead simulado ainda pergunta "e se não funcionar pra mim especificamente?" — a resposta
+a isso é texto, não aparece na tabela). Nicho sensível (regra #4 acima) é onde essa dupla checagem
+mais compensa: a objeção de credibilidade clínica/jurídica raramente aparece como "NÃO" no mapa.
 
 ### `[T11.8]` Checagem de CONCORRENTE POR MECANISMO — RE-CONFERÊNCIA antes da Parada 3 (a checagem primária é `concorrencia-<id>.md` em T9.13, `mvt-validar`, antes da Parada 2; aqui reabre e atualiza; frescor ≤48h = T13.19) [decisão do dono 25/09/2026]
 
