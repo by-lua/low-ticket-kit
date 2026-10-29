@@ -1535,3 +1535,23 @@ usuário do volume real antes de começar.
 
 ---
 
+## Baixar a imagem gerada (30/10/2026 — faltava, levou ~15 tentativas erradas pra achar)
+
+**O botão "Baixar" só existe dentro do LIGHTBOX (visualização ampliada), não no thumbnail do chat.**
+Clicar no thumbnail procurando um ícone de seta sobre a imagem, checar `elementFromPoint`, hover,
+`Mais ações` do rodapé da mensagem — nada disso acha o botão certo; ele só aparece depois de abrir
+a imagem em tela cheia.
+
+```bash
+# 1. Abrir o lightbox clicando no botão da imagem (aria-label "Imagem N gerada")
+agent-browser --session $S click 'button[aria-label="Imagem 1 gerada"]'
+sleep 1.5
+# 2. O lightbox mostra barra de topo com %zoom · ícone Baixar · Compartilhar · "Abrir no painel lateral" · X
+agent-browser --session $S snapshot -i -c | grep -i baixar   # acha o ref, ex. [ref=e5]
+# 3. Baixar de verdade
+agent-browser --session $S download @e5 "/caminho/absoluto/saida.png"
+```
+
+Confirmar que salvou: `ls -la` no caminho — o comando `download` só imprime "✓ Download saved to
+..." quando funcionou de verdade (edição do agent-browser já espera o evento de download).
+

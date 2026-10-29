@@ -197,6 +197,12 @@ permitido "lembrar de memória" nem reescrever parecido. Copy modelada de concor
 IRRESISTIBILIDADE.md`, `MODELAGEM-RAPIDA-1-PASSADA.md`) informa o MECANISMO do ângulo, mas o texto
 final do gancho é sempre o da nossa página real, quando ela existe.
 
+**Se a página AINDA NÃO existe** (produto novo, T7/T11 em andamento): a referência vira o
+`obra-de-arte.md` (promessa/headline já escritos lá, `mvt-obra-100k`) — cita ESSE texto, não
+inventa outro em paralelo. Gancho e headline da Obra nascem iguais; se o criativo chega antes da
+Obra fechar, PARA e aponta a falta (não escreve headline nova só pro criativo enquanto a Obra ainda
+não tem uma).
+
 De onde sai a referência, nesta ordem:
 
 1. `produto/MVP/<item>/` — as páginas aprovadas da peça.
