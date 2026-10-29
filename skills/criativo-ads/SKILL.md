@@ -215,7 +215,11 @@ Antes de planejar qualquer leva (ex.: 30 do teste 3× 1-1-10):
 
    **Passo B · busca na Biblioteca — 2 modos:**
    - **Modo dona (padrão no nosso portfólio):** a dona busca com as keywords e manda os
-     anúncios/anunciantes. Enquanto isso o agente roda o Passo D.
+     anúncios/anunciantes. **Primeira coisa a fazer ao receber: salvar os links exatamente como ela
+     mandou numa seção crua do `ANUNCIANTES-<data>.md`, marcada "mandado pela dona, <data>" — ANTES
+     de sintetizar ou dissecar qualquer um** (correção 29/10/2026, NeuroActiva AR: links da dona
+     viraram síntese direto sem registro de origem, depois não dava mais pra provar que eram dela).
+     Enquanto isso o agente roda o Passo D.
    - **Modo agente (quem usa o kit e não sabe buscar, ou a dona pede "pesquisa você"):** o agente
      busca cada keyword na Biblioteca (mecânica `mvt-minerar`: perfil livre headed, falso-zero, ativos
      há mais tempo), separa os anunciantes de infoproduto parecido e segue pro Passo C com eles.
