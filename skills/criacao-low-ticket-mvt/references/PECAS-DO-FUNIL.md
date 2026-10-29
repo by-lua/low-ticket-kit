@@ -108,6 +108,23 @@ na hora de projetar o funil.
 | **Ferramenta como UPSELL 1** (ajuda no TRABALHO dele) | persona tem tarefa **manual, repetida e com custo de erro/tempo** | calculadora/dimensionador, gerador de PDF com a marca dele, template/modelo pronto que substitui o que ele faz na mão, planilha que acelera o serviço | R$12,90-17,90 (add-on de 1 clique) |
 | **Ferramenta como TOPO / assinatura** (app que gera/faz a coisa) | a ferramenta tem uso **mês a mês** e dá pra entregar sem serviço humano contínuo | SiteExpress R$150/mês · App de Treino (Tarot/Cigano) · clube com kit novo/mês | R$19,90-150 **/mês** = LTV recorrente (o "microSaaS de topo" do funil de alta conversão, `CONSTRUCAO.md` §5) |
 
+### 3.1b Trial grátis no microSaaS de assinatura (Rodrigo Liedson, método Clube do Dólar — pesquisa 29/10/2026)
+
+Pra reduzir fricção no Upsell 2/topo de assinatura: **cliente clica, assina SEM pagar nada, cobrança só
+depois de 1-2 dias de teste grátis.** Card já capturado no clique (1-clique pós-compra), cobrança roda
+sozinha no fim do trial — cliente não precisa agir de novo pra virar pagante. Testar junto com a
+cadeia já existente (barato→caro→downsell), como variante do Upsell 2/topo quando ele é assinatura.
+
+**KPI que falta no nosso funil: renovação por cliente (cohort), não só MRR agregado.** Rastrear quantas
+vezes CADA assinante renovou (1ª compra + N renovações), não só "quantas assinaturas ativas". É o que
+prova retenção de verdade — cliente com 8-11 renovações seguidas é o que sustenta o LTV, e sem contar
+por cliente isso fica invisível atrás da média. Acrescentar essa coluna/métrica em qualquer dashboard
+de assinatura (Trackeador ou gateway de recorrência) quando a oferta tiver microSaaS no funil.
+
+Ferramenta de billing recorrente dele é terceira (fora da gateway principal, tipo "Pretfy") — puramente
+pra gerenciar cobrança de assinatura e trial. Registrar se a gente adotar algo equivalente; hoje nosso
+padrão é SKU próprio no gateway (Wiven/Mundpay/Zenith) + webhook, não ferramenta externa de recorrência.
+
 ### 3.2 Como decidir QUAL ferramenta (pesquisa da persona, não achismo)
 
 Quatro perguntas, respondidas com material que já existe (Comando 4 da mineração, `mvt-minerar`):
