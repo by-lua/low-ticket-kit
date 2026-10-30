@@ -15,9 +15,9 @@ Preenche os slots de imagem do modelo de página low ticket. **Executa, não exp
 Vale pra toda oferta (mesmo mercado e cross-market). **Sobrescreve** qualquer trecho abaixo que diga
 "mockup só depois do MVP". É simples — um pedido só no GPT:
 
-1. **Paleta definida ANTES de qualquer imagem**, já aplicada no NOSSO HTML. Se a dona não disse,
-   PERGUNTAR (AskUserQuestion): "mesmas cores da página de referência" ou "nossa paleta". Sem paleta
-   fechada no HTML, não gera imagem (senão tem que ajustar o HTML depois e refazer).
+1. **Paleta definida ANTES de qualquer imagem**, já aplicada no NOSSO HTML. **Padrão = as mesmas cores
+   da página original** (sem perguntar); só muda se a dona pedir outra paleta pra essa oferta (30/10/2026).
+   Sem paleta fechada no HTML, não gera imagem (senão tem que ajustar o HTML depois e refazer).
 2. **Baixar todas as imagens da página de referência** (todo `src` do clone) →
    `pesquisa/referencia/imagens-origem/`.
 3. **Um chat no GPT** (gpt-imagem-playwright). Prompt SIMPLES, sem engenharia (regra da dona, 14/10/2026 —
@@ -34,6 +34,19 @@ Vale pra toda oferta (mesmo mercado e cross-market). **Sobrescreve** qualquer tr
 4. **Imagens "por dentro" (páginas internas do produto) ficam pra DEPOIS:** primeiro escreve/gera o MVP,
    e aí usa as páginas reais do MVP como referência visual pra essas imagens.
 5. Plugar na página → **dona valida** → lote do MVP → imagens "por dentro" com o MVP de referência.
+
+## ENTREGÁVEL — primeiras páginas e páginas de imprimir (dona, 30/10/2026)
+1. **Texto da entrega escrito inteiro antes** (todas as páginas; cada exercício/pôster já descrito: conteúdo +
+   como fica na folha).
+2. **Primeiras páginas = as imagens "por dentro" da página original** (`pesquisa/referencia/imagens-origem/`:
+   páginas internas, mapas, pôsteres, folhas que o concorrente mostra). Cada uma refeita no GPT pra NOSSA
+   oferta: mesma composição, nosso conteúdo (do texto), nosso idioma, cor só muda se a paleta mudou.
+3. **Apresentar essas primeiras páginas à dona** → ela avalia → só então o resto do MVP, usando as aprovadas
+   como referência travada.
+4. **Nunca HTML/SVG/Pillow/código** — toda página é imagem do GPT, A4, mesma cara visual.
+5. **Item de fazer/imprimir = página própria, sempre:** exercício, pôster, folha, checklist, mapa, tabela de
+   preencher. A explicação fica numa página e a folha de fazer/imprimir na **página seguinte** — nunca só a
+   página de explicação. Mecânica de geração dessas folhas: `gpt-imagem-playwright` § "Páginas de ATIVIDADE".
 
 ## PASSO 0 de toda entrega — montar a REFERÊNCIA / design system ANTES de qualquer lote
 

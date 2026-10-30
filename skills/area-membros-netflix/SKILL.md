@@ -89,7 +89,8 @@ Conteúdo de cada módulo é entregue como PÁGINAS EM IMAGEM (texto escrito →
    - Zero dependência (não precisa img2pdf/Chromium no container alpine). Referência pronta: `assets/modulo-pdf.reference.mjs` (`modulePdf(root, sku, lang)` → `{ buf, etag, title }`), rota `GET /painel/api/modulo-pdf/<sku>` com a **mesma checagem de sessão + posse do SKU** das imagens.
    - Cache em memória pela assinatura (lista de páginas + tamanho/mtime de cada imagem). Mudou `pages` ou trocou uma imagem = PDF novo na próxima requisição. Módulo de 61 páginas monta em ~20 ms.
    - **Nome do arquivo = nome do módulo** (`title` do MODULES): `Content-Disposition: attachment; filename*=UTF-8''<título>.pdf` no servidor e `a.download = title + '.pdf'` no cliente. Nada de prefixo tipo "Produto - " nem sku.
-   - Módulo que é HTML (não imagens, ex.: Cigano): PDF estático gerado do `index.html` do módulo com `chromium --headless --no-pdf-header-footer --print-to-pdf`, e o **pre-commit bloqueia** se o PDF estiver mais velho que o HTML. Módulo sem PDF = botão quebrado no ar.
+   - ⛔ Módulo NOVO nunca é HTML: folha de exercício, pôster, checklist e página de imprimir = imagem gerada no GPT, A4, com a referência visual da oferta (nunca HTML/SVG/Pillow). O caso abaixo é só legado.
+   - Módulo legado que é HTML (não imagens, ex.: Cigano): PDF estático gerado do `index.html` do módulo com `chromium --headless --no-pdf-header-footer --print-to-pdf`, e o **pre-commit bloqueia** se o PDF estiver mais velho que o HTML. Módulo sem PDF = botão quebrado no ar.
 
 4. **Erro de download: aviso inline com link direto — NUNCA `window.print()` como fallback.** Em 15/10 o Tarot tinha `window.print()` no `.catch()` do download: quando o `fetch` do PDF falhava (sessão expirada, 404, rede), o cliente recebia a **caixa de impressão** em vez do arquivo e reportava "o PDF não baixa / dá erro". O método correto, no cliente:
    ```js

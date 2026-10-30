@@ -1481,6 +1481,10 @@ Mova para `HOOK/IMG/cena-N.png` (ou `IMG/cena-N.png` no Modo A).
 
 ## Páginas de ATIVIDADE (folha "w" — worksheet imprimível) de entregável low ticket
 
+> **Vale pra TODO item de fazer/imprimir de qualquer oferta** (dona, 30/10/2026): exercício, pôster, folha,
+> checklist, mapa, tabela de preencher. Sempre página própria logo depois da página que explica — nunca só a
+> explicação. Sempre imagem gerada aqui, A4, mesma referência visual e paleta da oferta. Nunca HTML/SVG/Pillow.
+
 Entregável com fichas de atividade (NeuroActiva e o mesmo padrão em qualquer oferta do gênero)
 tem DOIS arquivos por ficha: `pagina-NNN` (card de instrução pro profissional, foto real — já
 é gerado no GPT) e `pagina-NNNw` (a folha que a PESSOA imprime pra FAZER a atividade — sopa de
