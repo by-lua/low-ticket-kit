@@ -6,11 +6,11 @@ description: MECÂNICA chamada pela skill `criacao-low-ticket-mvt` (T13.24) — 
 # mvt-funil — peças do funil (bump · upsell · downsell · bônus · ferramenta)
 
 > **⛔ GATE DE PERSONA MECÂNICO (dona, 23/10/2026 — erro que não se repete):** antes de página, criativo,
-> peça do funil ou preço, rodar `python3 ~/.claude/skills/criacao-low-ticket-mvt/scripts/gate-persona.py OFERTAS/<slug>`. **BLOQUEADO = não começa**; completa o
+> peça do funil ou preço, rodar `python3 ~/.claude/skills/low-ticket/scripts/gate-persona.py OFERTAS/<slug>`. **BLOQUEADO = não começa**; completa o
 > `pesquisa/PERSONA-E-ANGULOS.md` no modelo `MODELOS/_MODELO-PERSONA-E-ANGULOS.md` (MERCADO na Biblioteca ≥5 anúncios,
 > QUEM COMPRA DE VERDADE, dores com contagem+data, RECORTES com "por que está na oferta"). Casos: Elétrica estudou o
 > estudante (comprador = eletricista na obra); Jiu usou "faixa branca/azul" (só vendeu quando tirou da página).
-> **Pesquisa que alimenta (lição Atlas 23/10):** `criacao-low-ticket-mvt/references/PESQUISA-PADRAO-OFERTA.md` —
+> **Pesquisa que alimenta (lição Atlas 23/10):** `low-ticket/references/PESQUISA-PADRAO-OFERTA.md` —
 > Biblioteca 5 palavras + hashtag por idioma, YouTube/TikTok/Trends com contagem. O gate também cobra TERMOS DE
 > BUSCA (nome do produto quase nunca é termo: "atlas" = 0 no Trends AR), unidade da peça, cena da dor,
 > NARRATIVAS QUE RODAM (dias no ar) e ÂNCORA DE PREÇO.
@@ -18,7 +18,7 @@ description: MECÂNICA chamada pela skill `criacao-low-ticket-mvt` (T13.24) — 
 
 Regra da skill-mãe (`criacao-low-ticket-mvt`): **o funil é projetado junto com a oferta (T11 → T13),
 não depois**. As regras de concepção/preço/gates estão em
-`~/.claude/skills/criacao-low-ticket-mvt/references/PECAS-DO-FUNIL.md` — **ler antes de começar**;
+`~/.claude/skills/low-ticket/references/PECAS-DO-FUNIL.md` — **ler antes de começar**;
 aqui é a EXECUÇÃO passo a passo.
 
 > ⛔ **`references/ESTRUTURA-DE-PENSAMENTO.md` §7 é a porta desta skill.** Toda peça do funil nasce

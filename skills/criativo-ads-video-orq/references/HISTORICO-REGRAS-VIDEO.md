@@ -201,7 +201,7 @@ login (o componente cliente não resincroniza sem reload real pós-login).
 **Entrega obrigatória de copy (03/10/2026):** cada vídeo acompanha `anuncio.md`
 na pasta do master, com ângulo, persona/dor, texto principal, título/headline,
 descrição curta e CTA sugerido. Todos os campos seguem o ângulo e o mercado
-daquele vídeo. Leia `../criativo-ads/references/texto-anuncio-por-angulo.md`.
+daquele vídeo. Leia `../criativo/references/texto-anuncio-por-angulo.md`.
 Não concluir a entrega só com MP4. Para BR, escolha voz catalogada brasileira;
 para PT, voz portuguesa. O `languageCode` não corrige sozinho o sotaque da voz.
 

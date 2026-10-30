@@ -154,7 +154,7 @@ encaixados no 4:5; GPT não desenha página do produto.
 > **⛔ GATE DA IMAGEM FINAL — antes de dizer "pronta" (25/10/2026).** O `gate-pecas-criativo.py`
 > olha o que ENTRA na cena; ele **não** olha o que sai — foi por isso que cards de 480×483 e
 > página 1200×848 passaram como entregues. Rodar sempre, nos arquivos finais:
-> `python3 ~/.claude/skills/criativo-ads/scripts/gate-imagens-finais.py <finais...> --pasta CRIATIVO-N/`
+> `python3 ~/.claude/skills/criativo/scripts/gate-imagens-finais.py <finais...> --pasta CRIATIVO-N/`
 > (opção `--story` pra 9:16; não existe mais dispensa de texto — impacto também tem prompt de texto, e carrossel só de páginas tem cards de gancho/CTA gerados).
 > Ele cobra: proporção 4:5, largura ≥ 1080, mesmo tamanho em todos os cards e **prompt salvo em
 > `intermediarios/prompt*.txt` pedindo o texto como "Instagram Stories text sticker"** — sem

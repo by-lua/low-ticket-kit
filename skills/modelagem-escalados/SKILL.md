@@ -9,8 +9,8 @@ description: MECÂNICA de estático/carrossel chamada pela skill `criativo-ads` 
 > (print de WhatsApp, notícia, story nativo, caixa de perguntas, antes/depois, tweet…) — aí vale a
 > fidelidade à referência (layout/cor/fonte iguais, nosso conteúdo real dentro). **A peça padrão do
 > portfólio (orgânico iPhone, texto de Stories, impresso + digital, nunca mockup) NÃO se modela por
-> aqui:** segue o GUIA DE IMAGEM `criativo-ads/references/tipos-de-imagem.md` + o molde
-> `criativo-ads/references/PROMPT-ESTATICO-ORGANICO.md`. Qual tipo cada peça é, quem decide é o GUIA.
+> aqui:** segue o GUIA DE IMAGEM `criativo/references/tipos-de-imagem.md` + o molde
+> `criativo/references/PROMPT-ESTATICO-ORGANICO.md`. Qual tipo cada peça é, quem decide é o GUIA.
 > Cores sempre do `DESIGN-SYSTEM.md` da oferta. Os exemplos AD06/AD07 abaixo são de outro negócio
 > (SiteExpress/MinhaEmpresa): servem de FORMATO, as cores azul/laranja deles não valem aqui.
 
@@ -273,7 +273,7 @@ Ordem mínima de uma leva do zero:
    E todo prompt de geração anexa **2–3 imagens do entregável** como referência e
    declara estilo orgânico + título + estilo + história — sem isso, a arte sai
    "inventada" (reprovou no Tarot, 09/10). Capa-referência aprovada de low ticket:
-   `criativo-ads/references/capa-referencia-low-ticket-jj.png` (dona, 08/10).
+   `criativo/references/capa-referencia-low-ticket-jj.png` (dona, 08/10).
 10. **Um formato por ângulo, no máximo 2 peças por categoria.** Duas peças com a mesma
    persona e a mesma dor são um anúncio só — e a Meta lê assim.
 11. **Entregável em PDF/guia: use a composição de mesa validada.** Tablet/celular em

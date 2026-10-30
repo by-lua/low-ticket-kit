@@ -66,7 +66,7 @@ lê como anúncio de fora, não como alguém de dentro:
 Público misto: teste as duas vozes em criativos **de ângulo diferente** (cada um
 com a sua dor/persona), não no mesmo roteiro só trocando a voz. Desde 2026, criativo
 igual com outra voz é variação rasa, que o Meta agrupa com o original (ver
-`criativo-ads/references/kevones-criativo.md`). Deixe o CPA decidir. Nunca as duas no mesmo criativo.
+`criativo/references/kevones-criativo.md`). Deixe o CPA decidir. Nunca as duas no mesmo criativo.
 
 Escolhida a voz de um projeto, **ela não muda entre cenas.** Trocar de voz no meio
 denuncia a montagem na hora.

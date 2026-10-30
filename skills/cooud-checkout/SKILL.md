@@ -16,7 +16,7 @@ o que foi **aprendido na prática** (seletores, API, bug e bloqueio reais), não
 > "Entrega pós-compra") + liberação por webhook no nosso servidor.
 
 > **DE ONDE VÊM AS PEÇAS:** o que vai em bump/upsell/downsell é decidido ANTES na mecânica
-> `mvt-funil` (regras em `criacao-low-ticket-mvt/references/PECAS-DO-FUNIL.md`); aqui só se
+> `mvt-funil` (regras em `low-ticket/references/PECAS-DO-FUNIL.md`); aqui só se
 > monta o que já está no `FUNIL.md` da oferta, com preço na tabela da dona.
 
 > **REGRA FIXA DA DONA (16/10/2026) — TODO produto/oferta criado entra nos DOIS webhooks NO MESMO DIA.** Vale pra toda peça: principal · **order bump** · combo · upsell/downsell · **upgrade Essencial → Completo** · produto irmão/cross · oferta de membro. Cada produto novo, na MESMA sessão do cadastro, marcado em (1) **webhook de ENTREGA** (`<site>/painel/api/webhooks/cooud`) e (2) **webhook de MEDIÇÃO** (Trackeador, `https://adstrackeador.leadgo.dev/api/webhooks/sale/c/<conexão>`) — "todos os produtos" OFF. Produto fora do webhook = a venda some do Trackeador/atribuição e/ou o comprador fica sem acesso, **sem erro em lugar nenhum**. Padrão/incidente (order bump "Combo Domínio Total", Jiu-Jitsu, 16/10): `wiven-checkout` §6.

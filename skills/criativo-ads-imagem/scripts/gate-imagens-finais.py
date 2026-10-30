@@ -177,7 +177,7 @@ def main(argv):
             falhas.append(
                 f'título-rótulo: "{titulo}" — só descreve uma parte do material. Headline = promessa/'
                 f'benefício ligado à dor (ou a dor medida em frase) + texto de baixo com mecanismo/entrega '
-                f'(criativo-ads/references/texto-anuncio-por-angulo.md §1)')
+                f'(criativo/references/texto-anuncio-por-angulo.md §1)')
         else:
             oks.append(f'título fala da dor/pessoa: "{titulo}"')
         md = pasta / 'anuncio.md'

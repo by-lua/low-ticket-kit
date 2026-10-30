@@ -402,7 +402,7 @@ luz natural. Foto de celular, sem cara de propaganda. 4:5.
 ```
 
 ## Completar entrega pós-MVP — um item por vez (dono 27/09/2026)
-Regra completa em `criacao-low-ticket-mvt/references/CONSTRUCAO.md` passo 2(f). Resumo: inventário
+Regra completa em `low-ticket/references/CONSTRUCAO.md` passo 2(f). Resumo: inventário
 (tem × promessa) → item sem nada ganha MVP primeiro → depois principal → completo → bônus → OBs.
 UM item por vez, 1 pane por item (terminou → fecha → pane novo, contexto limpo). Texto completo
 escrito em arquivo ANTES de gerar. Geração = `gpt-imagem-playwright` em WORK MODE, lote inteiro do

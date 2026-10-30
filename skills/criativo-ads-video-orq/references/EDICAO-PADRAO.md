@@ -23,7 +23,7 @@ Ler inteiro antes do primeiro `ffmpeg`/`remotion`. Cada linha já custou uma ver
 
 ## 1 · Ordem de montagem (nunca pula)
 
-1. **Roteiro completo** escrito (hook → mecanismo → CTA) — vem do modo + `criativo-ads/references/ROTEIRO-POR-FORMATO.md`.
+1. **Roteiro completo** escrito (hook → mecanismo → CTA) — vem do modo + `criativo/references/ROTEIRO-POR-FORMATO.md`.
 2. **Voz** gerada (`narracao-hub-tts`, voz fixa da leva; conferir gênero com `vozes.sh` — Rocha é masculina) e/ou **clipe de personagem** (Flow) com a fala.
 3. **Alinhar** a voz: `scripts/legenda_align.py` → `words.json` (tempo de CADA frase).
 4. **Ler frase por frase o que a fala diz** e só então escolher a cena de cada trecho.
@@ -132,7 +132,7 @@ de status/URL antes de compor. Imagem parada com Ken Burns nunca é cena de prod
   pra 1080×1920 antes do concat, `ffmpeg -nostdin` em laço, sem `-stream_loop` quando a fonte já cobre o slot.
 - **Margem de segurança:** nada essencial no topo ~14% nem na base ~20%, nem colado nas laterais.
 - Pasta: final solto na raiz de `CRIATIVO-N/`, o resto em `intermediarios/`. Nunca apagar clipes-fonte.
-- Toda peça sai com `anuncio.md` (`criativo-ads/references/texto-anuncio-por-angulo.md`).
+- Toda peça sai com `anuncio.md` (`criativo/references/texto-anuncio-por-angulo.md`).
 
 ## 9 · QA antes de "pronto" (bloqueante — assistir inteiro, não frames redondos)
 

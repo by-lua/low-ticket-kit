@@ -43,6 +43,18 @@ Todo `img` precisa de `width` e `height` compatíveis com o arquivo. Abaixo da d
 
 Crie `srcset` apenas quando variantes menores gerarem economia real.
 
+## Vídeos (regra da dona, 30/10/2026)
+
+Todo vídeo da página fica **dentro de um player** e **leve** — nunca baixa no carregamento.
+
+- Vídeo próprio: MP4 H.264 + AAC, 720p (vertical 720×1280), `-crf 28 -preset slow -movflags +faststart`; alvo ≤ ~4 MB
+  por vídeo (subir o CRF se passar). Sem áudio → `-an`.
+- `<video controls playsinline preload="none" poster="assets/video-poster.webp" width=".." height="..">` — poster em
+  WebP leve (mesma regra das imagens). Nada de `autoplay` com vídeo pesado acima da dobra.
+- VSL/vídeo longo: player externo (YouTube/Vimeo/Bunny) carregado só no clique (fachada: poster + botão play;
+  o iframe só entra ao tocar).
+- GIF animado não: vira MP4/WebM em `<video autoplay muted loop playsinline preload="none">` com poster.
+
 ## Fontes, CSS e scripts
 
 Preconecte `fonts.gstatic.com` com `crossorigin`, carregue só pesos usados e prefira `display=swap` ou `optional`. Mantenha CSS crítico pequeno inline e remova código herdado só depois de testar modais, timer e CTAs.

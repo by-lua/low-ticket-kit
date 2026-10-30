@@ -40,7 +40,7 @@ Molde de prompt da cena orgânica: `PROMPT-ESTATICO-ORGANICO.md`. Formato da bib
    9:16 → idem (290 px topo, 360 px base, 60 px laterais). Sobra respiro em volta, nada cortado na borda.
    Pedir no prompt e conferir na imagem final.
 7. **Preço:** só em peça de preço **estática**, sempre o **plano mais barato**. **Carrossel NUNCA tem preço** (dona, 27/10/2026), de nenhum tipo.
-7b. **Nenhuma peça cita bônus, módulo/volume nem contagem** ("4 bonus", "Volumen 2", "400 fichas") — fala do produto e do que ele faz (`criativo-ads/references/texto-anuncio-por-angulo.md`, dona 27/10/2026).
+7b. **Nenhuma peça cita bônus, módulo/volume nem contagem** ("4 bonus", "Volumen 2", "400 fichas") — fala do produto e do que ele faz (`criativo/references/texto-anuncio-por-angulo.md`, dona 27/10/2026).
 8. Gates: `gate-pecas-criativo.py <CRIATIVO-N>` antes de gerar; `gate-imagens-finais.py <finais> --pasta <CRIATIVO-N>`
    depois; abrir 1 imagem de cada peça antes de dizer "pronta".
 

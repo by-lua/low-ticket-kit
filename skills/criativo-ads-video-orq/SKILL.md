@@ -33,8 +33,8 @@ Apoio, quando o passo pedir:
 
 1. **Modo + `anuncio.md` na mesma passada (regra 26/10/2026, não deixar pro fim)** — achar a linha no
    GUIA DE VÍDEO (vem do plano da leva). Roteiro completo pelo
-   `criativo-ads/references/ROTEIRO-POR-FORMATO.md`: hook (dor) → mecanismo → CTA (só comando) **+
-   `criativo-ads/references/texto-anuncio-por-angulo.md`** pra já escrever a 1ª frase do Texto
+   `criativo/references/ROTEIRO-POR-FORMATO.md`: hook (dor) → mecanismo → CTA (só comando) **+
+   `criativo/references/texto-anuncio-por-angulo.md`** pra já escrever a 1ª frase do Texto
    principal do `anuncio.md` endereçando quem compra ("Si sos...", "Si tu mamá...") — o hook do
    VÍDEO pode ser só a dor/cena; o texto de FORA (o post) sempre chama a persona, não só descreve.
 2. **Assets** — Passo 0 do GUIA (gravações da dona, takes Flow, b-roll 3D, card CTA). Tela é sempre da dona.

@@ -22,7 +22,7 @@ mockup**. Rodrigo/biblioteca dão o papel da peça; o visual segue esta skill. O
 | Capa aprovada de referência de estilo | `references/capa-referencia-low-ticket-jj.png` |
 | Formato da biblioteca (print WhatsApp, notícia, story nativo, antes/depois) | skill `modelagem-escalados` (fidelidade à referência) |
 | Carrossel demonstrativo iPhone (capa A/B) | `modelagem-escalados/references/carrossel-demonstrativo-iphone.md` |
-| Por que orgânico (doutrina, CPM) | `criativo-ads/references/DOUTRINA-ORGANICO.md` |
+| Por que orgânico (doutrina, CPM) | `criativo/references/DOUTRINA-ORGANICO.md` |
 
 ## Fluxo de uma peça
 
@@ -31,7 +31,7 @@ mockup**. Rodrigo/biblioteca dão o papel da peça; o visual segue esta skill. O
 2. **Referências** — capa + 2–3 páginas REAIS do entregável (`produto/ENTREGA/`, `produto/MVP/`, painel),
    REF-FORMATO da cena, `DESIGN-SYSTEM.md` da oferta. Escolher em `CRIATIVO-N/selecionados/`, cada
    aparelho e cada folha com página diferente.
-3. **Gate antes de gerar:** `python3 ~/.claude/skills/criativo-ads/scripts/gate-pecas-criativo.py <CRIATIVO-N>`.
+3. **Gate antes de gerar:** `python3 ~/.claude/skills/criativo/scripts/gate-pecas-criativo.py <CRIATIVO-N>`.
 4. **Prompt** — pelo molde (`PROMPT-ESTATICO-ORGANICO.md`) ou pela referência da biblioteca; salvar em
    `CRIATIVO-N/intermediarios/prompt-vN.txt`. Texto como `Instagram Stories text sticker` + idioma, sem
    descrever cor/fonte; margens (topo 14%, base 20%, laterais) pedidas no prompt.
@@ -43,12 +43,12 @@ mockup**. Rodrigo/biblioteca dão o papel da peça; o visual segue esta skill. O
    (c) a página visível é o arquivo real certo; (d) margens; depois
    `python3 ~/.claude/skills/criativo-ads-imagem/scripts/gate-imagens-finais.py <finais> --pasta <CRIATIVO-N>`.
 8. **Entregar** — final solto em `CRIATIVO-N/`, `anuncio.md` (copy de fora, diferente do texto da foto)
-   escrito pelo molde + gate de `criativo-ads/references/texto-anuncio-por-angulo.md` — **1ª frase do
+   escrito pelo molde + gate de `criativo/references/texto-anuncio-por-angulo.md` — **1ª frase do
    Texto principal endereça quem compra** ("Si coordinás...", "Si tu mamá..."), nunca só descreve o
    produto. **Texto da ARTE = 3 andares do Rodrigo: headline (promessa/benefício ligado à dor) +
    texto de baixo (mecanismo — o que o produto faz, sem bônus nem contagem) + CTA; nunca rótulo de seção sozinho**
    ("Lado luz y lado sombra" reprova; "Aprenda a ler o Tarot sem decorar nenhuma carta" passa) —
-   método completo em `criativo-ads/references/texto-anuncio-por-angulo.md` —,
+   método completo em `criativo/references/texto-anuncio-por-angulo.md` —,
    `ls` de cada arquivo citado, registrar no STATUS da oferta e em `_memoria/planos-criativos.md`.
 
 ## Nunca

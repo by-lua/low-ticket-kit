@@ -173,7 +173,7 @@ senha de apoio, que o painel ignora.
 Toda área de membros vende pra quem JÁ comprou: ela já confia, só vai levar mais um.
 Por isso tudo que ela ainda não tem aparece com **30% off** do preço normal:
 (**Oferta BR nova a partir de 08/10/2026:** bumps R$ 5,00, combo R$ 9,90 e upsell R$ 9,90 fixos — tabela
-`criacao-low-ticket-mvt/references/CONSTRUCAO.md` › PREÇO PADRÃO BR; vale sobre o 30% off e o piso abaixo.)
+`low-ticket/references/CONSTRUCAO.md` › PREÇO PADRÃO BR; vale sobre o 30% off e o piso abaixo.)
 
 - **Upgrade de tier** (comprou o básico/Essencial → tem o completo/PRO bloqueado):
   **SUPERSEDE a regra de % abaixo (dona, 13/10/2026): upgrade BR = SEMPRE R$5,90 fixo**,
@@ -358,7 +358,7 @@ Arquivos-fonte em `OFERTAS/mapas-visuais-eletrotecnia/site/painel/assets/banner/
 ## Preço de venda na área de membros — SEMPRE mais barato que o checkout (dona, 10/10/2026)
 
 Card de peça na área de membros **nunca** mostra o preço de checkout. Quem já está lá não
-custa mídia: é lucro puro. Tabela da casa (fonte: `criacao-low-ticket-mvt/references/PECAS-DO-FUNIL.md` §4):
+custa mídia: é lucro puro. Tabela da casa (fonte: `low-ticket/references/PECAS-DO-FUNIL.md` §4):
 
 | Peça | Checkout | Área de membros |
 |---|---|---|
@@ -525,4 +525,4 @@ Sem os 6, a área de membros parece pronta (visual ok, roteamento ok) mas não g
 - Se o projeto não tem sistema de sessão/ownership ainda, isso é pré-requisito, não parte opcional do hub.
 
 ## Ficha de instrução plana (ícone abstrato) — NÃO traduzir/copiar, refazer ilustrada (regra da dona, 22/10/2026)
-Ficha de instrução cuja arte é ícone abstrato (arco-íris, círculos, pontos, folha) em caixa vazia + bloco de NOTAS não se traduz nem se copia (nem por Pillow, nem no GPT). Refazer a FICHA INTEIRA no GPT como imagem ilustrativa real, com uma ficha nossa aprovada como referência e o prompt explicando o exercício + texto exato do módulo. Nunca card de código com foto colada. Regra completa: `criacao-low-ticket-mvt/references/PAGINAS-DE-ATIVIDADE.md` › "Ficha de instrução SEMPRE com imagem ilustrativa".
+Ficha de instrução cuja arte é ícone abstrato (arco-íris, círculos, pontos, folha) em caixa vazia + bloco de NOTAS não se traduz nem se copia (nem por Pillow, nem no GPT). Refazer a FICHA INTEIRA no GPT como imagem ilustrativa real, com uma ficha nossa aprovada como referência e o prompt explicando o exercício + texto exato do módulo. Nunca card de código com foto colada. Regra completa: `low-ticket/references/PAGINAS-DE-ATIVIDADE.md` › "Ficha de instrução SEMPRE com imagem ilustrativa".

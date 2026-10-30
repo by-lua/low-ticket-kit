@@ -11,7 +11,7 @@ if [[ "$ABS" == */OFERTAS/*/criativos/* ]]; then
   OF="${ABS%%/criativos/*}"
   PL=$(find "$OF/criativos" -maxdepth 2 -name 'PLANO-LEVA-*.md' -printf '%T@ %p\n' 2>/dev/null | sort -n | tail -1 | cut -d' ' -f2-)
   [ -n "$PL" ] || { echo "FAIL sem PLANO-LEVA-*.md em $OF/criativos — fazer o ESTUDO-LEVA + plano antes de gerar (criativo-ads, topo)"; exit 1; }
-  python3 "$HOME/.claude/skills/criativo-ads/scripts/gate-plano-leva.py" "$OF" "${PL#$OF/}" --producao >/tmp/gate-leva-$$.txt 2>&1 \
+  python3 "$HOME/.claude/skills/criativo/scripts/gate-plano-leva.py" "$OF" "${PL#$OF/}" --producao >/tmp/gate-leva-$$.txt 2>&1 \
     || { grep -E '^FALHA' /tmp/gate-leva-$$.txt; echo "FAIL leva BLOQUEADA ($PL) — corrigir antes de gerar"; exit 1; }
 fi
 exec 8>"/tmp/gpt-sessao-$S.lock"; flock -n 8 || { echo "FAIL sessao $S ocupada por outra geracao (nunca rodar 2 filas na mesma sessao)"; exit 1; }

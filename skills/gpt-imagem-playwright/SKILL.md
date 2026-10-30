@@ -817,7 +817,7 @@ A regra "uma cena por mensagem" abaixo vale pro CHAT (criativo/cena). Páginas d
 ticket vão no **Work mode**: lote inteiro do item num pedido (até ~90 imagens), com a nossa página de
 referência + capa anexadas, contexto e texto página a página. Receita:
 `~/.claude/browser-workspace/domain-skills/chatgpt.com/work-mode-lote-entrega.md`. Ordem e ciclo de
-panes em `criacao-low-ticket-mvt/references/CONSTRUCAO.md` passo 2(f).
+panes em `low-ticket/references/CONSTRUCAO.md` passo 2(f).
 
 ### Página com carta real (tarô/cigano): SLOT VAZIO + scan colado (05/10/2026)
 O GPT redesenha a carta mesmo com o scan anexado (o Sol saiu desenhado na capa da Intuitiva do Cigano). Jeito que funciona:

@@ -79,7 +79,7 @@ Caso real: GeriNeuro US 18/10 ("Printable Word Search" só com a ilustração, s
 
 Ao auditar: grep dos gatilhos no `produto/texto/` × existência de `conteudo/<sku>/pagina-NNNw.*`;
 reportar como buraco **"instrução sem folha"** (não é VAZIO — tem páginas). Regra e gerador em
-`criacao-low-ticket-mvt/references/PAGINAS-DE-ATIVIDADE.md`.
+`low-ticket/references/PAGINAS-DE-ATIVIDADE.md`.
 
 ### Como o script conta (importante antes de discutir número)
 
@@ -159,7 +159,7 @@ worksheets"*) tem **8 cards `Printable …`** e nenhuma folha.
 
 **Correção — texto primeiro, depois imagem GPT (nunca código; regra da dona 23/10/2026):**
 1. Faltou a página `w` no **texto** (`produto/texto/`)? Escrever antes: conteúdo exato + composição +
-   gabarito, modelo em `criacao-low-ticket-mvt/references/PAGINAS-DE-ATIVIDADE.md` § "A composição
+   gabarito, modelo em `low-ticket/references/PAGINAS-DE-ATIVIDADE.md` § "A composição
    nasce no TEXTO". Ficha só com explicação = texto incompleto.
 2. Gerar a `w` no GPT, 1 por mensagem (`gpt-imagem-playwright` § "Páginas de ATIVIDADE"), conferir o
    conteúdo exato contra o gabarito, publicar como página nova logo depois do card (checagens B/E valem).
@@ -298,4 +298,4 @@ qualquer resposta sobre "o que falta" é chute. **Criar o manifesto antes** (a p
 - `references/exemplo-eletrotecnia.md` — exemplo real de YAML gerado.
 
 ## Gate visual: ficha sem imagem = não entregue (regra da dona, 22/10/2026)
-Ao auditar o painel, abrir contact sheet de cada módulo. Ficha de instrução com ícone abstrato (arco-íris, círculos, pontos) em caixa vazia, sem imagem da cena, conta como **pendente**, não como entregue. Ficha montada em código com foto colada também é pendente. Correção (ficha inteira no GPT com a nossa como referência): `criacao-low-ticket-mvt/references/PAGINAS-DE-ATIVIDADE.md` › "Ficha de instrução SEMPRE com imagem ilustrativa".
+Ao auditar o painel, abrir contact sheet de cada módulo. Ficha de instrução com ícone abstrato (arco-íris, círculos, pontos) em caixa vazia, sem imagem da cena, conta como **pendente**, não como entregue. Ficha montada em código com foto colada também é pendente. Correção (ficha inteira no GPT com a nossa como referência): `low-ticket/references/PAGINAS-DE-ATIVIDADE.md` › "Ficha de instrução SEMPRE com imagem ilustrativa".

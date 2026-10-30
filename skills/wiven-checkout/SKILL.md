@@ -26,7 +26,7 @@ allowed-tools: Bash(agent-browser:*), Bash(chromium:*), Bash(curl:*)
 
 > **DE ONDE VEM AS PEÇAS (09/10/2026):** o que vai em bump, Upsell 1, Upsell 2, downsell e qual
 > **ferramenta/microSaaS** vende junto é decidido ANTES, na mecânica **`mvt-funil`** (regras em
-> `criacao-low-ticket-mvt/references/PECAS-DO-FUNIL.md`) — aqui só se monta o que já está no `FUNIL.md`
+> `low-ticket/references/PECAS-DO-FUNIL.md`) — aqui só se monta o que já está no `FUNIL.md`
 > da oferta (gate T13.24), com preço na tabela da dona 08/10.
 
 Mecânica pra montar oferta na Wiven (app.wiven.com.br) no nosso ambiente. Complementa

@@ -11,7 +11,7 @@ layouts, legenda KaraokeV2, velocidade 1.0, trilha, card CTA, QA). Nenhum modo t
 própria e nenhum dispensa a edição padrão. Ninguém precisa dizer "edita no estilo X".
 
 Onde cada coisa mora:
-- **Roteiro de cada modo** → `criativo-ads/references/ROTEIRO-POR-FORMATO.md`
+- **Roteiro de cada modo** → `criativo/references/ROTEIRO-POR-FORMATO.md`
 - **Edição de todos** → `EDICAO-PADRAO.md`
 - **Gerar personagem/take no Flow** (imagem → vídeo, dentes, voz, anti-morphing) → `SKILL.md` FASE 3–5 + `mecanica-flow.md`
 - **Takes "mesa real" (catálogo A–O)** → `SKILL.md` §E.0c

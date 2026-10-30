@@ -41,7 +41,7 @@ de vencedor com variação de superfície.
 > **⛔ Modo B, B2 e C REMOVIDOS (regra da dona, 25/10/2026).** Os três dependiam
 > de reaproveitar o body de um vencedor trocando só o hook/gancho (matriz
 > gatilho×ângulo do Kevones, ou "v2" com body variado). Confirmado em
-> `criativo-ads/references/kevones-criativo.md` linhas 11-38: **o próprio Kevones
+> `criativo/references/kevones-criativo.md` linhas 11-38: **o próprio Kevones
 > abandonou essa lógica depois da Andrômeda** (out/2025) — o Meta passou a agrupar
 > por IDEIA/CONTEXTO, não por superfície, então trocar gancho/voz/cor/matriz de
 > abertura sobre o mesmo body é a variação rasa que ele hoje condena. O que ele

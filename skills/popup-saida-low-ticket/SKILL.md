@@ -16,7 +16,7 @@ Para CRO geral de popup (copy, frequência, tipos), ver `popup-cro`. Esta skill 
 ## 1. Oferta no checkout (antes do código)
 
 - Criar uma **oferta nova "Exit"** no MESMO produto do plano que o popup vende (entrega igual, não precisa novo produto nem nova entrega). Wiven: Produto → Ofertas → Adicionar oferta → nome "Exit", preço, moeda Real, Nacional → Salvar. Pegar o código (`?offer=XXXXXXX`).
-- Preço: abaixo do menor plano da página (padrão oferta nova: básico 17,90 → exit 16,90; tabela em `criacao-low-ticket-mvt/references/CONSTRUCAO.md` › PREÇO PADRÃO BR). Nunca abaixo do downsell se houver, sem pedido do dono.
+- Preço: abaixo do menor plano da página (padrão oferta nova: básico 17,90 → exit 16,90; tabela em `low-ticket/references/CONSTRUCAO.md` › PREÇO PADRÃO BR). Nunca abaixo do downsell se houver, sem pedido do dono.
 - Conferir no print da lista de ofertas que o preço salvou (curl no checkout Wiven não mostra preço, a página renderiza por JS).
 - Wiven pede 2FA por e-mail (contact@seudominio.com): código vence em minutos. Se o pane travar no 2FA, pedir ao humano que responda **direto no pane que pediu** e confira o campo depois (código colado em outro lugar não chega).
 
