@@ -513,16 +513,20 @@ def registrar(oferta_raiz: str, oferta: str, linhas, buracos=()):
                 break
         if alvo is not None:
             celulas = raiz[alvo].split("|")
-            # tabela canônica: | Oferta | Fase | Mercado | No ar | Atualizado | Próximo passo |
-            if len(celulas) >= 7:
-                celulas[5] = f" {hoje} "
-                passo = celulas[6].strip()
+            # Coluna achada pelo NOME no cabeçalho da tabela (nunca por posição):
+            # "Etapa" (tabela de 30/10/2026) ou "Próximo passo" (tabela antiga).
+            cab_i = next((j for j in range(alvo - 1, -1, -1)
+                          if raiz[j].startswith("|") and not set(raiz[j].replace("|", "").strip()) <= set("-: ")
+                          and (j == 0 or not raiz[j - 1].startswith("|"))), None)
+            nomes = [c.strip().lower() for c in raiz[cab_i].split("|")] if cab_i is not None else []
+            col = next((k for k, n in enumerate(nomes) if n.startswith("etapa") or n.startswith("próximo passo")), None)
+            if col is not None and col < len(celulas):
+                atual = re.sub(r"\s*\*\*\d{4}-\d{2}-\d{2}: promessa × entrega\*\* — [^|]*?\.(?=\s|$)", "", celulas[col]).strip().rstrip(" ·").strip()
                 marca = f"**{hoje}: promessa × entrega** — {resumo}."
-                if not passo.startswith(marca):
-                    celulas[6] = f" {marca} {passo}"
+                celulas[col] = f" {atual + ' · ' if atual else ''}{marca} "
                 raiz[alvo] = "|".join(celulas)
             else:
-                print(f"AVISO: formato inesperado da linha de {slug} no STATUS.md da raiz")
+                print(f"AVISO: coluna 'Etapa'/'Próximo passo' não achada na tabela do STATUS.md da raiz — {slug} não atualizada")
             open(rp, "w", encoding="utf-8").write("\n".join(raiz))
         else:
             print(f"AVISO: linha de {slug} não encontrada em STATUS.md da raiz — não atualizada")
