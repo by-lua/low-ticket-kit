@@ -1,1 +1,0 @@
-<span class="_aupe copyable-text xkrh14z" style="white-space: pre-wrap;">Aula BÔNUS para quem ainda não tem um site ativo no WORDPRESS / ELEMENTOR.</span>

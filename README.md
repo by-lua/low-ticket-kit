@@ -64,36 +64,46 @@ Já tem VPS? As skills também funcionam com Coolify, Vercel, Netlify ou qualque
 
 Abra o Claude Code numa pasta vazia e peça em português:
 
-- *"vamos criar uma oferta low ticket do zero"* → `criacao-low-ticket-mvt` (conduz o processo inteiro)
-- *"minera ofertas na Biblioteca de Anúncios sobre <nicho>"* → `mvt-minerar`
+- *"vamos criar uma oferta low ticket do zero"* → `low-ticket` (porta de entrada, conduz o processo inteiro)
+- *"achei uma oferta, modela ela"* → `low-modelador` (Raio-X + SpyX)
+- *"valida esse caminho antes de investir"* → `low-validar`
+- *"monta a ficha e o funil da oferta"* → `low-ficha-oferta` / `low-funil`
+- *"monta a página de vendas"* → `low-pagina`
 - *"gera as imagens da página de vendas"* → `imagens-pagina-low`
+- *"produz o entregável/MVP"* → `low-entregavel`
 - *"cria a área de membros estilo Netflix"* → `area-membros-netflix`
 - *"o que falta entregar nessa oferta?"* → `auditar-entregaveis-oferta`
-- *"cadastra o produto na Wiven/Mundpay"* → `wiven-checkout` / `mundpay`
-- *"faz 3 criativos de vídeo e 3 estáticos"* → `criativo-ads`
+- *"cadastra o produto na Wiven/Mundpay/Cakto/Stripe"* → `low-checkout`
+- *"confere os gates antes de subir tráfego"* → `low-gates-no-ar`
+- *"faz a leva de criativo dessa oferta"* → `criativo` (porta de entrada do criativo: copy, formato, imagem/vídeo, edição, revisão)
 - *"monta a campanha"* → `metaads-kevones`
 
 ## Mapa
 
 ```
-criacao-low-ticket-mvt  (porta de entrada: método MVT, trilha T0–T15, gates)
- ├─ achar a oferta    → mvt-minerar · mvt-modelar · mvt-validar · mvt-obra-100k · mvt-auditar
- │                      mvt-cross-market · x1-cross-market-mvt (levar oferta pra outro país)
- ├─ funil             → mvt-funil (order bump, upsell, downsell, combo)
- ├─ página de vendas  → imagens-pagina-low · depoimentos-pagina-de-vendas · popup-saida-low-ticket
+low-ticket  (porta de entrada: E1–E9, cada etapa só começa com a saída da anterior)
+ ├─ achar a oferta    → low-referencia (link já veio) · low-modelador (Raio-X + SpyX)
+ ├─ validar o caminho → low-validar
+ ├─ ficha + funil     → low-ficha-oferta · low-funil (order bump, upsell, downsell, combo)
+ ├─ página de vendas  → low-pagina · imagens-pagina-low · depoimentos-pagina-de-vendas · popup-saida-low-ticket
  │                      otimizacao-pagina-vendas · traduzir-entregavel-imagem
- ├─ entregável        → area-membros-netflix · auditar-entregaveis-oferta · gpt-imagem-playwright
- ├─ checkout          → wiven-checkout (BR) · mundpay (EUR/USD) · ggcheckout-produto · hotmart-produto-playwright
- │                      cooud-checkout · zenith-gateway · banner-checkout-gpt · checkout-premium · publicos-meta-checkout
- ├─ criativo          → criativo-ads (estratégia)
- │                       ├─ vídeo     → criativo-ads-video-orq → flow-video-playwright (Google Flow)
- │                       │                                     → narracao-hub-tts (voz) · get-brolls (b-roll)
- │                       │                                     → embedded-captions · captions-overlay · remotion-* · hyperframes
- │                       └─ estático  → modelagem-escalados → gpt-imagem-playwright (ChatGPT)
+ ├─ entregável        → low-entregavel · area-membros-netflix · auditar-entregaveis-oferta · gpt-imagem-playwright
+ ├─ checkout          → low-checkout → wiven-checkout (BR) · mundpay (EUR/USD) · cakto-checkout · stripe-checkout
+ │                      ggcheckout-produto · hotmart-produto-playwright · cooud-checkout · zenith-gateway
+ │                      banner-checkout-gpt · checkout-premium · signup-flow-cro · publicos-meta-checkout
+ ├─ gates no ar       → low-gates-no-ar
+ ├─ criativo          → criativo (porta de entrada)
+ │                       ├─ ideias     → ctv-modelar-concorrente
+ │                       ├─ ficha      → ctv-estudo-leva
+ │                       ├─ copy       → ctv-copy
+ │                       ├─ formato    → ctv-formatos (expert, demonstrativo, POV, UGC, carrossel...)
+ │                       ├─ produção   → ctv-imagem (GPT) · ctv-video (Flow, narração, b-roll)
+ │                       ├─ edição     → ctv-edicao → embedded-captions · captions-overlay · remotion-* · hyperframes
+ │                       └─ revisão    → ctv-revisor
  ├─ orgânico          → stories-diarias-ofertas · modelar-perfil-social
  └─ tráfego           → metaads-kevones (estrutura, teste, escala, BidCap)
 
-base: low-ticket-metodo-mvt (o método) · organizar-projeto · yt-transcricao · watch
+base: organizar-projeto · yt-transcricao · watch · low-ticket-salvar (fecho de sessão)
 browser: agent-browser · browser-harness · browser-cloudflare · ~/.claude/bin/browsers.sh
 ```
 
