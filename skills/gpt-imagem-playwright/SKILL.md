@@ -47,6 +47,16 @@ Nome da lane = a tarefa (`cozinha`, `espanhol`, `tarot`), nunca número. Protoco
 
 Perfil persistente `~/.agent-profiles/gpt`, porta 9222, já logado. Nunca use `agent-browser open` (trava no Cloudflare) nem `close --all` (mata as abas das outras lanes). Ao terminar: `~/.claude/bin/lane.sh drop gpt <lane>`.
 
+### ⚠️ Contas e perfis GPT — ATUALIZADO 04/11/2026 (vale sobre a tabela antiga abaixo)
+Fonte da verdade: `~/.claude/bin/gpt-contas.lst` (o `gpt-livre.sh` lê de lá).
+| Conta | Perfis (porta) | Observação |
+|---|---|---|
+| **empresab** | `gpt-empresab` 9298 · `gpt-empresab-2` 9304 · `gpt-empresab-3` 9305 · `gpt-empresab-4` 9306 | clones do `gpt-empresab` feitos em 04/11 (cópia do diretório sem cache/lock — o login veio junto e funcionou). Mesma conta = mesma cota e o rascunho do composer é compartilhado: **um agente por perfil** |
+| **dona2** | `gpt` 9222 | logado pela dona em 04/11 (antes era "sem login, não usar") |
+Clonar perfil logado (quando a dona pedir): `rsync -a --exclude 'Singleton*' --exclude '*Cache*' <perfil>/ <perfil>-N/` →
+linha no `~/.agent-profiles/registry.conf` (porta livre) → linha `<conta> <perfil>-N <porta>` no `gpt-contas.lst` →
+subir e conferir que abre logado (sem botão Entrar).
+
 ### Contas e perfis GPT (atualizado 2026-10-11, regra da dona)
 
 **Conta PESSOAL (Dona) REMOVIDA em 11/10/2026 por ordem da dona.** Os 4 perfis
