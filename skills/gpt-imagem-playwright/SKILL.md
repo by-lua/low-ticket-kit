@@ -24,6 +24,11 @@ Gera imagens no ChatGPT pelo browser persistente já logado. **Execute, não exp
 > "só a capa?" — a arte sai sem o produto aparecendo. As páginas visíveis na arte
 > são SEMPRE arquivo real do produto; o modelo posiciona, não desenha página.
 
+> **⛔ 04/11/2026 — RASCUNHO VELHO NO COMPOSER (chat novo NÃO vem vazio).** O ChatGPT restaura o rascunho de um prompt
+> anterior no campo; o `inserttext` **acrescenta** e a mensagem sai "prompt velho + prompt novo" (o selo de garantia
+> saiu como mockup de kit 2× seguidas). O dono-do-chat por `includes` não pega. **Sempre:** limpar o `div.ProseMirror`
+> antes de digitar e conferir `composer.innerText.length ≈ tamanho do prompt` antes de enviar (receita pronta: `scripts/gerar-1-imagem.sh <prompt.txt> <saida.png> <ref.jpg>`).
+
 ## Pegar a lane — PRIMEIRA COISA, SEMPRE
 
 Vários Claudes usam este mesmo browser. Sem lane, todos caem na mesma aba e escrevem no mesmo chat.
@@ -166,8 +171,8 @@ Se aparecer botão "Entrar", a conta caiu: peça ao usuário para logar naquela 
 
 > **⚠️ 04/11/2026 — a MEMÓRIA da conta contamina chat novo (Calendrier Magique).** Depois de um pedido Art Nouveau,
 > 5 gerações seguidas em chats novos saíram Art Nouveau mesmo com o prompt mandando manter os elementos da referência.
-> Em variações de estilo/paleta (ou depois de mudar de direção), abra **chat temporário**:
-> `navigate "https://chatgpt.com/?temporary-chat=true"` e confira `/tempor[aá]rio/` no `innerText`.
+> **Dona (04/11/2026): usar o chat NORMAL, nunca o temporário/anônimo.** Contra a contaminação: chat novo + prompt dizendo
+> explicitamente o estilo a manter e o que NÃO usar (ex.: "no Art Nouveau muse"), e conferir a 1ª imagem antes do lote.
 > E o dono-do-chat: o balão do usuário começa pelo ANEXO, então compare com `includes(SIG)`, nunca `indexOf===0`
 > (falso "FAIL envio" + retry = prompt enviado 2×).
 

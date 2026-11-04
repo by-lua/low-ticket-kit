@@ -13,9 +13,15 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
    `MODELOS/MODELOS-DE-PAGINA/`). Texto = `spyx.pagina[]` do Modelador, seção por seção, ajustado à `OFERTA.md`.
    Página original fraca/rasa demais pra clonar (comum em modelagem por upgrade, Raio-X com pilar trocado sem
    referência de página boa) → usa o **esqueleto padrão** abaixo em vez de inventar ordem solta.
-0-. 🛑 **Pergunta obrigatória antes de montar** (dona, 04/11/2026): *"Fazemos a **original melhorada** (clone dela +
-   nosso plano) ou **adaptamos ao template do Fernando**?"*
-   - **Original melhorada** → passo 0 abaixo (clone). Ordem: **o material por dentro logo depois da 1ª seção (hero)**.
+0-. 🛑 **Pergunta obrigatória antes de montar** (dona, 04/11/2026) — 3 caminhos, escritos por extenso:
+   1. **Página da pessoa 100%** — clone fiel (passo 0), muda só idioma, oferta, preços e cores do visual aprovado.
+   2. **Página da pessoa melhorada pelos 17 blocos** — clone dela como base + os blocos do esqueleto 1a que faltam
+      (dor, mecanismo, pra quem é, pitch intermediário, passos de acesso…), na ordem do esqueleto.
+   3. **Template do Fernando com a nossa oferta** — partir de `MODELOS/MODELOS-DE-PAGINA/fernando/leadgo-referencia/` (já com as regras da casa; README lista; implementação de
+      referência já com todas as nossas regras: `OFERTAS/calendrier-magique-fr/site/index.html`, gerador
+      `OFERTAS/calendrier-magique-fr/pesquisa/scripts/build_page.py`).
+   Valem nos 3: barra vermelha fixa · hero acima da dobra · planos e garantia padrão Mapa do Tarot · QA (passo 9b).
+   - **Caminhos 1 e 2** → passo 0 abaixo (clone). Ordem: **o material por dentro logo depois da 1ª seção (hero)**.
    - **Template do Fernando** → `MODELOS/MODELOS-DE-PAGINA/fernando/index.html` (PaginaPro V1, HTML estático): copia,
      troca texto/cores/imagens seguindo os blocos dele (topo → dor → prévias → mecanismo → comparação → uso → pitch
      → pra quem é → o que recebe → bônus → oferta → segurança → passos de acesso → FAQ → fecho). Copy das seções:
@@ -35,6 +41,8 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
 0b. **Preferências fixas da dona (04/11/2026):**
    - **Hero centralizado:** barra → headline → **mockup no meio** → texto curto/bullets organizados → botão.
      Nada de hero em 2 colunas (texto de um lado, imagem do outro), nem no desktop.
+   - **A 1ª seção cabe na tela até o botão, sem rolar**, no celular (até 360×740) e no PC (1366×768): mockup com
+     `max-height` em vh, h1 menor em tela baixa, 3º bullet some se precisar. Provar com o QA (9b).
    - **Barra de urgência sempre VERMELHA** (fundo vermelho, texto branco), qualquer paleta, e **fixa no topo** (`position:sticky;top:0`) — acompanha a pessoa enquanto rola.
 1a. **Esqueleto padrão (fallback, 1 função comercial por bloco, nesta ordem):**
    barra de urgência (só se for real) + hero → dor/agitação (título "[atividade central] não precisa ser
@@ -106,8 +114,8 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
 4. **Preço:** botões com o preço da `OFERTA.md`. Oferta multi-país → preço em moeda local
    (`low-ticket/references/PRECO-MOEDA-LOCAL.md`).
 4b. **3 destinos de CTA, só isso — independe da página clonada, sempre assim:**
-   - **CTA do hero** → âncora de prévia/galeria do material (`id="previas"` ou a seção "recebe hoje"/bônus se
-     não tiver prévia separada). Nunca pula direto pro preço.
+   - **CTA do hero** → **sempre a seção "o que você recebe"** (`id="recebe"`, ex.: « Tout ce qu'il faut pour vivre
+     2027 ») — dona, 04/11/2026. Nunca pula direto pro preço.
    - **Todo CTA do meio da página** (dor, pitch intermediário, benefícios, fecho emocional) → `id="oferta"`
      (a seção de planos/preço), nunca checkout externo direto.
    - **Só o botão DENTRO do card de preço** → URL do checkout. Centraliza essa URL em 1 campo só
@@ -136,6 +144,10 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
    - medir no Lighthouse mobile antes e depois — a prova vai pro gate da E9.
 7. **Rodapé:** BR → só "LeadGo" (sem CNPJ nem nome da dona); fora do BR mantém dados legais. Termos e
    privacidade. Favicon na página e no `/painel`. Suporte: e-mail e WhatsApp de `_memoria/empresa.md`.
+9b. **QA de layout antes de publicar (obrigatório):** `scripts/qa-layout.js` em 360×740, 375×667, 390×844, 1366×768 e
+   1920×1080 (`agent-browser --session S set viewport W H` → `eval --stdin < qa-layout.js`). Tem que dar `ok` em todos:
+   botão do hero acima da dobra, sem rolagem lateral, nenhum texto vazando da caixa, nenhum texto estourando botão.
+   Depois, olhar print do hero (celular e PC) e do bloco de planos.
 8. Deploy: repo em `github.com/leadgodev/`, Coolify auto-deploy (fatos em `_memoria/empresa.md`).
 9. Trocou a página de uma oferta que já roda anúncio → `adstrackeador pagina comparar <atual> <nova>` antes.
 
