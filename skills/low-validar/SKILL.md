@@ -18,7 +18,8 @@ description: Etapa E2b do sistema LOW-TICKET — valida o caminho de modelagem q
    - outro idioma: somar os `mercado.termos_biblioteca` do Modelador.
    - **Mostrar a lista à dona** — ela corta ou soma termos antes da busca.
    - **Perguntar como fazer a busca** (regra da dona, 04/11/2026): *automática* (eu rodo os termos na
-     Biblioteca/MineraAds e trago a tabela) **ou** *manual* (ela pesquisa e me dá o retorno). Manual → registrar o
+     Biblioteca/MineraAds e trago a tabela) **ou** *manual* (ela pesquisa e me dá o retorno). **Padrão dela =
+     manual**: entregar os termos prontos pra copiar (um por linha, por idioma) e sugerir manual primeiro. Manual → registrar o
      retorno dela **literal** no `VALIDACAO-<data>.md` como fonte, e seguir pros passos que ela não cobriu
      (orgânico, funil dos concorrentes). Nunca rodar a busca sem essa resposta.
    - **Na pergunta, já dizer o que ela tem que trazer se escolher manual** (quem faz o quê fica escrito):
@@ -42,6 +43,14 @@ description: Etapa E2b do sistema LOW-TICKET — valida o caminho de modelagem q
    (vão pra Dor da `OFERTA.md` e pros ganchos).
 4. **Funil dos concorrentes validados:** abrir a página e o checkout dos 2-3 melhores → bônus, order bump,
    upsell, downsell e preço de cada um. Alimenta o funil da ficha (E2).
+4b. **O que a busca tem que responder (dona, 04/11/2026)** — no idioma-alvo **e** nos outros idiomas:
+   - **Tem demanda?** (anúncios validados + orgânico)
+   - **Alguém já anuncia a MESMA oferta no idioma-alvo?** → sim = **aplicar mais modelagem antes da ficha**:
+     voltar ao Passo 2 (Raio-X/SpyX) e diferenciar (ângulo, bônus, visual, preço) dos anunciantes achados; a
+     `VALIDACAO` lista o que eles fazem pra gente não ficar igual.
+   - **Ofertas parecidas em outros idiomas?** → referência de página, funil e criativo (e sinal de que o modelo
+     roda fora do país de origem).
+   - **Outros anunciantes que já têm isso** (mesmo produto ou vizinho) → entram em *Referências escolhidas pela dona*.
 5. **Veredito:**
    - 🟢 **verde** — ≥ 2 concorrentes validados no mercado-alvo **e** orgânico com comentários nos últimos 3 meses;
    - 🟡 **amarelo** — só um dos dois; dizer o risco;
@@ -49,6 +58,10 @@ description: Etapa E2b do sistema LOW-TICKET — valida o caminho de modelagem q
      caminho (top 3).
    **A dona decide** seguir ou não; a decisão vai escrita no fim do arquivo, com data.
 6. Termos que acharam concorrente bom → sugerir à dona incluir no Swipe automático diário do MineraAds.
+7. **Referência de criativo (sempre, mesmo sem concorrente no mercado-alvo):** procurar também quem anuncia
+   **parecido** (mesmo formato de anúncio, oferta vizinha, outro idioma) só pra inspirar criativo, e perguntar à
+   dona quais entram. Vai pra *Referências escolhidas pela dona* (link + "criativo"). A `criativo` (C1) lê daqui e
+   pergunta de novo: modelar os do original, os desses, ou os dois.
 
 ## O arquivo `VALIDACAO-<data>.md`
 Termos (PT/ES/EN, marcando os que acharam algo) · **quem fez a busca (eu/dona)** · tabela de concorrentes · **Referências escolhidas pela dona** (link + pra quê: criativo/página/funil) · orgânico + frases reais · funil dos

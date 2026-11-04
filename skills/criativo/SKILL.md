@@ -28,10 +28,28 @@ Métodos (Rodrigo, Kevones, SpyX, Escalados): só os com **Ativo = sim** em `_me
 
 ## 2. Passos
 
+### C0 — Abertura do criativo (sempre, antes do C1; ninguém pula)
+🛑 = pare, mostre por extenso (tradução PT de texto estrangeiro) e espere a dona. ✅ = arquivo que prova.
+1. **Conferir o histórico:** é a 1ª leva desta oferta? (`criativos/` vazio = 1ª). Dizer à dona.
+2. **Mostrar o que já existe**, em 3 blocos:
+   - (a) **Banco do Passo 6** (`pesquisa/modelador-*-etapa2*.md`): quantos ganchos/copies e quais ângulos;
+   - (b) **Criativos do anunciante original** (`pesquisa/referencia/videos`): quantos, formatos, dias no ar;
+   - (c) **Referências de outros anunciantes** (`VALIDACAO` § Referências escolhidas): quais, ou "nenhuma ainda".
+3. 🛑 **Perguntar:** *"Usamos o banco que já montamos? Modelamos os criativos do original? Buscamos anunciantes novos?
+   Ou uma mistura?"*
+4. **Se buscar novos** (ou se a busca ainda não foi feita): entregar os **termos por idioma** (idioma-alvo + PT/ES/EN),
+   um por linha, prontos pra copiar → 🛑 padrão = **busca manual da dona**: ela devolve a **lista de anúncios** (links).
+5. 🛑 **Pra cada anúncio da lista, decidir com ela:** modelar **um vídeo específico** (refazer aquele criativo) ou
+   **entender o que o anunciante faz** (padrão de formato, ângulo, gancho, oferta) e aplicar.
+6. ✅ `criativos/FONTES-<data>.md`: o que vem do banco · quais criativos do original · quais anúncios novos (link +
+   "modelar este vídeo" / "entender o padrão") · leva padrão (3 vídeos: demonstrativo, expert, UGC + 4 imagens).
+   Só então C1.
+
+
 | # | Passo | Saída que prova | Filha |
 |---|---|---|---|
-| C1 | **Juntar ideias** — (a) Modelador · (b) criativos do concorrente/oferta vizinha: transcrever, entender o formato (POV, demonstração, expert, UGC) e o porquê, refazer pra nossa oferta · (c) o que a dona trouxer | `criativos/IDEIAS-<data>.md` com a fonte de cada ideia | `ctv-modelar-concorrente` |
-| C2 | **Ficha da leva** — 1 linha por peça: formato, ângulo, gancho, texto na imagem/fala, título, descrição | `criativos/FICHA-LEVA-<data>.md` **aprovada pela dona** | `ctv-estudo-leva` |
+| C1 | **Juntar ideias** — **antes, perguntar à dona de onde modelar** (regra 04/11/2026): (1) os criativos do **anunciante original** · (2) os de **outros anunciantes** (seção *Referências escolhidas pela dona* da `VALIDACAO`) · (3) **os dois**. Mostrar o que existe de cada lado (quantos, formatos, dias no ar). Depois: (a) Modelador · (b) os criativos escolhidos: transcrever, entender o formato (POV, demonstração, expert, UGC) e o porquê, refazer pra nossa oferta · (c) o que a dona trouxer | `criativos/IDEIAS-<data>.md` com a fonte de cada ideia | `ctv-modelar-concorrente` |
+| C2 | **Ficha da leva** — **leva padrão de teste da dona (04/11/2026): 3 vídeos (1 demonstrativo · 1 expert · 1 UGC) + 4 imagens**, salvo ordem diferente. 1 linha por peça: formato, **bolha** (pra quem é: 1 dor/persona — o criativo é a segmentação, `references/METODO-KEVONES-LEVA.md`), gancho, texto na imagem/fala, título, descrição. **Cada peça nomeia a bolha; 2 peças na mesma bolha só se o formato for diferente** (nunca variação rasa). Campanha: país aberto + idioma (Rodrigo); conjuntos aberto/segmentado/idade com os mesmos criativos (Kevones). Ganchos e copies partem do **banco do Passo 6** (`modelador-*-etapa2.md`) + criativos escolhidos no C1 | `criativos/FICHA-LEVA-<data>.md` **aprovada pela dona** | `ctv-estudo-leva` |
 | C3 | **Copy** — gancho → desenvolvimento → CTA, pelo formato | copy de cada peça na ficha | `ctv-copy` |
 | C4 | **Formato** — receita do formato pedido (expert Rodrigo, demonstrativo, POV, UGC, impacto direto, antes e depois, iPhone com/sem preço, carrossel de páginas, orgânico feio) | briefing da peça | `ctv-formatos` |
 | C5 | **Produzir** — imagem (GPT) ou vídeo (Flow, narração, b-roll) | arquivos em `criativos/CRIATIVO-N/` | `ctv-imagem` / `ctv-video` |

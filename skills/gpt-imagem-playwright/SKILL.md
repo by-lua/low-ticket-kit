@@ -164,6 +164,13 @@ Se aparecer botão "Entrar", a conta caiu: peça ao usuário para logar naquela 
 
 ## Fluxo
 
+> **⚠️ 04/11/2026 — a MEMÓRIA da conta contamina chat novo (Calendrier Magique).** Depois de um pedido Art Nouveau,
+> 5 gerações seguidas em chats novos saíram Art Nouveau mesmo com o prompt mandando manter os elementos da referência.
+> Em variações de estilo/paleta (ou depois de mudar de direção), abra **chat temporário**:
+> `navigate "https://chatgpt.com/?temporary-chat=true"` e confira `/tempor[aá]rio/` no `innerText`.
+> E o dono-do-chat: o balão do usuário começa pelo ANEXO, então compare com `includes(SIG)`, nunca `indexOf===0`
+> (falso "FAIL envio" + retry = prompt enviado 2×).
+
 ### 1. Novo chat DENTRO da lane
 
 Comece sempre num chat limpo — contexto de imagem anterior contamina o resultado. Navegue direto; **nunca clique numa conversa do histórico**, pode ser de outra lane.

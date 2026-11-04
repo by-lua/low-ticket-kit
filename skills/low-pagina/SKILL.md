@@ -59,8 +59,9 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
      **as cores e alguns elementos**, um pouco — o bastante pra que, se outro modelar a mesma oferta nesse idioma,
      a nossa não fique igual à dele. Dois erros já cometidos (Calendrier, 04/11): (1) trocar só a cena e manter
      cores/elementos = "ficou praticamente igual"; (2) trocar o estilo inteiro (Art Nouveau) = foge do que vende.
-     Os 3 estilos oferecidos são **variações dentro da mesma vibe** (paleta + 2-3 elementos trocados), não 3
-     estéticas diferentes.
+     Os 3 oferecidos são **variações de paleta dentro da mesma vibe** + um toque leve de visual (detalhe de moldura,
+     tipografia do título), **mantendo todos os elementos** dele (trocar coruja/gato/tarô por outra coisa inventa
+     produto — dona, 04/11: "mudar só a cor e um pouco do visual sem perder a essência"). Fundo da cena claro.
    - **Oferecer 3 variações** escritas por extenso (paleta · elementos trocados · por que serve pro mercado), com
      recomendação, e a opção **"gerar os 3 pra comparar"** (uma imagem-guia de cada). Ela escolhe.
    - **Gerar EM CIMA do mockup completo do original** quando a página dele tiver: anexar o kit completo dele
