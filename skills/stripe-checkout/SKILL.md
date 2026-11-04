@@ -33,7 +33,7 @@ dela; só use se a dona pedir explicitamente).
   webhook `https://app.adstrackeador.com/api/billing/stripe` com 7 eventos
   (`..._LIVE_WEBHOOK_SECRET`). No Coolify do app: STRIPE_SECRET_KEY,
   STRIPE_WEBHOOK_SECRET, STRIPE_PRICE_PREMIUM_ID, STRIPE_COUPON_LAUNCH_ID.
-  Criar chave pede verificação por e-mail (contact@leadgo.dev, perfil
+  Criar chave pede verificação por e-mail (contact@seudominio.com, perfil
   hostinger-mail) + código do autenticador (só a dona). A chave só aparece
   mascarada; "Copiar e fechar" põe na área de transferência → `wl-paste` direto
   pro arquivo, nunca na tela. Criar env no Coolify com `--is-literal
@@ -62,7 +62,7 @@ literal. Sempre headed. Todo comando: `agent-browser --session stripe ...`.
 
 2FA/código por e-mail (quando a Stripe oferecer essa opção — não confirmado
 se está disponível nesta conta, ver aviso no topo) vai pra
-`contact@leadgo.dev` → perfil `hostinger-mail` (porta 9274). Abra SÓ o
+`contact@seudominio.com` → perfil `hostinger-mail` (porta 9274). Abra SÓ o
 e-mail da Stripe com o código, o mais recente — nunca outro e-mail. Se não
 achar pelo assunto, pare e pergunte.
 

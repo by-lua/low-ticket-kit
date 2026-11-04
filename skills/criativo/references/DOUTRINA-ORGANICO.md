@@ -44,7 +44,7 @@ performa:
   `captions-overlay`). Amarelo destaca a palavra-gancho da fala.
 - Gravação de tela real, PiP falante, b-roll de banco — tudo que quebra o
   acabamento "comercial" e aproxima de UGC.
-- **Cores:** sempre as do `DESIGN-SYSTEM.md` da oferta (a antiga "azul + laranja" era de outro negócio, InovaLabX — não vale aqui).
+- **Cores:** sempre as do `DESIGN-SYSTEM.md` da oferta (a antiga "azul + laranja" era de outro negócio, MinhaEmpresa — não vale aqui).
 - **Texto no estático/thumb: prefira o GPT colocar o texto**, não overlay de
   código — texto do GPT sai orgânico (legenda de Story), overlay de código sai
   "perfeito demais", cara de anúncio. Diga o texto exato + fonte estilo Story +

@@ -26,7 +26,7 @@ description: Etapa E1 (porta manual) do sistema LOW-TICKET — a dona achou uma 
      exercício, depoimento) · seção onde aparece. É a base visual da página (E3/E5) e do entregável (E4);
    - o que não deu pra ver.
 6. **Vídeos dos anúncios** (se for modelar criativo): baixar em
-   `/home/lua/Documentos/TRAMPO/PROJETOS-MIDIA/CRIATIVOS-CONCORRENTES/<SLUG>-<assunto>/` (mídia de terceiro não
+   `~/Documentos/TRAMPO/PROJETOS-MIDIA/CRIATIVOS-CONCORRENTES/<SLUG>-<assunto>/` (mídia de terceiro não
    fica na pasta sincronizada — ver `PROJETOS/CLAUDE.md`), symlink em `pesquisa/referencia/videos`.
    Transcrição e análise: `ctv-modelar-concorrente`.
 7. Devolver à dona: 5 linhas (o que é, preço, funil, quantas imagens baixadas, o que faltou) → `low-modelador`.

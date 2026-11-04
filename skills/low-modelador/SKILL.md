@@ -12,6 +12,16 @@ funil, página seção por seção e criativo (ganchos, roteiros, copies, estát
 **Entrada:** link da Biblioteca do anunciante (`view_all_page_id`) ou da página de vendas.
 **Saída:** `OFERTAS/<slug>/pesquisa/modelador-<AAAA-MM-DD>.md` + `.json`. **Rodou e não salvou = não feito.**
 
+**Se a dona mandar os dois links (Biblioteca de Anúncios do Facebook + página de vendas): usar a URL da
+Biblioteca como `url` na chamada** — só ela aciona `scrapeLibrary` (lê anúncios reais, `dias_rodando`,
+criativos). Mandar a URL da página de vendas no lugar da URL da Biblioteca faz o Modelador cair no fallback
+"link direto, sem leitura dos anúncios" (`anuncios:0`, `criativos:[]`) mesmo com a página de vendas lida —
+parece bug, mas é a URL errada entrando. A página de vendas entra depois, no passo 5 (`low-referencia`).
+
+**Antes de rodar, checar se o MineraAds está disponível** (token `MINERAADS_EXT_KEY` setado, API responde).
+Sem acesso: não perguntar à dona "você tem MineraAds?" — ir direto pro fallback manual (seção "Se o MineraAds
+falhar" abaixo), avisando que foi manual.
+
 ## Os 5 modos
 | Modo | `modo` na API | O que faz | Quando usar |
 |---|---|---|---|
@@ -45,9 +55,18 @@ Token: `MINERAADS_EXT_KEY` (`set -a; source ~/.claude/.credentials.env; set +a`)
      (2-4 min; timeout ≥ 6 min). Guardar `oferta.page_id`.
   3. `POST /api/cli/modelador/mercado` `{"page_id":…}` → só se o caminho for outro idioma/mercado.
   4. `POST /api/cli/modelador/modelar` `{"page_id":…,"direcao":{…}}` → etapa 2 (v3: `direcao.ideia_id`).
+     **`page_id` aqui é o ID normalizado** (`oferta.page_id` da resposta da etapa 1, ex. `1173579039169074`),
+     **nunca a URL completa** — mandar a URL dá `{"error":"Rode a análise SpyX primeiro."}` mesmo já tendo
+     rodado etapa 1 (o registro existe, só não casa pela chave errada).
   5. `GET /api/cli/modelador/<page_id>/markdown` → relatório inteiro.
 - A dona já rodou na tela? Não rodar de novo: buscar pelo `page_id` (fica salvo no MineraAds).
 - Ela não disser o modo? Roda o **padrão (Raio-X+SpyX)**. Só usa outro modo se ela pedir explicitamente.
+- **Rodando via `ctx_execute` (sandbox)**: cada chamada pode virar task em background com sandbox própria —
+  um arquivo salvo em `/tmp` numa chamada pode não existir mais na próxima (sandbox efêmera, não é o mesmo
+  disco do host). Pra não perder o resultado: fazer curl + leitura/validação do JSON **na mesma chamada**
+  (um só bloco de código que salva e já imprime o que precisa), nunca dividir "salva num `ctx_execute`" e
+  "lê noutro". Se precisar do arquivo depois (Read tool, cp pra OFERTAS/), copiar pra fora do sandbox ainda
+  dentro da mesma chamada que gerou — ou aceitar que só o que foi impresso no momento sobrevive.
 
 ## Passos
 1. Etapa 1 → salvar `.json` (resposta bruta) e `.md` na oferta.
@@ -61,6 +80,29 @@ Token: `MINERAADS_EXT_KEY` (`set -a; source ~/.claude/.credentials.env; set +a`)
    `low-referencia` na URL que o Modelador leu (`url_lida`) → `pesquisa/REFERENCIA.md` + imagens da página
    (mockups, prints por dentro, folhas) em `pesquisa/referencia/imagens-origem/`.
 6. Próximo: `low-validar` (validar o caminho escolhido) → depois `low-ficha-oferta`.
+
+## Demanda vs. concorrência — dois tipos, nunca misturar
+Decisão 2026-11-03, baseada no método do Fernando Oliveira Pro (canal, vídeo "Como Minerar e Modelar
+Produtos Low Ticket") — transcrição em `PROJETOS-MIDIA/PERFIS-E-CANAIS/LOW-TICKET-fernandooliveira/`:
+- **Demanda orgânica+comercial (existe mercado pra isso?):** busca web real (Gemini com grounding,
+  `pesquisaComercialReal` em `modelador.js`) por quem já vende produto parecido na internet em geral,
+  com preço — **automático dentro do raiox e do SpyX/combinado**, não é botão. Roda 2x: na etapa 1
+  (produto original) e de novo depois que a dona ESCOLHE a modelagem (`pesquisaComercialModelagem`,
+  gera o campo `demanda_modelagem` — equivalente ao momento em que o Fernando acha "a Rúbio já vende
+  isso por R$213" depois de já ter a concepção, não antes).
+- **Concorrência ativa (alguém tá pagando anúncio ESSA oferta ESSE ângulo agora?):** botão separado
+  "Validar demanda real antes de escolher" na tela do Modelador → `validarMercado`
+  (validacaoMercado.js) → lê de verdade a Biblioteca de Anúncios do Facebook (+YouTube+Trends). Só
+  roda DEPOIS que a dona escolhe 1 idioma específico — nunca antes.
+Não dá pra confundir as duas: a primeira diz se o mercado existe, a segunda diz se já tem anúncio
+pago validando aquele ângulo específico.
+
+**Checkbox "modelar pra fora" (tela do Modelador, antes de rodar):** se marcada, a dona escolhe
+quais idiomas quer cobrir — espanhol (Latam), inglês, francês, italiano, alemão, português de
+Portugal (chips, `es/en/fr/it/de/pt`) — e a pesquisa de demanda da etapa 1 já cobre esses idiomas
+de cara (`internacional`+`idiomasAlvo` no corpo de `POST /api/modelador` e `/api/cli/modelador`).
+Isso só afeta a busca de DEMANDA; a concorrência na Biblioteca continua esperando a escolha de 1
+idioma específico mais na frente.
 
 ## Se o MineraAds falhar (fora do ar, página que ele não lê, resultado raso)
 Fazer a análise à mão pela filha `metodo-spyx` (prompts SpyX de `RATO-ADS/pesquisa/spyx-prompts/`) (01 mesmo idioma · 02 outro

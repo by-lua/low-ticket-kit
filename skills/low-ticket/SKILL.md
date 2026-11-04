@@ -6,7 +6,7 @@ description: Porta de entrada e orquestradora do sistema LOW-TICKET (ofertas low
 # low-ticket — orquestradora (índice)
 
 Esta skill só diz **a ordem e quem chamar**. Regra de execução mora na filha/skill da etapa.
-Raiz: `/home/lua/Documentos/TRAMPO/PROJETOS/WORKING/PROJETOS - INTERNOS/LOW-TICKET` (fonte desta skill: `_skills/low-ticket/`).
+Raiz: `~/Documentos/TRAMPO/PROJETOS/WORKING/PROJETOS - INTERNOS/LOW-TICKET` (fonte desta skill: `_skills/low-ticket/`).
 
 ## 1. Abrir — sempre primeiro
 ```

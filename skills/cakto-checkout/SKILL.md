@@ -5,7 +5,7 @@ description: Cadastra e opera produto/oferta na Cakto (app.cakto.com.br) — gat
 
 # Cakto — checkout nacional + internacional
 
-Pesquisado e testado em 29/10/2026 (conta LeadGo, `contact@leadgo.dev`). Fonte: `docs.cakto.com.br`,
+Pesquisado e testado em 29/10/2026 (conta LeadGo, `contact@seudominio.com`). Fonte: `docs.cakto.com.br`,
 `cakto.com.br/cobertura`, `cakto.com.br/pagamentos` — reconfirmar se algo não bater (preço/taxa muda rápido).
 
 ## Quando usar
@@ -20,7 +20,7 @@ Pesquisado e testado em 29/10/2026 (conta LeadGo, `contact@leadgo.dev`). Fonte: 
   `~/.claude/bin/browsers.sh cakto`
 - Login: **sem senha por padrão** (magic link) ou **com senha + código de 6 dígitos por e-mail**
   (toggle "Login com senha" na tela). Conta usa 2FA por e-mail sempre — não tem como pular.
-  - E-mail de recebimento do código: `contact@leadgo.dev`, webmail Hostinger, perfil `hostinger-mail-pnz`
+  - E-mail de recebimento do código: `contact@seudominio.com`, webmail Hostinger, perfil `hostinger-mail-empresab`
     (credenciais `HOSTINGER_LEADGO_EMAIL`/`HOSTINGER_LEADGO_PASSWORD` em `~/.claude/.credentials.env`).
   - **Código expira rápido** (~60-90s) — entre pegar no e-mail e digitar na Cakto, não demorar.
     Se digitar e der "código inválido", é porque pegou um e-mail de tentativa anterior: clicar

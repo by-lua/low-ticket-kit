@@ -10,7 +10,7 @@ description: Etapa E8 do sistema LOW-TICKET — cadastra a oferta e as peças do
 
 ## Antes de tudo
 - **Fatos:** `_memoria/contas-e-codigos.md` (gateway, conta, código, perfil de browser). Nunca de cabeça.
-- **Gateway pelo mercado:** BR → `wiven-checkout` (conta **LeadGo**; a Wiven PNZ está aposentada) ·
+- **Gateway pelo mercado:** BR → `wiven-checkout` (conta **LeadGo**; a Wiven EmpresaB está aposentada) ·
   EUR/USD → `mundpay` · global → `cooud-checkout` · LATAM → `zenith-gateway` · 250 Atividades → `ggcheckout-produto`.
 - **Um perfil de browser por pane**, sempre headed.
 

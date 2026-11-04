@@ -138,7 +138,7 @@ sobem no **Drive Innova** (rclone remote `tsdrive:`) na estrutura FIXA (verifica
 `tsdrive:PROJETOS/INTERNOS/LOW TICKET/<Nome do Produto>/` → 1 PDF por bloco. Sequência: PROJETOS → INTERNOS → LOW TICKET (uppercase) → pasta do produto.
 Ex real: `tsdrive:PROJETOS/INTERNOS/LOW TICKET/Mapa do Tarot Brasil/mapa-do-tarot-PRINCIPAL.pdf`. Sempre esse padrão,
 repetível pra todo produto low ticket. Subir com
-`rclone copy <arquivo> "tsdrive:PROJETOS/INTERNOS/LOW TICKET/<produto>/"`. Nota: o remote antigo `drive:` é outro drive (raiz com INTERNOS+PNZ DIGITAL) — NÃO usar pra low ticket.
+`rclone copy <arquivo> "tsdrive:PROJETOS/INTERNOS/LOW TICKET/<produto>/"`. Nota: o remote antigo `drive:` é outro drive (raiz com INTERNOS+EmpresaB DIGITAL) — NÃO usar pra low ticket.
 
 ---
 

@@ -13,7 +13,7 @@ nossa de Alzheimer), ou vídeos/imagens que a dona mandou. `OFERTA.md` da nossa 
 0. **Fontes de concorrente:** o original (Modelador) + os anunciantes **validados** da `pesquisa/VALIDACAO-*.md`
    (diretos e ofertas vizinhas, achados pelos termos PT/ES/EN).
 1. **Já tem análise?** `criativos_analise` do `modelador-*.json` cobre os criativos do original — partir dela.
-2. **Baixar** os vídeos/imagens em `/home/lua/Documentos/TRAMPO/PROJETOS-MIDIA/CRIATIVOS-CONCORRENTES/<SLUG>-<assunto>/`
+2. **Baixar** os vídeos/imagens em `~/Documentos/TRAMPO/PROJETOS-MIDIA/CRIATIVOS-CONCORRENTES/<SLUG>-<assunto>/`
    (mídia de terceiro fora da pasta sincronizada) + symlink em `pesquisa/referencia/`. Material da dona: salvar
    cru em `pesquisa/da-dona/` primeiro.
 3. **Transcrever** cada vídeo: `yt-transcricao` (YouTube) ou whisper local (`watch` faz frames + transcrição).
