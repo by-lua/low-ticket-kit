@@ -48,8 +48,36 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
    - **Headline aprovada → grava em `OFERTA.md` § Ângulo final** (molde + headline + subheadline). O `criativo`
      lê esse campo antes de usar `spyx.ganchos` do modelador — se o molde escolhido aqui divergir do ângulo que
      o SpyX chutou na modelagem, o ângulo final manda; avisa a dona que os ganchos antigos podem não bater mais.
-2. **Paleta e fontes = as da página original**, gravadas em `DESIGN-SYSTEM.md` (tokens hex + fontes).
-   Outra paleta só se a dona pedir pra essa oferta.
+2. **Visual = o da E2d, já aprovado.** Antes do passo 1, conferir `DESIGN-SYSTEM.md` com a linha
+   `Aprovado pela dona: <data>`. Não existe → **parar e fazer a E2d** (abaixo). Nunca copiar a paleta do original
+   em silêncio.
+2a. **E2d — Visual (pergunta obrigatória, regra da dona 04/11/2026).** Antes de montar a página, perguntar:
+   *"Mantemos o visual dele ou mudamos um pouco (cores, fundo, elementos, capa)?"* — mostrando o que ela já
+   comentou (ex.: "fundo mais limpo", "desktop mal resolvido").
+   - **Objetivo padrão da dona = diferenciar sem fugir do que vende.** Mantém a **pegada/vibe** do original (o
+     estilo que bate no público — ex.: grimório vintage no Calendrier), mesma composição e tipo de peça; muda
+     **as cores e alguns elementos**, um pouco — o bastante pra que, se outro modelar a mesma oferta nesse idioma,
+     a nossa não fique igual à dele. Dois erros já cometidos (Calendrier, 04/11): (1) trocar só a cena e manter
+     cores/elementos = "ficou praticamente igual"; (2) trocar o estilo inteiro (Art Nouveau) = foge do que vende.
+     Os 3 estilos oferecidos são **variações dentro da mesma vibe** (paleta + 2-3 elementos trocados), não 3
+     estéticas diferentes.
+   - **Oferecer 3 variações** escritas por extenso (paleta · elementos trocados · por que serve pro mercado), com
+     recomendação, e a opção **"gerar os 3 pra comparar"** (uma imagem-guia de cada). Ela escolhe.
+   - **Gerar EM CIMA do mockup completo do original** quando a página dele tiver: anexar o kit completo dele
+     como BASE (mesma composição e itens) e pedir só a troca de identidade (paleta, estilo, elementos, idioma).
+     É a base visual de tudo; sem ele, montar a cena a partir da capa + páginas + bônus dele.
+   - **Manter** → tokens hex + fontes da página original → `DESIGN-SYSTEM.md`.
+   - **Mudar** → gerar **uma imagem-guia** com `gpt-imagem-playwright` descrevendo a mudança (cores, fundo, elementos).
+     **A imagem-guia é o mockup do PLANO COMPLETO** (regra da dona, 04/11/2026): capa do principal + páginas de
+     dentro + capas dos bônus, tudo numa cena — é a que mais carrega identidade (capas, páginas, elementos) e serve
+     de referência pra todo o resto. Anexar: o mockup do kit completo dele (se a página tiver) + capa + 2 páginas
+     reais de dentro + mockups dos bônus. A página dele não tem mockup completo → montar a cena completa a partir
+     da capa, das páginas e dos bônus dele. Mostrar → dona aprova
+     ou pede ajuste → tirar a paleta da imagem aprovada (fundo clareado se ela pediu fundo limpo).
+   - Gravar em `DESIGN-SYSTEM.md`: tokens hex, fontes, **caminho da imagem-guia**, o que a dona pediu (literal)
+     e `Aprovado pela dona: <data>`. Daqui pra frente a imagem-guia é a âncora: página (E3), entregável (E4) e
+     lote de imagens (E5) seguem ela, não o visual do concorrente.
+   - Página sempre com **desktop e mobile** resolvidos (página clonada costuma ser só mobile).
 3. **Imagens:** placeholders agora; geração na E5 (`imagens-pagina-low`, ordem nova: mockups da página primeiro).
 4. **Preço:** botões com o preço da `OFERTA.md`. Oferta multi-país → preço em moeda local
    (`low-ticket/references/PRECO-MOEDA-LOCAL.md`).

@@ -17,6 +17,19 @@ description: Etapa E2b do sistema LOW-TICKET — valida o caminho de modelagem q
      público ("jiu jitsu 40 anos") e mecanismo;
    - outro idioma: somar os `mercado.termos_biblioteca` do Modelador.
    - **Mostrar a lista à dona** — ela corta ou soma termos antes da busca.
+   - **Perguntar como fazer a busca** (regra da dona, 04/11/2026): *automática* (eu rodo os termos na
+     Biblioteca/MineraAds e trago a tabela) **ou** *manual* (ela pesquisa e me dá o retorno). Manual → registrar o
+     retorno dela **literal** no `VALIDACAO-<data>.md` como fonte, e seguir pros passos que ela não cobriu
+     (orgânico, funil dos concorrentes). Nunca rodar a busca sem essa resposta.
+   - **Na pergunta, já dizer o que ela tem que trazer se escolher manual** (quem faz o quê fica escrito):
+     | Quem | O quê |
+     |---|---|
+     | **Dona** (manual) | 1) termos que usou · 2) por idioma: **tem ou não tem** concorrente · 3) **link de cada anúncio/anunciante** que achou (Biblioteca) · 4) **quais ela quer como referência** — de criativo, de página ou de funil · 5) qualquer print/observação |
+     | **Eu** | registrar o retorno literal · abrir cada link e preencher a tabela (dias no ar, nº de anúncios, preço, validado?) · baixar os criativos marcados como referência (`PROJETOS-MIDIA/CRIATIVOS-CONCORRENTES/`) · funil dos 2-3 melhores · orgânico · veredito |
+     Ela disse só "não tem" sem link → perguntar se achou algo parecido que queira usar como referência
+     (anúncio vizinho, outro idioma); "nenhum" também fica escrito. Os links marcados como referência vão
+     pra seção **Referências escolhidas pela dona** do `VALIDACAO-<data>.md` — é de lá que `criativo` /
+     `ctv-modelar-concorrente` e `low-pagina` puxam.
 2. **Biblioteca — concorrentes parecidos.** Cada termo: `mineraads mine "<termo>"` (ou Biblioteca pelo
    `agent-browser` com perfil do sistema, todos os países). Tabela por anunciante: nome · link da Biblioteca ·
    idioma/país · dias no ar · nº de anúncios ativos · o que vende · preço (se visível) · **validado?**
@@ -38,7 +51,7 @@ description: Etapa E2b do sistema LOW-TICKET — valida o caminho de modelagem q
 6. Termos que acharam concorrente bom → sugerir à dona incluir no Swipe automático diário do MineraAds.
 
 ## O arquivo `VALIDACAO-<data>.md`
-Termos (PT/ES/EN, marcando os que acharam algo) · tabela de concorrentes · orgânico + frases reais · funil dos
+Termos (PT/ES/EN, marcando os que acharam algo) · **quem fez a busca (eu/dona)** · tabela de concorrentes · **Referências escolhidas pela dona** (link + pra quê: criativo/página/funil) · orgânico + frases reais · funil dos
 concorrentes · veredito · **decisão da dona**.
 
 Quem usa depois: `low-ficha-oferta` (dor, funil, preço), `low-pagina` (concorrente com página melhor = referência

@@ -49,6 +49,9 @@ Vale pra toda oferta (mesmo mercado e cross-market). **Sobrescreve** qualquer tr
    página de explicação. Mecânica de geração dessas folhas: `gpt-imagem-playwright` § "Páginas de ATIVIDADE".
 
 ## PASSO 0 de toda entrega — montar a REFERÊNCIA / design system ANTES de qualquer lote
+> **Oferta do sistema LOW-TICKET (04/11/2026):** a referência já vem da **E2d** — `DESIGN-SYSTEM.md` aprovado pela
+> dona com a **imagem-guia**. Anexar a imagem-guia em TODO lote (junto das originais) e usar os tokens dela, não as
+> cores do concorrente. Sem `DESIGN-SYSTEM.md` aprovado → voltar pra E2d (`low-pagina` § 2a), não gerar.
 
 Primeira coisa ao produzir uma entrega: definir a identidade visual como imagens de referência.
 1. Usar as referências que já temos (mockups do concorrente, design da página).

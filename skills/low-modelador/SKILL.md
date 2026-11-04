@@ -42,7 +42,7 @@ Token: `MINERAADS_EXT_KEY` (`set -a; source ~/.claude/.credentials.env; set +a`)
 - Sem o comando: rotas com `Authorization: Bearer $MINERAADS_EXT_KEY`:
   1. **Fluxo padrão (Raio-X+SpyX), 3 chamadas em sequência — nenhuma pula a próxima:**
      a. `POST /api/cli/modelador` `{"url":"<link>","modo":"raiox"}` → guardar `page_id` e as 10 `propostas`.
-        Mostrar à dona, ela escolhe uma pelo `ranking`.
+        Mostrar à dona **o texto inteiro de cada proposta na mensagem** (ver "Como mostrar" abaixo), ela escolhe uma pelo `ranking`.
      b. `POST /api/cli/modelador` de novo, mesma `url`, `{"modo":"combinado","refazer":true}` (sobrescreve o
         resultado salvo — esperado). Isso só dá o diagnóstico SpyX + caminhos do Rato, **ainda não gera
         página/ganchos/roteiros/copies**.
@@ -70,16 +70,22 @@ Token: `MINERAADS_EXT_KEY` (`set -a; source ~/.claude/.credentials.env; set +a`)
 
 ## Passos
 1. Etapa 1 → salvar `.json` (resposta bruta) e `.md` na oferta.
-2. **Mostrar à dona, curto:** o que o original vende · alavanca mais fraca e a que ele nem tocou · 3-5 buracos ·
+2. **Como mostrar (regra da dona, 04/11/2026):** as propostas vão **escritas por extenso na mensagem do chat**,
+   nunca só como opção resumida de pergunta (AskUserQuestion) nem só "salvei no arquivo". Para cada proposta:
+   título · tipo/pilar trocado · o que muda · entrega · público · mercado (se houver) · demanda/dificuldade · por quê.
+   Se ela pedir "as N primeiras", mostra essas N por extenso e o resto em 1 linha cada (título — o que muda).
+   Salvar também em `pesquisa/modelador-<data>-raiox.md`. Só depois perguntar qual ela escolhe.
+   Avisar quando a pesquisa de demanda veio vazia (`pesquisa_comercial` nulo ou com `erro`) — as propostas ficam sem prova de demanda.
+3. **Mostrar à dona (Combinado/SpyX):** o que o original vende · alavanca mais fraca e a que ele nem tocou · 3-5 buracos ·
    os caminhos (top 1, top 3 e as famílias: mesma oferta melhorada, subnicho, público, ângulo, roupagem, formato,
    nicho, outro idioma) com o que cada um corrige. **Ela escolhe** — nunca escolher por ela.
-3. Outro idioma → etapa 1b (mercados com nota) → ela escolhe o mercado.
-4. Etapa 2 com a direção (caminho, público principal, regras do nicho que ela disser) → salvar de novo
+4. Outro idioma → etapa 1b (mercados com nota) → ela escolhe o mercado.
+5. Etapa 2 com a direção (caminho, público principal, regras do nicho que ela disser) → salvar de novo
    (`modelador-<data>-etapa2.json/.md`).
-5. **Página original em disco** (a página e o entregável dependem disso): rodar a parte de leitura da
+6. **Página original em disco** (a página e o entregável dependem disso): rodar a parte de leitura da
    `low-referencia` na URL que o Modelador leu (`url_lida`) → `pesquisa/REFERENCIA.md` + imagens da página
    (mockups, prints por dentro, folhas) em `pesquisa/referencia/imagens-origem/`.
-6. Próximo: `low-validar` (validar o caminho escolhido) → depois `low-ficha-oferta`.
+7. Próximo: `low-validar` (validar o caminho escolhido) → depois `low-ficha-oferta`.
 
 ## Demanda vs. concorrência — dois tipos, nunca misturar
 Decisão 2026-11-03, baseada no método do Fernando Oliveira Pro (canal, vídeo "Como Minerar e Modelar

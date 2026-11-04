@@ -17,7 +17,7 @@ de agir. **Método com Ativo = não não se usa**, mesmo que a skill exista.
 
 ## 2. Etapas (uma por vez; cada uma só começa com a saída da anterior)
 **Nenhuma etapa se pula.** Antes de começar uma, conferir que o arquivo da anterior existe; faltou → fazer a anterior
-primeiro e avisar a dona. Pontos em que a dona aprova: E2a, E2b, E2c, primeiras páginas e MVP (E4), ficha da leva.
+primeiro e avisar a dona. Pontos em que a dona aprova: E2a, E2b, E2c, **E2d (visual)**, primeiras páginas e MVP (E4), ficha da leva.
 
 | # | Etapa | Saída que prova | Filha |
 |---|---|---|---|
@@ -25,9 +25,10 @@ primeiro e avisar a dona. Pontos em que a dona aprova: E2a, E2b, E2c, primeiras 
 | E2a | **Direção** — Raio-X traz 10 propostas ranqueadas, **a dona escolhe uma** → SpyX/Combinado aprofunda nessa proposta | `pesquisa/modelador-<data>-etapa2.md` + `.json` | `low-modelador` (etapa 2) |
 | E2b | **Validar o caminho** — termos PT/ES/EN → concorrentes parecidos na Biblioteca (validados por dias no ar) → demanda orgânica → funil dos concorrentes → veredito 🟢🟡🔴 → **dona decide** | `pesquisa/VALIDACAO-<data>.md` com a decisão | `low-validar` |
 | E2c | **Ficha + funil** — o que vendemos, pra quem, dor, preço **e o funil inteiro** (bônus, bump, upsell, downsell, upgrade, combo) **antes da página** | **`OFERTA.md`** + **`FUNIL.md`** aprovados · pasta no padrão | `low-ficha-oferta` (regras de funil: `low-funil`) · `organizar-projeto` |
-| E3 | **Página** — página do original modelada; mesmas cores (outra só se a dona pedir), troca oferta e idioma | `site/` + `DESIGN-SYSTEM.md` | `low-pagina` |
+| E2d | **Visual** — **perguntar à dona**: manter o visual do original ou mudar (cores, fundo, elementos, capa)? Mudar → gerar 1 **imagem-guia = mockup do plano COMPLETO** (capa + páginas + capas dos bônus, paleta nova; refs: kit completo dele + páginas reais) → dona aprova → travar tokens + imagem-guia. Manter → tokens do original | `DESIGN-SYSTEM.md` (tokens + caminho da imagem-guia) **aprovado** | `low-pagina` § Visual · `gpt-imagem-playwright` |
+| E3 | **Página** — página do original modelada **com o visual da E2d**, troca oferta e idioma; desktop e mobile bem resolvidos | `site/` | `low-pagina` |
 | E4 | **Entregável** — texto inteiro → primeiras páginas das imagens de dentro da original → **dona aprova** → MVP | `produto/` texto + imagens A4 | `low-entregavel` |
-| E5 | **Imagens da página** (mockups refeitos das dele, prints de dentro do nosso MVP) | imagens plugadas na página | `imagens-pagina-low` · `depoimentos-pagina-de-vendas` |
+| E5 | **Imagens da página** (mockups refeitos das dele, prints de dentro do nosso MVP) — lote anexa a **imagem-guia da E2d** | imagens plugadas na página | `imagens-pagina-low` · `depoimentos-pagina-de-vendas` |
 | E6 | **Área de membros** | `/painel` com módulos + PDF baixando | `area-membros-netflix` · `auditar-entregaveis-oferta` |
 | E7 | **Peças do funil** — produzir o entregável de cada peça do `FUNIL.md` (desenhado na E2c) | peças no `/painel` | `low-funil` · `low-entregavel` |
 | E8 | **Checkout** — gateway, banner, capa, PDF de entrega, 2 webhooks, registro do código | produto/oferta no gateway | `low-checkout` |
