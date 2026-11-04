@@ -1,12 +1,12 @@
 #!/bin/bash
 # uso: gen.sh <prompt.txt> <saida.png> <ref.jpg>
-S=$(~/.claude/bin/gpt-livre.sh calendrier 2>/dev/null | tail -1); [ -n "$S" ] || { echo "FAIL sem perfil GPT livre"; exit 1; }; ~/.claude/bin/lane.sh take ${S%-calendrier} calendrier >/dev/null 2>&1; agent-browser --session $S tab calendrier >/dev/null 2>&1 || { echo "FAIL sem aba propria"; exit 1; }; P=$1; OUT=$2; REF=$3; REFS=("${@:3}"); T0=$(date +%s); ts(){ echo "[$(( $(date +%s)-T0 ))s] $1"; }
+S=${GPT_S:-gpt-empresab-calendrier}; agent-browser --session $S tab calendrier >/dev/null 2>&1 || { echo "FAIL sem aba propria (rode: lane.sh take gpt-empresab calendrier)"; exit 1; }; P=$1; OUT=$2; REF=$3; REFS=(); for _r in "${@:3}"; do REFS+=("$(realpath "$_r")"); done; REF=${REFS[0]}; T0=$(date +%s); ts(){ echo "[$(( $(date +%s)-T0 ))s] $1"; }
 agent-browser --session $S navigate "https://chatgpt.com/" >/dev/null 2>&1; sleep 5
 m=$(echo "(()=>document.querySelectorAll('.bg-user-message').length)()" | agent-browser --session $S eval --stdin | tr -dc '0-9'); [ "$m" = "0" ] || { echo "FAIL aba suja"; exit 1; }
 CNT="(()=>[...document.querySelectorAll('img')].filter(i=>i.src.startsWith('data:image')||i.src.includes('backend-api')||i.src.startsWith('blob:')).length)()"
 N0=$(echo "$CNT" | agent-browser --session $S eval --stdin | tr -dc '0-9')
-agent-browser --session $S upload 'input[type=file]:nth-of-type(2)' "${REFS[@]}" >/dev/null 2>&1
-for k in $(seq 1 40); do n=$(echo "$CNT" | agent-browser --session $S eval --stdin | tr -dc '0-9'); [ "${n:-0}" -ge $(( ${N0:-0} + ${#REFS[@]} )) ] && break; sleep 3; done
+i=0; for R in "${REFS[@]}"; do i=$((i+1)); agent-browser --session $S upload 'input[type=file]:nth-of-type(2)' "$R" >/dev/null 2>&1
+  for k in $(seq 1 40); do n=$(echo "$CNT" | agent-browser --session $S eval --stdin | tr -dc '0-9'); [ "${n:-0}" -ge $(( ${N0:-0} + i )) ] && break; sleep 3; done; done
 [ "${n:-0}" -ge $(( ${N0:-0} + ${#REFS[@]} )) ] || { echo "FAIL anexo"; exit 1; }
 TB=$(agent-browser --session $S snapshot -i -c 2>/dev/null | grep -oiP '(textbox|textarea)[^\]]*\[ref=\K[^\]]+' | head -1); agent-browser --session $S focus "@$TB" >/dev/null
 echo "(()=>{const t=document.querySelector('div.ProseMirror');t.innerHTML='<p></p>';t.dispatchEvent(new Event('input',{bubbles:true}));return t.innerText.length})()" | agent-browser --session $S eval --stdin >/dev/null; sleep 1

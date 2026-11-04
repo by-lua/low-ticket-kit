@@ -29,6 +29,11 @@ Gera imagens no ChatGPT pelo browser persistente já logado. **Execute, não exp
 > saiu como mockup de kit 2× seguidas). O dono-do-chat por `includes` não pega. **Sempre:** limpar o `div.ProseMirror`
 > antes de digitar e conferir `composer.innerText.length ≈ tamanho do prompt` antes de enviar (receita pronta: `scripts/gerar-1-imagem.sh <prompt.txt> <saida.png> <ref.jpg>`).
 
+> **04/11/2026 — vários agentes na MESMA conta GPT:** o rascunho do composer é compartilhado entre abas da mesma conta,
+> e soltar a lane faz os comandos caírem na aba de outro agente (meu prompt entrou no chat de outra sessão). Regras:
+> nunca `lane.sh drop` no meio do trabalho; antes de cada envio, `agent-browser --session <S> tab <lane>`; limpar o
+> composer e conferir o tamanho; e **anexo sempre com caminho ABSOLUTO** (`scripts/gerar-1-imagem.sh` já converte).
+
 ## Pegar a lane — PRIMEIRA COISA, SEMPRE
 
 Vários Claudes usam este mesmo browser. Sem lane, todos caem na mesma aba e escrevem no mesmo chat.
