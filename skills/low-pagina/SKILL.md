@@ -1,6 +1,6 @@
 ---
 name: low-pagina
-description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da oferta modelando a página do original: mesma estrutura e cores, troca a oferta, o texto e o idioma. Use para "faz a página", "página de vendas da oferta X", "adapta a página dele pra nossa".
+description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da oferta. Padrão da casa = Modelo Padrão LeadGo (base PaginaPro do Fernando + regras da casa, em modelos/modelo-padrao/); alternativas: página da pessoa 100% ou página da pessoa + blocos do Modelo Padrão. Use para "faz a página", "página de vendas da oferta X", "Modelo Padrão", "estilo Fernando", "adapta a página dele pra nossa".
 ---
 
 # low-pagina — E3, página de vendas
@@ -13,13 +13,19 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
    `MODELOS/MODELOS-DE-PAGINA/`). Texto = `spyx.pagina[]` do Modelador, seção por seção, ajustado à `OFERTA.md`.
    Página original fraca/rasa demais pra clonar (comum em modelagem por upgrade, Raio-X com pilar trocado sem
    referência de página boa) → usa o **esqueleto padrão** abaixo em vez de inventar ordem solta.
-0-. 🛑 **Pergunta obrigatória antes de montar** (dona, 04/11/2026) — 3 caminhos, escritos por extenso:
+0-. 🛑 **Pergunta obrigatória antes de montar** (dona, 04/11/2026). **Antes de perguntar, entregar as sugestões:**
+   - Tabela **seções da página dela × modelo `modelo-padrao`**: o que ela tem, o que falta (dor, mecanismo, uso, pitch
+     intermediário, pra quem é, o que recebe, passos de acesso…) e o que ela tem que o modelo não tem (ex.: sorteio).
+   - Para cada bloco que falta: **sugiro acrescentar ou não, e por quê** (qual objeção/alavanca ele resolve).
+   - Recomendação de caminho (1, 2 ou 3) com o motivo.
+   Depois, os 3 caminhos, escritos por extenso (**padrão = 3, o Modelo Padrão**):
    1. **Página da pessoa 100%** — clone fiel (passo 0), muda só idioma, oferta, preços e cores do visual aprovado.
-   2. **Página da pessoa melhorada pelos 17 blocos** — clone dela como base + os blocos do esqueleto 1a que faltam
-      (dor, mecanismo, pra quem é, pitch intermediário, passos de acesso…), na ordem do esqueleto.
-   3. **Template do Fernando com a nossa oferta** — partir de `MODELOS/MODELOS-DE-PAGINA/fernando/leadgo-referencia/` (já com as regras da casa; README lista; implementação de
-      referência já com todas as nossas regras: `OFERTAS/calendrier-magique-fr/site/index.html`, gerador
-      `OFERTAS/calendrier-magique-fr/pesquisa/scripts/build_page.py`).
+   2. **Página da pessoa + adaptações do Modelo Padrão** — clone dela como base (visual e identidade dela) + os blocos
+      que faltam **copiados do Modelo Padrão** (mesma estrutura/CSS adaptados à paleta dela), só os aprovados nas sugestões.
+   3. **Modelo Padrão LeadGo** (recomendado, padrão da casa desde 04/11/2026) — `_skills/low-pagina/modelos/modelo-padrao/`
+      (index.html + img + build_page.py + README com todas as regras). Nasceu do PaginaPro V1 do Fernando Oliveira
+      (original só pra consulta em `MODELOS/MODELOS-DE-PAGINA/fernando/`). Mudança nova aprovada pela dona numa página
+      feita nele → aplicar também no modelo e anotar no README do modelo. Os modelos Flowise são legado: não usar.
    Valem nos 3: barra vermelha fixa · hero acima da dobra · planos e garantia padrão Mapa do Tarot · QA (passo 9b).
    - **Caminhos 1 e 2** → passo 0 abaixo (clone). Ordem: **o material por dentro logo depois da 1ª seção (hero)**.
    - **Template do Fernando** → `MODELOS/MODELOS-DE-PAGINA/fernando/index.html` (PaginaPro V1, HTML estático): copia,
@@ -41,11 +47,14 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
 0b. **Preferências fixas da dona (04/11/2026):**
    - **Hero centralizado:** barra → headline → **mockup no meio** → texto curto/bullets organizados → botão.
      Nada de hero em 2 colunas (texto de um lado, imagem do outro), nem no desktop.
-   - **Hero visual, não texto em cima de texto** (dona, 04/11/2026): subheadline de 1 linha + **3 cards com ícone**
-     (título curto + 1 linha de apoio), lado a lado também no celular. Nada de parágrafo + lista de frases empilhadas.
+   - **Hero organizado como o do Fernando** (dona, 04/11/2026): subheadline → **bullets com ✓ em círculo** → **pílula com o
+     preço do plano mais barato logo acima do botão** → botão → linha de confiança (✓ acesso imediato · ✓ garantia · ✓ pagamento
+     seguro). Nada de cards espalhados nem parágrafos empilhados.
    - **A 1ª seção cabe na tela até o botão, sem rolar**, no celular (até 360×740) e no PC (1366×768): mockup com
      `max-height` em vh, h1 menor em tela baixa, 3º bullet some se precisar. Provar com o QA (9b).
-   - **Barra de urgência sempre VERMELHA** (fundo vermelho, texto branco), qualquer paleta, e **fixa no topo** (`position:sticky;top:0`) — acompanha a pessoa enquanto rola.
+   - **Barra de urgência sempre VERMELHA** (fundo vermelho, texto branco), qualquer paleta, **fixa no topo** (`position:sticky;top:0`)
+     e **fina: ~30px, 1 linha** em qualquer tela (no celular, encurtar o texto).
+   - **Mockup é o protagonista do hero:** grande (~44vh celular / 46vh PC) e texto pequeno ao redor.
 1a. **Esqueleto padrão (fallback, 1 função comercial por bloco, nesta ordem):**
    barra de urgência (só se for real) + hero → dor/agitação (título "[atividade central] não precisa ser
    [dor do dia a dia]", 6 chips de situação, ponte fixa pro mecanismo) → prova do produto (mostra antes de
@@ -136,7 +145,13 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
      cards, lista do plano, soma do value stack, FAQ, texto de liberação — nenhum resquício do número antigo.
 5. **Rastreio no `<head>`:** bloco fbq inline ANTES do loader do Trackeador (skill `trackeador`). Todo botão
    de checkout com `data-tk-value` + `data-tk-currency`; página não manda IC próprio.
-6. **Popup de saída:** skill `popup-saida-low-ticket`.
+6. **Os 2 popups, SEMPRE** (dona, 04/11/2026: "eu sempre uso essas coisas"), padrão Mapa do Tarot (código no modelo
+   `modelos/modelo-padrao/`):
+   - **Upgrade no clique do Básico** (`#downsell`): « leve tudo por quase o mesmo preço » — Completo num preço
+     intermediário (ex.: básico 5,90 → **upgrade 7,90** → completo 12,90). Sim → checkout do upgrade; "não, continuar
+     com o básico" → checkout do básico.
+   - **Saída** (`#exitpopup`): básico com desconto (ex.: 4,90). Regras e textos: skill `popup-saida-low-ticket`.
+   O QA (9b) acusa se faltar algum dos dois.
 6b. **Página leve e otimizada — obrigatório, toda página** (skill `otimizacao-pagina-vendas`, sem quebrar o clone):
    - **toda imagem** em WebP, no dobro da largura exibida, ~80 KB cada, `width`/`height`, lazy abaixo da dobra,
      a imagem principal (LCP) pré-carregada;
@@ -150,7 +165,7 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
    1920×1080 (`agent-browser --session S set viewport W H` → `eval --stdin < qa-layout.js`). Tem que dar `ok` em todos:
    botão do hero acima da dobra, sem rolagem lateral, nenhum texto vazando da caixa, nenhum texto estourando botão,
    todo botão aguentando texto +45% (tradução automática do navegador — a compradora pode traduzir a página),
-   e nenhuma imagem coberta ou cortada por outro elemento ou caixa (precisa sobrar espaço embaixo).
+   nenhuma imagem coberta ou cortada por outro elemento ou caixa (precisa sobrar espaço embaixo), e favicon presente.
    Depois, olhar print do hero (celular e PC) e do bloco de planos.
 8. Deploy: repo em `github.com/leadgodev/`, Coolify auto-deploy (fatos em `_memoria/empresa.md`).
 9. Trocou a página de uma oferta que já roda anúncio → `adstrackeador pagina comparar <atual> <nova>` antes.

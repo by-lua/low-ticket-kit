@@ -4,6 +4,9 @@
 <meta name="description" content="12 calendriers mensuels illustrés et 12 pages d'Agenda Magique pour vivre 2027 au rythme de la lune et des sabbats.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preload" as="image" href="img/kit-complet-700.webp">
 <!-- TRACKING (E9): fbq inline + loader do Trackeador (skill trackeador). -->
 <!-- Base: template PaginaPro V1 (Fernando) · MODELOS/MODELOS-DE-PAGINA/fernando/ -->
@@ -94,6 +97,32 @@
 @media(max-width:600px){.hb li{font-size:13.5px!important}.trust-row{font-size:11.5px;gap:4px 10px}}
 @media(max-height:780px) and (max-width:899px){.hero-mock img{max-height:22vh!important}.hero h1{font-size:21px!important}.hb{gap:5px!important}.hb li{font-size:12.5px!important}.hb li:nth-child(3){display:none}.price-pill{font-size:14px;padding:6px 16px}.hero-flow{gap:8px!important}}
 @media(max-height:700px) and (max-width:899px){.hero-mock img{max-height:19vh!important}.hero-sub{font-size:13px!important}.hero-pill{display:none!important}}
+.mdl{display:none;position:fixed;inset:0;z-index:9999;background:#2e1a1fb8;backdrop-filter:blur(3px);padding:20px;overflow-y:auto}
+.mdl.on{display:block}
+.mdl-box{max-width:440px;margin:6vh auto;background:var(--bg);border-radius:22px;box-shadow:0 30px 70px #00000073;padding:30px 24px 26px;text-align:center;position:relative}
+.mdl-x{position:absolute;top:12px;right:14px;background:none;border:0;font-size:26px;line-height:1;color:var(--muted);cursor:pointer}
+.mdl-tag{display:inline-block;background:var(--green);color:#fff;font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:6px 16px;border-radius:999px;margin-bottom:14px}
+.mdl h3{font-family:var(--font-title);font-size:clamp(21px,4.6vw,26px);line-height:1.18;color:var(--ink);margin:0 0 10px}.mdl h3 em{color:var(--yellow)}
+.mdl-box>p{margin:0 0 14px;font-size:15px;line-height:1.55;color:var(--text)}
+.mdl ul{list-style:none;padding:0;margin:0 0 16px;display:flex;flex-direction:column;gap:8px;text-align:left}
+.mdl li{display:flex;gap:8px;font-size:13.5px;line-height:1.4;color:var(--text)}.mdl li span{color:var(--green);font-weight:800}
+.mdl-offer{background:#fff;border:2px solid var(--green);border-radius:16px;padding:18px 16px;margin-bottom:14px}
+.mdl-price{display:flex;align-items:baseline;justify-content:center;gap:10px}.mdl-price s{color:#a8999b;font-size:16px}.mdl-price b{font-family:var(--font-title);font-size:40px;color:var(--green);line-height:1.1}
+.mdl-sub{margin:4px 0;font-size:12.5px;color:var(--muted)}.mdl-hl{margin:0 0 12px;font-weight:800;font-size:13.5px;color:var(--green)}
+.mdl-offer .btn{max-width:none}
+.mdl-no{display:inline-block;font-size:13px;color:var(--muted);text-decoration:underline}
+.hero-pill{font-size:10.5px!important;padding:5px 12px!important;letter-spacing:.08em}
+/* ajuste 04/11: mockup maior, texto menor, barra mais fina */
+.offer-bar{min-height:30px!important;padding:5px 10px!important;font-size:11px!important;line-height:1.25}
+.hero h1{font-size:clamp(22px,3.2vw,36px)!important}
+.hero-sub{font-size:13.5px!important}
+.hb{gap:6px!important}.hb li{font-size:13px!important}.hb li::before{flex-basis:19px;height:19px;font-size:11px}
+.hero-mock{max-width:520px!important}
+.hero-mock img{max-height:44vh!important}
+@media(min-width:900px){.hero-mock img{max-height:46vh!important}}
+@media(max-height:780px) and (max-width:899px){.hero-mock img{max-height:35vh!important}.hero h1{font-size:20px!important}.hb li{font-size:12px!important}}
+@media(max-height:700px) and (max-width:899px){.hero-mock img{max-height:33vh!important}}
+@media(max-width:600px){.hide-m{display:none}.offer-bar{font-size:10px!important;white-space:nowrap}}
 /* popup */
 .pop{position:fixed;inset:0;background:#2e1a1f99;display:none;align-items:center;justify-content:center;z-index:60;padding:20px}
 .pop.on{display:flex}
@@ -104,12 +133,12 @@
 .nothanks{display:block;margin:12px auto 0;color:var(--muted);font-size:13px;background:none;border:0;cursor:pointer;text-decoration:underline}
 </style></head>
 <body><div id="root">
-<div class="offer-bar">⚡ PRIX DE LANCEMENT + 7 BONUS UNIQUEMENT AUJOURD'HUI <span data-today></span></div>
+<div class="offer-bar">⚡ PRIX DE LANCEMENT<span class="hide-m"> + 7 BONUS</span> UNIQUEMENT AUJOURD'HUI <span data-today></span></div>
 <main>
 
 <section class="hero"><div class="content content--860 hero-flow">
   <p class="hero-pill"><span aria-hidden="true"></span>CALENDRIER MAGIQUE 2027</p>
-  <h1>Votre Calendrier Magique <em>2027</em> est arrivé — édition Roue du Nord.</h1>
+  <h1>Votre Calendrier Magique <em>2027</em> est arrivé.</h1>
   <div class="hero-mock"><img src="img/kit-complet-700.webp" width="700" height="933" alt="Calendrier Magique 2027" fetchpriority="high"></div>
   <p class="hero-sub"><strong>12 calendriers illustrés + 12 pages d'Agenda Magique</strong> pour vivre chaque lune et chaque sabbat de 2027.</p>
   <ul class="hero-bullets hb">
@@ -219,7 +248,7 @@
       </ul>
       <div class="pprice">5,90 €</div>
       <p class="pnote">⏱ Accès immédiat juste après l'achat</p>
-      <a class="btn btn--ghost" data-plan="essentiel" data-tk-value="5.90" data-tk-currency="EUR" href="#">JE PRENDS L'ESSENTIEL<span aria-hidden="true">→</span></a>
+      <a class="btn btn--ghost" data-plan="essentiel" data-tk-value="5.90" data-tk-currency="EUR" data-upsell="1" href="#">JE PRENDS L'ESSENTIEL<span aria-hidden="true">→</span></a>
       <div class="pattn"><p>ATTENTION : nous avons une offre encore meilleure pour vous ! Regardez juste en dessous</p><div><span>↓</span><span>↓</span><span>↓</span></div></div>
     </div>
     <div class="pcard best">
@@ -284,18 +313,43 @@
 <footer class="footer"><div class="footer-inner"><p>Support : support@seudominio.com</p><p class="footer-legal">Produit numérique indépendant. Les rituels proposés sont des pratiques de bien-être et ne remplacent aucun avis professionnel.</p><p>LeadGo</p><nav><a href="#">Conditions générales</a><span>•</span><a href="#">Politique de confidentialité</a></nav></div></footer>
 </div>
 
-<div class="pop" id="pop" role="dialog" aria-modal="true" aria-labelledby="pop-t"><div class="pop-box">
-  <button class="pop-x" aria-label="Fermer" data-close>×</button>
-  <p style="font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--yellow);margin:0">AVANT DE PARTIR</p>
-  <h3 id="pop-t">Attendez ! L'Essentiel pour 4,90 €</h3>
-  <p>Les 12 calendriers et les 12 pages d'Agenda Magique, pour 1 € de moins.</p>
-  <div class="pop-price"><s>5,90 €</s>4,90 €</div>
-  <a class="btn" data-plan="saida" data-tk-value="4.90" data-tk-currency="EUR" href="#">JE LE PRENDS À 4,90 €</a>
-  <button class="nothanks" data-close>Non merci</button>
+<!-- ===== POPUP DE UPGRADE (clique no Básico) — padrão Mapa do Tarot ===== -->
+<div class="mdl" id="downsell" role="dialog" aria-modal="true" aria-labelledby="ds-title"><div class="mdl-box">
+  <button type="button" class="mdl-x" data-close aria-label="Fermer">×</button>
+  <span class="mdl-tag">Attendez — offre spéciale</span>
+  <h3 id="ds-title">Prenez <em>tout</em> pour presque le même prix</h3>
+  <p>Avant de prendre l'Essentiel, recevez le <strong>Complet avec les 7 bonus</strong> pour presque rien de plus.</p>
+  <ul>
+    <li><span>✓</span>Rituel de Passage 2026 → 2027</li>
+    <li><span>✓</span>Calendrier Lunaire 2027 + Atlas Magique du Zodiaque</li>
+    <li><span>✓</span>Roue de l'Année et 8 Sabbats + Guide de la Sorcière Débutante</li>
+    <li><span>✓</span>12 Fonds d'écran + Stickers Magiques</li>
+  </ul>
+  <div class="mdl-offer">
+    <div class="mdl-price"><s>12,90 €</s><b>7,90 €</b></div>
+    <p class="mdl-sub">Le Complet : calendrier + agenda + 7 bonus</p>
+    <p class="mdl-hl">Tout ça pour seulement 2 € de plus</p>
+    <a class="btn" data-plan="upgrade" data-tk-value="7.90" data-tk-currency="EUR" href="#">OUI ! JE PASSE AU COMPLET — 7,90 €<span aria-hidden="true">→</span></a>
+  </div>
+  <a class="mdl-no" data-plan="essentiel" data-tk-value="5.90" data-tk-currency="EUR" href="#">Non merci, je continue avec l'Essentiel (5,90 €)</a>
+</div></div>
+
+<!-- ===== POPUP DE SAÍDA — padrão Mapa do Tarot ===== -->
+<div class="mdl" id="exitpopup" role="dialog" aria-modal="true" aria-labelledby="ep-title"><div class="mdl-box">
+  <button type="button" class="mdl-x" data-close aria-label="Fermer">×</button>
+  <span class="mdl-tag">Attendez</span>
+  <h3 id="ep-title">Attendez ! Avant de partir…</h3>
+  <p>Prenez le <strong>Calendrier Magique 2027</strong> au prix le plus bas que nous ayons jamais proposé.</p>
+  <div class="mdl-offer">
+    <div class="mdl-price"><s>5,90 €</s><b>4,90 €</b></div>
+    <p class="mdl-sub">Calendrier Magique 2027 — Essentiel</p>
+    <a class="btn" data-plan="saida" data-tk-value="4.90" data-tk-currency="EUR" href="#">JE LE PRENDS À 4,90 €<span aria-hidden="true">→</span></a>
+  </div>
+  <a class="mdl-no" href="javascript:void(0)" data-close>Non merci</a>
 </div></div>
 
 <script>
-const CONFIG = { checkoutUrl: { essentiel: "", complet: "", saida: "" } }; // TODO E8: links Mundpay
+const CONFIG = { checkoutUrl: { essentiel: "", upgrade: "", complet: "", saida: "" } }; // TODO E8: links Mundpay (upgrade = Complet a 7,90 no popup)
 (() => {
   const $$ = q => [...document.querySelectorAll(q)];
   const today = () => $$('[data-today]').forEach(e => e.textContent = new Date().toLocaleDateString('fr-FR'));
@@ -311,12 +365,30 @@ const CONFIG = { checkoutUrl: { essentiel: "", complet: "", saida: "" } }; // TO
       if (r.scrollLeft + r.clientWidth >= r.scrollWidth - 4) r.scrollTo({left: 0}); else r.scrollBy({left: step, behavior:'smooth'}); }, 3200);
   });
   $$('[data-plan]').forEach(a => { const u = CONFIG.checkoutUrl[a.dataset.plan]; if (u) a.href = u; else a.addEventListener('click', e => { e.preventDefault(); alert('Checkout en cours de configuration.'); }); });
-  const pop = document.getElementById('pop'); let shown = sessionStorage.getItem('pop') === '1';
-  const open = () => { if (shown) return; shown = true; sessionStorage.setItem('pop','1'); pop.classList.add('on'); };
-  document.addEventListener('mouseout', e => { if (!e.relatedTarget && e.clientY <= 0) open(); });
-  let ly = scrollY, lt = Date.now();
-  addEventListener('scroll', () => { const t = Date.now(), dy = scrollY - ly; if (scrollY > document.body.scrollHeight*.4 && dy < -120 && t - lt < 250) open(); ly = scrollY; lt = t; }, {passive:true});
-  pop.addEventListener('click', e => { if (e.target === pop || e.target.hasAttribute('data-close')) pop.classList.remove('on'); });
+
+  const open = id => { document.getElementById(id).classList.add('on'); document.body.style.overflow = 'hidden'; };
+  const close = id => { document.getElementById(id).classList.remove('on'); document.body.style.overflow = ''; };
+  $$('.mdl').forEach(m => m.addEventListener('click', e => { if (e.target === m || e.target.closest('[data-close]')) close(m.id); }));
+  addEventListener('keydown', e => { if (e.key === 'Escape') $$('.mdl.on').forEach(m => close(m.id)); });
+  // Básico → popup de upgrade (antes do checkout)
+  $$('[data-upsell]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); e.stopImmediatePropagation(); open('downsell'); }, true));
+  // Saída: 1x por sessão; PC = mouse sai pelo topo; celular = botão voltar (depois de interação) ou 45s parada após ver os planos
+  (() => {
+    const KEY = 'cm_exit_shown', START = Date.now(); let checkout = false, guard = 0;
+    const can = () => { try { if (sessionStorage.getItem(KEY) === '1') return false; } catch (e) {}
+      return !checkout && Date.now() - START > 8000 && !document.querySelector('#downsell.on'); };
+    const show = () => { if (!can()) return; try { sessionStorage.setItem(KEY, '1'); } catch (e) {} open('exitpopup'); };
+    document.addEventListener('click', e => { if (e.target.closest('[data-plan]')) checkout = true; guard = Date.now() + 1200; }, true);
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches)
+      document.addEventListener('mouseleave', e => { if (Date.now() > guard && e.clientY <= 0) show(); });
+    let armed = false;
+    const arm = () => { if (armed) return; armed = true; try { history.pushState({cmExit: 1}, '');
+      addEventListener('popstate', ev => { if (ev.state && ev.state.cmExit) return; if (Date.now() < guard) return; show(); try { history.pushState({cmExit: 1}, ''); } catch (e) {} }); } catch (e) {} };
+    ['touchstart', 'click'].forEach(n => document.addEventListener(n, arm, {once: true, passive: true}));
+    const plans = document.querySelector('.plans2');
+    if (plans && 'IntersectionObserver' in window) { let t; const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { io.disconnect();
+      const reset = () => { clearTimeout(t); t = setTimeout(show, 45000); }; ['scroll', 'touchstart', 'click'].forEach(n => addEventListener(n, reset, {passive: true})); reset(); } })); io.observe(plans); }
+  })();
 })();
 </script>
 </body></html>

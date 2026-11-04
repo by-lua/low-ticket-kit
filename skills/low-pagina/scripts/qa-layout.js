@@ -3,6 +3,9 @@
 (() => {
   const W = innerWidth, H = innerHeight, out = { viewport: W + 'x' + H, problemas: [] };
   if (!document.querySelector('link[rel~="icon"]')) out.problemas.push('sem favicon (<link rel="icon">)');
+  if (!document.querySelector('#downsell')) out.problemas.push('sem popup de upgrade no clique do básico (#downsell)');
+  if (!document.querySelector('[data-upsell]')) out.problemas.push('botão do básico não abre o popup de upgrade (data-upsell)');
+  if (!document.querySelector('#exitpopup')) out.problemas.push('sem popup de saída (#exitpopup)');
   const hero = document.querySelector('section.hero, header.hero, .hero');
   const heroBtn = hero && hero.querySelector('a.btn, a.cta, .btn, .cta');
   if (heroBtn) { const b = heroBtn.getBoundingClientRect().bottom + scrollY; out.heroBotaoBottom = Math.round(b);

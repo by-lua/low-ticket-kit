@@ -1,7 +1,7 @@
-# Modelo "estilo Fernando" — versão LeadGo (NOSSO)
+# Modelo Padrão LeadGo — v1 (04/11/2026)
 
-Quando a dona disser **"faz no estilo do Fernando"** / "template do Fernando": partir DESTE modelo, nunca do original.
-Ele é o PaginaPro V1 do Fernando Oliveira (original convertido em `MODELOS/MODELOS-DE-PAGINA/fernando/index.html`,
+**É a página padrão da casa:** toda página nova parte daqui (a dona pode pedir "Modelo Padrão" ou "estilo Fernando").
+Crédito: nasceu do PaginaPro V1 de Fernando Oliveira (original convertido em `MODELOS/MODELOS-DE-PAGINA/fernando/index.html`,
 só pra consulta) com todas as mudanças da casa. Primeira oferta feita nele: Calendrier Magique FR (04/11/2026).
 
 ## Como usar
@@ -38,3 +38,8 @@ Antes × depois: só quando material técnico vira visual.
 12. Popup de saída com o básico mais barato; `CONFIG.checkoutUrl` único.
 13. QA de layout (`qa-layout.js`): botão do hero acima da dobra, sem rolagem lateral, texto não vaza, texto não estoura
     botão, botão aguenta texto traduzido, nenhuma imagem coberta/cortada.
+14. **Favicon** (`img/favicon.svg` + `favicon-32.png` + `apple-touch-icon.png`) na paleta da oferta — o QA acusa se faltar.
+15. **Popup de upgrade no clique do Básico** (`#downsell`, padrão Mapa do Tarot): « leve tudo por quase o mesmo preço » — Completo num preço intermediário (básico < upgrade < completo), botão sim → checkout do upgrade, link "não, continuar com o básico" → checkout do básico.
+16. **Popup de saída** (`#exitpopup`, padrão Mapa do Tarot): básico com desconto; 1x por sessão; PC = mouse sai pelo topo; celular = botão voltar (só depois de interação) ou 45s parada após ver os planos; nunca nos primeiros 8s, nem depois de clicar num checkout, nem com o de upgrade aberto. O QA acusa se faltar algum dos dois.
+17. **Proporção do hero:** mockup GRANDE (max-height 44vh no celular, 46vh no PC, 35/33vh em tela baixa), texto pequeno (h1 ~22-36px, sub 13,5px, bullets 13px) — o mockup é o protagonista.
+18. **Barra de urgência fina:** 30px, 1 linha em qualquer tela (no celular o texto encurta, ex.: some o "+ 7 bonus").
