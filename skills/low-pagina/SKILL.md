@@ -41,6 +41,8 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
 0b. **Preferências fixas da dona (04/11/2026):**
    - **Hero centralizado:** barra → headline → **mockup no meio** → texto curto/bullets organizados → botão.
      Nada de hero em 2 colunas (texto de um lado, imagem do outro), nem no desktop.
+   - **Hero visual, não texto em cima de texto** (dona, 04/11/2026): subheadline de 1 linha + **3 cards com ícone**
+     (título curto + 1 linha de apoio), lado a lado também no celular. Nada de parágrafo + lista de frases empilhadas.
    - **A 1ª seção cabe na tela até o botão, sem rolar**, no celular (até 360×740) e no PC (1366×768): mockup com
      `max-height` em vh, h1 menor em tela baixa, 3º bullet some se precisar. Provar com o QA (9b).
    - **Barra de urgência sempre VERMELHA** (fundo vermelho, texto branco), qualquer paleta, e **fixa no topo** (`position:sticky;top:0`) — acompanha a pessoa enquanto rola.
@@ -146,7 +148,9 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
    privacidade. Favicon na página e no `/painel`. Suporte: e-mail e WhatsApp de `_memoria/empresa.md`.
 9b. **QA de layout antes de publicar (obrigatório):** `scripts/qa-layout.js` em 360×740, 375×667, 390×844, 1366×768 e
    1920×1080 (`agent-browser --session S set viewport W H` → `eval --stdin < qa-layout.js`). Tem que dar `ok` em todos:
-   botão do hero acima da dobra, sem rolagem lateral, nenhum texto vazando da caixa, nenhum texto estourando botão.
+   botão do hero acima da dobra, sem rolagem lateral, nenhum texto vazando da caixa, nenhum texto estourando botão,
+   todo botão aguentando texto +45% (tradução automática do navegador — a compradora pode traduzir a página),
+   e nenhuma imagem coberta ou cortada por outro elemento ou caixa (precisa sobrar espaço embaixo).
    Depois, olhar print do hero (celular e PC) e do bloco de planos.
 8. Deploy: repo em `github.com/leadgodev/`, Coolify auto-deploy (fatos em `_memoria/empresa.md`).
 9. Trocou a página de uma oferta que já roda anúncio → `adstrackeador pagina comparar <atual> <nova>` antes.

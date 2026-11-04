@@ -10,7 +10,8 @@ css = re.sub(r":root\{[^}]*\}", (
     ":root{--bg:#FBF6EF;--surface:#fff;--tint:#F7E7D6;--line:#ead6b8;--ink:#3F151F;--text:#2E1A1F;--muted:#6e5a5e;"
     "--green:#571C2B;--green-dark:#3F151F;--yellow:#C89B66;--radius:16px;--shadow:0 10px 26px #571c2b17;"
     "--font-title:'Libre Baskerville',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif}"), css, count=1)
-css = re.sub(r"@font-face\{[^}]*\}", "", css)  # fontes Fira do template saem; usamos Google Fonts
+css = re.sub(r"@font-face\{[^}]*\}", "", css)
+css = css.replace("#0b934e", "#3F151F").replace("#0e9f55", "#571C2B").replace("#08733d", "#3F151F").replace("#0e9f5533", "#571c2b33")  # fontes Fira do template saem; usamos Google Fonts
 
 OVER = """
 /* ===== Calendrier FR sobre o PaginaPro ===== */
@@ -25,7 +26,8 @@ OVER = """
 .hero-sub{font-size:14.5px!important;line-height:1.45!important;margin:0!important}
 .hero-bullets{margin:0 auto!important;gap:4px!important}.hero-bullets li{font-size:13.5px!important}
 @media(min-width:900px){.hero-mock img{max-height:36vh}}
-@media(max-height:780px) and (max-width:899px){.hero-mock img{max-height:28vh}.hero-bullets li:nth-child(3){display:none}.hero h1{font-size:23px!important}}
+@media(max-height:700px) and (max-width:899px){.hero-mock img{max-height:24vh!important}}
+@media(max-height:780px) and (max-width:899px){.hero-mock img{max-height:28vh}.hero h1{font-size:23px!important}}
 .hero-mock img{height:auto;border-radius:14px;filter:drop-shadow(0 22px 26px #571c2b40)}
 .ph{background:repeating-linear-gradient(45deg,#fbf1e3,#fbf1e3 10px,#f4e3cc 10px,#f4e3cc 20px);border:1.5px dashed var(--yellow);
   color:#996549;display:flex;align-items:center;justify-content:center;text-align:center;font-size:11px;font-weight:800;
@@ -72,6 +74,31 @@ OVER = """
 .seal-wrap{position:relative;width:clamp(170px,38vw,210px);margin:0 auto;aspect-ratio:1}
 .seal-glow{position:absolute;inset:-24%;background:radial-gradient(circle,rgba(227,205,142,.55) 0%,rgba(200,155,102,.28) 42%,transparent 68%);border-radius:999px}
 .seal-img{position:relative;width:100%;height:auto;display:block;filter:drop-shadow(0 6px 16px rgba(154,120,41,.5))}
+.steps-grid article>span{position:static!important;margin:0 auto 12px;width:40px;height:40px;font-size:17px;background:var(--green)!important;box-shadow:0 0 0 5px #c89b6633}
+.steps-grid h3{font-size:20px}
+.section-sub{text-align:center;color:var(--muted);max-width:560px;margin:-6px auto 0;font-size:16px}
+.btn{white-space:normal!important;text-align:center;line-height:1.25;height:auto;overflow-wrap:anywhere}
+.btn>span{flex:none}
+.receive-media{height:auto!important;margin:0 auto 26px!important}
+.receive-media{max-width:100%!important;min-width:0}
+.receive-media img{max-height:520px;width:auto!important;max-width:100%!important}
+@media(max-width:600px){.receive-media img{width:100%!important;max-height:none}}
+.hero-feats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;max-width:640px;margin:2px auto 4px}
+.feat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 8px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;box-shadow:0 8px 18px -14px #571c2b66}
+.feat i{font-style:normal;font-size:20px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--tint);border:1px solid var(--yellow);margin-bottom:4px}
+.feat b{font-family:var(--font-title);font-size:14px;color:var(--ink);line-height:1.2}
+.feat span{font-size:12px;color:var(--muted);line-height:1.3}
+@media(max-width:600px){.feat{padding:9px 5px}.feat i{width:32px;height:32px;font-size:16px}.feat b{font-size:12.5px}.feat span{font-size:11px}}
+.hb{list-style:none;padding:0;max-width:560px;text-align:left;display:grid;gap:9px!important}
+.hb li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px!important;line-height:1.4;color:var(--text)}
+.hb li::before{content:'✓';flex:0 0 22px;height:22px;border-radius:50%;background:var(--green);color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center;margin-top:1px}
+.price-pill{display:inline-block;background:var(--tint);border:1.5px solid var(--yellow);color:var(--green);font-weight:800;font-size:16px;padding:8px 20px;border-radius:999px;margin:4px auto 0}
+.trust-row{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;font-size:12.5px;color:var(--text)}
+.trust-row span{display:inline-flex;align-items:center;gap:6px}
+.trust-row span::before{content:'✓';width:18px;height:18px;border-radius:50%;background:#efd2a8;color:var(--green);font-size:11px;font-weight:800;display:grid;place-items:center}
+@media(max-width:600px){.hb li{font-size:13.5px!important}.trust-row{font-size:11.5px;gap:4px 10px}}
+@media(max-height:780px) and (max-width:899px){.hero-mock img{max-height:22vh!important}.hero h1{font-size:21px!important}.hb{gap:5px!important}.hb li{font-size:12.5px!important}.hb li:nth-child(3){display:none}.price-pill{font-size:14px;padding:6px 16px}.hero-flow{gap:8px!important}}
+@media(max-height:700px) and (max-width:899px){.hero-mock img{max-height:19vh!important}.hero-sub{font-size:13px!important}.hero-pill{display:none!important}}
 /* popup */
 .pop{position:fixed;inset:0;background:#2e1a1f99;display:none;align-items:center;justify-content:center;z-index:60;padding:20px}
 .pop.on{display:flex}
@@ -123,14 +150,15 @@ HTML = f"""<!DOCTYPE html>
   <p class="hero-pill"><span aria-hidden="true"></span>CALENDRIER MAGIQUE 2027</p>
   <h1>Votre Calendrier Magique <em>2027</em> est arrivé — édition Roue du Nord.</h1>
   <div class="hero-mock"><img src="img/kit-complet-700.webp" width="700" height="933" alt="Calendrier Magique 2027" fetchpriority="high"></div>
-  <p class="hero-sub"><strong>12 calendriers mensuels illustrés</strong><span> et </span><strong>12 pages d'Agenda Magique</strong><span>, avec les phases de lune, les 8 sabbats et un rituel de 10 minutes pour chaque mois — à imprimer ou sur votre téléphone.</span></p>
-  <ul class="hero-bullets">
-    <li><span>Sachez chaque mois quand agir : lunes, sabbats et transits déjà placés.</span></li>
-    <li><span>Pratiquez en 10 minutes avec le rituel du mois, cristaux, plantes et couleurs.</span></li>
-    <li><span>Imprimez-le ou gardez-le sur votre téléphone, comme vous préférez.</span></li>
+  <p class="hero-sub"><strong>12 calendriers illustrés + 12 pages d'Agenda Magique</strong> pour vivre chaque lune et chaque sabbat de 2027.</p>
+  <ul class="hero-bullets hb">
+    <li>Sachez chaque mois quand agir : lunes, sabbats et transits déjà placés.</li>
+    <li>Pratiquez en 10 minutes avec le rituel du mois, cristaux, plantes et couleurs.</li>
+    <li>Imprimez-le ou gardez-le sur votre téléphone, comme vous préférez.</li>
   </ul>
+  <span class="price-pill">seulement 5,90 €</span>
   <a class="btn" href="#recebe">JE VEUX MON CALENDRIER<span aria-hidden="true">→</span></a>
-  <p class="hero-sub" style="font-size:13px;margin-top:10px">📩 Numérique · Accès immédiat · À partir de <strong>5,90 €</strong></p>
+  <div class="trust-row"><span>Accès immédiat</span><span>Garantie 14 jours</span><span>Paiement sécurisé</span></div>
 </div></section>
 
 <section class="section pain"><div class="content content--880 section-flow">
@@ -262,6 +290,7 @@ HTML = f"""<!DOCTYPE html>
 
 <section class="section section--tint access-steps"><div class="content content--980 section-flow">
   <header class="section-title"><h2>Comment ça marche après le paiement</h2></header>
+  <p class="section-sub">Trois étapes simples : vous choisissez, vous recevez, vous commencez ce soir.</p>
   <div class="steps-grid">
     <article><span>1</span><h3>Choisissez votre formule</h3><p>Paiement unique et sécurisé par carte.</p></article>
     <article><span>2</span><h3>Recevez par e-mail</h3><p>Accès immédiat, tout est numérique.</p></article>
