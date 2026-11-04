@@ -13,6 +13,29 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
    `MODELOS/MODELOS-DE-PAGINA/`). Texto = `spyx.pagina[]` do Modelador, seção por seção, ajustado à `OFERTA.md`.
    Página original fraca/rasa demais pra clonar (comum em modelagem por upgrade, Raio-X com pilar trocado sem
    referência de página boa) → usa o **esqueleto padrão** abaixo em vez de inventar ordem solta.
+0-. 🛑 **Pergunta obrigatória antes de montar** (dona, 04/11/2026): *"Fazemos a **original melhorada** (clone dela +
+   nosso plano) ou **adaptamos ao template do Fernando**?"*
+   - **Original melhorada** → passo 0 abaixo (clone). Ordem: **o material por dentro logo depois da 1ª seção (hero)**.
+   - **Template do Fernando** → `MODELOS/MODELOS-DE-PAGINA/fernando/index.html` (PaginaPro V1, HTML estático): copia,
+     troca texto/cores/imagens seguindo os blocos dele (topo → dor → prévias → mecanismo → comparação → uso → pitch
+     → pra quem é → o que recebe → bônus → oferta → segurança → passos de acesso → FAQ → fecho). Copy das seções:
+     `CONHECIMENTO`/PaginaPro `references/arquitetura-copy.md`.
+   - **Antes × depois** (nos dois): só quando a oferta pega material técnico e transforma em visual. Senão, corta.
+   - **Bloco dos 2 planos** (nos dois) = padrão Mapa do Tarot (`OFERTAS/mapa-do-tarot/site/index.html`, `<!-- PLANS -->`):
+     - **Básico, SEM imagem:** só o que ele tem; o que fica de fora aparece **riscado com ✗**; preço; botão
+       secundário; embaixo, **no celular**: « ATENÇÃO: temos uma oferta ainda melhor para você! Olha só abaixo » + ↓↓↓ animado.
+     - **Completo, COM imagem** (mockup do plano completo, **menor**: largura máx. ~300px): selo « ★ O preferido »,
+       "Todos os materiais — entrega imediata", **caixa destacada com o bônus principal**, checklist do conteúdo,
+       **"Bônus exclusivos:"** com 🎁, preço riscado (valor) → preço, botão principal.
+0. **Clone primeiro, sempre** (erro de 04/11/2026, Calendrier: página escrita do zero com layout próprio — a dona
+   perguntou "por que não está parecido com a original, melhorada?"). Base = DOM renderizado + CSS da página dele
+   (Elementor costuma ser 1 bloco HTML com `<style>` próprio: extrair esse bloco). Troca só texto, variáveis de cor,
+   fontes e `src`; depois aplica o Plano da página (cortar/acrescentar/reordenar seções) usando as MESMAS classes
+   dele. O esqueleto 1a só quando a original é fraca demais pra clonar.
+0b. **Preferências fixas da dona (04/11/2026):**
+   - **Hero centralizado:** barra → headline → **mockup no meio** → texto curto/bullets organizados → botão.
+     Nada de hero em 2 colunas (texto de um lado, imagem do outro), nem no desktop.
+   - **Barra de urgência sempre VERMELHA** (fundo vermelho, texto branco), qualquer paleta, e **fixa no topo** (`position:sticky;top:0`) — acompanha a pessoa enquanto rola.
 1a. **Esqueleto padrão (fallback, 1 função comercial por bloco, nesta ordem):**
    barra de urgência (só se for real) + hero → dor/agitação (título "[atividade central] não precisa ser
    [dor do dia a dia]", 6 chips de situação, ponte fixa pro mecanismo) → prova do produto (mostra antes de
@@ -90,7 +113,7 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
    - **Só o botão DENTRO do card de preço** → URL do checkout. Centraliza essa URL em 1 campo só
      (`checkoutUrl`), nunca repete em outro componente. Checkout ainda não cadastrado → placeholder explícito
      na pendência, nunca URL inventada, nunca todos os botões indo pro checkout.
-   - **2 planos na seção de oferta:** básico sem imagem, completo com imagem (mockup do produto).
+   - **2 planos na seção de oferta:** ver passo 0- (padrão Mapa do Tarot).
    - **No mobile, entre os 2 planos:** aviso "ATENÇÃO: temos uma oferta ainda melhor para você! Olha só abaixo"
      + 3 setas (↓↓↓) com animação de bounce, apontando pro plano completo logo abaixo.
 4c. **Sincronia de bônus — regra fixa:** o bônus já vem decidido do `FUNIL.md` (cada um matando uma objeção
