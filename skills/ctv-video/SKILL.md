@@ -27,21 +27,45 @@ description: Produz criativo de vídeo do sistema LOW-TICKET a partir da ficha d
    - `get-brolls` só pra fonte que o script não cobre (YouTube, Wikimedia, NASA, print de notícia) — é lento.
 6. **Montar:** regras da `ctv-edicao` (todas). Mecânica de render: `criativo-ads-video-orq`.
 
-**Pessoa em cena (UGC, expert, POV, foto com gente) — referência real do país (dona, 01/11/2026, corrigido 05/11/2026 — 2 imagens, nunca 1):**
-1. Buscar no **Pinterest** (perfil `pinterest`, porta 9246: `~/.claude/bin/browsers.sh pinterest` → `agent-browser --session pinterest`) a cena + o país/idioma do mercado: "mulher brasileira
-   dirigindo carro", "mujer argentina en la cocina", "psicóloga brasileira consultório", "american woman 50s kitchen".
-2. Baixar 2-3 fotos reais que batem com a persona da `OFERTA.md` (idade, classe, cenário) em
-   `PROJETOS-MIDIA/CRIATIVOS-CONCORRENTES/<SLUG>-pessoas-ref/` (mídia de terceiro, fora da pasta sincronizada).
-3. **Imagem 1 — personagem base, SEM material nenhum.** Anexar a ref do Pinterest no GPT como **referência de
-   estilo, não de rosto**: pedir uma **pessoa NOVA** com o mesmo jeito real (pele, cabelo, roupa, luz de
-   celular) daquele país, mãos livres, sem segurar nada — rosto e traços diferentes da foto anexada. Essa
-   imagem é a personagem fixa da leva inteira, guardar separada (`nossa/persona/personagem-base.png`).
-4. **Imagem 2 — a cena, com a personagem base + o material.** Novo prompt, 2 anexos: a Imagem 1 (personagem
-   base, pra manter a MESMA pessoa) + a capa/material real do produto. Pedir a mesma pessoa da Imagem 1,
-   agora segurando o material real (capa real anexada) na pose da cena (abrindo, mostrando pra câmera etc).
-   Nunca reproduzir o rosto da foto do Pinterest — só da Imagem 1 que já é a pessoa nova.
-5. Essa Imagem 2 aprovada vira o quadro inicial do vídeo no Flow (imagem → vídeo) e a mesma pessoa (Imagem 1)
-   segue a leva toda — reusar `personagem-base.png` pra gerar novas cenas dela sem repetir o passo 3.
+**Pessoa em cena (UGC, expert, POV, foto com gente) — PROTOCOLO FIXO, 4 passos, nenhum pulável (dona,
+01/11/2026, reescrito explícito 05/11/2026 depois de repetir a explicação várias vezes — ler isto inteiro
+antes de gerar qualquer persona, não decidir por conta):**
+
+**Passo 1 — referência da pessoa (SEMPRE obrigatório, nunca pula).** Uma foto real de alguém, usada só
+como referência de ESTILO (pele, cabelo, roupa, idade, vibe do país) — nunca a pessoa final, nunca o rosto
+final. Três formas de conseguir, qualquer uma serve:
+  - **(a) Eu busco no Pinterest** (perfil `pinterest`, porta 9246: `~/.claude/bin/browsers.sh pinterest` →
+    `agent-browser --session pinterest`) com termo do país/cena: "mulher brasileira dirigindo carro",
+    "mujer argentina en la cocina", "american woman 50s kitchen". Baixo 2-3 fotos em
+    `PROJETOS-MIDIA/CRIATIVOS-CONCORRENTES/<SLUG>-pessoas-ref/`.
+  - **(b) A dona manda a foto** (print, link, Pinterest, qualquer imagem de uma pessoa real).
+  - **(c) A dona pede pra eu achar** — mesma busca do (a), mas ela escolhe entre as opções antes de eu usar.
+  Sem foto de referência não se gera persona nenhuma — perguntar à dona antes de inventar do zero.
+
+**Passo 2 — gerar a PERSONAGEM NOVA (Imagem 1), sem material, uma vez só por leva.**
+  GPT image, 1 anexo (a ref do Passo 1): pedir pessoa NOVA, mesmo jeito real (pele, cabelo, roupa, luz,
+  cenário) da ref, mas rosto e traços DIFERENTES — nunca a mesma pessoa da foto. Mãos livres, nada na mão.
+  Salvar em `nossa/persona/personagem-base.png`. Essa imagem é a personagem fixa da leva inteira — gerada
+  uma vez, reusada em toda cena nova dela.
+
+**Passo 3 — personagem segurando O NOSSO material (Imagem 2), uma vez por cena/CT.**
+  GPT image, 2 anexos: Imagem 1 (`personagem-base.png`, pra manter a mesma pessoa) + a capa/mockup REAL do
+  nosso produto (livro, caderno, tablet, postal — o que fizer sentido pra cena). Pedir a MESMA pessoa da
+  Imagem 1, agora segurando/mostrando o material real na pose da cena (abrindo, exibindo a capa pra câmera
+  etc). Nunca volta a usar a foto do Pinterest aqui — só a Imagem 1. Aprovar visual com a dona antes de
+  seguir. Salvar em `nossa/persona/cena-<nome-da-cena>-<idioma>-aprovada.png`.
+
+**Passo 4 — Flow: imagem da cena (Passo 3) + A FALA EXATA no prompt, numa chamada só.**
+  `flow-video-playwright`, `video i2v --initial-frame <Imagem 2 do Passo 3>`. O prompt de movimento TEM que
+  incluir a fala exata que a pessoa vai dizer, entre aspas, no idioma certo — o Flow já sincroniza boca e
+  gera a voz sozinho, não precisa de narração em cima depois. Nunca manda o Flow sem a fala: sem isso ele
+  inventa uma fala genérica por conta própria (já aconteceu, fala saiu errada/fora do roteiro). Pegar a fala
+  do roteiro aprovado (`FICHA-LEVA` ou plano da peça), nunca inventar.
+  Exemplo de prompt: `"<pessoa e pose>, talking directly to camera, lips synced saying in <idioma>: \"<fala
+  exata>\". <resto da cena>."`
+
+Isso é tudo — 1 ref, personagem, personagem+material, Flow com a fala. Repetir o Passo 3+4 pra cada cena nova
+da mesma personagem (reusando `personagem-base.png` do Passo 2, sem regerar a pessoa).
 Objetivo: gente com cara de gente daquele país, não de IA.
 
 Formato e roteiro: `ctv-formatos` + `ctv-copy`. Fecho: → `ctv-revisor`.
