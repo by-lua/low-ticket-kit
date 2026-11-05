@@ -54,7 +54,7 @@ só a capa) e produza as 2-3 até vídeo final, avisando no fim quais letras sa�
 | **H** | POV: a PRÓPRIA mão da pessoa segura o tablet lendo (ângulo em primeira pessoa, como quem fotografa o próprio colo), 1 página real na tela. | Dedo ou caneta mexendo/rolando a tela + leve drift. |
 | **I** | Flat-lay limpo: 2 páginas IMPRESSAS reais levemente sobrepostas, vista de cima, mesa de madeira, caderno fechado + caneta do lado — SEM mão, SEM device, SEM pessoa. | Só zoom/drift bem sutil de câmera (cena estática de propósito). |
 
-| **J** | TV grande em primeiro plano com a página real cheia (tela, não papel), caneta apontando pra ela; tablet + notebook menores e desfocados ao fundo/embaixo, de apoio. | Caneta risca diagonal, do canto superior até embaixo da tela, **câmera dá zoom junto** (não fica parada) — os dois movimentos simultâneos, não um depois do outro. |
+| **J** | TV grande em primeiro plano com a página real cheia (tela, não papel), caneta apontando pra ela; tablet + notebook menores e desfocados ao fundo/embaixo, de apoio. | **Câmera PARADA, enquadramento aberto e TV inteira visível, SEM zoom/drift/pan (dona, 04/11/2026). Direita: caneta indica ALTO → MEIO → BAIXO. Esquerda: sentido inverso, BAIXO → MEIO → ALTO.** Só a mão/caneta se move; a mesma caneta permanece visível e física em todos os quadros; não escrever nem alterar a página. |
 
 | **K** | Over-the-shoulder: câmera ATRÁS da pessoa (só cabelo/ombro em quadro, rosto nunca aparece), tablet na mão dela de frente mostrando a página real, dedo tocando a tela. | Dedo tocando um ponto + zoom de câmera aproximando por trás do ombro. |
 
@@ -132,3 +132,10 @@ Depois do clipe cru: segue o acabamento normal (KaraokeV2, `narracao-hub-tts`, g
 `acabamento-natural-audio-cortes.md`) igual qualquer outro take. Pasta: `criativos/<MERCADO>/
 CRIATIVO-N/take-<letra>/`.
 
+
+
+### Take J — contrato ativo de movimento (04/11/2026)
+
+**Câmera PARADA, enquadramento aberto e TV inteira visível, SEM zoom/drift/pan (dona, 04/11/2026). Direita: caneta indica ALTO → MEIO → BAIXO. Esquerda: sentido inverso, BAIXO → MEIO → ALTO.** Só a mão/caneta se move; a mesma caneta permanece visível e física em todos os quadros; não escrever nem alterar a página. Câmera e página ficam rígidas; nada de próximas telas, scroll ou conteúdo inventado. Se a caneta sumir ou as letras mudarem, o clipe reprova. O enquadramento distante é intencional. A regra específica de J substitui a recomendação geral de zoom cinematográfico para esse take.
+
+**Trajeto junto à BORDA (ajuste para criativos futuros, dona 04/11/2026):** a ponta da caneta permanece na MESMA faixa lateral, perto do canto/borda da TV. Direita: canto superior direito → metade da altura na borda DIREITA → canto inferior direito, mantendo x praticamente constante. Esquerda: canto inferior esquerdo → metade da altura na borda ESQUERDA → canto superior esquerdo. “Meio” significa metade da ALTURA, não centro horizontal da tela. Nunca atravessar para o centro da página. Não regerar automaticamente um take já aceito por causa desse ajuste futuro.

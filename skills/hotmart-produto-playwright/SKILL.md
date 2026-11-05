@@ -11,6 +11,12 @@ Automação de browser pra cadastro e configuração de produto na Hotmart (`app
 >
 > **REGRA FIXA DA DONA (16/10/2026) — TODO produto/oferta criado entra nos DOIS webhooks NO MESMO DIA.** Vale pra toda peça: principal · **order bump** · combo · upsell/downsell · **upgrade Essencial → Completo** · produto irmão/cross · oferta de membro. Cada produto novo, na MESMA sessão do cadastro, marcado em (1) **webhook de ENTREGA** (`<site>/painel/api/webhooks/hotmart`) e (2) **webhook de MEDIÇÃO** (Trackeador, `https://adstrackeador.leadgo.dev/api/webhooks/sale/c/<conexão>`) — "todos os produtos" OFF. Produto fora do webhook = a venda some do Trackeador/atribuição e/ou o comprador fica sem acesso, **sem erro em lugar nenhum**. Padrão/incidente (order bump "Combo Domínio Total", Jiu-Jitsu, 16/10): `wiven-checkout` §6.
 
+## Layout padrão do checkout — regra da dona (04/11/2026)
+
+- **Ordem obrigatória: TEMPORIZADOR DE 15 MINUTOS → BANNER DO PRODUTO → FORMULÁRIO/RESUMO DE COMPRA.** O temporizador fica acima do banner, em bloco separado, sem cobrir a imagem. Usar contagem regressiva de **15:00**, salvo pedido explícito diferente da dona.
+- **Não exibir o título genérico “Finalisez votre commande”** (“Finalize seu pedido”) nem o bloco equivalente do template em outro idioma. Remover o componente no builder; não deixar espaço vazio no lugar.
+- Conferir a ordem e a ausência do título no checkout **público**, em desktop e celular, depois de salvar/publicar. Prévia do builder sozinha não comprova o resultado.
+
 ## Perfil
 
 Perfil `hotmart` registrado em `~/.agent-profiles/registry.conf`, porta fixa. Se não existir:

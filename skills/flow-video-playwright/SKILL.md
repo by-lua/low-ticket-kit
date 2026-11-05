@@ -177,3 +177,8 @@ life: person holds tablet" é o erro clássico — sem ação por segundo e sem 
 ## Conteúdo de tela fechado — regra da dona, 04/11/2026
 
 Ao animar tela, PDF, ficha ou produto real, mover SOMENTE o que já está visível: zoom contido no enquadramento ou apontamento sem alterar conteúdo. Proibir explicitamente scroll, troca de página/carta, navegação, expansão de bordas, texto novo e conteúdo fora do frame. Tela e letras ficam rígidas e idênticas. Prompt inclui ação por segundo e estes limites; validar resultado porque prompt não garante fidelidade. Para mostrar próxima página ou conteúdo oculto, cortar para gravação REAL da dona; nunca pedir ao Flow inventar a continuação.
+
+
+## Take J de TV — câmera fixa, sequência por lado (04/11/2026)
+
+Para TV demonstrativa, a fonte única do movimento é `criativo-ads-video-orq/references/takes-mesa-real.md`, § Take J e § Trajeto junto à BORDA. Consultar esse contrato antes de compor o prompt; ele substitui o modelo genérico de câmera/zoom para TV. Validar começo/meio/fim e preservar o conteúdo real.
