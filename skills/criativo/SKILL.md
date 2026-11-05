@@ -65,3 +65,7 @@ Referências herdadas das skills antigas (detalhe que as filhas citam): `referen
 - Ficha aprovada antes de gerar qualquer imagem ou vídeo.
 - Todo formato que tem edição puxa de `ctv-edicao`; nenhum formato reescreve regra de edição.
 - Fecho da sessão: `low-ticket-salvar` (ficha, peças feitas, `STATUS.md`).
+- **Pessoa de referência (regra fixa, 05/11/2026):** toda imagem de pessoa real que a dona manda como
+  referência (Pinterest, print, foto) é só inspiração de estilo — nunca gera a mesma pessoa. Cria persona
+  NOVA parecida (tom de pele, cor/tipo de cabelo, vibe), rosto diferente da referência. Vale pra qualquer
+  geração de persona (GPT imagem, Flow) em qualquer formato. Não precisa a dona repetir a cada pedido.

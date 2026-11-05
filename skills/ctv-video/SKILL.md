@@ -27,15 +27,21 @@ description: Produz criativo de vídeo do sistema LOW-TICKET a partir da ficha d
    - `get-brolls` só pra fonte que o script não cobre (YouTube, Wikimedia, NASA, print de notícia) — é lento.
 6. **Montar:** regras da `ctv-edicao` (todas). Mecânica de render: `criativo-ads-video-orq`.
 
-**Pessoa em cena (UGC, expert, POV, foto com gente) — referência real do país (dona, 01/11/2026):**
+**Pessoa em cena (UGC, expert, POV, foto com gente) — referência real do país (dona, 01/11/2026, corrigido 05/11/2026 — 2 imagens, nunca 1):**
 1. Buscar no **Pinterest** (perfil `pinterest`, porta 9246: `~/.claude/bin/browsers.sh pinterest` → `agent-browser --session pinterest`) a cena + o país/idioma do mercado: "mulher brasileira
    dirigindo carro", "mujer argentina en la cocina", "psicóloga brasileira consultório", "american woman 50s kitchen".
 2. Baixar 2-3 fotos reais que batem com a persona da `OFERTA.md` (idade, classe, cenário) em
    `PROJETOS-MIDIA/CRIATIVOS-CONCORRENTES/<SLUG>-pessoas-ref/` (mídia de terceiro, fora da pasta sincronizada).
-3. Anexar no GPT como **referência de estilo, não de rosto**: pedir uma **pessoa NOVA** com o mesmo jeito real
-   (pele, cabelo, roupa, casa/carro, luz de celular) daquele país, **segurando o nosso material** (capa real anexada).
-   Nunca reproduzir o rosto da pessoa da foto.
-4. Essa foto aprovada vira o quadro inicial do vídeo no Flow (imagem → vídeo) e a mesma pessoa segue a leva toda.
+3. **Imagem 1 — personagem base, SEM material nenhum.** Anexar a ref do Pinterest no GPT como **referência de
+   estilo, não de rosto**: pedir uma **pessoa NOVA** com o mesmo jeito real (pele, cabelo, roupa, luz de
+   celular) daquele país, mãos livres, sem segurar nada — rosto e traços diferentes da foto anexada. Essa
+   imagem é a personagem fixa da leva inteira, guardar separada (`nossa/persona/personagem-base.png`).
+4. **Imagem 2 — a cena, com a personagem base + o material.** Novo prompt, 2 anexos: a Imagem 1 (personagem
+   base, pra manter a MESMA pessoa) + a capa/material real do produto. Pedir a mesma pessoa da Imagem 1,
+   agora segurando o material real (capa real anexada) na pose da cena (abrindo, mostrando pra câmera etc).
+   Nunca reproduzir o rosto da foto do Pinterest — só da Imagem 1 que já é a pessoa nova.
+5. Essa Imagem 2 aprovada vira o quadro inicial do vídeo no Flow (imagem → vídeo) e a mesma pessoa (Imagem 1)
+   segue a leva toda — reusar `personagem-base.png` pra gerar novas cenas dela sem repetir o passo 3.
 Objetivo: gente com cara de gente daquele país, não de IA.
 
 Formato e roteiro: `ctv-formatos` + `ctv-copy`. Fecho: → `ctv-revisor`.
