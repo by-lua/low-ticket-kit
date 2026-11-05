@@ -50,7 +50,7 @@ Métodos (Rodrigo, Kevones, SpyX, Escalados): só os com **Ativo = sim** em `_me
 |---|---|---|---|
 | C1 | **Juntar ideias** — **antes, perguntar à dona de onde modelar** (regra 04/11/2026): (1) os criativos do **anunciante original** · (2) os de **outros anunciantes** (seção *Referências escolhidas pela dona* da `VALIDACAO`) · (3) **os dois**. Mostrar o que existe de cada lado (quantos, formatos, dias no ar). Depois: (a) Modelador · (b) os criativos escolhidos: transcrever, entender o formato (POV, demonstração, expert, UGC) e o porquê, refazer pra nossa oferta · (c) o que a dona trouxer | `criativos/IDEIAS-<data>.md` com a fonte de cada ideia | `ctv-modelar-concorrente` |
 | C1b | **Clone 1:1** — quando a dona aponta UM criativo específico (nosso ou de terceiro, imagem ou vídeo) e pede "modela esse aqui 100%" (não ideia solta, reprodução fiel, inclusive pra nicho/produto diferente do original) | peça clonada ou storyboard cena a cena | `ctv-clonar-referencia` |
-| C2 | **Ficha da leva** — **leva padrão de teste da dona (04/11/2026): 3 vídeos (1 demonstrativo · 1 expert · 1 UGC) + 4 imagens**, salvo ordem diferente. 1 linha por peça: formato, **bolha** (pra quem é: 1 dor/persona — o criativo é a segmentação, `references/METODO-KEVONES-LEVA.md`), gancho, texto na imagem/fala, título, descrição. **Cada peça nomeia a bolha; 2 peças na mesma bolha só se o formato for diferente** (nunca variação rasa). Campanha: país aberto + idioma (Rodrigo); conjuntos aberto/segmentado/idade com os mesmos criativos (Kevones). Ganchos e copies partem do **banco do Passo 6** (`modelador-*-etapa2.md`) + criativos escolhidos no C1 | `criativos/FICHA-LEVA-<data>.md` **aprovada pela dona** | `ctv-estudo-leva` |
+| C2 | **Ficha da leva** — **leva padrão de teste da dona (04/11/2026): 3 vídeos (1 demonstrativo · 1 expert · 1 UGC) + 4 imagens**, salvo ordem diferente. 1 linha por peça: formato, **buscas Pinterest do personagem** (se a peça tem pessoa e não tem referência; regra § 3), **bolha** (pra quem é: 1 dor/persona — o criativo é a segmentação, `references/METODO-KEVONES-LEVA.md`), gancho, texto na imagem/fala, título, descrição. **Cada peça nomeia a bolha; 2 peças na mesma bolha só se o formato for diferente** (nunca variação rasa). Campanha: país aberto + idioma (Rodrigo); conjuntos aberto/segmentado/idade com os mesmos criativos (Kevones). Ganchos e copies partem do **banco do Passo 6** (`modelador-*-etapa2.md`) + criativos escolhidos no C1 | `criativos/FICHA-LEVA-<data>.md` **aprovada pela dona** | `ctv-estudo-leva` |
 | C3 | **Copy** — gancho → desenvolvimento → CTA, pelo formato | copy de cada peça na ficha | `ctv-copy` |
 | C4 | **Formato** — receita do formato pedido (expert Rodrigo, demonstrativo, POV, UGC, impacto direto, antes e depois, iPhone com/sem preço, carrossel de páginas, orgânico feio) | briefing da peça | `ctv-formatos` |
 | C5 | **Produzir** — imagem (GPT) ou vídeo (Flow, narração, b-roll) | arquivos em `criativos/CRIATIVO-N/` | `ctv-imagem` / `ctv-video` |
@@ -69,6 +69,14 @@ Referências herdadas das skills antigas (detalhe que as filhas citam): `referen
   referência (Pinterest, print, foto) é só inspiração de estilo — nunca gera a mesma pessoa. Cria persona
   NOVA parecida (tom de pele, cor/tipo de cabelo, vibe), rosto diferente da referência. Vale pra qualquer
   geração de persona (GPT imagem, Flow) em qualquer formato. Não precisa a dona repetir a cada pedido.
+- **Peça com personagem e sem referência = entregar buscas de Pinterest (regra fixa, 05/11/2026):** na ficha da leva (C2),
+  toda peça que tem pessoa/expert/UGC e ainda não tem foto de referência aprovada recebe **3 a 5 termos de busca do
+  Pinterest**, por idioma do mercado-alvo, prontos pra copiar, um por linha. Cobrem: tipo de pessoa (idade, etnia,
+  vibe do nicho), cenário e ação da cena. Ex.: tarot na França → `femme voyante tarot`, `tarologue française portrait`,
+  `femme spirituelle cartes tarot`, `cartomancienne bureau bougies`. A dona escolhe a foto e manda. Aí vale a regra de
+  pessoa de referência acima: foto real = base natural de cena/pose/tom/vibe, e a persona nossa entra por cima (rosto
+  novo). Preferir sempre referência real e natural a personagem inventado do zero pelo Veo/GPT. Expert e comprador
+  comum pedem buscas diferentes (duas pessoas diferentes). Sem termos na ficha = ficha incompleta.
 - **Print/frame de criativo como referência de POSE (regra fixa, 05/11/2026):** quando a dona manda
   print/frame de um criativo ("faz assim", "igual essa", "esse take aqui"), ANEXA o print e pede pra
   REPLICAR aquela composição exata (ângulo, enquadramento, posição da mão, posição do objeto), trocando
