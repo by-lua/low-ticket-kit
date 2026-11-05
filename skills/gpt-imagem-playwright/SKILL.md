@@ -913,6 +913,19 @@ seguiam com a original. Um criativo com duas atrizes não sobe.
 Vale para qualquer regeração: correção de defeito, troca de pose, mudança de
 enquadramento. **Existe cena aprovada com a persona? Anexa.**
 
+> **⚠️ 05/11/2026 — quando a REFERÊNCIA anexada já é uma geração anterior do GPT (não
+> foto original), ela nasce com a MESMA dimensão da geração nova, e o filtro por
+> `naturalWidth` sozinho NÃO distingue uma da outra (Calendrier Magique FR: baixei a
+> referência de novo, achando que era a cena sem o objeto — hash diferente por
+> recompressão de blob, mas o conteúdo era o antigo).** A regra "geração é sempre mais
+> larga que a ref" (`naturalWidth>1020`) só vale quando a ref é foto original >1000px;
+> com ref = geração anterior do próprio chat, as duas ficam 941×1672 iguaizinhas.
+> **Nessa situação é OBRIGATÓRIO o diff de `src` (seção "Baixar: DIFF de src, não
+> marcação no DOM" mais abaixo): capture a lista de `src` ANTES do upload/envio e baixe
+> só o que aparece DEPOIS.** Nunca filtre só por dimensão quando a referência anexada
+> é imagem gerada (não foto). Confirme olhando a imagem baixada antes de aceitar — se
+> parecer idêntica à referência, é ela mesma, refaça o diff.
+
 E peça **UMA imagem**, explicitamente: `ONE single frame only. Not a grid, not a
 collage, not a contact sheet, not multiple panels` mais `no grid, no collage, no
 split screen, no multiple images, no repeated person, no duplicate figure` no

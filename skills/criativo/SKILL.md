@@ -69,3 +69,13 @@ Referências herdadas das skills antigas (detalhe que as filhas citam): `referen
   referência (Pinterest, print, foto) é só inspiração de estilo — nunca gera a mesma pessoa. Cria persona
   NOVA parecida (tom de pele, cor/tipo de cabelo, vibe), rosto diferente da referência. Vale pra qualquer
   geração de persona (GPT imagem, Flow) em qualquer formato. Não precisa a dona repetir a cada pedido.
+- **Print/frame de criativo como referência de POSE (regra fixa, 05/11/2026):** quando a dona manda
+  print/frame de um criativo ("faz assim", "igual essa", "esse take aqui"), ANEXA o print e pede pra
+  REPLICAR aquela composição exata (ângulo, enquadramento, posição da mão, posição do objeto), trocando
+  só a pessoa pela nossa persona e o produto pelo nosso. Nunca escreve descrição de cena do zero a partir
+  do que entendeu olhando o print — perde fidelidade. Referência de pose é material de composição pro
+  gerador, não é pra ler e reinterpretar. Vale pra qualquer formato/ferramenta de geração.
+- **Mostrar cada imagem antes da próxima (regra fixa, 05/11/2026):** gera 1 peça/take, baixa, mostra a
+  imagem pra dona, espera aprovação ou correção — só então gera a próxima. Vale mesmo quando o pedido já
+  veio com várias poses/cenas definidas de uma vez (a lista é o que fazer, não autorização pra rodar tudo
+  sem mostrar nada no meio).
