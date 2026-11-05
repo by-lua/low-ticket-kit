@@ -10,6 +10,11 @@ description: Gera todas as imagens de uma página de vendas low ticket — capa/
 
 Preenche os slots de imagem do modelo de página low ticket. **Executa, não explica.**
 
+## QA de integração das imagens (04/11/2026)
+- **Cenas “Veja no dia a dia” do Modelo Padrão:** seguir a regra canônica em `LOW-TICKET/_skills/low-pagina/modelos/modelo-padrao/README.md`, item 19 (realismo e variedade). Conferir escala A4, aparelhos comuns e pessoas naturais antes de aprovar o lote.
+- **Mockup recortado de bônus e selo de garantia, quando integrado ao fundo do card/página:** arquivo com **alpha real**, sem quadrado creme/branco ou xadrez pintado. Manter páginas claras e textos internos opacos. Conferir canal alpha e cantos transparentes no arquivo, e inspecionar no fundo real do card no browser; CSS `opacity` ou `mix-blend-mode` não substituem recorte correto. Isso não exige transparência em fotos de cena ou banners que possuem fundo próprio deliberado.
+
+
 ## ⛳ ORDEM NOVA (dona, 14/10/2026) — MOCKUPS DA PÁGINA PRIMEIRO, MVP DEPOIS
 
 Vale pra toda oferta (mesmo mercado e cross-market). **Sobrescreve** qualquer trecho abaixo que diga

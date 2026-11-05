@@ -39,3 +39,5 @@ description: Produz criativo de vídeo do sistema LOW-TICKET a partir da ficha d
 Objetivo: gente com cara de gente daquele país, não de IA.
 
 Formato e roteiro: `ctv-formatos` + `ctv-copy`. Fecho: → `ctv-revisor`.
+
+**Catálogo de takes de demonstração:** antes de inventar uma composição, consultar `criativo-ads-video-orq/references/takes-mesa-real.md` (catálogo A–O). Take J = TV com página inteira e caneta apontando + zoom orgânico; pode variar mão pela direita/esquerda e usar outra página REAL. Impresso = D/I/O. Não rolar para inventar conteúdo: regra `flow-video-playwright` § Conteúdo de tela fechado.

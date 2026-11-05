@@ -153,7 +153,7 @@ BONUS = [
     ("Stickers Magiques", "Lunes, cristaux, plantes et symboles pour votre agenda.", "Personnaliser votre agenda et votre grimoire.", "9,90 €"),
 ]
 bcards = "".join(
-    f'<article class="bonus-card"><div class="bonus-card-top"><p class="bonus-num">BONUS {i+1:02d}</p><div class="bonus-art"><div class="ph">IMAGEM (E5) · {n}</div></div></div>'
+    f'<article class="bonus-card"><div class="bonus-card-top"><p class="bonus-num">BONUS {i+1:02d}</p><div class="bonus-art"><img src="img/bonus/{i+1:02d}.webp" width="900" height="900" loading="lazy" alt="{n}"></div></div>'
     f'<div class="bonus-card-body"><h3>{n}</h3><p>{d}</p><div class="bonus-gain"><span>{g}</span></div>'
     f'<div class="bonus-price"><s>{v}</s><strong>OFFERT AUJOURD\'HUI</strong></div></div></article>'
     for i, (n, d, g, v) in enumerate(BONUS))

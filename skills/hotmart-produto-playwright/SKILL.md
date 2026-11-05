@@ -7,6 +7,8 @@ description: Cadastra produto, precificação, checkout e webhook na Hotmart pel
 
 Automação de browser pra cadastro e configuração de produto na Hotmart (`app.hotmart.com`), usando o perfil persistente do sistema (não o Chromium empacotado do agent-browser, que trava no Cloudflare).
 
+> **REGRA FIXA DA DONA (04/11/2026) — ÁREA DE MEMBROS SEMPRE EXTERNA E PRÓPRIA (`/painel`), EM QUALQUER CHECKOUT.** O padrão de todo produto/oferta é entregar pela área externa da oferta (`https://<oferta>/painel`), nunca pelo Hotmart Club nem pela área nativa do gateway. Hotmart Club só se a dona pedir **explicitamente** ("quero no Club"). Configure a área externa **desde o cadastro**; produto que nasce no Club é exceção, não default. A área externa é vinculada pelo fluxo abaixo e a URL de acesso é a mesma nos produtos principal, bumps, combos, upsells e upgrades.
+>
 > **REGRA FIXA DA DONA (16/10/2026) — TODO produto/oferta criado entra nos DOIS webhooks NO MESMO DIA.** Vale pra toda peça: principal · **order bump** · combo · upsell/downsell · **upgrade Essencial → Completo** · produto irmão/cross · oferta de membro. Cada produto novo, na MESMA sessão do cadastro, marcado em (1) **webhook de ENTREGA** (`<site>/painel/api/webhooks/hotmart`) e (2) **webhook de MEDIÇÃO** (Trackeador, `https://adstrackeador.leadgo.dev/api/webhooks/sale/c/<conexão>`) — "todos os produtos" OFF. Produto fora do webhook = a venda some do Trackeador/atribuição e/ou o comprador fica sem acesso, **sem erro em lugar nenhum**. Padrão/incidente (order bump "Combo Domínio Total", Jiu-Jitsu, 16/10): `wiven-checkout` §6.
 
 ## Perfil
@@ -106,8 +108,10 @@ Salve em `~/.claude/.credentials.env` como `HOTMART_HOTTOK` — nunca em texto s
 - [ ] Informações básicas completas (nome, descrição 200+, idioma, país, categoria, imagem)
 - [ ] Preço e forma de pagamento
 - [ ] Checkout configurado (dados essenciais, formas de pagamento revisadas, sem boleto se pedido)
-- [ ] Página de obrigado (Hotmart nativa ou externa) configurada
+- [ ] Página de obrigado → **externa** (`<site>/painel`), nunca a nativa (regra 04/11)
+- [ ] Área de membros **externa própria** (`<site>/painel`) vinculada; Club desativado salvo pedido explícito da dona
 - [ ] Link de checkout (`pay.hotmart.com/...`) extraído e repassado pro time de código/tráfego
+- [ ] Se a página customizada (Checkout Builder) estiver publicada, os links do site usam `?checkoutMode=10&off=<código>` — sem `checkoutMode=10` o Hotmart entrega o checkout padrão, sem banner/bumps
 - [ ] Webhook cadastrado + HOTTOK salvo em credenciais
 - [ ] Produto ainda fica "Rascunho" até enviar pra análise (`Finalizar cadastro` no painel) — avisar o usuário antes de enviar, é passo irreversível de revisão
 
@@ -184,33 +188,45 @@ preço base em US$. Os textos ("Aproveite e compre junto:", "Adicionar produto",
 "Cupom de desconto") saem do builder — traduza lá. Checar sempre trocando país no
 seletor "Cambiar país" do checkout publicado.
 
-## Área de membros: EXTERNA não é o default
+## Página customizada do Checkout Builder só abre com `checkoutMode=10`
+
+Publicar a página no builder **não** muda os links `pay.hotmart.com/...?off=<código>`:
+eles continuam caindo no checkout padrão, sem banner e sem order bump. O link que
+renderiza a página publicada é `https://pay.hotmart.com/<produto>?checkoutMode=10`
+e ele aceita oferta: `?checkoutMode=10&off=<código>`. Confira país França (ou o
+mercado) antes de validar preço/moeda e os textos do bump; o builder mostra os
+rótulos no idioma da conta, mas o checkout publicado traduz pelo país do comprador.
+
+## Área de membros: EXTERNA é o PADRÃO (regra da dona 04/11/2026)
 
 `/{id}/content/add` mostra a área vinculada. Se aparecer um card do Club com
 `Link de acesso ao produto: https://hotmart.com/PT_BR/club/{conta}/products/{id}`,
-o produto está entregando pela **Área de Membros da Hotmart**, não pela sua.
+o produto está entregando pela **Área de Membros da Hotmart**, não pela nossa.
 
-Quando a entrega é o seu sistema (webhook `PURCHASE_APPROVED` → seu app libera
-acesso e manda e-mail), esse vínculo com o Club é ruído: o comprador recebe um
-acesso a mais, vazio, e em `PT_BR`. Desvincular é pelo menu `⋮` do card — **mas
-confirme com o usuário antes**, porque a Hotmart usa a existência de conteúdo/área
-no critério de aprovação do produto, e produto já aprovado pode cair em revisão.
+**Não é para perguntar: troque para a área externa própria (`/painel`) em todo
+produto/oferta — principal, order bump, combo, upsell/downsell, upgrade e
+oferta de membro.** O Hotmart Club só fica se a dona pedir **explicitamente**.
+O vínculo com o Club (acesso vazio, em `PT_BR`) é ruído para quem entrega pelo
+nosso webhook `PURCHASE_APPROVED` → `/painel`; desvincule pelo menu `⋮` do card.
 
-Checklist de entrega externa:
+Checklist de entrega externa (obrigatório em todo produto):
 - [ ] Webhook cadastrado com `PURCHASE_APPROVED` (+ cancelado/reembolso/chargeback)
 - [ ] HOTTOK salvo e verificado no endpoint
-- [ ] `Página de Obrigado` apontando pra sua `/gracias`, não pra nativa da Hotmart
-- [ ] Área de membros da Hotmart desvinculada **ou** conscientemente mantida
+- [ ] `Página de Obrigado` → `Página de obrigado externa` apontando pra `<site>/painel`
+- [ ] Área de membros da Hotmart desvinculada (salvo pedido explícito do Club)
+- [ ] Link de acesso externo preenchido com `<site>/painel` + aluno de teste real
 - [ ] Casamento da ordem: se o checkout é link hospedado, a Hotmart não devolve
       `external_reference` — o único vínculo é o **e-mail do comprador**, e ele pode
       digitar um e-mail diferente do que deu no seu funil. Prever fallback manual.
 
-## Trocar para área de membros externa (fluxo real, testado 2026-09-16)
+## Trocar para área de membros externa (fluxo padrão, testado 2026-09-16)
 
-`/{id}/content/add` → menu `⋮` do card (é `querySelectorAll('button')[17]` nessa
-tela) → **"Trocar para área de membros externa"** → modal de aviso → **"Usar área
-de membros externa"** → abre um questionário (Memberkit/Kajabi/Astron/Cademi/Outra)
-que pode ser **Fechado sem responder** → o formulário real fica atrás dele:
+Faça isso **por padrão** em todo produto novo (a exceção é o Club só com pedido
+explícito da dona). Rota: `/{id}/content/add` → menu `⋮` do card (é
+`querySelectorAll('button')[17]` nessa tela) → **"Trocar para área de membros
+externa"** → modal de aviso → **"Usar área de membros externa"** → abre um
+questionário (Memberkit/Kajabi/Astron/Cademi/Outra) que pode ser **Fechado sem
+responder** → o formulário real fica atrás dele:
 
 - `https://` → URL de login da sua área (ex.: `https://dominio/entrar`)
 - `Digite um nome para aluno` + `Digite a senha do aluno` + `Reescreva a senha`
