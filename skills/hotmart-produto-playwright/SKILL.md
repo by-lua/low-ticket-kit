@@ -13,9 +13,12 @@ Automação de browser pra cadastro e configuração de produto na Hotmart (`app
 
 ## Layout padrão do checkout — regra da dona (04/11/2026)
 
-- **Ordem obrigatória: TEMPORIZADOR DE 15 MINUTOS → BANNER DO PRODUTO → FORMULÁRIO/RESUMO DE COMPRA.** O temporizador fica acima do banner, em bloco separado, sem cobrir a imagem. Usar contagem regressiva de **15:00**, salvo pedido explícito diferente da dona.
+- **Todo checkout Hotmart sai com TEMPORIZADOR DE 15 MINUTOS** (contagem regressiva, tipo “Quantidade de tempo”, `00:15:00`), salvo pedido explícito diferente da dona. Pedido literal: *“manda o deepsdek aplica checkout da hotmart sempre com temporizador de 15 minutos”*.
+- **Ordem obrigatória: BANNER DO PRODUTO → TEMPORIZADOR DE 15 MINUTOS → FORMULÁRIO/RESUMO DE COMPRA.** O banner é o **primeiro** bloco; o temporizador vem **logo abaixo**, em faixa própria, **sem sobrepor nem cobrir a arte**. Pedido literal da correção: *“Mano, the timer is on top of the banner. And this thing here is not to appear.”*
 - **Não exibir o título genérico “Finalisez votre commande”** (“Finalize seu pedido”) nem o bloco equivalente do template em outro idioma. Remover o componente no builder; não deixar espaço vazio no lugar.
-- Conferir a ordem e a ausência do título no checkout **público**, em desktop e celular, depois de salvar/publicar. Prévia do builder sozinha não comprova o resultado.
+- No builder, banner e temporizador ficam na mesma linha (row) e a ordem dos componentes dentro dela é o que manda: editar a versão em que o temporizador subiu e reinseri-lo escolhendo a área do banner (o componente entra **depois** do banner). O temporizador **não abre painel de edição por clique** — a configuração mora no painel do componente (ícone de lápis) e o texto ativo **não aceita campo vazio** (o botão Inserir não avança); use texto curto.
+- No celular, texto longo no temporizador estoura a faixa (o contador é fixo em ~195 px): use no máximo **“Offre réservée”** no texto ativo e algo curto como **“Offre expirée”** no texto zerado.
+- Conferir a ordem e a ausência do título no checkout **público**, em desktop e celular, depois de salvar/publicar. Prévia do builder sozinha não comprova o resultado. Alterações no builder publicado propagam **em até 5 minutos** — não concluir que falhou antes disso.
 
 ## Perfil
 
