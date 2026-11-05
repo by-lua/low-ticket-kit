@@ -34,6 +34,7 @@ OVER = """
   letter-spacing:.06em;text-transform:uppercase;padding:14px;border-radius:12px}
 .gallery-card .ph{aspect-ratio:3/4;width:100%}
 .usage-photo .ph{aspect-ratio:4/5;width:100%}
+.usage-photo img{aspect-ratio:4/5!important;height:auto!important;object-fit:cover;width:100%}
 .mid-pitch-media .ph,.receive-media .ph{aspect-ratio:4/3;width:100%}
 .bonus-art .ph{width:150px;height:190px;margin:0 auto}
 /* fundos limpos */
@@ -139,9 +140,8 @@ def gallery(n, label):
     cards = "".join(f'<figure class="gallery-card"><div class="ph">IMAGEM (E5) · {label} {i+1}</div></figure>' for i in range(n))
     return cards + cards.replace('<figure class="gallery-card">', '<figure class="gallery-card" aria-hidden="true">')
 
-USAGE = ["calendrier aimanté sur le frigo", "agenda ouverte près d'une bougie", "calendrier sur le téléphone", "rituel du mois sur l'autel"]
-usage = "".join(f'<figure class="usage-photo"><div class="ph">IMAGEM (E5) · {u}</div></figure>' for u in USAGE)
-usage += usage.replace('<figure class="usage-photo">', '<figure class="usage-photo" aria-hidden="true">')
+USAGE = [('calendrier-magique-fr/quotidien-frigo.webp', 'Une femme installe le calendrier de mars 2027 sur son frigo'), ('calendrier-magique-fr/quotidien-bureau.webp', 'Un homme écrit dans l’Agenda Magique d’avril 2027 à son bureau'), ('calendrier-magique-fr/quotidien-bus.webp', 'Une femme consulte le calendrier de septembre 2027 sur son téléphone dans le bus'), ('calendrier-magique-fr/quotidien-autel.webp', 'Une femme suit le calendrier de novembre 2027 près de son autel'), ('calendrier-magique-fr/quotidien-canape.webp', 'Une femme consulte l’Agenda Magique de février 2027 sur sa tablette dans le salon'), ('calendrier-magique-fr/quotidien-cafe.webp', 'Une femme note ses intentions dans l’Agenda Magique de juin 2027 à la terrasse d’un café'), ('calendrier-magique-fr/quotidien-impression.webp', 'Une femme récupère le calendrier de janvier 2027 à la sortie de son imprimante'), ('calendrier-magique-fr/quotidien-jardin.webp', 'Une femme consulte le calendrier de mai 2027 pendant sa cueillette au jardin'), ('calendrier-magique-fr/quotidien-mural.webp', 'Une femme consulte le calendrier de décembre 2027 affiché dans son entrée')]
+usage = "".join(f'<figure class="usage-photo"><img src="img/usage/{f}" width="900" height="1125" loading="lazy" alt="{a}"></figure>' for f, a in USAGE)
 
 BONUS = [
     ("Rituel de Passage 2026 → 2027", "Un rituel guidé pour clôturer 2026 et ouvrir 2027 avec une intention claire.", "Vous commencez l'année avec une intention, pas une liste oubliée.", "14,90 €"),

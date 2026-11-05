@@ -173,3 +173,7 @@ no text appearing or disappearing, no cuts, no camera movement, no speech.
 ```
 Ajuste as janelas de tempo à `--duration` (4/6/8/10 s). Prompt curto do tipo "the attached image coming to
 life: person holds tablet" é o erro clássico — sem ação por segundo e sem bloco de continuidade, o Flow alucina.
+
+## Conteúdo de tela fechado — regra da dona, 04/11/2026
+
+Ao animar tela, PDF, ficha ou produto real, mover SOMENTE o que já está visível: zoom contido no enquadramento ou apontamento sem alterar conteúdo. Proibir explicitamente scroll, troca de página/carta, navegação, expansão de bordas, texto novo e conteúdo fora do frame. Tela e letras ficam rígidas e idênticas. Prompt inclui ação por segundo e estes limites; validar resultado porque prompt não garante fidelidade. Para mostrar próxima página ou conteúdo oculto, cortar para gravação REAL da dona; nunca pedir ao Flow inventar a continuação.
