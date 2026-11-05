@@ -90,6 +90,27 @@ Tudo que a dona disser vai **literal** em `pesquisa/da-dona/<data>-<assunto>.md`
 | 14 | Criativo — começa SEMPRE pelo **C0** da `criativo` (mostra banco do Passo 6 + criativos do original + refs de outros → 🛑 usar o quê / buscar novos com termos por idioma → 🛑 por anúncio: modelar o vídeo ou entender o padrão) | `criativos/FONTES-<data>.md` → leva aprovada | `criativo` |
 | 15 | Tráfego | — | `metaads-kevones` |
 
+## 2b. Classificar tudo que for salvo — NOSSO × DESCARTADO × CONCORRENTE (regra fixa, 05/11/2026)
+Causa de erro real: um agente usou a capa azul (descartada, igual à da concorrente) num take porque o arquivo se chamava
+`capa` e estava na pasta de uso. Nada dizia qual era a oficial. Por isso, **todo arquivo que a sessão cria, recebe ou
+muda tem um dono**, e o dono fica escrito em `OFERTAS/<slug>/ATIVOS.md` (modelo: `MODELOS/_MODELO-ATIVOS.md`):
+| Dono | Onde fica | Pode virar produto/referência? |
+|---|---|---|
+| **NOSSO** (oficial ou em teste) | pastas de uso (`produto/`, `site/`, `criativos/`…) + linha na seção 1 do `ATIVOS.md` | só se `OFICIAL` |
+| **DESCARTADO** | `_descartado/AAAA-MM-DD-<motivo>/` na raiz da oferta, ou apagado — **nunca na pasta de uso** | nunca |
+| **CONCORRENTE** | só `pesquisa/referencia/` ou `criativos/**/ref-original/` | só como referência de composição/ideia, nunca como arte nossa |
+Regras:
+1. **Antes de anexar/usar** capa, mockup, imagem-guia, persona ou página como referência: ler `ATIVOS.md`. Item fora da seção 1
+   como `OFICIAL` = não usa. **Nunca escolher arquivo pelo nome** (`capa`, `guia`, `kit`, `v1`).
+2. **Dona aprovou algo novo** (nova capa, persona, visual) → mesma resposta: grava na seção 1 (`OFICIAL`, data) e move o antigo
+   para a seção 2 (+ `_descartado/`). Gerou e ainda não aprovou = `EM TESTE`.
+3. **Dona descartou** → move/apaga na hora e registra motivo. Descartado que ficou na pasta de uso é defeito.
+4. **Material do concorrente** entra na seção 3 (quem, link, o que pegamos, o que não) e nunca fora de `pesquisa/referencia/`.
+5. **Criativo**: cada peça tem linha na seção 4 (modelada de qual item da seção 3, estado, arquivo final). Gerou take → registra
+   `gerando`/`aprovada`/`reprovada` junto com a aprovação da dona, não depois.
+6. Sem `ATIVOS.md` na oferta → o `abrir.py` avisa; criar a partir do modelo ANTES de gerar qualquer imagem do produto.
+7. Imagem que mostra o produto = conferida contra o `OFICIAL` (cor, arte, texto) antes de mostrar à dona.
+
 ## 3. Regras que valem em toda etapa (só estas; o resto mora na filha)
 - **Fatos antes de cadastrar:** gateway, conta, código, webhook, domínio — conferir no índice (seção Fatos). Nunca de cabeça.
 - **Entregável nunca é HTML/código:** sempre imagem A4 do GPT com a referência visual. Item de fazer/imprimir

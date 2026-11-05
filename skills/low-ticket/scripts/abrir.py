@@ -68,6 +68,9 @@ def main():
         mostra(oferta / 'CLAUDE.md')
         tem_ficha = mostra(oferta / 'OFERTA.md')
         tem_status = mostra(oferta / 'STATUS.md', 60)
+        if not mostra(oferta / 'ATIVOS.md'):
+            print('⚠ Sem ATIVOS.md — não há registro do que é NOSSO oficial × DESCARTADO × CONCORRENTE. '
+                  'Criar de MODELOS/_MODELO-ATIVOS.md ANTES de usar capa/mockup/persona como referência (skill low-ticket § 2b).')
         mod = sorted((oferta / 'pesquisa').glob('modelador-*.md')) if (oferta / 'pesquisa').exists() else []
         print('\nModelador salvo:', ', '.join(m.name for m in mod) or 'NENHUM')
         if not tem_status and (ARQ / 'ofertas' / s / 'STATUS.md').exists():

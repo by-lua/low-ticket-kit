@@ -9,6 +9,9 @@ Raiz: `~/Documentos/TRAMPO/PROJETOS/WORKING/PROJETOS - INTERNOS/LOW-TICKET`. Cir
 
 1. **Oferta mexida** → `OFERTAS/<slug>/STATUS.md`: "Atualizado em", etapa atual (E1–E9 / C1–C7), o que ficou pronto
    (com prova: arquivo, link, saída de gate), pendências da dona, próximo passo.
+1b. **`OFERTAS/<slug>/ATIVOS.md`** (sempre que a sessão gerou, aprovou, descartou ou recebeu arquivo): conferir as 4 seções —
+   NOSSO oficial/em teste · DESCARTADO (movido para `_descartado/`, não na pasta de uso) · CONCORRENTE (só em `pesquisa/referencia/`)
+   · peças de criativo com estado. Arquivo da sessão sem dono no `ATIVOS.md` = classificar antes de fechar.
 2. **Mudou o que a oferta é** (público, preço, funil, o que NÃO é) → `OFERTAS/<slug>/OFERTA.md`.
 3. **Regra nova da dona** → perguntar "salvo isso pra não repetir?" e gravar num lugar só:
    do negócio → `_memoria/` · de uma oferta → "Memória da oferta" no `CLAUDE.md` dela ·

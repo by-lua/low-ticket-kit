@@ -29,7 +29,7 @@ for i in $(seq 1 90); do
  [ "$st" = "idle 1" ] && break; sleep 8; done
 [ "$st" = "idle 1" ] || { echo "FAIL timeout ($st)"; exit 1; }
 sleep 6; agent-browser --session $S key F5 >/dev/null 2>&1; sleep 7
-echo "(async()=>{const g=[...document.querySelectorAll('img')].filter(x=>x.naturalWidth>600).pop();if(!g)return 'none';const b=await (await fetch(g.src)).blob();return await new Promise(ok=>{const f=new FileReader();f.onload=()=>ok(f.result);f.readAsDataURL(b)})})()" | agent-browser --session $S eval --stdin > "$OUT.b64"
+echo "(async()=>{const g=document.querySelector('button[aria-label^=Imagem] img')||[...document.querySelectorAll('img')].filter(x=>x.naturalWidth>600).pop();if(!g)return 'none';const b=await (await fetch(g.src)).blob();return await new Promise(ok=>{const f=new FileReader();f.onload=()=>ok(f.result);f.readAsDataURL(b)})})()" | agent-browser --session $S eval --stdin > "$OUT.b64"
 python3 -c "
 import json,base64,sys;s=json.loads(open('$OUT.b64').read());assert s.startswith('data:'),s[:40];open('$OUT','wb').write(base64.b64decode(s.split(',',1)[1]))" && rm "$OUT.b64"
 for R in "${REFS[@]}"; do [ "$(md5sum < "$OUT")" = "$(md5sum < "$R")" ] && { echo "FAIL baixou ref"; exit 1; }; done

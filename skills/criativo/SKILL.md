@@ -79,3 +79,20 @@ Referências herdadas das skills antigas (detalhe que as filhas citam): `referen
   imagem pra dona, espera aprovação ou correção — só então gera a próxima. Vale mesmo quando o pedido já
   veio com várias poses/cenas definidas de uma vez (a lista é o que fazer, não autorização pra rodar tudo
   sem mostrar nada no meio).
+- **Todo material impresso em cena é A4 (regra fixa, 05/11/2026):** calendário, agenda, caderno, livro, livreto,
+  folha, capa — qualquer papel/impresso que o produto mostre numa imagem ou take tem tamanho **A4** (21 × 29,7 cm,
+  proporção ~1 : 1,41, retrato). Sem isso o GPT escolhe o tamanho que acha bom (pequeno, esticado, enorme). No prompt:
+  escreva `A4 size (21 x 29.7 cm, portrait, proportion about 1 to 1.41), real-world scale: a little larger than a
+  woman's two hands side by side, about the width of her shoulders`, e proíba `postcard size, pocket size, tiny, oversized,
+  stretched, square`. Vale pra capa na mão, folha na mesa, prancheta, caderno aberto. Ao conferir a imagem, compare a
+  proporção do objeto com as mãos/mesa; fora de A4 = regera.
+- **Produto em cena = só o produto oficial da oferta (regra fixa, 05/11/2026):** antes de anexar capa/mockup/página como
+  referência, leia `OFERTAS/<slug>/ATIVOS.md` (seções 1 e 2: o que é OFICIAL e o que foi DESCARTADO; regra em `low-ticket` § 2b). **Nunca escolha capa pelo nome do arquivo** (`capa`, `guia`, `kit`): o agente do Calendrier Magique pegou
+  `guia-v1-capa.png` (azul descartada, igual à da concorrente) por causa do nome. Arquivo em lista de descartado, com
+  `descartado` no nome, ou de cor/arte diferente da capa oficial = não usar. Sem ponteiro de capa oficial no
+  `CLAUDE.md` da oferta → criar o ponteiro antes de gerar. Depois de gerar, **confira a imagem contra a capa oficial**
+  (cor, musa/arte, texto) antes de mostrar. Oferta que descarta um visual apaga o arquivo (ou move pra `_arquivo/`),
+  nunca deixa na pasta de uso.
+- **Registrar cada peça em `ATIVOS.md` seção 4 (regra fixa, 05/11/2026):** peça gerada = linha com estado `gerando`; dona aprovou = `aprovada`
+  e o arquivo final; dona reprovou = `reprovada` + motivo, e o arquivo reprovado sai da pasta de uso (`_descartado/` ou apagado).
+  Cada peça diz de qual referência de concorrente foi modelada (seção 3). Registrar junto com a resposta da dona, não no fim da sessão.
