@@ -88,8 +88,9 @@ $F video i2v --project <id> --initial-frame cena.png --model omni-flash --durati
 | Rodízio de perfis (igual `gpt-livre.sh`) | perfis = todo `~/.local/share/gflow-cli/profile_*` (hoje `flow-gflow` e `flow-gflow-2`, mesma conta `contato.minhaempresa` → projetos valem pros dois). Cada envio pega o perfil logado, fora de resfriamento, livre e com menos envios. **Não passe `--profile`.** Perfil novo: `gflow auth login --browser chrome --profile flow-gflow-N` e pronto |
 | Login checado de verdade | `gflow auth status` ERRA (diz deslogado com sessão boa). `flow.sh check` abre o Flow: caiu em `/about` = deslogado (marca e pula o perfil). Perfil que cai no meio de um envio é marcado e o envio repete no próximo |
 | Fila entre agentes | `flock` por perfil (`~/.cache/pov-flow/<perfil>.lock`): 1 envio por vez em cada perfil; com 2 perfis, 2 agentes geram em paralelo |
-| Ritmo humano por perfil | 45–120s entre envios e máx. 8 por 30 min por perfil (`~/.cache/pov-flow/<perfil>.sends`) |
-| Freio de bloqueio | "atividade incomum"/exit 10 → 45 min de resfriamento só naquele perfil; não reenvia automático |
+| Ritmo humano da CONTA | 45–120s entre envios e máx. 8 por 30 min **somando todos os perfis** (`~/.cache/pov-flow/<perfil>.sends`) — os perfis são o mesmo login, então o Google vê a soma. Contar por perfil foi o furo de 04/11 |
+| Frame não reenvia | `--initial-frame` igual no mesmo projeto é **recusado** (exit 77, `~/.cache/pov-flow/enviados.frames`), porque o take pode já estar no projeto. Exceção consciente, só depois de conferir no projeto que o clipe NÃO existe: prefixar `FLOW_FRAME_RETRY=1` |
+| Freio de bloqueio | "atividade incomum"/exit 10 → 45 min de resfriamento **na conta**; não reenvia automático. Se o aviso aparecer NA TELA (processo morto não vê exit 10): `flow.sh bloqueio [min]` marca todos os perfis |
 | Retry seguro | falha antes do envio (exit 23, sem gasto) → 1 nova tentativa |
 | Anexo de imagem | `gflow_ref.py`: a conta recebe o composer "agent-only" (gflow #799), onde o gflow puro recusa `--ref`/`--initial-frame`; o driver anexa pelo "+" → Enviar mídia → item → (Incluir no comando) e confere pela contagem de anexos |
 
@@ -98,6 +99,8 @@ $F video i2v --project <id> --initial-frame cena.png --model omni-flash --durati
 | exit | significa | o que fazer |
 |---|---|---|
 | 0 | ok | — |
+| 77 | frame inicial já enviado neste projeto | **não reenvie**; recupere o take no projeto (seção "Aprovar"/exit 25) |
+| 78 | envio anterior saiu sem aprovar o take (gate pendente) | recuperar/resolver antes de qualquer envio novo; pausa curta automática |
 | 10 | Flow bloqueou (atividade incomum) | **parar**; avisar a usuária o horário de volta |
 | 76 | nenhum perfil disponível (todos deslogados/em resfriamento) | `flow.sh status`; pedir à usuária o login do perfil indicado; depois `flow.sh check` |
 | 23 | tela/anexo mudou (já tentou 2x) | 1 print do incidente (`~/.local/share/gflow-cli/incidents/`), avisar; não chutar seletor |
@@ -120,12 +123,53 @@ depois `flow.sh check` libera o perfil.
 6. `gflow project create` cria id que o flow.google.com não acha → `flow.sh novo-projeto`
    cria pelo botão "Novo projeto" do site.
 
-## Recuperar vídeo quando o envio sai com exit 25 (22/10/2026)
+## "Aprovar" no take / exit 25 — recuperar, NUNCA reenviar (corrigido 04/11/2026)
 
-O agente do Flow às vezes pede **"Aprovar"** antes do vídeo e o driver sai com exit 25, mas **a geração continua**
-no projeto. Não reenvie. Espere ~3 min e:
-1. `cd <tmp>; flock ~/.cache/pov-flow/<perfil>.lock env DISPLAY=:1 ~/.local/share/uv/tools/gflow-cli/bin/python ~/.claude/skills/flow-video-playwright/scripts/flow_listar_projeto.py <perfil> <project_id>`
+`exit 25` = `FlowAgentUiError` no `EXIT_CODE_MAP` do gflow-cli. Causa real vista em 04/11 (tarot FR, take 1):
+o run foi submetido (`migrated.agent_only.submitted` no log) e **o processo morreu antes de clicar "Aprovar"** —
+o log não tem `migrated.agent_only.gate_approved` nem `migrated.agent_only.video_ready`, e a usuária teve que
+aprovar à mão. O driver (`agent_only_composer._gate_turn`) só auto-aprova **1 gate de crédito do componente
+`flow-permission-message`** que apareça DEPOIS do submit; ele **não** clica "Aprovar" de bolha de chat, e não
+faz nada se o processo já foi morto. A geração continua no projeto de qualquer jeito.
+
+**Regra dura:** saiu 25, ou o processo foi interrompido sem `video_ready` → **NÃO reenvie o mesmo
+`--initial-frame`, nem no mesmo perfil nem no outro**. Reenviar gasta crédito 2x (aconteceu: frame-01 submetido
+21:06 no `flow-gflow` e de novo 21:10 no `flow-gflow-2`) e ainda deixa o "Aprovar" pra usuária. Recupere o
+clipe que já está no projeto:
+
+1. Espere o projeto parar de gerar (`flow.sh status` mostra "gerando"; ~3 min pra clipe de 4–8 s).
+2. `cd <tmp>; flock ~/.cache/pov-flow/<perfil>.lock env DISPLAY=:1 ~/.local/share/uv/tools/gflow-cli/bin/python ~/.claude/skills/flow-video-playwright/scripts/flow_listar_projeto.py <perfil> <project_id>`
    (abre o projeto em flow.google.com e salva as respostas em `bodies.json`; o `fetch_project_listing` do gflow dá
    `AuthExpiredError` porque o host migrou). O media id é o UUID cuja legenda = o prompt de movimento enviado.
-2. `flock ~/.cache/pov-flow/<perfil>.lock env DISPLAY=:1 gflow video upscale <media_id> --scale 720p --project <id> --profile <perfil> --out <dir>`
-   (720p = baixar o original, sem custo). Depois renomeie pra `clip.mp4` e rode o lote de novo (só monta).
+3. `flock ~/.cache/pov-flow/<perfil>.lock env DISPLAY=:1 gflow video upscale <media_id> --scale 720p --project <id> --profile <perfil> --out <dir>`
+   (720p = baixar o original, sem custo). Depois renomeie pra `clip.mp4`/`take-NN.mp4` e siga pra PRÓXIMA cena.
+
+**Prevenção (o que faltou no erro):** o comando de vídeo roda 2–4 min — dê `timeout` de 600000 ms no Bash e
+**não mate** o processo no meio (matar + reenviar = "atividade incomum" e crédito perdido). Se precisar conferir o
+andamento, `flow.sh status`, nunca um segundo envio. Antes de gerar, cheque se o `take-NN.mp4` já existe na pasta
+e reaproveite — regenerar o que já baixou é sempre erro.
+
+**Caso 04/11 21:28 (mesma sessão, terceira vez):** o Bash foi abortado no meio do envio de `frame-02`, o processo
+morreu e o projeto ficou com o gate pendente; o log termina em `submitted` sem `gate_approved`. Somando isso ao
+duplo envio de 21:06/21:10 (4 envios da conta em 22 min, 2 do MESMO frame), o Flow passou a mostrar "atividade
+incomum" **na tela** — e o `flow.sh` nunca soube, porque o processo morto não devolve exit 10 e o ritmo era contado
+por perfil. Daí as três travas de agora: ritmo/teto somados na conta, `enviados.frames` recusando o mesmo frame
+(exit 77) e `flow.sh bloqueio` pra registrar o aviso visto na tela. Depois de um abort, **primeiro** recupere
+(`flow_listar_projeto.py`), **depois** pense em gerar.
+
+## Modelo de prompt de movimento (i2v) — longo, por segundo
+
+O Flow não é extensão de imagem: prompt de uma linha faz objeto sumir/derreter. Use este esqueleto, sempre
+**antes** de enviar (o exemplo real que funcionou no tarot FR):
+
+```
+the attached image coming to life: FIXED camera, <quem filma / POV de quem>;
+0-2s: <ação exata, onde está cada mão/objeto>;
+2-4s: <próxima ação, mesmo objeto na mesma mão>;
+4-8s: <fecho, objeto continua no lugar>;
+continuity: same person, same clothes, same face, same background, same lighting;
+<objeto> never leaves the hand, never changes hand, five fingers, no new objects,
+no text appearing or disappearing, no cuts, no camera movement, no speech.
+```
+Ajuste as janelas de tempo à `--duration` (4/6/8/10 s). Prompt curto do tipo "the attached image coming to
+life: person holds tablet" é o erro clássico — sem ação por segundo e sem bloco de continuidade, o Flow alucina.
