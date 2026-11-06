@@ -106,9 +106,33 @@ Referências herdadas das skills antigas (detalhe que as filhas citam): `referen
   Cada peça diz de qual referência de concorrente foi modelada (seção 3). Registrar junto com a resposta da dona, não no fim da sessão.
 - **Pasta do CT: só o criativo final solto + `anuncio.md` (regra fixa, 05/11/2026):** dentro de `criativos/CTx-.../`,
   na raiz, só o(s) arquivo(s) final(is) pra postar (vídeo pronto, imagem pronta, card de carrossel pronto) e o
-  `anuncio.md` (texto principal, título, CTA) — nada mais. Tudo que não é pra postar (versões antigas, áudio,
+  `anuncio.md` (texto principal, título, CTA) — nada mais. **O `anuncio.md` leva o TEXTO ESCRITO por extenso (texto
+  principal + título + CTA + link), com tradução PT se não for português. Nunca "ver IDEIAS/FICHA": ponteiro não conta
+  como texto (erro real 05/11/2026, Calendrier Magique FR: os 9 `anuncio.md` só apontavam). Peça pronta sem o texto = peça não entregue.**
+  **O texto do anúncio é MODELADO do anúncio original que a gente pegou (regra da dona, 05/11/2026):** texto principal e título
+  saem do texto do anúncio de referência (Biblioteca de Anúncios), traduzido fielmente e trocando só produto/idioma/moeda.
+  Vale tanto pra levar o MESMO produto pra outro país quanto pra modelar uma oferta: o texto é o do original e **só muda
+  produto, preço e idioma** (o resto — estrutura, frases, ordem, tom — fica igual). Não reescrever, não "melhorar", não cortar.
+  Se o produto do original é outro (o original vendia X, o nosso é Y), troca cada termo do produto pelo equivalente do NOSSO
+  produto real e adapta só o que isso exigir (ex.: Grimório → Agenda Magique, roda do Sul → Roue du Nord); o resto do texto fica.
+  Nunca prometer no texto algo que o nosso produto não tem.
+  **`anuncio.md` tem só TEXTO PRINCIPAL e TÍTULO (regra da dona, 05/11/2026): sem descrição, sem CTA, sem link.**
+  **O título leva a prova social do original** (estrelas ★★★★★, nota "4,9 de 5", "X pessoas satisfeitas", "X exemplares/cópias
+  vendidos") + a promessa do título. Se o original tem, o nosso tem. Número e nota só se forem REAIS ou liberados pela dona
+  (ex.: "+20 000 exemplaires" liberado 05/11/2026); nunca copiar o número do concorrente nem inventar (política Meta,
+  `low-ticket/references/POLITICA-META-CHECKLIST.md`). Sem número liberado: pedir à dona antes de escrever o título.
+  Nunca escrever copy do zero quando a peça tem original. Cada `anuncio.md` cita o id do anúncio original de onde o texto veio.
+  Peça sem original (criação nossa) é a única que pode ter texto novo. Tudo que não é pra postar (versões antigas, áudio,
   intermediário, NOTAS.md, PLANO.md, referência, roteiro, persona) vai pra subpasta (`nossa/`, `referencia/`
   etc.). Peça com variante (ex.: anúncio + VSL) = cada final solto na raiz, nome dizendo a diferença
   (`CTx-fr-v5.mp4` ad, `CTx-fr-vsl-v1.mp4` VSL), e `anuncio.md` com uma seção por variante. Toda vez que
   terminar peça nova ou trocar a versão final, mover a antiga pra subpasta e deixar só a nova solta — nunca
   acumular v1/v2/v3 na raiz.
+- **Nome da pasta do CT e do arquivo final combinam (regra fixa, 05/11/2026):** pasta `CTx-<tipo>-<slug>-<mercado>`
+  (ex.: `CT9-V-adspy-1125464316576891-br`), arquivo final `CTx-<tipo>-<idioma>-v<N>.<ext>` (ex.: `CT9-V-fr-v5.mp4`).
+  Quem olha o nome da pasta ou do arquivo já sabe qual CT é, sem abrir nada.
+- **Referência do criativo original vai em `referencia/` (regra fixa, 05/11/2026):** quando a peça foi modelada
+  de um criativo existente (nosso ou de terceiro), a referência (vídeo/imagem original) e um `.txt`/`.md` com
+  link, origem e dados do criativo (creative_id, anunciante, plataforma) ficam em `referencia/` — nunca soltos
+  na raiz junto do final. Raiz do CT é só: final(is) pra postar + `anuncio.md`. Resto (intermediário, áudio,
+  roteiro, persona, revisão) em `nossa/`.
