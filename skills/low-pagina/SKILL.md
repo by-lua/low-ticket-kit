@@ -26,7 +26,8 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
       (index.html + img + build_page.py + README com todas as regras). Nasceu do PaginaPro V1 do Fernando Oliveira
       (original só pra consulta em `MODELOS/MODELOS-DE-PAGINA/fernando/`). Mudança nova aprovada pela dona numa página
       feita nele → aplicar também no modelo e anotar no README do modelo. Os modelos Flowise são legado: não usar.
-   Valem nos 3: barra vermelha fixa · hero acima da dobra · planos e garantia padrão Mapa do Tarot · QA (passo 9b).
+   Valem nos 3: barra vermelha fixa · hero acima da dobra · planos e garantia padrão Mapa do Tarot · QA (passo 9b) ·
+   **performance** (fontes hospedadas em `img/fonts/`, nunca Google Fonts; `scripts/otimizar-imagens.py` antes do deploy — README do modelo § Performance).
    - **Caminhos 1 e 2** → passo 0 abaixo (clone). Ordem: **o material por dentro logo depois da 1ª seção (hero)**.
    - **Template do Fernando** → `MODELOS/MODELOS-DE-PAGINA/fernando/index.html` (PaginaPro V1, HTML estático): copia,
      troca texto/cores/imagens seguindo os blocos dele (topo → dor → prévias → mecanismo → comparação → uso → pitch
@@ -96,6 +97,11 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
 2a. **E2d — Visual (pergunta obrigatória, regra da dona 04/11/2026).** Antes de montar a página, perguntar:
    *"Mantemos o visual dele ou mudamos um pouco (cores, fundo, elementos, capa)?"* — mostrando o que ela já
    comentou (ex.: "fundo mais limpo", "desktop mal resolvido").
+   - **Paleta da página = a da oferta modelada, nunca o vermelho/verde da casa (regra da dona 06/11/2026).** O Modelo
+     Padrão é só estrutura/CSS; as cores vêm do original (tokens hex dele → `:root`). O vermelho da LeadGo só existe
+     na barra de urgência. **A pergunta é obrigatória e vem ANTES de montar a página** (`AskUserQuestion`, 1 pergunta):
+     *"Seguimos com a mesma paleta da oferta modelada ou quer mudar?"* — já com **2-3 sugestões prontas** (hex +
+     por que serve ao mercado) e a opção "manter a dele" marcada como recomendada. Sem resposta dela, não monta.
    - **Objetivo padrão da dona = diferenciar sem fugir do que vende.** Mantém a **pegada/vibe** do original (o
      estilo que bate no público — ex.: grimório vintage no Calendrier), mesma composição e tipo de peça; muda
      **as cores e alguns elementos**, um pouco — o bastante pra que, se outro modelar a mesma oferta nesse idioma,

@@ -10,6 +10,18 @@ só pra consulta) com todas as mudanças da casa. Primeira oferta feita nele: Ca
    Ou editar `build_page.py` (gera o HTML a partir do CSS do template + overrides + conteúdo) e rodar.
 3. QA obrigatório: `../../scripts/qa-layout.js` em 360×740, 375×667, 390×844, 1366×768, 1920×1080 → tudo `ok`.
 
+## Performance (regra 06/11/2026 — a página sai já otimizada)
+A. **Fontes hospedadas, nunca Google Fonts.** O `<link>` do Google bloqueia a renderização (no navegador interno do
+   Instagram em 4G atrasa o 1º paint e derruba "Vis. Página"). O template já traz `img/fonts/` (woff2 latin, `dmsans`
+   variável 400-800 + Libre Baskerville) com `@font-face` + `font-display:swap` e `preload` das 2 principais. Fonte
+   diferente da oferta → baixar o woff2 latin e trocar no `<style>`; nunca voltar ao `<link>` do Google.
+   Fontes ficam em `img/fonts/` (o servidor já serve `img/` com cache de 1 ano; fora de `img/` o Dockerfile/allowlist barra).
+B. **Imagens:** só hero com `fetchpriority=high` + `preload`; resto `loading="lazy"` com width/height. Antes do deploy
+   rodar `../../scripts/otimizar-imagens.py <site/img>` (webp q75, só grava se ganhar ≥10%; Calendrier: 4,5→3,2 MB).
+C. Cache: `img/` imutável de 1 ano → imagem trocada = **nome novo** (senão o Cloudflare serve a velha).
+D. **Paleta = a da oferta modelada** (não o vermelho da casa; vermelho só na barra de urgência). A pergunta
+   "manter ou mudar" com sugestões vem antes de montar (`SKILL.md` § 2a).
+
 ## Ordem das seções
 barra → hero → dor (6 chips + ponte) → prévias (carrossel) → mecanismo (4 passos + frase + botão) → uso na vida real
 (carrossel) → pitch intermediário (mockup diferente + botão) → pra quem é (6) → **o que recebe** (`#recebe`) → bônus
