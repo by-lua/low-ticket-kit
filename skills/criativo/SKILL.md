@@ -104,3 +104,11 @@ Referências herdadas das skills antigas (detalhe que as filhas citam): `referen
 - **Registrar cada peça em `ATIVOS.md` seção 4 (regra fixa, 05/11/2026):** peça gerada = linha com estado `gerando`; dona aprovou = `aprovada`
   e o arquivo final; dona reprovou = `reprovada` + motivo, e o arquivo reprovado sai da pasta de uso (`_descartado/` ou apagado).
   Cada peça diz de qual referência de concorrente foi modelada (seção 3). Registrar junto com a resposta da dona, não no fim da sessão.
+- **Pasta do CT: só o criativo final solto + `anuncio.md` (regra fixa, 05/11/2026):** dentro de `criativos/CTx-.../`,
+  na raiz, só o(s) arquivo(s) final(is) pra postar (vídeo pronto, imagem pronta, card de carrossel pronto) e o
+  `anuncio.md` (texto principal, título, CTA) — nada mais. Tudo que não é pra postar (versões antigas, áudio,
+  intermediário, NOTAS.md, PLANO.md, referência, roteiro, persona) vai pra subpasta (`nossa/`, `referencia/`
+  etc.). Peça com variante (ex.: anúncio + VSL) = cada final solto na raiz, nome dizendo a diferença
+  (`CTx-fr-v5.mp4` ad, `CTx-fr-vsl-v1.mp4` VSL), e `anuncio.md` com uma seção por variante. Toda vez que
+  terminar peça nova ou trocar a versão final, mover a antiga pra subpasta e deixar só a nova solta — nunca
+  acumular v1/v2/v3 na raiz.
