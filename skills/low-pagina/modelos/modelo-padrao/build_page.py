@@ -287,7 +287,7 @@ HTML = f"""<!DOCTYPE html>
       </ul>
       <div class="pprice">5,90 €</div>
       <p class="pnote">⏱ Accès immédiat juste après l'achat</p>
-      <a class="btn btn--ghost" data-plan="essentiel" data-tk-value="5.90" data-tk-currency="EUR" data-upsell="1" href="#">JE PRENDS L'ESSENTIEL<span aria-hidden="true">→</span></a>
+      <a class="btn btn--ghost" data-upsell="1" href="#upgradepopup" role="button">JE PRENDS L'ESSENTIEL<span aria-hidden="true">→</span></a>
       <div class="pattn"><p>ATTENTION : nous avons une offre encore meilleure pour vous ! Regardez juste en dessous</p><div><span>↓</span><span>↓</span><span>↓</span></div></div>
     </div>
     <div class="pcard best">

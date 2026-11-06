@@ -145,6 +145,12 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
      cards, lista do plano, soma do value stack, FAQ, texto de liberação — nenhum resquício do número antigo.
 5. **Rastreio no `<head>`:** bloco fbq inline ANTES do loader do Trackeador (skill `trackeador`). Todo botão
    de checkout com `data-tk-value` + `data-tk-currency`; página não manda IC próprio.
+   **InitiateCheckout só conta quando a pessoa é de fato mandada pro checkout (dona, 05/11/2026).** Botão que só
+   ABRE popup (Básico → popup de upgrade, qualquer "escolha uma opção") NÃO leva `data-tk-*`, NÃO leva `data-plan`
+   e NÃO leva href de checkout: `data-upsell="1" href="#upgradepopup" role="button"`. O IC sai só nos links que
+   navegam pro checkout: botão do Completo, "Oui ! je passe au Complet", "Non merci, je continue avec l'Essentiel"
+   e o botão do popup de saída — cada um com o `data-tk-value`/`data-tk-currency` do próprio preço. Vale pra
+   qualquer lugar da página/funil com popup antes do checkout. `qa-layout.js` reprova o contrário.
 6. **Os 2 popups, SEMPRE** (dona, 04/11/2026: "eu sempre uso essas coisas"), padrão Mapa do Tarot (código no modelo
    `modelos/modelo-padrao/`):
    - **Upgrade no clique do Básico** (`#downsell`): « leve tudo por quase o mesmo preço » — Completo num preço

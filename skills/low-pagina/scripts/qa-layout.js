@@ -5,6 +5,9 @@
   if (!document.querySelector('link[rel~="icon"]')) out.problemas.push('sem favicon (<link rel="icon">)');
   if (!document.querySelector('#downsell')) out.problemas.push('sem popup de upgrade no clique do básico (#downsell)');
   if (!document.querySelector('[data-upsell]')) out.problemas.push('botão do básico não abre o popup de upgrade (data-upsell)');
+  document.querySelectorAll('[data-upsell]').forEach(a => { const h = (a.getAttribute('href') || '').toLowerCase();
+    if (a.hasAttribute('data-tk-value') || a.hasAttribute('data-tk-currency')) out.problemas.push('botão que só abre popup tem data-tk-* (conta InitiateCheckout sem ir ao checkout)');
+    if (/hotmart|pay\.|checkout|mundpay|cakto|kirvano|wiven|ggcheckout/.test(h) || a.hasAttribute('data-plan')) out.problemas.push('botão que só abre popup tem href/data-plan de checkout (conta InitiateCheckout no clique)'); });
   if (!document.querySelector('#exitpopup')) out.problemas.push('sem popup de saída (#exitpopup)');
   const hero = document.querySelector('section.hero, header.hero, .hero');
   const heroBtn = hero && hero.querySelector('a.btn, a.cta, .btn, .cta');

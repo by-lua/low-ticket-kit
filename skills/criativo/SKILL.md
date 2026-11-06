@@ -101,6 +101,15 @@ Referências herdadas das skills antigas (detalhe que as filhas citam): `referen
   `CLAUDE.md` da oferta → criar o ponteiro antes de gerar. Depois de gerar, **confira a imagem contra a capa oficial**
   (cor, musa/arte, texto) antes de mostrar. Oferta que descarta um visual apaga o arquivo (ou move pra `_arquivo/`),
   nunca deixa na pasta de uso.
+- **FORMATO DA PEÇA — regra fixa da dona (05/11/2026), sem exceção:**
+  - **Tudo que é imagem de feed = 4:5, 1080×1350.** Vale pra imagem estática, carrossel (todos os cards) e **imagem animada**
+    (a imagem animada é imagem de feed: o `.mp4` dela também sai 1080×1350). Nunca 3:4 (1080×1440), nunca 1:1, nunca 9:16.
+  - **Tudo que é vídeo = 9:16, 1080×1920** (estilo Stories/Reels): demonstrativo, UGC, expert, caixinha etc.
+  - Erro real (Calendrier Magique FR): CTV 5, 6, 7 e 8 (imagem + imagem animada) saíram 1080×1440 (3:4) e só a CTV 9 estava em 4:5.
+  - **Como aplicar:** o prompt de imagem pede `vertical 4:5 aspect ratio, 1080x1350`; o GPT às vezes devolve outra proporção
+    (já voltou 1092×1440), então **meça o PNG com `ffprobe` antes de aplicar texto/selo/botão** e corte/refaça até dar 1080×1350.
+    A animação (zoom, deslize, botão pulsando) parte da arte já em 4:5, nunca de uma 3:4 cortada depois.
+    Gate antes de mostrar: toda imagem/imagem animada = 1080×1350, todo vídeo = 1080×1920. Fora disso, não mostra à dona.
 - **Registrar cada peça em `ATIVOS.md` seção 4 (regra fixa, 05/11/2026):** peça gerada = linha com estado `gerando`; dona aprovou = `aprovada`
   e o arquivo final; dona reprovou = `reprovada` + motivo, e o arquivo reprovado sai da pasta de uso (`_descartado/` ou apagado).
   Cada peça diz de qual referência de concorrente foi modelada (seção 3). Registrar junto com a resposta da dona, não no fim da sessão.

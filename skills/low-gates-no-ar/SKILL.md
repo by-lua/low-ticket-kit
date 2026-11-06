@@ -10,9 +10,16 @@ Nada vai pra tráfego sem os gates (eventos, página leve, download, checkout) c
 ## Gate 1 — Eventos (página)
 Capturar requests `facebook.com/tr` no ar (headed + rede, skill `trackeador`):
 - PageView ao carregar · cada etapa do quiz (se tiver) · outros eventos da página;
-- **InitiateCheckout em TODO botão** que leva ao checkout, com `value` e `currency` certos do mercado.
+- **InitiateCheckout só quando a pessoa é MANDADA pro checkout** (dona, 05/11/2026), com `value` e `currency` certos do
+  mercado. Testar clicando de verdade, um fluxo por vez, e contar os IC:
+  · botão que só ABRE popup (Básico → upgrade) → **0 IC** (popup abre, URL não muda);
+  · cada botão do popup que navega (upgrade / "non merci, sigo com o básico") → **1 IC**, com o valor do próprio botão;
+  · botão do plano caro que vai direto → **1 IC**;
+  · popup de saída: APARECER = 0 IC; o clique no botão dele que navega = 1 IC;
+  · back/scroll/modal = 0 IC.
 - Sem `facebook.com/tr`: conferir se o fbq inline vem antes do Trackeador no `<head>`. Botão que só abre popup
-  não leva href de checkout (IC dobrado). Página não manda IC próprio.
+  não leva `data-tk-*`, `data-plan` nem href de checkout (`href="#upgradepopup" role="button"`; `qa-layout.js` confere).
+  Página não manda IC próprio.
 
 ## Gate 1b — Página leve (performance)
 - Lighthouse mobile no ar (comando em `otimizacao-pagina-vendas`): colar score, LCP, TBT e peso total.
