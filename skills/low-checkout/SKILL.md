@@ -16,6 +16,10 @@ description: Etapa E8 do sistema LOW-TICKET — cadastra a oferta e as peças do
 - **Trackeador na organização certa (incidente 04-06/11/2026, Calendrier FR):** a oferta foi criada na Leadgo, quando era da WINX, e o funil ficou sem medir.
   Antes de `trackeador init/checkout create/dashboard create`, confirme com a dona **de qual organização é a oferta**. Passe sempre `--org <org>` e `--dashboard <oferta>`.
   Nunca crie dashboard só para destravar um comando. Relate tudo o que criou (dashboard, conexão, pixel, host).
+- **Gateway novo ou primeira vez nele? Leia a documentação OFICIAL antes de ligar** (dona, 06/11/2026). A Hotmart quebrou
+  porque o preset foi escrito sem a doc. Confirmar: onde vai o token (header/corpo), qual parâmetro do link volta no webhook
+  com o id da visita (e o limite de tamanho), os eventos e o comportamento do botão "testar". Divergiu do preset do
+  Trackeador → corrigir o preset (skill `trackeador`, § "Antes de ligar gateway/checkout"), nunca remendar só a oferta.
 - **Uma oferta = um dashboard + uma conexão + um pixel próprios.** Não reaproveite o pixel de outra oferta ou de outro mercado.
 - **Um perfil de browser por pane**, sempre headed.
 
