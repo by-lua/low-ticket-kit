@@ -21,11 +21,15 @@ Capturar requests `facebook.com/tr` no ar (headed + rede, skill `trackeador`):
   não leva `data-tk-*`, `data-plan` nem href de checkout (`href="#upgradepopup" role="button"`; `qa-layout.js` confere).
   Página não manda IC próprio.
 
-## Gate 1b — Página leve (performance)
-- Lighthouse mobile no ar (comando em `otimizacao-pagina-vendas`): colar score, LCP, TBT e peso total.
-- Nenhuma imagem acima de ~80 KB sem motivo; todo vídeo em player com `preload="none"` (ou fachada que carrega
-  no clique); nenhum vídeo baixando no carregamento. Conferir na aba de rede: o que baixa ao abrir a página.
-- Otimizar não pode quebrar o pixel: rodar o Gate 1 de novo depois.
+## Gate 1b — Página leve (performance) — roda o script, não "olhar a olho"
+- `node _skills/low-pagina/scripts/qa-performance.js <url-no-ar> --meta-id=<id do pixel>` → tem que dar **APROVADO**.
+  Cola o bloco RESULTADO no `STATUS.md`. Limites e o que reprova: `_skills/low-pagina/SKILL.md` passo 9c.
+- Lighthouse mobile (comando em `otimizacao-pagina-vendas`) é complemento: colar score, LCP, TBT e peso total.
+- Todo vídeo em player com `preload="none"` (ou fachada que carrega no clique); nenhum vídeo baixando no carregamento.
+- Otimizar não pode quebrar o pixel: o próprio script confere pixel Meta + Trackeador; rodar o Gate 1 de novo depois.
+- **Funil mostra queda entre Cliques e "Vis. Página"?** (aprendido 06/11/2026) Antes de culpar a página: (1) rodar este
+  gate; (2) trocar o toggle do funil de **Meta** para **Trackeador** e comparar; (3) só concluir com ≥ 100 cliques
+  (23 cliques não é amostra). "Vis. Página" do Meta só conta se o `fbevents.js` carregar antes de a pessoa sair.
 
 ## Gate 2 — Download (área de membros)
 - `node scripts/check-download-pdf.mjs <url-da-oferta> <email-de-teste> [--lang=es]` (na raiz LOW-TICKET),

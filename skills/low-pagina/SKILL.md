@@ -1,6 +1,6 @@
 ---
 name: low-pagina
-description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da oferta. Padrão da casa = Modelo Padrão LeadGo (base PaginaPro do Fernando + regras da casa, em modelos/modelo-padrao/); alternativas: página da pessoa 100% ou página da pessoa + blocos do Modelo Padrão. Use para "faz a página", "página de vendas da oferta X", "Modelo Padrão", "estilo Fernando", "adapta a página dele pra nossa".
+description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da oferta. Padrão da casa = Modelo Padrão LeadGo (página nossa, com as regras da casa, em modelos/modelo-padrao/); alternativas: página da pessoa 100% ou página da pessoa + blocos do Modelo Padrão. Use para "faz a página", "página de vendas da oferta X", "Modelo Padrão", "adapta a página dele pra nossa".
 ---
 
 # low-pagina — E3, página de vendas
@@ -23,16 +23,11 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
    2. **Página da pessoa + adaptações do Modelo Padrão** — clone dela como base (visual e identidade dela) + os blocos
       que faltam **copiados do Modelo Padrão** (mesma estrutura/CSS adaptados à paleta dela), só os aprovados nas sugestões.
    3. **Modelo Padrão LeadGo** (recomendado, padrão da casa desde 04/11/2026) — `_skills/low-pagina/modelos/modelo-padrao/`
-      (index.html + img + build_page.py + README com todas as regras). Nasceu do PaginaPro V1 do Fernando Oliveira
-      (original só pra consulta em `MODELOS/MODELOS-DE-PAGINA/fernando/`). Mudança nova aprovada pela dona numa página
+      (index.html + img + README com todas as regras). É só nosso, sem dependência de template de terceiros. Mudança nova aprovada pela dona numa página
       feita nele → aplicar também no modelo e anotar no README do modelo. Os modelos Flowise são legado: não usar.
    Valem nos 3: barra vermelha fixa · hero acima da dobra · planos e garantia padrão Mapa do Tarot · QA (passo 9b) ·
    **performance** (fontes hospedadas em `img/fonts/`, nunca Google Fonts; `scripts/otimizar-imagens.py` antes do deploy — README do modelo § Performance).
    - **Caminhos 1 e 2** → passo 0 abaixo (clone). Ordem: **o material por dentro logo depois da 1ª seção (hero)**.
-   - **Template do Fernando** → `MODELOS/MODELOS-DE-PAGINA/fernando/index.html` (PaginaPro V1, HTML estático): copia,
-     troca texto/cores/imagens seguindo os blocos dele (topo → dor → prévias → mecanismo → comparação → uso → pitch
-     → pra quem é → o que recebe → bônus → oferta → segurança → passos de acesso → FAQ → fecho). Copy das seções:
-     `CONHECIMENTO`/PaginaPro `references/arquitetura-copy.md`.
    - **Antes × depois** (nos dois): só quando a oferta pega material técnico e transforma em visual. Senão, corta.
    - **Bloco dos 2 planos** (nos dois) = padrão Mapa do Tarot (`OFERTAS/mapa-do-tarot/site/index.html`, `<!-- PLANS -->`):
      - **Básico, SEM imagem:** só o que ele tem; o que fica de fora aparece **riscado com ✗**; preço; botão
@@ -48,7 +43,7 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
 0b. **Preferências fixas da dona (04/11/2026):**
    - **Hero centralizado:** barra → headline → **mockup no meio** → texto curto/bullets organizados → botão.
      Nada de hero em 2 colunas (texto de um lado, imagem do outro), nem no desktop.
-   - **Hero organizado como o do Fernando** (dona, 04/11/2026): subheadline → **bullets com ✓ em círculo** → **pílula com o
+   - **Hero organizado** (dona, 04/11/2026): subheadline → **bullets com ✓ em círculo** → **pílula com o
      preço do plano mais barato logo acima do botão** → botão → linha de confiança (✓ acesso imediato · ✓ garantia · ✓ pagamento
      seguro). Nada de cards espalhados nem parágrafos empilhados.
    - **A 1ª seção cabe na tela até o botão, sem rolar**, no celular (até 360×740) e no PC (1366×768): mockup com
@@ -102,6 +97,10 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
      na barra de urgência. **A pergunta é obrigatória e vem ANTES de montar a página** (`AskUserQuestion`, 1 pergunta):
      *"Seguimos com a mesma paleta da oferta modelada ou quer mudar?"* — já com **2-3 sugestões prontas** (hex +
      por que serve ao mercado) e a opção "manter a dele" marcada como recomendada. Sem resposta dela, não monta.
+     **Toda sugestão de paleta tem que ter a ver com a oferta** (tema, simbolismo, nicho e público: ex. grimório/bruxaria
+     = ameixa, vinho, dourado, verde-musgo; tarô = roxo profundo e ouro; saúde = verdes/azul-petróleo). Nunca sugerir
+     cor aleatória, "bonita" ou da casa que não combine com o assunto do produto; cada sugestão diz em uma frase por
+     que a cor combina com a oferta.
    - **Objetivo padrão da dona = diferenciar sem fugir do que vende.** Mantém a **pegada/vibe** do original (o
      estilo que bate no público — ex.: grimório vintage no Calendrier), mesma composição e tipo de peça; muda
      **as cores e alguns elementos**, um pouco — o bastante pra que, se outro modelar a mesma oferta nesse idioma,
@@ -179,6 +178,16 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
    todo botão aguentando texto +45% (tradução automática do navegador — a compradora pode traduzir a página),
    nenhuma imagem coberta ou cortada por outro elemento ou caixa (precisa sobrar espaço embaixo), e favicon presente.
    Depois, olhar print do hero (celular e PC) e do bloco de planos.
+9c. **QA de performance antes de liberar tráfego (obrigatório, qualquer página: nossa, clonada ou otimizada de modelo):**
+   `node scripts/qa-performance.js <url> --meta-id=<id do pixel>` (celular 390×844, CPU 4×, 4G lento e 3G rápido).
+   Reprova (exit 1) se: FCP > 2 s · LCP > 2,5 s · CLS > 0,1 · > 1,5 MB até o load · Google Fonts em uso · fonte fora do
+   domínio ou com content-type ≠ `font/woff2` · mais de 3 `<img>` sem lazy · pixel Meta ausente/placeholder/id errado ·
+   sem `PageView` · sem loader do Trackeador. Avisa: imagem > 250 KB, sem cache longo, sem width/height, hero sem preload.
+   **Cole o RESULTADO no `STATUS.md`.** Reprovou → corrigir e rodar de novo; nunca "depois a gente vê".
+   Aprendido na Calendrier (06/11/2026): fonte do Google bloqueia render no navegador interno do Instagram; webp sem
+   recomprimir pesa +30%; cache de 1 ano no Cloudflare prende erro de content-type (corrigir = nome novo do arquivo).
+   Página clonada/otimizada de modelo de terceiro também passa por aqui antes de subir (costuma vir com fonte externa,
+   imagem pesada e pixel do dono antigo).
 8. Deploy: repo em `github.com/leadgodev/`, Coolify auto-deploy (fatos em `_memoria/empresa.md`).
 9. Trocou a página de uma oferta que já roda anúncio → `adstrackeador pagina comparar <atual> <nova>` antes.
 

@@ -6,7 +6,7 @@
 #   ./install.sh --no-deps    pula a instalação de dependências do sistema
 #   ./install.sh --link-only  só religa skills/scripts (usado pelo update.sh)
 #
-# Funciona em Linux (apt, pacman, dnf, zypper) e macOS (brew).
+# Funciona em Linux (apt, pacman, dnf, zypper) e macOS (brew). Windows: install.ps1.
 # Skill ou script com o mesmo nome que já existe vira <nome>.bak-<data> antes de ser trocado.
 set -euo pipefail
 
@@ -79,7 +79,7 @@ install_deps() {
   if have npm; then
     local NPM_SUDO=""
     [ -w "$(npm prefix -g 2>/dev/null)/lib" ] 2>/dev/null || { [ "$(uname)" = Darwin ] || NPM_SUDO="$SUDO"; }
-    run $NPM_SUDO npm i -g -s agent-browser hyperframes @remotion/cli || echo "  ! npm -g falhou"
+    run $NPM_SUDO npm i -g -s agent-browser hyperframes @remotion/cli playwright-core || echo "  ! npm -g falhou"
     have agent-browser && run agent-browser install >/dev/null 2>&1 || true
   else
     echo "  ! npm ausente — instale Node.js 20+ (https://nodejs.org) e rode de novo"

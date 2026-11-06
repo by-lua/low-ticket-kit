@@ -1,14 +1,16 @@
 # Modelo Padrão LeadGo — v1 (04/11/2026)
 
-**É a página padrão da casa:** toda página nova parte daqui (a dona pode pedir "Modelo Padrão" ou "estilo Fernando").
-Crédito: nasceu do PaginaPro V1 de Fernando Oliveira (original convertido em `MODELOS/MODELOS-DE-PAGINA/fernando/index.html`,
-só pra consulta) com todas as mudanças da casa. Primeira oferta feita nele: Calendrier Magique FR (04/11/2026).
+**É a página padrão da casa, só nossa:** toda página nova parte daqui (a dona pede "Modelo Padrão"). Primeira oferta feita nele:
+Calendrier Magique FR (04/11/2026). Não depende de template de terceiros.
 
 ## Como usar
 1. Copiar `index.html` + `img/` pra `OFERTAS/<slug>/site/`.
 2. Trocar: textos (idioma da oferta), preços, `:root` (paleta/fontes do `DESIGN-SYSTEM.md`), imagens, `CONFIG.checkoutUrl`.
-   Ou editar `build_page.py` (gera o HTML a partir do CSS do template + overrides + conteúdo) e rodar.
+   Editar o `index.html` copiado (não há gerador; a página é editada direto).
 3. QA obrigatório: `../../scripts/qa-layout.js` em 360×740, 375×667, 390×844, 1366×768, 1920×1080 → tudo `ok`.
+
+> **Base de página nova = copiar o `index.html` deste modelo** (+ `img/`). Não há gerador: a página é editada direto.
+> O gerador antigo está arquivado em `_arquivo/modelo-padrao-gerador-antigo-2026-11-06/`; não usar.
 
 ## Performance (regra 06/11/2026 — a página sai já otimizada)
 A. **Fontes hospedadas, nunca Google Fonts.** O `<link>` do Google bloqueia a renderização (no navegador interno do
@@ -16,11 +18,13 @@ A. **Fontes hospedadas, nunca Google Fonts.** O `<link>` do Google bloqueia a re
    variável 400-800 + Libre Baskerville) com `@font-face` + `font-display:swap` e `preload` das 2 principais. Fonte
    diferente da oferta → baixar o woff2 latin e trocar no `<style>`; nunca voltar ao `<link>` do Google.
    Fontes ficam em `img/fonts/` (o servidor já serve `img/` com cache de 1 ano; fora de `img/` o Dockerfile/allowlist barra).
+B0. **Gate:** antes de subir, `../../scripts/qa-performance.js <url> --meta-id=<id>` tem que dar APROVADO (SKILL.md 9c).
 B. **Imagens:** só hero com `fetchpriority=high` + `preload`; resto `loading="lazy"` com width/height. Antes do deploy
    rodar `../../scripts/otimizar-imagens.py <site/img>` (webp q75, só grava se ganhar ≥10%; Calendrier: 4,5→3,2 MB).
 C. Cache: `img/` imutável de 1 ano → imagem trocada = **nome novo** (senão o Cloudflare serve a velha).
 D. **Paleta = a da oferta modelada** (não o vermelho da casa; vermelho só na barra de urgência). A pergunta
-   "manter ou mudar" com sugestões vem antes de montar (`SKILL.md` § 2a).
+   "manter ou mudar" com sugestões vem antes de montar (`SKILL.md` § 2a); as sugestões de paleta têm que combinar
+   com o tema da oferta (nunca cor aleatória ou da casa).
 
 ## Ordem das seções
 barra → hero → dor (6 chips + ponte) → prévias (carrossel) → mecanismo (4 passos + frase + botão) → uso na vida real
@@ -30,7 +34,7 @@ Antes × depois: só quando material técnico vira visual.
 
 ## Mudanças da casa (não desfazer)
 1. **Barra de urgência vermelha e fixa** (`position:sticky;top:0`), data do dia por script.
-2. **Hero centralizado** como o do Fernando: pill → headline → mockup no meio → subheadline → **bullets com ✓ em círculo**
+2. **Hero centralizado:** pill → headline → mockup no meio → subheadline → **bullets com ✓ em círculo**
    (organizado, nunca cards espalhados nem parágrafos empilhados) → **pílula com o preço do plano mais barato**
    (« seulement 5,90 € ») **logo acima do botão** → botão → **linha de confiança** (✓ acesso imediato · ✓ garantia N dias ·
    ✓ pagamento seguro).
@@ -55,4 +59,4 @@ Antes × depois: só quando material técnico vira visual.
 16. **Popup de saída** (`#exitpopup`, padrão Mapa do Tarot): básico com desconto; 1x por sessão; PC = mouse sai pelo topo; celular = botão voltar (só depois de interação) ou 45s parada após ver os planos; nunca nos primeiros 8s, nem depois de clicar num checkout, nem com o de upgrade aberto. O QA acusa se faltar algum dos dois.
 17. **Proporção do hero:** mockup GRANDE (max-height 44vh no celular, 46vh no PC, 35/33vh em tela baixa), texto pequeno (h1 ~22-36px, sub 13,5px, bullets 13px) — o mockup é o protagonista.
 18. **Barra de urgência fina:** 30px, 1 linha em qualquer tela (no celular o texto encurta, ex.: some o "+ 7 bonus").
-19. **REGRA UNIVERSAL DA SEÇÃO « VEJA NO DIA A DIA / DANS LA VRAIE VIE »: o material precisa parecer REAL em uso por pessoas comuns, em situações normais da rotina. Impressos são folhas A4 de tamanho plausível, com espessura, proporção, perspectiva e manuseio naturais; celulares/tablets são aparelhos normais, com tela, escala e pegada reais. Usar as páginas verdadeiras da oferta; nunca pôster gigante no lugar de A4, tela inventada, mãos/anatomia impossíveis, pessoa com aparência artificial ou mockup com aspecto de montagem.** Cada card tem uma cena própria e diferente — pessoa, página, ambiente, ação e enquadramento. **No Modelo Padrão, usar 9 cenas distintas; nunca preencher os 9 cards repetindo 4 imagens ou duplicar a lista para simular variedade.** Conferir todos os cards, não apenas os primeiros visíveis, comparando o tamanho da folha/aparelho com mãos, rosto e objetos reais. Adaptar a direção das artes do Fernando ao produto e à identidade de cada oferta. O arquivo original do Fernando tem 4 imagens únicas e cópias para loop: essas cópias não contam como cenas novas. Fotos em **4:5 (900×1125)**, com `height:auto` no `img`. **Referências do Calendrier Magique FR: `img/usage/calendrier-magique-fr/` (+ `contact-sheet.jpg`); são referência de abordagem, não aprovação automática de realismo/escala nem fotos para reutilizar em produtos diferentes.**
+19. **REGRA UNIVERSAL DA SEÇÃO « VEJA NO DIA A DIA / DANS LA VRAIE VIE »: o material precisa parecer REAL em uso por pessoas comuns, em situações normais da rotina. Impressos são folhas A4 de tamanho plausível, com espessura, proporção, perspectiva e manuseio naturais; celulares/tablets são aparelhos normais, com tela, escala e pegada reais. Usar as páginas verdadeiras da oferta; nunca pôster gigante no lugar de A4, tela inventada, mãos/anatomia impossíveis, pessoa com aparência artificial ou mockup com aspecto de montagem.** Cada card tem uma cena própria e diferente — pessoa, página, ambiente, ação e enquadramento. **No Modelo Padrão, usar 9 cenas distintas; nunca preencher os 9 cards repetindo 4 imagens ou duplicar a lista para simular variedade.** Conferir todos os cards, não apenas os primeiros visíveis, comparando o tamanho da folha/aparelho com mãos, rosto e objetos reais. Adaptar a direção das artes ao produto e à identidade de cada oferta. Cópias de imagem para loop não contam como cenas novas. Fotos em **4:5 (900×1125)**, com `height:auto` no `img`. **Referências do Calendrier Magique FR: `img/usage/calendrier-magique-fr/` (+ `contact-sheet.jpg`); são referência de abordagem, não aprovação automática de realismo/escala nem fotos para reutilizar em produtos diferentes.**

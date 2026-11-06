@@ -16,6 +16,8 @@ do_update() {
   date +%s > "$STAMP_FILE"
   if [ "$before" != "$after" ]; then
     bash "$KIT_HOME/install.sh" --link-only
+    # dependência nova que o kit passou a exigir (ex.: playwright-core do qa-performance.js): instala se faltar, sem derrubar o update
+    if command -v npm >/dev/null 2>&1 && ! npm ls -g --depth=0 playwright-core >/dev/null 2>&1; then npm i -g -s playwright-core >/dev/null 2>&1 || true; fi
     echo "Low Ticket Kit atualizado: $(cat "$KIT_HOME/VERSION" 2>/dev/null)"
     git -C "$KIT_HOME" log --oneline "$before..$after" 2>/dev/null | head -10
   else

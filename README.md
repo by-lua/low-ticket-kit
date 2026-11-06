@@ -9,7 +9,7 @@ sozinho**.
 
 ## Instalar
 
-Linux ou macOS, com o [Claude Code](https://claude.com/claude-code) instalado:
+**Linux ou macOS**, com o [Claude Code](https://claude.com/claude-code) instalado:
 
 ```bash
 git clone https://github.com/by-lua/low-ticket-kit.git
@@ -17,6 +17,18 @@ cd low-ticket-kit
 ./install.sh --dry-run   # mostra o que vai fazer
 ./install.sh
 ```
+
+**Windows** (PowerShell, com o Claude Code instalado):
+
+```powershell
+git clone https://github.com/by-lua/low-ticket-kit.git
+cd low-ticket-kit
+powershell -ExecutionPolicy Bypass -File install.ps1
+```
+
+No Windows o instalador usa `winget` para as dependências, liga as skills como atalhos de pasta (sem pedir
+administrador) e cria o mesmo auto-update. O Claude Code no Windows roda os scripts `.sh` pelo Git Bash, que vem
+junto com o Git for Windows.
 
 O instalador:
 
@@ -35,9 +47,10 @@ Já tem as dependências? `./install.sh --no-deps`.
 
 O repo fica em `~/.local/share/low-ticket-kit` e as skills apontam para ele. Toda vez que o Claude Code
 abre, um hook (`SessionStart`) puxa a versão nova do GitHub em segundo plano (no máximo 1x a cada 6h).
-Não precisa fazer nada.
+Não precisa fazer nada. Vale em Linux, macOS e Windows. Ajuste novo de qualquer skill (regra, script, modelo de
+página, QA) chega sozinho, junto com dependência nova que ele exija.
 
-- Atualizar agora: `bash ~/.local/share/low-ticket-kit/update.sh`
+- Atualizar agora: `bash ~/.local/share/low-ticket-kit/update.sh` (Windows: `powershell -ExecutionPolicy Bypass -File %USERPROFILE%\.local\share\low-ticket-kit\update.ps1`)
 - Versão instalada: `cat ~/.local/share/low-ticket-kit/VERSION`
 - **Não edite as skills dentro dessa pasta** — a atualização sobrescreve. Quer personalizar? Copie a skill
   para `~/.claude/skills/<outro-nome>` e edite a cópia.
