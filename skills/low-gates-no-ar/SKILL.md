@@ -17,6 +17,17 @@ Aprendido com a dona em 06/11/2026, na primeira operação do Calendrier Magique
 - Registrar no `STATUS.md`: ID do conjunto, domínio autorizado, data e evidência da configuração persistida. Sem conferir esse gate, não declarar a oferta pronta para tráfego.
 
 ## Gate 1 — Eventos (página)
+**`trackeador verificar-site` sozinho NÃO prova o lado Meta** (06/11/2026). Ele bloqueia o `fbevents.js`, não vê nenhum
+evento do fbq e mesmo assim responde "Sem falhas" (correção em andamento: PR fix/verificar-site-ve-fbq). Até o PR entrar,
+a prova é um navegador real que deixa o `fbevents.js` CARREGAR e só captura e aborta `facebook.com/tr`,
+`/api/track`, `/api/collect` e a navegação ao gateway. Script pronto (nada chega ao Meta nem ao servidor), na raiz LOW-TICKET:
+`node scripts/audit-eventos-pagina.cjs <url> '<botão direto ao checkout>' '<botão que só abre popup>' '<botão dentro do popup>'`
+(iPhone; cenários com UTM, só com `fbclid` e popup). Esperado: PageView e ViewContent na carga; 0 IC no botão do popup;
+1 IC com `value`/`currency` e `eid` em cada botão que navega; e a URL do gateway com `utm_*` + id da visita.
+Colar no `STATUS.md` a linha de cada evento.
+**Página não dispara IC/ViewContent/AddToCart próprio** quando o Trackeador já cuida do botão. Duplicata vista no Tarot FR
+(06/11/2026): 2 ViewContent por carga.
+
 Antes de abrir a página para QA, interceptar/bloquear os envios ao Meta (`facebook.com/tr`, Graph/CAPI), `/api/track` e `/api/collect`, inclusive beacons/noscript. Capturar o request bloqueado comprova geração, **não** aceite/atribuição pelo Meta. Para provar ingestão, usar somente o dataset de teste dedicado conforme a skill `trackeador`; `test_event_code` não isola um evento do dataset de produção. Nunca testar o pixel de produção em `localhost`.
 
 Capturar requests `facebook.com/tr` no ar (headed + rede, skill `trackeador`):
@@ -58,6 +69,12 @@ Capturar requests `facebook.com/tr` no ar (headed + rede, skill `trackeador`):
 - Abrir o checkout público: cobra exatamente o que o botão (e o popup/downsell) promete.
 - Banner e imagem leves (≤ ~400 KB / ≤ ~250 KB).
 - `/panel/webhooks` reaberto com **todos** os produtos da oferta nos 2 webhooks.
+- **Aviso de venda aceito nos 2 destinos** (incidente Calendrier, 06/11/2026: Trackeador e área de membros devolveram 401).
+  Prova: um evento real (abandono de carrinho serve) com 2xx no servidor de entrega e "último aviso OK" na conexão do
+  Trackeador (`trackeador doctor --host <host>`), sem `secret_invalido`. Colar no `STATUS.md`.
+- **Link de checkout no ar leva a sessão:** clique de verdade num botão e confira na URL do gateway as `utm_*` e o id
+  da visita (Hotmart: `sck` ≤ 30 caracteres, sem `_`). Teste também a visita **só com `fbclid`** (volta pelo app do Facebook):
+  sem UTM, a venda só casa se o id da visita chegar ao webhook.
 - Acesso liberado no `/painel` pelo modo teste oficial do gateway/Trackeador — nunca venda de teste no webhook
   de produção do Trackeador.
 

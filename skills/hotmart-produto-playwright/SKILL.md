@@ -112,6 +112,16 @@ Array.from(document.querySelectorAll('input')).filter(i=>i.type==='text' && i.va
 
 Salve em `~/.claude/.credentials.env` como `HOTMART_HOTTOK` — nunca em texto solto na conversa nem em screenshot.
 
+## Rastreamento com o AdsTrackeador — erros que já custaram venda (06/11/2026)
+
+Caso real: Calendrier Magique FR. A primeira venda chegou órfã (sem campanha) e os avisos da Hotmart foram recusados com 401. No mesmo dia o Tarot FR estava com o mesmo erro de token. Não repita:
+
+1. **O hottok é UM por conta Hotmart e vai no HEADER `X-Hotmart-Hottok`, não no corpo.** Cole exatamente esse valor como segredo de TODA conexão do Trackeador daquela conta e de todo servidor de entrega (`/painel/api/webhooks/hotmart`). Um servidor que procura o token no corpo devolve 401 e o comprador fica sem acesso. Trocar o segredo desliga a CAPI da conexão: religue de propósito.
+2. **Prove que o aviso chega antes do tráfego**, sem venda de teste em conexão de produção. Qualquer evento real conta como prova, inclusive "Abandono de carrinho". Confira `trackeador doctor` / Config → Rastreamento (último aviso OK, nunca `secret_invalido:header=x-hotmart-hottok`) e o log do servidor de entrega (2xx). Se der erro, reenvie pelo histórico de webhooks da Hotmart depois de corrigir o token.
+3. **A sessão viaja no link, não no `_tkid`.** A Hotmart descarta `_tkid`. Ela só devolve no webhook `data.purchase.origin.sck`, `src` e `xcod`. O link do site tem que levar o id da visita em `sck` (e `xcod`), além das `utm_*`. **Limite da Hotmart: até 30 caracteres, sem underscore**, e o id cru (UUID) tem 36: use o formato compacto que o Trackeador gera; nunca corte o id à mão. Fonte: suportehotmart.zendesk.com/hc/pt-br/articles/216441797. O comportamento padrão está sendo levado ao pixel/preset (PR fix/hotmart-sck-no-produto). Até ele entrar, confira o link no navegador (botão → `pay.hotmart.com/...&sck=...`).
+4. **Nunca mapeie `sck` como `utm_campaign`** na conexão. Venda feita pela página de vendas da própria Hotmart chega com `sck=HOTMART_SITE`. Isso suja a campanha e desliga a recuperação pelo clique (caso Número Mestre LATAM, 31/10).
+5. **Venda pela página da própria Hotmart não passa pelo nosso site**: sai sem rastreio. Anúncio e link de divulgação apontam para a NOSSA página, nunca para `go.hotmart.com`/página Hotmart.
+
 ## Checklist de produto pronto pra vender
 
 - [ ] Informações básicas completas (nome, descrição 200+, idioma, país, categoria, imagem)
@@ -122,6 +132,8 @@ Salve em `~/.claude/.credentials.env` como `HOTMART_HOTTOK` — nunca em texto s
 - [ ] Link de checkout (`pay.hotmart.com/...`) extraído e repassado pro time de código/tráfego
 - [ ] Se a página customizada (Checkout Builder) estiver publicada, os links do site usam `?checkoutMode=10&off=<código>` — sem `checkoutMode=10` o Hotmart entrega o checkout padrão, sem banner/bumps
 - [ ] Webhook cadastrado + HOTTOK salvo em credenciais
+- [ ] Mesmo hottok colado na conexão do Trackeador e no servidor de entrega (header `X-Hotmart-Hottok`); um evento real chegou com OK nos dois (ver "Rastreamento com o AdsTrackeador")
+- [ ] Link do botão sai com `sck` (id da visita, ≤ 30 caracteres, sem `_`) + `utm_*`, conferido no navegador
 - [ ] Produto ainda fica "Rascunho" até enviar pra análise (`Finalizar cadastro` no painel) — avisar o usuário antes de enviar, é passo irreversível de revisão
 
 ## Rotas reais do painel de produto (mapeadas em 2026-09-15)

@@ -11,7 +11,12 @@ description: Etapa E8 do sistema LOW-TICKET — cadastra a oferta e as peças do
 ## Antes de tudo
 - **Fatos:** `_memoria/contas-e-codigos.md` (gateway, conta, código, perfil de browser). Nunca de cabeça.
 - **Gateway pelo mercado:** BR → `wiven-checkout` (conta **LeadGo**; a Wiven EmpresaB está aposentada) ·
-  EUR/USD → `mundpay` · global → `cooud-checkout` · LATAM → `zenith-gateway` · 250 Atividades → `ggcheckout-produto`.
+  EUR/USD → `mundpay` · global → `cooud-checkout` · LATAM → `zenith-gateway` · 250 Atividades → `ggcheckout-produto` ·
+  Hotmart (quando a dona escolher) → `hotmart-produto-playwright`, seção "Rastreamento com o AdsTrackeador" obrigatória.
+- **Trackeador na organização certa (incidente 04-06/11/2026, Calendrier FR):** a oferta foi criada na Leadgo, quando era da WINX, e o funil ficou sem medir.
+  Antes de `trackeador init/checkout create/dashboard create`, confirme com a dona **de qual organização é a oferta**. Passe sempre `--org <org>` e `--dashboard <oferta>`.
+  Nunca crie dashboard só para destravar um comando. Relate tudo o que criou (dashboard, conexão, pixel, host).
+- **Uma oferta = um dashboard + uma conexão + um pixel próprios.** Não reaproveite o pixel de outra oferta ou de outro mercado.
 - **Um perfil de browser por pane**, sempre headed.
 
 ## Passos
@@ -27,6 +32,12 @@ description: Etapa E8 do sistema LOW-TICKET — cadastra a oferta e as peças do
    acesso com HTTP 200. Produto criado depois do webhook não entra sozinho.
    Nunca disparar venda de teste no webhook de produção do Trackeador (manda Purchase real pro Meta): usar o
    modo teste oficial ("Simular venda").
+   **Segredo do webhook igual nos 2 destinos e lido de onde o gateway manda.** Na Hotmart é o hottok, no HEADER
+   `X-Hotmart-Hottok`. Servidor da área de membros que lê o token do corpo devolve 401 (Calendrier, 06/11/2026).
+   Prova obrigatória: um evento real com resposta 2xx nos dois destinos. No Trackeador: último aviso OK, sem
+   `secret_invalido`. Sem essa prova, o checkout NÃO está pronto.
+   **Link de checkout leva a sessão:** o botão sai com `utm_*` e o id da visita no campo que o gateway devolve
+   (Hotmart: `sck`, até 30 caracteres, sem `_`; Wiven: `utm_medium`; Mundpay: `_tkid`). Confira no navegador.
 5. Suporte no checkout: e-mail e WhatsApp de `_memoria/empresa.md`; reembolso = menor prazo do gateway.
 6. Links de checkout nos botões da página e do popup (preço igual ao botão).
 7. **Registrar no mesmo dia** em `_memoria/contas-e-codigos.md`: gateway · conta · código de cada item · perfil.

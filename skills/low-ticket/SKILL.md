@@ -112,7 +112,11 @@ Regras:
 7. Imagem que mostra o produto = conferida contra o `OFICIAL` (cor, arte, texto) antes de mostrar à dona.
 
 ## 3. Regras que valem em toda etapa (só estas; o resto mora na filha)
-- **Fatos antes de cadastrar:** gateway, conta, código, webhook, domínio — conferir no índice (seção Fatos). Nunca de cabeça.
+- **Fatos antes de cadastrar:** gateway, conta, código, webhook, domínio e **organização do Trackeador** — conferir no
+  índice (seção Fatos). Nunca de cabeça. Todo comando `trackeador` que cria algo leva `--org` explícito.
+  Incidente Calendrier FR (04-06/11/2026): a oferta nasceu na Leadgo, não na WINX, e a venda chegou órfã.
+- **Tráfego só depois do `low-gates-no-ar` inteiro**, inclusive o aviso de venda 2xx nos 2 destinos e o link
+  do checkout levando a sessão. "Configurei" não é prova.
 - **Entregável nunca é HTML/código:** sempre imagem A4 do GPT com a referência visual. Item de fazer/imprimir
   (exercício, pôster, folha, checklist) = **página própria** depois da explicação.
 - **Ofertas já ativas:** não migrar pro fluxo novo sem a dona mandar.
