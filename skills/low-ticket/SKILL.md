@@ -80,13 +80,13 @@ Tudo que a dona disser vai **literal** em `pesquisa/da-dona/<data>-<assunto>.md`
 **PASSO 7 em diante — Produção** (um por vez, mesma regra de ✅)
 | Passo | O quê | ✅ | Skill |
 |---|---|---|---|
-| 7 (E3) | Página com o visual do Passo 5 e o plano do Passo 4 | `site/` no ar | `low-pagina` |
+| 7 (E3) | Página com o visual do Passo 5 e o plano do Passo 4 | `site/` no ar **+ `qa-layout.js` ok + `qa-performance.js` APROVADO colado no `STATUS.md`** (página sem prova de velocidade não é ✅) | `low-pagina` (9b, 9c) |
 | 8 (E4) | Entregável: texto inteiro → primeiras páginas → 🛑 aprova → MVP | `produto/` | `low-entregavel` |
 | 9 (E5) | Imagens da página: lote com a imagem-guia anexada | imagens plugadas | `imagens-pagina-low` |
 | 10 (E6) | Área de membros | `/painel` + PDF | `area-membros-netflix` |
 | 11 (E7) | Peças do funil | peças no `/painel` | `low-funil` · `low-entregavel` |
 | 12 (E8) | Checkout | oferta no gateway | `low-checkout` |
-| 13 (E9) | Gates no ar | prova no `STATUS.md` | `low-gates-no-ar` |
+| 13 (E9) | Gates no ar (eventos, **performance**, download, checkout) | prova no `STATUS.md` | `low-gates-no-ar` |
 | 14 | Criativo — começa SEMPRE pelo **C0** da `criativo` (mostra banco do Passo 6 + criativos do original + refs de outros → 🛑 usar o quê / buscar novos com termos por idioma → 🛑 por anúncio: modelar o vídeo ou entender o padrão) | `criativos/FONTES-<data>.md` → leva aprovada | `criativo` |
 | 15 | Tráfego | — | `metaads-kevones` |
 
