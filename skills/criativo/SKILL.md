@@ -116,9 +116,10 @@ Referências herdadas das skills antigas (detalhe que as filhas citam): `referen
   Se o produto do original é outro (o original vendia X, o nosso é Y), troca cada termo do produto pelo equivalente do NOSSO
   produto real e adapta só o que isso exigir (ex.: Grimório → Agenda Magique, roda do Sul → Roue du Nord); o resto do texto fica.
   Nunca prometer no texto algo que o nosso produto não tem.
-  **`anuncio.md` tem só TEXTO PRINCIPAL e TÍTULO (regra da dona, 05/11/2026): sem descrição, sem CTA, sem link.**
-  **O título leva a prova social do original** (estrelas ★★★★★, nota "4,9 de 5", "X pessoas satisfeitas", "X exemplares/cópias
-  vendidos") + a promessa do título. Se o original tem, o nosso tem. Número e nota só se forem REAIS ou liberados pela dona
+  **`anuncio.md` tem TEXTO PRINCIPAL, TÍTULO e DESCRIÇÃO (regra da dona, 05/11/2026), sem CTA e sem link.**
+  **TÍTULO = prova social** (estrelas SEMPRE em emoji ⭐, nunca o símbolo ★; formato "⭐⭐⭐⭐⭐ 4,9 de 5" ou "⭐ 4,9/5"; nota "4,9 de 5", "X pessoas satisfeitas", "X exemplares/cópias vendidos").
+  **DESCRIÇÃO = o ÂNGULO** (a promessa/gancho que no original estava no título). Se o original tem, o nosso tem.
+  Número e nota só se forem REAIS ou liberados pela dona
   (ex.: "+20 000 exemplaires" liberado 05/11/2026); nunca copiar o número do concorrente nem inventar (política Meta,
   `low-ticket/references/POLITICA-META-CHECKLIST.md`). Sem número liberado: pedir à dona antes de escrever o título.
   Nunca escrever copy do zero quando a peça tem original. Cada `anuncio.md` cita o id do anúncio original de onde o texto veio.
