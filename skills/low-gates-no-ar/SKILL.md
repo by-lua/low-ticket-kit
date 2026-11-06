@@ -7,7 +7,18 @@ description: Etapa E9 do sistema LOW-TICKET — prova no ar que a oferta está p
 
 Nada vai pra tráfego sem os gates (eventos, página leve, download, checkout) com **prova colada** no `STATUS.md` da oferta. Nunca "deve estar funcionando".
 
+## Gate 0 — Domínio autorizado no pixel Meta (antes de liberar tráfego)
+Aprendido com a dona em 06/11/2026, na primeira operação do Calendrier Magique FR. Vale para toda oferta nova e depois de trocar domínio/pixel.
+
+- Abrir o **conjunto de dados correto**, conferir seu ID contra o pixel instalado e acessar **Configurações → Permissões de tráfego — Sites**. Conferir também o **Diagnóstico**, especialmente “Confirme o domínio que pertence a você”.
+- Confirmar o domínio público exato da oferta na lista de permissão. Reabrir/recarregar e comprovar que ficou salvo. Havendo outros domínios legítimos do mesmo funil, conferir cada um antes de restringir a lista: tudo que ficar fora será bloqueado. Nunca autorizar o domínio compartilhado inteiro (`pages.dev`) para resolver um aviso de um único projeto.
+- `localhost`, `127.0.0.1` e URLs temporárias de desenvolvimento **não são o domínio público da oferta**. Um evento listado com essa origem é evidência de um envio anterior, não prova de que o site esteja hospedado localmente. Não autorizar essas origens no pixel de produção; investigar o registro sem inventar a causa.
+- Esta confirmação de **permissão de tráfego do conjunto de dados** é diferente da verificação de propriedade por DNS no portfólio empresarial. Não afirmar que uma substitui a outra, nem presumir que o aviso sozinho prove bloqueio de todos os eventos anteriores.
+- Registrar no `STATUS.md`: ID do conjunto, domínio autorizado, data e evidência da configuração persistida. Sem conferir esse gate, não declarar a oferta pronta para tráfego.
+
 ## Gate 1 — Eventos (página)
+Antes de abrir a página para QA, interceptar/bloquear os envios ao Meta (`facebook.com/tr`, Graph/CAPI), `/api/track` e `/api/collect`, inclusive beacons/noscript. Capturar o request bloqueado comprova geração, **não** aceite/atribuição pelo Meta. Para provar ingestão, usar somente o dataset de teste dedicado conforme a skill `trackeador`; `test_event_code` não isola um evento do dataset de produção. Nunca testar o pixel de produção em `localhost`.
+
 Capturar requests `facebook.com/tr` no ar (headed + rede, skill `trackeador`):
 - PageView ao carregar · cada etapa do quiz (se tiver) · outros eventos da página;
 - **InitiateCheckout só quando a pessoa é MANDADA pro checkout** (dona, 05/11/2026), com `value` e `currency` certos do
@@ -17,7 +28,9 @@ Capturar requests `facebook.com/tr` no ar (headed + rede, skill `trackeador`):
   · botão do plano caro que vai direto → **1 IC**;
   · popup de saída: APARECER = 0 IC; o clique no botão dele que navega = 1 IC;
   · back/scroll/modal = 0 IC.
-- Sem `facebook.com/tr`: conferir se o fbq inline vem antes do Trackeador no `<head>`. Botão que só abre popup
+- Conferir a identidade nos dois lados: ID Meta correto no request e pixel correto no payload do Trackeador. Instalar o loader com `?pixel=<UUID cadastrado no Trackeador>` para não depender de encontrar o `fbq('init')` em uma fila que o SDK já pode ter consumido. Testar também o SDK Meta carregando antes do loader.
+- **Correspondência do Purchase/CAPI:** conferir preservação de `fbclid`, `_fbc`, `_fbp` e o vínculo da sessão até o webhook do gateway (na Hotmart, SCK com mapeamento compatível). Conferir que o envio recupera IP e agente **do comprador**, nunca do servidor/gateway, e os demais dados disponíveis. Em venda real já existente, conferir os nomes em `matching_fields` no log e a qualidade no Meta sem reenviar só para testar. Sem venda real, validar o encadeamento isoladamente e usar somente o dataset de teste para ingestão. Aceite HTTP 200 não comprova atribuição; ausência de `fbc` em acesso sem clique Meta pode ser legítima. Não inventar identificadores, telefone ou dados pessoais para preencher recomendações.
+- Sem `facebook.com/tr`: conferir carregamento do SDK, `fbq`, bloqueios de rede e a instalação; apenas trocar a ordem dos scripts não prova a correção. Botão que só abre popup
   não leva `data-tk-*`, `data-plan` nem href de checkout (`href="#upgradepopup" role="button"`; `qa-layout.js` confere).
   Página não manda IC próprio.
 
@@ -41,6 +54,7 @@ Capturar requests `facebook.com/tr` no ar (headed + rede, skill `trackeador`):
   ali derruba todos os PDFs com 500).
 
 ## Gate 3 — Checkout
+- **Formato dos identificadores de origem:** conferir os limites documentados do gateway e o retorno pelo webhook. Hotmart documenta códigos UTM/SRC/SCK com até **30 caracteres** e sem underscore. UUID de 36 caracteres não pode ser considerado validado só porque apareceu no link. Usar representação compatível com resolução para a sessão original no Track; nunca apenas cortar o ID. Fonte: [Hotmart — códigos de origem](https://suportehotmart.zendesk.com/hc/pt-br/articles/216441797-Como-identificar-a-origem-das-minhas-vendas-na-Hotmart).
 - Abrir o checkout público: cobra exatamente o que o botão (e o popup/downsell) promete.
 - Banner e imagem leves (≤ ~400 KB / ≤ ~250 KB).
 - `/panel/webhooks` reaberto com **todos** os produtos da oferta nos 2 webhooks.

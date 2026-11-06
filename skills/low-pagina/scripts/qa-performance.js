@@ -35,8 +35,15 @@ const OK = m => console.log('  ok    ' + m);
   let html = '', reqs = [];
   for (const [nome, dl, ul, lat] of redes) {
     console.log(`\n== ${nome} (celular 390x844, CPU 4x)`);
-    const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true,
+    const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, serviceWorkers: 'block',
       userAgent: 'Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 Chrome/120 Mobile Safari/537.36' });
+    // QA nunca ingere eventos no pixel/Trackeador de produção. O SDK estático
+    // connect.facebook.net continua carregando para validar a instalação.
+    await ctx.route('**/*', route => {
+      const u = new URL(route.request().url());
+      if (/(^|\.)facebook\.com$/.test(u.hostname) || ['/api/track', '/api/collect'].includes(u.pathname)) return route.abort();
+      return route.continue();
+    });
     const p = await ctx.newPage(); const c = await ctx.newCDPSession(p);
     await c.send('Network.enable'); await c.send('Network.setCacheDisabled', { cacheDisabled: true });
     await c.send('Network.emulateNetworkConditions', { offline: false, downloadThroughput: dl, uploadThroughput: ul, latency: lat });
