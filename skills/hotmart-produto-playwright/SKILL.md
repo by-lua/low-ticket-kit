@@ -20,6 +20,13 @@ Automação de browser pra cadastro e configuração de produto na Hotmart (`app
 - No celular, texto longo no temporizador estoura a faixa (o contador é fixo em ~195 px): use no máximo **“Offre réservée”** no texto ativo e algo curto como **“Offre expirée”** no texto zerado.
 - Conferir a ordem e a ausência do título no checkout **público**, em desktop e celular, depois de salvar/publicar. Prévia do builder sozinha não comprova o resultado. Alterações no builder publicado propagam **em até 5 minutos** — não concluir que falhou antes disso.
 
+## Imposto — regra da dona (06/11/2026)
+
+- **Por padrão o comprador NÃO vê imposto na hora da venda: a dona absorve.** Em todo produto/oferta novo, no cadastro de precificação/checkout, deixar a cobrança/exibição de imposto ao comprador **DESLIGADA** (nada de imposto somado ao preço no checkout). O preço que o comprador vê é o preço final.
+- **Onde fica:** `Precificação e ofertas → ⋮ → Editar` do **preço base** → checkbox **"Incluir impostos no preço"** (LIGADO = imposto embutido, comprador paga só o valor do produto). Ofertas secundárias (bumps/upgrade/saída do mesmo produto) não têm o checkbox: herdam do preço base. "Coleta de impostos" é regra fiscal (quem coleta), não mexer. Checkbox pode demorar ~14 s pra renderizar na edição.
+- Produto já criado com imposto ativo ao comprador: abrir Precificação/checkout, desligar e conferir no checkout **público** que o total não mudou. Só ligar se a dona pedir explicitamente.
+- Pedido literal: *“por padrão eu não quero que o cliente veja o imposto na hora da venda, eu absorvo ele”*. Primeiro caso: Calendrier Magique FR.
+
 ## Perfil
 
 Perfil `hotmart` registrado em `~/.agent-profiles/registry.conf`, porta fixa. Se não existir:
