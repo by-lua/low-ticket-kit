@@ -4,6 +4,13 @@
 > §2b, CLAUDE.md, memória) e o agente improvisou: **recortou a faixa do título do Jiu-Jitsu e colou
 > em cima de um mockup do Tarot**. Esta receita é a fonte única; os outros lugares só apontam pra cá.
 
+> **REGRA (07/11/2026, Calendrier Magique FR): ORDER BUMP = CAPA ESPECÍFICA DO PRÓPRIO BUMP, NUNCA A CAPA GENÉRICA DO KIT.**
+> Cada bump é produto próprio na gateway (Hotmart/Wiven…) e precisa de imagem própria mostrando AQUELE produto:
+> título do bump integrado + 1-2 páginas REAIS dele anexadas (mockup A4 grimório), numa geração só. Anexos: referência
+> de composição (1) + capa oficial da oferta só pra estilo (2) + páginas reais do bump (3..). Salvar `produto/CAPA-BUMP-<ITEM>.jpg`
+> (1000×1000, ≤250 KB). Hotmart: `products/manage/<id>/info`, `upload 'input[type=file]'` + botão Salvar (scrollIntoView, clique por mouse) e conferir recarregando.
+> Provar com print do checkout mostrando cada bump com sua capa.
+
 ## O erro que não se repete (prova real)
 
 `LOW-TICKET/MODELOS/REFERENCIAS-VISUAIS/ERRADO-upgrade-titulo-colado-tarot.jpg` — capa do upgrade do

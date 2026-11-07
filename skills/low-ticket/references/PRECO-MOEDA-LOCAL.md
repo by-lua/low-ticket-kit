@@ -15,24 +15,32 @@ Vale para **qualquer país** do visitante (regra da dona 06/10), não só LATAM:
   em ARS, Portugal em €, etc.) — o preço já está na moeda da pessoa.
 - Oferta que era de um país e passa a vender para mais países: liga o script.
 
-## Como fica (regra da dona 07/11/2026)
+## Como fica (regra da dona 07/11/2026 — versão final aprovada no Calendrier Magique FR)
 ```
-[ Solo R$52,28 ]                 ← preço no MESMO elemento e design de antes (pílula, botão, card)
-Valor aproximado en tu moneda    ← detalhe: 10px, peso 400, CINZA (ink-300), quase some
-US$ 9,50                         ← 15px, peso 600 (não fininho), tom apagado (ink-500), sem rótulo
+TOPO (pílula do hero):   ( seulement $ 9,28 CAD )     ← SÓ o valor local, nada embaixo
+PLANOS e POPUPS:         $ 20,30 CAD                  ← preço no mesmo elemento/design de antes
+                         12,90 €  Valeur approximative
+                                  dans votre devise
+                           ↑ valor À ESQUERDA (~13px, peso 600, escuro, menor que o preço)
+                                    ↑ texto À DIREITA (~9,5px, cinza, 2 linhas)
 ```
-- **NÃO mexer no design nem no layout.** Pílula roxa continua pílula, preço dentro de botão continua
-  dentro do botão, card continua card. Só troca o número pela moeda local e ACRESCENTA as 2 linhas
-  embaixo. Erro já cometido (07/11): trocar a pílula por número gigante e tirar preço dos botões — a
-  dona reprovou ("você mudou").
+- **Pílula/selo do topo: só o número local.** As linhas de "aproximado" + moeda base aparecem só
+  junto do preço dos planos e dos popups, coladas nele (margem ~2px), para não ficar estranho.
+- **Moeda base AO LADO do texto aproximado (dona 07/11/2026):** flex na mesma linha, gap ~8px, VALOR à
+  esquerda e TEXTO à direita (dona corrigiu a ordem) — não empilhado embaixo.
+- **Alinhadas com o preço:** preço alinhado à esquerda (card de plano) = linhas à esquerda; preço
+  centralizado (popup) = linhas centralizadas. Desalinhado a dona reprova.
+- **NÃO mexer no design nem no layout.** Pílula continua pílula, preço dentro de botão continua
+  dentro do botão, card continua card. Só troca o número pela moeda local. Erro já cometido (07/11):
+  trocar a pílula por número gigante e tirar preço dos botões — a dona reprovou ("você mudou").
 - **Sem "≈" e sem código BRL/MXN gigante no número.** Quem diz que é aproximado é a linha de baixo.
-  Código da moeda só pequeno e só quando o símbolo é `$` puro (MXN, COP, ARS); `R$`, `€`, `£` dispensam.
-  Nunca "Solo ≈R$52.28 BRL" — a dona achou feio.
-- **Linhas de baixo sem destaque — o destaque é só o número local.** Fonte do corpo, peso regular.
-  "Valor aproximado" é só uma informaçãozinha: pequena e cinza. O US$/€ logo abaixo, um pouco maior,
-  em tom apagado (nunca preto forte nem cor de destaque). Fundo escuro: mesma hierarquia com o texto
-  claro da página em opacidade baixa. Centralizadas com o preço. Referência visual aprovada pela
-  dona: `≈ BRL 43` grande / `Valor aproximado en tu moneda` minúsculo cinza / `7,90 US$` cinza médio.
+  Código da moeda só pequeno e só quando o símbolo é `$` puro (MXN, CAD, ARS); `R$`, `€`, `£`, `CHF` dispensam.
+- **Destaque é só o número local.** "Valeur approximative" é informaçãozinha: pequena e cinza.
+  A moeda base embaixo: escura (cor do texto), menor que o preço, sem rótulo ("valor base" NÃO).
+- **Implementação pronta:** Modelo Padrão (`low-pagina/modelos/modelo-padrao/index.html`, classes
+  `data-eur` / `data-eur-strike` / `data-eur-ref` / `.eur-ref`) + rota do servidor do Calendrier
+  (`OFERTAS/calendrier-magique-fr/site/server/index.mjs`, `getFxRates` + `/painel/api/fx`, e
+  `server/fx-geo.json`). Oferta em US$: trocar base `EUR`→`USD` na rota e no script.
 - **Formato do número no padrão do país:** BR `R$52,28` (pt-BR), MX `$177 MXN`.
 - **Base do cálculo = o gateway da oferta (regra da dona 07/11/2026).** O aproximado tem que bater
   com o que a pessoa vai ver no checkout. Hotmart: usar a conversão da própria Hotmart (ela converte

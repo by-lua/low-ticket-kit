@@ -23,6 +23,7 @@ description: Regras do funil (usadas na E2, quando o FUNIL.md é desenhado junto
   é regerada no GPT** com o título integrado (nunca colar texto em mockup pronto) — `banner-checkout-gpt`
   `references/CAPA-PRODUTO-UPGRADE-COMBO.md`.
 - Ferramenta/microSaaS como peça: `PECAS-DO-FUNIL.md` §3.
+- **Upsell = web app de assinatura (PWA, push+e-mail, trial, 1 clique):** skill `low-upsell-app` (caso Calendrier FR).
 - Entregável de cada peça segue a `low-entregavel` (imagem A4, página separada pra imprimir).
 
 ## Passos

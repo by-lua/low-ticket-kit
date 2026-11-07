@@ -70,4 +70,13 @@ Objetivo: gente com cara de gente daquele país, não de IA.
 
 Formato e roteiro: `ctv-formatos` + `ctv-copy`. Fecho: → `ctv-revisor`.
 
+**Levar take que já existe pra outro mercado/idioma/produto (regra da dona, 07/11/2026) — 3 passos, nada mais:**
+1. Pegar o **frame/imagem da cena do take original** (ex.: `FLOW-TAKES/<take>/frame.png`). Não montar cena do zero.
+2. **GPT image** (`gpt-imagem-playwright`), anexo = esse frame. O prompt diz SÓ o que muda: idioma (traduzir todo
+   texto pra X)? produto (anexar a capa/página real do produto novo)? preço (anexar/escrever o preço novo)? O resto
+   fica igual. Anexo extra só quando muda produto ou preço; mesmo produto em outro idioma = só o frame.
+3. **Flow** (`flow-mcp`): anima essa imagem nova com o mesmo prompt de movimento do take original.
+Mostrar a imagem do passo 2 à dona antes do passo 3. Erro real (07/11, Tarot FR→AR): mandei 5 anexos (páginas AR +
+capa) direto no Flow pra "recriar" a cena — ruído, composer travou. Imagem é no GPT, não no Flow.
+
 **Catálogo de takes de demonstração:** antes de inventar uma composição, consultar `criativo-ads-video-orq/references/takes-mesa-real.md` (catálogo A–O). Take J = TV com página inteira e caneta apontando + zoom orgânico; pode variar mão pela direita/esquerda e usar outra página REAL. Impresso = D/I/O. Não rolar para inventar conteúdo: regra `flow-video-playwright` § Conteúdo de tela fechado.
