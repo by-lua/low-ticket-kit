@@ -23,9 +23,9 @@ DRIVER="$(dirname "$(readlink -f "$0")")/gflow_ref.py"
 STATE="$HOME/.cache/pov-flow"; mkdir -p "$STATE"
 export DISPLAY="${DISPLAY:-:1}" GFLOW_CLI_DEBUG_TRACEBACK=1
 # perfil ocupado por quem não usa o flow.sh (gflow direto): espera liberar em vez de falhar (exit 11)
-# Patchright (opção oficial do gflow): esconde o vazamento Runtime.enable do CDP que o reCAPTCHA usa.
-# Voltar ao padrão: trocar para playwright. Instalado com: uv tool install 'gflow-cli[patchright]'
-export GFLOW_CLI_BROWSER_ENGINE="${GFLOW_CLI_BROWSER_ENGINE:-playwright}"  # patchright DESLIGADO 06/11 22:35: gflow voltou p/ 0.87 sem o extra
+# gflow FIXO na 0.87.0 (06/11/2026): Patchright quebra o composer agent-only da nossa conta (botão 'tune'
+# some, exit 23) e a 0.93 recusa imagem com referência (exit 36). Não ligar Patchright nem atualizar sem testar.
+export GFLOW_CLI_BROWSER_ENGINE=playwright GFLOW_CLI_UPDATE_CHECK=0
 export GFLOW_CLI_LEASE_WAIT_SECONDS="${GFLOW_CLI_LEASE_WAIT_SECONDS:-900}"
 LOGIN_CMD="gflow auth login --browser chrome --profile"
 

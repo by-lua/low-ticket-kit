@@ -9,6 +9,11 @@ description: RESERVA do Google Flow — o caminho oficial é a skill flow-mcp; u
 > comece por ela. Use o `flow.sh` só quando a `flow-mcp` falhar (avise a dona que caiu na reserva) ou dentro de
 > scripts que já chamam o `flow.sh`. As seções de prompt de movimento, cena, tela fechada, cor bt709 e QA abaixo
 > valem para os DOIS caminhos.
+>
+> **gflow FIXO na 0.87.0** (testado 06/11/2026). Não atualizar nem ligar o Patchright sem testar:
+> Patchright esconde o botão de configurações do agente para o gflow (exit 23, nas versões 0.87 e 0.93) e a
+> 0.93 recusa imagem com referência na nossa conta (exit 36, `ui_automation.upload_reference`). Reinstalar:
+> `uv tool install --force 'gflow-cli==0.87.0'`.
 
 > Versão antiga (fluxo agent-browser, seletores, lanes) arquivada em
 > `~/.claude/skill-backups/flow-video-playwright-2026-10-22.md`. **Não use.**
