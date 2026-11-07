@@ -48,6 +48,7 @@ mandar `languageCode: "pt-BR"` gera português nativo, sem sotaque de gringo.
 |---|---|---|
 | BR | Roberta `bmSnYdSLhHXD50TAWW7T` (Daniela soa de Portugal, não usar no BR) | `pt-BR` |
 | PT | Daniela `9L8v6Oy5x46GlKUxRg6H` | `pt-PT` |
+| FR (feminina) | Serena `e3zFWWHHfNk6vOh5kbBX` (aprovada ouvindo, 07/11/2026, Calendrier Magique) | `fr` |
 | ES neutro latino | Brittney `4wRMNoWpnF0F0r5LTRHM` (aprovada ouvindo, 05/10/2026) | `es` — a API RECUSA `es-419` e `es-MX` ("TTS generation failed") |
 
 Worker não consegue ouvir: voz nova escolhida por metadado é provisória até a dona ouvir.
