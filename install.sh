@@ -68,9 +68,11 @@ install_deps() {
   if ! have uv; then run sh -c 'curl -LsSf https://astral.sh/uv/install.sh | sh'; export PATH="$HOME/.local/bin:$PATH"; fi
 
   echo "→ ferramentas Python (uv tool)"
-  for t in yt-dlp youtube-transcript-api gflow-cli browser-harness; do
+  for t in yt-dlp youtube-transcript-api browser-harness; do
     run uv tool install -q "$t" 2>/dev/null || run uv tool upgrade -q "$t" 2>/dev/null || echo "  ! falhou: $t"
   done
+  # gflow-cli fixo na 0.87.0: a 0.93 recusa imagem com referência na conta "agent-only" do Flow (reserva da flow-mcp)
+  run uv tool install -q --force "gflow-cli==0.87.0" 2>/dev/null || echo "  ! falhou: gflow-cli"
   echo "→ bibliotecas Python (Pillow, imagehash, num2words)"
   run python3 -m pip install --user -q --break-system-packages Pillow imagehash num2words 2>/dev/null || \
     run python3 -m pip install --user -q Pillow imagehash num2words || echo "  ! instale Pillow imagehash num2words à mão"

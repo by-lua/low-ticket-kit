@@ -36,7 +36,9 @@ function Install-Deps {
   if (-not (Have uv)) { Write-Host '  instalando uv'; powershell -ExecutionPolicy Bypass -c "irm https://astral.sh/uv/install.ps1 | iex" }
   $env:Path += ";$env:USERPROFILE\.local\bin"
   Write-Host '→ ferramentas Python (uv tool)'
-  foreach ($t in 'yt-dlp','youtube-transcript-api','gflow-cli','browser-harness') { uv tool install -q $t 2>$null; if ($LASTEXITCODE -ne 0) { uv tool upgrade -q $t 2>$null } }
+  foreach ($t in 'yt-dlp','youtube-transcript-api','browser-harness') { uv tool install -q $t 2>$null; if ($LASTEXITCODE -ne 0) { uv tool upgrade -q $t 2>$null } }
+  # gflow-cli fixo na 0.87.0: a 0.93 recusa imagem com referência na conta "agent-only" do Flow (reserva da flow-mcp)
+  uv tool install -q --force 'gflow-cli==0.87.0' 2>$null
   if (Have python) { python -m pip install --user -q Pillow imagehash num2words }
   Write-Host '→ ferramentas Node (npm -g)'
   if (Have npm) { npm i -g -s agent-browser hyperframes '@remotion/cli' playwright-core; if (Have agent-browser) { agent-browser install 2>$null | Out-Null } }
