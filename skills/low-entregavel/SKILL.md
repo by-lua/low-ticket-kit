@@ -20,6 +20,12 @@ description: Etapa E4 do sistema LOW-TICKET — escreve e gera o entregável (pr
 1. **Manifesto:** o que a página promete, item por item (principal, bônus, bumps) = o que tem que existir.
 2. **Texto inteiro primeiro** em `produto/texto/`: todas as páginas, com cada exercício/pôster descrito
    (conteúdo exato + como fica na folha + gabarito). Sem texto, o GPT gera aleatório.
+   **Método obrigatório: `references/ESCRITA-ENTREGAVEL.md`.** Ordem: `ESPECIALISTA.md` (pensar como o
+   especialista ANTES de tudo: quem é, o que ensinaria, erros de iniciante, o que um profissional conferiria,
+   perguntas a pesquisar) → `FONTES.md` (pesquisa web obrigatória, fontes reais + glossário +
+   tabela de dados + ficha de profundidade do nicho) → texto no molde → `REVISAO-TECNICA.md` por OUTRO pane
+   (especialista). Nenhuma imagem antes de revisão aprovada (zero ERRADO, zero SEM FONTE). Fato técnico nunca
+   de memória; página sem número/passo físico = rasa, reescreve.
 3. **Primeiras páginas = imagens "por dentro" da página original** refeitas pra nossa oferta (mesma composição,
    nosso conteúdo e idioma; cor só muda se a paleta mudou) → **mostrar à dona** → ela aprova → viram a
    referência travada.
@@ -29,6 +35,8 @@ description: Etapa E4 do sistema LOW-TICKET — escreve e gera o entregável (pr
    § "Páginas de ATIVIDADE" (folha de imprimir: 1 por mensagem). Carta de tarô/cigano = scan real colado.
 6. **Revisar cada página de imprimir:** legível impressa, espaço pra escrever, acento certo no idioma, instrução
    bate com a folha, nada cortado na margem. Contact sheet no fim.
+   Diagrama técnico (mapa de pontos, molde, posição) conferido contra a tabela de dados do `FONTES.md`
+   (`ESCRITA-ENTREGAVEL.md` § 7-8).
 7. Outro idioma de uma entrega existente → `traduzir-entregavel-imagem`.
 
 Próximo: E5 (`imagens-pagina-low` — imagens da página com o MVP de referência) e E6 (área de membros:
