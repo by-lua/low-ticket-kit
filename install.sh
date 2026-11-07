@@ -120,6 +120,48 @@ link_all() {
   done
 }
 
+# ── 3b. Google Flow pelo MCP google-flow (caminho oficial da skill flow-mcp) ──
+# Fork com rótulos pt-BR e correção do anexo: github.com/by-lua/google-flow-mcp (branch pt-br-labels).
+FLOW_MCP_HOME="${FLOW_MCP_HOME:-$HOME/.local/share/google-flow-mcp}"
+FLOW_MCP_REPO="https://github.com/by-lua/google-flow-mcp.git"
+setup_flow_mcp() {
+  have node && have npm && have git || { say "  ! flow-mcp: precisa de node, npm e git (pulei)"; return 0; }
+  local built=0
+  if [ -d "$FLOW_MCP_HOME/.git" ]; then
+    run git -C "$FLOW_MCP_HOME" fetch -q origin pt-br-labels 2>/dev/null || return 0
+    if [ "$(git -C "$FLOW_MCP_HOME" rev-parse HEAD)" != "$(git -C "$FLOW_MCP_HOME" rev-parse FETCH_HEAD)" ] || [ ! -f "$FLOW_MCP_HOME/dist/cli.js" ]; then
+      say "→ flow-mcp: atualizando o servidor"
+      run git -C "$FLOW_MCP_HOME" reset -q --hard FETCH_HEAD; built=1
+    fi
+  else
+    say "→ flow-mcp: baixando o servidor em $FLOW_MCP_HOME"
+    run mkdir -p "$(dirname "$FLOW_MCP_HOME")"
+    run git clone -q --branch pt-br-labels "$FLOW_MCP_REPO" "$FLOW_MCP_HOME" || { say "  ! flow-mcp: clone falhou"; return 0; }
+    built=1
+  fi
+  if [ $built = 1 ]; then
+    ( cd "$FLOW_MCP_HOME" && run npm ci --no-audit --no-fund -s && run npm run -s build ) >/dev/null 2>&1 || { say "  ! flow-mcp: build falhou (rode: cd $FLOW_MCP_HOME && npm ci && npm run build)"; return 0; }
+  fi
+  # Chrome do MCP em inglês: o servidor lê o Flow em inglês, coreano e português
+  local chrome="" w="$CLAUDE_DIR/bin/flow-mcp-chrome"
+  for c in "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "$(command -v google-chrome-stable 2>/dev/null)" "$(command -v google-chrome 2>/dev/null)" "$(command -v chromium 2>/dev/null)" "$(command -v chromium-browser 2>/dev/null)"; do
+    [ -n "$c" ] && [ -x "$c" ] && { chrome="$c"; break; }
+  done
+  if [ -z "$chrome" ]; then say "  ! flow-mcp: Google Chrome não encontrado (instale o Chrome e rode o instalador de novo)"; return 0; fi
+  if [ ! -e "$w" ] && [ $DRY = 0 ]; then
+    printf '#!/usr/bin/env bash\n# Chrome do MCP google-flow (gerado pelo Low Ticket Kit)\nexec "%s" --lang=en-US --accept-lang=en-US,en "$@"\n' "$chrome" > "$w"; chmod +x "$w"
+  fi
+  local cfg="$HOME/.config/google-flow-mcp/config.json"
+  if [ ! -f "$cfg" ] && [ $DRY = 0 ]; then
+    mkdir -p "$(dirname "$cfg")"
+    printf '{\n  "chromePath": "%s",\n  "userDataDir": "%s",\n  "cdpPort": 9333,\n  "stateDir": "%s"\n}\n' "$w" "$HOME/.google-flow-chrome" "$HOME/.google-flow-mcp" > "$cfg"
+  fi
+  if have claude && ! claude mcp get google-flow >/dev/null 2>&1; then
+    say "→ flow-mcp: registrando o MCP google-flow no Claude Code"
+    run claude mcp add --scope user google-flow -- node "$FLOW_MCP_HOME/dist/cli.js" >/dev/null 2>&1 || say "  ! flow-mcp: registre à mão: claude mcp add --scope user google-flow -- node $FLOW_MCP_HOME/dist/cli.js"
+  fi
+}
+
 # ── 4. Auto-update: hook SessionStart do Claude Code ─────────────────────────
 add_hook() {
   say "→ auto-update (hook SessionStart em $CLAUDE_DIR/settings.json)"
@@ -155,6 +197,7 @@ check_deps() {
 
 if [ $DEPS = 1 ]; then install_deps; fi
 link_all
+setup_flow_mcp
 if [ $LINK_ONLY = 1 ]; then exit 0; fi
 add_hook
 check_deps
@@ -168,7 +211,8 @@ Atualizar na mão: bash $KIT_HOME/update.sh
 Falta (uma vez):
   1. Logar as contas nos browsers persistentes (sempre visíveis, nunca headless):
        ~/.claude/bin/browsers.sh add gpt 9222 https://chatgpt.com   && ~/.claude/bin/browsers.sh gpt
-       gflow auth login --browser chrome --profile flow-gflow        (Google Flow, vídeo)
+       node ~/.local/share/google-flow-mcp/dist/cli.js doctor        (Google Flow, oficial: entre na conta na janela do Chrome que abrir)
+       gflow auth login --browser chrome --profile flow-gflow        (Google Flow, reserva)
      e pôr seus perfis do ChatGPT em ~/.claude/bin/gpt-contas.lst   (linha: <conta> <perfil> <porta>)
   2. Checkout: crie conta no gateway que for usar (Wiven, Mundpay, GGCheckout, Hotmart, Cooud, Zenith).
   3. Sem hospedagem? Leia "Sem hospedagem? Use a Cloudflare" no README.md.

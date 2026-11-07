@@ -38,7 +38,10 @@ O instalador:
    `browser-harness`, `agent-browser`, `hyperframes`, `@remotion/cli`, e as libs Python Pillow, imagehash e num2words;
 3. liga as skills em `~/.claude/skills`, o plugin `get-brolls` em `~/.claude/plugins/cache`, os scripts em
    `~/.claude/bin` e os mapas de site em `~/.claude/browser-workspace`;
-4. cria o auto-update (veja abaixo).
+4. instala o servidor MCP `google-flow` (caminho oficial do Google Flow, skill `flow-mcp`): baixa e compila
+   [`by-lua/google-flow-mcp`](https://github.com/by-lua/google-flow-mcp) em `~/.local/share/google-flow-mcp`,
+   cria a configuração e registra o MCP no Claude Code;
+5. cria o auto-update (veja abaixo).
 
 Skill ou script com o mesmo nome que você já tinha vira `<nome>.bak-<data>` — nada é apagado.
 Já tem as dependências? `./install.sh --no-deps`.
@@ -140,7 +143,9 @@ Os browsers ficam **logados e visíveis** (nunca headless), um perfil por conta:
 ```
 
 Coloque seus perfis do ChatGPT em `~/.claude/bin/gpt-contas.lst` (linha: `<conta> <perfil> <porta>`).
-Google Flow: `gflow auth login --browser chrome --profile flow-gflow`.
+Google Flow (oficial, skill `flow-mcp`): `node ~/.local/share/google-flow-mcp/dist/cli.js doctor`, entre na conta
+do Flow na janela do Chrome que abrir e rode o `doctor` de novo até aparecer `flow: logged in`.
+Google Flow (reserva, skill `flow-video-playwright`): `gflow auth login --browser chrome --profile flow-gflow`.
 
 ## Desinstalar
 

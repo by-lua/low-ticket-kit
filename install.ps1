@@ -72,6 +72,40 @@ function Link-All {
   Get-ChildItem (Join-Path $KitHome 'browser-workspace\domain-skills') -Directory -ErrorAction SilentlyContinue | ForEach-Object { Link-One $_.FullName (Join-Path $ClaudeDir "browser-workspace\domain-skills\$($_.Name)") }
 }
 
+# 3b. Google Flow pelo MCP google-flow (caminho oficial da skill flow-mcp)
+# Fork com rótulos pt-BR e correção do anexo: github.com/by-lua/google-flow-mcp (branch pt-br-labels).
+function Setup-FlowMcp {
+  if (-not ((Have node) -and (Have npm) -and (Have git))) { Say '  ! flow-mcp: precisa de node, npm e git (pulei)'; return }
+  $fm = if ($env:FLOW_MCP_HOME) { $env:FLOW_MCP_HOME } else { Join-Path $env:USERPROFILE '.local\share\google-flow-mcp' }
+  $build = $false
+  if (Test-Path (Join-Path $fm '.git')) {
+    git -C $fm fetch -q origin pt-br-labels 2>$null
+    if ($LASTEXITCODE -ne 0) { return }
+    if (((git -C $fm rev-parse HEAD) -ne (git -C $fm rev-parse FETCH_HEAD)) -or -not (Test-Path (Join-Path $fm 'dist\cli.js'))) { Say '→ flow-mcp: atualizando o servidor'; git -C $fm reset -q --hard FETCH_HEAD; $build = $true }
+  } else {
+    Say "→ flow-mcp: baixando o servidor em $fm"
+    New-Item -ItemType Directory -Force -Path (Split-Path $fm) | Out-Null
+    git clone -q --branch pt-br-labels 'https://github.com/by-lua/google-flow-mcp.git' $fm
+    if ($LASTEXITCODE -ne 0) { Say '  ! flow-mcp: clone falhou'; return }
+    $build = $true
+  }
+  if ($build) {
+    Push-Location $fm; npm ci --no-audit --no-fund -s 2>$null | Out-Null; npm run -s build 2>$null | Out-Null; $ok = $LASTEXITCODE -eq 0; Pop-Location
+    if (-not $ok) { Say "  ! flow-mcp: build falhou (cd $fm; npm ci; npm run build)"; return }
+  }
+  $chrome = @("$env:PROGRAMFILES\Google\Chrome\Application\chrome.exe", "${env:ProgramFiles(x86)}\Google\Chrome\Application\chrome.exe", "$env:LOCALAPPDATA\Google\Chrome\Application\chrome.exe") | Where-Object { Test-Path $_ } | Select-Object -First 1
+  if (-not $chrome) { Say '  ! flow-mcp: Google Chrome não encontrado'; return }
+  $cfg = Join-Path $env:USERPROFILE '.config\google-flow-mcp\config.json'
+  if (-not (Test-Path $cfg)) {
+    New-Item -ItemType Directory -Force -Path (Split-Path $cfg) | Out-Null
+    [pscustomobject]@{ chromePath = $chrome; userDataDir = (Join-Path $env:USERPROFILE '.google-flow-chrome'); cdpPort = 9333; stateDir = (Join-Path $env:USERPROFILE '.google-flow-mcp') } | ConvertTo-Json | Set-Content $cfg -Encoding UTF8
+  }
+  if (Have claude) {
+    claude mcp get google-flow *> $null
+    if ($LASTEXITCODE -ne 0) { Say '→ flow-mcp: registrando o MCP google-flow no Claude Code'; claude mcp add --scope user google-flow -- node (Join-Path $fm 'dist\cli.js') *> $null }
+  }
+}
+
 # 4. Auto-update: hook SessionStart do Claude Code
 function Add-Hook {
   Say "→ auto-update (hook SessionStart em $ClaudeDir\settings.json)"
@@ -90,10 +124,12 @@ function Add-Hook {
 
 if (-not $NoDeps -and -not $LinkOnly) { Install-Deps }
 Link-All
+Setup-FlowMcp
 if ($LinkOnly) { exit 0 }
 Add-Hook
 Write-Host ''
 Write-Host "Pronto. Versão: $(Get-Content (Join-Path $KitHome 'VERSION') -ErrorAction SilentlyContinue)"
 Write-Host 'Atualiza sozinho: toda vez que o Claude Code abre (no máximo 1x a cada 6h).'
 Write-Host "Atualizar na mão: powershell -ExecutionPolicy Bypass -File `"$KitHome\update.ps1`""
+Write-Host 'Google Flow (uma vez): node %USERPROFILE%\.local\share\google-flow-mcp\dist\cli.js doctor  e entre na conta na janela do Chrome que abrir.'
 Write-Host 'Reinicie o Claude Code e peça: "vamos criar uma oferta low ticket do zero".'
