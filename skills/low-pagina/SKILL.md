@@ -178,6 +178,8 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
    todo botão aguentando texto +45% (tradução automática do navegador — a compradora pode traduzir a página),
    nenhuma imagem coberta ou cortada por outro elemento ou caixa (precisa sobrar espaço embaixo), e favicon presente.
    Depois, olhar print do hero (celular e PC) e do bloco de planos.
+   **Selo de garantia e capas de bônus com fundo transparente** (alfa real, sem caixa branca/creme atrás) —
+   conferir com `magick identify -format "%A"`; receita no item 18a do README do Modelo Padrão.
 9c. **QA de performance antes de liberar tráfego (obrigatório, qualquer página: nossa, clonada ou otimizada de modelo):**
    `node scripts/qa-performance.js <url> --meta-id=<id do pixel>` (celular 390×844, CPU 4×, 4G lento e 3G rápido).
    Reprova (exit 1) se: FCP > 2 s · LCP > 2,5 s · CLS > 0,1 · > 1,5 MB até o load · Google Fonts em uso · fonte fora do
