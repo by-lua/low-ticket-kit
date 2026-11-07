@@ -1,9 +1,14 @@
 ---
 name: flow-video-playwright
-description: Mecânica ÚNICA do Google Flow (flow.google.com) — gera imagem e vídeo (Omni Flash/Veo, Nano Banana), inclusive com imagem de referência anexada (cenário, produto, frame inicial), pelo wrapper scripts/flow.sh (gflow-cli no Chrome real do perfil flow-gflow + anexo + ritmo compartilhado entre agentes + freio de bloqueio). Use sempre que qualquer skill ou pedido precisar gerar imagem/vídeo no Flow. NUNCA gere no Flow por agent-browser nem pelos perfis flow-enovalabs-pro* (dá "atividade incomum").
+description: RESERVA do Google Flow — o caminho oficial é a skill flow-mcp; use esta só quando ela falhar ou dentro de scripts que já chamam o flow.sh. Mecânica (flow.google.com) — gera imagem e vídeo (Omni Flash/Veo, Nano Banana), inclusive com imagem de referência anexada (cenário, produto, frame inicial), pelo wrapper scripts/flow.sh (gflow-cli no Chrome real do perfil flow-gflow + anexo + ritmo compartilhado entre agentes + freio de bloqueio). Use quando a flow-mcp falhar, ou para as regras de prompt de movimento, cena e QA (valem para os dois caminhos). NUNCA gere no Flow por agent-browser nem pelos perfis flow-enovalabs-pro* (dá "atividade incomum").
 ---
 
 # Google Flow — mecânica (reescrita 22/10/2026)
+
+> **Desde 07/11/2026 esta skill é a RESERVA.** O caminho oficial é a skill **`flow-mcp`** (MCP `google-flow`):
+> comece por ela. Use o `flow.sh` só quando a `flow-mcp` falhar (avise a dona que caiu na reserva) ou dentro de
+> scripts que já chamam o `flow.sh`. As seções de prompt de movimento, cena, tela fechada, cor bt709 e QA abaixo
+> valem para os DOIS caminhos.
 
 > Versão antiga (fluxo agent-browser, seletores, lanes) arquivada em
 > `~/.claude/skill-backups/flow-video-playwright-2026-10-22.md`. **Não use.**

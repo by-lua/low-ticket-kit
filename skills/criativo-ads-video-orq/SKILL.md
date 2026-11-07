@@ -59,7 +59,7 @@ Apoio, quando o passo pedir:
 | Skill | Para quê |
 |---|---|
 | `gpt-imagem-playwright` | imagem de referência no ChatGPT |
-| `flow-video-playwright` + `references/mecanica-flow.md` | vídeo no Flow (Veo) |
+| `flow-mcp` (oficial; reserva `flow-video-playwright`) + `references/mecanica-flow.md` | vídeo no Flow (Veo) |
 | `narracao-hub-tts` | voz off (API NinjaVoice, liberada) |
 | `get-brolls` | b-roll com origem/licença |
 | `video-use`, `remotion-*`, `hyperframes-*` | cortes por palavra, composição, motion |

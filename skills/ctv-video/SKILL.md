@@ -11,7 +11,7 @@ description: Produz criativo de vídeo do sistema LOW-TICKET a partir da ficha d
 
 ## Passos
 1. **Mapear todos os assets** da oferta antes de montar (gravações, takes, b-roll): cada vídeo usa um pouco de cada.
-2. **Cenas de pessoa** (UGC, expert, POV): Flow (`flow-video-playwright`) — pessoa segurando o material real,
+2. **Cenas de pessoa** (UGC, expert, POV): Flow (`flow-mcp`; reserva `flow-video-playwright`) — pessoa segurando o material real,
    criada a partir de referência real do país (regra abaixo).
 3. **Cenas de mesa/demonstração:** 1-2 aparelhos + 3-4 folhas impressas, página diferente em cada; zoom de câmera
    orgânico (aproximação lenta), gesto padrão = apontar.
@@ -56,7 +56,7 @@ final. Três formas de conseguir, qualquer uma serve:
   seguir. Salvar em `nossa/persona/cena-<nome-da-cena>-<idioma>-aprovada.png`.
 
 **Passo 4 — Flow: imagem da cena (Passo 3) + A FALA EXATA no prompt, numa chamada só.**
-  `flow-video-playwright`, `video i2v --initial-frame <Imagem 2 do Passo 3>`. O prompt de movimento TEM que
+  `flow-mcp` (`flow_generate_video` com a Imagem 2 do Passo 3 em `reference_images`; reserva `flow-video-playwright` `video i2v --initial-frame`). O prompt de movimento TEM que
   incluir a fala exata que a pessoa vai dizer, entre aspas, no idioma certo — o Flow já sincroniza boca e
   gera a voz sozinho, não precisa de narração em cima depois. Nunca manda o Flow sem a fala: sem isso ele
   inventa uma fala genérica por conta própria (já aconteceu, fala saiu errada/fora do roteiro). Pegar a fala
