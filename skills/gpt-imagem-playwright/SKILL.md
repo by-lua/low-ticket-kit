@@ -34,6 +34,12 @@ Gera imagens no ChatGPT pelo browser persistente já logado. **Execute, não exp
 > nunca `lane.sh drop` no meio do trabalho; antes de cada envio, `agent-browser --session <S> tab <lane>`; limpar o
 > composer e conferir o tamanho; e **anexo sempre com caminho ABSOLUTO** (`scripts/gerar-1-imagem.sh` já converte).
 
+## Conta disponível hoje = EmpresaB (dona, 07/11/2026) — imagem sempre no GPT
+A única conta de GPT disponível é a **empresab**. `gpt-livre.sh` pode devolver `dona2` (Dona grátis, **sem armazenamento:
+anexo não sobe**, "Arquivo adicionado apenas ao chat"): só se a dona pedir. Padrão: `gpt-empresab`, `gpt-empresab-2`, `-3`, `-4` (Plus): se `parada`, `browsers.sh gpt-empresab-2`,
+criar aba (`agent-browser --session gpt-empresab-2 tab new --label <lane> https://chatgpt.com/`) e rodar o script com
+`GPT_S=gpt-empresab-2 GPT_TAB=<lane>`. Falha de anexo = trocar de perfil empresab, não insistir.
+
 ## Pegar a lane — PRIMEIRA COISA, SEMPRE
 
 Vários Claudes usam este mesmo browser. Sem lane, todos caem na mesma aba e escrevem no mesmo chat.

@@ -76,6 +76,13 @@ Formato e roteiro: `ctv-formatos` + `ctv-copy`. Fecho: → `ctv-revisor`.
    texto pra X)? produto (anexar a capa/página real do produto novo)? preço (anexar/escrever o preço novo)? O resto
    fica igual. Anexo extra só quando muda produto ou preço; mesmo produto em outro idioma = só o frame.
 3. **Flow** (`flow-mcp`): anima essa imagem nova com o mesmo prompt de movimento do take original.
+**Passo 3 no Flow (regra da dona, 07/11):** `flow_generate_video` com `reference_images` reenvia o arquivo a cada
+tentativa e falha com `REFERENCE_NOT_ATTACHED`, deixando cópias duplicadas no projeto (4 do mesmo frame). Fazer
+assim: (a) subir o frame UMA vez (a 1ª chamada já sobe, mesmo falhando); (b) `flow_project_open` pra limpar o
+composer; (c) `flow_inspect` clicar no "+" do composer → escolher o asset já enviado na lista → "Incluir no
+comando" → esperar o seletor fechar; (d) só então `flow_generate_video` **sem** `reference_images`, só o prompt
+(preview `auto_confirm=false`, depois `true`). Nunca reenviar o mesmo arquivo. Antes de subir, olhar a lista de
+recentes: se o asset já existe, usa ele. Sem a imagem anexada no composer, não gera.
 Mostrar a imagem do passo 2 à dona antes do passo 3. Erro real (07/11, Tarot FR→AR): mandei 5 anexos (páginas AR +
 capa) direto no Flow pra "recriar" a cena — ruído, composer travou. Imagem é no GPT, não no Flow.
 
