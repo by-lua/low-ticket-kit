@@ -23,6 +23,9 @@ DRIVER="$(dirname "$(readlink -f "$0")")/gflow_ref.py"
 STATE="$HOME/.cache/pov-flow"; mkdir -p "$STATE"
 export DISPLAY="${DISPLAY:-:1}" GFLOW_CLI_DEBUG_TRACEBACK=1
 # perfil ocupado por quem não usa o flow.sh (gflow direto): espera liberar em vez de falhar (exit 11)
+# Patchright (opção oficial do gflow): esconde o vazamento Runtime.enable do CDP que o reCAPTCHA usa.
+# Voltar ao padrão: trocar para playwright. Instalado com: uv tool install 'gflow-cli[patchright]'
+export GFLOW_CLI_BROWSER_ENGINE="${GFLOW_CLI_BROWSER_ENGINE:-patchright}"
 export GFLOW_CLI_LEASE_WAIT_SECONDS="${GFLOW_CLI_LEASE_WAIT_SECONDS:-900}"
 LOGIN_CMD="gflow auth login --browser chrome --profile"
 
