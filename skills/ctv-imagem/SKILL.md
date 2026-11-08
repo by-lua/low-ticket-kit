@@ -12,7 +12,7 @@ description: Produz criativo de imagem (estático e carrossel) do sistema LOW-TI
 - **4:5, 1080×1350** (estático e todo card do carrossel).
 - **Cara orgânica:** foto amadora de iPhone, levemente torta, luz natural, grão — nunca render de IA nem estúdio.
 - **Texto escrito pelo agente** (copy da ficha) e **desenhado pelo GPT dentro da foto** (cara de legenda de Story),
-  nunca faixa/overlay por código.
+  nunca faixa/overlay por código. **Exceção: formato 14 Imagem animada** — selo de preço, botão CTA e seta são a camada de animação por código (`ctv-formatos/formatos/imagem-animada.md`); a foto-base continua sem esses elementos.
   Ortografia e acento conferidos palavra por palavra; errou → regerar.
 - **Páginas reais do entregável**, nunca mockup nem folha falsa. Cena com produto = 1-2 aparelhos + 3-4 folhas
   impressas, **cada um mostrando uma página diferente**.
@@ -27,3 +27,5 @@ description: Produz criativo de imagem (estático e carrossel) do sistema LOW-TI
 Mecânica: `criativo-ads-imagem` (prompts e tipos) + `gpt-imagem-playwright` (perfil livre, download).
 Carrossel de páginas: recortar a página A4 do topo até fechar 4:5. Formato da peça: `ctv-formatos`.
 Fecho: tudo da leva pronto → `ctv-revisor`.
+
+**Imagem validada (aprovada ou que vendeu) → animar:** gerar a versão animada como peça nova com `ctv-formatos/scripts/animar-imagem/animar-imagem.sh` (formato 14). Também dá pra gerar já animada: foto-base limpa + camada por código.

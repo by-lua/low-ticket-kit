@@ -22,6 +22,7 @@ Todo formato tem **gancho → desenvolvimento (mecanismo) → CTA**. No vídeo s
 | 11 | Carrossel de páginas | carrossel | card 1 = dor/promessa | páginas reais do entregável (recorte 4:5) | card final "ver por dentro" | ≥5 cards, **sem preço** | — |
 | 12 | POV | vídeo | "POV: você…" (cena da dor) | a virada com o material | comando | 1ª pessoa, mãos + material | 1-10 |
 | 13 | **Explicador de mecanismo** — 🧪 PILOTO (01/11/2026) | vídeo | dor/pergunta concreta, ≤2 frases | produto real até a 3ª frase + "por que funciona" em 2-4 mecanismos | comando | pessoa ou voz como âncora · cena real pro concreto · **animação** pro que não se filma | 1-10 + **bloco E** |
+| 14 | **Imagem animada** (4:5, `.mp4` 7,2 s mudo) — ✅ ATIVO (07/11/2026) | imagem animada | o da arte/foto base (dor/promessa) | o da arte + selo de preço pulsando | botão CTA pulsando + seta pulando | **2 modos:** (a) animar imagem JÁ validada, como peça nova · (b) gerar já animada: foto-base limpa (UGC/mãos com as páginas) + camada por código | `scripts/animar-imagem/animar-imagem.sh` · receita `formatos/imagem-animada.md` |
 
 **Frase direta = clareza, não mistério (dona, 01/11/2026).** Quem vê em 1 segundo sabe **o que é o produto, o que
 faz e onde clicar**. Frase que só desperta curiosidade ("o segredo que ninguém conta…") reprova.
