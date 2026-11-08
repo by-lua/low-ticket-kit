@@ -33,7 +33,10 @@ Alimenta: `SKILL.md` (GATE 6, T13.24) · `CONSTRUCAO.md` §5 (padrões) · `mvt-
 
 ## 1 · Mapa das peças (onde cada uma mora, quanto custa, o que resolve)
 
-| Peça | Etapa do funil | Preço padrão BR (dona 08/10/2026) | Construir em |
+> **⚠️ 08/11/2026: os preços desta coluna estão DEFASADOS.** Padrão BR novo (segue o Mapa do Tarot) e padrão
+> internacional de teste (FR/ES/EN) estão em `CONSTRUCAO.md` §5. Valem esses, não a coluna abaixo.
+
+| Peça | Etapa do funil | Preço padrão BR (dona 08/10/2026 — DEFASADO, ver aviso) | Construir em |
 |---|---|---|---|
 | **VALIDAÇÃO DE TODA PEÇA** | — | — | **Biblioteca de Anúncios: 3-5 criativos ~a cada 15 dias = PASSA; 1 criativo ≥30 dias = PASSA. Menos que isso = não validado** (dono 10/10/2026). Peça validada pra **outro público** pode ser adaptada, desde que a dor exista no público-alvo (validar no Trends+YouTube). |
 | **Bônus** (3-4, no principal) | **dentro do plano Completo** (decidido na **T11 Obra**) — **NÃO vira produto/oferta no checkout** (dona, 09/10/2026) | Completo R$27,90 | `mvt-obra-100k` → produção (MVP 40%) |

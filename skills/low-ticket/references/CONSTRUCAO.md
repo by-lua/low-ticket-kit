@@ -185,25 +185,39 @@ cross-market. Checar na página, no criativo e no funil:
 próxima seção com mais info visual. Botão seco → checkout = CTR alto e venda baixa. Só manda pro
 checkout depois que a pessoa viu conteúdo + bônus + preço.
 
-**PREÇO PADRÃO BR — oferta nova (dona, 08/10/2026; substitui o padrão 27,90/37,90 de 27/09):**
+**PREÇO PADRÃO BR — oferta nova (dona, 08/11/2026; passa a seguir o Mapa do Tarot no ar, https://mapadotarot.leadgo.dev/; substitui o padrão de 08/10 — Básico 17,90 / Completo 27,90):**
 
-| Peça | Página / checkout | Área de membros (/painel) |
+| Peça | Página / checkout | Observação |
 |---|---|---|
-| Básico (só o principal) | **R$ 17,90** | — |
-| Popup do completo (downsell ao clicar no básico) | **R$ 22,90** | — |
-| Completo (principal + bônus) | **R$ 27,90** | — |
-| Popup de saída (o básico mais barato) | **R$ 16,90** | — |
-| Order bump 1 | **R$ 7,90** | **R$ 5,00** |
-| Order bump 2 | **R$ 8,90** | **R$ 5,00** |
-| Order bump 3 | **R$ 9,90** | **R$ 5,00** |
-| Combo "leve os 3 com desconto máximo" (último bump, entrega os 3 SKUs) | **R$ 17,90** | **R$ 9,90** |
-| Upsell 1 | **R$ 17,90** | **R$ 9,90** |
-| Downsell do upsell 1 | **R$ 12,90** | — |
+| Básico (só o principal) | **R$ 19,90** | — |
+| Completo (principal + bônus) | **R$ 37,90** | — |
+| Popup do completo (clicou no básico, "só R$8 a mais") | **R$ 27,90** | — |
+| Popup de saída (básico mais barato) | **R$ 17,90** | — |
+| Upgrade Básico → Completo (bump) | **R$ 5,90** | — |
+| Order bumps (ordem do Tarot) | **R$ 9,90 · R$ 9,90** (manuais) · **R$ 17,90** (3 guias essenciais) · **R$ 19,90** (combo/baú de guias) · **R$ 22,90** (combo de mapa) · **R$ 17,90** (mapa irmão) | ancoragem "de" riscado ≈ 2,5× o preço |
+| Oferta de membro dos bumps | **R$ 5,90** | dentro do mesmo produto, card da área de membros |
+| Upsell 1 · Downsell | **a levantar no checkout da Wiven (Tarot)** — não copiar valor de memória | pendência 08/11/2026 |
 
 Oferta nova usa esses valores sem perguntar; preço diferente só se a dona declarar. Ofertas já no ar
-mantêm o preço delas (não reprecificar sem pedido). Nessa tabela o preço de membro é FIXO (substitui o
-cálculo de 30% off e o piso R$ 9,90 da `area-membros-netflix` pra bumps/combo/upsell); upgrade de tier
-continua 50% off do completo.
+mantêm o preço delas (não reprecificar sem pedido). Substitui a tabela de 08/10 inteira, inclusive o
+preço de membro fixo R$ 5,00/R$ 9,90 daquela tabela (agora R$ 5,90 nos bumps).
+
+**PADRÃO INTERNACIONAL — oferta nova, PADRÃO DE TESTE (dona, 08/11/2026; referência: Calendrier Magique FR):**
+vale para FR, LATAM (ES), EN e demais mercados abertos por idioma, na moeda do cadastro, com o preço na
+moeda local do visitante (`PRECO-MOEDA-LOCAL.md`). **Regra da dona 08/11/2026: oferta em dólar usa os
+MESMOS números do euro, só trocando o símbolo** (€ 5,90 → US$ 5,90; € 12,90 → US$ 12,90; etc.). Sem conversão.
+
+| Peça | Preço |
+|---|---|
+| Básico (só o principal) | **€ 5,90** |
+| Completo (tudo) | **€ 12,90** |
+| Upgrade Básico → Completo | **€ 7,90** |
+| Saída (popup) | **€ 4,90** |
+| Order bumps (valores ainda NÃO aprovados) | **€ 4,90 · € 3,90 · € 5,90** |
+| App microSaaS | **~€ 7,90/mês** |
+
+É padrão de **teste**: confirmar ou ajustar pelo resultado. Portugal (€9,50/saída €7,50) e ES/LATAM do Tarot
+(US$9,50/saída US$7,50) já no ar seguem como estão, sem reprecificar.
 
 **Estrutura de funil de referência (cross-market/Europa):** entrada $9,90–$19,99 → 3 order bumps ~$4,90
 relacionados → microSaaS $7,90/mês → produto de topo ~$11,90. Entrega sempre na NOSSA área de membros.
