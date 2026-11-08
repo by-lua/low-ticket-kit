@@ -202,6 +202,22 @@ Oferta nova usa esses valores sem perguntar; preço diferente só se a dona decl
 mantêm o preço delas (não reprecificar sem pedido). Substitui a tabela de 08/10 inteira, inclusive o
 preço de membro fixo R$ 5,00/R$ 9,90 daquela tabela (agora R$ 5,90 nos bumps).
 
+**PREÇO PADRÃO ARGENTINA (ARS) — oferta nova (dona, 08/11/2026: "preços da Argentina seguir os novos do Mapa de
+Tarot AR, vai ser padrão da Argentina"; fonte no ar https://mapastarot.pages.dev/, lido em 08/11/2026).** Vale para
+toda oferta em pesos argentinos (checkout próprio + Mercado Pago); passa na frente do padrão internacional abaixo.
+
+| Peça | Preço | Observação |
+|---|---|---|
+| Básico | **$7.900** | — |
+| Completo | **$14.900** | — |
+| Popup Básico → Completo ("solo $3.000 más") | **$10.900** | riscado $14.900 |
+| Popup de saída (Básico) | **$4.900** | riscado $7.900 |
+| Order bump unitário | **$3.900** | riscado $9.900 |
+| Combo de 2 bumps | **$5.900** | riscado $19.800 |
+| Garantia | **7 dias** | igual ao Mapa Tarot AR |
+
+Se o Mapa Tarot AR mudar preço, reler a página antes de copiar; não usar valor de memória.
+
 **PADRÃO INTERNACIONAL — oferta nova, PADRÃO DE TESTE (dona, 08/11/2026; referência: Calendrier Magique FR):**
 vale para FR, LATAM (ES), EN e demais mercados abertos por idioma, na moeda do cadastro, com o preço na
 moeda local do visitante (`PRECO-MOEDA-LOCAL.md`). **Regra da dona 08/11/2026: oferta em dólar usa os
