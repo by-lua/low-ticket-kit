@@ -63,6 +63,7 @@ Referências herdadas das skills antigas (detalhe que as filhas citam): `referen
 
 ## 3. Regras que valem em toda peça (só estas; o resto mora na filha)
 - Ficha aprovada antes de gerar qualquer imagem ou vídeo.
+- **Montar a 24 fps (nativo do Flow/Veo); o clipe do Flow entra como veio, sem converter nem interpolar (`ctv-edicao` Bloco F).**
 - Todo formato que tem edição puxa de `ctv-edicao`; nenhum formato reescreve regra de edição.
 - Fecho da sessão: `low-ticket-salvar` (ficha, peças feitas, `STATUS.md`).
 - **Pessoa de referência (regra fixa, 05/11/2026):** toda imagem de pessoa real que a dona manda como

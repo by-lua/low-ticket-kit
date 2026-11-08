@@ -31,6 +31,15 @@ blocos usa (tabela da `ctv-formatos`). Detalhe completo, com exemplos e porquês
 10. **QA (bloqueante):** assistir o vídeo inteiro (não frames soltos): voz sem eco, legenda casando, nenhuma cena
     repetida, nada cortado na margem, card no fim, acento certo.
 
+## Bloco F — frame rate (regra fixa, 07/11/2026 — vídeo "travadinha" no CT18; confirma `EDICAO-PADRAO.md` §8)
+- **Montar a 24 fps, o fps nativo do Flow/Veo.** O clipe do Flow entra **como veio**: sem `fps=30`, sem `minterpolate`,
+  sem reencodar, sem mexer em quadro. Composição do Remotion `fps={24}`; o clipe toca 1 quadro por quadro.
+- **Proibido** converter take de 24 fps para 30 (duplica quadro, trava) **e proibido interpolar** (suja o movimento).
+- Gravação de celular/tela (VFR/30) e b-roll de banco entram na composição de 24 fps; o Remotion amostra, é o lado que perde menos.
+- `startFrom` e durações do Remotion são em quadros da composição (24/s). Voz/legenda em segundos.
+- **Gate do QA (bloco 10):** assistir a parte do clipe do Flow; medir quadro a quadro contra o arquivo original
+  (cada quadro do render = quadro i do clipe, sem repetir nem voltar). Usar `OffthreadVideo` no Remotion (exato por quadro).
+
 ## Bloco E — só formato 13 (Explicador de mecanismo), 🧪 PILOTO desde 01/11/2026
 Vem do estudo `CONHECIMENTO/ESTUDOS/2026-11-01-edicao-drive.md`. **Não vale pros outros formatos** até a dona aprovar
 o piloto. Blocos 1-10 continuam valendo inteiros (legenda, áudio, produto cedo, card final).
