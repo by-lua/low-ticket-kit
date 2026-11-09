@@ -35,8 +35,8 @@ Gera imagens no ChatGPT pelo browser persistente já logado. **Execute, não exp
 > composer e conferir o tamanho; e **anexo sempre com caminho ABSOLUTO** (`scripts/gerar-1-imagem.sh` já converte).
 
 ## Conta disponível hoje = EmpresaB (dona, 07/11/2026) — imagem sempre no GPT
-A única conta de GPT disponível é a **empresab**. `gpt-livre.sh` pode devolver `dona2` (Dona grátis, **sem armazenamento:
-anexo não sobe**, "Arquivo adicionado apenas ao chat"): só se a dona pedir. Padrão: `gpt-empresab`, `gpt-empresab-2`, `-3`, `-4` (Plus): se `parada`, `browsers.sh gpt-empresab-2`,
+A única conta de GPT é a **empresab** (dona, 08/11/2026: perfis `gpt`/dona2 e `gpt-play-1` da conta-secundaria removidos; backup em
+`~/.agent-profiles/_removidos-gpt-conta/`). Padrão: `gpt-empresab`, `gpt-empresab-2`, `-3`, `-4` (Plus): se `parada`, `browsers.sh gpt-empresab-2`,
 criar aba (`agent-browser --session gpt-empresab-2 tab new --label <lane> https://chatgpt.com/`) e rodar o script com
 `GPT_S=gpt-empresab-2 GPT_TAB=<lane>`. Falha de anexo = trocar de perfil empresab, não insistir.
 
@@ -58,7 +58,7 @@ Fonte da verdade: `~/.claude/bin/gpt-contas.lst` (o `gpt-livre.sh` lê de lá).
 | Conta | Perfis (porta) | Observação |
 |---|---|---|
 | **empresab** | `gpt-empresab` 9298 · `gpt-empresab-2` 9304 · `gpt-empresab-3` 9305 · `gpt-empresab-4` 9306 | clones do `gpt-empresab` feitos em 04/11 (cópia do diretório sem cache/lock — o login veio junto e funcionou). Mesma conta = mesma cota e o rascunho do composer é compartilhado: **um agente por perfil** |
-| **dona2** | `gpt` 9222 | logado pela dona em 04/11 (antes era "sem login, não usar") |
+| ~~dona2~~ | ~~`gpt` 9222~~ | **REMOVIDO 08/11/2026** (ordem da dona: fica só a empresab) |
 Clonar perfil logado (quando a dona pedir): `rsync -a --exclude 'Singleton*' --exclude '*Cache*' <perfil>/ <perfil>-N/` →
 linha no `~/.agent-profiles/registry.conf` (porta livre) → linha `<conta> <perfil>-N <porta>` no `gpt-contas.lst` →
 subir e conferir que abre logado (sem botão Entrar).

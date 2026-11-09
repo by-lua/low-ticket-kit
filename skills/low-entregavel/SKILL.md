@@ -10,6 +10,10 @@ description: Etapa E4 do sistema LOW-TICKET — escreve e gera o entregável (pr
   visual (referência + paleta da oferta).
 - **Item de fazer/imprimir = página própria:** exercício, pôster, folha, checklist, mapa, tabela de preencher.
   A explicação numa página, a folha na **página seguinte**. Nunca só a explicação.
+- **Fundo de tela (wallpaper) = imagem de CELULAR para baixar, nunca PDF** (dona, 08/11/2026: "tem que ser imagens,
+  não PDF, e do tamanho de celular"). Exceção ao A4: vertical **1080×1920** (9:16), JPG/PNG. No painel: cada imagem
+  com botão de baixar + botão "baixar todas (ZIP)" + instrução curta de como salvar como fundo e como abrir o ZIP
+  (iPhone e Android). O módulo de fundos não gera PDF.
 - Scripts de "gerar folha por código" (`gera-worksheet.py`, `gera-printables.py`…) não se usam nem se copiam.
 
 **Entrada:** `OFERTA.md` · página da E3 · `pesquisa/referencia/imagens-origem/` · `DESIGN-SYSTEM.md`.
