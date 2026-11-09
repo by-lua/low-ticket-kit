@@ -302,7 +302,7 @@ builder → painel **Visual** → **"Tema atual"** → **Explorar temas** → es
 
 builder → painel **Pagamento** → seção **"Campos"** → grupo **"MOEDA E PAGAMENTO"** (não fica no bloco Visual!).
 
-- **`Exibir na moeda do cliente`** = **`local_currency_display`** — *"Mostra uma estimativa do preço na moeda do visitante."* → **LIGAR (`true`)** em todas as ofertas. **REGRA DA CASA** (preço em moeda local): o checkout mostra o preço **estimado na moeda do visitante**, mas o **cadastro/pixel segue na moeda da oferta** (US$).
+- **`Exibir na moeda do cliente`** = **`local_currency_display`** — *"Mostra uma estimativa do preço na moeda do visitante."* → **LIGAR (`true`)** em todas as ofertas. **REGRA DA CASA** (preço em moeda local): o checkout mostra o preço **estimado na moeda do visitante**, mas o **cadastro/pixel segue na moeda da oferta** (US$). Isso é do CHECKOUT do gateway; a **página de vendas NÃO converte moeda** (conversor fica defasado): mostra o preço na moeda da oferta + aviso cinza «convertido pra moeda local no checkout» (`low-ticket/references/PRECO-MOEDA-LOCAL.md`, 09/11/2026).
 - **`Cobrar na moeda do cliente`** = **`local_currency_charge`** — *"O cliente será cobrado na moeda local dele. Melhora a taxa de aprovação."*
 - **`local_currency`** = flag mestre (default `true` no Salvar do builder). As 3 ficam `true` no padrão (GeriNeuro 16/10).
 - Gravar/confirmar por API (PATCH de `metadata` é merge):

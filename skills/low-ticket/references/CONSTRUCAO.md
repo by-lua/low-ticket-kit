@@ -219,8 +219,8 @@ toda oferta em pesos argentinos (checkout próprio + Mercado Pago); passa na fre
 Se o Mapa Tarot AR mudar preço, reler a página antes de copiar; não usar valor de memória.
 
 **PADRÃO INTERNACIONAL — oferta nova, PADRÃO DE TESTE (dona, 08/11/2026; referência: Calendrier Magique FR):**
-vale para FR, LATAM (ES), EN e demais mercados abertos por idioma, na moeda do cadastro, com o preço na
-moeda local do visitante (`PRECO-MOEDA-LOCAL.md`). **Regra da dona 08/11/2026: oferta em dólar usa os
+vale para FR, LATAM (ES), EN e demais mercados abertos por idioma, na moeda do cadastro, com o aviso cinza « convertido pra moeda local no checkout » embaixo de todo preço
+(`PRECO-MOEDA-LOCAL.md`, regra 09/11/2026: sem conversão automática). **Regra da dona 08/11/2026: oferta em dólar usa os
 MESMOS números do euro, só trocando o símbolo** (€ 5,90 → US$ 5,90; € 12,90 → US$ 12,90; etc.). Sem conversão.
 
 | Peça | Preço |

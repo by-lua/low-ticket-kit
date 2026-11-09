@@ -60,7 +60,7 @@ Traduza cada item do produto em uso concreto: “três números” precisa expli
 
 Mantenha o quiz introdutório curto; a pessoa veio pelo Número Mestre, não por uma explicação de engenharia do cálculo. Não mostre blocos como “você escolheu X, as respostas orientam a leitura” se não ajudam a decisão. CTA expressa desejo: “Quiero mi número maestro”, em vez de “Ver mi lectura y el precio”. Preço e condições ficam na página de vendas e no `anuncio.md`, nunca na fala do CTA nem na tela do fecho; o CTA fica só no comando curto.
 
-Preserve voseo AR e espanhol neutro LATAM. Dê destaque ao valor na moeda local quando a conversão estiver disponível e identifique estimativas; dólar secundário no LATAM. Não invente agenda limitada, urgência, ancoragens ou promessa de ganho/cura. Numerologia é interpretação simbólica, sem garantia de mudança material na vida. Não anuncie entrega, bônus ou garantia diferentes do produto real.
+Preserve voseo AR e espanhol neutro LATAM. Mostre o preço na moeda da oferta (US$/€) e **não converta pra moeda local por conta própria**: conversor/câmbio fica defasado e não bate com o checkout (ordem da dona 09/11/2026); se a peça precisar citar conversão, só o aviso «convertido pra sua moeda local no checkout». Não invente agenda limitada, urgência, ancoragens ou promessa de ganho/cura. Numerologia é interpretação simbólica, sem garantia de mudança material na vida. Não anuncie entrega, bônus ou garantia diferentes do produto real.
 
 ## Caso de referência e critérios de reaplicação
 

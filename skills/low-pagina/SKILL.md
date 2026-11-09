@@ -127,8 +127,18 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
      lote de imagens (E5) seguem ela, não o visual do concorrente.
    - Página sempre com **desktop e mobile** resolvidos (página clonada costuma ser só mobile).
 3. **Imagens:** placeholders agora; geração na E5 (`imagens-pagina-low`, ordem nova: mockups da página primeiro).
-4. **Preço:** botões com o preço da `OFERTA.md`. Oferta multi-país → preço em moeda local
-   (`low-ticket/references/PRECO-MOEDA-LOCAL.md`).
+4. **Preço:** botões com o preço da `OFERTA.md`.
+   **OFERTA INTERNACIONAL — REGRA FIXA da dona (09/11/2026), a página já nasce assim:** é internacional quando a
+   `OFERTA.md` vende pra vários países/idiomas (Hotmart no mundo todo, francês estilo Rodrigo, ES/LATAM, EN, campanha
+   aberta por país). Nesse caso **em TODO lugar da página em que aparece preço** (pílula do hero, cada plano, popup de
+   upgrade e de saída, downsell, bloco de oferta) o preço fica **na moeda da oferta (US$/€) no tamanho normal** e **logo
+   embaixo vai o aviso cinza pequeno** dizendo que o valor é convertido pra moeda local no checkout:
+   `<div class="price-note">* Le prix est converti dans votre devise locale lors du paiement.</div>` (texto por idioma
+   FR/ES/PT/EN, tamanho, cor e alinhamento em `low-ticket/references/PRECO-MOEDA-LOCAL.md`). **Sem script de conversão,
+   sem câmbio, sem API.** O Modelo Padrão já traz os `.price-note`; ao trocar de idioma troque o texto. Oferta de UM país só
+   (BR em R$, AR em ARS, PT em €): sem aviso. Na dúvida se é internacional, pergunte à dona antes de montar.
+   **Gate antes de subir:** abrir celular e desktop e conferir que **cada** preço visível tem o aviso embaixo, no idioma da
+   página, e que não existe `data-eur` nem `/painel/api/fx` no código.
 4b. **3 destinos de CTA, só isso — independe da página clonada, sempre assim:**
    - **CTA do hero** → **sempre a seção "o que você recebe"** (`id="recebe"`, ex.: « Tout ce qu'il faut pour vivre
      2027 ») — dona, 04/11/2026. Nunca pula direto pro preço.

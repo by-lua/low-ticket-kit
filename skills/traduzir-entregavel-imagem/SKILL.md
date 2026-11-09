@@ -35,7 +35,7 @@ O texto final tem que soar escrito por alguém DE LÁ. Tradução literal reprov
   `vosotros`, nunca `vos`); sem regionalismo (`che`, `güey`, `chévere`, `plata`, `chamba`, `pibe`); vocabulário
   comum a todos: `celular`, `computadora`, `descargar`, `correo`, `dinero`, `pareja`. Exemplos, nomes de
   pessoas em depoimento e situações do dia a dia de lá (nome latino, não brasileiro). Moeda e preço
-  seguem a regra de `PRECO-MOEDA-LOCAL.md`.
+  seguem a regra de `PRECO-MOEDA-LOCAL.md` (moeda da oferta + aviso cinza de conversão; **sem conversor de moeda**, câmbio fica defasado).
 - **Português de Portugal** (pt-PT, AO90): trato por `tu` ou impessoal (o `você` brasileiro soa distante
   ou estranho); sem gerúndio (`a ativar`, não `ativando`); `para`, nunca `pra`; vocabulário de lá:
   `telemóvel`, `ecrã`, `ficheiro`, `descarregar`, `registo`, `equipa`, `pequeno-almoço`, `casa de banho`,
