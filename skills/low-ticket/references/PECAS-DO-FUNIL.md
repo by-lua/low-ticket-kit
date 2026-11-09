@@ -221,6 +221,8 @@ melhor"), e a venda do nó novo tem de aparecer no Trackeador.
    webhook → venda de R$27,90 nunca chegou (05/10). Caso real 2: webhook do SiteExpress em "todos os
    produtos" recebeu venda do Tarot (26/09). Peça vendida dentro do funil de OUTRA oferta = exceção que
    precisa de decisão da dona por escrito.
+   **Eventos (regra 09/11/2026):** webhook do Trackeador marca **todos os eventos** em qualquer gateway
+   (recusada, expirada, boleto/aguardando, atrasada, abandono de carrinho, reembolso, chargeback), nunca só aprovada.
 5. **Gate de eventos:** `data-tk-value`/`data-tk-currency` em TODO botão (inclusive o 1-clique do upsell)
    + prova do request `facebook.com/tr` no ar (`CLAUDE.md` da raiz). Sem prova = "deve estar funcionando".
 6. Pacote do checkout novo: banner desktop+mobile, imagem do item, contagem regressiva e imagem em cada

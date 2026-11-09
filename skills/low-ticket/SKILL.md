@@ -115,6 +115,9 @@ Regras:
 - **Fatos antes de cadastrar:** gateway, conta, código, webhook, domínio e **organização do Trackeador** — conferir no
   índice (seção Fatos). Nunca de cabeça. Todo comando `trackeador` que cria algo leva `--org` explícito.
   Incidente Calendrier FR (04-06/11/2026): a oferta nasceu na Leadgo, não na WINX, e a venda chegou órfã.
+- **Webhook de medição (Trackeador) com TODOS os eventos, em qualquer checkout** (Hotmart, Wiven, Mundpay, Zenith,
+  GG, próprio): aprovada, recusada/cancelada, expirada, boleto/aguardando, atrasada, abandono, reembolso, chargeback.
+  Só "aprovada" = tentativas somem do Trackeador. Regra da dona 09/11/2026. Entrega (`/painel`) segue só o que libera/tira acesso.
 - **Tráfego só depois do `low-gates-no-ar` inteiro**, inclusive o aviso de venda 2xx nos 2 destinos e o link
   do checkout levando a sessão. "Configurei" não é prova.
 - **Entregável nunca é HTML/código:** sempre imagem A4 do GPT com a referência visual. Item de fazer/imprimir

@@ -11,6 +11,8 @@ Automação de browser pra cadastro e configuração de produto na Hotmart (`app
 >
 > **REGRA FIXA DA DONA (16/10/2026) — TODO produto/oferta criado entra nos DOIS webhooks NO MESMO DIA.** Vale pra toda peça: principal · **order bump** · combo · upsell/downsell · **upgrade Essencial → Completo** · produto irmão/cross · oferta de membro. Cada produto novo, na MESMA sessão do cadastro, marcado em (1) **webhook de ENTREGA** (`<site>/painel/api/webhooks/hotmart`) e (2) **webhook de MEDIÇÃO** (Trackeador, `https://adstrackeador.leadgo.dev/api/webhooks/sale/c/<conexão>`) — "todos os produtos" OFF. Produto fora do webhook = a venda some do Trackeador/atribuição e/ou o comprador fica sem acesso, **sem erro em lugar nenhum**. Padrão/incidente (order bump "Combo Domínio Total", Jiu-Jitsu, 16/10): `wiven-checkout` §6.
 
+> **REGRA FIXA DA DONA (09/11/2026) — TODOS OS EVENTOS NO WEBHOOK DE MEDIÇÃO, EM QUALQUER CHECKOUT.** Webhook do Trackeador (`adstrackeador.leadgo.dev/api/webhooks/sale/c/<conexão>`) sai com **"Todos"** marcado na lista "Eventos para enviar" (topo da lista). Nunca só "Compra aprovada": sem os outros a Hotmart não manda recusa, expirada, boleto, atrasada nem abandono, e o Trackeador perde as tentativas (o CLI avisa "conexão só recebe venda aprovada"). Nomes na Hotmart: **recusada** chega como "Compra cancelada"; **boleto impresso** = "Aguardando pagamento". Ao editar webhook antigo, conferir e completar. Webhook de **entrega** (`/painel`) continua com aprovada + cancelada/reembolsada/chargeback. Primeiro caso: Calendrier Magique FR.
+
 ## Layout padrão do checkout — regra da dona (04/11/2026)
 
 - **Todo checkout Hotmart sai com TEMPORIZADOR DE 15 MINUTOS** (contagem regressiva, tipo “Quantidade de tempo”, `00:15:00`), salvo pedido explícito diferente da dona. Pedido literal: *“manda o deepsdek aplica checkout da hotmart sempre com temporizador de 15 minutos”*.
@@ -110,7 +112,7 @@ Ambos aparecem só depois de um `sleep 2` (carregam via skeleton assíncrono).
 
 Webhook **não fica dentro do produto** — é ferramenta de conta, em `Ferramentas` (ícone de chave inglesa na sidebar principal) → busca "webhook" → **Webhook (API e notificações)**.
 
-1. `Cadastrar Webhook`: nome, selecionar o produto (checkbox numa lista dropdown — não é multi-select nativo, é lista com checkbox por item), URL de envio de dados (seu endpoint, ex `https://seudominio/api/webhook/hotmart`), versão 2.0.0 (recomendado), eventos (mínimo **"Compra aprovada"** pra liberar acesso), marcar checkbox de conformidade LGPD/dados, Salvar.
+1. `Cadastrar Webhook`: nome, selecionar o produto (checkbox numa lista dropdown — não é multi-select nativo, é lista com checkbox por item), URL de envio de dados (seu endpoint, ex `https://seudominio/api/webhook/hotmart`), versão 2.0.0 (recomendado), eventos (entrega: mínimo **"Compra aprovada"**; **medição/Trackeador: "Todos"**, regra 09/11 — abrir a lista pelo chevron e clicar com mouse real `agent-browser mouse move/down/up`; **Escape fecha o modal sem salvar**, feche a lista clicando no título do modal), marcar checkbox de conformidade LGPD/dados, Salvar.
 2. Depois de salvo, vai pra aba **Autenticação** da mesma tela de Webhook pra pegar o **Hottok de verificação** — é o segredo que valida a assinatura do POST recebido (equivalente a webhook secret). Fica mascarado por padrão; clique "Mostrar hottok" e extraia via DOM (não print/screenshot, é credencial):
 
 ```js
@@ -141,6 +143,7 @@ Caso real: Calendrier Magique FR. A primeira venda chegou órfã (sem campanha) 
 - [ ] Link de checkout (`pay.hotmart.com/...`) extraído e repassado pro time de código/tráfego
 - [ ] Se a página customizada (Checkout Builder) estiver publicada, os links do site usam `?checkoutMode=10&off=<código>` — sem `checkoutMode=10` o Hotmart entrega o checkout padrão, sem banner/bumps
 - [ ] Webhook cadastrado + HOTTOK salvo em credenciais
+- [ ] Webhook do Trackeador com **"Todos" os eventos** (não só aprovada) — conferir na tabela: "Eventos" mostra "+N" com todos
 - [ ] Mesmo hottok colado na conexão do Trackeador e no servidor de entrega (header `X-Hotmart-Hottok`); um evento real chegou com OK nos dois (ver "Rastreamento com o AdsTrackeador")
 - [ ] Link do botão sai com `sck` (id da visita, ≤ 30 caracteres, sem `_`) + `utm_*`, conferido no navegador
 - [ ] Produto ainda fica "Rascunho" até enviar pra análise (`Finalizar cadastro` no painel) — avisar o usuário antes de enviar, é passo irreversível de revisão
