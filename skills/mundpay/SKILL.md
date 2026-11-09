@@ -6,7 +6,7 @@ description: Cadastra produto digital na Mundpay (login.mundpay.com) pelo painel
 # Mundpay — produto digital + checkout
 
 > **Regra fixa da dona (05/10/2026): toda oferta (principal, bump, popup, upsell) aceita SÓ pagamento na hora** (cartão, Apple Pay, Pix e transferência/carteira instantânea local). Boleto, OXXO, dinheiro em loja, voucher, Efecty, Rapipago, "Otros" etc. ficam DESMARCADOS. Tabela por país na seção "Tabela de métodos".
-> **Regra fixa da dona (07/10/2026): PicPay e Google Pay SEMPRE DESMARCADOS**, em toda oferta, todo país — nunca deixar ativos, mesmo sendo "principal"/instantâneo.
+> **Regra fixa da dona (09/11/2026, vale pra todo gateway e país) — SUBSTITUI a de 07/10:** podem ficar ligados **cartão (crédito e débito), Apple Pay, Google Pay, PayPal e qualquer método local que o comprador paga e cai na hora**. Fica desligado só o que é pré-pago/não cai na hora (boleto, dinheiro em loja, voucher, parcelado de terceiro, recorrência agendada); dúvida = desligado. Google Pay e PicPay deixam de ser "sempre desmarcados" (PicPay liga se cair na hora). Lógica completa e roteiro: skill `hotmart-produto-playwright` → "REGRA FIXA da dona (09/11/2026)".
 > **Regra fixa (08/10/2026): todo checkout leva banner no idioma da oferta** (PT = pt-PT, ES = espanhol neutro) **+ contador de 15 minutos (00h15), cor de fundo vermelha `#F14254`** (aba Checkouts → Personalizar → Urgência). **Mensagem de exibição no idioma da oferta:** “Oferta por tempo limitado! Garanta o seu agora antes que o preço suba.” Traduzir/adaptar essa mensagem ao idioma da oferta. Ver skill `banner-checkout-gpt`.
 
 > **REGRA FIXA DA DONA (16/10/2026) — TODO produto/oferta criado entra nos DOIS webhooks NO MESMO DIA.** Vale pra toda peça: principal · **order bump** · combo · upsell/downsell · **upgrade Essencial → Completo** · produto irmão/cross · oferta de membro. Cada produto novo, na MESMA sessão do cadastro, marcado em (1) **webhook de ENTREGA** (`<site>/painel/api/webhooks/mundpay`) e (2) **webhook de MEDIÇÃO** (Trackeador, `https://adstrackeador.leadgo.dev/api/webhooks/sale/c/<conexão>`) — "todos os produtos" OFF. Produto fora do webhook = a venda some do Trackeador/atribuição e/ou o comprador fica sem acesso, **sem erro em lugar nenhum**. Padrão/incidente (order bump "Combo Domínio Total", Jiu-Jitsu, 16/10): `wiven-checkout` §6.
@@ -65,7 +65,7 @@ Aba Ofertas → Editar oferta: **Ativar oferta**, Nome (ex.: "Acesso vitalício"
 ### Tabela de métodos: só pagamento na hora (regra fixa, dona 05/10/2026)
 Método no painel: deixar tudo marcado e DESMARCAR só o que não cai na hora, país por país. Fonte de classificação: oferta Básico - ES (`OFERTAS/mapa-do-tarot/site/es/CHECKOUT-MUNDPAY-ES.md`). Método sem certeza de ser instantâneo: DESMARCAR e marcar **(dúvida)**.
 
-**Principais: MANTER** Cartão de Crédito, Pix, Apple Pay. **DESMARCAR SEMPRE** Google Pay e PicPay (regra fixa dona 07/10/2026, todo país, mesmo sendo "principal"/instantâneo).
+**Principais: MANTER** Cartão de Crédito, Pix, Apple Pay. Google Pay: **MANTER** (regra 09/11/2026 revogou o "sempre desmarcado"). PicPay: manter se cair na hora.
 
 | País | MANTER | DESMARCAR |
 |---|---|---|
@@ -78,10 +78,10 @@ Método no painel: deixar tudo marcado e DESMARCAR só o que não cai na hora, p
 | **MX** México | SPEI, Scotiabank, BBVA Bancomer (dúvida) | OXXO, Bodega Aurrera, 7 Eleven, Circle K, Farmacias del Dr. Ahorro, Sam's Club, Superama, Soriana, Farmacias Santa Maria, Calimax, Banco Azteca (dúvida), OpenPay (dúvida) |
 | **PE** Peru | Banco de Crédito, Interbank, Khipu, Scotiabank, BBVA Continental | Caja Arequipa, Caja Huancayo, Caja Tacna, Caja Trujillo, Ripley, Western Union, Kasnet |
 
-Nota: outros países da lista do seletor (sem método local) = só principais (cartão, Apple Pay; Pix só BR). Google Pay e PicPay nunca, em nenhum país. Nada além disso.
+Nota: outros países da lista do seletor (sem método local) = só principais (cartão, Apple Pay; Pix só BR). Google Pay entra (regra 09/11/2026). Nada de método que não cai na hora.
 
 **Checklist ao criar/editar oferta (passo obrigatório):**
-1. Marcar os principais (Cartão, Pix, Apple Pay); **desmarcar Google Pay e PicPay sempre**.
+1. Marcar os principais (Cartão, Pix, Apple Pay, **Google Pay**, PayPal se houver).
 2. Abrir Métodos de PGTO, **desmarcar métodos não instantâneos (tabela acima)**; dúvida = desmarcado.
 3. Conferir o contador e registrar no status o que ficou marcado.
 4. Aba Checkouts → "⋮" na linha do checkout → **Personalizar** → **banner no idioma da oferta** (PT=pt-PT, ES=espanhol neutro, ver skill `banner-checkout-gpt`) + **contador de 15 minutos (HH=00, MM=15), fundo `#F14254` e mensagem de exibição no idioma da oferta**: “Oferta por tempo limitado! Garanta o seu agora antes que o preço suba.” Traduzir/adaptar ao idioma da oferta.

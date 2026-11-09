@@ -198,7 +198,35 @@ Ler o estado de todos de uma vez:
 **"Pago en efectivo"** (CO/PE/CL) não tem toggle próprio — vem embutido no provedor
 "Hotmart" e só sai desligando o Hotmart inteiro (o que mataria o cartão). Se a
 regra do cliente é "só método com confirmação rápida", o que dá pra desligar é
-Servipag, SOFORT e os boletos.
+Servipag e os boletos (SOFORT agora fica LIGADO, ver regra fixa 09/11/2026 abaixo).
+
+### REGRA FIXA da dona (09/11/2026) — formas de pagamento, TODO país, TODA oferta
+
+Vale pra todo produto (principal, bump, upsell, popup) e todo mercado. Substitui a regra antiga "Google Pay sempre desmarcado" (07/10) e o "só cartão + Apple Pay".
+
+**LIGAR (cai na hora, o comprador paga e o dinheiro entra):**
+- Principais: Hotmart, Cartão de crédito, **Débito bancário**, Pix, Apple Pay, **Google Pay**, NuPay.
+- Parceiras: **PayPal**, Débito virtual Caixa, **SOFORT / Klarna Pay Now** (transferência), Nequi, Bancolombia, MACH, MB Way, Yape, Pay By Bank.
+
+**DESLIGAR (não cai na hora):**
+- Boleto bancário e Boleto (dispositivo móvel) — pré-pago, compensa em dias.
+- Servipag e qualquer dinheiro em loja/voucher (OXXO, Efecty, Rapipago, "Otros").
+- Pix automático — é recorrência agendada, não serve pra venda avulsa.
+- Klarna "Buy Now, Pay Later" e Kueski Pay — parcelado/crédito de terceiro.
+- Mercado Pago — a carteira embute boleto e dinheiro em loja; **dúvida = desligado**.
+
+**Lógica pra método novo que a Hotmart lançar:** liga só se (1) o comprador paga no ato e (2) a confirmação chega na hora, sem boleto, voucher, dinheiro em loja, parcelado de terceiro nem recorrência agendada. Sem certeza = desligado e registrado como "(dúvida)" no STATUS da oferta.
+
+**Número do celular: NÃO ligar nos checkouts** (preferência da dona, 09/11/2026). Em "Dados solicitados" o toggle "Número do celular" fica desligado. Se a tela pedir celular, remover. Nome + e-mail só.
+
+**A config é POR PRODUTO**, não da conta: `/products/manage/<id>/tools/checkout/settings`. As ofertas (`off=`) do mesmo produto herdam. Oferta com bump = repetir nos 3 produtos (principal + cada bump) e conferir que o resumo "Formas de pagamento e cupom" subiu de "(+2)" pra "(+15)".
+
+**Roteiro de clique que funcionou (09/11/2026, Calendrier Magique, produtos 8888363/8888432/8888448):**
+1. Abrir a URL acima, esperar ~9 s. Abrir o card **"Formas de pagamento e cupom"** pelo lápis (localizar por texto, não por `@ref`: a ordem dos botões muda de produto pra produto e um clique errado abre "Dados solicitados" ou "Ferramentas").
+2. Dois cards: **Principais** e **Parceiras**. Cada lápis abre um modal com toggles. Clicar sempre com `agent-browser mouse move/down/up` nas **coordenadas lidas do DOM naquele instante** (`getBoundingClientRect` do toggle, depois de `scrollIntoView`). A lista rola: coordenada guardada de antes erra o toggle e fecha o modal.
+3. Fechar o modal pelo X (canto superior direito) e depois clicar **"Salvar alterações"**, cujo `y` **muda** conforme a janela (já foi 789 e 813): ler do DOM também. Se o botão estiver cinza, nada mudou. **Os toggles do modal só valem depois do "Salvar alterações"** da tela de trás; fechar sem salvar descarta.
+4. Conferir: reabrir a URL e ler o resumo (deve dizer `(+15)`), ou reabrir o modal e listar os toggles.
+5. `agent-browser open` na mesma sessão desloga às vezes; se cair em `sso.hotmart.com` com "Vamos confirmar que você é humano" + 2FA por e-mail, é a dona quem resolve (ver Credenciais).
 
 ## Cronômetro do checkout: tipo "Quantidade de tempo" é por visitante
 
