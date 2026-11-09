@@ -11,7 +11,7 @@ const config = { ...loadConfig(), logLevel: 'info' };
 const log = createLogger({ level: 'info', dir: config.stateDir + '/logs' });
 const ctx = { config, log, session: new BrowserSession(config, log), jobs: new JobStore(config.stateDir + '/jobs'), lock: new Mutex() };
 const [pf, img, out, send] = process.argv.slice(2);
-const r = await generateMedia(ctx, { kind: 'video', prompt: fs.readFileSync(pf, 'utf8').trim(), model: 'omni-flash', ratio: '9:16', duration: 8, count: 1,
+const r = await generateMedia(ctx, { kind: 'video', prompt: fs.readFileSync(pf, 'utf8').trim(), model: 'omni-flash', ratio: '9:16', duration: Number(process.env.DURATION ?? 8), count: 1,
   referenceImages: [img], projectUrl: 'https://flow.google.com/project/86d60ee4-ac82-4636-a480-0951aaf1fb82', outputDir: out, autoConfirm: send === 'send', resume: false, jobId: undefined, editMode: false });
 console.log(JSON.stringify(r, null, 1));
 process.exit(0);

@@ -5,6 +5,8 @@ description: CAMINHO OFICIAL do Google Flow. Gera imagem e vídeo no Google Flow
 
 # Google Flow pelo MCP google-flow — CAMINHO OFICIAL (desde 07/11/2026, ordem da dona)
 
+> **LEIA PRIMEIRO o `GUIA POR SITUAÇÃO (09/11/2026)` no fim deste arquivo** — diz o que fazer conforme o que aparece na tela. As seções antigas continuam valendo, exceto onde o guia as corrige.
+
 **Toda geração no Flow começa aqui.** A `flow-video-playwright` (flow.sh + gflow) é a **reserva**: usar só quando
 este caminho falhar (MCP fora do ar, `UI_NOT_FOUND` que não dá para corrigir na hora, login do Chrome do MCP
 caído sem a dona disponível) e dizer à dona que caiu na reserva. Exceção: scripts que já chamam o `flow.sh` sozinhos
@@ -138,3 +140,39 @@ consertar o MCP — erro. **Corrigido em `~/.local/share/google-flow-mcp` (branc
 - **O servidor MCP em execução só enxerga o `dist/` novo depois de reconectar** (`/mcp` → reconnect google-flow, ou sessão nova). Depois disso `flow_generate_video`
   com `reference_images:[jpg]`, `auto_confirm:false` (prévia) e `true` (envia) funciona direto.
 - Ritmo (dona): **um envio por vez**, ≥2 min entre envios; se der "atividade incomum" não martelar: recarregar e tentar no máximo 2×, depois parar e avisar.
+
+### Ritmo humano no MCP (dona, 09/11/2026) — `src/flow/human.ts`
+O MCP agora age como pessoa: pausa aleatória antes de cada passo ("olhar a tela"), mouse desliza até o alvo (`humanClick`: scroll, move em 12–26 passos,
+hesita, pressiona 60–140 ms, espera), digitação em blocos de 60 caracteres com 12–38 ms entre teclas (`humanType`, nada de `insertText` instantâneo),
+re-leitura do prompt (1,5–3 s) antes de enviar e clique humano no botão `Iniciar geração`. Uma prévia (`auto_confirm:false`) leva ~90 s; um envio ~2 min.
+**Prévia NÃO envia por desenho** (para na tela pronta, 0 crédito) — para gerar, chamar de novo com `auto_confirm:true` (ou `send` no teste standalone).
+
+
+---
+
+## GUIA POR SITUAÇÃO (09/11/2026) — "se a tela é assim, faça assado"
+
+**Modelo (dona, 09/11):** hoje é **Omni Flash 1.1.2**. O seletor "Selecionar família de modelos" já mostrou "Omni 1.2 Flash" e "Omni 1.1 Flash" em momentos
+diferentes — confira o nome no seletor antes de enviar e não troque por Veo sem a dona pedir (trocar de modelo reseta ratio/duração/anexo). Créditos medidos
+(720p, x1): 6 s = 18 · 8 s = 24 · 10 s = 30 · 11 s = 36. Banner "Seus créditos estão acabando": conferir saldo antes de lote.
+
+| Se você vê… | Faça… |
+|---|---|
+| Composer com botão **`Gatilho de configurações`** (`Vídeo · 720p · 8s ▯ x1`) e botão `Iniciar geração` (UI direta, nov/2026) | MCP **corrigido** (`src/flow/composer.ts`, depois de `/mcp` reconnect): `flow_generate_video` com `reference_images`, `auto_confirm:false` → olhar print → `true`. Sem o MCP novo: scripts `scripts/*.cjs` (CDP 9333) |
+| Painel de chat **"Agente"** à direita + botão `tune` + card Approve (UI antiga) | caminho antigo do MCP (as seções acima) |
+| Erro `locator… hasText: /tune/` | UI nova com MCP velho: reconectar o MCP corrigido; nunca insistir no `flow.sh`/gflow (também quebrados: `maseQ answered 200 without a media id`, `no signed media URL`) |
+| Popover com **Frames** (aparecem caixas `Início` e `Fim`) | é para primeiro/último quadro. **Para animar a imagem de uma cena use `Elementos`** (dona, 09/11: "o nosso caso é Elementos") |
+| Popover em **Elementos** + imagem a animar | `+` (Adicionar elementos à caixa de comando) → `Enviar mídia` (filechooser) → esperar o `%` sumir → clicar a linha do arquivo → `Incluir no comando` → miniatura aparece na caixa |
+| A imagem é cena de **mãos/objeto, sem fala** (prancheta, agenda, capa) | prompt por segundo (0–2 s parado, 2–5 s gesto, 5–8 s ponto final), câmera fixa + push-in leve, "five fingers", impresso "sharp, legible, undistorted", fecha com "No speech, no music, no new text, no captions". 8 s |
+| A imagem é **pessoa falando** (UGC/selfie/carro) | colocar a fala EXATA entre aspas no prompt, "lips perfectly synced, Argentine Rioplatense Spanish, natural lively female voice"; ~6 s; proibir só música/texto/legenda (NÃO escrever "no speech"); descrever o gesto no fim ("on the last words she lifts the calendar") |
+| Quero **primeiro e último quadro** definidos | aí sim Frames (`Início`/`Fim`) — não é o caso dos takes de produto |
+| Print mostra **`Falha: Notamos uma atividade incomum…`** | (1) conferir o grid: o vídeo às vezes existe mesmo assim; (2) se não existe: **recarregar a página e tentar de novo** (regra da dona), no máx. 2×; (3) persistindo: parar, `flow.sh bloqueio`, avisar. Um envio por vez, ≥2 min entre eles |
+| Upload falha / `REFERENCE_NOT_ATTACHED` | reexportar a imagem: `magick in.png -strip -quality 92 up/in.jpg` (<1 MB), sem metadados |
+| Vídeo gerado, preciso do arquivo | MCP baixa sozinho (`…=mm,22,15`, 720p original, h264 720×1280 24 fps + faixa aac). Manual: abrir o tile (`/edit/<id>`) → `Baixar mídia` → **720p Tamanho original**. Não usar `flow_media_download` de vídeo (401) nem a `url` da grade (é miniatura mjpeg 288×512) |
+| A dona já gerou/baixou o clipe sozinha | **cancelar tudo que estiver agendado** (`TaskStop`) antes de qualquer envio — evita duplicar e gastar crédito |
+| Prévia (`auto_confirm:false`) "não enviou" | é por desenho: a prévia para na tela pronta (0 crédito). Enviar = chamar de novo com `true` |
+| Quero ver o que o Flow mostra | `flow_screenshot` / `flow_inspect` (leitura, sem custo) |
+
+**Imagem GPT que alimenta o Flow (aprendido hoje):** `gerar-1-imagem.sh` com a imagem FR do take + página/capa AR + (se tem pessoa) a personagem aprovada; prompt = "recriar a MESMA foto trocando só o impresso",
+A4 em escala real, espanhol com acento. Cloudflare "Confirme que é humano" no perfil gpt-luciola que o clique no checkbox não resolve → a dona passa o desafio / gera ela mesma.
+**Mostrar cada imagem à dona antes da próxima e antes do clipe** (regra `criativo`).
