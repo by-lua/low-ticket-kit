@@ -1,4 +1,5 @@
 #!/bin/bash
+mkdir -p /tmp/claude-1000  # rascunho temporário; recriado se o reinício apagar
 # Gera 1 imagem no ChatGPT (chat novo já aberto na sessão). Uso: gerar-imagem-gpt.sh <sessao> <prompt.txt> <saida.png> <ref1> [ref2...]
 # Sessão: S=$(~/.claude/bin/gpt-livre.sh <lane> | tail -1). Mecânica/erros: skill gpt-imagem-playwright.
 # uso: gen1.sh <session> <prompt.txt> <saida.png> <ref1> [ref2...]
@@ -24,14 +25,14 @@ for R in "$@"; do
   N0=$(echo "$CNT" | $AB eval --stdin | tr -dc '0-9')
   $AB upload 'input[type=file][accept="image/*,video/*"]' "$R" >/dev/null
   ok=0; for k in $(seq 1 40); do n=$(echo "$CNT" | $AB eval --stdin | tr -dc '0-9'); [ "${n:-0}" -gt "${N0:-0}" ] && { ok=1; break; }; sleep 3; done
-  [ $ok = 1 ] || { echo "FAIL anexo $R"; exit 1; }; ts "anexou $(basename $R)"
+  [ $ok = 1 ] || { echo "FAIL anexo $R"; exit 1; }; ts "anexou $(basename "$R")"
 done
 sleep 4
 TB=$($AB snapshot -i -c 2>/dev/null | grep -oiP 'textbox "Pergunte[^\]]*\[ref=\K[^\]]+' | head -1)
 $AB focus "@$TB" >/dev/null
-$AB keyboard inserttext "$(cat $P)" >/dev/null
+$AB keyboard inserttext "$(cat "$P")" >/dev/null
 sleep 2
-L=$(echo "(()=>(document.querySelector('div.ProseMirror')?.innerText||'').length)()" | $AB eval --stdin | tr -dc '0-9'); ts "composer=$L / $(wc -c <$P)"
+L=$(echo "(()=>(document.querySelector('div.ProseMirror')?.innerText||'').length)()" | $AB eval --stdin | tr -dc '0-9'); ts "composer=$L / $(wc -c <"$P")"
 PRE=$(echo "(()=>[...document.querySelectorAll('img')].map(i=>i.src).join('|'))()" | $AB eval --stdin | tr -d '"')
 cat <<'JS' | $AB eval --stdin
 (()=>{const el=document.querySelector('button[aria-label="Enviar"]')||document.querySelector('button[aria-label="Enviar prompt"]')||document.querySelector('.composer-submit-btn');
@@ -44,7 +45,7 @@ JS
 sleep 8
 L=$(echo "(()=>(document.querySelector('div.ProseMirror')?.innerText||'').length)()" | $AB eval --stdin | tr -dc '0-9'); ts "composer apos envio=$L"
 [ "${L:-1}" -lt 20 ] || { echo "FAIL nao enviou"; exit 1; }
-SIG=$(head -c 40 $P)
+SIG=$(head -c 40 "$P")
 own=$(cat <<EOF | $AB eval --stdin | tr -d '"'
 (()=>{const m=document.querySelectorAll('.bg-user-message');if(!m.length)return 'vazio';return (m[0].innerText||'').indexOf("$SIG")>=0?'MINHA':'ALHEIA';})()
 EOF
@@ -76,5 +77,5 @@ cat <<EOF | $AB eval --stdin | tr -d '"' | sed 's/^data:image\/[a-z]*;base64,//'
 (async()=>{const r=await fetch("$NEW");const b=await r.blob();return await new Promise(res=>{const f=new FileReader();f.onload=()=>res(f.result);f.readAsDataURL(b);});})()
 EOF
 NM=$(md5sum < "$OUT"); for R in "$@"; do [ "$(md5sum < "$R")" = "$NM" ] && { echo "FAIL baixou referencia"; exit 1; }; done
-ts "salvou $(python3 -c "from PIL import Image;print(Image.open('$OUT').size)")"
+ts "salvou $(python3 -c 'import sys;from PIL import Image;print(Image.open(sys.argv[1]).size)' "$OUT")"
 echo "(()=>location.href)()" | $AB eval --stdin

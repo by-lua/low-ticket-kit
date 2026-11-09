@@ -24,7 +24,7 @@ for d in "$V"/CRIATIVO-*; do n=$(basename "$d" | tr -dc 0-9)
   for f in "$d"/IMG/cena-*.png; do
     [ -f "$f" ] || { echo "FALTA $f"; falhou=1; continue; }
     h=$(md5sum "$f" | cut -d' ' -f1)
-    md5sum "$V"/_IMG/numes-$n-*.png 2>/dev/null | grep -q "^$h" || { echo "IMGFAIL $f não bate com nenhuma imagem aprovada de CRIATIVO-$n"; falhou=1; }
+    md5sum "$V"/_IMG/numes-"$n"-*.png 2>/dev/null | grep -q "^$h" || { echo "IMGFAIL $f não bate com nenhuma imagem aprovada de CRIATIVO-$n"; falhou=1; }
   done
 done
 [ $falhou = 0 ] && echo "BIND OK" || { echo "BIND FALHOU"; exit 1; }

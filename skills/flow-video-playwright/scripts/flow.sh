@@ -148,10 +148,10 @@ for tentativa in 1 2 3; do
   fi
   break
 done
-if [ $rc -ne 0 ] && grep -q "migrated.agent_only.submitted" "$LOG" && ! grep -qE "gate_approved|video_ready" "$LOG"; then
+if [ "$rc" -ne 0 ] && grep -q "migrated.agent_only.submitted" "$LOG" && ! grep -qE "gate_approved|video_ready" "$LOG"; then
   echo "flow.sh: o envio SAIU mas o take não foi aprovado/baixado (gate pendente — foi isso que gerou crédito 2x em 04/11)." >&2
   echo "  NÃO reenvie. Rode: flow_listar_projeto.py <perfil> <project_id> e baixe o clipe; se o 'Aprovar' estiver na tela, a usuária clica UMA vez." >&2
   depth=$(( $(cat "$STATE/bloqueio-ate" 2>/dev/null || echo 0) ))
   [ "$depth" -lt $(( $(date +%s) + 600 )) ] && echo $(( $(date +%s) + 600 )) > "$STATE/bloqueio-ate"
 fi
-cat "$LOG"; rm -f "$LOG"; exit $rc
+cat "$LOG"; rm -f "$LOG"; exit "$rc"

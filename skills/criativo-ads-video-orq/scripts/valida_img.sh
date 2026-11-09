@@ -9,7 +9,7 @@ D=$(ffprobe -v error -show_entries stream=width,height -of csv=p=0 "$IMG")
 N=$(echo "$IMG" | grep -oP 'CRIATIVO-\K[0-9]+')
 BASE=$(echo "$IMG" | sed 's|/CRIATIVO-.*||')
 H=$(md5sum "$IMG" | cut -d' ' -f1)
-MATCH=$(md5sum "$BASE"/_IMG/numes-$N-*.png 2>/dev/null | grep -c "^$H")
+MATCH=$(md5sum "$BASE"/_IMG/numes-"$N"-*.png 2>/dev/null | grep -c "^$H")
 [ "$MATCH" -ge 1 ] || { echo "IMGFAIL: $IMG nao bate com nenhuma imagem aprovada de CRIATIVO-$N"; exit 1; }
-NOME=$(md5sum "$BASE"/_IMG/numes-$N-*.png 2>/dev/null | grep "^$H" | head -1 | sed 's|.*/||')
+NOME=$(md5sum "$BASE"/_IMG/numes-"$N"-*.png 2>/dev/null | grep "^$H" | head -1 | sed 's|.*/||')
 echo "IMGOK $(basename "$IMG") = $NOME"

@@ -32,7 +32,7 @@ if [ "$1" = "--esgotou" ]; then
   if [ -n "$ate" ]; then fim=$(date -d "$ate" +%s); [ "$fim" -le "$(date +%s)" ] && fim=$((fim+86400))
   else fim=$(date +%s); fim=$(( fim + 4*3600 )); fi
   echo "$fim" > "$MARCA_DIR/$conta"
-  echo "conta $conta marcada sem cota ate $(date -d @$fim +%H:%M)" >&2; exit 0
+  echo "conta $conta marcada sem cota ate $(date -d "@$fim" +%H:%M)" >&2; exit 0
 fi
 
 esgotada(){ local f="$MARCA_DIR/$1"; [ -f "$f" ] && [ "$(cat "$f")" -gt "$(date +%s)" ]; }
@@ -56,7 +56,7 @@ ORDEM=$(awk '$1 !~ /^#/ && NF>=3 {print $1}' "$LISTA" | sort -u)
 if [ -n "$GPT_CONTA" ]; then ORDEM=$(printf '%s\n' "$GPT_CONTA" $ORDEM | sort -u -k1,1 --stable 2>/dev/null | awk -v p="$GPT_CONTA" 'NR==1{next}1{print}END{print p}'); fi
 
 for conta in $ORDEM; do
-  if esgotada "$conta"; then echo "pulando conta $conta (sem cota ate $(date -d @$(cat "$MARCA_DIR/$conta") +%H:%M))" >&2; continue; fi
+  if esgotada "$conta"; then echo "pulando conta $conta (sem cota ate $(date -d "@$(cat "$MARCA_DIR/$conta")" +%H:%M))" >&2; continue; fi
   for par in $(awk -v c="$conta" '$1 !~ /^#/ && NF>=3 && $1==c{print $2":"$3}' "$LISTA"); do
     perfil=${par%%:*}; porta=${par##*:}
     estado=$(~/.claude/bin/browsers.sh status 2>/dev/null | awk -v p="$perfil" '$1==p{print $3}')

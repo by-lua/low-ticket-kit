@@ -149,16 +149,15 @@ agent-browser --session $S snapshot -i -c | grep -iE "Novo chat|Projetos|Fixada"
 # se aparecer "Projetos/Fixada": clique em "Novo chat" e espere
 ```
 
-> **⚠️ 25/10/2026 — caminho de arquivo: SEMPRE absoluto, e o diretório de trabalho NÃO pode ter
-> espaço.** Dois erros medidos no Mapa del Tarot AR, os dois silenciosos:
+> **⚠️ Caminho de arquivo: SEMPRE absoluto. Espaço no caminho é PERMITIDO (09/11/2026).**
 > 1. **`upload` com caminho relativo** resolve contra o cwd do *agent-browser*, não o do shell →
->    sobe arquivo de 0 byte e o único sinal na UI é o toast vermelho **"O arquivo está vazio"**
->    (o comando responde `✓ Done` do mesmo jeito). Passe caminho absoluto.
-> 2. **`gerar-imagem-gpt.sh` quebra se o caminho tiver espaço** (`PROJETOS - INTERNOS`):
->    `$P` não é citado no script (`cat $P`, `head -c 40 $P`) → `cat` falha, o `inserttext` vai
->    vazio, o script responde `FAIL dono`. Rode o script de dentro de uma pasta **sem espaço**
->    (ex.: `/tmp/<oferta>/p5`) com os anexos também em `/tmp`, e mova o resultado pro projeto
->    depois.
+>    sobe arquivo de 0 byte (toast vermelho **"O arquivo está vazio"**, comando diz `✓ Done`).
+>    Passe caminho absoluto (o `gerar-1-imagem.sh` já faz `realpath` em prompt, saída e refs).
+> 2. **Trabalhe DENTRO do projeto** (`OFERTAS/<slug>/produto/lote-imagens/<lote>/`: prompts, refs,
+>    `bruto/`), mesmo com `PROJETOS - INTERNOS` no caminho. **Nunca `/tmp`, scratchpad ou `~/work`**:
+>    reinício apagou páginas do Calendario AR. A regra antiga (25/10) de usar `/tmp` era por um
+>    script velho sem aspas — revogada. Script que quebrar com espaço: corrija (aspas, `sys.argv`),
+>    regra global em `~/.claude/CLAUDE.md` → "Caminho com espaço".
 >
 > **`gpt-livre.sh` pode devolver perfil com 1 aba `/c/` ocupada** (a checagem dele só descarta
 > com >1). Sintoma: você anexa e a tela mostra outro chat, com prompt de outra oferta. Antes de

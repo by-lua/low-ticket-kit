@@ -1,4 +1,5 @@
 #!/bin/bash
+[ -x /tmp/claude-1000/gen.sh ] || { echo "FAIL gen.sh sumiu do /tmp (reinício). Script do Hub, Hub desativado desde 02/10/2026."; exit 1; }
 # retoma sozinha: pula cena que ja tem clipe em VIDEO/
 P="~/Documentos/TRAMPO/PROJETOS/WORKING/PROJETOS - INTERNOS/NUMEROLOGIA/NUMERO-MESTRE/ANUNCIO/22-08-ES"
 for n in 52 53 54 55 56; do
