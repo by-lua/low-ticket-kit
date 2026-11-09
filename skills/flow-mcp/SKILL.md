@@ -81,3 +81,60 @@ Projeto: reuse um projeto por leva. Criar projeto novo: `~/.claude/skills/flow-v
 - Correção do anexo (`db34b65`) testada 07/11 com imagem real: a referência certa entrou no preparo e no envio.
   Vídeo com frame inicial depois da correção ainda não testado.
 - Textos pt-BR de "gerando", política e Scene Builder não foram vistos na tela; o primeiro uso de cena confere.
+
+---
+
+## ATUALIZAÇÃO 09/11/2026 — UI nova do Flow: o MCP `flow_generate_video` QUEBRA; use o caminho manual por CDP (testado, gerou 2 clipes)
+
+**Sintoma:** `flow_generate_video` → `INTERNAL ... waiting for locator('button').filter({ hasText: /tune/ })`. O Flow trocou o painel de
+configurações: não há mais botão "tune"; é o botão **"Gatilho de configurações"** (texto `Vídeo · 720p · 8s ⟂ x1`). O `flow.sh`/gflow
+também falha na UI nova (`maseQ answered 200 without a media id` no upload; `no signed media URL` depois de gerar). Não insista nos dois:
+vá direto ao caminho manual abaixo (mesmo Chrome do MCP, porta 9333, mesma conta).
+
+**Modos do composer (dona, 09/11 — erro meu foi trocar):**
+- **Elementos = o NOSSO caso** (imagem da cena anexada como elemento/referência). **Frames = só Início/Fim** (primeiro/último quadro): não usar.
+- Abrir `Gatilho de configurações`: Vídeo · **Elementos** · 9:16 · Omni 1.2 Flash · 720p · Duração (slider; `input[aria-label=Duração]` = segundos−3,
+  seta ←/→ muda 1 s: 6 s=18 créditos, **8 s=24**, 10 s=30, 11 s=36) · x1.
+
+**Receita (scripts em `~/.claude/skills/flow-mcp/scripts/*.cjs`, usam `playwright-core` de `~/.local/share/google-flow-mcp/node_modules` via
+`connectOverCDP('http://127.0.0.1:9333')`; caminho de arquivo sempre por argv, espaço ok):**
+1. `flow_project_open` (projeto novo: `flow.sh novo-projeto`). Converter a imagem: `magick in.png -strip -quality 92 up/in.jpg`.
+2. `flow-prep.cjs <jpg>`: clica `+` (Adicionar elementos à caixa de comando) → `Enviar mídia` (intercepta o filechooser) → sobe a imagem.
+   (O input de arquivo só existe depois do clique; `agent-browser upload` não serve.)
+3. Com o seletor aberto: `flow_inspect` clicar no 1º item da lista (`at [820,352]`) e depois `target: "Incluir no comando"` — a miniatura aparece no composer.
+   (O getByText/locator de lista do Playwright travou; o `flow_inspect` por coordenada/alvo funcionou.)
+4. `flow-send.cjs <prompt.txt> <shot.jpg>` digita o prompt (Ctrl+A, Delete, `keyboard.insertText`) e tira print SEM enviar → conferir miniatura + texto +
+   `24 créditos`. Depois o mesmo com `send` como 3º arg clica `Iniciar geração`.
+5. Esperar ~100 s. `flow_project_open` (o vídeo novo é o 1º tile; o card `Falha` pode aparecer ao lado, ver abaixo).
+6. Abrir o tile (`flow_inspect action=click at=[320,200]`, vai pra `/edit/<id>`) e `flow-baixar.cjs <saida.mp4>`: `Baixar mídia` → **"720p Tamanho original"**
+   (dispara o evento `download`). **`flow_media_download` de vídeo dá HTTP 401 e a `url` do `flow_project_open` é só miniatura mjpeg 288×512** — não use.
+7. Saída real: h264 **720×1280, 24 fps, 8 s, com faixa aac** (sem fala se o prompt proibir). Entra como veio (regra do 24 fps).
+   QA: 4 quadros com `ffmpeg -vf "fps=0.5,scale=240:-1,tile=4x1"` e conferir gesto, texto do impresso e nada em outro idioma.
+
+**Prompt que funcionou (Omni Flash, Elementos):** "The attached image coming to life: … exactly as in the starting frame. Camera fixed, overhead, only a very slow,
+subtle push-in. 0-2 s … 2-5 s … 5-8 s … Continuity: … printed page stays perfectly sharp, legible and undistorted … No speech, no music, no new text." — copiar
+o gesto do clipe de referência (frames do clipe antigo com ffmpeg `tile`) e descrever por segundo.
+
+**Bloqueio — card `Falha: Notamos uma atividade incomum. As extensões do navegador…`:** apareceu em 2 de 3 envios (um deles depois de o vídeo já existir no
+grid, então confira o grid antes de reenviar!). A regra 5 manda `flow.sh bloqueio` (45 min). Depois dele o ChatGPT do mesmo dia caiu em Cloudflare
+"Confirme que é humano" que o clique no checkbox não resolveu. Ritmo seguro: 1 envio a cada ≥2 min, no máx. 8/30 min; não misturar gflow, MCP e
+Playwright ao mesmo tempo (as 3 tentativas do gflow antes podem ter pesado). Banner "Seus créditos do Google Flow estão acabando" já apareceu: conferir saldo
+antes de lote.
+
+## ATUALIZAÇÃO 09/11/2026 (noite) — MCP CORRIGIDO para a UI nova (use o MCP, não o caminho manual)
+
+Por que o MCP não estava sendo usado: o fork dirigia o composer ANTIGO (painel de chat "Agente", botão `tune`, card Approve). O Flow passou a ter caixa de
+comando direta; `flow_generate_video` morria em `locator('button').filter({hasText:/tune/})`. Eu caí no caminho manual (CDP + playwright) em vez de
+consertar o MCP — erro. **Corrigido em `~/.local/share/google-flow-mcp` (branch `pt-br-labels`, `src/flow/composer.ts`, `labels.ts`, `lib/errors.ts`):**
+- detecta UI direta pelo botão `Gatilho de configurações`; `applyDirectSettings`: Vídeo/Imagem, **Elementos** quando há imagem de referência, ratio, `xN`,
+  duração (setas ←/→ no slider até o botão mostrar `Ns`); o prompt entra **cru** (sem "Generate one 8-second…") com Ctrl+A/Delete/insertText;
+  envio = botão `Iniciar geração` (Enter só quebra linha); sem card de aprovação; thumbnails contados dentro do container da caixa.
+- **Download do vídeo já estava certo no MCP:** `…/asb/<token>=mm,22,15` (720p original) via `context.request.get` — a url nua é só poster (foi o que eu baixei errado).
+- **Regra da dona (09/11): em falha comum, recarregar a página e tentar de novo** → `generateMedia` faz até 3 tentativas com `page.reload()` para
+  `UNUSUAL_ACTIVITY` (novo código; card "Falha: atividade incomum"), `UI_NOT_FOUND`, `SEND_FAILED`, `REFERENCE_NOT_ATTACHED`. Se o vídeo já apareceu no grid apesar do card
+  de falha, ele é baixado (não reenvia → não gasta crédito em dobro). Cada geração começa com reload (composer limpo).
+- Testado SEM gastar crédito (`auto_confirm:false`): reload → settings → upload da referência → prompt digitado → tela pronta, 26 s. Teste standalone:
+  `node ~/.claude/skills/flow-mcp/scripts/flow-mcp-test.mjs <prompt.txt> <img.jpg> <outdir> [send]` (importa o `dist/` direto, sem reiniciar o servidor).
+- **O servidor MCP em execução só enxerga o `dist/` novo depois de reconectar** (`/mcp` → reconnect google-flow, ou sessão nova). Depois disso `flow_generate_video`
+  com `reference_images:[jpg]`, `auto_confirm:false` (prévia) e `true` (envia) funciona direto.
+- Ritmo (dona): **um envio por vez**, ≥2 min entre envios; se der "atividade incomum" não martelar: recarregar e tentar no máximo 2×, depois parar e avisar.
