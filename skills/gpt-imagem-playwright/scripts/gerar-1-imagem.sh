@@ -12,7 +12,7 @@ TB=$(agent-browser --session "$S" snapshot -i -c 2>/dev/null | grep -oiP '(textb
 echo "(()=>{const t=document.querySelector('div.ProseMirror');t.innerHTML='<p></p>';t.dispatchEvent(new Event('input',{bubbles:true}));return t.innerText.length})()" | agent-browser --session "$S" eval --stdin >/dev/null; sleep 1
 agent-browser --session "$S" focus "@$TB" >/dev/null
 agent-browser --session "$S" keyboard inserttext "$(cat "$P")" >/dev/null; sleep 2
-CL=$(echo "(()=>document.querySelector('div.ProseMirror').innerText.trim().length)()" | agent-browser --session "$S" eval --stdin | tr -dc '0-9'); PL=$(tr -d '\n' < "$P" | wc -m)
+CL=$(echo "(()=>{const t=document.querySelector('div.ProseMirror');return t?t.innerText.replace(/\\s+/g,'').length:-1})()" | agent-browser --session "$S" eval --stdin | tr -dc '0-9'); PL=$(tr -d '[:space:]' < "$P" | wc -m)
 [ $(( CL - PL )) -lt 15 ] && [ $(( PL - CL )) -lt 15 ] || { echo "FAIL composer com lixo (composer=$CL prompt=$PL)"; exit 1; }
 cat <<'JS' | agent-browser --session "$S" eval --stdin >/dev/null
 (()=>{const el=document.querySelector('button[aria-label="Enviar"]')||document.querySelector('button[aria-label="Enviar prompt"]')||document.querySelector('.composer-submit-btn');
