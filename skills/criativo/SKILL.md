@@ -62,6 +62,21 @@ Depois: subir e rodar → `metaads-kevones` (tráfego) · `meta-ads-mcp`.
 Referências herdadas das skills antigas (detalhe que as filhas citam): `references/` e `scripts/` desta skill.
 
 ## 3. Regras que valem em toda peça (só estas; o resto mora na filha)
+- **Adaptar criativo = refazer CENA a CENA com o NOSSO material (regra fixa da dona, 09/11/2026).** Vale pra toda
+  adaptação: criativo nosso levado pra outro idioma/mercado (ex.: Calendrier Magique FR → Calendario Mágico AR) e
+  criativo de concorrente modelado pra nossa oferta, no mesmo idioma ou em outro. O pedido "adapta/modela esse criativo"
+  já significa isto, sem a dona precisar explicar:
+  1. **Cada cena/take do original é refeita.** O frame/imagem da cena entra como referência de COMPOSIÇÃO (ângulo,
+     enquadramento, mãos, objetos, cenário, luz) e todo produto que aparece vira o **nosso material oficial do mercado**
+     (capa, páginas, bônus, telas do painel — `OFERTAS/<slug>/ATIVOS.md`), com o texto impresso/na tela no idioma do mercado.
+  2. **Vídeo:** imagem inicial do take refeita no GPT (frame original + nosso material anexados) → clipe no Flow com o
+     **mesmo movimento** do original. Gravação de tela (painel, app) é regravada com o nosso material.
+  3. **Fala e texto:** transcrição/roteiro, legenda, textos na peça e `anuncio.md` adaptados — idioma, produto, preço,
+     moeda; estrutura, ordem e tom do original ficam.
+  4. **Pessoa:** sempre nova (regra de pessoa de referência abaixo).
+  - **Proibido:** reaproveitar clipe/imagem em que aparece produto, página ou texto de outro idioma ou de outra oferta;
+    trocar só narração/legenda por cima de cena antiga. Ex. certo: take "Janvier na prancheta" (FR) → mesma foto, mesmas
+    mãos, com a página "Enero" AR na prancheta → clipe novo no Flow.
 - Ficha aprovada antes de gerar qualquer imagem ou vídeo.
 - **Montar a 24 fps (nativo do Flow/Veo); o clipe do Flow entra como veio, sem converter nem interpolar (`ctv-edicao` Bloco F).**
 - Todo formato que tem edição puxa de `ctv-edicao`; nenhum formato reescreve regra de edição.
@@ -70,6 +85,14 @@ Referências herdadas das skills antigas (detalhe que as filhas citam): `referen
   referência (Pinterest, print, foto) é só inspiração de estilo — nunca gera a mesma pessoa. Cria persona
   NOVA parecida (tom de pele, cor/tipo de cabelo, vibe), rosto diferente da referência. Vale pra qualquer
   geração de persona (GPT imagem, Flow) em qualquer formato. Não precisa a dona repetir a cada pedido.
+  **Fluxo em 2 passos (regra da dona, 09/11/2026):**
+  1. **Gerar a NOSSA personagem:** anexa a foto real da dona no GPT e pede uma **pessoa parecida, variação dela**
+     (mesmo tipo: idade, tom de pele, cabelo, vibe), **mudando o rosto** de forma clara (formato do rosto, nariz, boca,
+     olhos, maçãs) — "a new, different woman of the same type, not the same person, clearly changed facial features".
+     Retrato simples, luz natural. Conferir lado a lado: tem que ser outra pessoa. Dona aprova → salva em
+     `criativos/PERSONAGEM/<slug>-personagem-base.png`.
+  2. **Montar as cenas com a NOSSA personagem:** daí em diante a referência é só a imagem da nossa personagem
+     (+ frame/take da cena original como composição + nosso produto). **A foto real nunca mais entra** em take nenhum.
 - **Peça com personagem e sem referência = entregar buscas de Pinterest (regra fixa, 05/11/2026):** na ficha da leva (C2),
   toda peça que tem pessoa/expert/UGC e ainda não tem foto de referência aprovada recebe **3 a 5 termos de busca do
   Pinterest**, por idioma do mercado-alvo, prontos pra copiar, um por linha. Cobrem: tipo de pessoa (idade, etnia,

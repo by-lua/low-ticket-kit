@@ -5,6 +5,8 @@ description: Modela criativos de concorrente (ou de oferta vizinha) pra nossa of
 
 # ctv-modelar-concorrente — ideias a partir de criativo dos outros
 
+> **Regra da dona (09/11/2026) — adaptar = refazer cena a cena com o NOSSO material:** cada cena/take do original vira referência de composição e é refeita com o nosso produto oficial do mercado (ATIVOS.md) e texto no idioma do mercado; vídeo = imagem do take no GPT → clipe no Flow com o mesmo movimento; fala, legenda e anuncio.md adaptados; pessoa nova. Nunca reaproveitar cena com produto/texto de outro idioma ou oferta. Texto completo: skill `criativo` § 3.
+
 **Entrada:** link da Biblioteca do anunciante (o original ou uma oferta vizinha — ex.: atividades pra idosos →
 nossa de Alzheimer), ou vídeos/imagens que a dona mandou. `OFERTA.md` da nossa oferta.
 **Saída:** seção "Do concorrente" em `criativos/IDEIAS-<AAAA-MM-DD>.md`.

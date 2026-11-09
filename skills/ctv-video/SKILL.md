@@ -5,6 +5,8 @@ description: Produz criativo de vídeo do sistema LOW-TICKET a partir da ficha d
 
 # ctv-video — vídeo
 
+> **Regra da dona (09/11/2026) — adaptar = refazer cena a cena com o NOSSO material:** cada cena/take do original vira referência de composição e é refeita com o nosso produto oficial do mercado (ATIVOS.md) e texto no idioma do mercado; vídeo = imagem do take no GPT → clipe no Flow com o mesmo movimento; fala, legenda e anuncio.md adaptados; pessoa nova. Nunca reaproveitar cena com produto/texto de outro idioma ou oferta. Texto completo: skill `criativo` § 3.
+
 **Entrada:** linha aprovada da `FICHA-LEVA` com o **roteiro completo** (gancho + desenvolvimento + CTA) ·
 `OFERTA.md` · material do entregável (`criativos/MATERIAL-ENTREGAVEL/`, gravações de tela).
 **Saída:** `criativos/<MERCADO>/CRIATIVO-N/` — vídeo final 9:16 + `anuncio.md`; intermediários em `intermediarios/`.
