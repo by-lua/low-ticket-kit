@@ -24,7 +24,7 @@ Ler inteiro antes do primeiro `ffmpeg`/`remotion`. Cada linha já custou uma ver
 ## 1 · Ordem de montagem (nunca pula)
 
 1. **Roteiro completo** escrito (hook → mecanismo → CTA) — vem do modo + `criativo/references/ROTEIRO-POR-FORMATO.md`.
-2. **Voz** gerada (`narracao-hub-tts`, voz fixa da leva; conferir gênero com `vozes.sh` — Rocha é masculina) e/ou **clipe de personagem** (Flow) com a fala.
+2. **Voz** gerada (VoiceStudio local → senão NaturalReader; voz fixa da leva; conferir o gênero da voz) e/ou **clipe de personagem** (Flow) com a fala.
 3. **Alinhar** a voz: `scripts/legenda_align.py` → `words.json` (tempo de CADA frase).
 4. **Ler frase por frase o que a fala diz** e só então escolher a cena de cada trecho.
 5. **Montar** no Remotion (layouts + transições + legenda), ffmpeg só mede/normaliza/mixa.
@@ -104,7 +104,7 @@ de status/URL antes de compor. Imagem parada com Ken Burns nunca é cena de prod
 ## 6 · Áudio
 
 - **Uma única fonte de voz** (nunca voz embutida de render anterior + voz nova = eco/fase).
-- Voz final sempre a NOSSA (`narracao-hub-tts`), mesmo que o clipe do Flow tenha saído com voz dele.
+- Voz final sempre a NOSSA, uma voz só no vídeo. Clipe do Flow com fala da personagem: clonar essa voz no VoiceStudio e narrar o resto com ela (ou regravar a fala com a voz da leva).
 - **Trilha instrumental contínua -18 a -22 dB**, do 1º frame até o fim da fala do CTA (não troca no meio);
   **para com fade de ~0,3 s quando o card entra — card é em silêncio** (§7, dona 27/10/2026).
   Banco: `OFERTAS/mapa-do-tarot/criativos/BR/_ASSETS/trilhas/`.
@@ -148,3 +148,10 @@ de status/URL antes de compor. Imagem parada com Ken Burns nunca é cena de prod
 - [ ] Gravações sem selo "EM BREVE/EM ATUALIZAÇÃO/In update", sem URL, sem barra do navegador; material na tela até a 3ª frase.
 - [ ] `cropdetect` 1080:1920 em cada b-roll; `freezedetect` zero; sem barra do navegador.
 - [ ] Assistir como cliente vendo pela 1ª vez: faz sentido? fica bom? Só então "pronto".
+
+## Voz (regra da dona, 09/11/2026)
+Ordem fixa pra narração de criativo:
+1. **VoiceStudio local** (GitHub, grátis, uso comercial ok) — AppImage `~/Applications/VoiceStudio/VoiceStudio-*-linux-x64.AppImage`;
+   motores OmniVoice / CosyVoice 3 (espanhol e +600 idiomas), clonagem de voz.
+2. Se não der (qualidade, idioma, erro): **NaturalReader online** (naturalreaders.com/online).
+- **Hub/NinjaVoice (`narracao-hub-tts`) e MiniMax deixaram de ser o padrão.** Só com pedido da dona.
