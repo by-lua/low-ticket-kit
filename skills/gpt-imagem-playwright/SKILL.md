@@ -159,6 +159,12 @@ agent-browser --session $S snapshot -i -c | grep -iE "Novo chat|Projetos|Fixada"
 >    script velho sem aspas — revogada. Script que quebrar com espaço: corrija (aspas, `sys.argv`),
 >    regra global em `~/.claude/CLAUDE.md` → "Caminho com espaço".
 >
+> **`gpt-luciola` (9297, conta da Luciola):** só dentro do projeto Dona. Desde 09/11/2026 o
+> `gerar-1-imagem.sh` força a URL do projeto Dona sempre que `GPT_S` começa com `gpt-luciola`
+> (nunca abre chatgpt.com raiz). Uso: `~/.claude/bin/lane.sh take gpt-luciola <lane>` e depois
+> `export GPT_S=gpt-luciola-<lane> GPT_TAB=<lane>`. Se ficar em
+> "Um momento…" (Cloudflare) por >30 s: `~/.claude/bin/browsers.sh gpt-luciola` (sobe de novo) e repete.
+>
 > **`gpt-livre.sh` pode devolver perfil com 1 aba `/c/` ocupada** (a checagem dele só descarta
 > com >1). Sintoma: você anexa e a tela mostra outro chat, com prompt de outra oferta. Antes de
 > gerar, `curl -s http://127.0.0.1:<porta>/json/list` e confirme que **nenhuma** aba está em

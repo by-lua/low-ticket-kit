@@ -1,7 +1,10 @@
 #!/bin/bash
 # uso: gen.sh <prompt.txt> <saida.png> <ref.jpg>
 S=${GPT_S:-gpt-empresab-calendrier}; agent-browser --session "$S" tab "${GPT_TAB:-calendrier}" >/dev/null 2>&1 || { echo "FAIL sem aba propria (rode: lane.sh take gpt-empresab calendrier)"; exit 1; }; P=$(realpath "$1"); OUT=$(realpath -m "$2"); REF=$3; REFS=(); for _r in "${@:3}"; do REFS+=("$(realpath "$_r")"); done; REF=${REFS[0]}; T0=$(date +%s); ts(){ echo "[$(( $(date +%s)-T0 ))s] $1"; }
-agent-browser --session "$S" navigate "https://chatgpt.com/" >/dev/null 2>&1; sleep 5
+# gpt-luciola SÓ dentro do projeto Dona (ordem da dona 22/10/2026); GPT_URL sobrescreve
+DONA="https://chatgpt.com/g/g-p-6ada1c6b6ed48191b086ebf1599d1c2a/project"
+case "$S" in gpt-luciola*) URL="$DONA";; *) URL="${GPT_URL:-https://chatgpt.com/}";; esac
+agent-browser --session "$S" navigate "$URL" >/dev/null 2>&1; sleep 5
 m=$(echo "(()=>document.querySelectorAll('.bg-user-message').length)()" | agent-browser --session "$S" eval --stdin | tr -dc '0-9'); [ "$m" = "0" ] || { echo "FAIL aba suja"; exit 1; }
 CNT="(()=>[...document.querySelectorAll('img')].filter(i=>i.src.startsWith('data:image')||i.src.includes('backend-api')||i.src.startsWith('blob:')).length)()"
 N0=$(echo "$CNT" | agent-browser --session "$S" eval --stdin | tr -dc '0-9')

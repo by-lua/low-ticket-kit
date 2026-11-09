@@ -110,7 +110,7 @@ export default function CheckoutHotmartStyle() {
   const [email, setEmail] = useState("");
   const [metodoMx, setMetodoMx] = useState<MetodoMx>("spei");
   const [metodoAr, setMetodoAr] = useState<MetodoAr>("mercadopago");
-  const [bumps, setBumps] = useState<Set<string>>(() => new Set(BUMP_SKUS)); // pré-marcado
+  const [bumps, setBumps] = useState<Set<string>>(() => new Set()); // bumps começam desmarcados (regra da dona)
   const [erro, setErro] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
   const [arte, setArte] = useState(true);
@@ -255,7 +255,7 @@ export default function CheckoutHotmartStyle() {
                 {erro && <p role="alert" className="text-sm text-red-600">{erro}</p>}
               </div>
 
-              {/* 5. Order bump — checkbox pré-marcado, foto real, copy validado contra o produto real */}
+              {/* 5. Order bump — checkbox DESMARCADO por padrão, foto real, copy validado contra o produto real */}
               {bumpProducts.length > 0 && (
                 <div className="grid gap-2">
                   <p className="text-sm font-medium text-neutral-900">Aprovecha y suma:</p>

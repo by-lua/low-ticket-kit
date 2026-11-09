@@ -1,6 +1,6 @@
 ---
 name: checkout-premium
-description: Monta uma página de checkout própria com layout de alta conversão (barra de urgência full-bleed, banner colado no card, formulário mínimo só-email, order bump com foto real e checkbox pré-marcado, pagamento lado a lado adaptado ao gateway do país, prova social com fotos/nomes reais, notificação fake de compra, popup de saída) dentro de um projeto Next.js/React já existente. Use sempre que o usuário pedir "checkout premium", "checkout de alta conversão", "monta um checkout pra [produto]", pedir pra clonar/replicar um print de checkout (Hotmart ou concorrente), ou pedir para adicionar order bump / barra de urgência / prova social / notificação de compra fake a um checkout já existente. Também use quando o usuário mandar um print de checkout pedindo pra "fazer igual" ou "uma versão disso aqui".
+description: Monta uma página de checkout própria com layout de alta conversão (barra de urgência full-bleed, banner colado no card, formulário mínimo só-email, order bump com foto real e checkbox DESMARCADO, pagamento lado a lado adaptado ao gateway do país, prova social com fotos/nomes reais, notificação fake de compra, popup de saída) dentro de um projeto Next.js/React já existente. Use sempre que o usuário pedir "checkout premium", "checkout de alta conversão", "monta um checkout pra [produto]", pedir pra clonar/replicar um print de checkout (Hotmart ou concorrente), ou pedir para adicionar order bump / barra de urgência / prova social / notificação de compra fake a um checkout já existente. Também use quando o usuário mandar um print de checkout pedindo pra "fazer igual" ou "uma versão disso aqui".
 ---
 
 # checkout-premium
@@ -70,8 +70,8 @@ De cima pra baixo, nesta ordem:
    nome/telefone pedem confiança antes da hora e derrubam conversão; a
    Hotmart só pede o essencial pra entregar o produto e fecha o resto depois.
    Capture o email cedo — ver seção "Não pule isto" #4.
-5. **Order bump** — card com checkbox **pré-marcado** (a pessoa desmarca se
-   não quiser, não o contrário), foto pequena (56×56 aprox.) do que está
+5. **Order bump** — card com checkbox **DESMARCADO por padrão, SEMPRE** (a pessoa
+   marca se quiser; nunca vem pré-marcado — regra da dona, 09/11/2026), foto pequena (56×56 aprox.) do que está
    sendo oferecido, título, descrição curta, preço riscado + com desconto.
    Ver seção "Não pule isto" #1 e #5 sobre a foto e o copy.
 6. **Forma de pagamento** — métodos lado a lado (`grid-cols-2`/`grid-cols-3`
