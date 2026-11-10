@@ -39,4 +39,5 @@ Texto principal · título · descrição curta · CTA sugerido. Garantia, vital
 - **Teste da troca:** trocando o nome do produto por outro, a frase ainda serve? Então é genérica — reescrever.
 - Idioma do mercado, natural (nunca tradução literal); acento conferido.
 
+Ângulo "atacar o normal" (comparação com o status quo, SaaS e low ticket): `criativo/references/ANGULO-COMPARACAO.md`.
 Detalhe e exemplos: `criativo/references/ROTEIRO-POR-FORMATO.md` · `criativo/references/texto-anuncio-por-angulo.md`.

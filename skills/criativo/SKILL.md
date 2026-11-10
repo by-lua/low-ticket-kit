@@ -61,6 +61,8 @@ Depois: subir e rodar → `metaads-kevones` (tráfego) · `meta-ads-mcp`.
 
 Referências herdadas das skills antigas (detalhe que as filhas citam): `references/` e `scripts/` desta skill.
 
+**Ângulo de comparação** (atacar o normal do mercado, não o concorrente; vale pra SaaS e low ticket): `references/ANGULO-COMPARACAO.md` — 4 partes do roteiro, 4 ganchos, checklist Meta, 4 referências, adaptação SaaS. Usar no C2 quando a ficha escolher esse ângulo.
+
 ## 3. Regras que valem em toda peça (só estas; o resto mora na filha)
 - **Adaptar criativo = refazer CENA a CENA com o NOSSO material (regra fixa da dona, 09/11/2026).** Vale pra toda
   adaptação: criativo nosso levado pra outro idioma/mercado (ex.: Calendrier Magique FR → Calendario Mágico AR) e

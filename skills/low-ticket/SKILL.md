@@ -118,6 +118,7 @@ Regras:
 - **Webhook de medição (Trackeador) com TODOS os eventos, em qualquer checkout** (Hotmart, Wiven, Mundpay, Zenith,
   GG, próprio): aprovada, recusada/cancelada, expirada, boleto/aguardando, atrasada, abandono, reembolso, chargeback.
   Só "aprovada" = tentativas somem do Trackeador. Regra da dona 09/11/2026. Entrega (`/painel`) segue só o que libera/tira acesso.
+- **Funil de upsell e order bump em TODA oferta de entrada (dona, 10/11/2026):** Básico, **Completo, Upgrade e Saída/popup** (e combos) têm cada um **funil de vendas ATIVO** (entrada → upsell → downsell → obrigado) e os **mesmos order bumps** no checkout, **inclusive a oferta de Saída**. O funil serve **cartão, PayPal, Apple Pay e Google Pay** (boleto/Pix desligados). Antes do tráfego e todo dia de tráfego: conferir pela API/tela da Hotmart (status do funil, bumps no checkout de cada `off=`, planos do app). Procedimento e script: `_skills/low-upsell-app/references/CHECKLIST-UPSELL-QUALQUER-OFERTA.md` § « Verificação POR OFERTA DE ENTRADA ». Caso: Calendrier FR, funil do Complet achado desligado em 10/11.
 - **Tráfego só depois do `low-gates-no-ar` inteiro**, inclusive o aviso de venda 2xx nos 2 destinos e o link
   do checkout levando a sessão. "Configurei" não é prova.
 - **Entregável nunca é HTML/código:** sempre imagem A4 do GPT com a referência visual. Item de fazer/imprimir

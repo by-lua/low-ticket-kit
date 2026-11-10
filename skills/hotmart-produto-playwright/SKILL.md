@@ -228,6 +228,13 @@ Vale pra todo produto (principal, bump, upsell, popup) e todo mercado. Substitui
 4. Conferir: reabrir a URL e ler o resumo (deve dizer `(+15)`), ou reabrir o modal e listar os toggles.
 5. `agent-browser open` na mesma sessão desloga às vezes; se cair em `sso.hotmart.com` com "Vamos confirmar que você é humano" + 2FA por e-mail, é a dona quem resolve (ver Credenciais).
 
+## Funil de vendas, upsell e order bump por oferta de entrada (regra da dona, 10/11/2026)
+- **Todas as ofertas de entrada** (Básico, Completo, Upgrade, Saída/popup, combos) precisam de **funil próprio ATIVO** e dos **mesmos order bumps**. Oferta de **Saída também leva bump** (desmarcado). Conferir: `Ferramentas → Funil de Vendas` (coluna Status) ou a API de leitura `GET https://api-vlc.hotmart.com/funnel/rest/v1/funnel/<id>` (`active`, `offerCreditCard`, `offerPaypal`, `offerApplePay`, `offerPix`, `offerBillet`) e `.../funnel/<id>/step`. Script pronto: `~/Documentos/TRAMPO/PROJETOS/WORKING/PROJETOS - INTERNOS/LOW-TICKET/_skills/low-upsell-app/scripts/conferir-funis-hotmart.js` (rodar com `agent-browser --session hotmart eval --stdin < script` na página `app.hotmart.com/tools/sales/funnel`; pega o JWT não expirado do storage).
+- **Formas de pagamento do funil:** cartão + PayPal + Apple Pay ligados; boleto e Pix desligados; Google Pay não é campo do funil — conferir liberado no produto (`tools/checkout/settings`). O produto do app tem de ter as mesmas formas do principal (resumo « (+15) »).
+- **Funil pode estar desligado sem aviso** (a Hotmart não registra quem/quando): no FR o funil do Complet estava Inativo em 10/11. Ligar = switch « Ativar » na lista de funis (confirmar com a dona antes) e reconferir pela API.
+- **Order bump de cada oferta:** abrir `https://pay.hotmart.com/<código do produto>?checkoutMode=10&off=<oferta>` e procurar « Aproveite e compre junto » (rolar até o bloco para o print). Tabela de planos do app: clicar « Precificação » no menu do produto (abrir a URL direto não renderiza); `publique` sem teste e `upsell-trial` com **2 dias**, preço padrão do país.
+- **Login:** se cair em `sso.hotmart.com` com campos vazios, `agent-browser fill` com `$HOTMART_EMAIL`/`$HOTMART_PASSWORD` de `~/.claude/.credentials.env` e clicar « Entrar » (em 10/11 entrou sem 2FA).
+
 ## Cronômetro do checkout: tipo "Quantidade de tempo" é por visitante
 
 No builder, componente **Contagem Regressiva** tem dois tipos. `Quantidade de tempo`
