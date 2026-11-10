@@ -12,6 +12,7 @@ description: Etapa E8 do sistema LOW-TICKET — cadastra a oferta e as peças do
 - **Fatos:** `_memoria/contas-e-codigos.md` (gateway, conta, código, perfil de browser). Nunca de cabeça.
 - **Gateway pelo mercado:** BR → `wiven-checkout` (conta **LeadGo**; a Wiven EmpresaB está aposentada) ·
   EUR/USD → `mundpay` · global → `cooud-checkout` · LATAM → `zenith-gateway` · 250 Atividades → `ggcheckout-produto` ·
+  Mercado Pago (Argentina/LATAM pelo nosso `checkout-premium`) → `mercadopago-checkout` ·
   Hotmart (quando a dona escolher) → `hotmart-produto-playwright`, seção "Rastreamento com o AdsTrackeador" obrigatória.
 - **Trackeador na organização certa (incidente 04-06/11/2026, Calendrier FR):** a oferta foi criada na Leadgo, quando era da WINX, e o funil ficou sem medir.
   Antes de `trackeador init/checkout create/dashboard create`, confirme com a dona **de qual organização é a oferta**. Passe sempre `--org <org>` e `--dashboard <oferta>`.
