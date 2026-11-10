@@ -134,6 +134,10 @@ Referências herdadas das skills antigas (detalhe que as filhas citam): `referen
     (já voltou 1092×1440), então **meça o PNG com `ffprobe` antes de aplicar texto/selo/botão** e corte/refaça até dar 1080×1350.
     A animação (zoom, deslize, botão pulsando) parte da arte já em 4:5, nunca de uma 3:4 cortada depois.
     Gate antes de mostrar: toda imagem/imagem animada = 1080×1350, todo vídeo = 1080×1920. Fora disso, não mostra à dona.
+  - **Clone / lateralização / peça nova a partir de peça nossa (dona, 09/11/2026):** o tamanho NÃO vem da peça-mãe. Se a peça
+    modelo (outro mercado, leva antiga, referência) está fora de 4:5, copia a composição e **reenquadra pra 1080×1350**
+    (selo, botão, faixa e seta reposicionados, nada cortado). Erro real: CTV 5–9 do Calendario AR quase herdaram o 1080×1440
+    das FR. Toda tarefa delegada de imagem de feed escreve "4:5 = 1080×1350" no próprio texto da tarefa.
 - **Registrar cada peça em `ATIVOS.md` seção 4 (regra fixa, 05/11/2026):** peça gerada = linha com estado `gerando`; dona aprovou = `aprovada`
   e o arquivo final; dona reprovou = `reprovada` + motivo, e o arquivo reprovado sai da pasta de uso (`_descartado/` ou apagado).
   Cada peça diz de qual referência de concorrente foi modelada (seção 3). Registrar junto com a resposta da dona, não no fim da sessão.
