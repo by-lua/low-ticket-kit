@@ -25,17 +25,29 @@ Registrar MCP não injeta ferramentas em uma conversa já iniciada: pode ser nec
 
 Se OAuth não estiver disponível, a documentação atual prevê **agent API key** com escopo mínimo no bearer, fornecida por variável de ambiente do host. Nunca gravar a chave em TOML versionado, argumento de processo, prompt ou chat. Documentação avisa da mudança de aceitação de chaves em dezembro/2026; conferir de novo antes de usar esse caminho. Preferir OAuth.
 
+### Estado confirmado nesta máquina (10/11/2026)
+- Codex `codex-acc-2`: MCP `stripe` registrado e **OAuth concluído**, confirmação `Successfully logged in to MCP server stripe`.
+- Conta: produção **Calendrier Magique / Winx**, `acct_1UaIGiABfkUzod1X`. Escrita somente Products/Prices. Leitura Account Features/Accounts/Events/Payment Method Configurations/Payment Method Domains; demais permissões nenhum. Credenciais OAuth administradas pelo Codex, sem copiar tokens ou secret keys para a oferta.
+- Esse escopo serve ao cadastro de catálogo desta etapa. Checkout/cobrança/webhook exigirão ampliar apenas os escopos necessários em etapa posterior autorizada, sem trocar de conta. As ferramentas não apareceram nesta conversa que já estava aberta; iniciar nova sessão para carregá-las.
+- CLI **atualizada de 1.25.0 para 1.55.10 e autenticada via OAuth** na mesma conta de produção. `stripe login list --project-name winx-calendrier` confirma uma única conta ativa; `GET /v1/account --live` confirma ID/BR e charges_enabled/payouts_enabled/details_submitted=true. O fluxo antigo exigiu 2FA e expirou; o novo login foi concluído sem código adicional da dona. CLI usa o papel da dona nesta conta (tela: Super Administrator); o escopo restrito de catálogo descrito acima é do MCP, não da CLI.
+
 ## CLI oficial (alternativa operacional)
 
-CLI já instalada: `stripe`. Conferir `stripe --version` e `stripe <recurso> --help`; o ambiente tinha v1.25.0 em 10/11/2026 e comandos de documentos novos podem não existir nessa versão. Não atualizar nem substituir silenciosamente uma instalação compartilhada.
+CLI instalada e validada: **v1.55.10** (10/11/2026), via pacote oficial `@stripe/cli`. Comando efetivo `~/.local/bin/stripe` aponta para `~/.npm-global/bin/stripe`; binário antigo ficou em `~/.local/bin/stripe-v1.25.0-backup`. Conferir `command -v stripe`, `stripe --version` e `stripe <recurso> --help`.
+
+A dona pediu atualizar após o aviso de incompatibilidade do login antigo, com prazo 08/02/2027:
 
 ```bash
-stripe login --project-name winx-calendrier --device-name low-ticket
+npm i -g @stripe/cli@latest
+stripe --version
+stripe login --non-interactive --project-name winx-calendrier --device-name low-ticket
 ```
 
-Abrir a URL de pareamento no mesmo perfil `stripe`, conferir o código exibido e selecionar a conta. O CLI salva credenciais em `~/.config/stripe/config.toml`; arquivo privado, nunca imprimir `stripe config --list` nem colocar no Git. 2FA do autenticador é da dona; se aparecer, pedir a ela. Nunca usar chaves de AdsTrackeador para tentar operar Winx.
+Na v1.55.10, o login não interativo imprime `browser_url`, `verification_code` e `next_step`; executar imediatamente o `next_step` com o mesmo perfil para aguardar a autorização (nesta máquina: `stripe login --complete-device --project-name winx-calendrier`). Abrir `browser_url` no perfil `stripe`, confirmar o código igual ao terminal, escolher Winx → Calendrier Magique → Produção e concluir o consentimento. `stripe login list --project-name winx-calendrier` comprova conta/ambiente ativos. Não iniciar `--new-session` nem fazer logout por rotina. Se pedir 2FA, a dona responde; não inventar código.
 
-Todo comando leva `--project-name winx-calendrier`. O ambiente padrão é teste; `--live` só quando a tarefa já autoriza a operação real. Criar catálogo de uma oferta real conforme pedido direto não autoriza criar cobranças de teste em clientes reais, mudar preços existentes ou publicar checkout sem validação.
+Credenciais OAuth são administradas pelo CLI, nunca copiadas para a oferta, logs ou chat. Instalação npm nesta máquina teve postinstall bloqueado, mas o pacote opcional Linux já trouxe o binário: `stripe --version` e chamadas autenticadas funcionaram sem liberar scripts de instalação.
+
+Todo comando leva `--project-name winx-calendrier`. Não presumir o ambiente pelo padrão da CLI: conferir `stripe login list` e conta/ambiente efetivos; esta sessão OAuth autorizou produção. `--live` só quando a tarefa já autoriza a operação real. Testes de pagamento exigem autenticar sandbox/teste separado, não usar a conta live. Criar catálogo de uma oferta real conforme pedido direto não autoriza criar cobranças de teste em clientes reais, mudar preços existentes ou publicar checkout sem validação.
 
 ```bash
 stripe get /v1/account --project-name winx-calendrier
