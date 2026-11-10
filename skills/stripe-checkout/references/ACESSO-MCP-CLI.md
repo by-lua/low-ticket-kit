@@ -31,6 +31,10 @@ Se OAuth não estiver disponível, a documentação atual prevê **agent API key
 - Esse escopo serve ao cadastro de catálogo desta etapa. Checkout/cobrança/webhook exigirão ampliar apenas os escopos necessários em etapa posterior autorizada, sem trocar de conta. As ferramentas não apareceram nesta conversa que já estava aberta; iniciar nova sessão para carregá-las.
 - CLI **atualizada de 1.25.0 para 1.55.10 e autenticada via OAuth** na mesma conta de produção. `stripe login list --project-name winx-calendrier` confirma uma única conta ativa; `GET /v1/account --live` confirma ID/BR e charges_enabled/payouts_enabled/details_submitted=true. O fluxo antigo exigiu 2FA e expirou; o novo login foi concluído sem código adicional da dona. CLI usa o papel da dona nesta conta (tela: Super Administrator); o escopo restrito de catálogo descrito acima é do MCP, não da CLI.
 
+### Retomada posterior em 10/11/2026
+- MCP **apareceu nesta sessão e funciona**: `list_available_accounts_or_orgs` retornou somente `Calendrier Magique`, contexto `acct_1UaIGiABfkUzod1X`, `livemode=true`. `GetProductsId` e `GetPricesPrice` confirmaram o produto Guide Tarot ativo e o preço avulso EUR 790. Não inferir disso autorização para cobrar, publicar ou mudar outro recurso.
+- CLI continua na versão **1.55.10**, porém `stripe login list --project-name winx-calendrier` retornou **401, OAuth token expired**. O login concluído anteriormente é fato histórico; o estado atual requer novo login antes de qualquer leitura/escrita autenticada pela CLI. MCP segue utilizável. Não substituir por credencial de outra conta.
+
 ## CLI oficial (alternativa operacional)
 
 CLI instalada e validada: **v1.55.10** (10/11/2026), via pacote oficial `@stripe/cli`. Comando efetivo `~/.local/bin/stripe` aponta para `~/.npm-global/bin/stripe`; binário antigo ficou em `~/.local/bin/stripe-v1.25.0-backup`. Conferir `command -v stripe`, `stripe --version` e `stripe <recurso> --help`.

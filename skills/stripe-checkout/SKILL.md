@@ -78,12 +78,17 @@ A dona autorizou conectar MCP/CLI nesta retomada. Se o provedor pedir código do
 
 ### Checkout próprio internacional + upsell
 - Primeiro confirmar organização/conta e criar o **Product** sem duplicação. Depois criar **Prices** na moeda da oferta (EUR/USD/etc.) e montar o checkout próprio com os componentes oficiais da Stripe. Não converter moeda automaticamente.
-- Checkout próprio é permitido e pedido pela dona; usar Checkout Sessions com UI embutida/componentes oficiais dentro do nosso modelo `MODELOS/checkout-base/index.html`. Nunca coletar PAN/CVC em campos nossos. Checkout hospedado fica como alternativa, não exigência.
-- E-mail → bumps → pagamento → comprar; preço e itens são resolvidos no servidor. Criar pedido/Session só no clique, uma vez por tentativa, com idempotência persistente. Total inclui bumps e upgrade aplicáveis à entrada.
+- Checkout próprio é permitido e pedido pela dona. **Fluxo padrão para o modelo da casa:** Payment Element com **PaymentIntent adiado**; renderizar o formulário Stripe antes e criar o PaymentIntent somente no clique em comprar. Checkout Sessions com `ui_mode=elements` precisa de Session antes de inicializar o formulário e, portanto, não cumpre sozinha essa ordem da casa. Receita operacional e fontes: [references/CHECKOUT-PROPRIO-STRIPE.md](references/CHECKOUT-PROPRIO-STRIPE.md). Nunca coletar PAN/CVC em campos nossos.
+- E-mail → bumps → pagamento → comprar; preço e itens são resolvidos no servidor. Criar pedido/PaymentIntent só no clique, uma vez por tentativa, com idempotência persistente. Total inclui bumps e upgrade aplicáveis à entrada. Atualizar `elements.update({amount})` quando o total mudar, antes de confirmar.
 - Cartão + Apple Pay/Google Pay e demais métodos imediatos **disponíveis na conta/mercado**. Carteiras dependem do dispositivo, domínio e elegibilidade. PayPal processado pela Stripe não está disponível para a conta brasileira; integração PayPal separada exige conta/conexão própria. Não anunciar um método indisponível.
 - Não habilitar boleto/voucher, parcelado ou meios de confirmação tardia neste checkout de entrada. Confirmação imediata de pagamento não significa repasse bancário imediato. Assinatura só para produto recorrente de fato.
 - **Upsell 1 clique é obrigatório no desenho do funil** e exige salvar/reusar o método com consentimento desde a compra inicial. Procedimento único: `_skills/low-upsell-app/references/STRIPE-UPSELL-1-CLIQUE.md` (compra avulsa e assinatura, SCA, segurança e testes).
 - Não chamar de pronto só porque existem Product/Price: precisa checkout + cobrança extra autorizada + fallback SCA + webhooks entrega/Trackeador provados. Valor indefinido não vira preço inventado.
+
+### Caso real — Guide Tarot FR, conta Winx (verificar de novo antes de escrever)
+- Oferta `luciola-guidetarot-fr`: Product live `prod_VbZvtyqHcgx67d`, Price Essentielle live `price_1UaMlxABfkUzod1XM8beaURz` = EUR 790, avulso; conferidos de novo pelo MCP em 10/11/2026. **MCP desta sessão está ativo**, contexto `acct_1UaIGiABfkUzod1X` live. A CLI 1.55.10 está instalada, mas `stripe login list --project-name winx-calendrier` retornou **401 token OAuth expirado** na retomada: relogar antes do próximo comando CLI autenticado. Não trocar para outra conta/projeto automaticamente.
+- Conta BR: cartão e Apple Pay ligados, Google Pay indisponível/desligado na configuração consultada; PayPal pela Stripe indisponível para empresa BR; nenhum domínio de carteira registrado na consulta anterior. Rechecar no ambiente da conta antes de publicar. Meio que não puder ser reutilizado oferece novo pagamento no upsell.
+- O código/backend e a entrega pertencem à Luciola e ainda não estão nesta pasta. Preço do Lenormand e política de IVA/Stripe Tax pendentes. Não apontar CTAs públicos ao checkout novo até integrar e provar os dois webhooks.
 
 ## 1. Criar produto + preço (único ou recorrente)
 
