@@ -92,3 +92,5 @@ Uma variante (combo/bump, outro país, outra promoção) é o MESMO prompt-base 
 - preço/moeda do país certo, se preço entrar (ver passo 2).
 
 Nunca reaproveitar arte de um país pro outro sem trocar o texto — ver regra de país-nunca-se-cruza se o projeto tiver personas por mercado.
+
+> **Selo de garantia (10/11/2026):** sempre imagem gerada no GPT no padrão dourado — ver `imagens-pagina-low/SKILL.md` §"SELO DE GARANTIA". Nunca CSS/HTML.

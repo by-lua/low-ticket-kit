@@ -188,3 +188,5 @@ genérico) não tem esse problema: aí sim vale ícone neutro desenhado.
 - Skill `banner-checkout-gpt` — gerar a arte do banner (16:9) quando o
   projeto ainda não tiver uma, incluindo o que precisa estar queimado na
   imagem (título, garantia, entrega, acesso).
+
+> **Selo de garantia (10/11/2026):** sempre imagem gerada no GPT no padrão dourado — ver `imagens-pagina-low/SKILL.md` §"SELO DE GARANTIA". Nunca CSS/HTML.

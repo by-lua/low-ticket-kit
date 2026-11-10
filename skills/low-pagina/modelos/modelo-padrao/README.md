@@ -47,7 +47,7 @@ Antes × depois: só quando material técnico vira visual.
 8. **Planos padrão Mapa do Tarot:** Básico sem imagem, menor e centralizado na altura do Completo, itens que não leva
    riscados (✗), seta « oferta ainda melhor ↓↓↓ » no celular; Completo com imagem (máx. ~280px), selo "O preferido",
    bônus principal em caixa destacada, "Bônus exclusivos" com 🎁, preço riscado → preço.
-9. **Garantia** dentro da seção de oferta, logo abaixo dos planos: linha "✉ Acesso imediato", **selo dourado com brilho e
+9. **Garantia** dentro da seção de oferta, logo abaixo dos planos: linha "✉ Acesso imediato", **selo dourado do banco `img/selos-garantia/` (GPT, alpha; criar se faltar idioma/prazo) com brilho e
    fundo transparente**, "Garantia incondicional · Risco zero" + texto.
 10. **Passos de acesso:** headline + subheadline + bolinha numerada em cima de cada passo (nunca colada no título).
 11. Sem seção "pensado pro país X" (a página já está no idioma do país).

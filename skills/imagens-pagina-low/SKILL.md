@@ -15,6 +15,14 @@ Preenche os slots de imagem do modelo de página low ticket. **Executa, não exp
 - **Mockup recortado de bônus e selo de garantia, quando integrado ao fundo do card/página:** arquivo com **alpha real**, sem quadrado creme/branco ou xadrez pintado. Manter páginas claras e textos internos opacos. Conferir canal alpha e cantos transparentes no arquivo, e inspecionar no fundo real do card no browser; CSS `opacity` ou `mix-blend-mode` não substituem recorte correto. Isso não exige transparência em fotos de cena ou banners que possuem fundo próprio deliberado.
 
 
+## 🏅 SELO DE GARANTIA = SEMPRE IMAGEM GERADA NO GPT, no padrão dourado (dona, 10/11/2026)
+- Toda página (e checkout) tem o selo de garantia como **imagem gerada no ChatGPT** (`gpt-imagem-playwright`, perfil de `gpt-livre.sh`). **Proibido** montar selo em CSS/SVG/HTML (círculo bordô com "7 DÍAS" + faixa "DEVOLUCIÓN DEL 100 %" — foi o erro do calendario-magico-ar `#recebe`, ref. `assets/selo-garantia/ERRADO-selo-css-circulo-bordo.png`).
+- **Padrão a seguir (anexar como referência no GPT):** `assets/selo-garantia/PADRAO-selo-garantia-dourado.png` — medalha dourada metálica, coroa de louros dos dois lados, anel preto, "GARANTIA" no topo, número grande (ex.: 15) + "DÍAS/JOURS" no centro, 5 estrelas, "INCONDICIONAL" em arco embaixo, faixa/fita dourada com "SATISFECHA O REEMBOLSADA" (ou equivalente), fundo transparente.
+- Prompt base: "Selo de garantia dourado idêntico ao da referência anexa (medalha metálica dourada, louros, anel preto, estrelas, fita inferior), mas com o texto em {IDIOMA}: GARANTIA / {N} {DÍAS} / INCONDICIONAL / {FRASE DA FITA}. Fundo transparente, sem sombra quadrada, texto nítido e correto."
+- Texto **no idioma da página e com o prazo real da oferta**; texto torto/errado → regera. Entrega em PNG com **alpha real** (regra de QA acima), ~600×600+.
+- **BANCO PRONTO (10/11/2026):** `LOW-TICKET/_skills/low-pagina/modelos/modelo-padrao/img/selos-garantia/` — es-7, es-15, en-15, fr-15, pt-7, já recortados com alpha. Procurar lá primeiro; só gerar se a combinação idioma+prazo não existir, e aí acrescentar ao banco (receita no README da pasta). Modelo Padrão e ofertas novas usam o banco.
+- Texto estrangeiro mostrado à dona vem com tradução PT ao lado.
+
 ## ⛳ ORDEM NOVA (dona, 14/10/2026) — MOCKUPS DA PÁGINA PRIMEIRO, MVP DEPOIS
 
 Vale pra toda oferta (mesmo mercado e cross-market). **Sobrescreve** qualquer trecho abaixo que diga
@@ -341,6 +349,7 @@ estrutura, adapta cor/idioma).
 | `Espaço da imagem do bônus` | 1 por bônus | mockup do bônus |
 | autoridade | 1 | retrato do especialista |
 | prova de uso | 1-2 | pessoa segurando o material impresso |
+| selo de garantia | 1 | medalha dourada GPT no padrão `assets/selo-garantia/` (nunca CSS) |
 
 ## Regras de conteúdo (não negociáveis)
 
