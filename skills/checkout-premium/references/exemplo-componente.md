@@ -1,5 +1,9 @@
 # Exemplo de componente completo
 
+> **🛑 Pedido só no clique em comprar (10/11/2026):** neste exemplo, qualquer chamada à API de checkout ligada à escolha do método de pagamento ou ao marcar bump deve ser REMOVIDA — criar cobrança uma única vez, no botão de compra, com trava anti duplo clique.
+>
+> **Atenção (10/11/2026):** o modelo visual e de fluxo oficial agora é `MODELOS/checkout-base/index.html` (ver SKILL.md › Referências). Este componente React é só referência de código; onde divergir, vale o modelo oficial: timer 10 min, selos acesso por e-mail + garantia, bumps recalculando total, botão de compra só depois de escolher a forma de pagamento.
+
 Este é o componente que originou a skill (`CheckoutHotmartTeste.tsx`, projeto
 "El Número Maestro"), como ponto de partida pra copiar e adaptar — não copie
 literal: troque cores, textos, lib de pricing/country/cart pelas do projeto

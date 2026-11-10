@@ -53,7 +53,7 @@ com borda fina `gold/25` e `rounded-2xl`; caixa de segurança com ✓ ("Datos
 cifrados / No guardamos tu tarjeta"). Nada de preto puro, nada de dark.
 
 **Sempre junto em todo checkout premium:**
-- **Fluxo de compra (premium):** e-mail → bumps → a pessoa **escolhe a forma de pagamento** → só então **aparece o botão de compra** (`.btn-gold`, grande, largura total, logo abaixo das formas de pagamento, com a linha "acceso inmediato por e-mail · garantía X días" embaixo). Antes de escolher, nenhum botão de compra visível. Revelar com transição suave e rolar até ele no celular. Modelo: `MODELOS/checkout-base/index.html`.
+- **Fluxo de compra (premium):** tudo numa coluna só, visível desde o começo, nesta ordem: **e-mail** (sem botão "Continuar"; o formato é validado ao clicar em comprar) → **order bumps** ("Aproveite e adicione", checkbox desmarcado, ela marca ou não) → **forma de pagamento** (nenhuma vem marcada) → ao escolher a forma, **aparece o botão de compra** (`.btn-gold`, grande, largura total, logo abaixo, com "acceso inmediato por e-mail · garantía X días" embaixo). **🛑 REGRA FIXA (dona, 10/11/2026): o pedido/cobrança (POST pro gateway/API) é criado UMA ÚNICA VEZ, no clique em comprar.** Escolher forma de pagamento, marcar/desmarcar bump e digitar e-mail NÃO criam pedido; só atualizam a tela (valores locais). Nada de gerar pedido ao escolher o método e gerar outro ao marcar o bump (isso duplicava pedido e é proibido). Botão de compra trava (disabled + flag) assim que clica, pra não duplicar com duplo clique. Evento InitiateCheckout também só nesse clique. Se o código antigo (ex.: `CheckoutHotmartTeste`) cria cobrança ao escolher método ou refaz ao marcar bump, remover. **Marcou/desmarcou um bump, tudo recalcula na hora:** preço do cabeçalho (e o riscado), linha do bump em "Tu pedido", total e o valor no botão de compra. Sem telefone/nome. Modelo: `MODELOS/checkout-base/index.html`.
 - Timer SEMPRE regressivo e SEM memória (dona, 10/11/2026): conta de 10:00 até 00:00 e, se a pessoa sair e entrar de novo (ou recarregar), **reinicia em 10:00**. Vale pra qualquer checkout: o nosso premium, Wiven, Hotmart, Mundpay, Cooud, qualquer um. Nunca persistir o tempo (sem localStorage/cookie/sessão), nunca configurar prazo fixo/absoluto; no gateway, ligar o contador de reinício por visita.
 - Barra de urgência vermelha full-bleed (padrão Hotmart): contador `00:10:00` (10 min) + ícone de cronômetro + "Discount available for a limited time only" traduzido.
 - Garantia 7 dias BR / 15 dias internacional; "Acesso imediato por e-mail".
@@ -115,7 +115,7 @@ De cima pra baixo, nesta ordem:
    atenção nenhuma. Preço à direita com comparação riscada. Selo de garantia
    (verde, com ícone de escudo) logo abaixo do nome — este selo é fácil de
    esquecer e o usuário vai notar a falta. **Garantia sempre igual ao produto:**
-   Brasil 7 dias, internacional 15 dias. Entrega: "Acesso imediato por e-mail".
+   Brasil 7 dias, internacional 15 dias. Entrega: segundo selo ao lado do de garantia, mesma pílula da garantia porém **cinza** (`rounded-full border-neutral-200 bg-neutral-100 text-neutral-600`; a garantia continua verde), ícone de envelope + "Acceso inmediato por e-mail" (traduzido pro mercado). Os dois selos ficam lado a lado (flex-wrap), **acesso por e-mail à esquerda, garantia à direita**, logo abaixo de "Pago único · Acceso de por vida".
 4. **Formulário mínimo** — só email. É a lição central do padrão Hotmart:
    nome/telefone pedem confiança antes da hora e derrubam conversão; a
    Hotmart só pede o essencial pra entregar o produto e fecha o resto depois.
@@ -229,6 +229,8 @@ pro Mercado Pago). Salve em `public/checkout/` e referencie com
 genérico) não tem esse problema: aí sim vale ícone neutro desenhado.
 
 ## Referências
+
+- **MODELO OFICIAL (abrir primeiro):** `~/Documentos/TRAMPO/PROJETOS/WORKING/PROJETOS - INTERNOS/LOW-TICKET/MODELOS/checkout-base/index.html` (+ `assets/`: CSS e fontes originais da Chave Mestra). Cópia fiel da Chave Mestra com os ajustes da dona (timer 10 min, selos acesso por e-mail + garantia, seta no banner, confiança em ícone preto, fluxo e-mail → bumps → pagamento → botão de compra, recálculo ao marcar bump). Qualquer checkout premium novo parte dele; a implementação em React segue o mesmo visual.
 
 - `references/exemplo-componente.md` — trecho comentado do componente que
   originou esta skill, com a estrutura completa de JSX pra copiar como

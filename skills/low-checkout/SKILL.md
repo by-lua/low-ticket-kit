@@ -42,9 +42,10 @@ description: Etapa E8 do sistema LOW-TICKET — cadastra a oferta e as peças do
    `secret_invalido`. Sem essa prova, o checkout NÃO está pronto.
    **Link de checkout leva a sessão:** o botão sai com `utm_*` e o id da visita no campo que o gateway devolve
    (Hotmart: `sck`, até 30 caracteres, sem `_`; Wiven: `utm_medium`; Mundpay: `_tkid`). Confira no navegador.
-5. **Temporizador:** Timer SEMPRE regressivo e SEM memória (dona, 10/11/2026): conta de 10:00 até 00:00 e, se a pessoa sair e entrar de novo (ou recarregar), **reinicia em 10:00**. Vale pra qualquer checkout: o nosso premium, Wiven, Hotmart, Mundpay, Cooud, qualquer um. Nunca persistir o tempo (sem localStorage/cookie/sessão), nunca configurar prazo fixo/absoluto; no gateway, ligar o contador de reinício por visita.
-6. Suporte no checkout: e-mail e WhatsApp de `_memoria/empresa.md`; reembolso = menor prazo do gateway.
-7. Links de checkout nos botões da página e do popup (preço igual ao botão).
-7. **Registrar no mesmo dia** em `_memoria/contas-e-codigos.md`: gateway · conta · código de cada item · perfil.
+5. **Pedido só no clique em comprar:** a cobrança/pedido no gateway ou API é criado UMA vez, no botão de compra; escolher forma de pagamento ou marcar bump não cria nada. Detalhe em `checkout-premium`. Modelo: `MODELOS/checkout-base/index.html`.
+6. **Temporizador:** Timer SEMPRE regressivo e SEM memória (dona, 10/11/2026): conta de 10:00 até 00:00 e, se a pessoa sair e entrar de novo (ou recarregar), **reinicia em 10:00**. Vale pra qualquer checkout: o nosso premium, Wiven, Hotmart, Mundpay, Cooud, qualquer um. Nunca persistir o tempo (sem localStorage/cookie/sessão), nunca configurar prazo fixo/absoluto; no gateway, ligar o contador de reinício por visita.
+7. Suporte no checkout: e-mail e WhatsApp de `_memoria/empresa.md`; reembolso = menor prazo do gateway.
+8. Links de checkout nos botões da página e do popup (preço igual ao botão).
+9. **Registrar no mesmo dia** em `_memoria/contas-e-codigos.md`: gateway · conta · código de cada item · perfil.
 
 Prova (preço, banner, webhooks): `low-gates-no-ar`.
