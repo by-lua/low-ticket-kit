@@ -12,7 +12,7 @@ fecho com card CTA e QA sempre entram; o que muda por formato é só o layout e 
 blocos usa (tabela da `ctv-formatos`). Detalhe completo, com exemplos e porquês: `references/EDICAO-PADRAO.md`.
 
 ## Blocos
-1. **Ordem de montagem (nunca pula):** roteiro completo → voz (VoiceStudio local → senão NaturalReader; ver `references/EDICAO-PADRAO.md` § Voz; conferir gênero da voz) e/ou
+1. **Ordem de montagem (nunca pula):** roteiro completo → voz (VoiceStudio local → senão LoveVoice/Speechma; NaturalReader reprovado; ver `references/EDICAO-PADRAO.md` § Voz; conferir gênero da voz) e/ou
    clipe de personagem → alinhar a voz (tempo de cada frase) → escolher a cena de cada frase → montar no
    Remotion → trilha + card CTA → QA.
 2. **Corte:** 1 clipe por frase da voz, a cena ilustra a frase · cortes de tela/b-roll 1,5–3 s · usar TODAS as

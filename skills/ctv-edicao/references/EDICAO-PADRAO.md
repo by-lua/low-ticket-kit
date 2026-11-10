@@ -24,7 +24,7 @@ Ler inteiro antes do primeiro `ffmpeg`/`remotion`. Cada linha já custou uma ver
 ## 1 · Ordem de montagem (nunca pula)
 
 1. **Roteiro completo** escrito (hook → mecanismo → CTA) — vem do modo + `criativo/references/ROTEIRO-POR-FORMATO.md`.
-2. **Voz** gerada (VoiceStudio local → senão NaturalReader; voz fixa da leva; conferir o gênero da voz) e/ou **clipe de personagem** (Flow) com a fala.
+2. **Voz** gerada (VoiceStudio local → senão LoveVoice/Speechma; voz fixa da leva; conferir o gênero da voz) e/ou **clipe de personagem** (Flow) com a fala.
 3. **Alinhar** a voz: `scripts/legenda_align.py` → `words.json` (tempo de CADA frase).
 4. **Ler frase por frase o que a fala diz** e só então escolher a cena de cada trecho.
 5. **Montar** no Remotion (layouts + transições + legenda), ffmpeg só mede/normaliza/mixa.
@@ -153,5 +153,11 @@ de status/URL antes de compor. Imagem parada com Ken Burns nunca é cena de prod
 Ordem fixa pra narração de criativo:
 1. **VoiceStudio local** (GitHub, grátis, uso comercial ok) — AppImage `~/Applications/VoiceStudio/VoiceStudio-*-linux-x64.AppImage`;
    motores OmniVoice / CosyVoice 3 (espanhol e +600 idiomas), clonagem de voz.
-2. Se não der (qualidade, idioma, erro): **NaturalReader online** (naturalreaders.com/online).
+2. Se não der (qualidade, idioma, erro): **LoveVoice** (https://lovevoice.ai/) ou **Speechma** (https://speechma.com/) — sites que
+   a dona passou (09/11/2026). Ao escolher voz nova, gerar a mesma frase nos sites e mostrar à dona pra ela ouvir.
+- ⛔ **NaturalReader REPROVADO pela dona (09/11/2026): "não natural".** Não usar, nem como reserva.
+- **Critério da voz (dona, 09/11/2026):** natural, humana, nada robótica; feminina quando a personagem é mulher; sotaque do
+  mercado (AR = rioplatense/voseo). Antes de narrar a leva, a dona ouve 2–4 amostras com a mesma frase e escolhe.
+- VoiceStudio no lua-pc: sem GPU NVIDIA (AMD RX 6600) → roda em CPU (PyTorch CPU ~5 GB de disco + modelo ~2,4 GB) ou
+  Vulkan no motor GGUF. 1º uso exige o setup no app.
 - **Hub/NinjaVoice (`narracao-hub-tts`) e MiniMax deixaram de ser o padrão.** Só com pedido da dona.

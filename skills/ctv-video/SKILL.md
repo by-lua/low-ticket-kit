@@ -1,6 +1,6 @@
 ---
 name: ctv-video
-description: Produz criativo de vídeo do sistema LOW-TICKET a partir da ficha da leva aprovada — cenas (Flow), narração (VoiceStudio local / NaturalReader), gravações de tela do entregável, b-roll — e entrega pra edição. Use para gerar vídeo demonstrativo, UGC, expert, caixinha, POV.
+description: Produz criativo de vídeo do sistema LOW-TICKET a partir da ficha da leva aprovada — cenas (Flow), narração (VoiceStudio local / LoveVoice / Speechma), gravações de tela do entregável, b-roll — e entrega pra edição. Use para gerar vídeo demonstrativo, UGC, expert, caixinha, POV.
 ---
 
 # ctv-video — vídeo
@@ -17,7 +17,7 @@ description: Produz criativo de vídeo do sistema LOW-TICKET a partir da ficha d
    criada a partir de referência real do país (regra abaixo).
 3. **Cenas de mesa/demonstração:** 1-2 aparelhos + 3-4 folhas impressas, página diferente em cada; zoom de câmera
    orgânico (aproximação lenta), gesto padrão = apontar.
-4. **Voz:** VoiceStudio local → senão NaturalReader (regra `ctv-edicao` › EDICAO-PADRAO § Voz), voz fixa da leva;
+4. **Voz:** VoiceStudio local → senão LoveVoice/Speechma (regra `ctv-edicao` › EDICAO-PADRAO § Voz), voz fixa da leva;
    **conferir o gênero** da voz antes de gravar.
 5. **B-roll — cenas reais orgânicas do TikTok primeiro** (muito melhores que Pexels/banco):
    - **3-4 termos em inglês** da cena de cada frase (ex. idosos: "dementia activities", "memory care", "ot elderly",
