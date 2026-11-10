@@ -5,6 +5,13 @@ description: Etapa E9 do sistema LOW-TICKET — prova no ar que a oferta está p
 
 # low-gates-no-ar — E9, prova no ar
 
+> **REGRA FIXA DA DONA (reforçada 10/11/2026) — IC SÓ QUANDO A PESSOA VAI PRO CHECKOUT, no PIXEL META E no TRACKEADOR.** Gate obrigatório antes de dar o pixel/tracking como entregue, em toda oferta.
+> - Botão do Básico que só **abre o popup** de upgrade pro Completo mais barato: **0 IC** (nem `fbq`, nem `/api/track`).
+> - Dentro do popup: o clique em "quero o Completo mais barato" **ou** em "sigo com o Básico" leva ao checkout: **1 IC** com o valor daquele botão.
+> - Na página: clicar no Completo ou no botão da oferta de saída que leva ao checkout: **1 IC**. O popup de saída **aparecer** = 0 IC.
+> - Conferir os DOIS lados em cada clique: request `facebook.com/tr` (ev=InitiateCheckout) **e** envio do Trackeador (`/api/track`/`/api/collect`). Um lado certo e o outro disparando no botão do popup = reprovado.
+> - Prova: `node scripts/audit-eventos-pagina.cjs` (Gate 1) com contagem por botão colada no `STATUS.md`. Sem essa prova, não se diz "pixel entregue".
+
 Nada vai pra tráfego sem os gates (eventos, página leve, download, checkout) com **prova colada** no `STATUS.md` da oferta. Nunca "deve estar funcionando".
 
 ## Gate 0 — Domínio autorizado no pixel Meta (antes de liberar tráfego)

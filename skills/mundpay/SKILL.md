@@ -3,6 +3,8 @@ name: mundpay
 description: Cadastra produto digital na Mundpay (login.mundpay.com) pelo painel logado - criar produto/oferta em BRL, USD ou EUR (ex.: euro de Portugal), pegar o link do checkout, ver o status de análise, e entregar pela nossa área de membros. Regra fixa: toda oferta aceita só pagamento na hora (tabela de métodos por país). Use quando o usuário pedir para criar produto na Mundpay, checkout Mundpay, vender em euro/Portugal/Europa, ou mencionar Mundpay, mycheckoutt, gateway card-first.
 ---
 
+> **REGRA FIXA DA DONA (10/11/2026), vale em TODO checkout:** (1) order bump **"Upgrade Básico → Completo"** obrigatório no checkout do Básico (1º bump, produto próprio, libera o Completo); (2) **ofertas de membro** criadas neste gateway para tudo que a pessoa ainda não tem (internacional 50% off, piso 2,90; Brasil 30% off, piso R$ 9,90, preços BR de sempre; nome "<item> - Área de Membros", redirect `/painel`); (3) upsell/app no topo da área de membros (internacional: 30% abaixo do upsell pós-compra + 2 dias grátis; Brasil: preço de sempre) (Stripe; sem Stripe, este mesmo checkout). Tudo nos 2 webhooks (entrega + Trackeador). Regra completa: `area-membros-netflix` › REGRA FIXA 10/11/2026.
+
 # Mundpay — produto digital + checkout
 
 > **Regra fixa da dona (05/10/2026): toda oferta (principal, bump, popup, upsell) aceita SÓ pagamento na hora** (cartão, Apple Pay, Pix e transferência/carteira instantânea local). Boleto, OXXO, dinheiro em loja, voucher, Efecty, Rapipago, "Otros" etc. ficam DESMARCADOS. Tabela por país na seção "Tabela de métodos".

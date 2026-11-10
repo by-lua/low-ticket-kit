@@ -227,7 +227,9 @@ MESMOS números do euro, só trocando o símbolo** (€ 5,90 → US$ 5,90; € 1
 |---|---|
 | Básico (só o principal) | **€ 5,90** |
 | Completo (tudo) | **€ 12,90** |
-| Upgrade Básico → Completo | **€ 7,90** |
+| Upgrade Básico → Completo (popup no clique do Básico) | **€ 7,90** |
+| Upgrade Básico → Completo (**order bump obrigatório** no checkout do Básico, dona 10/11/2026) | **€ 3,90** |
+| Ofertas de membro (50% off, piso € 2,90) · app na área (30% abaixo do upsell, 2 dias grátis) | ex. FR: bumps € 2,90 · upgrade € 3,90 · app € 3,90/mês |
 | Saída (popup) | **€ 4,90** |
 | Order bumps (valores ainda NÃO aprovados) | **€ 4,90 · € 3,90 · € 5,90** |
 | App microSaaS | **~€ 7,90/mês** |

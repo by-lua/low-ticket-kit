@@ -3,6 +3,8 @@ name: cakto-checkout
 description: Cadastra e opera produto/oferta na Cakto (app.cakto.com.br) — gateway nacional (Cakto Pay, BR) e internacional (Cakto Commerce OÜ, Estônia, 190+ países/135 moedas). Tem API REST própria com OAuth2, usada por script, sem precisar de browser pra criar produto/oferta. Use quando o usuário pedir para criar produto/oferta na Cakto, checkout Cakto, vender internacional pela Cakto, ou mencionar Cakto, Cakto Pay, Cakto Commerce, Cakto API, CaktoMCP.
 ---
 
+> **REGRA FIXA DA DONA (10/11/2026), vale em TODO checkout:** (1) order bump **"Upgrade Básico → Completo"** obrigatório no checkout do Básico (1º bump, produto próprio, libera o Completo); (2) **ofertas de membro** criadas neste gateway para tudo que a pessoa ainda não tem (internacional 50% off, piso 2,90; Brasil 30% off, piso R$ 9,90, preços BR de sempre; nome "<item> - Área de Membros", redirect `/painel`); (3) upsell/app no topo da área de membros (internacional: 30% abaixo do upsell pós-compra + 2 dias grátis; Brasil: preço de sempre) (Stripe; sem Stripe, este mesmo checkout). Tudo nos 2 webhooks (entrega + Trackeador). Regra completa: `area-membros-netflix` › REGRA FIXA 10/11/2026.
+
 # Cakto — checkout nacional + internacional
 
 Pesquisado e testado em 29/10/2026 (conta LeadGo, `contact@seudominio.com`). Fonte: `docs.cakto.com.br`,

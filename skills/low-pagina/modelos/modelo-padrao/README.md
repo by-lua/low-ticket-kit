@@ -1,5 +1,11 @@
 # Modelo Padrão LeadGo — v1 (04/11/2026)
 
+> **REGRA FIXA DA DONA (10/11/2026) — CONFIGURAÇÃO DA PÁGINA: IC SÓ NO CLIQUE QUE VAI PRO CHECKOUT (pixel Meta E Trackeador).** **O Modelo Padrão já vem configurado certo** (`modelos/modelo-padrao/index.html`, conferido 10/11/2026: botão do Básico `data-upsell` sem `data-tk-*`; Completo, botões do popup e saída com `data-plan` + `data-tk-value`/`data-tk-currency`; sem `fbq` de IC). Página feita a partir dele: **não reconfigurar, só CONFERIR** que isso se manteve (troca de valores, link de checkout por `data-plan`). Página fora do modelo: configurar igual.
+> - Botão do Básico que só **abre o popup** de upgrade pro Completo mais barato: **sem** `data-tk-*`, **sem** `data-plan`, **sem** href de checkout (`data-upsell="1" href="#upgradepopup" role="button"`) e sem `fbq` próprio → 0 IC.
+> - Botões do popup ("quero o Completo mais barato" / "sigo com o Básico"), botão do Completo na página e botão da oferta de saída: link real do checkout + `data-tk-value`/`data-tk-currency` com o valor DAQUELE botão → 1 IC no clique.
+> - Popup de saída aparecer = 0 IC. Página não manda IC próprio (o Trackeador dispara; não duplicar).
+> - Conferir antes de entregar: `scripts/qa-layout.js` + `low-gates-no-ar` › regra fixa do topo (contagem por botão no pixel Meta e no Trackeador).
+
 **É a página padrão da casa, só nossa:** toda página nova parte daqui (a dona pede "Modelo Padrão"). Primeira oferta feita nele:
 Calendrier Magique FR (04/11/2026). Não depende de template de terceiros.
 

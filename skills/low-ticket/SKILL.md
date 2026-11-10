@@ -9,6 +9,8 @@ Esta skill só diz **a ordem e quem chamar**. Regra de execução mora na filha/
 Raiz: `~/Documentos/TRAMPO/PROJETOS/WORKING/PROJETOS - INTERNOS/LOW-TICKET` (fonte desta skill: `_skills/low-ticket/`).
 
 ## 1. Abrir — sempre primeiro
+
+> **Delegação (dona, 10/11/2026):** quem delega trabalho desta pasta a outro agente (pane, worker, subagente, Codex, DeepSeek) põe no INÍCIO do prompt a ordem de abrir esta skill (`abrir.py "<oferta>" "<etapa>"`), ler o RECIBO, o `INDICE.md` e o `CLAUDE.md` da oferta antes de executar. Sem isso o worker trabalha sem as regras da casa.
 ```
 python3 "<RAIZ>/_skills/low-ticket/scripts/abrir.py" "<oferta>" "<etapa ou tarefa>"
 ```
@@ -118,6 +120,7 @@ Regras:
 - **Webhook de medição (Trackeador) com TODOS os eventos, em qualquer checkout** (Hotmart, Wiven, Mundpay, Zenith,
   GG, próprio): aprovada, recusada/cancelada, expirada, boleto/aguardando, atrasada, abandono, reembolso, chargeback.
   Só "aprovada" = tentativas somem do Trackeador. Regra da dona 09/11/2026. Entrega (`/painel`) segue só o que libera/tira acesso.
+- **IC só quando vai pro checkout, no pixel Meta e no Trackeador (dona, 10/11/2026):** botão que só abre o popup Básico→Completo = 0 IC; clique que leva ao checkout (Completo barato ou Básico no popup, Completo ou saída na página) = 1 IC. Gate obrigatório antes de entregar pixel: `low-gates-no-ar` › regra fixa do topo + Gate 1.
 - **Funil de upsell e order bump em TODA oferta de entrada (dona, 10/11/2026):** Básico, **Completo, Upgrade e Saída/popup** (e combos) têm cada um **funil de vendas ATIVO** (entrada → upsell → downsell → obrigado) e os **mesmos order bumps** no checkout, **inclusive a oferta de Saída**. O funil serve **cartão, PayPal, Apple Pay e Google Pay** (boleto/Pix desligados). Antes do tráfego e todo dia de tráfego: conferir pela API/tela da Hotmart (status do funil, bumps no checkout de cada `off=`, planos do app). Procedimento e script: `_skills/low-upsell-app/references/CHECKLIST-UPSELL-QUALQUER-OFERTA.md` § « Verificação POR OFERTA DE ENTRADA ». Caso: Calendrier FR, funil do Complet achado desligado em 10/11.
 - **Tráfego só depois do `low-gates-no-ar` inteiro**, inclusive o aviso de venda 2xx nos 2 destinos e o link
   do checkout levando a sessão. "Configurei" não é prova.

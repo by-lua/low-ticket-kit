@@ -19,7 +19,7 @@ description: Regras do funil (usadas na E2, quando o FUNIL.md é desenhado junto
   o nome oficial e a contagem real direto do `FUNIL.md` — ver `low-pagina` § sincronia de bônus).
 - **Preços:** tabela em `low-ticket/references/PECAS-DO-FUNIL.md` §4 e `_memoria/empresa.md`. Ofertas de membro
   com desconto (área de membros). Nada de preço inventado.
-- **Upgrade Essencial → Completo:** produto próprio, 1º order bump, só na oferta Básica. **Capa de upgrade/combo
+- **Upgrade Essencial → Completo:** produto próprio, 1º order bump, só na oferta Básica. **OBRIGATÓRIO em todo checkout e toda oferta (dona, 10/11/2026); oferta sem ele = checkout incompleto.** Ofertas de membro e upsell no topo da área: `area-membros-netflix` › REGRA FIXA 10/11/2026. **Capa de upgrade/combo
   é regerada no GPT** com o título integrado (nunca colar texto em mockup pronto) — `banner-checkout-gpt`
   `references/CAPA-PRODUTO-UPGRADE-COMBO.md`.
 - Ferramenta/microSaaS como peça: `PECAS-DO-FUNIL.md` §3.

@@ -4,6 +4,8 @@ description: Cadastra e configura oferta na Wiven (app.wiven.com.br) pelo painel
 allowed-tools: Bash(agent-browser:*), Bash(chromium:*), Bash(curl:*)
 ---
 
+> **REGRA FIXA DA DONA (10/11/2026), vale em TODO checkout:** (1) order bump **"Upgrade Básico → Completo"** obrigatório no checkout do Básico (1º bump, produto próprio, libera o Completo); (2) **ofertas de membro** criadas neste gateway para tudo que a pessoa ainda não tem (internacional 50% off, piso 2,90; Brasil 30% off, piso R$ 9,90, preços BR de sempre; nome "<item> - Área de Membros", redirect `/painel`); (3) upsell/app no topo da área de membros (internacional: 30% abaixo do upsell pós-compra + 2 dias grátis; Brasil: preço de sempre) (Stripe; sem Stripe, este mesmo checkout). Tudo nos 2 webhooks (entrega + Trackeador). Regra completa: `area-membros-netflix` › REGRA FIXA 10/11/2026.
+
 # wiven-checkout
 
 > **⚠️ 403 CLOUDFLARE NÃO É BLOQUEIO DE IP — É REPUTAÇÃO DA SESSÃO/PERFIL (achado 20/10/2026, Mapa do Tarot).** Veio de fazer MUITO `fetch`/`eval` em rajada no painel (upload de capa via `window.fetch` patchado + envio em chunks por base64, repetido pros 2 produtos) — a Wiven/Cloudflare read isso como bot e trava o PERFIL/sessão naquele navegador, não a rede: **perfil novo (outra pasta de profile), mesma máquina, mesmo IP, passa direto** (testado: `wiven-leadgo-limpo` e `wiven-empresab-gabriel` logaram sem 403 enquanto `wiven-leadgo-dona` e `wiven-leadgo-dona-2` continuavam 403 minutos depois). **Dois erros reais que custaram ~1h20 nessa rodada:**

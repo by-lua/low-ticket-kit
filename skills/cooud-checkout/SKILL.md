@@ -4,6 +4,8 @@ description: Cadastra e configura oferta na Cooud (dashboard.cooud.com) pelo pai
 allowed-tools: Bash(agent-browser:*), Bash(chromium:*), Bash(curl:*)
 ---
 
+> **REGRA FIXA DA DONA (10/11/2026), vale em TODO checkout:** (1) order bump **"Upgrade Básico → Completo"** obrigatório no checkout do Básico (1º bump, produto próprio, libera o Completo); (2) **ofertas de membro** criadas neste gateway para tudo que a pessoa ainda não tem (internacional 50% off, piso 2,90; Brasil 30% off, piso R$ 9,90, preços BR de sempre; nome "<item> - Área de Membros", redirect `/painel`); (3) upsell/app no topo da área de membros (internacional: 30% abaixo do upsell pós-compra + 2 dias grátis; Brasil: preço de sempre) (Stripe; sem Stripe, este mesmo checkout). Tudo nos 2 webhooks (entrega + Trackeador). Regra completa: `area-membros-netflix` › REGRA FIXA 10/11/2026.
+
 # cooud-checkout
 
 Mecânica pra montar e configurar oferta na **Cooud** no nosso ambiente. Complementa
