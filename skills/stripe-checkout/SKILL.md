@@ -1,7 +1,6 @@
 ---
 name: stripe-checkout
-description: Opera as contas Stripe da dona (organizações LeadGo = pessoal e Winx = parceria Luciola; dashboard.stripe.com) pelo painel logado ou pela API REST — criar produto/preço (único ou recorrente, BRL/USD/EUR), cupom/desconto por N meses, Payment Link, Checkout Session, portal do cliente, webhook, reembolso. Use quando o usuário pedir para criar produto/preço na Stripe, checkout Stripe, assinatura Stripe, cupom de desconto Stripe, Payment Link, webhook Stripe, ou mencionar cobrança/pagamento via Stripe.
-allowed-tools: Bash(agent-browser:*), Bash(chromium:*), Bash(curl:*), Bash(node:*)
+description: Opera as contas Stripe da dona (organizações LeadGo = pessoal e Winx = parceria Luciola; dashboard.stripe.com) por MCP oficial e CLI primeiro, API REST quando necessário e navegador como reserva — criar produto/preço (único ou recorrente, BRL/USD/EUR), cupom/desconto por N meses, Payment Link, Checkout Session, portal do cliente, webhook, reembolso. Use quando o usuário pedir para criar produto/preço na Stripe, checkout Stripe, assinatura Stripe, cupom de desconto Stripe, Payment Link, webhook Stripe, ou mencionar cobrança/pagamento via Stripe.
 ---
 
 > **REGRA FIXA DA DONA (10/11/2026), vale em TODO checkout:** (1) order bump **"Upgrade Básico → Completo"** obrigatório no checkout do Básico (1º bump, produto próprio, libera o Completo); (2) **ofertas de membro** criadas neste gateway para tudo que a pessoa ainda não tem (internacional 50% off, piso 2,90; Brasil 30% off, piso R$ 9,90, preços BR de sempre; nome "<item> - Área de Membros", redirect `/painel`); (3) upsell/app no topo da área de membros (internacional: 30% abaixo do upsell pós-compra + 2 dias grátis; Brasil: preço de sempre) (Stripe; sem Stripe, este mesmo checkout). Tudo nos 2 webhooks (entrega + Trackeador). Regra completa: `area-membros-netflix` › REGRA FIXA 10/11/2026.
@@ -11,22 +10,16 @@ allowed-tools: Bash(agent-browser:*), Bash(chromium:*), Bash(curl:*), Bash(node:
 
 # stripe-checkout
 
-## Estrutura da conta — CONFIRMADO 31/10/2026: sem organização, contas avulsas no mesmo login
+## Organização e conta — fatos conferidos em 10/11/2026
 
 > **REGRA DA DONA (10/11/2026) — ORGANIZAÇÃO POR SÓCIO. Esta regra vale sobre o texto abaixo.**
-> - **Winx** = organização Stripe nova, pedida pela dona, para **tudo que é parceria com a Luciola** (ex.: Calendrier Magique FR, Calendário Mágico AR e qualquer oferta "Lua + Luciola"). Produto, preço, assinatura e webhook dessas ofertas são criados **dentro da Winx**, numa conta da oferta dentro dela.
+> - **Winx** = organização Stripe nova, pedida pela dona, para **tudo que é parceria com a Luciola** (ex.: Calendrier Magique FR, Calendário Mágico AR e qualquer oferta "Lua + Luciola"). Produto, preço, assinatura e webhook dessas ofertas são criados **dentro da Winx**, na conta existente indicada pela dona; não criar outra conta por oferta automaticamente.
 > - **LeadGo** = coisas pessoais da dona (LeadGo, AdsTrackeador e o que não for parceria). Nada da parceria Luciola vai pra LeadGo.
 > - Antes de criar algo: conferir o dono da oferta em `OFERTAS/<slug>/CLAUDE.md` (linha "Donas") e escolher a organização. Dúvida = perguntar à dona.
 > - Se a Winx ainda não aparecer no seletor de contas/organizações do perfil `stripe`, **não criar conta avulsa no lugar**: parar e avisar a dona.
 > - Variáveis: `STRIPE_WINX_<CONTA>_...` para contas da Winx.
 
-Login `stripe` acessa **contas Stripe separadas no mesmo login**, não uma
-Organização (recurso "Organizations" da Stripe) — essa hipótese anterior foi
-testada e é falsa; "LeadGo" é/era conta solo, sem org. Cada produto/negócio
-da dona vira uma **conta nova e independente** (menu do usuário → Criar →
-Criar conta → "Crie uma conta separada", nunca "Nova organização" — essa
-opção envolveria a conta já existente numa org nova, mexendo na estrutura
-dela; só use se a dona pedir explicitamente).
+**Winx existe** (`org_6VjhbL1n9Pw4udAS6hP97zs`). Em 10/11/2026, o painel de organização mostrou uma conta: **Calendrier Magique**, Brasil, ativada, `acct_1UaIGiABfkUzod1X`. A dona mandou usar por padrão a conta já configurada e criar o produto Guide Tarot nela; se quiser outra, ela avisa. Não renomear a conta nem criar uma por oferta. A conta LeadGo e a AdsTrackeador continuam separadas. Conferir a conta efetiva em cada credencial/conexão antes de escrever.
 
 - **AdsTrackeador já tem conta própria**: `acct_1UWg3pK4KjNuQhim`, criada
   31/10/2026, Brasil/BRL, avulsa (sem vínculo com a LeadGo). **ATIVADA em 02/11/2026** pela dona
@@ -75,24 +68,22 @@ se está disponível nesta conta, ver aviso no topo) vai pra
 e-mail da Stripe com o código, o mais recente — nunca outro e-mail. Se não
 achar pelo assunto, pare e pergunte.
 
-**Preferência por API sobre clique no painel.** Toda operação de cadastro
-(produto, preço, cupom, webhook) tem equivalente na API REST
-(`api.stripe.com/v1/...`, autenticação HTTP Basic com a secret key como
-usuário, senha vazia; corpo form-urlencoded, nunca JSON) — mais rápido,
-sem depender de seletor/refs do painel mudando. Use o painel só pra: ver o
-que já existe antes de criar (evitar duplicar), configurar métodos de
-pagamento da conta (não é API), e o fluxo de 2FA/login em si. Exemplo de
-chamada:
+### Ordem de operação (dona, 10/11/2026)
+1. **MCP oficial Stripe**, remoto `https://mcp.stripe.com`, OAuth, quando conectado à conta correta. Instalação e autenticação: [references/ACESSO-MCP-CLI.md](references/ACESSO-MCP-CLI.md).
+2. **Stripe CLI**, perfil explícito por conta, para endpoints que o MCP não cobrir ou se o MCP ainda não estiver disponível. Conferir `/v1/account` antes de criar; usar o perfil correto em todo comando.
+3. **API REST oficial**, quando adequada para código de servidor ou operação não coberta pelas ferramentas. Segredos só no servidor/cofre. Verificar conta e ambiente antes.
+4. **Navegador/Playwright (perfil `stripe`) como reserva** para cadastro e para recursos exclusivos do painel, consentimento e 2FA. Nunca fazer logout. Não copiar tokens internos da sessão do dashboard.
 
-```bash
-curl -s https://api.stripe.com/v1/products \
-  -u "$STRIPE_ADSTRACKEADOR_TEST_SECRET_KEY:" \
-  -d name="AdsTrackeador Premium"
-```
+A dona autorizou conectar MCP/CLI nesta retomada. Se o provedor pedir código do autenticador, pedir à dona e continuar apenas trabalho independente; não inventar código nem relogar com outro perfil. MCP registrado não significa OAuth concluído ou ferramentas disponíveis na sessão atual.
 
-**NUNCA imprima a chave inteira** em log/commit/chat — só os últimos 4
-caracteres se precisar confirmar qual chave está em uso. Nunca modo LIVE
-sem autorização explícita da dona (ver § Regras).
+### Checkout próprio internacional + upsell
+- Primeiro confirmar organização/conta e criar o **Product** sem duplicação. Depois criar **Prices** na moeda da oferta (EUR/USD/etc.) e montar o checkout próprio com os componentes oficiais da Stripe. Não converter moeda automaticamente.
+- Checkout próprio é permitido e pedido pela dona; usar Checkout Sessions com UI embutida/componentes oficiais dentro do nosso modelo `MODELOS/checkout-base/index.html`. Nunca coletar PAN/CVC em campos nossos. Checkout hospedado fica como alternativa, não exigência.
+- E-mail → bumps → pagamento → comprar; preço e itens são resolvidos no servidor. Criar pedido/Session só no clique, uma vez por tentativa, com idempotência persistente. Total inclui bumps e upgrade aplicáveis à entrada.
+- Cartão + Apple Pay/Google Pay e demais métodos imediatos **disponíveis na conta/mercado**. Carteiras dependem do dispositivo, domínio e elegibilidade. PayPal processado pela Stripe não está disponível para a conta brasileira; integração PayPal separada exige conta/conexão própria. Não anunciar um método indisponível.
+- Não habilitar boleto/voucher, parcelado ou meios de confirmação tardia neste checkout de entrada. Confirmação imediata de pagamento não significa repasse bancário imediato. Assinatura só para produto recorrente de fato.
+- **Upsell 1 clique é obrigatório no desenho do funil** e exige salvar/reusar o método com consentimento desde a compra inicial. Procedimento único: `_skills/low-upsell-app/references/STRIPE-UPSELL-1-CLIQUE.md` (compra avulsa e assinatura, SCA, segurança e testes).
+- Não chamar de pronto só porque existem Product/Price: precisa checkout + cobrança extra autorizada + fallback SCA + webhooks entrega/Trackeador provados. Valor indefinido não vira preço inventado.
 
 ## 1. Criar produto + preço (único ou recorrente)
 
@@ -191,11 +182,7 @@ curl -s https://api.stripe.com/v1/checkout/sessions -u "$KEY:" \
   -d "metadata[client_reference]"=<_tkid ou ref de afiliado>
 ```
 
-`customer_email` pré-preenche e trava o campo (cliente não pode trocar na
-tela) — se precisar permitir edição, use `customer_creation: always` sem
-`customer_email` e deixe o cliente digitar. Resposta trae `url` — redirecione
-o navegador pra lá (nunca tente desenhar o checkout você mesmo; é hospedado
-pela Stripe).
+`customer_email` pré-preenche o e-mail. Ao passar um Customer existente com e-mail válido, o Checkout usa esse e-mail; conferir comportamento na UI escolhida. Para checkout hospedado, usar `url`; para checkout próprio, inicializar os componentes oficiais com o `client_secret` da Session, conforme a integração vigente. O servidor nunca entrega sua chave secreta ao browser.
 
 ## 5. Portal do cliente (trocar cartão, ver faturas, cancelar)
 
@@ -252,9 +239,9 @@ Reembolso dispara `charge.refunded` no webhook — do lado do AdsTrackeador,
 isso cancela só a comissão de afiliado DAQUELE pagamento (nunca todas do
 indicado), igual à Wiven.
 
-## Métodos de pagamento no Brasil — A CONFIRMAR
+## Métodos de pagamento no Brasil — conferir na conta
 
-Pix e boleto funcionam bem pra cobrança ÚNICA na Stripe Brasil. Pra
+A disponibilidade geral não é configuração desta oferta: Pix/boleto ficam fora do checkout internacional pedido. Cartão, Apple/Google Pay dependem das capacidades da conta e das condições do dispositivo/domínio. PayPal processado pela Stripe não é elegível na conta brasileira confirmada; ver fontes em `references/ACESSO-MCP-CLI.md`. Pra
 cobrança RECORRENTE (assinatura), cartão é o método maduro; Pix/boleto
 recorrente dependem de recursos mais novos da Stripe (ex.: "Pix" como
 método em invoice recorrente) cuja disponibilidade PRECISA ser confirmada
