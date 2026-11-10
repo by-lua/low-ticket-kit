@@ -17,11 +17,11 @@ Automação de browser pra cadastro e configuração de produto na Hotmart (`app
 
 ## Layout padrão do checkout — regra da dona (04/11/2026)
 
-- **Todo checkout Hotmart sai com TEMPORIZADOR DE 15 MINUTOS** (contagem regressiva, tipo “Quantidade de tempo”, `00:15:00`), salvo pedido explícito diferente da dona. Pedido literal: *“manda o deepsdek aplica checkout da hotmart sempre com temporizador de 15 minutos”*.
-- **Ordem obrigatória: TEMPORIZADOR DE 15 MINUTOS → BANNER DO PRODUTO → FORMULÁRIO/RESUMO DE COMPRA.** O temporizador é o **primeiro** bloco; o banner vem **logo abaixo**, em faixa própria, **sem sobrepor nem cobrir a arte**. Pedido literal da correção: *“Mano, the timer is on top of the banner. And this thing here is not to appear.”*
+- **Todo checkout Hotmart sai com TEMPORIZADOR DE 10 MINUTOS** (contagem regressiva, tipo “Quantidade de tempo”, `00:10:00`), salvo pedido explícito diferente da dona. Pedido literal: *“manda o deepsdek aplica checkout da hotmart sempre com temporizador de 15 minutos”*.
+- **Ordem obrigatória: TEMPORIZADOR DE 10 MINUTOS → BANNER DO PRODUTO → FORMULÁRIO/RESUMO DE COMPRA.** O temporizador é o **primeiro** bloco; o banner vem **logo abaixo**, em faixa própria, **sem sobrepor nem cobrir a arte**. Pedido literal da correção: *“Mano, the timer is on top of the banner. And this thing here is not to appear.”*
 - **Não exibir o título genérico “Finalisez votre commande”** (“Finalize seu pedido”) nem o bloco equivalente do template em outro idioma. Remover o componente no builder; não deixar espaço vazio no lugar.
 - No builder, banner e temporizador ficam na mesma linha (row) e a ordem dos componentes dentro dela é o que manda: editar a versão em que o temporizador ficou abaixo e reinseri-lo escolhendo a área do banner (o componente entra **antes** do banner). O temporizador **não abre painel de edição por clique** — a configuração mora no painel do componente (ícone de lápis) e o texto ativo **não aceita campo vazio** (o botão Inserir não avança); use texto curto.
-- No celular, texto longo no temporizador estoura a faixa (o contador é fixo em ~195 px): use no máximo **“Offre réservée”** no texto ativo e algo curto como **“Offre expirée”** no texto zerado.
+- No celular, texto longo no temporizador estoura a faixa (o contador é fixo em ~195 px): use no máximo **o texto do timer da casa curto ("Discount available for a limited time only" traduzido; se estourar no celular, encurtar)** no texto ativo e algo curto como **“Offre expirée”** no texto zerado.
 - Conferir a ordem e a ausência do título no checkout **público**, em desktop e celular, depois de salvar/publicar. Prévia do builder sozinha não comprova o resultado. Alterações no builder publicado propagam **em até 5 minutos** — não concluir que falhou antes disso.
 
 ## Imposto — regra da dona (06/11/2026)
@@ -321,3 +321,13 @@ Aluno de teste, quando a área é própria com login por e-mail/senha: criar o
 usuário direto no banco com o mesmo esquema de hash do app (aqui
 `scrypt$<salt hex>$<derived hex>`, 64 bytes, `password.normalize('NFKC')`) e
 validar com `POST /api/session` antes de entregar a credencial pra Hotmart.
+
+
+## Padrão de checkout da casa (dona, 10/11/2026) — vale neste gateway
+- **Timer:** 10 min, regressivo, **reinicia em 10:00 sempre que a pessoa entra de novo/recarrega** (sem prazo fixo, sem memória). Texto: "Discount available for a limited time only" traduzido pro idioma do mercado. Configure o contador do gateway assim; se o gateway não reiniciar por visita, avise a dona.
+- **Confiança estilo Hotmart (só aqui, não no premium):** 3 cards de borda azul-clara (`#1b8fd1`), ícone azul à esquerda, título em itálico + subtítulo azul, traduzidos pro mercado: Privacidade ("Sua informação 100% segura", coroa de louros com estrela) · Compra segura ("Ambiente seguro e autenticado", escudo com check) · Conteúdo aprovado ("100% revisado e aprovado", check grande). Entram no builder (componente de imagem/HTML) abaixo do formulário, antes dos depoimentos.
+- **Barra do timer Hotmart:** vermelha full-bleed, contador grande `00:10:00` + ícone de cronômetro + "Discount available for a limited time only" traduzido.
+- **Garantia sempre igual ao produto:** Brasil 7 dias · internacional 15 dias. Conferir no produto, no checkout e no selo.
+- **Entrega:** "Acesso imediato por e-mail".
+- **Banner:** gerado por `banner-checkout-gpt` (seta pequena pra baixo no rodapé da imagem, título, garantia, acesso imediato por e-mail, vitalício).
+- **Confiança no estilo azul com cards (Privacidade · Compra segura · Conteúdo aprovado) é do Hotmart; no premium é ícone preto + texto, quando o gateway permitir bloco/HTML na página; visual-base em `MODELOS/checkout-base/index.html`.

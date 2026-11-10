@@ -288,3 +288,11 @@ Pergunte o país-alvo e o meio de pagamento real do público:
 - **Público paga no cartão** → Stripe entrega ~91% líquido em D+5, sem reserva. Zenith perde feio.
 - **Público paga em OXXO/SPEI/Yape/Nequi/GCash/UPI** → Stripe com CNPJ brasileiro simplesmente não atende. Aí a Zenith é uma das poucas saídas — mas compare antes com gateway local do país-alvo.
 - **Precisa receber em 2 dias** → nenhuma das duas; ver Cartpanda em `references/RISCOS.md`.
+
+
+## Padrão de checkout da casa (dona, 10/11/2026) — vale neste gateway
+- **Timer:** 10 min, regressivo, **reinicia em 10:00 sempre que a pessoa entra de novo/recarrega** (sem prazo fixo, sem memória). Texto: "Discount available for a limited time only" traduzido pro idioma do mercado. Configure o contador do gateway assim; se o gateway não reiniciar por visita, avise a dona.
+- **Garantia sempre igual ao produto:** Brasil 7 dias · internacional 15 dias. Conferir no produto, no checkout e no selo.
+- **Entrega:** "Acesso imediato por e-mail".
+- **Banner:** gerado por `banner-checkout-gpt` (seta pequena pra baixo no rodapé da imagem, título, garantia, acesso imediato por e-mail, vitalício).
+- **Confiança:** ícone preto + texto (Privacidade · Compra segura · Conteúdo aprovado) quando o gateway permitir bloco/HTML na página; o estilo azul com cards é só do Hotmart; visual-base em `MODELOS/checkout-base/index.html`.

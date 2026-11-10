@@ -16,6 +16,50 @@ Maestro" (numerologia, MX/AR) copiando o layout de um print da Hotmart. Os
 erros que aconteceram nessa sessão viram as seções "Não pule isto" abaixo —
 cada uma custou um retrabalho visível pro usuário.
 
+## PADRÃO da casa = visual do checkout Chave Mestra (dona, 10/11/2026)
+
+A skill é o **design system do checkout Chave Mestra**
+(`https://lachavemestra.empresa-b.com.br/checkout`, extraído do CSS real). Sem
+print de referência novo, todo checkout premium nasce com este visual, trocando
+só produto, textos, banner e (se pedido) a cor de destaque. Abrir o site de
+referência antes de montar.
+
+**Tokens (copiar pro `globals.css`):**
+```css
+--color-night:#fffcf6;      /* fundo creme */
+--color-bone:#2a1b0f;       /* texto principal */
+--color-mist:#7c6650;       /* texto secundário */
+--color-plum:#4a2308;
+--color-gold-soft:#ffc65c; --color-gold:#e8a31e; --color-gold-deep:#b26a00;
+/* fontes: títulos Cormorant Garamond (serifa, peso leve, grande) · corpo/inputs Inter */
+.btn-gold{letter-spacing:.01em;color:#1a1208;background:linear-gradient(100deg,#ffc65c,#e8a31e 50%,#b26a00);
+  border-radius:999px;padding:1.05rem 2.4rem;font-weight:600;position:relative;overflow:hidden;
+  box-shadow:0 18px 45px -18px #e8a31ebf;transition:transform .25s,box-shadow .25s}
+.btn-gold:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 24px 60px -18px #e8a31ee6}
+.btn-gold:after{content:"";position:absolute;inset:0;pointer-events:none;transform:translate(-120%);
+  background:linear-gradient(100deg,#0000 20%,#ffffff80 50%,#0000 80%);animation:sheen 4.5s ease-in-out infinite}
+.checkout-page{isolation:isolate;min-height:100dvh;position:relative}
+.checkout-page:before{content:"";position:fixed;inset:0;z-index:-1;background:
+  radial-gradient(60rem 40rem at 50% -10%,#e8a31e1a,transparent 70%),
+  radial-gradient(50rem 40rem at 5% 70%,#b26a0014,transparent 70%),var(--color-night)}
+```
+**Receita visual:** coluna única estreita (~`max-w-xl`), margens generosas;
+eyebrow dourado em caixa-alta com tracking largo + barra fina de gradiente
+dourado (`gold-deep → gold-soft`); título centrado em Cormorant; subtítulo em
+`mist`; campos Inter arredondados (`rounded-xl`), fundo bege `#f7f4ee`, borda
+dourada translúcida, placeholder em `mist`; rótulo acima em Inter 500; botão
+principal SEMPRE `.btn-gold` pílula com brilho (`sheen`); cartões brancos/bege
+com borda fina `gold/25` e `rounded-2xl`; caixa de segurança com ✓ ("Datos
+cifrados / No guardamos tu tarjeta"). Nada de preto puro, nada de dark.
+
+**Sempre junto em todo checkout premium:**
+- **Fluxo de compra (premium):** e-mail → bumps → a pessoa **escolhe a forma de pagamento** → só então **aparece o botão de compra** (`.btn-gold`, grande, largura total, logo abaixo das formas de pagamento, com a linha "acceso inmediato por e-mail · garantía X días" embaixo). Antes de escolher, nenhum botão de compra visível. Revelar com transição suave e rolar até ele no celular. Modelo: `MODELOS/checkout-base/index.html`.
+- Timer SEMPRE regressivo e SEM memória (dona, 10/11/2026): conta de 10:00 até 00:00 e, se a pessoa sair e entrar de novo (ou recarregar), **reinicia em 10:00**. Vale pra qualquer checkout: o nosso premium, Wiven, Hotmart, Mundpay, Cooud, qualquer um. Nunca persistir o tempo (sem localStorage/cookie/sessão), nunca configurar prazo fixo/absoluto; no gateway, ligar o contador de reinício por visita.
+- Barra de urgência vermelha full-bleed (padrão Hotmart): contador `00:10:00` (10 min) + ícone de cronômetro + "Discount available for a limited time only" traduzido.
+- Garantia 7 dias BR / 15 dias internacional; "Acesso imediato por e-mail".
+- Banner com 1 seta pequena pra baixo no rodapé da imagem, apontando pra parte branca do checkout.
+- **Confiança (premium) = ícone PRETO + texto**, caixa `rounded-xl border-black/10 bg-neutral-50` na coluna do resumo, abaixo de "Tu pedido": Privacidad ("Tu información 100% segura") · Compra segura ("Ambiente seguro y autenticado") · Contenido aprobado ("100% revisado y aprobado"), traduzidos pro mercado. **Nada de azul e nada do estilo Hotmart no premium** — o visual azul com cards e a barra Hotmart só vão no checkout do Hotmart. O resto (visual e comentários) é igual ao da Chave Mestra. Modelo: `MODELOS/checkout-base/index.html`.
+
 ## Regra de identidade visual: clone exato por padrão
 
 Quando o usuário pede "checkout premium" ou manda um print pra clonar, é
@@ -57,6 +101,11 @@ De cima pra baixo, nesta ordem:
    container do card), contador regressivo + texto curto. Gradiente com
    cor de urgência (vermelho tipicamente), ícone de relógio de verdade (não
    lupa/ampulheta — um `<circle>` com um ponteiro simples já resolve).
+   **Regra fixa (dona, 10/11/2026):** timer de **10 minutos**, formato
+   `HH:MM:SS` (`00:10:00`), texto "Discount available for a limited time only"
+   traduzido pro idioma do mercado (PT-BR "Desconto disponível por tempo
+   limitado", ES "Descuento disponible por tiempo limitado"). Nunca "¡Aprovecha
+   esta oferta!" nem 15 min.
 2. **Banner do produto** — imagem 16:9 colada direto no topo do card branco
    (sem gap entre banner e card: banner com `rounded-t-2xl`, card com
    `rounded-b-2xl border-t-0`, emendados). Ver seção "Não pule isto" #2 sobre
@@ -65,7 +114,8 @@ De cima pra baixo, nesta ordem:
    azul, o que for a paleta do projeto), NUNCA preto puro, que não chama
    atenção nenhuma. Preço à direita com comparação riscada. Selo de garantia
    (verde, com ícone de escudo) logo abaixo do nome — este selo é fácil de
-   esquecer e o usuário vai notar a falta.
+   esquecer e o usuário vai notar a falta. **Garantia sempre igual ao produto:**
+   Brasil 7 dias, internacional 15 dias. Entrega: "Acesso imediato por e-mail".
 4. **Formulário mínimo** — só email. É a lição central do padrão Hotmart:
    nome/telefone pedem confiança antes da hora e derrubam conversão; a
    Hotmart só pede o essencial pra entregar o produto e fecha o resto depois.
@@ -187,6 +237,6 @@ genérico) não tem esse problema: aí sim vale ícone neutro desenhado.
   projeto ainda não tiver uma pronta.
 - Skill `banner-checkout-gpt` — gerar a arte do banner (16:9) quando o
   projeto ainda não tiver uma, incluindo o que precisa estar queimado na
-  imagem (título, garantia, entrega, acesso).
+  imagem (título, garantia 7d BR/15d fora, acesso imediato por e-mail, acesso vitalício, seta pequena no rodapé).
 
 > **Selo de garantia (10/11/2026):** sempre imagem gerada no GPT no padrão dourado — ver `imagens-pagina-low/SKILL.md` §"SELO DE GARANTIA". Nunca CSS/HTML.

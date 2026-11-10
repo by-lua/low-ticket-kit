@@ -43,11 +43,20 @@ Todo banner de checkout leva, queimado na imagem (a não ser que o usuário peç
 1. **Título** — nome real do produto/oferta.
 2. **Subtítulo/objetivo** — uma linha do que o produto entrega (não genérica).
 3. **Preço** — só se confirmado no passo 2.
-4. **Garantia** — prazo real (ex.: "Garantía de 7 días" / "7 dias de garantia").
-5. **Entrega imediata** — linha própria.
+4. **Garantia** — prazo FIXO por mercado, sempre igual ao do produto/checkout (ver regra abaixo).
+5. **Entrega imediata por e-mail** — linha própria, sempre "Acesso imediato por e-mail" (traduzir pro idioma do mercado: "Acceso inmediato por e-mail", "Accès immédiat par e-mail", "Immediate access by email").
 6. **Acesso vitalício** — linha própria.
 
-Layout sugerido: título+subtítulo num canto (ou topo, se for quadrado), as 3-4 linhas curtas empilhadas como lista com ícone, e o elemento visual/mockup do produto ocupando o espaço livre — nunca sobrepondo texto. Sempre `no text` para QUALQUER outro texto fora dessa lista (nada de letras soltas, marca d'água, legenda).
+### Regras fixas (dona, 10/11/2026)
+
+- **Garantia consistente com o produto:** Brasil = **7 dias**; internacional (qualquer outro país) = **15 dias**. Nunca outro prazo, nunca divergir do que a página de vendas/checkout/selo diz. Confira o mercado da oferta antes de escrever o prompt.
+- **Acesso imediato por e-mail:** a linha de entrega diz "acesso imediato" + "por e-mail" (não só "entrega imediata").
+- **Temporizador (barra/timer do checkout):** **10 minutos**, formato `00:10:00` (HH:MM:SS, igual Hotmart), com o texto "Discount available for a limited time only" traduzido pro idioma do mercado (PT-BR: "Desconto disponível por tempo limitado"; ES: "Descuento disponible por tiempo limitado"; FR: "Réduction disponible pour une durée limitée"). Vale pro timer do checkout e pra qualquer arte que traga o timer. Regressivo e reinicia em 10:00 toda vez que a pessoa entra de novo (qualquer checkout, incluindo Wiven e Hotmart). Referência: checkout Hotmart (barra vermelha full-bleed, contador grande + ícone de cronômetro + texto).
+- **Seta pra baixo no banner (dona, 10/11/2026):** pequena, no **rodapé da imagem** (borda de baixo do banner), apontando pra parte branca do checkout logo abaixo, onde a pessoa preenche. Discreta, tamanho pequeno (~5% da altura), branca ou dourada conforme a paleta; 1 seta central ou 1 par pequeno, sem cobrir texto nem mockup. Não é seta grande nem nos cantos.
+
+O ícone + texto de confiança (Privacidade / Compra segura / Conteúdo aprovado) NÃO entra no banner: é componente do checkout (ver `checkout-premium`).
+
+Layout sugerido: título+subtítulo num canto (ou topo, se for quadrado), as 3-4 linhas curtas empilhadas como lista com ícone, e o elemento visual/mockup do produto ocupando o espaço livre — nunca sobrepondo texto. A seta pequena do rodapé é elemento gráfico (não texto) e entram sempre. Sempre `no text` para QUALQUER outro texto fora dessa lista (nada de letras soltas, marca d'água, legenda).
 
 ## 4. Mockup do produto — só quando fizer sentido
 

@@ -59,7 +59,7 @@ Tudo que a dona disser vai **literal** em `pesquisa/da-dona/<data>-<assunto>.md`
   → peças do original revisadas (manter/melhorar/cortar; acrescentar só onde sobrou objeção) → **planos e
   valores** (moeda do país) → bumps, upgrade, downsell/saída, upsell/microSaaS → **checkout** (gateway e conta
   conferidos em `_memoria/contas-e-codigos.md` · moeda · métodos de pagamento do país · modelo: checkout do
-  gateway ou `checkout-premium` · o que aparece nele: banner, bumps, garantia) → **plano da página** (títulos,
+  gateway ou `checkout-premium` (padrão = visual do checkout Chave Mestra) · o que aparece nele: banner, bumps, garantia 7d BR/15d fora, timer 10 min, ícone preto+texto Privacidade/Compra segura/Conteúdo aprovado na caixa de segurança) → **plano da página** (títulos,
   seções manter/reordenar/cortar/acrescentar, popup, CTAs, desktop+mobile).
 - 🛑 Mostro tudo por extenso e pergunto cada pendência (valores, checkout, garantia, bônus, título).
 - ✅ `OFERTA.md` + `FUNIL.md` com "aprovada em AAAA-MM-DD" · `CLAUDE.md` + `STATUS.md` da oferta.

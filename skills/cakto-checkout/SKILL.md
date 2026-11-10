@@ -252,3 +252,11 @@ quando for migrar de vez: criar os 3 produtos-bump em USD e linkar ao produto pr
 **Status:** testes criados pra servir de referência de ticket/estrutura — a oferta ao vivo continua
 na Cooud/Mundpay (ver `OFERTAS/gerineuro-us/CLAUDE.md` e `checkout/MAPA-DE-PRECOS.md`) até decisão
 de migrar o checkout de verdade.
+
+
+## Padrão de checkout da casa (dona, 10/11/2026) — vale neste gateway
+- **Timer:** 10 min, regressivo, **reinicia em 10:00 sempre que a pessoa entra de novo/recarrega** (sem prazo fixo, sem memória). Texto: "Discount available for a limited time only" traduzido pro idioma do mercado. Configure o contador do gateway assim; se o gateway não reiniciar por visita, avise a dona.
+- **Garantia sempre igual ao produto:** Brasil 7 dias · internacional 15 dias. Conferir no produto, no checkout e no selo.
+- **Entrega:** "Acesso imediato por e-mail".
+- **Banner:** gerado por `banner-checkout-gpt` (seta pequena pra baixo no rodapé da imagem, título, garantia, acesso imediato por e-mail, vitalício).
+- **Confiança:** ícone preto + texto (Privacidade · Compra segura · Conteúdo aprovado) quando o gateway permitir bloco/HTML na página; o estilo azul com cards é só do Hotmart; visual-base em `MODELOS/checkout-base/index.html`.

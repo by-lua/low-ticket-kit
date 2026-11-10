@@ -45,7 +45,8 @@ interface StoredLead {
   email?: string;
 }
 
-const DURACION_S = 15 * 60;
+// Timer regressivo SEM persistência: useState em memória, reinicia em 10:00 a cada entrada/reload. Não salvar em localStorage.
+const DURACION_S = 10 * 60; // 10 min fixo (dona 10/11/2026)
 
 function useCuentaRegresiva(segundos: number) {
   const [restante, setRestante] = useState(segundos);
@@ -53,9 +54,10 @@ function useCuentaRegresiva(segundos: number) {
     const id = setInterval(() => setRestante((r) => (r > 0 ? r - 1 : 0)), 1000);
     return () => clearInterval(id);
   }, []);
-  const min = String(Math.floor(restante / 60)).padStart(2, "0");
+  const hor = String(Math.floor(restante / 3600)).padStart(2, "0");
+  const min = String(Math.floor((restante % 3600) / 60)).padStart(2, "0");
   const seg = String(restante % 60).padStart(2, "0");
-  return `${min}:${seg}`;
+  return `${hor}:${min}:${seg}`; // 00:10:00, igual Hotmart
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -200,7 +202,7 @@ export default function CheckoutHotmartStyle() {
             <circle cx="10" cy="10" r="7.5" stroke="currentColor" strokeWidth="1.4" />
             <path d="M10 6v4.2l2.8 1.8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          ¡Aprovecha esta oferta!
+          Descuento disponible por tiempo limitado {/* texto Hotmart traduzido pro mercado */}
         </span>
       </div>
 
@@ -317,7 +319,6 @@ export default function CheckoutHotmartStyle() {
               <button type="submit" disabled={enviando} className="btn-gold min-h-[50px] rounded-lg text-base font-semibold disabled:opacity-60">
                 {enviando ? "Generando…" : "Comprar ahora"}
               </button>
-              <p className="text-center text-[11px] text-neutral-400">Protegido · Pago 100% seguro</p>
             </div>
           </form>
 
