@@ -53,7 +53,7 @@ Tudo que a dona disser vai **literal** em `pesquisa/da-dona/<data>-<assunto>.md`
 
 **PASSO 4 — Ficha, valores, funil e plano da página** (`low-ficha-oferta` + regras `low-funil`)
 - Checklist completo (9 itens): `low-ficha-oferta` 2a — título · copy · objeções · bônus (manter/melhorar/criar/cortar) ·
-  bumps (igual/melhorar/cortar/virar upsell) · **upsell = microSaaS do produto, com a copy** · upgrade/saída · valores e
+  bumps (igual/melhorar/cortar/virar upsell) · **upsell = microSaaS do produto, com a copy** (padrão: `low-upsell-app` MODO TESTE + modelo curto, escada 7,90/5,90/3,90 com 2 dias grátis) · upgrade/saída · valores e
   checkout · furos do SpyX + plano da página.
 - Faço, nesta ordem: objeções do comprador (5-8) → **furos do SpyX aplicados** (tabela furo → correção → onde)
   → peças do original revisadas (manter/melhorar/cortar; acrescentar só onde sobrou objeção) → **planos e
