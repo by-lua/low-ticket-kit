@@ -1,6 +1,6 @@
 ---
 name: stripe-checkout
-description: Opera a conta Stripe da Leadgo (dashboard.stripe.com) pelo painel logado ou pela API REST — criar produto/preço (único ou recorrente, BRL/USD/EUR), cupom/desconto por N meses, Payment Link, Checkout Session, portal do cliente, webhook, reembolso. Use quando o usuário pedir para criar produto/preço na Stripe, checkout Stripe, assinatura Stripe, cupom de desconto Stripe, Payment Link, webhook Stripe, ou mencionar cobrança/pagamento via Stripe.
+description: Opera as contas Stripe da dona (organizações LeadGo = pessoal e Winx = parceria Luciola; dashboard.stripe.com) pelo painel logado ou pela API REST — criar produto/preço (único ou recorrente, BRL/USD/EUR), cupom/desconto por N meses, Payment Link, Checkout Session, portal do cliente, webhook, reembolso. Use quando o usuário pedir para criar produto/preço na Stripe, checkout Stripe, assinatura Stripe, cupom de desconto Stripe, Payment Link, webhook Stripe, ou mencionar cobrança/pagamento via Stripe.
 allowed-tools: Bash(agent-browser:*), Bash(chromium:*), Bash(curl:*), Bash(node:*)
 ---
 
@@ -12,6 +12,13 @@ allowed-tools: Bash(agent-browser:*), Bash(chromium:*), Bash(curl:*), Bash(node:
 # stripe-checkout
 
 ## Estrutura da conta — CONFIRMADO 31/10/2026: sem organização, contas avulsas no mesmo login
+
+> **REGRA DA DONA (10/11/2026) — ORGANIZAÇÃO POR SÓCIO. Esta regra vale sobre o texto abaixo.**
+> - **Winx** = organização Stripe nova, pedida pela dona, para **tudo que é parceria com a Luciola** (ex.: Calendrier Magique FR, Calendário Mágico AR e qualquer oferta "Lua + Luciola"). Produto, preço, assinatura e webhook dessas ofertas são criados **dentro da Winx**, numa conta da oferta dentro dela.
+> - **LeadGo** = coisas pessoais da dona (LeadGo, AdsTrackeador e o que não for parceria). Nada da parceria Luciola vai pra LeadGo.
+> - Antes de criar algo: conferir o dono da oferta em `OFERTAS/<slug>/CLAUDE.md` (linha "Donas") e escolher a organização. Dúvida = perguntar à dona.
+> - Se a Winx ainda não aparecer no seletor de contas/organizações do perfil `stripe`, **não criar conta avulsa no lugar**: parar e avisar a dona.
+> - Variáveis: `STRIPE_WINX_<CONTA>_...` para contas da Winx.
 
 Login `stripe` acessa **contas Stripe separadas no mesmo login**, não uma
 Organização (recurso "Organizations" da Stripe) — essa hipótese anterior foi
