@@ -1624,3 +1624,22 @@ agent-browser --session $S snapshot -i -c | grep -i baixar   # agora aparece
 Confirmar que salvou: `ls -la` no caminho — o comando `download` só imprime "✓ Download saved to
 ..." quando funcionou de verdade (edição do agent-browser já espera o evento de download).
 
+
+---
+
+## Página de entregável com ref FR (modo Chat, 1 por mensagem) — lições do Calendario AR B4 (10/11/2026)
+
+Receita que rodou: `OFERTAS/<slug>/produto/lote-imagens/bonus/gerar.sh <prompt.txt> <saida.png> <ref.jpg>` com
+`GPT_S=gpt-empresab-<lane> GPT_TAB=<lane>` (lane via `lane.sh take gpt-empresab <lane>`). ~80-180 s por página. 1 por vez, mesma aba.
+Erros reais e a correção no PROMPT:
+1. **Nunca cite a grafia errada no prompt.** "Never write Mágicco/Magico" fez o GPT escrever "Mágicco" 2 vezes. Escreva só a
+   certa: `The title line reads exactly: Calendario Mágico 2027 (ONE letter c; accent only on the a of Mágico)`.
+2. **Ref em outro idioma/hemisfério puxa o texto dela.** Ref FR saiu com a faixa « Rueda del Norte ». Todo texto de moldura
+   (faixa, subtítulo) vai por extenso no prompt: `The ribbon under the title must read exactly: Rueda del Sur`.
+3. **Acento a mais** na palavra certa ("Calendário"): dizer `Calendario has NO accent mark; the only accent in the title is on Mágico`.
+4. **Palavra corrompida no corpo** ("malso" por "males"): soletre a palavra crítica no prompt e confira com **crop em full-res**
+   de cada bloco de texto, nunca só a página reduzida. Reprovada → `_descartado/`, regera.
+5. **Gate de espera dá `FAIL timeout (idle 0)` mas a imagem pode existir** (aba virou `about:blank`). Antes de regerar:
+   `agent-browser --session $S connect <porta>` → `tab new --label <lane> https://chatgpt.com/` → listar `a[href*="/c/"]` →
+   abrir o chat cujo título/1º prompt é seu → `GPT_S=$S bash baixar.sh <saida.png>`. Zero cota gasta.
+6. QA por página: ler o texto da imagem contra o prompt linha a linha + `md5sum | uniq -D` (sem duplicata) + 1086×1448 (ou o tamanho do lote).

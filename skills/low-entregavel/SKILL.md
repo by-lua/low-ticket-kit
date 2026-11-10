@@ -41,6 +41,8 @@ description: Etapa E4 do sistema LOW-TICKET — escreve e gera o entregável (pr
    bate com a folha, nada cortado na margem. Contact sheet no fim.
    Diagrama técnico (mapa de pontos, molde, posição) conferido contra a tabela de dados do `FONTES.md`
    (`ESCRITA-ENTREGAVEL.md` § 7-8).
+6b. **Página gerada com ref de outro idioma/país:** texto de moldura (faixa, subtítulo, nome do produto) vai por extenso no prompt,
+   só a grafia certa (nunca citar a errada). Confira cada bloco de texto em crop full-res. Lições: `gpt-imagem-playwright` § "Página de entregável com ref FR".
 7. Outro idioma de uma entrega existente → `traduzir-entregavel-imagem`.
 
 Próximo: E5 (`imagens-pagina-low` — imagens da página com o MVP de referência) e E6 (área de membros:
