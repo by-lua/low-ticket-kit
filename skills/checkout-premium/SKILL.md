@@ -11,8 +11,7 @@ checkout anterior. Não é um app novo — é uma peça que entra num projeto qu
 já existe, então o trabalho real é **descobrir o que o projeto já tem** antes
 de escrever qualquer JSX.
 
-Nasceu generalizando um checkout construído ao vivo pro projeto "El Número
-Maestro" (numerologia, MX/AR) copiando o layout de um print da Hotmart. Os
+Nasceu generalizando um checkout construído ao vivo, copiando o layout de um print da Hotmart. Os
 erros que aconteceram nessa sessão viram as seções "Não pule isto" abaixo —
 cada uma custou um retrabalho visível pro usuário.
 
@@ -30,17 +29,19 @@ Tudo que está nesta skill continua valendo. O que muda é o modo:
 | Extras | Nenhum | País → moeda → idioma, formatação de preço, métodos por país, depoimentos do mercado, IVA, tracking `event_id` |
 | Regra de cobrança | Pedido criado uma vez, no clique | Igual: PaymentIntent só no clique |
 
+**MODELO INTERNACIONAL PRONTO — "Hotmart adaptado" (dona, 11/11/2026):** para checkout internacional com Stripe + PayPal use `MODELOS/checkout-internacional-hotmart/` (README lá). É o layout inspirado no checkout Hotmart: barra de urgência 10:00, banner largo arredondado alinhado ao card estreito, seletor de país com busca (idioma e moeda mudam pelo IP e pelo seletor), e-mail → **forma de pagamento** (cartão de débito/crédito, Apple Pay, Google Pay, PayPal, ícones de mesmo tamanho) → **bumps amarelos** (upgrade **aditivo**) → detalhes → botão verde → garantias com ícones → "Protegido por stripe". **Sem notificação de compra.** Depoimentos só reais (placeholder só em teste). Esta ordem (pagamento antes dos bumps) vale para este modelo; o modo local/padrão da casa segue a ordem e-mail → bumps → pagamento. Versão nova de tela = arquivo novo, nunca sobrescrever. O servidor do modelo roda em **Coolify (Node) ou só Cloudflare (Workers + D1)** com o mesmo núcleo. **Ao pedirem esse checkout, PERGUNTE onde vai hospedar (Cloudflare ou Coolify) antes de montar; não assuma** (ver `stripe-checkout/references/MODELO-INTERNACIONAL-HOTMART.md`, passo 0).
+
 **Modo internacional com Stripe = abrir também** `~/.claude/skills/stripe-checkout/references/ROTEIRO-NOVO-CHECKOUT.md` (passo a passo: organização, mercados, formas de pagamento, PayPal, entrega, testes) e `MAPA-PREMIUM-x-STRIPE.md` (o que cada skill manda). Em checkout de um só país, os extras internacionais NÃO entram.
 
 **Lacunas do premium quando o gateway é Stripe** (a tabela de gateways abaixo ganha esta linha): Stripe = tile "Cartão" que abre o Payment Element, botões de Apple Pay/Google Pay (só se elegíveis), tile PayPal; logos oficiais das marcas; selo "Pagamento seguro via Stripe/Link" ao lado do cartão.
 
-## PADRÃO da casa = visual do checkout Chave Mestra (dona, 10/11/2026)
+## PADRÃO da casa = visual do checkout padrão da casa (dona, 10/11/2026)
 
-A skill é o **design system do checkout Chave Mestra**
-(`https://lachavemestra.empresa-b.com.br/checkout`, extraído do CSS real). Sem
+A skill é o **design system do checkout padrão da casa**
+(extraído do CSS real e guardado em `MODELOS/checkout-base/`). Sem
 print de referência novo, todo checkout premium nasce com este visual, trocando
-só produto, textos, banner e (se pedido) a cor de destaque. Abrir o site de
-referência antes de montar.
+só produto, textos, banner e (se pedido) a cor de destaque. Abrir o modelo
+de referência antes de montar.
 
 **Tokens (copiar pro `globals.css`):**
 ```css
@@ -76,7 +77,7 @@ cifrados / No guardamos tu tarjeta"). Nada de preto puro, nada de dark.
 - Barra de urgência vermelha full-bleed (padrão Hotmart): contador `00:10:00` (10 min) + ícone de cronômetro + "Discount available for a limited time only" traduzido.
 - Garantia 7 dias BR / 15 dias internacional; "Acesso imediato por e-mail".
 - Banner com 1 seta pequena pra baixo no rodapé da imagem, apontando pra parte branca do checkout.
-- **Confiança (premium) = ícone PRETO + texto**, caixa `rounded-xl border-black/10 bg-neutral-50` na coluna do resumo, abaixo de "Tu pedido": Privacidad ("Tu información 100% segura") · Compra segura ("Ambiente seguro y autenticado") · Contenido aprobado ("100% revisado y aprobado"), traduzidos pro mercado. **Nada de azul e nada do estilo Hotmart no premium** — o visual azul com cards e a barra Hotmart só vão no checkout do Hotmart. O resto (visual e comentários) é igual ao da Chave Mestra. Modelo: `MODELOS/checkout-base/index.html`.
+- **Confiança (premium) = ícone PRETO + texto**, caixa `rounded-xl border-black/10 bg-neutral-50` na coluna do resumo, abaixo de "Tu pedido": Privacidad ("Tu información 100% segura") · Compra segura ("Ambiente seguro y autenticado") · Contenido aprobado ("100% revisado y aprobado"), traduzidos pro mercado. **Nada de azul e nada do estilo Hotmart no premium** — o visual azul com cards e a barra Hotmart só vão no checkout do Hotmart. O resto (visual e comentários) é igual ao do padrão da casa. Modelo: `MODELOS/checkout-base/index.html`.
 
 ## Regra de identidade visual: clone exato por padrão
 
@@ -86,7 +87,7 @@ espaçamento/formato de card, bumps, abas de pagamento, tudo igual ao print de
 referência. Só troca produto/oferta/banner/texto. **Nunca adapte a paleta pro
 tema/identidade visual do projeto por conta própria** — isso é uma decisão à
 parte que o usuário pede explicitamente ("faz com a cor/identidade do
-produto"), nunca a leitura padrão do pedido. Confirmado em sessão AstroDicas
+produto"), nunca a leitura padrão do pedido. Confirmado em sessão anterior
 (14/09/2026): o clone saiu no tema dark/gold do resto do site em vez do
 cream/branco/laranja do print de referência, e o usuário corrigiu na hora.
 
@@ -249,7 +250,7 @@ genérico) não tem esse problema: aí sim vale ícone neutro desenhado.
 
 ## Referências
 
-- **MODELO OFICIAL (abrir primeiro):** `~/Documentos/TRAMPO/PROJETOS/WORKING/PROJETOS - INTERNOS/LOW-TICKET/MODELOS/checkout-base/index.html` (+ `assets/`: CSS e fontes originais da Chave Mestra). Cópia fiel da Chave Mestra com os ajustes da dona (timer 10 min, selos acesso por e-mail + garantia, seta no banner, confiança em ícone preto, fluxo e-mail → bumps → pagamento → botão de compra, recálculo ao marcar bump). Qualquer checkout premium novo parte dele; a implementação em React segue o mesmo visual.
+- **MODELO OFICIAL (abrir primeiro):** `MODELOS/checkout-base/index.html` (+ `assets/`: CSS e fontes originais do padrão da casa). Cópia fiel do padrão da casa com os ajustes da dona (timer 10 min, selos acesso por e-mail + garantia, seta no banner, confiança em ícone preto, fluxo e-mail → bumps → pagamento → botão de compra, recálculo ao marcar bump). Qualquer checkout premium novo parte dele; a implementação em React segue o mesmo visual.
 
 - `references/exemplo-componente.md` — trecho comentado do componente que
   originou esta skill, com a estrutura completa de JSX pra copiar como

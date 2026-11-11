@@ -1,6 +1,6 @@
 # Checkout próprio Stripe — modelo da casa
 
-Revisado em 10/11/2026 para a oferta Guide Tarot FR. Este é o procedimento de integração; IDs e capacidades da conta ficam em `SKILL.md` e `OFERTAS/<slug>/STATUS.md`. Aplicar somente após ler `low-ticket`, `INDICE.md`, `CLAUDE.md`, `OFERTA.md`, `FUNIL.md`, `_memoria/contas-e-codigos.md` e `ATIVOS.md` da oferta.
+Procedimento genérico, revisado em 11/11/2026. Este é o procedimento de integração; IDs e capacidades da conta ficam em `SKILL.md` e `OFERTAS/<slug>/STATUS.md`. Aplicar somente após ler `low-ticket`, `INDICE.md`, `CLAUDE.md`, `OFERTA.md`, `FUNIL.md`, `_memoria/contas-e-codigos.md` e `ATIVOS.md` da oferta.
 
 ## 1. Confirmar a entrada
 
@@ -15,7 +15,7 @@ Revisado em 10/11/2026 para a oferta Guide Tarot FR. Este é o procedimento de i
 
 Para a exigência “pedido/cobrança criado só no clique”, seguir o [PaymentIntent adiado](https://docs.stripe.com/payments/accept-a-payment-deferred?platform=web&type=payment): inicializar Elements com `mode: 'payment'`, `currency` e `amount` **calculado pelo servidor**; montar Payment Element antes de criar Intent. Quando bump/plano muda, o servidor recalcula e devolve o total; chamar `elements.update({amount: total})`. Não usar total fornecido pelo browser como preço final.
 
-**Preço com IVA incluído no PaymentIntent direto:** o `tax_behavior=inclusive` do Price do catálogo não é aplicado automaticamente ao `amount` passado ao PaymentIntent. O backend deve cobrar exatamente o total aprovado (por exemplo, 590/1290/790 centavos para as três entradas Guide Tarot FR), sem somar imposto ao valor exibido. Cálculo, registro e emissão de IVA são processos separados quando Stripe Tax não está disponível para a conta.
+**Preço com IVA incluído no PaymentIntent direto:** o `tax_behavior=inclusive` do Price do catálogo não é aplicado automaticamente ao `amount` passado ao PaymentIntent. O backend deve cobrar exatamente o total aprovado (por exemplo, 590/1290/790 centavos para três entradas de 5,90/12,90/7,90), sem somar imposto ao valor exibido. Cálculo, registro e emissão de IVA são processos separados quando Stripe Tax não está disponível para a conta.
 
 No clique explícito em comprar:
 

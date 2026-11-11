@@ -1,94 +1,70 @@
 # Roteiro de ponta a ponta — novo produto com checkout próprio Stripe
 
-Criado em 11/11/2026 a partir das ordens da dona. É o **primeiro teste** do checkout premium com Stripe (oferta Guide Tarot FR). Siga na ordem; cada passo aponta para a regra detalhada.
+Procedimento genérico (vale para qualquer oferta). Dados de conta, IDs, preços e mercados de cada oferta ficam em `OFERTAS/<slug>/STRIPE-PAYPAL.md` e `_memoria/contas-e-codigos.md`; esta skill não os cita. Siga na ordem.
 
-## 0. Regras fixas deste roteiro (dona, 11/11/2026)
+## 0. Regras fixas (dona, 11/11/2026)
 
-1. **Organização e conta da oferta primeiro (dona, 11/11/2026).** "Criar o produto" = criar a **conta Stripe da oferta** dentro da organização do sócio. Descobrir a organização (dono em `OFERTAS/<slug>/CLAUDE.md`; parceria Luciola = **Winx**), listar as contas dela. Se aquela oferta ainda não tiver a sua, **pedir à dona que crie a conta na organização e informe organização e nome da conta; o agente não cria conta** (titularidade, dados públicos e banco de repasse são dela). **Calendrier Magique é a conta de outra oferta** (`acct_1UaIGiABfkUzod1X`): nada do Guide Tarot mora nela. Confirmar `/v1/account` e o ambiente (test/live) antes de qualquer escrita. Dúvida = perguntar.
-2. **Formas de pagamento sempre ligadas:** cartão de crédito, **Apple Pay**, **Google Pay** e **PayPal**. Nunca lançar sem checar cada uma no ambiente real; método que não aparecer não se anuncia (ver passo 5).
-3. **PayPal: sempre confirmar QUAL conta recebe, antes de ligar.** Conta definida pela dona em 11/11/2026: a Business **Dona** (perfil `paypal-dona-leadgo`, porta 9315, dashboard `49.265.147 DONA DE LIMA ASSIS`, BRL, login confirmado). Repetir a confirmação a cada oferta nova; se a oferta for outra, perguntar.
-4. **Mesma oferta em vários idiomas/mercados (decisão padrão, dona pode mudar):** uma conta por OFERTA e, dentro dela, **um Product por mercado/idioma**, nome `<Produto> <MERCADO>` (ex. `Guide Tarot FR`, `Guide Tarot ES`). A conta guarda chaves, webhook, PayPal e domínio da oferta; o Product separa relatório e catálogo por mercado. Só abrir conta nova se mudar sócio, empresa ou país do recebedor. Listar Products antes de criar; dúvida = perguntar. Plano, bumps e upgrade são SKUs do catálogo. Nome sem valor embutido.
-5. **Visual e fluxo da tela** vêm do `checkout-premium`. Aqui só o que é pagamento, moeda, entrega e tracking.
+1. **Organização e conta da oferta primeiro.** "Criar o produto" = existir a **conta Stripe da oferta** dentro da organização do sócio. Descobrir a organização pela ficha da oferta (`OFERTAS/<slug>/CLAUDE.md`), listar as contas dela. Se a oferta não tiver conta, **pedir à dona que crie e informe organização e nome da conta; o agente não cria conta** (titularidade, dados públicos e banco de repasse são dela). Conferir `/v1/account` e o ambiente (teste/live) antes de escrever qualquer coisa. Conta errada = parar.
+2. **Formas de pagamento sempre ligadas:** cartão de crédito, **Apple Pay**, **Google Pay** e **PayPal**. Nunca lançar sem checar cada uma no ambiente real; método que não aparecer não se anuncia (passo 5).
+3. **PayPal: sempre confirmar QUAL conta PayPal recebe**, antes de ligar e a cada oferta nova (a conta é decisão da dona; ver fatos em `_memoria/contas-e-codigos.md`).
+4. **Mesma oferta em vários idiomas/mercados:** uma conta por OFERTA e, dentro dela, **um Product por mercado/idioma**, nome `<Produto> <MERCADO>`. A conta guarda chaves, webhook, PayPal e domínio da oferta; o Product separa relatório e catálogo por mercado. Só abrir conta nova se mudar sócio, empresa ou país do recebedor (decisão padrão; a dona pode mudar). Listar Products antes de criar; dúvida = perguntar; nunca assumir.
+5. **Visual e fluxo da tela** vêm do `checkout-premium`. Aqui só pagamento, moeda, entrega e tracking.
+6. **Preços, moedas e mercados** são decisão da dona, por oferta. Nunca converter moeda automático; valor novo só com ordem dela.
 
 ## 1. Levantar a oferta
 
-Ler `low-ticket`, `INDICE.md`, `OFERTAS/<slug>/CLAUDE.md`, `OFERTA.md`, `FUNIL.md`, `STATUS.md`. Conferir a **página publicada** contra a ficha (divergência = perguntar à dona).
-
-**Guide Tarot FR (`luciola-guidetarot-fr`), página `https://guidetarot.pages.dev/`, conferida em 11/11/2026:**
-
-| SKU | Preço na página (EUR, IVA incluído) | Observação |
-|---|---|---|
-| Essentielle (Básico) | 5,90 € | 78 fiches; sem os 4 bônus |
-| Complète | 12,90 € | 78 fiches + 4 bônus |
-| Upgrade Básico → Complète | **aditivo**: Básico 5,90 + upgrade 2,00 = 7,90 € (CAD 8,90 + 3,00 = 11,90) | 1º bump obrigatório no checkout do Básico; a dona definiu em 11/11 que o upgrade SOMA ao valor do plano |
-| Order bumps adicionais ("Comprar juntos") | **aprovados pela dona em 11/11/2026**: EUR (abaixo), CHF = mesmos números do EUR, CAD 8,90 / 5,90 / 7,90 | Kit Manual do Tarô: Carreira + Relacionamentos: de 7,32 € por **5,90 €** (19%). Guia de Interpretação: Relacionamentos Românticos: de 5,49 € por **3,90 €** (29%). Manual de Interpretação: Carreira e Finanças: de 6,90 € por **4,90 €** (29%). Botão "Adicionar à compra". Criados no **sandbox** Guide Tarot (IDs no SKILL.md) com nomes em francês traduzidos pelo agente, **a dona ainda confere os nomes**. Live pendente |
-| Upsell pós-compra (Lenormand) | **a definir** | preço pendente |
-
-Garantia: 15 dias. Todos os preços na página são em euros.
+Ler `low-ticket`, `INDICE.md`, `OFERTAS/<slug>/CLAUDE.md`, `OFERTA.md`, `FUNIL.md`, `STATUS.md`. Conferir a **página publicada** contra a ficha (divergência = perguntar à dona). Montar a tabela de SKUs (planos, upgrade **aditivo**, bumps, upsell) com preço por moeda aprovado; item sem preço aprovado fica fora da cobrança. Garantia: Brasil 7 dias, internacional 15.
 
 ## 2. Mercados e moedas
 
-Anúncio no mercado francófono: **França, Bélgica, Suíça e Canadá**. Idioma da tela: **francês** nos quatro.
-
-| País | Moeda | Preços (Essentielle / Complète / Upgrade) |
-|---|---|---|
-| França, Bélgica | EUR | 5,90 / 12,90 / 7,90 — **aprovados** (= página) |
-| Suíça | CHF | 5,90 / 12,90 / 7,90 — **aprovados pela dona (11/11/2026)** |
-| Canadá | CAD | 8,90 / 19,90 / 11,90 — **aprovados pela dona (11/11/2026)** |
-
-- Números de CHF e CAD aprovados pela dona em 11/11/2026 (referência: CHF ≈ EUR; CAD ≈ 1,5 × EUR, arredondado). Nunca converter automático; mudar valor só com ordem dela.
-- País detectado no servidor (cabeçalho do edge/CDN, ex. `CF-IPCountry`): FR/BE → EUR, CH → CHF, CA → CAD, qualquer outro → EUR. A pessoa pode trocar no seletor.
-- Conferir no ambiente da conta se CHF e CAD podem ser cobrados e se Apple/Google Pay/PayPal aceitam essas moedas (a Stripe converte para o repasse da conta BR, com taxa de conversão).
-- **IVA/impostos:** preços com IVA incluído; Stripe Tax não existe para a conta BR. FR/BE/CH/CA têm regras diferentes (OSS na UE, TVA suíça, GST/QST no Canadá). **Resolver o tratamento fiscal fora da Stripe antes de divulgar**; a automação não declara nada.
+- Definir com a dona os países, a moeda de cada um e o idioma da tela. País detectado no servidor (`CF-IPCountry` / `request.cf.country`); a pessoa troca no seletor; país fora da lista cai na moeda padrão.
+- Conferir no ambiente da conta se cada moeda pode ser cobrada e se Apple/Google Pay/PayPal aceitam essa moeda (a Stripe converte para a moeda de repasse da conta, com taxa).
+- **IVA/impostos:** preços com IVA incluído (`tax_behavior=inclusive`); Stripe Tax pode não existir para o país da conta. **Resolver o tratamento fiscal fora da Stripe antes de divulgar**; a automação não declara nada.
 
 ## 3. Catálogo (fonte única de preço)
 
-O catálogo mora no **servidor do site** (`server/skus.mjs`): SKU, nome, valor por moeda, tipo (plano, bump, upgrade, upsell) e regras de quando cada um aparece. O checkout calcula o total **no servidor**; o navegador nunca manda o preço. PaymentIntent leva só `amount` + `currency`; os SKUs vão na `metadata`.
+O catálogo mora no **servidor do checkout** (`catalog.mjs` do modelo): SKU, nome, valor por moeda, tipo e regras. O total é calculado **no servidor**; o navegador nunca manda preço. PaymentIntent leva só `amount` + `currency`; os SKUs vão na `metadata`. Na Stripe, Product/Prices ficam como cadastro de referência.
 
-Na Stripe, mantém-se Product/Prices **de referência** (já criados em 10–11/11/2026, ver "Caso real" no SKILL.md), com `tax_behavior=inclusive`. Para CHF/CAD, criar Prices de referência (passo 2 já aprovado).
-
-## 4. Product e Prices na Winx
+## 4. Product e Prices na conta da oferta
 
 1. Conferir organização/conta (regra 1) e listar Products/Prices existentes antes de criar (nada duplicado).
-2. Product do mercado na conta da oferta (Guide Tarot FR: conta `acct_1UahKOAFsYcSGn3X` na Winx; Product e 9 Prices no sandbox criados em 11/11/2026, IDs no SKILL.md; os antigos da conta Calendrier Magique foram APAGADOS por ordem da dona. Live pendente da verificação da empresa). Bump adicional e Lenormand ganham Product próprio quando houver preço.
-3. Prices por moeda, `lookup_key` único (`<oferta>_<sku>_<moeda>`), `tax_behavior=inclusive`, sandbox e live separados.
-4. Registrar IDs não secretos em `STATUS.md` e `_memoria/contas-e-codigos.md`.
+2. Product do mercado (`<Produto> <MERCADO>`); bumps e upsell ganham Product próprio quando houver preço aprovado.
+3. Prices por moeda, `lookup_key` único (`<oferta>_<sku>_<moeda>`), `tax_behavior=inclusive`, teste e live separados.
+4. Registrar IDs não secretos em `OFERTAS/<slug>/STRIPE-PAYPAL.md` e `STATUS.md`.
 
 ## 5. Formas de pagamento — checagem obrigatória
 
 | Forma | Como entra | Checar |
 |---|---|---|
 | Cartão | Payment Element incorporado | habilitado na conta e na moeda |
-| Apple Pay | Express Checkout / Payment Element | domínio HTTPS registrado na Stripe (teste e live), Safari/dispositivo |
-| Google Pay | idem | método ligado na configuração da conta (estava **desligado**), domínio registrado, Chrome |
+| Apple Pay | Express Checkout | domínio HTTPS registrado na Stripe (teste e live), Safari/aparelho |
+| Google Pay | idem | método ligado na configuração da conta, domínio registrado, Chrome |
 | PayPal | ver abaixo | conta confirmada (regra 3) |
 
-**PayPal — caminho:** a Stripe não processa PayPal nativo em conta brasileira. Duas rotas, em ordem:
-1. **PayPal como forma de pagamento personalizada na Stripe** (Elements + Payment Intents): criar em Configurações → Pagamentos, **na conta Winx**, em teste e em live (cada ambiente tem seu `cpmt_...`; em 11/11/2026 existem: live `cpmt_1UafaQABfkUzod1XYwjPVcas` e teste `cpmt_1Uag8CABfkUzod1XTgLrKslU`, ambos na Winx/Calendrier Magique; a dona chamou o live de "outro produto", confirmar com ela antes de usar). Só vale se o fluxo completo passar em sandbox.
-2. **PayPal separado:** botão próprio na nossa página, API de Orders do PayPal com um app de desenvolvedor da conta Business Dona (credenciais no cofre da máquina, `PAYPAL_DONA_LEADGO_*`), webhook do PayPal para entrega e Trackeador. Plano B se a rota 1 falhar.
+**PayPal — caminho** (a Stripe não processa PayPal nativo em conta brasileira), em ordem:
+1. **PayPal como forma de pagamento personalizada na Stripe** (Elements + Payment Intents): criar no painel da conta da oferta, em teste e em live (cada ambiente tem o seu `cpmt_...`). Só vale se o fluxo completo passar em sandbox.
+2. **PayPal separado:** botão próprio, API de Orders com um app de desenvolvedor da conta Business que recebe (credenciais sandbox e live separadas, no cofre), webhook do PayPal para entrega e Trackeador. É o caminho usado pelo modelo e o plano B da rota 1.
 
-**Estado do PayPal Dona (11/11/2026):** login no PayPal Developer feito no perfil `paypal-dona-leadgo` (9315). Credenciais **sandbox** do app "Default Application" salvas no cofre da máquina como `PAYPAL_DONA_LEADGO_SANDBOX_CLIENT_ID` e `PAYPAL_DONA_LEADGO_SANDBOX_SECRET`; token OAuth sandbox testado (HTTP 200). **Live:** nenhum app criado ainda (a aba Live está vazia); criar só no go-live, com ordem da dona, e salvar como `PAYPAL_DONA_LEADGO_LIVE_*`. Webhook do PayPal (entrega e Trackeador) ainda não cadastrado.
-
-Seja qual for a rota: PayPal **não entra no upsell de um clique** (assumir que não até provar), e ele é anunciado só depois do teste completo (pagar, webhook, reembolso).
+PayPal **não entra no upsell de um clique** (assumir que não até provar) e só é anunciado depois do teste completo (pagar, webhook, reembolso). Criar app live do PayPal só no go-live, com ordem da dona.
 
 ## 6. Tela e fluxo
 
-Tela pelo `checkout-premium` (e-mail → bumps desmarcados → forma de pagamento → comprar; cobrança só no clique). Extras internacionais ligados aqui (país, moeda, idioma, locale do Stripe Elements). Ver `MAPA-PREMIUM-x-STRIPE.md` e `CHECKOUT-PROPRIO-STRIPE.md`.
+Tela pelo `checkout-premium` / modelo `MODELOS/checkout-internacional-hotmart/`. Extras internacionais (país, moeda, idioma, locale do Stripe Elements). Ver `MAPA-PREMIUM-x-STRIPE.md`, `MODELO-INTERNACIONAL-HOTMART.md` e `CHECKOUT-PROPRIO-STRIPE.md`.
 
 ## 7. Entrega, tracking e upsell
 
 - Webhook assinado: `payment_intent.succeeded` libera apenas os SKUs pagos, uma vez (idempotente); `charge.refunded` e `charge.dispute.*` tratados. Dois destinos: entrega e Trackeador.
 - `_tkid` e `event_id` no pedido; `Purchase` do servidor e do pixel com o mesmo `event_id`.
-- Upsell de um clique (Lenormand): `STRIPE-UPSELL-1-CLIQUE.md`, só cartão/carteira reutilizável, com consentimento.
+- Upsell de um clique: `STRIPE-UPSELL-1-CLIQUE.md` (em `_skills/low-upsell-app/references/`), só cartão/carteira reutilizável, com consentimento.
 
 ## 8. Teste antes de publicar
 
-Rodar a lista da seção 4 de `CHECKOUT-PROPRIO-STRIPE.md` em sandbox da Winx **para cada forma de pagamento e cada moeda aprovada**, sem enviar venda fictícia ao Trackeador de produção. Só então apontar os CTAs públicos (a página `guidetarot.pages.dev` hoje usa o checkout atual; não trocar antes).
+Rodar a lista da seção 4 de `CHECKOUT-PROPRIO-STRIPE.md` em sandbox da conta da oferta **para cada forma de pagamento e cada moeda aprovada**, sem enviar venda fictícia ao Trackeador de produção. Só então apontar os CTAs públicos (não trocar antes).
 
 ## 9. Fechar
 
 `low-ticket-salvar`: STATUS, `_memoria/contas-e-codigos.md`, INDICE e esta skill atualizados apenas com fatos observados.
 
-## 10. Implementação de referência (11/11/2026)
+## 10. Implementação de referência e lições
 
-`OFERTAS/luciola-guidetarot-fr/checkout/` é o primeiro checkout deste método: `catalog.mjs` (preço por moeda, único), `server.mjs` (PaymentIntent no clique, webhook assinado, PayPal sandbox), `public/` (tela premium FR + Payment Element). Para uma oferta nova, copiar a estrutura, trocar catálogo/textos/conta e repetir os testes do README. Lições: a CLI do Stripe serve de backend de teste (`stripe post/get --project-name`) e `stripe listen --events ... --forward-to` entrega webhooks locais; chaves de teste do sandbox estão no DOM da página de chaves (extrair sem imprimir e gravar no cofre); a captura PayPal só se prova com conta compradora sandbox.
+O modelo `MODELOS/checkout-internacional-hotmart/` é a implementação de referência (instâncias em `OFERTAS/<slug>/checkout/`). Lições: a CLI da Stripe serve de backend de teste (`stripe post|get --project-name <perfil>`) e `stripe listen --events ... --forward-to` entrega webhooks locais; as chaves de teste do sandbox estão no DOM da página de chaves (extrair sem imprimir e gravar no cofre); a captura PayPal só se prova com conta compradora sandbox.

@@ -1,74 +1,27 @@
 ---
 name: stripe-checkout
-description: Opera as contas Stripe da dona (organizações LeadGo = pessoal e Winx = parceria Luciola; dashboard.stripe.com) por MCP oficial e CLI primeiro, API REST quando necessário e navegador como reserva — criar produto/preço (único ou recorrente, BRL/USD/EUR), cupom/desconto por N meses, Payment Link, Checkout Session, portal do cliente, webhook, reembolso. Use quando o usuário pedir para criar produto/preço na Stripe, checkout Stripe, assinatura Stripe, cupom de desconto Stripe, Payment Link, webhook Stripe, ou mencionar cobrança/pagamento via Stripe.
+description: Opera contas Stripe (e PayPal) das ofertas LOW-TICKET por MCP oficial e CLI primeiro, API REST quando necessário e navegador como reserva — criar produto/preço (único ou recorrente, qualquer moeda), cupom, Payment Link, Checkout Session, checkout próprio (PaymentIntent), portal do cliente, webhook, reembolso. Contém o roteiro e o modelo de checkout internacional (Cloudflare ou Coolify). Use quando pedirem produto/preço na Stripe, checkout Stripe, assinatura, cupom, Payment Link, webhook, cobrança via Stripe ou o checkout internacional com Stripe e PayPal.
 ---
 
 > **REGRA FIXA DA DONA (10/11/2026), vale em TODO checkout:** (1) order bump **"Upgrade Básico → Completo"** obrigatório no checkout do Básico (1º bump, produto próprio, libera o Completo); (2) **ofertas de membro** criadas neste gateway para tudo que a pessoa ainda não tem (internacional 50% off, piso 2,90; Brasil 30% off, piso R$ 9,90, preços BR de sempre; nome "<item> - Área de Membros", redirect `/painel`); (3) upsell/app no topo da área de membros (internacional: 30% abaixo do upsell pós-compra + 2 dias grátis; Brasil: preço de sempre) (Stripe; sem Stripe, este mesmo checkout). Tudo nos 2 webhooks (entrega + Trackeador). Regra completa: `area-membros-netflix` › REGRA FIXA 10/11/2026.
 
 
-> **PERFIL `stripe` PERSISTENTE — NUNCA "SAIR" (dona, 01/11/2026):** a Stripe é operada SÓ pelo perfil de navegador `stripe` (porta **9299**, `~/.agent-profiles/stripe/`), logado pela dona. Pode FECHAR o navegador normalmente (fechar janela/`browsers.sh`) — o que NUNCA se faz é clicar em "Sair"/logout, apagar a pasta do perfil, limpar cookies ou usar outro perfil pra Stripe. TESTADO 01/11/2026: dona logou → navegador fechado normalmente (CDP `Browser.close`) → reaberto com `browsers.sh stripe` → voltou LOGADO direto no dashboard. Então fechar é seguro; o deslogue anterior foi alguém clicar em "Sair" (ou matar o processo à força). Fechar sempre de forma limpa (`Browser.close`), nunca `pkill`/`kill -9` no Chromium desse perfil. 2FA é chave de segurança/biometria: agente NÃO reloga sozinho. Antes de agir: subir o perfil e conferir `curl -s localhost:9299/json` → aba em `dashboard.stripe.com/...` (não `/login`). Caiu em login → PARAR e avisar a dona. Um pane por vez no perfil.
 
 # stripe-checkout
 
-> **ROTEIRO DE PONTA A PONTA (dona, 11/11/2026): novo produto com checkout próprio → abrir [references/ROTEIRO-NOVO-CHECKOUT.md](references/ROTEIRO-NOVO-CHECKOUT.md) primeiro.** Regras fixas dele: (1) confirmar organização/conta antes de criar qualquer coisa (parceria Luciola = Winx / Calendrier Magique); (2) formas de pagamento sempre ligadas: **cartão, Apple Pay, Google Pay e PayPal**, cada uma checada no ambiente real; (3) PayPal: **sempre confirmar qual conta recebe** — hoje a Business Dona (`paypal-dona-leadgo`); (4) **UMA CONTA STRIPE POR OFERTA (dona, 11/11/2026):** ao criar produto para checkout, o que se cria é a **conta da oferta dentro da organização certa** (parceria Luciola = Winx), nunca o produto de uma oferta dentro da conta de outra. Primeiro descobrir a organização (dono da oferta em `OFERTAS/<slug>/CLAUDE.md`), depois listar as contas dela. **Se a conta da oferta não existir, o AGENTE NÃO CRIA: pede à dona para criar a conta dentro da organização e informar a organização e o nome da conta** (conta envolve titularidade, dados públicos e banco de repasse, decisões dela; ordem de 11/11/2026). Depois que ela informar, conferir `/v1/account` e seguir. Dúvida = perguntar; nunca assumir. Se achar produto/preço de uma oferta dentro da conta de outra, está errado: remover (a dona autorizou para o tarô); (5) mercado francófono = França/Bélgica (EUR), Suíça (CHF), Canadá (CAD), preços só com aprovação da dona. Mapa com o `checkout-premium`: [references/MAPA-PREMIUM-x-STRIPE.md](references/MAPA-PREMIUM-x-STRIPE.md).
+> **ROTEIRO DE PONTA A PONTA (dona, 11/11/2026): novo produto com checkout próprio → abrir [references/ROTEIRO-NOVO-CHECKOUT.md](references/ROTEIRO-NOVO-CHECKOUT.md) primeiro.** Regras fixas: (1) confirmar organização e conta da oferta antes de criar qualquer coisa; (2) formas de pagamento sempre ligadas: **cartão, Apple Pay, Google Pay e PayPal**, cada uma checada no ambiente real; (3) PayPal: **sempre confirmar qual conta PayPal recebe**, a cada oferta; (4) **uma conta Stripe por oferta**, criada pela dona na organização do sócio (o agente pede e não cria; produto de uma oferta nunca mora na conta de outra); (5) **Product por oferta e mercado, nome `<Produto> <MERCADO>`**: listar os existentes antes, criar se não houver, perguntar se houver dúvida, nunca assumir; (6) mercados, moedas e preços são decisão da dona, por oferta. **Modelo pronto internacional** (Stripe + PayPal, idioma/moeda por país; roda em Cloudflare Workers+D1 OU Coolify/Node — PERGUNTAR onde hospedar antes de montar): `MODELOS/checkout-internacional-hotmart/` + [references/MODELO-INTERNACIONAL-HOTMART.md](references/MODELO-INTERNACIONAL-HOTMART.md). Mapa com o `checkout-premium`: [references/MAPA-PREMIUM-x-STRIPE.md](references/MAPA-PREMIUM-x-STRIPE.md). **Fatos de conta, ID, e-mail e estado de cada oferta NÃO ficam nesta skill:** `_memoria/contas-e-codigos.md` → "Stripe e PayPal" e `OFERTAS/<slug>/STRIPE-PAYPAL.md`.
 
-## Organização e conta — fatos conferidos em 10/11/2026
+## Organização e conta — como decidir (genérico)
 
-> **REGRA DA DONA (10/11/2026) — ORGANIZAÇÃO POR SÓCIO. Esta regra vale sobre o texto abaixo.**
-> - **Winx** = organização Stripe existente, criada pela dona, para **tudo que é parceria com a Luciola** (ex.: Calendrier Magique FR, Calendário Mágico AR e qualquer oferta "Lua + Luciola"). Produto, preço, assinatura e webhook dessas ofertas são criados **dentro da Winx**, cada oferta na SUA conta (ver regra "UMA CONTA POR OFERTA" abaixo, que revoga o antigo "não criar conta por oferta").
-> - **LeadGo** = coisas pessoais da dona (LeadGo, AdsTrackeador e o que não for parceria). Nada da parceria Luciola vai pra LeadGo.
-> - Antes de criar algo: conferir o dono da oferta em `OFERTAS/<slug>/CLAUDE.md` (linha "Donas") e escolher a organização. Dúvida = perguntar à dona.
-> - Se a Winx ainda não aparecer no seletor de contas/organizações do perfil `stripe`, **não criar conta avulsa no lugar**: parar e avisar a dona.
-> - Variáveis: `STRIPE_WINX_<CONTA>_...` para contas da Winx.
-
-**Winx existe** (`org_6VjhbL1n9Pw4udAS6hP97zs`). Em 10/11/2026, o painel de organização mostrou uma conta: **Calendrier Magique**, Brasil, ativada, `acct_1UaIGiABfkUzod1X`. **Esta conta é do Calendrier Magique e só dele.** A ordem de 10/11 de pôr o Guide Tarot nela foi corrigida pela dona em 11/11/2026: cada oferta tem a sua conta. A conta LeadGo e a AdsTrackeador continuam separadas. Conferir a conta efetiva em cada credencial/conexão antes de escrever.
-
-- **AdsTrackeador já tem conta própria**: `acct_1UWg3pK4KjNuQhim`, criada
-  31/10/2026, Brasil/BRL, avulsa (sem vínculo com a LeadGo). **ATIVADA em 02/11/2026** pela dona
-  (mesmos dados da empresa da LeadGo): `details_submitted`, `charges_enabled` e
-  `payouts_enabled` = true, modo live liberado. Chave LIVE continua exigindo
-  autorização explícita dela (ver § Regras).
-- **LIVE configurado 02/11/2026** (autorizado pela dona): chave restrita
-  `rk_live_…Jq2e` ("AdsTrackeador producao (Coolify)", acesso total exceto
-  operações que movem dinheiro pra fora) em `STRIPE_ADSTRACKEADOR_LIVE_SECRET_KEY`;
-  produto "AdsTrackeador Premium", preço R$150/mês `lookup_key
-  adstrackeador_premium_mensal` (`..._LIVE_PRICE_PREMIUM_ID`), cupom R$50,10 off
-  × 3 meses `metadata.key adstrackeador_launch_3m` (`..._LIVE_COUPON_LAUNCH_ID`),
-  webhook `https://app.adstrackeador.com/api/billing/stripe` com 7 eventos
-  (`..._LIVE_WEBHOOK_SECRET`). No Coolify do app: STRIPE_SECRET_KEY,
-  STRIPE_WEBHOOK_SECRET, STRIPE_PRICE_PREMIUM_ID, STRIPE_COUPON_LAUNCH_ID.
-  Criar chave pede verificação por e-mail (contact@seudominio.com, perfil
-  hostinger-mail) + código do autenticador (só a dona). A chave só aparece
-  mascarada; "Copiar e fechar" põe na área de transferência → `wl-paste` direto
-  pro arquivo, nunca na tela. Criar env no Coolify com `--is-literal
-  --build-time=false` dá 422; crie sem essas flags.
-- **Antes de QUALQUER ação**: confira o nome da conta no seletor (canto
-  superior esquerdo, menu do usuário) — ação na conta errada afeta outro
-  negócio da dona. "LeadGo" é conta LIVE e ativa (pk_live em uso); nunca
-  mexer nela por engano.
-- **Chaves de API são POR CONTA** (cada conta tem seu próprio par
-  test/live), nunca da organização como um todo. Nomeie as variáveis em
-  `~/.claude/.credentials.env` com o nome da conta, nunca genérico:
-  `STRIPE_ADSTRACKEADOR_TEST_SECRET_KEY`, `STRIPE_ADSTRACKEADOR_TEST_WEBHOOK_SECRET`,
-  `STRIPE_ADSTRACKEADOR_LIVE_SECRET_KEY` (esta última só com autorização
-  explícita pra modo live — ver § Regras). Variável sem nome de conta
-  (`STRIPE_SECRET_KEY` solto) é ambígua nesta organização — não crie assim
-  no arquivo de credenciais (o app em produção pode continuar usando nome
-  genérico no PRÓPRIO env do Coolify, que é escopado por app; o arquivo de
-  credenciais compartilhado entre contas é que precisa do prefixo).
+- **Uma conta Stripe por oferta**, criada pela dona dentro da organização do sócio da oferta; o agente **não cria conta**: pede à dona para criar e informar organização e nome da conta. Conta de outra oferta nunca recebe produto desta.
+- Descobrir a organização pela ficha da oferta (`OFERTAS/<slug>/CLAUDE.md`, linha "Donas"). Dúvida = perguntar.
+- **Antes de QUALQUER ação**, conferir conta e ambiente (`/v1/account` pela CLI/MCP, ou o seletor do painel): ação na conta errada afeta outro negócio.
+- **Chaves de API são POR CONTA** (par test/live). No cofre da máquina use o nome da conta/oferta na variável (`STRIPE_<CONTA>_TEST_SECRET_KEY`), nunca nome genérico solto. Nunca imprimir chave. Modo live só com autorização explícita da dona.
+- Fatos de cada conta (IDs, e-mails, perfis, variáveis, estado de verificação): `_memoria/contas-e-codigos.md` → "Stripe e PayPal"; fatos de cada oferta: `OFERTAS/<slug>/STRIPE-PAYPAL.md`.
 
 ## Acesso
 
-Perfil de browser do sistema **`stripe`**, porta **9299**, URL
-`dashboard.stripe.com` (registrado em 31/10/2026). Credenciais
-`$STRIPE_EMAIL`/`$STRIPE_PASSWORD` em `~/.claude/.credentials.env` — nunca
-literal. Sempre headed. Todo comando: `agent-browser --session stripe ...`.
-
-2FA/código por e-mail (quando a Stripe oferecer essa opção — não confirmado
-se está disponível nesta conta, ver aviso no topo) vai pra
-`contact@seudominio.com` → perfil `hostinger-mail` (porta 9274). Abra SÓ o
-e-mail da Stripe com o código, o mais recente — nunca outro e-mail. Se não
-achar pelo assunto, pare e pergunte.
+Perfil de navegador do sistema reservado à Stripe, **nunca fazer logout** (fechar de forma limpa; login e 2FA são da dona; se cair em tela de login, parar e avisar). Credenciais só por variável do cofre, nunca literal. Perfil, porta e variáveis desta máquina: `_memoria/contas-e-codigos.md` → "Stripe e PayPal".
 
 ### Ordem de operação (dona, 10/11/2026)
 1. **MCP oficial Stripe**, remoto `https://mcp.stripe.com`, OAuth, quando conectado à conta correta. Instalação e autenticação: [references/ACESSO-MCP-CLI.md](references/ACESSO-MCP-CLI.md).
@@ -90,30 +43,15 @@ A dona autorizou conectar MCP/CLI nesta retomada. Se o provedor pedir código do
 
 - **Mapa premium × Stripe (11/11/2026):** divisão entre as skills, lacunas do premium, tracking e extras internacionais em [references/MAPA-PREMIUM-x-STRIPE.md](references/MAPA-PREMIUM-x-STRIPE.md). Cartão incorporado (Payment Element); preços por moeda no catálogo do servidor.
 
-### Caso real — Guide Tarot FR, conta própria dentro da Winx (11/11/2026)
-- **Conta:** `acct_1UahKOAFsYcSGn3X`, organização **Winx**, criada pela dona (a conta Calendrier Magique `acct_1UaIGiABfkUzod1X` é de OUTRA oferta). País BR, moeda BRL; razão social exibida `49.265.147 DONA DE LIMA ASSIS`; no teste aparece como "Área restrita de Guide Tarot". **Live ainda não ativado** (`charges_enabled=false`, `details_submitted=false`): a Stripe exige verificar a empresa para autorizar a conta de produção. Só a dona faz essa verificação.
-- **CLI:** perfil `guide-tarot` autorizado em 11/11/2026 **somente no sandbox** ("Área restrita de Guide Tarot"); `stripe get|post ... --project-name guide-tarot`. Login por device: `stripe login --non-interactive --project-name guide-tarot --device-name low-ticket` → abrir `browser_url` no perfil `stripe` → Winx → conta `49.265.147 DONA DE LIMA ASSIS` → ambiente → autorizar (clicar no botão por coordenada se o clique por texto não pegar) → `stripe login --complete-device --project-name guide-tarot`. A saída da CLI traz uma linha de aviso antes do JSON: cortar até `{` antes de parsear. Live: repetir o login quando a conta estiver verificada e criar um perfil `guide-tarot-live`.
-- **Sandbox (criado em 11/11/2026):** Product `prod_VbvETg5hiaNwCe` "Guide Tarot FR". Prices com `tax_behavior=inclusive`, `lookup_key=guidetarot_<sku>_<moeda>`:
+### Casos reais
+Dados de cada oferta (conta, Product, Prices, PayPal personalizado, mercados e moedas) ficam em `OFERTAS/<slug>/STRIPE-PAYPAL.md`. 
 
-| SKU | EUR | CHF | CAD |
-|---|---|---|---|
-| Essentielle | `price_1UahOOAFsYcSGn3XHEVkzlPG` 5,90 | `price_1UahORAFsYcSGn3XT086kRrS` 5,90 | `price_1UahOUAFsYcSGn3XtxmtZqtw` 8,90 |
-| Complète | `price_1UahOPAFsYcSGn3XrTDFYi6E` 12,90 | `price_1UahOSAFsYcSGn3XV3sp5dDY` 12,90 | `price_1UahOVAFsYcSGn3X3xi9rZrj` 19,90 |
-| Upgrade (popup) | `price_1UahOQAFsYcSGn3Xdpb8cwXG` 7,90 | `price_1UahOTAFsYcSGn3XZfUa80h2` 7,90 | `price_1UahOWAFsYcSGn3XkhBnLXEY` 11,90 |
-
-- **Bumps no sandbox (11/11/2026; nomes FR a conferir pela dona):** `prod_VbvMVACsEYG5eX` Kit Manuel du Tarot : Carrière + Relations FR (EUR 5,90 `price_1UahVMAFsYcSGn3Xict07hFD` · CHF 5,90 `price_1UahVNAFsYcSGn3XlOwzrKjz` · CAD 8,90 `price_1UahVOAFsYcSGn3XOt8BFMEA`); `prod_VbvMCN2apEVlUT` Guide d'Interprétation : Relations Amoureuses FR (EUR 3,90 `price_1UahVPAFsYcSGn3XYpag7BrK` · CHF 3,90 `price_1UahVQAFsYcSGn3XEgx2BHf3` · CAD 5,90 `price_1UahVRAFsYcSGn3XXunnrqFs`); `prod_VbvMNkOZArFBi4` Manuel d'Interprétation : Carrière et Finances FR (EUR 4,90 `price_1UahVTAFsYcSGn3XRtVLQwIx` · CHF 4,90 `price_1UahVUAFsYcSGn3Xi3Xhil45` · CAD 7,90 `price_1UahVVAFsYcSGn3XsgkpexXE`).
-- **PayPal personalizado (sandbox desta conta):** `cpmt_1UahPYAFsYcSGn3XKC5qgiOS`. Live: criar quando a conta for ativada (cada ambiente tem o seu).
-- **Live pendente:** verificação da empresa pela dona → ativar → recriar Product, Prices e PayPal personalizado no live com os mesmos valores. Bumps adicionais e Lenormand continuam sem preço.
-- Histórico: Product/Prices criados antes (10–11/11) na conta Calendrier Magique foram APAGADOS por ordem da dona; os IDs antigos (`prod_VbZvtyqHcgx67d`, `prod_VbrU18hVpmTe10` e seus Prices) não existem mais.
-- Capacidades da conta nova (Apple/Google Pay, domínio, PIX, Stripe Tax) ainda **não conferidas**; conferir no painel desta conta antes de publicar. Conta BR: Stripe Tax não é suportado e PayPal nativo da Stripe não existe; IVA fica fora da automação.
-
-### PayPal separado — ferramentas verificadas em 11/11/2026
-- **PayPal personalizado na Stripe (conferido no painel em 11/11/2026, conta Calendrier Magique / Winx `acct_1UaIGiABfkUzod1X`):** forma de pagamento personalizada "PayPal", integração compatível **Elements com Payment Intents**, processada fora da Stripe (sujeita às taxas do adaptador). Painel: Configurações → Pagamentos → Formas de pagamento personalizadas (`.../settings/custom_payment_methods`; no teste, `.../test/settings/custom_payment_methods`). IDs de tipo (não secretos): **live** `cpmt_1UafaQABfkUzod1XYwjPVcas` (criado pela dona, visível na conta Winx live); **teste/sandbox** `cpmt_1Uag8CABfkUzod1XTgLrKslU` (criado em 11/11/2026). A dona havia dito que o ID live era "de outro produto", mas ele aparece na lista da conta Winx; **não ligar ao checkout live até a dona confirmar** que o live é esse. Cada ambiente tem o seu ID.
-  - **Ainda NÃO provado:** que conta PayPal fica ligada ao adaptador, como o Payment Element exibe e confirma o método (`customPaymentMethods` nas opções do Elements), se o pagamento gera `payment_intent.succeeded`, e se serve ao upsell de um clique (assumir que NÃO). Testar em sandbox (usar o ID de teste) antes de anunciar o PayPal. Plano B: PayPal separado com a Business Dona (credenciais sandbox já no cofre).
-  - Painel de formas de pagamento da conta (conferido 11/11/2026): Cartões, Apple Pay, Google Pay, Link e **PIX habilitados**; Boleto desabilitado. **Pix está ligado na configuração, mas é só BRL**: com cobrança em EUR/CHF/CAD ele não aparece; manter fora do checkout de entrada (regra da casa). Google Pay agora consta habilitado (antes constava desligado); domínio de carteira ainda precisa estar registrado.
-- Existe [MCP oficial do PayPal](https://developer.paypal.com/ai-tools/mcp-server/): remoto `https://mcp.paypal.com/http` (produção) / `https://mcp.sandbox.paypal.com/http` (teste), com login/consentimento, ou local `npx -y @paypal/mcp --tools=all` com `PAYPAL_ACCESS_TOKEN` e `PAYPAL_ENVIRONMENT`. **Ainda não está conectado nesta sessão.** Não confundir o pacote que inicia um servidor MCP com uma CLI independente para a operação do comerciante.
-- Não foi localizada uma CLI oficial independente do PayPal nas fontes oficiais consultadas. Para operações sem MCP, usar a [REST API oficial](https://developer.paypal.com/api/rest) via cURL/SDK com token OAuth, separando sandbox de produção e guardando client ID/secret fora do repositório. O PayPal Business e as credenciais do app precisam existir antes de autenticar; apenas o e-mail da dona não concede acesso.
-- Perfil local `paypal-dona-leadgo` (9315), e-mail e senha nas variáveis `PAYPAL_DONA_LEADGO_EMAIL` e `PAYPAL_DONA_LEADGO_PASSWORD` do cofre da máquina. **Login confirmado em 11/11/2026**, inclusive no PayPal Developer. **Conta que recebe as vendas da parceria: esta Business Dona (ordem da dona, 11/11/2026)**; confirmar de novo a cada oferta. Credenciais **sandbox** (`PAYPAL_DONA_LEADGO_SANDBOX_CLIENT_ID` / `_SANDBOX_SECRET`) salvas, OAuth testado; app live ainda não criado. Fatos em `_memoria/contas-e-codigos.md`.
+### PayPal — opções (genérico)
+- **PayPal nativo pela Stripe** só em países/contas elegíveis (não em conta brasileira).
+- **PayPal como forma de pagamento personalizada na Stripe** (Elements + Payment Intents): criada no painel da conta (cada ambiente tem o seu `cpmt_...`); processamento é do PayPal. Só vale depois de provar o fluxo em sandbox.
+- **PayPal separado** (plano B usado pelo modelo): app de desenvolvedor da conta Business que vai receber (credenciais sandbox e live separadas, no cofre), API de Orders (criar → aprovar → capturar no servidor) e webhook próprio. **Sempre confirmar qual conta PayPal recebe**, a cada oferta.
+- Existe MCP oficial do PayPal; não há CLI oficial independente. PayPal **não entra no upsell de um clique** (assumir que não até provar).
+- Contas, perfis, IDs e estado: `_memoria/contas-e-codigos.md` → "Stripe e PayPal" e `OFERTAS/<slug>/STRIPE-PAYPAL.md`.
 
 ## 1. Criar produto + preço (único ou recorrente)
 
@@ -295,7 +233,7 @@ conta, não o que a doc geral da Stripe promete.
 4. **Produto novo → cadastrar no webhook do AdsTrackeador no mesmo dia**
    (§ 6), se a oferta for rastreada por ele.
 5. **Confirme a CONTA certa** (seletor do painel, ou a chave certa por
-   `STRIPE_<CONTA>_...`) antes de qualquer ação — a organização Leadgo tem
+   `STRIPE_<CONTA>_...`) antes de qualquer ação — uma organização pode ter
    mais de uma conta Stripe.
 
 

@@ -23,7 +23,7 @@ Em conflito, a regra de **dinheiro e cobrança** vale a do Stripe; a de **tela**
 
 ## 3. Lacunas que o premium precisa ganhar para o Stripe
 
-1. **Tabela de gateways do premium não tem linha Stripe.** Linha a acrescentar: Stripe (conta Winx/BR, cobra em EUR) = Cartão (Payment Element) + Apple Pay / Google Pay (Express Checkout, só se elegível no navegador) + PayPal separado.
+1. **Tabela de gateways do premium não tem linha Stripe.** Linha a acrescentar: Stripe (conta BR, cobra em EUR/CHF/CAD) = Cartão (Payment Element) + Apple Pay / Google Pay (Express Checkout, só se elegível no navegador) + PayPal separado.
 2. **Tile de cartão tem campos dentro.** Tile "Cartão" ao ser escolhido abre o Payment Element; os outros tiles não abrem campo.
 3. **Logos oficiais** (premium #7): Visa/Mastercard/Amex, Apple Pay, Google Pay, PayPal e Link, todos baixados da fonte oficial da marca, seguindo as regras de uso de cada uma. Nada gerado por IA. Selo "Pagamento seguro via Stripe" ao lado do cartão.
 4. **Botão de compra** vira o `confirmPayment` do Stripe; ele trava ao clicar.
@@ -31,7 +31,7 @@ Em conflito, a regra de **dinheiro e cobrança** vale a do Stripe; a de **tela**
 
 ## 4. Fatos da conta que mudam o desenho (do SKILL do stripe, conferidos)
 
-- **PayPal nativo pela Stripe NÃO existe na conta BR.** Existe o PayPal **personalizado** (Elements + Payment Intents); na conta Guide Tarot (`acct_1UahKOAFsYcSGn3X`) o do sandbox é `cpmt_1UahPYAFsYcSGn3XKC5qgiOS`; o live será criado quando a conta for ativada. Falta provar o fluxo em sandbox. Plano B: PayPal separado (API de Orders) com a Business Dona.
+- **PayPal nativo pela Stripe NÃO existe em conta BR.** Existe o PayPal **personalizado** (Elements + Payment Intents), criado no painel de cada conta e ambiente (`cpmt_...`); falta provar o fluxo em sandbox em cada oferta. Plano B (usado pelo modelo): PayPal separado (API de Orders) com a conta Business que recebe.
 - **Google Pay estava desligado** na configuração consultada. Apple/Google Pay exigem domínio HTTPS **registrado** na Stripe, em teste e live. Só mostrar o botão se ele aparecer de fato no ambiente real.
 - **Stripe Tax não é suportado** para a conta BR. Price com `tax_behavior=inclusive` só garante o valor final; IVA é tratado fora da Stripe antes do lançamento.
 - **Upsell de um clique só em cartão (e carteiras reutilizáveis)**, com consentimento explícito para salvar o método na compra. PayPal separado não entra no upsell de um clique.
