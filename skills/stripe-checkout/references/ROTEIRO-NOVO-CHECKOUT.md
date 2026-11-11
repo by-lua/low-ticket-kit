@@ -4,10 +4,10 @@ Criado em 11/11/2026 a partir das ordens da dona. É o **primeiro teste** do che
 
 ## 0. Regras fixas deste roteiro (dona, 11/11/2026)
 
-1. **Organização primeiro.** Antes de criar qualquer coisa, confirmar a organização e a conta. Parceria Luciola = **Winx**, conta **Calendrier Magique** (`acct_1UaIGiABfkUzod1X`). Conferir `/v1/account` (MCP ou CLI, perfil explícito) e o ambiente (test/live). Conta errada = parar.
+1. **Organização e conta da oferta primeiro (dona, 11/11/2026).** "Criar o produto" = criar a **conta Stripe da oferta** dentro da organização do sócio. Descobrir a organização (dono em `OFERTAS/<slug>/CLAUDE.md`; parceria Luciola = **Winx**), listar as contas dela, e só criar se aquela oferta ainda não tiver a sua. **Calendrier Magique é a conta de outra oferta** (`acct_1UaIGiABfkUzod1X`): nada do Guide Tarot mora nela. Confirmar `/v1/account` e o ambiente (test/live) antes de qualquer escrita. Dúvida = perguntar.
 2. **Formas de pagamento sempre ligadas:** cartão de crédito, **Apple Pay**, **Google Pay** e **PayPal**. Nunca lançar sem checar cada uma no ambiente real; método que não aparecer não se anuncia (ver passo 5).
 3. **PayPal: sempre confirmar QUAL conta recebe, antes de ligar.** Conta definida pela dona em 11/11/2026: a Business **Dona** (perfil `paypal-dona-leadgo`, porta 9315, dashboard `49.265.147 DONA DE LIMA ASSIS`, BRL, login confirmado). Repetir a confirmação a cada oferta nova; se a oferta for outra, perguntar.
-4. **Produto próprio por oferta e mercado (dona, 11/11/2026).** Cada oferta tem o SEU Product, dentro da organização Winx. Nunca reaproveitar o Product de outra oferta (Calendrier Magique é outro produto, não é Guide Tarot). **O nome leva o mercado:** `<Produto> <MERCADO>`, ex. `Calendrier Magique FR`, `Guide Tarot FR`. Antes de criar: listar os Products da conta (live e teste) e procurar um específico daquela oferta+mercado; se existir, usar; se não existir, criar. **Dúvida sobre qual é o produto = perguntar à dona. Nunca assumir.** Plano, bumps e upgrade são SKUs do catálogo. Nome sem valor embutido.
+4. **Mesma oferta em vários idiomas/mercados (decisão padrão, dona pode mudar):** uma conta por OFERTA e, dentro dela, **um Product por mercado/idioma**, nome `<Produto> <MERCADO>` (ex. `Guide Tarot FR`, `Guide Tarot ES`). A conta guarda chaves, webhook, PayPal e domínio da oferta; o Product separa relatório e catálogo por mercado. Só abrir conta nova se mudar sócio, empresa ou país do recebedor. Listar Products antes de criar; dúvida = perguntar. Plano, bumps e upgrade são SKUs do catálogo. Nome sem valor embutido.
 5. **Visual e fluxo da tela** vêm do `checkout-premium`. Aqui só o que é pagamento, moeda, entrega e tracking.
 
 ## 1. Levantar a oferta
@@ -50,7 +50,7 @@ Na Stripe, mantém-se Product/Prices **de referência** (já criados em 10–11/
 ## 4. Product e Prices na Winx
 
 1. Conferir organização/conta (regra 1) e listar Products/Prices existentes antes de criar (nada duplicado).
-2. Product da oferta (Guide Tarot FR: `prod_VbZvtyqHcgx67d`, já existe). Bump adicional e Lenormand ganham Product próprio quando houver preço.
+2. Product do mercado na conta da oferta (Guide Tarot FR: a conta ainda será criada na Winx; os Products antigos `prod_VbZvtyqHcgx67d` e `prod_VbrU18hVpmTe10` foram APAGADOS da conta Calendrier Magique em 11/11/2026 por ordem da dona). Bump adicional e Lenormand ganham Product próprio quando houver preço.
 3. Prices por moeda, `lookup_key` único (`<oferta>_<sku>_<moeda>`), `tax_behavior=inclusive`, sandbox e live separados.
 4. Registrar IDs não secretos em `STATUS.md` e `_memoria/contas-e-codigos.md`.
 
