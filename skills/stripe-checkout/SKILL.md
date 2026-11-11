@@ -89,6 +89,7 @@ A dona autorizou conectar MCP/CLI nesta retomada. Se o provedor pedir código do
 - Oferta `luciola-guidetarot-fr`: Product live `prod_VbZvtyqHcgx67d`, Price Essentielle live `price_1UaMlxABfkUzod1XM8beaURz` = EUR 790, avulso; conferidos de novo pelo MCP em 10/11/2026. **MCP desta sessão está ativo**, contexto `acct_1UaIGiABfkUzod1X` live. A CLI 1.55.10 está instalada, mas `stripe login list --project-name winx-calendrier` retornou **401 token OAuth expirado** na retomada: relogar antes do próximo comando CLI autenticado. Não trocar para outra conta/projeto automaticamente.
 - Conta BR: cartão e Apple Pay ligados, Google Pay indisponível/desligado na configuração consultada; PayPal pela Stripe indisponível para empresa BR; nenhum domínio de carteira registrado na consulta anterior. Rechecar no ambiente da conta antes de publicar. Meio que não puder ser reutilizado oferece novo pagamento no upsell.
 - O código/backend e a entrega pertencem à Luciola e ainda não estão nesta pasta. Preço do Lenormand e política de IVA/Stripe Tax pendentes. Não apontar CTAs públicos ao checkout novo até integrar e provar os dois webhooks.
+- A leitura pública de `https://guidetarot.pages.dev/offers.js` nesta retomada mostrou **Essentielle €5,90 e Complète €12,90** (Hotmart), enquanto `OFERTA.md`/`FUNIL.md` dizem **€7,90/€17,90**. O Price Stripe inicial €7,90 existe, mas a escolha de valores para os próximos Prices e CTAs precisa ser reconciliada com a dona; não migrar silenciosamente o preço do site.
 
 ## 1. Criar produto + preço (único ou recorrente)
 

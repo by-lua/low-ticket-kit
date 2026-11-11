@@ -5,7 +5,7 @@ Revisado em 10/11/2026 para a oferta Guide Tarot FR. Este é o procedimento de i
 ## 1. Confirmar a entrada
 
 1. Confirmar organização, conta, ambiente e dono da oferta via MCP `list_available_accounts_or_orgs` e leitura de `/v1/account` (ou CLI perfil explícito, se autenticada). Não misturar IDs de teste/live ou de contas diferentes.
-2. Listar Product/Prices existentes antes de criar. Criar preços somente para valores aprovados no `FUNIL.md`; moeda e valor em centavos no servidor. Nome não inclui preço. Conferir `tax_behavior` e política de IVA antes de cadastrar Price; não presumir que `tax_behavior=unspecified` serve a Stripe Tax.
+2. **Oferta já no ar:** conferir página/JS publicados e checkout atual contra `OFERTA.md`/`FUNIL.md` antes de copiar preços, prazo de garantia ou trocar links. Divergência pede decisão da dona; não inferir que o arquivo local ou o site público venceu. Listar Product/Prices existentes antes de criar. Criar preços somente para valores reconciliados e aprovados; moeda e valor em centavos no servidor. Nome não inclui preço. Conferir `tax_behavior` e política de IVA antes de cadastrar Price; não presumir que `tax_behavior=unspecified` serve a Stripe Tax.
 3. Definir os SKUs de cada entrada (Básico, Completo, Upgrade, Saída), bumps em **todas** as entradas, upsell e downsell. Um item sem preço aprovado fica fora da cobrança. A conta Stripe precisa ser a mesma na compra inicial e no upsell de um clique.
 4. Confirmar onde mora o código/backend do site, quem controla o domínio e qual serviço libera a área de membros. Endpoints de pagamento, webhook e autorização do upsell exigem servidor e armazenamento persistente. Página estática sozinha não conclui o funil.
 
