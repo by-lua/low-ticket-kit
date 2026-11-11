@@ -4,7 +4,7 @@ Criado em 11/11/2026 a partir das ordens da dona. É o **primeiro teste** do che
 
 ## 0. Regras fixas deste roteiro (dona, 11/11/2026)
 
-1. **Organização e conta da oferta primeiro (dona, 11/11/2026).** "Criar o produto" = criar a **conta Stripe da oferta** dentro da organização do sócio. Descobrir a organização (dono em `OFERTAS/<slug>/CLAUDE.md`; parceria Luciola = **Winx**), listar as contas dela, e só criar se aquela oferta ainda não tiver a sua. **Calendrier Magique é a conta de outra oferta** (`acct_1UaIGiABfkUzod1X`): nada do Guide Tarot mora nela. Confirmar `/v1/account` e o ambiente (test/live) antes de qualquer escrita. Dúvida = perguntar.
+1. **Organização e conta da oferta primeiro (dona, 11/11/2026).** "Criar o produto" = criar a **conta Stripe da oferta** dentro da organização do sócio. Descobrir a organização (dono em `OFERTAS/<slug>/CLAUDE.md`; parceria Luciola = **Winx**), listar as contas dela. Se aquela oferta ainda não tiver a sua, **pedir à dona que crie a conta na organização e informe organização e nome da conta; o agente não cria conta** (titularidade, dados públicos e banco de repasse são dela). **Calendrier Magique é a conta de outra oferta** (`acct_1UaIGiABfkUzod1X`): nada do Guide Tarot mora nela. Confirmar `/v1/account` e o ambiente (test/live) antes de qualquer escrita. Dúvida = perguntar.
 2. **Formas de pagamento sempre ligadas:** cartão de crédito, **Apple Pay**, **Google Pay** e **PayPal**. Nunca lançar sem checar cada uma no ambiente real; método que não aparecer não se anuncia (ver passo 5).
 3. **PayPal: sempre confirmar QUAL conta recebe, antes de ligar.** Conta definida pela dona em 11/11/2026: a Business **Dona** (perfil `paypal-dona-leadgo`, porta 9315, dashboard `49.265.147 DONA DE LIMA ASSIS`, BRL, login confirmado). Repetir a confirmação a cada oferta nova; se a oferta for outra, perguntar.
 4. **Mesma oferta em vários idiomas/mercados (decisão padrão, dona pode mudar):** uma conta por OFERTA e, dentro dela, **um Product por mercado/idioma**, nome `<Produto> <MERCADO>` (ex. `Guide Tarot FR`, `Guide Tarot ES`). A conta guarda chaves, webhook, PayPal e domínio da oferta; o Product separa relatório e catálogo por mercado. Só abrir conta nova se mudar sócio, empresa ou país do recebedor. Listar Products antes de criar; dúvida = perguntar. Plano, bumps e upgrade são SKUs do catálogo. Nome sem valor embutido.
@@ -21,7 +21,7 @@ Ler `low-ticket`, `INDICE.md`, `OFERTAS/<slug>/CLAUDE.md`, `OFERTA.md`, `FUNIL.m
 | Essentielle (Básico) | 5,90 € | 78 fiches; sem os 4 bônus |
 | Complète | 12,90 € | 78 fiches + 4 bônus |
 | Upgrade Básico → Complète (popup) | 7,90 € preço total | 1º bump obrigatório no checkout do Básico |
-| Order bumps adicionais | **preço FR a definir** | origem BR (colagem da dona, 11/11/2026): Kit Manual do Tarô Carreira + Relacionamentos (R$ 50,22 → R$ 40,48, 19%), Guia de Interpretação Relacionamentos Românticos (R$ 37,67 → R$ 26,75, 29%), Manual de Interpretação Carreira e Finanças (R$ 47,34 → R$ 33,62, 29%). Texto "Aproveitem e comprem juntos" + "Adicionar produto". Adaptar ao FR com preço em EUR/CHF/CAD aprovado pela dona; não converter o real |
+| Order bumps adicionais ("Comprar juntos") | **EUR aprovados pela dona em 11/11/2026**; CHF/CAD a definir | Kit Manual do Tarô: Carreira + Relacionamentos: de 7,32 € por **5,90 €** (19%). Guia de Interpretação: Relacionamentos Românticos: de 5,49 € por **3,90 €** (29%). Manual de Interpretação: Carreira e Finanças: de 6,90 € por **4,90 €** (29%). Botão "Adicionar à compra". Nomes de produto em francês: a definir com a dona (texto veio em português). Produto/Price na Stripe só depois de nome FR e valores CHF/CAD |
 | Upsell pós-compra (Lenormand) | **a definir** | preço pendente |
 
 Garantia: 15 dias. Todos os preços na página são em euros.
@@ -50,7 +50,7 @@ Na Stripe, mantém-se Product/Prices **de referência** (já criados em 10–11/
 ## 4. Product e Prices na Winx
 
 1. Conferir organização/conta (regra 1) e listar Products/Prices existentes antes de criar (nada duplicado).
-2. Product do mercado na conta da oferta (Guide Tarot FR: a conta ainda será criada na Winx; os Products antigos `prod_VbZvtyqHcgx67d` e `prod_VbrU18hVpmTe10` foram APAGADOS da conta Calendrier Magique em 11/11/2026 por ordem da dona). Bump adicional e Lenormand ganham Product próprio quando houver preço.
+2. Product do mercado na conta da oferta (Guide Tarot FR: conta `acct_1UahKOAFsYcSGn3X` na Winx; Product e 9 Prices no sandbox criados em 11/11/2026, IDs no SKILL.md; os antigos da conta Calendrier Magique foram APAGADOS por ordem da dona. Live pendente da verificação da empresa). Bump adicional e Lenormand ganham Product próprio quando houver preço.
 3. Prices por moeda, `lookup_key` único (`<oferta>_<sku>_<moeda>`), `tax_behavior=inclusive`, sandbox e live separados.
 4. Registrar IDs não secretos em `STATUS.md` e `_memoria/contas-e-codigos.md`.
 

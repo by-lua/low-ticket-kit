@@ -31,7 +31,7 @@ Em conflito, a regra de **dinheiro e cobrança** vale a do Stripe; a de **tela**
 
 ## 4. Fatos da conta que mudam o desenho (do SKILL do stripe, conferidos)
 
-- **PayPal nativo pela Stripe NÃO existe na conta Winx (BR).** Existe o PayPal **personalizado** (Elements + Payment Intents): live `cpmt_1UafaQABfkUzod1XYwjPVcas` (a dona o chamou de "outro produto"; confirmar) e teste `cpmt_1Uag8CABfkUzod1XTgLrKslU`. Falta provar o fluxo em sandbox. Plano B: PayPal separado (API de Orders) com a Business Dona.
+- **PayPal nativo pela Stripe NÃO existe na conta BR.** Existe o PayPal **personalizado** (Elements + Payment Intents); na conta Guide Tarot (`acct_1UahKOAFsYcSGn3X`) o do sandbox é `cpmt_1UahPYAFsYcSGn3XKC5qgiOS`; o live será criado quando a conta for ativada. Falta provar o fluxo em sandbox. Plano B: PayPal separado (API de Orders) com a Business Dona.
 - **Google Pay estava desligado** na configuração consultada. Apple/Google Pay exigem domínio HTTPS **registrado** na Stripe, em teste e live. Só mostrar o botão se ele aparecer de fato no ambiente real.
 - **Stripe Tax não é suportado** para a conta BR. Price com `tax_behavior=inclusive` só garante o valor final; IVA é tratado fora da Stripe antes do lançamento.
 - **Upsell de um clique só em cartão (e carteiras reutilizáveis)**, com consentimento explícito para salvar o método na compra. PayPal separado não entra no upsell de um clique.
