@@ -16,6 +16,24 @@ Maestro" (numerologia, MX/AR) copiando o layout de um print da Hotmart. Os
 erros que aconteceram nessa sessão viram as seções "Não pule isto" abaixo —
 cada uma custou um retrabalho visível pro usuário.
 
+## Dois modos — escolha ANTES de montar (dona, 11/11/2026)
+
+Tudo que está nesta skill continua valendo. O que muda é o modo:
+
+| | **Modo LOCAL** (um país, gateway nacional) | **Modo INTERNACIONAL com Stripe** |
+|---|---|---|
+| Quando | Hotmart, Mundpay, Wiven, Cooud, Mercado Pago, XPag etc., um mercado só | Vários países/moedas, checkout próprio com Stripe |
+| Visual, ordem, timer, selos, bump, prova social, popup de saída | Tudo desta skill | **Exatamente o mesmo** |
+| Pagamento | Tabela de gateways por país abaixo | Cartão incorporado (Stripe Payment Element) + Apple Pay + Google Pay + PayPal, sempre ligados |
+| Preço | Um preço, uma moeda | Catálogo por moeda no servidor; total calculado no servidor |
+| País/moeda/idioma | Fixos do mercado | Detectados na entrada (seletor para trocar); todo texto traduzido; locale do Stripe Elements |
+| Extras | Nenhum | País → moeda → idioma, formatação de preço, métodos por país, depoimentos do mercado, IVA, tracking `event_id` |
+| Regra de cobrança | Pedido criado uma vez, no clique | Igual: PaymentIntent só no clique |
+
+**Modo internacional com Stripe = abrir também** `~/.claude/skills/stripe-checkout/references/ROTEIRO-NOVO-CHECKOUT.md` (passo a passo: organização, mercados, formas de pagamento, PayPal, entrega, testes) e `MAPA-PREMIUM-x-STRIPE.md` (o que cada skill manda). Em checkout de um só país, os extras internacionais NÃO entram.
+
+**Lacunas do premium quando o gateway é Stripe** (a tabela de gateways abaixo ganha esta linha): Stripe = tile "Cartão" que abre o Payment Element, botões de Apple Pay/Google Pay (só se elegíveis), tile PayPal; logos oficiais das marcas; selo "Pagamento seguro via Stripe/Link" ao lado do cartão.
+
 ## PADRÃO da casa = visual do checkout Chave Mestra (dona, 10/11/2026)
 
 A skill é o **design system do checkout Chave Mestra**
@@ -164,6 +182,7 @@ pro usuário) é o erro mais caro desta lista:
 | México, XPag (sem cartão) | SPEI (transferência) / OXXO (efectivo) |
 | Argentina, Mercado Pago | Tarjeta débito o crédito (via Mercado Pago) / Transferencia manual |
 | Brasil, PIX-first | PIX / Cartão de crédito |
+| Internacional, Stripe (checkout próprio) | Cartão (Payment Element incorporado) / Apple Pay / Google Pay / PayPal — ver `stripe-checkout/references/ROTEIRO-NOVO-CHECKOUT.md` |
 
 Leia a variável/lib de país do projeto (`isMx`, `country.gateway` etc.) e
 renderize condicionalmente — nunca um par de botões fixo, mesmo que o
@@ -227,10 +246,6 @@ pra CDN própria da marca (ex.: `http2.mlstatic.com/.../logo-mercadopago.svg`
 pro Mercado Pago). Salve em `public/checkout/` e referencie com
 `next/image`. Método sem marca própria (transferência, débito/crédito
 genérico) não tem esse problema: aí sim vale ícone neutro desenhado.
-
-## Gateway Stripe e checkout internacional
-
-Checkout com Stripe (cartão incorporado, Apple/Google Pay, PayPal separado), preços por moeda, detecção de país e idioma, e tracking: ver `stripe-checkout/references/MAPA-PREMIUM-x-STRIPE.md`. Em checkout de um só país, os extras internacionais (país, moeda, idioma, locale) não entram.
 
 ## Referências
 

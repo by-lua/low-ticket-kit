@@ -1,5 +1,7 @@
 # Mapa: checkout-premium × stripe-checkout (11/11/2026)
 
+Sequência completa de trabalho: `ROTEIRO-NOVO-CHECKOUT.md`. Este mapa só divide as responsabilidades entre as duas skills.
+
 Decisão da dona em 11/11/2026: checkout próprio no estilo Hotmart. A pessoa entra, o país é reconhecido, aparecem a moeda e o idioma dela. Ela escolhe plano, bumps e forma de pagar. **Cartão incorporado na nossa página** (Stripe Payment Element), PayPal em botão próprio, Apple Pay e Google Pay com ícones oficiais. Selo "Link / Stripe" perto do cartão para passar segurança.
 
 ## 1. Quem manda em quê
@@ -29,7 +31,7 @@ Em conflito, a regra de **dinheiro e cobrança** vale a do Stripe; a de **tela**
 
 ## 4. Fatos da conta que mudam o desenho (do SKILL do stripe, conferidos)
 
-- **PayPal nativo pela Stripe NÃO existe na conta Winx (BR)**, mas em 11/11/2026 a dona criou o **PayPal como forma de pagamento personalizada** (`cpmt_1UafaQABfkUzod1XYwjPVcas`), compatível com Elements + PaymentIntents. É o caminho preferido: PayPal no mesmo Payment Element. Falta provar em sandbox como confirma, se gera `payment_intent.succeeded` e qual conta PayPal está ligada. Plano B se falhar: PayPal separado (API de Orders), com a Business da Dona (login confirmado em 11/11) ou outra entidade.
+- **PayPal nativo pela Stripe NÃO existe na conta Winx (BR).** Em 11/11/2026 a dona criou um PayPal "personalizado" na Stripe, mas o ID é de outro produto e **não deve ser usado** até ela indicar o certo. Até lá vale o plano B: PayPal separado (API de Orders), com a Business da Dona (conta definida pela dona em 11/11; login confirmado).
 - **Google Pay estava desligado** na configuração consultada. Apple/Google Pay exigem domínio HTTPS **registrado** na Stripe, em teste e live. Só mostrar o botão se ele aparecer de fato no ambiente real.
 - **Stripe Tax não é suportado** para a conta BR. Price com `tax_behavior=inclusive` só garante o valor final; IVA é tratado fora da Stripe antes do lançamento.
 - **Upsell de um clique só em cartão (e carteiras reutilizáveis)**, com consentimento explícito para salvar o método na compra. PayPal separado não entra no upsell de um clique.
