@@ -20,7 +20,7 @@ Ler `low-ticket`, `INDICE.md`, `OFERTAS/<slug>/CLAUDE.md`, `OFERTA.md`, `FUNIL.m
 |---|---|---|
 | Essentielle (Básico) | 5,90 € | 78 fiches; sem os 4 bônus |
 | Complète | 12,90 € | 78 fiches + 4 bônus |
-| Upgrade Básico → Complète (popup) | 7,90 € preço total | 1º bump obrigatório no checkout do Básico |
+| Upgrade Básico → Complète | **aditivo**: Básico 5,90 + upgrade 2,00 = 7,90 € (CAD 8,90 + 3,00 = 11,90) | 1º bump obrigatório no checkout do Básico; a dona definiu em 11/11 que o upgrade SOMA ao valor do plano |
 | Order bumps adicionais ("Comprar juntos") | **aprovados pela dona em 11/11/2026**: EUR (abaixo), CHF = mesmos números do EUR, CAD 8,90 / 5,90 / 7,90 | Kit Manual do Tarô: Carreira + Relacionamentos: de 7,32 € por **5,90 €** (19%). Guia de Interpretação: Relacionamentos Românticos: de 5,49 € por **3,90 €** (29%). Manual de Interpretação: Carreira e Finanças: de 6,90 € por **4,90 €** (29%). Botão "Adicionar à compra". Criados no **sandbox** Guide Tarot (IDs no SKILL.md) com nomes em francês traduzidos pelo agente, **a dona ainda confere os nomes**. Live pendente |
 | Upsell pós-compra (Lenormand) | **a definir** | preço pendente |
 
