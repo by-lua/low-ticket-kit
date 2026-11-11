@@ -29,7 +29,7 @@ Em conflito, a regra de **dinheiro e cobrança** vale a do Stripe; a de **tela**
 
 ## 4. Fatos da conta que mudam o desenho (do SKILL do stripe, conferidos)
 
-- **PayPal pela Stripe NÃO existe na conta Winx (BR).** Isso corrige o que eu disse antes no chat. O PayPal tem de ser integração separada (API de Orders do PayPal), com conta comercial e reconciliação próprias. Falta definir qual entidade recebe: a Business da Dona (login confirmado em 11/11) ou outra.
+- **PayPal nativo pela Stripe NÃO existe na conta Winx (BR)**, mas em 11/11/2026 a dona criou o **PayPal como forma de pagamento personalizada** (`cpmt_1UafaQABfkUzod1XYwjPVcas`), compatível com Elements + PaymentIntents. É o caminho preferido: PayPal no mesmo Payment Element. Falta provar em sandbox como confirma, se gera `payment_intent.succeeded` e qual conta PayPal está ligada. Plano B se falhar: PayPal separado (API de Orders), com a Business da Dona (login confirmado em 11/11) ou outra entidade.
 - **Google Pay estava desligado** na configuração consultada. Apple/Google Pay exigem domínio HTTPS **registrado** na Stripe, em teste e live. Só mostrar o botão se ele aparecer de fato no ambiente real.
 - **Stripe Tax não é suportado** para a conta BR. Price com `tax_behavior=inclusive` só garante o valor final; IVA é tratado fora da Stripe antes do lançamento.
 - **Upsell de um clique só em cartão (e carteiras reutilizáveis)**, com consentimento explícito para salvar o método na compra. PayPal separado não entra no upsell de um clique.
