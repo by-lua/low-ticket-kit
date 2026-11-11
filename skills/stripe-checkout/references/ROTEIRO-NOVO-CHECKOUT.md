@@ -7,7 +7,7 @@ Criado em 11/11/2026 a partir das ordens da dona. É o **primeiro teste** do che
 1. **Organização primeiro.** Antes de criar qualquer coisa, confirmar a organização e a conta. Parceria Luciola = **Winx**, conta **Calendrier Magique** (`acct_1UaIGiABfkUzod1X`). Conferir `/v1/account` (MCP ou CLI, perfil explícito) e o ambiente (test/live). Conta errada = parar.
 2. **Formas de pagamento sempre ligadas:** cartão de crédito, **Apple Pay**, **Google Pay** e **PayPal**. Nunca lançar sem checar cada uma no ambiente real; método que não aparecer não se anuncia (ver passo 5).
 3. **PayPal: sempre confirmar QUAL conta recebe, antes de ligar.** Conta definida pela dona em 11/11/2026: a Business **Dona** (perfil `paypal-dona-leadgo`, porta 9315, dashboard `49.265.147 DONA DE LIMA ASSIS`, BRL, login confirmado). Repetir a confirmação a cada oferta nova; se a oferta for outra, perguntar.
-4. **Produto por oferta:** um Product por produto; plano, bumps e upgrade são SKUs do catálogo. Nome sem valor embutido.
+4. **Produto próprio por oferta e mercado (dona, 11/11/2026).** Cada oferta tem o SEU Product, dentro da organização Winx. Nunca reaproveitar o Product de outra oferta (Calendrier Magique é outro produto, não é Guide Tarot). **O nome leva o mercado:** `<Produto> <MERCADO>`, ex. `Calendrier Magique FR`, `Guide Tarot FR`. Antes de criar: listar os Products da conta (live e teste) e procurar um específico daquela oferta+mercado; se existir, usar; se não existir, criar. **Dúvida sobre qual é o produto = perguntar à dona. Nunca assumir.** Plano, bumps e upgrade são SKUs do catálogo. Nome sem valor embutido.
 5. **Visual e fluxo da tela** vêm do `checkout-premium`. Aqui só o que é pagamento, moeda, entrega e tracking.
 
 ## 1. Levantar a oferta
@@ -64,7 +64,7 @@ Na Stripe, mantém-se Product/Prices **de referência** (já criados em 10–11/
 | PayPal | ver abaixo | conta confirmada (regra 3) |
 
 **PayPal — caminho:** a Stripe não processa PayPal nativo em conta brasileira. Duas rotas, em ordem:
-1. **PayPal como forma de pagamento personalizada na Stripe** (Elements + Payment Intents): criar em Configurações → Pagamentos, **na conta Winx**, em teste e em live (cada ambiente tem seu `cpmt_...`; o ID mostrado antes era de outro produto e não vale). Só vale se o fluxo completo passar em sandbox.
+1. **PayPal como forma de pagamento personalizada na Stripe** (Elements + Payment Intents): criar em Configurações → Pagamentos, **na conta Winx**, em teste e em live (cada ambiente tem seu `cpmt_...`; em 11/11/2026 existem: live `cpmt_1UafaQABfkUzod1XYwjPVcas` e teste `cpmt_1Uag8CABfkUzod1XTgLrKslU`, ambos na Winx/Calendrier Magique; a dona chamou o live de "outro produto", confirmar com ela antes de usar). Só vale se o fluxo completo passar em sandbox.
 2. **PayPal separado:** botão próprio na nossa página, API de Orders do PayPal com um app de desenvolvedor da conta Business Dona (credenciais no cofre da máquina, `PAYPAL_DONA_LEADGO_*`), webhook do PayPal para entrega e Trackeador. Plano B se a rota 1 falhar.
 
 **Estado do PayPal Dona (11/11/2026):** login no PayPal Developer feito no perfil `paypal-dona-leadgo` (9315). Credenciais **sandbox** do app "Default Application" salvas no cofre da máquina como `PAYPAL_DONA_LEADGO_SANDBOX_CLIENT_ID` e `PAYPAL_DONA_LEADGO_SANDBOX_SECRET`; token OAuth sandbox testado (HTTP 200). **Live:** nenhum app criado ainda (a aba Live está vazia); criar só no go-live, com ordem da dona, e salvar como `PAYPAL_DONA_LEADGO_LIVE_*`. Webhook do PayPal (entrega e Trackeador) ainda não cadastrado.
