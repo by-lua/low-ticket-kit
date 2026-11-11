@@ -228,6 +228,10 @@ pro Mercado Pago). Salve em `public/checkout/` e referencie com
 `next/image`. Método sem marca própria (transferência, débito/crédito
 genérico) não tem esse problema: aí sim vale ícone neutro desenhado.
 
+## Gateway Stripe e checkout internacional
+
+Checkout com Stripe (cartão incorporado, Apple/Google Pay, PayPal separado), preços por moeda, detecção de país e idioma, e tracking: ver `stripe-checkout/references/MAPA-PREMIUM-x-STRIPE.md`. Em checkout de um só país, os extras internacionais (país, moeda, idioma, locale) não entram.
+
 ## Referências
 
 - **MODELO OFICIAL (abrir primeiro):** `~/Documentos/TRAMPO/PROJETOS/WORKING/PROJETOS - INTERNOS/LOW-TICKET/MODELOS/checkout-base/index.html` (+ `assets/`: CSS e fontes originais da Chave Mestra). Cópia fiel da Chave Mestra com os ajustes da dona (timer 10 min, selos acesso por e-mail + garantia, seta no banner, confiança em ícone preto, fluxo e-mail → bumps → pagamento → botão de compra, recálculo ao marcar bump). Qualquer checkout premium novo parte dele; a implementação em React segue o mesmo visual.
