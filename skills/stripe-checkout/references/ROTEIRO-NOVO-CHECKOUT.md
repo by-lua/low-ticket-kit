@@ -21,7 +21,7 @@ Ler `low-ticket`, `INDICE.md`, `OFERTAS/<slug>/CLAUDE.md`, `OFERTA.md`, `FUNIL.m
 | Essentielle (Básico) | 5,90 € | 78 fiches; sem os 4 bônus |
 | Complète | 12,90 € | 78 fiches + 4 bônus |
 | Upgrade Básico → Complète (popup) | 7,90 € preço total | 1º bump obrigatório no checkout do Básico |
-| Order bumps adicionais ("Comprar juntos") | **EUR aprovados pela dona em 11/11/2026**; CHF/CAD a definir | Kit Manual do Tarô: Carreira + Relacionamentos: de 7,32 € por **5,90 €** (19%). Guia de Interpretação: Relacionamentos Românticos: de 5,49 € por **3,90 €** (29%). Manual de Interpretação: Carreira e Finanças: de 6,90 € por **4,90 €** (29%). Botão "Adicionar à compra". Nomes de produto em francês: a definir com a dona (texto veio em português). Produto/Price na Stripe só depois de nome FR e valores CHF/CAD |
+| Order bumps adicionais ("Comprar juntos") | **aprovados pela dona em 11/11/2026**: EUR (abaixo), CHF = mesmos números do EUR, CAD 8,90 / 5,90 / 7,90 | Kit Manual do Tarô: Carreira + Relacionamentos: de 7,32 € por **5,90 €** (19%). Guia de Interpretação: Relacionamentos Românticos: de 5,49 € por **3,90 €** (29%). Manual de Interpretação: Carreira e Finanças: de 6,90 € por **4,90 €** (29%). Botão "Adicionar à compra". Criados no **sandbox** Guide Tarot (IDs no SKILL.md) com nomes em francês traduzidos pelo agente, **a dona ainda confere os nomes**. Live pendente |
 | Upsell pós-compra (Lenormand) | **a definir** | preço pendente |
 
 Garantia: 15 dias. Todos os preços na página são em euros.
@@ -88,3 +88,7 @@ Rodar a lista da seção 4 de `CHECKOUT-PROPRIO-STRIPE.md` em sandbox da Winx **
 ## 9. Fechar
 
 `low-ticket-salvar`: STATUS, `_memoria/contas-e-codigos.md`, INDICE e esta skill atualizados apenas com fatos observados.
+
+## 10. Implementação de referência (11/11/2026)
+
+`OFERTAS/luciola-guidetarot-fr/checkout/` é o primeiro checkout deste método: `catalog.mjs` (preço por moeda, único), `server.mjs` (PaymentIntent no clique, webhook assinado, PayPal sandbox), `public/` (tela premium FR + Payment Element). Para uma oferta nova, copiar a estrutura, trocar catálogo/textos/conta e repetir os testes do README. Lições: a CLI do Stripe serve de backend de teste (`stripe post/get --project-name`) e `stripe listen --events ... --forward-to` entrega webhooks locais; chaves de teste do sandbox estão no DOM da página de chaves (extrair sem imprimir e gravar no cofre); a captura PayPal só se prova com conta compradora sandbox.
