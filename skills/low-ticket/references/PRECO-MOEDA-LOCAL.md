@@ -42,7 +42,7 @@ mostrava 5,39 CHF). Mostrar só o valor da moeda da oferta + aviso é sempre ver
 ## Fora de uso (não copiar pra oferta nova)
 - O conversor antigo (`/painel/api/fx`, `getFxRates`, `fx-geo.json`, `data-eur`/`data-usd`) segue só em páginas antigas
   (ex.: Mapa del Tarot ES) até a dona mandar trocar.
-- A API `hotmart-fx-api` (repo `<org-github>/hotmart-fx-api`, `https://<subdominio>.<seu-dominio>`, código local `_servicos/fx-hotmart/`)
+- A API `hotmart-fx-api` (repo repo e URL em `_memoria/empresa.md`, código local `_servicos/fx-hotmart/`)
   mede o preço que o checkout da Hotmart cobra por país. Está no ar mas **parada, sem uso** (decisão da dona 09/11/2026:
   "deixa em segundo plano"). Só religar com ordem da dona.
 

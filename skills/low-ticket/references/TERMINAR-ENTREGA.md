@@ -27,7 +27,7 @@ Depois: principal até MVP 40% → bônus → resto dos bumps → completar tudo
 
 ## 4. Gerar no GPT — 1×1 no CHAT (sem Work mode)
 Skill `gpt-imagem-playwright`. Worker Sonnet (`claude-sonnet-5`), 1 pane por conta, máx 2 panes, cada pane num item/pasta diferente:
-- **Conta:** Pessoal `gpt-conta*` e Secundária `gpt-conta*` (via `gpt-livre.sh`). Cada worker fica na SUA conta; perfil com aba de outro trabalho → sobe outro perfil da mesma conta (`-2/-3/-4`). Headed sempre.
+- **Conta:** contas e perfis do GPT em `_memoria/contas-e-codigos.md` (via `gpt-livre.sh`). Cada worker fica na SUA conta; perfil com aba de outro trabalho → sobe outro perfil da mesma conta (`-2/-3/-4`). Headed sempre.
 - **1 imagem por mensagem.** Toda mensagem anexa **2–3 páginas NOSSAS já prontas** do mesmo formato (depois da 1ª página aprovada do item, ela entra como referência) e diz:
   "A referência visual é esta (anexos). Cada página é uma imagem. A página que quero agora é esta:" + TEXTO INTEGRAL da página + tokens do `DESIGN-SYSTEM.md` + "CRITICAL: use o texto abaixo, não copie o texto da referência; mesmo formato/proporção das referências" + "sem brasão/logo de órgão público, sem marca/logo de fabricante".
 - Salva cada imagem assim que sai (`pagina-NN-<slug>.png`, `capa.png`), abre e confere (é a do SEU prompt? texto pt certo? conteúdo técnico bate com o texto?). Errou → regera (máx 2×), anota em `QA.md`.
@@ -39,5 +39,5 @@ Skill `gpt-imagem-playwright`. Worker Sonnet (`claude-sonnet-5`), 1 pane por con
 Contact sheet (`montage … -tile 4x2`) e olhar: layout igual às refs, texto, sem marca/brasão. Problema leve = anota e segue; grave = regera.
 
 ## 6. Publicar (pane publicador, 1 por item, fecha ao fim)
-Mesmo padrão do item anterior já publicado (citar o commit de exemplo): webp em `site/painel/conteudo/<sku>/` + `original/`, `pages` + `mvp:true` no módulo, combo inclui o bump, commit + push (Coolify), conferir NO AR com a conta teste `teste-xxxxxxxx@<seu-dominio>` (leitor + Baixar PDF, 390px e desktop), prints `prints/painel-<sku>-*.png`. Orquestrador abre 1 print antes de dar como feito. Print full-page do leitor mostra páginas em branco por lazy-load: prova = print da viewport na ÚLTIMA página (`*-leitor-mobile-ultima.png`) + todas as webp 200 na rede.
+Mesmo padrão do item anterior já publicado (citar o commit de exemplo): webp em `site/painel/conteudo/<sku>/` + `original/`, `pages` + `mvp:true` no módulo, combo inclui o bump, commit + push (Coolify), conferir NO AR com a conta teste a conta teste (`_memoria/empresa.md`) (leitor + Baixar PDF, 390px e desktop), prints `prints/painel-<sku>-*.png`. Orquestrador abre 1 print antes de dar como feito. Print full-page do leitor mostra páginas em branco por lazy-load: prova = print da viewport na ÚLTIMA página (`*-leitor-mobile-ultima.png`) + todas as webp 200 na rede.
 Atualizar `MAPA-GAPS`, `STATUS.md` da oferta (Histórico) e linha no STATUS da raiz. Tirar aviso "em atualização" do /painel só quando o último item prometido para o dia subir.

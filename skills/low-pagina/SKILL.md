@@ -12,7 +12,7 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
 > - Conferir antes de entregar: `scripts/qa-layout.js` + `low-gates-no-ar` › regra fixa do topo (contagem por botão no pixel Meta e no Trackeador).
 
 **Entrada:** `OFERTA.md` + `FUNIL.md` aprovados (bônus, planos e upgrade aparecem na página) · `pesquisa/REFERENCIA.md` + `imagens-origem/` · `spyx.pagina[]` do `modelador-*.json`.
-**Saída:** `site/` (repo do deploy) com a página no ar em `<slug>.<seu-dominio>` · `DESIGN-SYSTEM.md`.
+**Saída:** `site/` (repo do deploy) com a página no ar em `<slug>.<domínio-base>` · `DESIGN-SYSTEM.md`.
 
 ## Passos
 1. **Base = a página do original.** Estrutura e ordem das seções dele (clone pelo MineraAds `/api/clonar` ou
@@ -99,7 +99,7 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
    *"Mantemos o visual dele ou mudamos um pouco (cores, fundo, elementos, capa)?"* — mostrando o que ela já
    comentou (ex.: "fundo mais limpo", "desktop mal resolvido").
    - **Paleta da página = a da oferta modelada, nunca o vermelho/verde da casa (regra da dona 06/11/2026).** O Modelo
-     Padrão é só estrutura/CSS; as cores vêm do original (tokens hex dele → `:root`). O vermelho da <EMPRESA> só existe
+     Padrão é só estrutura/CSS; as cores vêm do original (tokens hex dele → `:root`). O vermelho da casa só existe
      na barra de urgência. **A pergunta é obrigatória e vem ANTES de montar a página** (`AskUserQuestion`, 1 pergunta):
      *"Seguimos com a mesma paleta da oferta modelada ou quer mudar?"* — já com **2-3 sugestões prontas** (hex +
      por que serve ao mercado) e a opção "manter a dele" marcada como recomendada. Sem resposta dela, não monta.
@@ -186,7 +186,7 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
      poster WebP, ou player externo que só carrega no clique. Nunca vídeo pesado baixando no carregamento;
    - fontes só com os pesos usados, pixel e Trackeador `async` (nunca removidos);
    - medir no Lighthouse mobile antes e depois — a prova vai pro gate da E9.
-7. **Rodapé:** BR → só "<EMPRESA>" (sem CNPJ nem nome da dona); fora do BR mantém dados legais. Termos e
+7. **Rodapé:** BR → sem nome da empresa, CNPJ nem nome da dona (nada nosso no rodapé); fora do BR mantém dados legais. Termos e
    privacidade. Favicon na página e no `/painel`. Suporte: e-mail e WhatsApp de `_memoria/empresa.md`.
 9b. **QA de layout antes de publicar (obrigatório):** `scripts/qa-layout.js` em 360×740, 375×667, 390×844, 1366×768 e
    1920×1080 (`agent-browser --session S set viewport W H` → `eval --stdin < qa-layout.js`). Tem que dar `ok` em todos:
@@ -206,7 +206,7 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
    recomprimir pesa +30%; cache de 1 ano no Cloudflare prende erro de content-type (corrigir = nome novo do arquivo).
    Página clonada/otimizada de modelo de terceiro também passa por aqui antes de subir (costuma vir com fonte externa,
    imagem pesada e pixel do dono antigo).
-8. Deploy: repo em `github.com/<org-github>/`, Coolify auto-deploy (fatos em `_memoria/empresa.md`).
+8. Deploy: repo em o GitHub da casa, Coolify auto-deploy (fatos em `_memoria/empresa.md`).
 9. Trocou a página de uma oferta que já roda anúncio → `adstrackeador pagina comparar <atual> <nova>` antes.
 
 Gates no ar (eventos) ficam na `low-gates-no-ar`. Próximo: `low-entregavel`.

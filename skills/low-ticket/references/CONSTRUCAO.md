@@ -102,7 +102,7 @@ pular, não fazer fora de sequência. A ordem inteira em memória `ordem-execuca
    Banner direto: título/objetivo real, garantia, entrega imediata, acesso vitalício, mockup do
    produto, selos. 3 saídas: checkout **desktop** (16:9), checkout **mobile** (1:1/retrato) e
    **imagem do produto**.
-5. **Checkout** — por último; precisa do link da página + banners + produto definidos. Checkout PRÓPRIO (página de alta conversão no projeto Next.js/React: barra urgência, banner colado, form só-email, order bump com foto+checkbox DESMARCADO (nunca pré-marcado — dona 09/11/2026), pagamento por país, prova social, notificação fake, popup de saída) = skill **`checkout-premium`** — invocar via Skill tool ao montar o checkout, não recriar do zero. Se for checkout hospedado em gateway (GG Checkout) usar skill `ggcheckout-produto`; checkout hospedado na Wiven (<EMPRESA>) — produto, order bumps, link de entrega, webhook — usar skill `wiven-checkout`; banner do checkout = `banner-checkout-gpt`.
+5. **Checkout** — por último; precisa do link da página + banners + produto definidos. Checkout PRÓPRIO (página de alta conversão no projeto Next.js/React: barra urgência, banner colado, form só-email, order bump com foto+checkbox DESMARCADO (nunca pré-marcado — dona 09/11/2026), pagamento por país, prova social, notificação fake, popup de saída) = skill **`checkout-premium`** — invocar via Skill tool ao montar o checkout, não recriar do zero. Se for checkout hospedado em gateway (GG Checkout) usar skill `ggcheckout-produto`; checkout hospedado na Wiven (conta em `_memoria/contas-e-codigos.md`) — produto, order bumps, link de entrega, webhook — usar skill `wiven-checkout`; banner do checkout = `banner-checkout-gpt`.
 
 Baixar referência do concorrente (imagens, criativos) NÃO é produzir — pode a qualquer momento. Nada
 de gerar capa/entrega antes de texto+visual definidos, nem montar checkout antes de página/link/banner.
@@ -185,7 +185,7 @@ cross-market. Checar na página, no criativo e no funil:
 próxima seção com mais info visual. Botão seco → checkout = CTR alto e venda baixa. Só manda pro
 checkout depois que a pessoa viu conteúdo + bônus + preço.
 
-**PREÇO PADRÃO BR — oferta nova (dona, 08/11/2026; passa a seguir o Mapa do Tarot no ar, https://<subdominio>.<seu-dominio>/; substitui o padrão de 08/10 — Básico 17,90 / Completo 27,90):**
+**PREÇO PADRÃO BR — oferta nova (dona, 08/11/2026; passa a seguir o Mapa do Tarot no ar (endereço em `_memoria/empresa.md`); substitui o padrão de 08/10 — Básico 17,90 / Completo 27,90):**
 
 | Peça | Página / checkout | Observação |
 |---|---|---|
@@ -329,4 +329,4 @@ Events Manager em `~/.claude/browser-workspace/domain-skills/`.
 
 Tráfego: skill `metaads-kevones`. Esta skill não traz metodologia de tráfego.
 
-Entregue ao usuário, antes de subir (GATE 7 — exige os quatro itens com evidência): página no ar · checkout · 3–5 criativos · GATE 6 marcado. **Configurações de tracking:** antes de qualquer comando do Trackeador, confirme com a dona de qual ORGANIZAÇÃO (<EMPRESA>, <ORGANIZAÇÃO>, <SÓCIO>…) e de qual dashboard é a oferta, e passe `--org` e `--dashboard` explícitos. Nunca crie dashboard pra destravar o `init` (incidente <Oferta Exemplo>, 04/11/2026: criado na <EMPRESA>, era da <ORGANIZAÇÃO>). Skill **`trackeador`** — invocar pra instalar pixel Meta, remover trackers de terceiros, eventos de conversão; skill **`analytics-tracking`** — configurar eventos adicionais pra Dashboard e reporte.
+Entregue ao usuário, antes de subir (GATE 7 — exige os quatro itens com evidência): página no ar · checkout · 3–5 criativos · GATE 6 marcado. **Configurações de tracking:** antes de qualquer comando do Trackeador, confirme com a dona de qual ORGANIZAÇÃO (ver `_memoria/empresa.md`) e de qual dashboard é a oferta, e passe `--org` e `--dashboard` explícitos. Nunca crie dashboard pra destravar o `init` (incidente <Oferta Exemplo>, 04/11/2026: criado na organização errada). Skill **`trackeador`** — invocar pra instalar pixel Meta, remover trackers de terceiros, eventos de conversão; skill **`analytics-tracking`** — configurar eventos adicionais pra Dashboard e reporte.

@@ -45,7 +45,7 @@ resto preservado".
 
 ## Como chamar
 Token: `MINERAADS_EXT_KEY` (`set -a; source <COFRE-DE-CREDENCIAIS>; set +a`). Base: `$MINERAADS_URL`
-(padrão `https://<subdominio>.<seu-dominio>`). Contrato: `RATO-ADS/API-CONTRATO.md` § CLI.
+(padrão URL em `_memoria/empresa.md`). Contrato: `RATO-ADS/API-CONTRATO.md` § CLI.
 - Comando (quando instalado, spec v3): `mineraads modelador analisar|caminhos|mercado|modelar|salvar`.
 - Sem o comando: rotas com `Authorization: Bearer $MINERAADS_EXT_KEY`:
   1. **Fluxo padrão (Raio-X+SpyX), 3 chamadas em sequência — nenhuma pula a próxima:**

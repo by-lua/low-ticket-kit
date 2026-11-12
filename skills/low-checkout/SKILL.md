@@ -10,11 +10,11 @@ description: Etapa E8 do sistema LOW-TICKET — cadastra a oferta e as peças do
 
 ## Antes de tudo
 - **Fatos:** `_memoria/contas-e-codigos.md` (gateway, conta, código, perfil de browser). Nunca de cabeça.
-- **Gateway pelo mercado:** BR → `wiven-checkout` (conta **<EMPRESA>**; a Wiven EmpresaB está aposentada) ·
+- **Gateway pelo mercado:** BR → `wiven-checkout` (conta em `_memoria/contas-e-codigos.md`) ·
   EUR/USD → `mundpay` · global → `cooud-checkout` · LATAM → `zenith-gateway` · 250 Atividades → `ggcheckout-produto` ·
   Mercado Pago (Argentina/LATAM pelo nosso `checkout-premium`) → `mercadopago-checkout` ·
   Hotmart (quando a dona escolher) → `hotmart-produto-playwright`, seção "Rastreamento com o AdsTrackeador" obrigatória.
-- **Trackeador na organização certa (incidente 04-06/11/2026, <Oferta Exemplo>):** a oferta foi criada na <EMPRESA>, quando era da <ORGANIZAÇÃO>, e o funil ficou sem medir.
+- **Trackeador na organização certa (incidente 04-06/11/2026, <Oferta Exemplo>):** a oferta foi criada na organização errada, e o funil ficou sem medir.
   Antes de `trackeador init/checkout create/dashboard create`, confirme com a dona **de qual organização é a oferta**. Passe sempre `--org <org>` e `--dashboard <oferta>`.
   Nunca crie dashboard só para destravar um comando. Relate tudo o que criou (dashboard, conexão, pixel, host).
 - **Gateway novo ou primeira vez nele? Leia a documentação OFICIAL antes de ligar** (dona, 06/11/2026). A Hotmart quebrou

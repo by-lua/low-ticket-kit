@@ -1,6 +1,6 @@
 ---
 name: low-ticket
-description: Porta de entrada e orquestradora do sistema LOW-TICKET (ofertas low ticket da <EMPRESA>). Abre a sessão (índice, métodos ativos, oferta) e diz qual etapa e qual filha usar, da escolha da oferta até a entrega pronta. Use SEMPRE no começo de qualquer trabalho low ticket — "abrir", "retomar", "onde paramos", "vou mexer na oferta X", "achei uma oferta na Biblioteca", "modelar essa oferta", página, entregável, área de membros, funil, checkout. Criativo de anúncio vai pra skill `criativo`.
+description: Porta de entrada e orquestradora do sistema LOW-TICKET (ofertas low ticket). Abre a sessão (índice, métodos ativos, oferta) e diz qual etapa e qual filha usar, da escolha da oferta até a entrega pronta. Use SEMPRE no começo de qualquer trabalho low ticket — "abrir", "retomar", "onde paramos", "vou mexer na oferta X", "achei uma oferta na Biblioteca", "modelar essa oferta", página, entregável, área de membros, funil, checkout. Criativo de anúncio vai pra skill `criativo`.
 ---
 
 # low-ticket — orquestradora (índice)
@@ -116,7 +116,7 @@ Regras:
 ## 3. Regras que valem em toda etapa (só estas; o resto mora na filha)
 - **Fatos antes de cadastrar:** gateway, conta, código, webhook, domínio e **organização do Trackeador** — conferir no
   índice (seção Fatos). Nunca de cabeça. Todo comando `trackeador` que cria algo leva `--org` explícito.
-  Incidente <Oferta Exemplo> (04-06/11/2026): a oferta nasceu na <EMPRESA>, não na <ORGANIZAÇÃO>, e a venda chegou órfã.
+  Incidente <Oferta Exemplo> (04-06/11/2026): a oferta nasceu na organização errada, e a venda chegou órfã.
 - **Webhook de medição (Trackeador) com TODOS os eventos, em qualquer checkout** (Hotmart, Wiven, Mundpay, Zenith,
   GG, próprio): aprovada, recusada/cancelada, expirada, boleto/aguardando, atrasada, abandono, reembolso, chargeback.
   Só "aprovada" = tentativas somem do Trackeador. Regra da dona 09/11/2026. Entrega (`/painel`) segue só o que libera/tira acesso.
