@@ -1,6 +1,6 @@
 ---
 name: low-pagina
-description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da oferta. Padrão da casa = Modelo Padrão LeadGo (página nossa, com as regras da casa, em modelos/modelo-padrao/); alternativas: página da pessoa 100% ou página da pessoa + blocos do Modelo Padrão. Use para "faz a página", "página de vendas da oferta X", "Modelo Padrão", "adapta a página dele pra nossa".
+description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da oferta. Padrão da casa = Modelo Padrão (página nossa, com as regras da casa, em modelos/modelo-padrao/); alternativas: página da pessoa 100% ou página da pessoa + blocos do Modelo Padrão. Use para "faz a página", "página de vendas da oferta X", "Modelo Padrão", "adapta a página dele pra nossa".
 ---
 
 # low-pagina — E3, página de vendas
@@ -12,7 +12,7 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
 > - Conferir antes de entregar: `scripts/qa-layout.js` + `low-gates-no-ar` › regra fixa do topo (contagem por botão no pixel Meta e no Trackeador).
 
 **Entrada:** `OFERTA.md` + `FUNIL.md` aprovados (bônus, planos e upgrade aparecem na página) · `pesquisa/REFERENCIA.md` + `imagens-origem/` · `spyx.pagina[]` do `modelador-*.json`.
-**Saída:** `site/` (repo do deploy) com a página no ar em `<slug>.leadgo.dev` · `DESIGN-SYSTEM.md`.
+**Saída:** `site/` (repo do deploy) com a página no ar em `<slug>.<seu-dominio>` · `DESIGN-SYSTEM.md`.
 
 ## Passos
 1. **Base = a página do original.** Estrutura e ordem das seções dele (clone pelo MineraAds `/api/clonar` ou
@@ -28,7 +28,7 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
    1. **Página da pessoa 100%** — clone fiel (passo 0), muda só idioma, oferta, preços e cores do visual aprovado.
    2. **Página da pessoa + adaptações do Modelo Padrão** — clone dela como base (visual e identidade dela) + os blocos
       que faltam **copiados do Modelo Padrão** (mesma estrutura/CSS adaptados à paleta dela), só os aprovados nas sugestões.
-   3. **Modelo Padrão LeadGo** (recomendado, padrão da casa desde 04/11/2026) — `_skills/low-pagina/modelos/modelo-padrao/`
+   3. **Modelo Padrão** (recomendado, padrão da casa desde 04/11/2026) — `_skills/low-pagina/modelos/modelo-padrao/`
       (index.html + img + README com todas as regras). É só nosso, sem dependência de template de terceiros. Mudança nova aprovada pela dona numa página
       feita nele → aplicar também no modelo e anotar no README do modelo. Os modelos Flowise são legado: não usar.
    Valem nos 3: barra vermelha fixa · hero acima da dobra · planos e garantia padrão Mapa do Tarot · QA (passo 9b) ·
@@ -41,7 +41,7 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
      - **Completo, COM imagem** (mockup do plano completo, **menor**: largura máx. ~300px): selo « ★ O preferido »,
        "Todos os materiais — entrega imediata", **caixa destacada com o bônus principal**, checklist do conteúdo,
        **"Bônus exclusivos:"** com 🎁, preço riscado (valor) → preço, botão principal.
-0. **Clone primeiro, sempre** (erro de 04/11/2026, Calendrier: página escrita do zero com layout próprio — a dona
+0. **Clone primeiro, sempre** (erro de 04/11/2026, <Oferta Exemplo>: página escrita do zero com layout próprio — a dona
    perguntou "por que não está parecido com a original, melhorada?"). Base = DOM renderizado + CSS da página dele
    (Elementor costuma ser 1 bloco HTML com `<style>` próprio: extrair esse bloco). Troca só texto, variáveis de cor,
    fontes e `src`; depois aplica o Plano da página (cortar/acrescentar/reordenar seções) usando as MESMAS classes
@@ -99,7 +99,7 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
    *"Mantemos o visual dele ou mudamos um pouco (cores, fundo, elementos, capa)?"* — mostrando o que ela já
    comentou (ex.: "fundo mais limpo", "desktop mal resolvido").
    - **Paleta da página = a da oferta modelada, nunca o vermelho/verde da casa (regra da dona 06/11/2026).** O Modelo
-     Padrão é só estrutura/CSS; as cores vêm do original (tokens hex dele → `:root`). O vermelho da LeadGo só existe
+     Padrão é só estrutura/CSS; as cores vêm do original (tokens hex dele → `:root`). O vermelho da <EMPRESA> só existe
      na barra de urgência. **A pergunta é obrigatória e vem ANTES de montar a página** (`AskUserQuestion`, 1 pergunta):
      *"Seguimos com a mesma paleta da oferta modelada ou quer mudar?"* — já com **2-3 sugestões prontas** (hex +
      por que serve ao mercado) e a opção "manter a dele" marcada como recomendada. Sem resposta dela, não monta.
@@ -108,9 +108,9 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
      cor aleatória, "bonita" ou da casa que não combine com o assunto do produto; cada sugestão diz em uma frase por
      que a cor combina com a oferta.
    - **Objetivo padrão da dona = diferenciar sem fugir do que vende.** Mantém a **pegada/vibe** do original (o
-     estilo que bate no público — ex.: grimório vintage no Calendrier), mesma composição e tipo de peça; muda
+     estilo que bate no público — ex.: grimório vintage no <Oferta Exemplo>), mesma composição e tipo de peça; muda
      **as cores e alguns elementos**, um pouco — o bastante pra que, se outro modelar a mesma oferta nesse idioma,
-     a nossa não fique igual à dele. Dois erros já cometidos (Calendrier, 04/11): (1) trocar só a cena e manter
+     a nossa não fique igual à dele. Dois erros já cometidos (<Oferta Exemplo>, 04/11): (1) trocar só a cena e manter
      cores/elementos = "ficou praticamente igual"; (2) trocar o estilo inteiro (Art Nouveau) = foge do que vende.
      Os 3 oferecidos são **variações de paleta dentro da mesma vibe** + um toque leve de visual (detalhe de moldura,
      tipografia do título), **mantendo todos os elementos** dele (trocar coruja/gato/tarô por outra coisa inventa
@@ -186,7 +186,7 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
      poster WebP, ou player externo que só carrega no clique. Nunca vídeo pesado baixando no carregamento;
    - fontes só com os pesos usados, pixel e Trackeador `async` (nunca removidos);
    - medir no Lighthouse mobile antes e depois — a prova vai pro gate da E9.
-7. **Rodapé:** BR → só "LeadGo" (sem CNPJ nem nome da dona); fora do BR mantém dados legais. Termos e
+7. **Rodapé:** BR → só "<EMPRESA>" (sem CNPJ nem nome da dona); fora do BR mantém dados legais. Termos e
    privacidade. Favicon na página e no `/painel`. Suporte: e-mail e WhatsApp de `_memoria/empresa.md`.
 9b. **QA de layout antes de publicar (obrigatório):** `scripts/qa-layout.js` em 360×740, 375×667, 390×844, 1366×768 e
    1920×1080 (`agent-browser --session S set viewport W H` → `eval --stdin < qa-layout.js`). Tem que dar `ok` em todos:
@@ -202,11 +202,11 @@ description: Etapa E3 do sistema LOW-TICKET — monta a página de vendas da ofe
    domínio ou com content-type ≠ `font/woff2` · mais de 3 `<img>` sem lazy · pixel Meta ausente/placeholder/id errado ·
    sem `PageView` · sem loader do Trackeador. Avisa: imagem > 250 KB, sem cache longo, sem width/height, hero sem preload.
    **Cole o RESULTADO no `STATUS.md`.** Reprovou → corrigir e rodar de novo; nunca "depois a gente vê".
-   Aprendido na Calendrier (06/11/2026): fonte do Google bloqueia render no navegador interno do Instagram; webp sem
+   Aprendido na <Oferta Exemplo> (06/11/2026): fonte do Google bloqueia render no navegador interno do Instagram; webp sem
    recomprimir pesa +30%; cache de 1 ano no Cloudflare prende erro de content-type (corrigir = nome novo do arquivo).
    Página clonada/otimizada de modelo de terceiro também passa por aqui antes de subir (costuma vir com fonte externa,
    imagem pesada e pixel do dono antigo).
-8. Deploy: repo em `github.com/leadgodev/`, Coolify auto-deploy (fatos em `_memoria/empresa.md`).
+8. Deploy: repo em `github.com/<org-github>/`, Coolify auto-deploy (fatos em `_memoria/empresa.md`).
 9. Trocou a página de uma oferta que já roda anúncio → `adstrackeador pagina comparar <atual> <nova>` antes.
 
 Gates no ar (eventos) ficam na `low-gates-no-ar`. Próximo: `low-entregavel`.

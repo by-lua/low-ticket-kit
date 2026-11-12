@@ -4,8 +4,8 @@
 **URL de trabalho:** https://ninjabrhub.io/studio
 **Subir:** `~/.claude/bin/browsers.sh hub`
 **Login:** persistido no perfil. Senha em `$NINJABR_PASSWORD`
-(`~/.claude/.credentials.env`, chmod 600) — carregue com
-`set -a; source ~/.claude/.credentials.env; set +a` e use sempre a variavel,
+(`<COFRE-DE-CREDENCIAIS>`, chmod 600) — carregue com
+`set -a; source <COFRE-DE-CREDENCIAIS>; set +a` e use sempre a variavel,
 nunca o valor literal.
 **Playbooks de alto nivel:** skills `grok-video-hub-playwright`, `video-hub`
 

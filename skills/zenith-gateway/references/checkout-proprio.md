@@ -1,6 +1,6 @@
 # Checkout próprio na Zenith — os três caminhos, e qual está realmente aberto
 
-Apurado em 08/09/2026 na conta `contact@seudominio.com` (seller "Dona De lima assis Store", KYC aprovado), lendo a doc **e** clicando o painel. Onde os dois discordam, o painel manda — e eles discordam.
+Apurado em 08/09/2026 na conta `contact@<seu-dominio>` (seller "Dona De lima assis Store", KYC aprovado), lendo a doc **e** clicando o painel. Onde os dois discordam, o painel manda — e eles discordam.
 
 ## Onde sai a credencial
 
@@ -173,6 +173,6 @@ Sobre a CVU na Argentina, o painel avisa: a Zenith devolve a CVU de destino da o
 
 ## Antes de montar isso para Argentina
 
-O Astrodicas já roda Mercado Pago nativo em AR, que cobre cartão, saldo em conta e transferência. A Zenith nesta conta oferece **só transferência por CVU** — um subconjunto — cobrando 7,99% + R$ 5,00 fixo e retendo 10% por 90 dias. Não é upgrade de método; é menos método, mais caro. Em ticket de ARS 12.819 (~R$ 38), o fixo de R$ 5 sozinho já é ~13%.
+O <Oferta Exemplo> já roda Mercado Pago nativo em AR, que cobre cartão, saldo em conta e transferência. A Zenith nesta conta oferece **só transferência por CVU** — um subconjunto — cobrando 7,99% + R$ 5,00 fixo e retendo 10% por 90 dias. Não é upgrade de método; é menos método, mais caro. Em ticket de ARS 12.819 (~R$ 38), o fixo de R$ 5 sozinho já é ~13%.
 
 Zenith em AR só ganha sentido se o objetivo for **consolidar o recebimento no CNPJ brasileiro**, não reduzir taxa.

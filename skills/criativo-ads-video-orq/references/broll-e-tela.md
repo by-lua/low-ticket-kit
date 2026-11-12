@@ -40,7 +40,7 @@ Comandos: `/get-brolls-brief`, `/get-brolls-review`, `/get-brolls-status`.
 
 **TikTok — vídeos virais em INGLÊS (regra da dona, 16/10/2026).** Além do stock, usar **vídeos orgânicos que
 já viralizaram** no TikTok como b-roll (é o que parece nativo — os originais que modelamos intercalam MUITA
-cena real com o material). Buscar no perfil logado **`tiktok`** (porta 9255) com **~5 termos em inglês ligados
+cena real com o material). Buscar no perfil logado **`tiktok`** (porta <PORTA>) com **~5 termos em inglês ligados
 ao produto** (ex.: `dementia activities`, `caregiver grandma moment`, `occupational therapy elderly`,
 `memory care activities`, `elderly cognitive games`), priorizando **muitas views**. ⛔ **O clipe NÃO pode ter
 texto/legenda queimada** (nem caption, nem watermark, nem outro idioma) — a legenda é a NOSSA (KaraokeV2).
@@ -95,7 +95,7 @@ bonitos.
   baixe da origem.
 - **Correção (dona, 25/10/2026): Pinterest É fonte direta válida, não só descoberta, quando o
   conteúdo é ESTILIZADO/3D** (render 3D de exercício/anatomia, animação, ilustração) — é onde o
-  banco público costuma faltar (ver `OFERTAS/luciola-atlas-movimiento/STATUS.md`, "B-roll externo
+  banco público costuma faltar (ver `OFERTAS/<slug-da-oferta>/STATUS.md`, "B-roll externo
   resolvido 12/10": os 5 clipes 3D do Atlas vieram de busca direta no Pinterest em inglês, não de
   banco público). **Divisão de fonte por tipo de conteúdo:** Pinterest = 3D/estilizado/render;
   TikTok = orgânico/viral (cena real, não encenada); YouTube = secundário (geralmente pior
@@ -194,6 +194,6 @@ promete.
 - **Material real = também TikTok.** Além do banco (`get-brolls`), usar **vídeos orgânicos virais em INGLÊS** do TikTok como cena real (sessão, cuidador, idoso, terapia). É o que faz o criativo parecer orgânico — os originais que modelamos **intercalam MUITA cena real** com o material do produto em cortes curtos.
 - **Buscar com ~5 termos em inglês ligados ao PRODUTO.** Ex. (GeriNeuro / idoso / demência): `dementia activities` · `caregiver grandma moment` · `occupational therapy elderly` · `memory care activities` · `elderly cognitive games`. Priorizar **muitas views** (contagem no próprio TikTok).
 - **⛔ REGRA DURA: o vídeo NÃO pode ter TEXTO ESCRITO / legenda queimada** — nada de caption embutida, watermark de app, ou texto em outro idioma. Só **cena limpa**; a legenda é a NOSSA (KaraokeV2). **Descarta o clipe que tiver texto.**
-- **Perfil logado:** usar o perfil de browser **`tiktok`** (porta 9255). Baixar com **`yt-dlp`** (cookies do perfil quando precisar). Registrar em **`credits.md`**: termo, URL, @autor, **views**, arquivo.
+- **Perfil logado:** usar o perfil de browser **`tiktok`** (porta <PORTA>). Baixar com **`yt-dlp`** (cookies do perfil quando precisar). Registrar em **`credits.md`**: termo, URL, @autor, **views**, arquivo.
 - **Uso na montagem (receita dos originais):** **~15–20 cortes curtos (~2–3s)** alternando o **material do produto** (gravações de tela/fichas) com as **cenas reais** do TikTok, reforçando a fala com overlay de texto.
 

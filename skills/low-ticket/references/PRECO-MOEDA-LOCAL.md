@@ -21,7 +21,7 @@ mostrava 5,39 CHF). Mostrar só o valor da moeda da oferta + aviso é sempre ver
 - **Alinhado com o preço:** preço à esquerda (card de plano) → aviso à esquerda; preço centralizado (hero, popup) →
   aviso centralizado. Desalinhado a dona reprova.
 - **Tamanho conforme a seção:** sempre menor que o preço; em pílula/popup apertado pode ir a ~10px; em card de plano 11–12px.
-  Cinza um pouco mais escuro (dona 09/11/2026; Calendrier: `#7a6c6f`). Quebra de linha livre.
+  Cinza um pouco mais escuro (dona 09/11/2026; <Oferta Exemplo>: `#7a6c6f`). Quebra de linha livre.
 - **NÃO mexer no design nem no layout.** Pílula continua pílula, preço dentro de botão continua dentro do botão.
 - **Texto no idioma da página** (começa com `*`):
   - FR: `* Le prix est converti dans votre devise locale lors du paiement.` (PT: o preço é convertido para a sua moeda local no pagamento)
@@ -35,14 +35,14 @@ mostrava 5,39 CHF). Mostrar só o valor da moeda da oferta + aviso é sempre ver
 ## Implementação
 - HTML: `<div class="price-note">TEXTO</div>` logo depois do elemento de preço (no hero, depois da `.price-pill`).
 - CSS (já no Modelo Padrão): `.price-note{font-family:var(--font-body);font-weight:400;font-size:11px;line-height:1.35;color:#7a6c6f;text-align:center;margin:3px 0 0}.pcard .price-note{text-align:left}`.
-- Referência viva: `low-pagina/modelos/modelo-padrao/index.html` e `OFERTAS/calendrier-magique-fr/site/index.html`.
+- Referência viva: `low-pagina/modelos/modelo-padrao/index.html` e `OFERTAS/<slug-da-oferta>/site/index.html`.
 - Gate: abrir a página (celular 430px e desktop) e conferir que **todo** preço visível tem o aviso embaixo, no idioma certo,
   sem script de conversão no `<head>`/`<body>` e sem `data-eur`.
 
 ## Fora de uso (não copiar pra oferta nova)
 - O conversor antigo (`/painel/api/fx`, `getFxRates`, `fx-geo.json`, `data-eur`/`data-usd`) segue só em páginas antigas
   (ex.: Mapa del Tarot ES) até a dona mandar trocar.
-- A API `hotmart-fx-api` (repo `leadgodev/hotmart-fx-api`, `https://hotmart-fx.leadgo.dev`, código local `_servicos/fx-hotmart/`)
+- A API `hotmart-fx-api` (repo `<org-github>/hotmart-fx-api`, `https://<subdominio>.<seu-dominio>`, código local `_servicos/fx-hotmart/`)
   mede o preço que o checkout da Hotmart cobra por país. Está no ar mas **parada, sem uso** (decisão da dona 09/11/2026:
   "deixa em segundo plano"). Só religar com ordem da dona.
 

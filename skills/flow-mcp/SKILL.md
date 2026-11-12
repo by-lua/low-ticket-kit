@@ -26,7 +26,7 @@ update do kit. Sem o kit, os mesmos passos à mão:
   `claude mcp add --scope user google-flow -- node ~/.local/share/google-flow-mcp/dist/cli.js`.
   **Não troque pelo pacote do npm**: o original não lê o Flow em português e anexava a referência errada
   (corrigido nos commits `f83f7a0` e `db34b65`; PR `ParkSangGwon/google-flow-mcp#10`, aceito = volta ao npm).
-- Chrome próprio: porta 9333, perfil `~/.google-flow-chrome`. Linux/macOS: aberto por `~/.claude/bin/flow-mcp-chrome`;
+- Chrome próprio: porta <PORTA>, perfil `~/.google-flow-chrome`. Linux/macOS: aberto por `~/.claude/bin/flow-mcp-chrome`;
   Windows: `chrome.exe` direto. Config: `~/.config/google-flow-mcp/config.json`. Logs: `~/.google-flow-mcp/logs/`;
   prints: `~/.google-flow-mcp/screenshots/`.
 - **Login (uma vez, e quando cair):** `cd /tmp && node ~/.local/share/google-flow-mcp/dist/cli.js doctor`; a dona
@@ -89,14 +89,14 @@ Projeto: reuse um projeto por leva. Criar projeto novo: `~/.claude/skills/flow-v
 ## ATUALIZAÇÃO 09/11/2026 — UI nova do Flow: o MCP `flow_generate_video` QUEBRA; use o caminho manual por CDP (testado, gerou 2 clipes)
 
 **Sintoma:** `flow_generate_video` → `INTERNAL ... waiting for locator('button').filter({ hasText: /tune/ })`. O Flow trocou o painel de
-configurações: não há mais botão "tune"; é o botão **"Gatilho de configurações"** (texto `Vídeo · 720p · 8s ⟂ x1`). O `flow.sh`/gflow
+configurações: não há mais botão "tune"; é o botão **"Gatilho de configurações"** (texto `Vídeo · 720p · 8s ⟂ <projeto-isolado>`). O `flow.sh`/gflow
 também falha na UI nova (`maseQ answered 200 without a media id` no upload; `no signed media URL` depois de gerar). Não insista nos dois:
-vá direto ao caminho manual abaixo (mesmo Chrome do MCP, porta 9333, mesma conta).
+vá direto ao caminho manual abaixo (mesmo Chrome do MCP, porta <PORTA>, mesma conta).
 
 **Modos do composer (dona, 09/11 — erro meu foi trocar):**
 - **Elementos = o NOSSO caso** (imagem da cena anexada como elemento/referência). **Frames = só Início/Fim** (primeiro/último quadro): não usar.
 - Abrir `Gatilho de configurações`: Vídeo · **Elementos** · 9:16 · Omni 1.2 Flash · 720p · Duração (slider; `input[aria-label=Duração]` = segundos−3,
-  seta ←/→ muda 1 s: 6 s=18 créditos, **8 s=24**, 10 s=30, 11 s=36) · x1.
+  seta ←/→ muda 1 s: 6 s=18 créditos, **8 s=24**, 10 s=30, 11 s=36) · <projeto-isolado>.
 
 **Receita (scripts em `~/.claude/skills/flow-mcp/scripts/*.cjs`, usam `playwright-core` de `~/.local/share/google-flow-mcp/node_modules` via
 `connectOverCDP('http://127.0.0.1:9333')`; caminho de arquivo sempre por argv, espaço ok):**
@@ -154,11 +154,11 @@ re-leitura do prompt (1,5–3 s) antes de enviar e clique humano no botão `Inic
 
 **Modelo (dona, 09/11):** hoje é **Omni Flash 1.1.2**. O seletor "Selecionar família de modelos" já mostrou "Omni 1.2 Flash" e "Omni 1.1 Flash" em momentos
 diferentes — confira o nome no seletor antes de enviar e não troque por Veo sem a dona pedir (trocar de modelo reseta ratio/duração/anexo). Créditos medidos
-(720p, x1): 6 s = 18 · 8 s = 24 · 10 s = 30 · 11 s = 36. Banner "Seus créditos estão acabando": conferir saldo antes de lote.
+(720p, <projeto-isolado>): 6 s = 18 · 8 s = 24 · 10 s = 30 · 11 s = 36. Banner "Seus créditos estão acabando": conferir saldo antes de lote.
 
 | Se você vê… | Faça… |
 |---|---|
-| Composer com botão **`Gatilho de configurações`** (`Vídeo · 720p · 8s ▯ x1`) e botão `Iniciar geração` (UI direta, nov/2026) | MCP **corrigido** (`src/flow/composer.ts`, depois de `/mcp` reconnect): `flow_generate_video` com `reference_images`, `auto_confirm:false` → olhar print → `true`. Sem o MCP novo: scripts `scripts/*.cjs` (CDP 9333) |
+| Composer com botão **`Gatilho de configurações`** (`Vídeo · 720p · 8s ▯ <projeto-isolado>`) e botão `Iniciar geração` (UI direta, nov/2026) | MCP **corrigido** (`src/flow/composer.ts`, depois de `/mcp` reconnect): `flow_generate_video` com `reference_images`, `auto_confirm:false` → olhar print → `true`. Sem o MCP novo: scripts `scripts/*.cjs` (CDP 9333) |
 | Painel de chat **"Agente"** à direita + botão `tune` + card Approve (UI antiga) | caminho antigo do MCP (as seções acima) |
 | Erro `locator… hasText: /tune/` | UI nova com MCP velho: reconectar o MCP corrigido; nunca insistir no `flow.sh`/gflow (também quebrados: `maseQ answered 200 without a media id`, `no signed media URL`) |
 | Popover com **Frames** (aparecem caixas `Início` e `Fim`) | é para primeiro/último quadro. **Para animar a imagem de uma cena use `Elementos`** (dona, 09/11: "o nosso caso é Elementos") |
@@ -174,5 +174,5 @@ diferentes — confira o nome no seletor antes de enviar e não troque por Veo s
 | Quero ver o que o Flow mostra | `flow_screenshot` / `flow_inspect` (leitura, sem custo) |
 
 **Imagem GPT que alimenta o Flow (aprendido hoje):** `gerar-1-imagem.sh` com a imagem FR do take + página/capa AR + (se tem pessoa) a personagem aprovada; prompt = "recriar a MESMA foto trocando só o impresso",
-A4 em escala real, espanhol com acento. Cloudflare "Confirme que é humano" no perfil gpt-luciola que o clique no checkbox não resolve → a dona passa o desafio / gera ela mesma.
+A4 em escala real, espanhol com acento. Cloudflare "Confirme que é humano" no perfil gpt-<SÓCIO> que o clique no checkbox não resolve → a dona passa o desafio / gera ela mesma.
 **Mostrar cada imagem à dona antes da próxima e antes do clipe** (regra `criativo`).

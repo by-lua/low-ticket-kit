@@ -11,9 +11,9 @@ Receita correta:
 // Email
 const emailInput = document.querySelector('input[type="email"]');
 emailInput.click();
-emailInput.type('voce@exemplo.com'); // agent-browser type
+emailInput.type('comercial@<seu-dominio>'); // agent-browser type
 // ou manualmente:
-for (const char of 'voce@exemplo.com') {
+for (const char of 'comercial@<seu-dominio>') {
   emailInput.dispatchEvent(new KeyboardEvent('keydown', { key: char, bubbles: true }));
   emailInput.value += char;
   emailInput.dispatchEvent(new KeyboardEvent('keyup', { key: char, bubbles: true }));
@@ -31,7 +31,7 @@ passInput.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', code: 'Ente
 **Simpler:** use `agent-browser type <text>` direto (simula teclado nativo):
 ```bash
 agent-browser --session mundpay click input[type=email]
-agent-browser --session mundpay type "voce@exemplo.com"
+agent-browser --session mundpay type "comercial@<seu-dominio>"
 agent-browser --session mundpay key Tab
 agent-browser --session mundpay type "$MUNDPAY_PASSWORD"
 agent-browser --session mundpay key Return

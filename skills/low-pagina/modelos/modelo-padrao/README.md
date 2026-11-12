@@ -1,4 +1,4 @@
-# Modelo Padrão LeadGo — v1 (04/11/2026)
+# Modelo Padrão — v1 (04/11/2026)
 
 > **REGRA FIXA DA DONA (10/11/2026) — CONFIGURAÇÃO DA PÁGINA: IC SÓ NO CLIQUE QUE VAI PRO CHECKOUT (pixel Meta E Trackeador).** **O Modelo Padrão já vem configurado certo** (`modelos/modelo-padrao/index.html`, conferido 10/11/2026: botão do Básico `data-upsell` sem `data-tk-*`; Completo, botões do popup e saída com `data-plan` + `data-tk-value`/`data-tk-currency`; sem `fbq` de IC). Página feita a partir dele: **não reconfigurar, só CONFERIR** que isso se manteve (troca de valores, link de checkout por `data-plan`). Página fora do modelo: configurar igual.
 > - Botão do Básico que só **abre o popup** de upgrade pro Completo mais barato: **sem** `data-tk-*`, **sem** `data-plan`, **sem** href de checkout (`data-upsell="1" href="#upgradepopup" role="button"`) e sem `fbq` próprio → 0 IC.
@@ -7,7 +7,7 @@
 > - Conferir antes de entregar: `scripts/qa-layout.js` + `low-gates-no-ar` › regra fixa do topo (contagem por botão no pixel Meta e no Trackeador).
 
 **É a página padrão da casa, só nossa:** toda página nova parte daqui (a dona pede "Modelo Padrão"). Primeira oferta feita nele:
-Calendrier Magique FR (04/11/2026). Não depende de template de terceiros.
+<Oferta Exemplo> FR (04/11/2026). Não depende de template de terceiros.
 
 ## Como usar
 1. Copiar `index.html` + `img/` pra `OFERTAS/<slug>/site/`.
@@ -26,7 +26,7 @@ A. **Fontes hospedadas, nunca Google Fonts.** O `<link>` do Google bloqueia a re
    Fontes ficam em `img/fonts/` (o servidor já serve `img/` com cache de 1 ano; fora de `img/` o Dockerfile/allowlist barra).
 B0. **Gate:** antes de subir, `../../scripts/qa-performance.js <url> --meta-id=<id>` tem que dar APROVADO (SKILL.md 9c).
 B. **Imagens:** só hero com `fetchpriority=high` + `preload`; resto `loading="lazy"` com width/height. Antes do deploy
-   rodar `../../scripts/otimizar-imagens.py <site/img>` (webp q75, só grava se ganhar ≥10%; Calendrier: 4,5→3,2 MB).
+   rodar `../../scripts/otimizar-imagens.py <site/img>` (webp q75, só grava se ganhar ≥10%; <Oferta Exemplo>: 4,5→3,2 MB).
 C. Cache: `img/` imutável de 1 ano → imagem trocada = **nome novo** (senão o Cloudflare serve a velha).
 D. **Paleta = a da oferta modelada** (não o vermelho da casa; vermelho só na barra de urgência). A pergunta
    "manter ou mudar" com sugestões vem antes de montar (`SKILL.md` § 2a); as sugestões de paleta têm que combinar
@@ -66,12 +66,12 @@ Antes × depois: só quando material técnico vira visual.
 17. **Proporção do hero:** mockup GRANDE (max-height 44vh no celular, 46vh no PC, 35/33vh em tela baixa), texto pequeno (h1 ~22-36px, sub 13,5px, bullets 13px) — o mockup é o protagonista.
 18a. **Imagem recortada = fundo TRANSPARENTE de verdade (regra da dona 07/11/2026):** selo de garantia, capas/mockups
    dos bônus e qualquer imagem "solta" sobre o fundo da página vão em WebP/PNG com canal alfa. Imagem gerada no GPT
-   vem com fundo creme/branco embutido e vira **caixa branca atrás do selo/bônus** (erro real no Calendrier Magique FR).
+   vem com fundo creme/branco embutido e vira **caixa branca atrás do selo/bônus** (erro real no <Oferta Exemplo> FR).
    Antes de publicar: `magick identify -format "%A" arquivo` tem que dar `Blend`/`True`; se der `Undefined`, recortar
    (`magick in.webp -alpha set -fuzz 9% -fill none -draw "color 0,0 floodfill"` nos 4 cantos, erode 1px) e conferir
    num fundo escuro. `drop-shadow` em imagem sem alfa desenha a sombra da caixa inteira.
 18. **Barra de urgência fina:** 30px, 1 linha em qualquer tela (no celular o texto encurta, ex.: some o "+ 7 bonus").
-19. **REGRA UNIVERSAL DA SEÇÃO « VEJA NO DIA A DIA / DANS LA VRAIE VIE »: o material precisa parecer REAL em uso por pessoas comuns, em situações normais da rotina. Impressos são folhas A4 de tamanho plausível, com espessura, proporção, perspectiva e manuseio naturais; celulares/tablets são aparelhos normais, com tela, escala e pegada reais. Usar as páginas verdadeiras da oferta; nunca pôster gigante no lugar de A4, tela inventada, mãos/anatomia impossíveis, pessoa com aparência artificial ou mockup com aspecto de montagem.** Cada card tem uma cena própria e diferente — pessoa, página, ambiente, ação e enquadramento. **No Modelo Padrão, usar 9 cenas distintas; nunca preencher os 9 cards repetindo 4 imagens ou duplicar a lista para simular variedade.** Conferir todos os cards, não apenas os primeiros visíveis, comparando o tamanho da folha/aparelho com mãos, rosto e objetos reais. Adaptar a direção das artes ao produto e à identidade de cada oferta. Cópias de imagem para loop não contam como cenas novas. Fotos em **4:5 (900×1125)**, com `height:auto` no `img`. **Referências do Calendrier Magique FR: `img/usage/calendrier-magique-fr/` (+ `contact-sheet.jpg`); são referência de abordagem, não aprovação automática de realismo/escala nem fotos para reutilizar em produtos diferentes.**
+19. **REGRA UNIVERSAL DA SEÇÃO « VEJA NO DIA A DIA / DANS LA VRAIE VIE »: o material precisa parecer REAL em uso por pessoas comuns, em situações normais da rotina. Impressos são folhas A4 de tamanho plausível, com espessura, proporção, perspectiva e manuseio naturais; celulares/tablets são aparelhos normais, com tela, escala e pegada reais. Usar as páginas verdadeiras da oferta; nunca pôster gigante no lugar de A4, tela inventada, mãos/anatomia impossíveis, pessoa com aparência artificial ou mockup com aspecto de montagem.** Cada card tem uma cena própria e diferente — pessoa, página, ambiente, ação e enquadramento. **No Modelo Padrão, usar 9 cenas distintas; nunca preencher os 9 cards repetindo 4 imagens ou duplicar a lista para simular variedade.** Conferir todos os cards, não apenas os primeiros visíveis, comparando o tamanho da folha/aparelho com mãos, rosto e objetos reais. Adaptar a direção das artes ao produto e à identidade de cada oferta. Cópias de imagem para loop não contam como cenas novas. Fotos em **4:5 (900×1125)**, com `height:auto` no `img`. **Referências do <Oferta Exemplo> FR: `img/usage/<slug-da-oferta>/` (+ `contact-sheet.jpg`); são referência de abordagem, não aprovação automática de realismo/escala nem fotos para reutilizar em produtos diferentes.**
 20. **Preço de página internacional = valor na moeda da oferta + aviso cinza embaixo (regra da dona 09/11/2026, SEM script de conversão):**
    todo lugar em que o preço aparece (pílula do hero, card de plano, popups, downsell) leva logo abaixo
    `<div class="price-note">* Le prix est converti dans votre devise locale lors du paiement.</div>` (~11px, peso 400, cinza,

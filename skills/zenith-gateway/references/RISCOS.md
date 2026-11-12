@@ -6,7 +6,7 @@ Apurado em 08/09/2026. Tudo aqui foi lido no painel, na doc oficial, no Reclame 
 
 ## A empresa
 
-CNPJ **53.213.723/0001-35** — C. N PAGAMENTOS ONLINE LTDA (marca Zenith).
+CNPJ **XX.XXX.XXX/XXXX-XX** — C. N PAGAMENTOS ONLINE LTDA (marca Zenith).
 
 | | |
 |---|---|
@@ -15,7 +15,7 @@ CNPJ **53.213.723/0001-35** — C. N PAGAMENTOS ONLINE LTDA (marca Zenith).
 | Porte | Empresa de pequeno porte |
 | CNAE | Correspondentes de instituições financeiras |
 | Sede | Nossa Senhora das Graças, PR (~4 mil habitantes) |
-| Sócio | Cesar Augusto de Araujo |
+| Sócio | Cesar Augusto de <SOBRENOME> |
 | Situação | Ativa |
 
 Os próprios Termos de Uso dizem: *"A Zenith não atua como instituição financeira nem como adquirente principal"* — é gateway, orquestradora e **subcredenciadora**, rodando sobre parceiros licenciados.

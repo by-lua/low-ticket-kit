@@ -13,7 +13,7 @@ O Hub tem **dois** "GPT Image", e eles não são a mesma coisa:
 | **Artlist** | `gptimage2` | `artlist-proxy` | **funciona**, plano `unlimited` |
 | Dzine | `gpt-image` | `dzine-img-proxy` | falha: `code 4712`, "unexpected error" no upstream |
 
-E nenhum dos dois é o ChatGPT do perfil `gpt` (porta 9222) — aquele é conta
+E nenhum dos dois é o ChatGPT do perfil `gpt` (porta <PORTA>) — aquele é conta
 própria, com cota do Plus. O do Hub é conta do Hub, cota separada.
 Na barra do Studio dá para distinguir pelo que aparece ao lado do modelo:
 **Artlist** mostra `Resolução medium` + `Quantidade de imagens`;

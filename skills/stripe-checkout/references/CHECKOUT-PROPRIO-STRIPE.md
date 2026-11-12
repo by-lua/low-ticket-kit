@@ -11,7 +11,7 @@ Procedimento genérico, revisado em 11/11/2026. Este é o procedimento de integr
 
 ## 2. Formulário e cobrança inicial
 
-**Ordem obrigatória da casa:** e-mail → bumps/upgrade → forma de pagamento → botão comprar. O total visível e o valor apresentado por carteiras devem acompanhar as escolhas. No modelo `MODELOS/checkout-base/index.html`, usar o Stripe Payment Element e, quando elegível, Express Checkout Element; carregar Stripe.js direto de `js.stripe.com`, em HTTPS, sem capturar cartão/CVC no HTML próprio.
+**Ordem obrigatória da casa:** e-mail → bumps/upgrade → forma de pagamento → botão comprar. O total visível e o valor apresentado por carteiras devem acompanhar as escolhas. No modelo `modelos/checkout-base/index.html`, usar o Stripe Payment Element e, quando elegível, Express Checkout Element; carregar Stripe.js direto de `js.stripe.com`, em HTTPS, sem capturar cartão/CVC no HTML próprio.
 
 Para a exigência “pedido/cobrança criado só no clique”, seguir o [PaymentIntent adiado](https://docs.stripe.com/payments/accept-a-payment-deferred?platform=web&type=payment): inicializar Elements com `mode: 'payment'`, `currency` e `amount` **calculado pelo servidor**; montar Payment Element antes de criar Intent. Quando bump/plano muda, o servidor recalcula e devolve o total; chamar `elements.update({amount: total})`. Não usar total fornecido pelo browser como preço final.
 

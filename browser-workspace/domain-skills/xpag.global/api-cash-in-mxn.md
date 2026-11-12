@@ -1,7 +1,7 @@
 # XPag — API de cash-in MXN (SPEI + OXXO)
 
 Verificado em 2026-09-04 contra `https://api.xpag.net` com as credenciais de sandbox.
-Perfil de browser: `xpag` (porta 9245). Docs em `https://xpag.global/pt/docs/`
+Perfil de browser: `xpag` (porta <PORTA>). Docs em `https://xpag.global/pt/docs/`
 (o `xpag.net/docs/` redireciona pra lá). Não existe `llms.txt`.
 
 ## Autenticação

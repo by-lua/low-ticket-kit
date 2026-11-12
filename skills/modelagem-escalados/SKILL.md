@@ -310,7 +310,7 @@ adaptar a estrutura; o briefing que sai dele é consumido pela skill
 ## Atualizar a biblioteca
 
 A fonte é `sistema.antonioferriani.com/modelos-de-criativos` (perfil de browser
-`ferriani`, porta 9233, opt-in já feito). Para pegar formatos novos:
+`ferriani`, porta <PORTA>, opt-in já feito). Para pegar formatos novos:
 
 ```bash
 ~/.claude/bin/browsers.sh ferriani
@@ -341,6 +341,6 @@ cat ~/.claude/skills/modelagem-escalados/scripts/sync.log
 ```
 
 Unidades em `~/.config/systemd/user/escalados-sync.{service,timer}`, dispara
-todo dia às 06:17. Depende do perfil de browser `ferriani` (porta 9233) estar
+todo dia às 06:17. Depende do perfil de browser `ferriani` (porta <PORTA>) estar
 com login válido — se o cookie expirar, o sync loga a falha e não quebra nada,
 só não acha cards novos até alguém relogar.

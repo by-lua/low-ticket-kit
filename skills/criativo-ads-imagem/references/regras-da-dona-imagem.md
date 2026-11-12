@@ -145,7 +145,7 @@ encaixados no 4:5; GPT não desenha página do produto.
 > - página ocupa a **largura inteira** do card, na **resolução nativa** (texto legível) e a sobra
 >   vertical é preenchida com o **próprio papel da página** (repete a faixa limpa da borda; nunca
 >   espelhar conteúdo, nunca chapar branco) — é o que `criativos/scripts/montar-cards.py` faz
->   (referência viva: `OFERTAS/luciola-mapatarot-ar/criativos/scripts/montar-cards.py`);
+>   (referência viva: `OFERTAS/<slug-da-oferta>/criativos/scripts/montar-cards.py`);
 > - ou **recorte full-bleed** que preencha o card, se a página inteira não couber — mas só quando
 >   a fonte tiver resolução pra isso (nunca ampliar crop de ~480px).
 > **Todos os cards da mesma peça com o MESMO tamanho** (1080×1350). Card de tamanho diferente

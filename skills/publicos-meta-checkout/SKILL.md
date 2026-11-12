@@ -72,7 +72,7 @@ return JSON.stringify({tx:await all('/api/internal/panel/transactions?period=tot
 - A conta Wiven é compartilhada entre ofertas: **filtrar pelos nomes de produto da oferta** (principal + bumps + combo).
   Tarot BR: `Mapa do Tarot`, `Leve os 3 com desconto`, `A Folha de Consulta do Tarot`,
   `80 Perguntas Poderosas para suas Tiragens de Tarot`, `Guia Flash: Arcanos Maiores`.
-- Tirar e-mail de teste (`@leadgo.dev`, contendo `teste`).
+- Tirar e-mail de teste (`@<seu-dominio>`, contendo `teste`).
 - Gravar `compradores-bruto.csv` e `engajados-abandono-bruto.csv` (colunas email,nome,telefone) e rodar o normalizador acima.
 - Compradores leva coluna **`value`** (pedido da dona, pro público por valor do Meta): soma de `amount` das transações
   COMPLETED da oferta por e-mail, em R$, 2 casas. O normalizador não gera essa coluna: acrescentar depois de rodar.
@@ -85,7 +85,7 @@ pelas mesmas duas telas e solta os brutos na pasta.
 "abandonos"/"checkouts não finalizados" e "exportar"; registrar aqui o que for visto.
 
 ## Meta (só se pedirem para subir)
-- Perfil: `meta` (porta 9225, developers.facebook.com/apps) ou o Gerenciador logado. Conferir que a conta é a da oferta.
+- Perfil: `meta` (porta <PORTA>, developers.facebook.com/apps) ou o Gerenciador logado. Conferir que a conta é a da oferta.
 - Conta de anúncios: sair do STATUS/trafego da oferta. Se houver dúvida, perguntar à dona antes.
 - Públicos → Criar público → Público personalizado → Lista de clientes.
 - Nomes: `<Oferta> <MERCADO> - Compradores` e `<Oferta> <MERCADO> - Engajados (abandono)` (ex.: `Mapa do Tarot BR - Compradores`).

@@ -78,8 +78,8 @@ function SheetContent({
         {showCloseButton && (
           <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
+              <line <projeto-isolado>="18" y1="6" x2="6" y2="18" />
+              <line <projeto-isolado>="6" y1="6" x2="18" y2="18" />
             </svg>
             <span className="sr-only">Close</span>
           </SheetPrimitive.Close>

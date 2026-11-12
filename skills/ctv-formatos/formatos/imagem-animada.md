@@ -3,8 +3,8 @@
 **O que é:** imagem de feed 1080×1350 que vira um `.mp4` de 7,2 s, sem som, com movimento leve por código:
 zoom lento (1→1,05) · **selo de preço verde pulsando** ("Desde $7.900") · **seta vermelha pulando** apontando o botão ·
 **botão CTA vermelho pulsando com mãozinha** (ou anel pulsando em volta do botão que já está na arte).
-Referência de origem: CTV 6/7/8 do Calendrier Magique FR (`calendrier-magique-fr/criativos/CTV-06…08`).
-Primeira aplicação AR: CT19 (CT11 animado), CT20 (UGC com o Mapa), CT21 (mãos com páginas), em `luciola-mapatarot-ar/criativos/ES/`.
+Referência de origem: CTV 6/7/8 do <Oferta Exemplo> FR (`<slug-da-oferta>/criativos/CTV-06…08`).
+Primeira aplicação AR: CT19 (CT11 animado), CT20 (UGC com o Mapa), CT21 (mãos com páginas), em `<slug-da-oferta>/criativos/ES/`.
 
 ## Dois modos
 1. **Animar uma imagem JÁ VALIDADA** (regra da dona 07/11/2026): imagem estática aprovada/que vendeu → gerar a versão animada **como peça nova**

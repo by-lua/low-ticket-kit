@@ -14,9 +14,9 @@
  *   2) node locate.mjs region <img> --vids 4,5 --hids 6,7 --out DIR
  *        → prints coarse region + writes DIR/gc.png (region cropped+upscaled,
  *        finer 6×6 grid). READ it, pick the finer strips.
- *   3) node locate.mjs final <img> --region x0,y0,x1,y1 --vids 3,4 --hids 3,4
+ *   3) node locate.mjs final <img> --region x0,y0,<projeto-isolado>,y1 --vids 3,4 --hids 3,4
  *        → {box, center} normalized to the FULL image.
- *   4) node locate.mjs mark <img> --box x0,y0,x1,y1 --out DIR/check.png
+ *   4) node locate.mjs mark <img> --box x0,y0,<projeto-isolado>,y1 --out DIR/check.png
  *        → VERIFY: read check.png — is the red box on the target? If off,
  *        redo step 2/3 with corrected strips. Never skip this.
  */
@@ -159,11 +159,11 @@ if (cmd === "overlay") {
   const nf = Number(opt.nf || N2);
   const reg = opt.region.split(",").map(Number);
   const rl = regionOf(ids(opt.vids), ids(opt.hids), nf, PAD2);
-  const [x0, y0, x1, y1] = reg;
+  const [x0, y0, <projeto-isolado>, y1] = reg;
   const box = [
-    x0 + rl[0] * (x1 - x0),
+    x0 + rl[0] * (<projeto-isolado> - x0),
     y0 + rl[1] * (y1 - y0),
-    x0 + rl[2] * (x1 - x0),
+    x0 + rl[2] * (<projeto-isolado> - x0),
     y0 + rl[3] * (y1 - y0),
   ].map(r4);
   out({

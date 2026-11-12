@@ -44,8 +44,8 @@ Raio-X decide **o quê** modelar (produto); SpyX decide **como vender** melhor. 
 resto preservado".
 
 ## Como chamar
-Token: `MINERAADS_EXT_KEY` (`set -a; source ~/.claude/.credentials.env; set +a`). Base: `$MINERAADS_URL`
-(padrão `https://mineraads.leadgo.dev`). Contrato: `RATO-ADS/API-CONTRATO.md` § CLI.
+Token: `MINERAADS_EXT_KEY` (`set -a; source <COFRE-DE-CREDENCIAIS>; set +a`). Base: `$MINERAADS_URL`
+(padrão `https://<subdominio>.<seu-dominio>`). Contrato: `RATO-ADS/API-CONTRATO.md` § CLI.
 - Comando (quando instalado, spec v3): `mineraads modelador analisar|caminhos|mercado|modelar|salvar`.
 - Sem o comando: rotas com `Authorization: Bearer $MINERAADS_EXT_KEY`:
   1. **Fluxo padrão (Raio-X+SpyX), 3 chamadas em sequência — nenhuma pula a próxima:**
@@ -59,7 +59,7 @@ Token: `MINERAADS_EXT_KEY` (`set -a; source ~/.claude/.credentials.env; set +a`)
         de fechar ficha + funil + plano da página gera copy com preço/planos/bônus errados. Ordem: (a) Raio-X → dona
         escolhe → (b) Combinado (diagnóstico + alavancas, mostrar) → E2b → E2c aprovada → **(c)** com `direcao`
         completa (planos, bônus, bumps, garantia, plano da página, regras do nicho tirados de `OFERTA.md`/`FUNIL.md`).
-        Rodou antes (Calendrier, 04/11)? Rodar de novo depois da E2c.
+        Rodou antes (<Oferta Exemplo>, 04/11)? Rodar de novo depois da E2c.
         `POST /api/cli/modelador/modelar` `{"page_id":…,"direcao":{"ideia":{"titulo":…,
         "entrega":…,"publico":…},"publico_principal":…,"regras_nicho":…}}` montando `direcao.ideia` a partir da
         proposta do Raio-X escolhida em (a) — só essa chamada roda a etapa 2B de verdade (`pagina[]`, 5
@@ -97,7 +97,7 @@ Token: `MINERAADS_EXT_KEY` (`set -a; source ~/.claude/.credentials.env; set +a`)
    extenso a análise de alavancas: notas das 4 alavancas dele (`alavancas_oferta_dele`) · a mais fraca e a não
    tocada · fraquezas → como corrigimos (`fraquezas`) · dele × nossa (`alavancas_comparacao`) · o comprador cético
    reagindo à NOSSA oferta (`lead_oferta_nova`: o que ainda trava, "compraria?"). Modelar pra outro país não pula
-   isso (erro de 04/11/2026, Calendrier: rodou e não foi mostrado). Esse material alimenta a `low-ficha-oferta` 2b.
+   isso (erro de 04/11/2026, <Oferta Exemplo>: rodou e não foi mostrado). Esse material alimenta a `low-ficha-oferta` 2b.
 4. Outro idioma → etapa 1b (mercados com nota) → ela escolhe o mercado.
 5. Etapa 2 com a direção (caminho, público principal, regras do nicho que ela disser) → salvar de novo
    (`modelador-<data>-etapa2.json/.md`).

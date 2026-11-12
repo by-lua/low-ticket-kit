@@ -1,6 +1,6 @@
 # Configurações do Negócio → Pixels: URL deprecada + duas BMs "EmpresaB"
 
-Executado e verificado em 2026-09-04, perfil `meta` (porta 9225), BM `empresab.digital`
+Executado e verificado em 2026-09-04, perfil `meta` (porta <PORTA>), BM `empresab.digital`
 (`business_id=2099393640970892`).
 
 ## `/settings/pixels` NÃO é mais a tela de pixels

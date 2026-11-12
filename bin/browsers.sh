@@ -100,7 +100,7 @@ status() {
   done < "$REGISTRY"
 
   echo
-  echo "Credenciais: ~/.claude/.credentials.env  (set -a; source ~/.claude/.credentials.env; set +a)"
+  echo "Credenciais: <COFRE-DE-CREDENCIAIS>  (set -a; source <COFRE-DE-CREDENCIAIS>; set +a)"
   echo "Cloudflare:  o checkbox pode ser clicado, valida normalmente nesses perfis."
 
   local stray

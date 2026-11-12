@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout Premium — Base (cópia do <Oferta Exemplo>)</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>body{background:var(--color-night);color:var(--color-bone);font-family:Inter,system-ui,sans-serif}</style>
+</head>
+<body>
+<!-- BASE = checkout <Oferta Exemplo> (CSS e classes originais). Só mudou: timer 10 min HH:MM:SS (reinicia a cada entrada),
+     texto do timer, garantia 15 dias (internacional; BR = 7), "acceso inmediato por e-mail", banner menor/leve. -->
+<main class="checkout-page min-h-dvh">
+
+  <!-- 1. Barra de urgencia full-bleed -->
+  <div class="sticky top-0 z-10 flex w-full items-center justify-center gap-3 px-4 py-3 text-center text-white"
+       style="background:linear-gradient(180deg,#E8544C 0%,#D6382F 100%);box-shadow:0 10px 25px -12px rgba(214,56,47,.65),inset 0 -1px 0 rgba(0,0,0,.15)">
+    <span id="timer" class="font-mono text-lg font-bold tabular-nums drop-shadow-sm">00:10:00</span>
+    <span class="flex items-center gap-1.5 text-sm font-medium">
+      <svg viewBox="0 0 20 20" class="h-4 w-4 shrink-0" fill="none" aria-hidden="true">
+        <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.4"></circle>
+        <path d="M10 6v4.2l2.8 1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      Descuento disponible por tiempo limitado
+    </span>
+  </div>
+
+  <div class="mx-auto w-full max-w-3xl px-4 py-6 sm:py-10">
+    <!-- 2. Banner colado no card (arte do GPT: título + garantia + acesso imediato por e-mail + vitalício + setas) -->
+    <div class="relative aspect-[1672/941] w-full overflow-hidden rounded-t-2xl border border-b-0 border-gold/25 bg-neutral-900">
+      <img src="assets/img/banner.jpg" alt="" class="absolute inset-0 h-full w-full object-cover">
+    </div>
+
+    <section class="rounded-b-2xl border border-t-0 border-gold/25 bg-white p-5 shadow-[0_20px_45px_-30px_rgba(42,22,8,0.35)] sm:p-8 md:p-10">
+      <!-- 3. Header do card -->
+      <div class="mb-6 flex items-center justify-between gap-4 border-b border-black/10 pb-5">
+        <div>
+          <p class="text-lg font-bold sm:text-xl" style="color:var(--color-gold-deep)">Nombre del Producto</p>
+          <p class="text-sm text-neutral-500">Pago único · Acceso de por vida</p>
+          <div class="mt-2 flex flex-wrap gap-2"><span class="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-neutral-100 px-2.5 py-1 text-[11px] font-semibold text-neutral-600">
+            <svg viewBox="0 0 20 20" class="h-3.5 w-3.5" fill="currentColor" aria-hidden="true"><path d="M2.5 5.5A1.500 1.500 0 0 1 4 4h12a1.500 1.500 0 0 1 1.500 1.500v.3l-7.500 4.700L2.500 5.800v-.3Zm0 2.600V14.500A1.500 1.500 0 0 0 4 16h12a1.500 1.500 0 0 0 1.500-1.500V8.100l-7.100 4.400a.8.8 0 0 1-.8 0L2.500 8.100Z"></path></svg>
+            Acceso inmediato por e-mail
+          </span><span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700">
+            <svg viewBox="0 0 20 20" class="h-3.5 w-3.5" fill="currentColor" aria-hidden="true"><path d="M10 1.5 3.5 4v5c0 4 2.8 7.7 6.5 9.5 3.7-1.8 6.5-5.5 6.5-9.5V4L10 1.5Zm3.2 6.2-4 4a1 1 0 0 1-1.4 0L6 9.9a1 1 0 1 1 1.4-1.4l1.1 1.1 3.3-3.3a1 1 0 1 1 1.4 1.4Z"></path></svg>
+            Garantía de 15 días
+          </span></div>
+        </div>
+        <div class="text-right whitespace-nowrap">
+          <p class="text-sm text-neutral-400 line-through"><span data-cmp>$ 9.900</span></p>
+          <p class="text-xl font-bold text-neutral-900 sm:text-2xl"><span data-total>$ 4.900</span></p>
+        </div>
+      </div>
+
+      <div class="grid gap-6 md:items-start md:gap-8 md:grid-cols-[minmax(0,1fr)_20rem]">
+        <div class="grid gap-6">
+          <!-- 4. Formulario mínimo: só e-mail -->
+          <form id="f1" class="grid gap-1.5" novalidate>
+            <label for="correo" class="text-sm font-medium text-neutral-900">¿A qué correo te enviamos tu acceso inmediato?</label>
+            <input id="correo" type="email" inputmode="email" autocomplete="email"
+                   class="min-h-[48px] rounded-lg border border-black/15 bg-white px-4 text-base text-neutral-900 outline-none focus:border-gold"
+                   placeholder="tucorreo@ejemplo.com">
+            <p id="err" role="alert" class="hidden text-sm text-red-600">Escribe un correo válido para poder enviarte tu acceso.</p>
+          </form>
+
+          <div id="step2" class="grid gap-6">
+          <!-- 5. Order bumps (checkbox DESMARCADO) -->
+          <div class="grid gap-2">
+            <p class="text-sm font-medium text-neutral-900">Aprovecha y suma:</p>
+            <label class="flex cursor-pointer items-start gap-3 rounded-xl border p-3.5 transition border-emerald-200 bg-emerald-50/50 hover:border-emerald-300">
+              <input type="checkbox" id="bumpchk" data-price="1900" data-cmp="4900" class="mt-0.5 h-4 w-4 shrink-0 accent-gold">
+              <img src="assets/img/bump-combo.webp" alt="" width="56" height="56" class="h-14 w-14 shrink-0 rounded-lg object-cover">
+              <span class="flex-1">
+                <span class="block text-sm font-semibold text-neutral-900">Título del bump</span>
+                <span class="mt-0.5 block text-xs text-neutral-500">Descripción corta de lo que entrega.</span>
+                <span class="mt-1 flex items-center gap-2 text-xs">
+                  <span class="text-neutral-400 line-through">$ 4.900</span>
+                  <span class="font-semibold text-emerald-700">$ 1.900</span>
+                </span>
+              </span>
+            </label>
+          </div>
+
+          <!-- 6. Forma de pago -->
+          <div class="grid gap-1.5">
+            <p class="text-sm font-medium text-neutral-900">Forma de pago</p>
+            <div class="grid grid-cols-2 gap-3">
+              <button type="button" data-pay class="pay flex min-h-[76px] flex-col items-center justify-center gap-1 rounded-xl border border-black/15 p-3 text-center text-neutral-500 transition hover:border-gold">
+                <span class="text-sm font-semibold text-neutral-900">Método 1</span>
+                <span class="text-[11px] font-normal text-neutral-500">Aprobación inmediata</span>
+              </button>
+              <button type="button" data-pay class="pay flex min-h-[76px] flex-col items-center justify-center gap-1 rounded-xl border border-black/15 p-3 text-center text-neutral-500 transition hover:border-gold">
+                <span class="text-sm font-semibold">Método 2</span>
+                <span class="text-[11px] font-normal">Tarjeta</span>
+              </button>
+            </div>
+            <!-- Botão de compra: só aparece depois que a pessoa escolhe a forma de pagamento -->
+            <div id="buy" class="grid overflow-hidden transition-all duration-500" style="grid-template-rows:0fr;opacity:0">
+              <div class="min-h-0">
+                <button id="buybtn" type="button" class="btn-gold mt-4 min-h-[56px] w-full rounded-lg text-base">Comprar ahora · <span data-total>$ 4.900</span></button>
+                <p class="mt-2 text-center text-xs text-neutral-500">Acceso inmediato por e-mail · Garantía de 15 días</p>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <!-- Resumen -->
+        <div class="grid gap-4 md:sticky md:top-20 md:self-start">
+          <div class="grid gap-2 rounded-xl border border-black/10 bg-neutral-50 p-4">
+            <h2 class="text-sm font-semibold text-neutral-900">Tu pedido</h2>
+            <div class="flex justify-between gap-4 text-sm"><span class="text-neutral-500">Nombre del Producto</span><span class="text-neutral-900">$ 4.900</span></div>
+            <div id="bumpline" class="hidden justify-between gap-4 text-sm"><span class="text-neutral-500">Título del bump</span><span class="text-neutral-900">$ 1.900</span></div>
+            <div class="mt-1 flex items-end justify-between gap-4 border-t border-black/10 pt-2">
+              <span class="text-sm text-neutral-500">Total</span>
+              <span class="text-lg font-bold text-neutral-900"><span data-total>$ 4.900</span></span>
+            </div>
+          </div>
+          <div class="grid gap-3 rounded-xl border border-black/10 bg-neutral-50 p-4">
+            <div class="flex items-center gap-3"><svg viewBox="0 0 24 24" class="h-6 w-6 shrink-0 text-neutral-900" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6l1.6 3.3 3.6.5-2.6 2.5.6 3.6L12 14.200 8.800 15.900l.6-3.600L6.800 9.800l3.600-.5z"/><path d="M5 17c-2-3-2-7 0-10M19 17c2-3 2-7 0-10"/></svg><div class="min-w-0"><p class="text-sm font-semibold text-neutral-900">Privacidad</p><p class="text-xs text-neutral-500">Tu información 100% segura</p></div></div>
+            <div class="flex items-center gap-3"><svg viewBox="0 0 24 24" class="h-6 w-6 shrink-0 text-neutral-900" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 2.500v5.500c0 4.500-3 8-7 10-4-2-7-5.500-7-10V5.500z"/><path d="M8.500 12l2.500 2.500 4.500-5"/></svg><div class="min-w-0"><p class="text-sm font-semibold text-neutral-900">Compra segura</p><p class="text-xs text-neutral-500">Ambiente seguro y autenticado</p></div></div>
+            <div class="flex items-center gap-3"><svg viewBox="0 0 24 24" class="h-6 w-6 shrink-0 text-neutral-900" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12l6 6L21 6"/></svg><div class="min-w-0"><p class="text-sm font-semibold text-neutral-900">Contenido aprobado</p><p class="text-xs text-neutral-500">100% revisado y aprobado</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Prova social + selos -->
+      <div class="mt-8 border-t border-black/10 pt-6">
+        <p class="mb-3 text-sm font-semibold text-neutral-900"><span id="n">780</span> clientes ya compraron</p>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="flex items-start gap-2.5">
+            <img src="assets/img/ar-1.jpg" alt="" class="h-9 w-9 shrink-0 rounded-full object-cover">
+            <div class="min-w-0"><p class="flex items-center gap-1.5 text-sm font-medium text-neutral-900">Silvia M.<span class="text-amber-500" aria-hidden="true">★★★★★</span></p>
+            <p class="mt-0.5 text-xs leading-relaxed text-neutral-500">Testimonio real, corto y específico.</p></div>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <img src="assets/img/ar-3.jpg" alt="" class="h-9 w-9 shrink-0 rounded-full object-cover">
+            <div class="min-w-0"><p class="flex items-center gap-1.5 text-sm font-medium text-neutral-900">Héctor D.<span class="text-amber-500" aria-hidden="true">★★★★<span class="text-neutral-300">★</span></span></p>
+            <p class="mt-0.5 text-xs leading-relaxed text-neutral-500">Segundo testimonio con foto y nombre reales.</p></div>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <img src="assets/img/ar-4.jpg" alt="" class="h-9 w-9 shrink-0 rounded-full object-cover">
+            <div class="min-w-0"><p class="flex items-center gap-1.5 text-sm font-medium text-neutral-900">Adriana P.<span class="text-amber-500" aria-hidden="true">★★★★★</span></p>
+            <p class="mt-0.5 text-xs leading-relaxed text-neutral-500">Tercer testimonio.</p></div>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <img src="assets/img/ar-6.jpg" alt="" class="h-9 w-9 shrink-0 rounded-full object-cover">
+            <div class="min-w-0"><p class="flex items-center gap-1.5 text-sm font-medium text-neutral-900">Graciela F.<span class="text-amber-500" aria-hidden="true">★★★★<span class="text-neutral-300">★</span></span></p>
+            <p class="mt-0.5 text-xs leading-relaxed text-neutral-500">Cuarto testimonio.</p></div>
+          </div>
+        </div>
+        <p class="mt-6 text-center text-xs text-neutral-400">Tus datos están protegidos con criptografía y conformidad PCI DSS durante todo el proceso.</p>
+        <p class="mt-2 flex items-center justify-center gap-1.5 text-[11px] font-medium text-neutral-500">
+          <svg viewBox="0 0 20 20" class="h-3.5 w-3.5" fill="currentColor" aria-hidden="true"><path d="M10 1.5 3.5 4v5c0 4 2.8 7.7 6.5 9.5 3.7-1.8 6.5-5.5 6.5-9.5V4L10 1.5Zm3.2 6.2-4 4a1 1 0 0 1-1.4 0L6 9.9a1 1 0 1 1 1.4-1.4l1.1 1.1 3.3-3.3a1 1 0 1 1 1.4 1.4Z"></path></svg>
+          Protegido por PCI DSS
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Notificación de compra -->
+  <div id="toast" role="status" aria-live="polite" class="fixed right-4 top-20 z-20 flex max-w-[280px] items-center gap-3 rounded-xl border border-black/10 bg-white p-3 shadow-[0_15px_35px_-10px_rgba(0,0,0,0.25)] transition-all duration-500 pointer-events-none -translate-y-3 opacity-0">
+    <span id="ti" class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white" style="background:linear-gradient(135deg,#E8A31E,#B26A00)" aria-hidden="true">M</span>
+    <div class="min-w-0"><p id="tn" class="truncate text-sm font-semibold text-neutral-900">María G.</p><p id="tc" class="truncate text-xs text-neutral-500">acaba de comprar · Buenos Aires</p></div>
+  </div>
+</main>
+
+<script>
+// Timer regressivo 10:00 (HH:MM:SS), SEM persistência: reinicia a cada entrada/reload
+(function(){var s=600,el=document.getElementById('timer');function p(n){return String(n).padStart(2,'0')}
+function t(){el.textContent=p(Math.floor(s/3600))+':'+p(Math.floor(s%3600/60))+':'+p(s%60);if(s>0)s--}t();setInterval(t,1000)})();
+(function(){var em=document.getElementById('correo'),er=document.getElementById('err'),re=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+document.getElementById('buybtn').addEventListener('click',function(){if(!re.test(em.value.trim())){er.classList.remove('hidden');em.focus();em.scrollIntoView({behavior:'smooth',block:'center'});return}er.classList.add('hidden');
+  /* ÚNICO ponto que cria pedido/cobrança: clique em comprar. Não criar ao escolher forma de pagamento nem ao marcar bump. */
+  var b=this;if(b.dataset.busy)return;b.dataset.busy='1';b.disabled=true;b.classList.add('opacity-60');
+  /* fetch('/api/checkout',{method:'POST',body:JSON.stringify({email:em.value.trim().toLowerCase(),bump:document.getElementById('bumpchk').checked,method:selectedMethod})}) */})})();
+(function(){var BASE=4900,CMP=9900,chk=document.getElementById('bumpchk'),line=document.getElementById('bumpline');
+function fmt(n){return '$ '+n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')}
+function upd(){var on=chk.checked,tot=BASE+(on?+chk.dataset.price:0),cmp=CMP+(on?+chk.dataset.cmp:0);
+document.querySelectorAll('[data-total]').forEach(function(e){e.textContent=fmt(tot)});
+document.querySelectorAll('[data-cmp]').forEach(function(e){if(e!==chk)e.textContent=fmt(cmp)});
+line.classList.toggle('hidden',!on);line.classList.toggle('flex',on)}
+chk.addEventListener('change',upd);upd()})();
+document.querySelectorAll('[data-pay]').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('[data-pay]').forEach(function(x){x.classList.remove('border-gold/60','bg-gold/10');x.classList.add('border-black/15')});
+  b.classList.remove('border-black/15');b.classList.add('border-gold/60','bg-gold/10');
+  var u=document.getElementById('buy');u.style.gridTemplateRows='1fr';u.style.opacity='1';
+  setTimeout(function(){u.scrollIntoView({behavior:'smooth',block:'nearest'})},250)})});
+document.getElementById('n').textContent=700+Math.floor(Math.random()*180);
+(function(){var N=["María G.","Carlos R.","Ana L.","José M.","Sofía T.","Luis P."],C=["Buenos Aires","Córdoba","Rosario","Mendoza","La Plata","Mar del Plata"],i=0,t=document.getElementById('toast');
+function show(){document.getElementById('tn').textContent=N[i];document.getElementById('ti').textContent=N[i][0];document.getElementById('tc').textContent='acaba de comprar · '+C[i%C.length];
+t.classList.remove('pointer-events-none','-translate-y-3','opacity-0');setTimeout(function(){t.classList.add('pointer-events-none','-translate-y-3','opacity-0');i=(i+1)%N.length;setTimeout(show,9000+Math.random()*6000)},5000)}
+setTimeout(show,4000)})();
+</script>
+</body>
+</html>

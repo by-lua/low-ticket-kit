@@ -878,10 +878,10 @@ function main() {
     const ws = (c.words || []).filter((w) => (w.opacity ?? 1) > 0.05 && w.w > 0);
     if (!ws.length) return c.cap_bbox;
     const x0 = Math.min(...ws.map((w) => w.x)),
-      x1 = Math.max(...ws.map((w) => w.x + w.w));
+      <projeto-isolado> = Math.max(...ws.map((w) => w.x + w.w));
     const y0 = Math.min(...ws.map((w) => w.y)),
       y1 = Math.max(...ws.map((w) => w.y + w.h));
-    return { x: x0, y: y0, w: x1 - x0, h: y1 - y0 };
+    return { x: x0, y: y0, w: <projeto-isolado> - x0, h: y1 - y0 };
   };
   let dnaSizeCap = 0.34,
     dnaHeroCase = "none";

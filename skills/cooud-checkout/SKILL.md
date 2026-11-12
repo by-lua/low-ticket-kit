@@ -21,20 +21,20 @@ o que foi **aprendido na prática** (seletores, API, bug e bloqueio reais), não
 > `mvt-funil` (regras em `low-ticket/references/PECAS-DO-FUNIL.md`); aqui só se
 > monta o que já está no `FUNIL.md` da oferta, com preço na tabela da dona.
 
-> **REGRA FIXA DA DONA (16/10/2026) — TODO produto/oferta criado entra nos DOIS webhooks NO MESMO DIA.** Vale pra toda peça: principal · **order bump** · combo · upsell/downsell · **upgrade Essencial → Completo** · produto irmão/cross · oferta de membro. Cada produto novo, na MESMA sessão do cadastro, marcado em (1) **webhook de ENTREGA** (`<site>/painel/api/webhooks/cooud`) e (2) **webhook de MEDIÇÃO** (Trackeador, `https://adstrackeador.leadgo.dev/api/webhooks/sale/c/<conexão>`) — "todos os produtos" OFF. Produto fora do webhook = a venda some do Trackeador/atribuição e/ou o comprador fica sem acesso, **sem erro em lugar nenhum**. Padrão/incidente (order bump "Combo Domínio Total", Jiu-Jitsu, 16/10): `wiven-checkout` §6.
+> **REGRA FIXA DA DONA (16/10/2026) — TODO produto/oferta criado entra nos DOIS webhooks NO MESMO DIA.** Vale pra toda peça: principal · **order bump** · combo · upsell/downsell · **upgrade Essencial → Completo** · produto irmão/cross · oferta de membro. Cada produto novo, na MESMA sessão do cadastro, marcado em (1) **webhook de ENTREGA** (`<site>/painel/api/webhooks/cooud`) e (2) **webhook de MEDIÇÃO** (Trackeador, `https://<subdominio>.<seu-dominio>/api/webhooks/sale/c/<conexão>`) — "todos os produtos" OFF. Produto fora do webhook = a venda some do Trackeador/atribuição e/ou o comprador fica sem acesso, **sem erro em lugar nenhum**. Padrão/incidente (order bump "Combo Domínio Total", Jiu-Jitsu, 16/10): `wiven-checkout` §6.
 
 ## Acesso
 
 **Conta em uso = Dona/EmpresaB** (dona 16/10 — a do Sócio está **com problema**):
-perfil do sistema **`cooud-dona-empresab`**, porta **9276**, conta **`voce@exemplo.com`**.
-Sessão agent-browser = `--session cooud-dona-empresab`. Subir se estiver parado:
-`~/.claude/bin/browsers.sh cooud-dona-empresab`. Antes de agir: `curl -s localhost:9276/json` (aba em `dashboard.cooud.com`).
+perfil do sistema **`<perfil-de-navegador>`**, porta <PORTA>, conta **`comercial@<seu-dominio>`**.
+Sessão agent-browser = `--session <perfil-de-navegador>`. Subir se estiver parado:
+`~/.claude/bin/browsers.sh <perfil-de-navegador>`. Antes de agir: `curl -s localhost:9276/json` (aba em `dashboard.cooud.com`).
 
 - **Login é por CÓDIGO de uso único (não tem senha):** em `auth.cooud.com` digitar o e-mail →
   **Continuar** → a Cooud manda um código de **6 caracteres** por e-mail (vale **5 min**) → pegar no
-  **webmail EmpresaB** (perfil **`hostinger-mail-empresab`**, porta 9295, `mail.hostinger.com`) → colar no
+  **webmail EmpresaB** (perfil **`<perfil-de-e-mail>-empresab`**, porta <PORTA>, `mail.<provedor-de-e-mail>.com`) → colar no
   campo "Código de acesso" → Confirmar. Marcar **"Manter conectado"** (90 dias).
-- Perfil antigo **`cooud`** (porta 9269) = conta Sócio `voce@exemplo.com` — **aposentado
+- Perfil antigo **`cooud`** (porta <PORTA>) = conta Sócio `voce@exemplo.com` — **aposentado
   para item novo** (usar só para consultar o que já existe lá).
 
 Um perfil por pane (não dividir a sessão); nunca `agent-browser open` nu — anexar no perfil.
@@ -357,8 +357,8 @@ sem header custom). Pra autenticar no NOSSO servidor, 2 caminhos: **(a)** token 
 ### Dois webhooks distintos na Cooud (ENTREGA × MEDIÇÃO) — criados 16/10/2026
 
 Ambos em `event_destinations` da loja `<id>`, evento **`order.paid`**:
-1. **ENTREGA (nosso):** `https://gerineuro.leadgo.dev/painel/api/webhooks/cooud` · id `<id>` · secret `whsec_<secret>`.
-2. **MEDIÇÃO (Trackeador):** `https://adstrackeador.leadgo.dev/api/webhooks/sale/c/<id-conexao>` · id `<id>` · secret `whsec_<secret>`.
+1. **ENTREGA (nosso):** `https://<subdominio>.<seu-dominio>/painel/api/webhooks/cooud` · id `<id>` · secret `whsec_<secret>`.
+2. **MEDIÇÃO (Trackeador):** `https://<subdominio>.<seu-dominio>/api/webhooks/sale/c/<id-conexao>` · id `<id>` · secret `whsec_<secret>`.
 
 **Formato do payload (`order.paid`):** `data.customer_email`, `data.payment.state`/`status`,
 `data.order.id` (+ o id da oferta em algum campo do pedido). O parser da nossa área de membros lê
@@ -385,7 +385,7 @@ redeploy zera os clientes**. Provado 16/10: comprei por webhook, redeployei e o 
 
 ## Estado de referência — GeriNeuro US (conta Dona, 16/10/2026) — CANÔNICO
 
-Conjunto recriado do ZERO na conta **Dona/EmpresaB** (`cooud-dona-empresab` 9276), o atual.
+Conjunto recriado do ZERO na conta **Dona/EmpresaB** (`<perfil-de-navegador>` 9276), o atual.
 
 - **Loja** `GeriNeuro` (USD, digital) = **`<id>`**
 - **Produto** (`course`) `GeriNeuro Complete Collection` = `<id>`,
@@ -394,11 +394,11 @@ Conjunto recriado do ZERO na conta **Dona/EmpresaB** (`cooud-dona-empresab` 9276
   `https://checkout.cooud.com/<id>`
 - **Oferta de saída** = **`<id>`** (`amount:990` usd) →
   `https://checkout.cooud.com/<id>`
-- **Thanks Page nas DUAS** = `https://gerineuro.leadgo.dev/painel/` (`metadata.thanks_page_url`)
+- **Thanks Page nas DUAS** = `https://<subdominio>.<seu-dominio>/painel/` (`metadata.thanks_page_url`)
 - **Skin das DUAS** = **`Glass Split`** (`metadata.checkout_theme_v2.id = "mono-split"`, `mode:"light"`)
 - **Moeda do cliente nas DUAS** = `metadata.local_currency=true`, `local_currency_charge=true`, `local_currency_display=true`
 - **Imagem do produto** (course) = `thumbnail_url = https://avatars.cooud.com/<id>` (nosso `checkout/banners/gerineuro-product.jpg` — 9 capas + 1 ficha; trocada 17/10/2026) · antiga: `<id>` (`hero-mockup.webp`)
-- **Link do e-mail de compra** (course) = `metadata.cooud_purchase_email_access_url = https://gerineuro.leadgo.dev/painel/`
+- **Link do e-mail de compra** (course) = `metadata.cooud_purchase_email_access_url = https://<subdominio>.<seu-dominio>/painel/`
 - **Countdown** só na principal (`metadata.countdown_deal.enabled=true`, `minutes:10`); saída sem countdown.
 - **Gateway** = `Cooud` **Ativo** (nativo).
 - ⚠️ **Loja duplicada vazia** `<id>` (clique duplo no `Próximo` do wizard) —
@@ -409,7 +409,7 @@ Conjunto recriado do ZERO na conta **Dona/EmpresaB** (`cooud-dona-empresab` 9276
   "checkout_theme_v2": { "id": "mono-split", "mode": "light" },
   "local_currency": true, "local_currency_charge": true, "local_currency_display": true,
   "countdown_deal": { "enabled": true, "minutes": 10, "text": "" },
-  "thanks_page_url": "https://gerineuro.leadgo.dev/painel/",
+  "thanks_page_url": "https://<subdominio>.<seu-dominio>/painel/",
   "live": false, "domain": "well_being" }
 ```
 
@@ -440,4 +440,4 @@ principal `<id>` · saída `<id>`.)_
 - **Garantia sempre igual ao produto:** Brasil 7 dias · internacional 15 dias. Conferir no produto, no checkout e no selo.
 - **Entrega:** "Acesso imediato por e-mail".
 - **Banner:** gerado por `banner-checkout-gpt` (seta pequena pra baixo no rodapé da imagem, título, garantia, acesso imediato por e-mail, vitalício).
-- **Confiança:** ícone preto + texto (Privacidade · Compra segura · Conteúdo aprovado) quando o gateway permitir bloco/HTML na página; o estilo azul com cards é só do Hotmart; visual-base em `MODELOS/checkout-base/index.html`.
+- **Confiança:** ícone preto + texto (Privacidade · Compra segura · Conteúdo aprovado) quando o gateway permitir bloco/HTML na página; o estilo azul com cards é só do Hotmart; visual-base em `modelos/checkout-base/index.html`.

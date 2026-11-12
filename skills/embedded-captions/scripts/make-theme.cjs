@@ -2894,9 +2894,9 @@ function paradigmLaserrail() {
   const NSL = "http://www.w3.org/2000/svg";
   const lrStage = document.getElementById("stage");
   const gLR = document.getElementById("gLR");
-  function lrLine(x1, y1, x2, y2, col, w) {
+  function lrLine(<projeto-isolado>, y1, x2, y2, col, w) {
     const l = document.createElementNS(NSL, "line");
-    l.setAttribute("x1", x1); l.setAttribute("y1", y1);
+    l.setAttribute("<projeto-isolado>", <projeto-isolado>); l.setAttribute("y1", y1);
     l.setAttribute("x2", x2); l.setAttribute("y2", y2);
     l.setAttribute("stroke", col); l.setAttribute("stroke-width", w);
     l.setAttribute("stroke-linecap", "round");
@@ -2959,16 +2959,16 @@ function paradigmLaserrail() {
     }
     // EXIT: sweeper beam crosses L→R, words streak away as it passes them
     const xs = L.pos.map((p) => p[0]);
-    const x0 = Math.min(...xs) - 46, x1 = Math.max(...xs) + 46;
+    const x0 = Math.min(...xs) - 46, <projeto-isolado> = Math.max(...xs) + 46;
     const sw = document.createElement("div");
     sw.className = "lsweep"; lrStage.appendChild(sw);
     sw.style.left = x0 + "px"; sw.style.top = (L.pos[0][1] - 58) + "px";
     tl.set(sw, { opacity: 0.9 }, L.sweepT);
-    tl.to(sw,  { x: x1 - x0, duration: 0.13, ease: "power1.in" }, L.sweepT);
+    tl.to(sw,  { x: <projeto-isolado> - x0, duration: 0.13, ease: "power1.in" }, L.sweepT);
     tl.to(sw,  { opacity: 0, duration: 0.05 }, L.sweepT + 0.13);
     L.words.forEach((w, wi) => {
       const el = line.children[wi];
-      const frac = (L.pos[wi][0] - x0) / Math.max(1, x1 - x0);
+      const frac = (L.pos[wi][0] - x0) / Math.max(1, <projeto-isolado> - x0);
       tl.to(el, { x: 44, opacity: 0, filter: "blur(5px)", duration: 0.11, ease: "power2.in" },
             L.sweepT + 0.11 * frac);
     });
@@ -6028,9 +6028,9 @@ function setpieceLasercage() {
   const EM = ${J(EMX.map((x, i) => [x, EMY[i]]))};
   const STARTX = ${J(STX)};
   const FAN = ${J(FANX.map((x, i) => [x, FANY[i]]))};
-  function mkLnC(parent, x1, y1, x2, y2, col, w) {
+  function mkLnC(parent, <projeto-isolado>, y1, x2, y2, col, w) {
     const l = document.createElementNS(NSC, "line");
-    l.setAttribute("x1", x1); l.setAttribute("y1", y1);
+    l.setAttribute("<projeto-isolado>", <projeto-isolado>); l.setAttribute("y1", y1);
     l.setAttribute("x2", x2); l.setAttribute("y2", y2);
     l.setAttribute("stroke", col); l.setAttribute("stroke-width", w);
     l.setAttribute("stroke-linecap", "round");
@@ -6046,9 +6046,9 @@ function setpieceLasercage() {
   }
 
   // ---- beam-grid cage around the word rect
-  const ccage = ${J(CAGE)}.map(([x1, y1, x2, y2, col, op]) => {
-    const el = mkLnC(gC, x1, y1, x2, y2, col, 1.2);
-    const len = Math.hypot(x2 - x1, y2 - y1);
+  const ccage = ${J(CAGE)}.map(([<projeto-isolado>, y1, x2, y2, col, op]) => {
+    const el = mkLnC(gC, <projeto-isolado>, y1, x2, y2, col, 1.2);
+    const len = Math.hypot(x2 - <projeto-isolado>, y2 - y1);
     el.setAttribute("stroke-dasharray", len);
     el.setAttribute("stroke-dashoffset", len);
     return { el, len, op };
@@ -6797,7 +6797,7 @@ function setpieceSilkribbon() {
   // Hershey-stroke reveal (one <path> per pen stroke, constant pen speed) in
   // a blurred halo + tight core, BOTH stroked by ONE userSpaceOnUse aurora
   // linearGradient (rose→teal→violet, reflect spread). SIGNATURE: the
-  // gradient's x1/x2 translate f(t) from I−0.07 to the end so the aurora
+  // gradient's <projeto-isolado>/x2 translate f(t) from I−0.07 to the end so the aurora
   // colors FLOW THROUGH the drawn ribbon during the hold. A soft light mote
   // (blurred halo + core dot) rides the pen, hops at lifts, and blooms out
   // at the final stroke. Scene reaction: two huge aurora blobs drift the sky
@@ -6866,7 +6866,7 @@ function setpieceSilkribbon() {
       <svg id="silk" width="${svgW}" height="${svgH}" viewBox="0 0 ${svgW} ${svgH}">
         <defs>
           <linearGradient id="agrad" gradientUnits="userSpaceOnUse"
-                          x1="${gx1}" y1="0" x2="${gx1 + span}" y2="0" spreadMethod="reflect">
+                          <projeto-isolado>="${gx1}" y1="0" x2="${gx1 + span}" y2="0" spreadMethod="reflect">
             <stop offset="0"   stop-color="${ROSE}"/>
             <stop offset="0.5" stop-color="${TEAL}"/>
             <stop offset="1"   stop-color="${VIO}"/>
@@ -6942,10 +6942,10 @@ function setpieceSilkribbon() {
                       transformOrigin: "50% 50%" }, DRAWN);
 
   // SIGNATURE: the gradient FLOWS through the drawn ribbon — translate the
-  // userSpaceOnUse gradient (x1/x2 together); reflect spread makes the aurora
+  // userSpaceOnUse gradient (<projeto-isolado>/x2 together); reflect spread makes the aurora
   // colors march continuously along the silk during the hold
-  tl.fromTo("#agrad", { attr: { x1: ${gx1}, x2: ${gx1 + span} } },
-            { attr: { x1: ${gx1 - Math.round(1.5 * span)}, x2: ${gx1 + span - Math.round(1.5 * span)} },
+  tl.fromTo("#agrad", { attr: { <projeto-isolado>: ${gx1}, x2: ${gx1 + span} } },
+            { attr: { <projeto-isolado>: ${gx1 - Math.round(1.5 * span)}, x2: ${gx1 + span - Math.round(1.5 * span)} },
               duration: ENDT - (I9 - 0.07), ease: "none" }, I9 - 0.07);
 
   // light spill tints the sky as the ribbon completes
@@ -7636,14 +7636,14 @@ function setpieceChalkwrite() {
 
   // two violent underlines (fast accelerating slashes), seeded waviness
   const UL = [
-    { x1: ${Math.round(inkL + 14)}, x2: ${Math.round(inkR - 4)},  y: ${Math.round(inkBot + 30)}, n: 4, t: DRAWN + 0.09, dur: 0.10 },
-    { x1: ${Math.round(inkL + 58)}, x2: ${Math.round(inkR - 44)}, y: ${Math.round(inkBot + 50)}, n: 3, t: DRAWN + 0.23, dur: 0.09 },
+    { <projeto-isolado>: ${Math.round(inkL + 14)}, x2: ${Math.round(inkR - 4)},  y: ${Math.round(inkBot + 30)}, n: 4, t: DRAWN + 0.09, dur: 0.10 },
+    { <projeto-isolado>: ${Math.round(inkL + 58)}, x2: ${Math.round(inkR - 44)}, y: ${Math.round(inkBot + 50)}, n: 3, t: DRAWN + 0.23, dur: 0.09 },
   ];
   UL.forEach((u) => {
     if (u.t + u.dur > ENDT - 0.1) return;
-    let ud = "M " + u.x1 + " " + (u.y + (crnd()*9 - 4.5)).toFixed(1);
+    let ud = "M " + u.<projeto-isolado> + " " + (u.y + (crnd()*9 - 4.5)).toFixed(1);
     for (let k = 1; k <= u.n; k++)
-      ud += " L " + (u.x1 + (u.x2 - u.x1) * k / u.n).toFixed(1) + " " + (u.y + (crnd()*9 - 4.5)).toFixed(1);
+      ud += " L " + (u.<projeto-isolado> + (u.x2 - u.<projeto-isolado>) * k / u.n).toFixed(1) + " " + (u.y + (crnd()*9 - 4.5)).toFixed(1);
     const halo = mk("cwHaloG", ud, "#ffffff", ${p.haloWidth ?? 14});
     const core = mk("cwCoreG", ud, ${J(CHALK)}, ${(p.coreWidth ?? 7) + 1});
     const len = core.getTotalLength();

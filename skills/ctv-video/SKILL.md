@@ -36,7 +36,7 @@ antes de gerar qualquer persona, não decidir por conta):**
 **Passo 1 — referência da pessoa (SEMPRE obrigatório, nunca pula).** Uma foto real de alguém, usada só
 como referência de ESTILO (pele, cabelo, roupa, idade, vibe do país) — nunca a pessoa final, nunca o rosto
 final. Três formas de conseguir, qualquer uma serve:
-  - **(a) Eu busco no Pinterest** (perfil `pinterest`, porta 9246: `~/.claude/bin/browsers.sh pinterest` →
+  - **(a) Eu busco no Pinterest** (perfil `pinterest`, porta <PORTA>: `~/.claude/bin/browsers.sh pinterest` →
     `agent-browser --session pinterest`) com termo do país/cena: "mulher brasileira dirigindo carro",
     "mujer argentina en la cocina", "american woman 50s kitchen". Baixo 2-3 fotos em
     `PROJETOS-MIDIA/CRIATIVOS-CONCORRENTES/<SLUG>-pessoas-ref/`.

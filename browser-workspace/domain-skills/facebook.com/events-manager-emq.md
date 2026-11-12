@@ -1,6 +1,6 @@
 # Gerenciador de Eventos — ler EMQ e cobertura de parâmetros de um dataset
 
-Executado e verificado em 2026-09-04, perfil `meta` (porta 9225).
+Executado e verificado em 2026-09-04, perfil `meta` (porta <PORTA>).
 
 ## Acesso
 Perfil `meta` está logado no Business (`~/.claude/bin/browsers.sh meta`).
@@ -13,7 +13,7 @@ agent-browser --session meta goto \
 sleep 12
 ```
 
-⚠️ `browsers.sh status` lista `meta` e `utmify` na MESMA porta 9225. Subir um
+⚠️ `browsers.sh status` lista `meta` e `utmify` na MESMA porta <PORTA>. Subir um
 derruba o outro — confira o `status` depois de subir.
 
 ## O que dá pra ler SEM clicar em nada (é o caminho rápido)

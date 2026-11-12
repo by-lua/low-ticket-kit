@@ -127,13 +127,13 @@ function analyze(occ, GW, GH, W, H, lum, lumSeries) {
       const y0 = Math.round((yPct / 100) * GH),
         y1 = Math.min(GH, y0 + Math.max(2, Math.round(GH * 0.14)));
       const x0 = Math.round((xPct / 100) * GW),
-        x1 = Math.min(GW, Math.round(((xPct + wPct) / 100) * GW));
+        <projeto-isolado> = Math.min(GW, Math.round(((xPct + wPct) / 100) * GW));
       // luma of the BACKGROUND cells only — that's where the hero's glyphs are visible
       // (the subject-occluded middle doesn't show text; averaging it in hides washout).
       let s2 = 0,
         n = 0;
       for (let y = y0; y < y1; y++)
-        for (let x = x0; x < x1; x++) {
+        for (let x = x0; x < <projeto-isolado>; x++) {
           if (occCell[y * GW + x]) continue;
           s2 += lum[y * GW + x];
           n++;
@@ -220,25 +220,25 @@ function analyze(occ, GW, GH, W, H, lum, lumSeries) {
     const pad = Math.max(1, Math.round(GW * 0.02));
     const y0 = rowMin,
       y1 = Math.min(GH, rowMin + Math.max(3, Math.round((rowMax - rowMin + 1) * 0.45)));
-    let x0, x1;
+    let x0, <projeto-isolado>;
     if (side === "right") {
       x0 = Math.min(GW - 1, colMax + 1 + pad);
-      x1 = GW - pad;
+      <projeto-isolado> = GW - pad;
     } else {
-      x1 = Math.max(1, colMin - pad);
+      <projeto-isolado> = Math.max(1, colMin - pad);
       x0 = pad;
     }
-    if (x1 - x0 < Math.round(GW * 0.1)) return null;
+    if (<projeto-isolado> - x0 < Math.round(GW * 0.1)) return null;
     // shrink until actually clean (≤8% occupied cells)
     let occN = 0,
       tot = 0;
     for (let y = y0; y < y1; y++)
-      for (let x = x0; x < x1; x++) {
+      for (let x = x0; x < <projeto-isolado>; x++) {
         tot++;
         if (occCell[y * GW + x]) occN++;
       }
     if (tot === 0 || occN / tot > 0.08) return null;
-    const r = { x: x0, y: y0, w: x1 - x0, h: y1 - y0, area: (x1 - x0) * (y1 - y0) };
+    const r = { x: x0, y: y0, w: <projeto-isolado> - x0, h: y1 - y0, area: (<projeto-isolado> - x0) * (y1 - y0) };
     const z2 = toZone(r);
     // GLYPHS must hug, not just the plane: in a wide column, text aligned to the far
     // edge parks the words a third of the frame away from the subject. Align TOWARD

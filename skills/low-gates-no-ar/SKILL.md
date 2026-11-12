@@ -15,7 +15,7 @@ description: Etapa E9 do sistema LOW-TICKET — prova no ar que a oferta está p
 Nada vai pra tráfego sem os gates (eventos, página leve, download, checkout) com **prova colada** no `STATUS.md` da oferta. Nunca "deve estar funcionando".
 
 ## Gate 0 — Domínio autorizado no pixel Meta (antes de liberar tráfego)
-Aprendido com a dona em 06/11/2026, na primeira operação do Calendrier Magique FR. Vale para toda oferta nova e depois de trocar domínio/pixel.
+Aprendido com a dona em 06/11/2026, na primeira operação do <Oferta Exemplo> FR. Vale para toda oferta nova e depois de trocar domínio/pixel.
 
 - Abrir o **conjunto de dados correto**, conferir seu ID contra o pixel instalado e acessar **Configurações → Permissões de tráfego — Sites**. Conferir também o **Diagnóstico**, especialmente “Confirme o domínio que pertence a você”.
 - Confirmar o domínio público exato da oferta na lista de permissão. Reabrir/recarregar e comprovar que ficou salvo. Havendo outros domínios legítimos do mesmo funil, conferir cada um antes de restringir a lista: tudo que ficar fora será bloqueado. Nunca autorizar o domínio compartilhado inteiro (`pages.dev`) para resolver um aviso de um único projeto.
@@ -76,7 +76,7 @@ Capturar requests `facebook.com/tr` no ar (headed + rede, skill `trackeador`):
 - Abrir o checkout público: cobra exatamente o que o botão (e o popup/downsell) promete.
 - Banner e imagem leves (≤ ~400 KB / ≤ ~250 KB).
 - `/panel/webhooks` reaberto com **todos** os produtos da oferta nos 2 webhooks.
-- **Aviso de venda aceito nos 2 destinos** (incidente Calendrier, 06/11/2026: Trackeador e área de membros devolveram 401).
+- **Aviso de venda aceito nos 2 destinos** (incidente <Oferta Exemplo>, 06/11/2026: Trackeador e área de membros devolveram 401).
   Prova: um evento real (abandono de carrinho serve) com 2xx no servidor de entrega e "último aviso OK" na conexão do
   Trackeador (`trackeador doctor --host <host>`), sem `secret_invalido`. Colar no `STATUS.md`.
 - **Link de checkout no ar leva a sessão:** clique de verdade num botão e confira na URL do gateway as `utm_*` e o id

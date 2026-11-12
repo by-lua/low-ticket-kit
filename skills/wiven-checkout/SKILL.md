@@ -8,20 +8,20 @@ allowed-tools: Bash(agent-browser:*), Bash(chromium:*), Bash(curl:*)
 
 # wiven-checkout
 
-> **⚠️ 403 CLOUDFLARE NÃO É BLOQUEIO DE IP — É REPUTAÇÃO DA SESSÃO/PERFIL (achado 20/10/2026, Mapa do Tarot).** Veio de fazer MUITO `fetch`/`eval` em rajada no painel (upload de capa via `window.fetch` patchado + envio em chunks por base64, repetido pros 2 produtos) — a Wiven/Cloudflare read isso como bot e trava o PERFIL/sessão naquele navegador, não a rede: **perfil novo (outra pasta de profile), mesma máquina, mesmo IP, passa direto** (testado: `wiven-leadgo-limpo` e `wiven-empresab-gabriel` logaram sem 403 enquanto `wiven-leadgo-dona` e `wiven-leadgo-dona-2` continuavam 403 minutos depois). **Dois erros reais que custaram ~1h20 nessa rodada:**
+> **⚠️ 403 CLOUDFLARE NÃO É BLOQUEIO DE IP — É REPUTAÇÃO DA SESSÃO/PERFIL (achado 20/10/2026, Mapa do Tarot).** Veio de fazer MUITO `fetch`/`eval` em rajada no painel (upload de capa via `window.fetch` patchado + envio em chunks por base64, repetido pros 2 produtos) — a Wiven/Cloudflare read isso como bot e trava o PERFIL/sessão naquele navegador, não a rede: **perfil novo (outra pasta de profile), mesma máquina, mesmo IP, passa direto** (testado: `wiven-<EMPRESA>-limpo` e `wiven-empresab-gabriel` logaram sem 403 enquanto `wiven-<EMPRESA>-dona` e `wiven-<EMPRESA>-dona-2` continuavam 403 minutos depois). **Dois erros reais que custaram ~1h20 nessa rodada:**
 > 1. **Ficar reabrindo a MESMA aba bloqueada em loop** ("confere se já liberou") em vez de trocar de perfil na hora — 403 de sessão não passa só esperando, raramente libera sozinho rápido.
-> 2. **Depois de trocar de perfil, tentar logar numa conta ERRADA** (EmpresaB/Sócio) quando a dona já tinha um perfil LeadGo logado noutra aba — sempre perguntar/confirmar qual conta antes de preencher credencial, nunca assumir "a primeira que carregar".
+> 2. **Depois de trocar de perfil, tentar logar numa conta ERRADA** (EmpresaB/Sócio) quando a dona já tinha um perfil <EMPRESA> logado noutra aba — sempre perguntar/confirmar qual conta antes de preencher credencial, nunca assumir "a primeira que carregar".
 > **⚠️ "Oferta/Produto atualizada com sucesso" não é prova de que FICOU certo — um reenvio posterior de body capturado antes pode sobrescrever o conserto em silêncio.** Aconteceu 20/10: corrigi nome/descrição com acento quebrado (mojibake) pela UI normal, toast de sucesso apareceu — mas um save seguinte (reenvio de body canônico capturado ANTES do conserto, pra outra ação tipo ligar capa) tinha o nome velho embutido e regravou por cima. Só percebi porque recarreguei a página do zero bem depois; sem o reload teria ficado quebrado. **Regra: depois de QUALQUER fix de texto/nome, recarregar a página (não confiar no form que ficou aberto) e reconferir — e nunca reaproveitar um body de `save` capturado antes de um fix pra mandar de novo depois.**
 >
-> **Regra daqui pra frente:** (a) **nunca fazer rajada de `fetch`/`eval` raw no painel** — upload de capa via API (seção 1b) tudo bem, mas 1 por vez, com pausa, nunca 2 produtos em sequência imediata sem intervalo; (b) 403 nessa tela → trocar IMEDIATAMENTE pra outro perfil Wiven já cadastrado (`browsers.sh status | grep wiven`), não insistir na mesma aba; (c) perfil novo cai em `/auth/login` → confirmar com a dona QUAL conta antes de logar (LeadGo × EmpresaB/Sócio têm e-mails/senhas diferentes, `~/.claude/.credentials.env`); (d) 2FA da LeadGo vai pro hostinger-mail (`contact@seudominio.com`) — se o hostinger-mail TAMBÉM cair em desafio Cloudflare (mesmo sintoma, mesma causa — sessão flagada por uso pesado), não insistir clicando o captcha: avisar a dona e pedir o código por outro canal (celular).
+> **Regra daqui pra frente:** (a) **nunca fazer rajada de `fetch`/`eval` raw no painel** — upload de capa via API (seção 1b) tudo bem, mas 1 por vez, com pausa, nunca 2 produtos em sequência imediata sem intervalo; (b) 403 nessa tela → trocar IMEDIATAMENTE pra outro perfil Wiven já cadastrado (`browsers.sh status | grep wiven`), não insistir na mesma aba; (c) perfil novo cai em `/auth/login` → confirmar com a dona QUAL conta antes de logar (<EMPRESA> × EmpresaB/Sócio têm e-mails/senhas diferentes, `<COFRE-DE-CREDENCIAIS>`); (d) 2FA da <EMPRESA> vai pro <perfil-de-e-mail> (`contact@<seu-dominio>`) — se o <perfil-de-e-mail> TAMBÉM cair em desafio Cloudflare (mesmo sintoma, mesma causa — sessão flagada por uso pesado), não insistir clicando o captcha: avisar a dona e pedir o código por outro canal (celular).
 
-> **REGRA FIXA DA DONA — código de verificação da Wiven (login):** quando a Wiven pedir código de verificação, o agente abre na caixa de e-mail (hostinger-mail) SÓ o e-mail da Wiven cujo assunto é o código de verificação, o mais recente. NUNCA abre nenhum outro e-mail da Wiven (vendas, notificações, clientes etc.) nem e-mail de outro remetente. Se não achar pelo assunto, para e pergunta.
+> **REGRA FIXA DA DONA — código de verificação da Wiven (login):** quando a Wiven pedir código de verificação, o agente abre na caixa de e-mail (<perfil-de-e-mail>) SÓ o e-mail da Wiven cujo assunto é o código de verificação, o mais recente. NUNCA abre nenhum outro e-mail da Wiven (vendas, notificações, clientes etc.) nem e-mail de outro remetente. Se não achar pelo assunto, para e pergunta.
 
-> **REGRA FIXA DA DONA (repetida muitas vezes; não perguntar, não inventar alternativa):** área de membros é SEMPRE a NOSSA, externa, no site da oferta (`https://<site>/painel`). NUNCA a área de membros do checkout (Wiven, GG, Hotmart, Mundpay) nem página de obrigado genérica dele. Por isso: (1) redirect/página final pós-compra de TODA oferta e bump → `<site>/painel`; (2) link de entrega/e-mail do checkout, se existir → `<site>/painel`; (3) liberação por webhook no nosso servidor (e-mail → SKUs comprados); (4) e-mail de acesso pelo Resend da LeadGo (`no-reply@seudominio.com`) com o link do /painel e "entre com o e-mail da compra". Pronto só com venda-teste REAL provando: webhook liberou → login com o e-mail entra → e-mail chegou. Motivo: em 26/09/2026 a 1ª cliente do Mapa do Tarot BR pagou e não recebeu nada (webhook ignorava a venda, nenhum e-mail saía).
+> **REGRA FIXA DA DONA (repetida muitas vezes; não perguntar, não inventar alternativa):** área de membros é SEMPRE a NOSSA, externa, no site da oferta (`https://<site>/painel`). NUNCA a área de membros do checkout (Wiven, GG, Hotmart, Mundpay) nem página de obrigado genérica dele. Por isso: (1) redirect/página final pós-compra de TODA oferta e bump → `<site>/painel`; (2) link de entrega/e-mail do checkout, se existir → `<site>/painel`; (3) liberação por webhook no nosso servidor (e-mail → SKUs comprados); (4) e-mail de acesso pelo Resend da <EMPRESA> (`no-reply@<seu-dominio>`) com o link do /painel e "entre com o e-mail da compra". Pronto só com venda-teste REAL provando: webhook liberou → login com o e-mail entra → e-mail chegou. Motivo: em 26/09/2026 a 1ª cliente do Mapa do Tarot BR pagou e não recebeu nada (webhook ignorava a venda, nenhum e-mail saía).
 
 > **REGRA FIXA DA DONA (16/10/2026) — TODO produto/oferta criado entra nos DOIS webhooks NO MESMO DIA, sem exceção.** Vale pra **toda peça**: principal · **order bump** · **combo** · **Upsell 1/2** · **downsell** · **upgrade Essencial → Completo** · produto irmão/cross-sell · oferta de membro. Os webhooks da Wiven são **por produto** e nascem com **"Disparar para todos os produtos" OFF** — produto criado DEPOIS do webhook **não entra sozinho**. Obrigatório, na MESMA sessão do cadastro:
 > 1. **Webhook da área de membros** (título `<Oferta> — área de membros`, URL `<site>/painel/api/webhooks/wiven`) → marcar o produto novo na lista de produtos.
-> 2. **Webhook do Trackeador** (título `Trackeador — <oferta>`, URL `https://adstrackeador.leadgo.dev/api/webhooks/sale/c/<conexão>`) → marcar o MESMO produto (13 eventos da §6).
+> 2. **Webhook do Trackeador** (título `Trackeador — <oferta>`, URL `https://<subdominio>.<seu-dominio>/api/webhooks/sale/c/<conexão>`) → marcar o MESMO produto (13 eventos da §6).
 > 3. **Servidor da oferta** (`site/server/index.mjs`) → o produto/offer entra no `PRODUCT_SKUS`/`COMPLETO_OFFERS`/`MUNDPAY_NAME_SKUS` (nosso lado).
 > **Prova:** abrir `/panel/webhooks`, editar cada um e conferir que **TODOS** os produtos da oferta estão na lista (não só o principal). **Recontar depois de cada produto novo e depois de mexer em funil.** Detalhe na §6.
 > **Caso real (16/10/2026):** venda do **order bump "Combo Domínio Total"** (Jiu-Jitsu, R$ 7,32, 21:08) entrou pela área de membros e **não chegou no Trackeador** — o produto (criado 10/10, depois do webhook de 05/10) não estava marcado. Produto fora do webhook = a Wiven não dispara nada ("Nenhum log de webhook encontrado"), a venda some do Trackeador/atribuição **e/ou** o comprador fica sem acesso — sem erro em lugar nenhum.
@@ -37,8 +37,8 @@ Mecânica pra montar oferta na Wiven (app.wiven.com.br) no nosso ambiente. Compl
 
 ## Acesso
 
-Perfil browser do sistema **`wiven`**, porta **9254**, conta **LeadGo**. Credenciais
-`$WIVEN_EMAIL`/`$WIVEN_PASSWORD` em `~/.claude/.credentials.env` — nunca literal.
+Perfil browser do sistema **`wiven`**, porta <PORTA>, conta **<EMPRESA>**. Credenciais
+`$WIVEN_EMAIL`/`$WIVEN_PASSWORD` em `<COFRE-DE-CREDENCIAIS>` — nunca literal.
 Sempre headed (não headless). Todo comando: `agent-browser --session wiven ...`.
 
 **Perfil JÁ LOGADO = o único que se usa (regra da dona, 29/09).** Perfil é EXCLUSIVO da Wiven: nenhum pane usa o 9254 pra conferir site/painel (sequestra a aba de quem está na Wiven). Antes de qualquer
@@ -47,27 +47,27 @@ Se tem, anexa nessa aba e segue. PROIBIDO: abrir perfil/sessão/Chromium novo, l
 à toa, pedir código de 2FA pra dona.
 **Relogin sozinho (dona 29/09):** só quando o perfil estiver de fato em `/login` (conferido
 no curl). Loga NO MESMO perfil (9254/9273) com `$WIVEN_EMAIL`/`$WIVEN_PASSWORD`
-(`~/.claude/.credentials.env`, sempre por variável). Quando a Wiven pedir o código de
-verificação: `agent-browser --session hostinger-mail` (porta 9274, webmail de
-contact@seudominio.com, já logado) → recarrega a INBOX → abre o e-mail mais recente da Wiven →
+(`<COFRE-DE-CREDENCIAIS>`, sempre por variável). Quando a Wiven pedir o código de
+verificação: `agent-browser --session <perfil-de-e-mail>` (porta <PORTA>, webmail de
+contact@<seu-dominio>, já logado) → recarrega a INBOX → abre o e-mail mais recente da Wiven →
 copia o código → cola na Wiven. Nunca repassar o código pra dona. Só se o e-mail não chegar em
-~2 min (recarregando), ou o hostinger-mail cair em login, para e avisa o orquestrador.
-**Segundo perfil `wiven2`, porta 9273** (mesma conta, logado pela dona 29/09): se o 9254 estiver
+~2 min (recarregando), ou o <perfil-de-e-mail> cair em login, para e avisa o orquestrador.
+**Segundo perfil `wiven2`, porta <PORTA> (mesma conta, logado pela dona 29/09): se o 9254 estiver
 ocupado (aba de outro pane ou da dona no /panel), use `--session wiven2` na 9273. Um perfil por
-pane; mesmas regras (relogin só se cair em /login, código pelo hostinger-mail).
-**Terceiro perfil `wiven3`, porta 9275** (mesma conta, logado 29/09 pelo orquestrador via
-hostinger-mail): terceiro pane Wiven simultâneo. Conferir os três com `curl -s localhost:<porta>/json`
+pane; mesmas regras (relogin só se cair em /login, código pelo <perfil-de-e-mail>).
+**Terceiro perfil `wiven3`, porta <PORTA> (mesma conta, logado 29/09 pelo orquestrador via
+<perfil-de-e-mail>): terceiro pane Wiven simultâneo. Conferir os três com `curl -s localhost:<porta>/json`
 (9254, 9273, 9275) e pegar o que NÃO tem aba de outro pane no /panel. Dois panes no mesmo perfil =
 mesma aba ativa (agent-browser segue a aba ativa) → um mexe no produto do outro. Nunca.
 Perfil caído/novo sobe com `~/.claude/bin/browsers.sh <nome>` (registro em `~/.agent-profiles/registry.conf`).
 **Receita do login (testada 29/09, wiven3):** `open /auth/login` → `snapshot -i` → `fill` textbox
 "Email*" e "Senha*" com as variáveis → clicar "Entrar" → esperar ~10s (botão fica "Loading") →
 cai em `/panel/dashboard` com heading "Autenticação de 2 fatores" e um textbox único → no
-`hostinger-mail`: `open https://mail.hostinger.com/0/mailboxes/INBOX` (recarrega), clicar o 1º
+`<perfil-de-e-mail>`: `open https://mail.<provedor-de-e-mail>.com/0/mailboxes/INBOX` (recarrega), clicar o 1º
 link "Wiven Seu código de verificação", conferir a hora (`Set 29, HH:MM` = agora), o código é o
 StaticText de 6 dígitos logo após "Use o código abaixo para continuar:" → `fill` no textbox do 2FA
 (valida sozinho, sem botão) → alerta "Autenticação de dois fatores validada com sucesso". Depois
-voltar o hostinger-mail pra INBOX.
+voltar o <perfil-de-e-mail> pra INBOX.
 Se o 9254 estiver **parado** (curl não conecta; `browsers.sh status` = parada), subir o
 MESMO perfil com `~/.claude/bin/browsers.sh wiven` — é o perfil persistente logado, não
 perfil novo. Orquestrador: dona usando a janela na mão = nenhum pane toca no 9254 até
@@ -121,7 +121,7 @@ decimal (ex `"21.91"`), selects Moeda=Real / Idioma=Português (BR) / tipo=Nacio
    - segundo campo: `productId` = id do produto **na conta destino** (sem ele: 400
      "ID do produto é obrigatório").
    - resposta: `{"success":true,"data":{"urls":["{\"path\":\"<owner>/product-photo/<id>/<uuid>\",\"token\":\"...\",\"blurHash\":\"...\"}"]}}`
-2. **Montar a URL** exatamente como a LeadGo guarda:
+2. **Montar a URL** exatamente como a <EMPRESA> guarda:
    `https://app.wiven.com.br/files/<path>#blurHash=<blurHash>`
 3. **Salvar** — server action `save` (id em `run.js` → `ACT.save`) em
    `POST /panel/products/<id>/edit`, body `[id, {name, description, category, photos:[url],
@@ -130,7 +130,7 @@ decimal (ex `"21.91"`), selects Moeda=Real / Idioma=Português (BR) / tipo=Nacio
    - `photos` é **array de STRING de URL** (não objeto, não JSON duplo).
    - ⚠ Não passar `{name:null}` nem campo vazio no lugar do nome — teste com `name:null`
      deu **500**. Sempre mandar o nome real.
-   - **Body canônico sem adivinhar (15/10/2026, conta LeadGo):** um patch ÚNICO em
+   - **Body canônico sem adivinhar (15/10/2026, conta <EMPRESA>):** um patch ÚNICO em
      `window.fetch` que grava o body de todo POST `*/edit`, clique em "Salvar alterações"
      (salva sem mudança = inofensivo), pegar o **maior** body capturado (o 1º clique
      costuma vir `[]`/preflight) e reenviar pelo `__a` trocando só `photos` — os campos
@@ -143,12 +143,12 @@ decimal (ex `"21.91"`), selects Moeda=Real / Idioma=Português (BR) / tipo=Nacio
    quebradas. Antes de "subir tudo", rolar a página — sem isso as linhas de baixo ainda
    estão lazy e a contagem mente (já/accountou `{}`/`%7B%7D` como quebrada em produto já
    corrigido).
-- Fonte pronta: `_wiven-migration/fotos/<leadgoId>.jpg`; mapeamento LeadGo→EmpresaB em
-  `_wiven-migration/empresab-mapa.json` + `leadgo-eletrica-jiu.json` (match por **nome**,
+- Fonte pronta: `_wiven-migration/fotos/<<origemId>>.jpg`; mapeamento <EMPRESA>→EmpresaB em
+  `_wiven-migration/empresab-mapa.json` + `<EMPRESA>-eletrica-jiu.json` (match por **nome**,
   o mais antigo quando há duplicata).
-- Foto que não existe na origem não se inventa: puxar da conta LeadGo (perfil 9296,
+- Foto que não existe na origem não se inventa: puxar da conta <EMPRESA> (perfil 9296,
   `/edit` → `img` com `naturalWidth>0` → `fetch` → base64 → `fotos/<id>.jpg`) ou pedir capa
-  nova à dona. Descobrir que a **LeadGo também não tem** (`photos: []`) = gap de origem,
+  nova à dona. Descobrir que a **<EMPRESA> também não tem** (`photos: []`) = gap de origem,
   não falha de migração.
 
 > **REGRA (dona, 09/10/2026): nunca criar produto/oferta de BÔNUS na Wiven.** Bônus é **parte do
@@ -287,13 +287,13 @@ Além do redirect + webhook, o produto **PRINCIPAL** entrega um **arquivo**: a W
 - **Conteúdo:** agradecimento pela compra + **botão com o link da área de membros** +
   "entre com o e-mail que você usou na compra" + suporte. Uma página A4, com a identidade visual
   da oferta. **Tudo clicável:** o botão, o endereço escrito embaixo e o e-mail de suporte
-  (`mailto:support@seudominio.com`).
+  (`mailto:support@<seu-dominio>`).
 - **Nome do arquivo = o nome exato do produto** (`<Produto>.pdf`), nunca genérico tipo
   `Guia-de-Acesso-…`.
 - Modelo/gerador: `LOW-TICKET/MODELOS/PDF-DE-ENTREGA/` — `python3 build.py [slug|alias]`
   (HTML A4 self-contained → Chromium headless `--print-to-pdf`, que cria o link clicável →
   gate PyMuPDF: 1 página + link). Saída em `OFERTAS/<slug>/produto/PDF-DE-ENTREGA/`. Adicionar
-  oferta = bloco novo em `ofertas.json` (cores/fontes do `DESIGN-SYSTEM.md`; rodapé só `LeadGo`).
+  oferta = bloco novo em `ofertas.json` (cores/fontes do `DESIGN-SYSTEM.md`; rodapé só `<EMPRESA>`).
 - ⚠ A Wiven guarda o arquivo como **UUID** (`content-disposition: attachment` **sem** filename) —
   o nome do nosso arquivo não aparece no download de lá; o padrão de nome vale pro nosso lado.
 - Vale só pra oferta **Wiven**. GGCheckout e Cooud têm outro mecanismo.
@@ -505,7 +505,7 @@ Rota: `/panel/webhooks` (Integrações → Webhooks). Docs: `/panel/docs/v1/webh
 
 - **Segredo da conexão Wiven = o TOKEN que a Wiven mostra no webhook criado** (campo `token`). Cole esse token como secret da conexão; não gere outro. Token diferente = `secret_invalido:campo=token` e nenhuma venda entra.
 ### Regra do Trackeador: eventos a marcar em TODO checkout Wiven (06/10/2026, pedido da dona)
-Webhook do Trackeador (URL `https://adstrackeador.leadgo.dev/api/webhooks/sale/c/<conexão>`) com **13 eventos**:
+Webhook do Trackeador (URL `https://<subdominio>.<seu-dominio>/api/webhooks/sale/c/<conexão>`) com **13 eventos**:
 - **Transação:** Transação criada, Transação paga, Transação cancelada, Transação estornada, Transação contestada. (venda e o que acontece com ela)
 - **Chargeback e MED:** Chargeback recebido, Chargeback atualizado, MED recebido, MED atualizado. (disputa; o Trackeador trata como chargeback, nunca como venda paga)
 - **Sessão:** Sessão criada, Sessão atualizada, Dados do comprador atualizados, Carrinho abandonado. (liga o checkout ao clique pelo `_tkid` em `utm_medium` e mostra onde a pessoa desistiu, inclusive PIX gerado e não pago)
@@ -528,7 +528,7 @@ TRANSACTION_PAID · siteexpress.minhaempresa.com.br`). Produto diferente no webh
 
 ### Regra: TODO produto vendido entra nos DOIS webhooks, na mesma hora em que é criado (05/10 + 16/10/2026)
 Cada oferta tem **DOIS** webhooks: o da **área de membros** (`<site>/painel/api/webhooks/wiven`, título
-`<Oferta> — área de membros`) e o do **Trackeador** (`https://adstrackeador.leadgo.dev/api/webhooks/sale/c/<conexão>`,
+`<Oferta> — área de membros`) e o do **Trackeador** (`https://<subdominio>.<seu-dominio>/api/webhooks/sale/c/<conexão>`,
 título `Trackeador — <oferta>`). Produto novo da oferta — **principal, order bump, combo, upsell/downsell do
 funil, upgrade Essencial → Completo, produto irmão/cross, oferta de membro** — vai marcado nos **DOIS**,
 na mesma hora em que é criado. Checklist ao criar QUALQUER produto (não dar por pronto sem os 6):
@@ -575,7 +575,7 @@ e ninguém percebe (bug do Mapa do Tarot, 26/09/2026: 1ª cliente pagou e ficou 
 ### Liberar acesso (servidor da oferta)
 webhook "Transação paga" → validar `token` → evento pago → `client.email` minúsculo →
 productId de `orderItems` → SKUs → gravar e-mail→SKUs (volume persistente) → idempotente por
-`transaction.id` → mandar e-mail de acesso (Resend LeadGo, `no-reply@seudominio.com`, link
+`transaction.id` → mandar e-mail de acesso (Resend <EMPRESA>, `no-reply@<seu-dominio>`, link
 `<site>/painel`, "entre com o e-mail da compra") → responder 200. Erro no e-mail não derruba o
 webhook. A Wiven NÃO tem botão de reenviar e-mail no pedido: o e-mail de acesso é nosso.
 
@@ -621,7 +621,7 @@ o webhook responde 200 "Sucesso" com o comprador **sem acesso**.
 | 8 | **Mídia leve** | Banner ≤ ~400 KB, foto do produto ≤ ~250 KB (redimensionar + JPEG). Página que demora a pintar onde tem carrinho abandonado vira mais abandono | [[banner-checkout-sem-duplicata]] |
 | 9 | **Webhook: 1 por oferta/destino, SÓ com os produtos dela** | Oferta fora do mapa (`OFFERS`/`COMPLETO_OFFERS`) → webhook responde `no-known-*`, HTTP 200, log "Sucesso", **comprador sem acesso**. **Todos os produtos da oferta (principal, bump, combo, upsell, downsell, upgrade) marcados nos DOIS webhooks** (área de membros E Trackeador) — produto criado DEPOIS do webhook não entra sozinho (caso "Combo Domínio Total", 16/10) | [[acesso-pos-compra-verificar]] |
 | 10 | **Todo checkout do pacote completo** | Principal E upsell com banner d+m, imagem do item, contagem, imagem em **todo** bump | [[checkout-pacote-completo]] |
-| 11 | **Pós-compa fora da Wiven** | `/painel` externo + e-mail Resend `support@seudominio.com`, WhatsApp <seu-whatsapp>, reembolso no menor prazo que o gateway permitir | [[area-membros-externa-painel]] |
+| 11 | **Pós-compa fora da Wiven** | `/painel` externo + e-mail Resend `support@<seu-dominio>`, WhatsApp (XX) XXXXX-XXXX, reembolso no menor prazo que o gateway permitir | [[area-membros-externa-painel]] |
 
 **A parada que mais engana: o webhook responder 200 e dizer "Sucesso" não é prova de
 entrega.** Prova é a venda-teste (item "Prova obrigatória" acima).
@@ -632,4 +632,4 @@ entrega.** Prova é a venda-teste (item "Prova obrigatória" acima).
 - **Garantia sempre igual ao produto:** Brasil 7 dias · internacional 15 dias. Conferir no produto, no checkout e no selo.
 - **Entrega:** "Acesso imediato por e-mail".
 - **Banner:** gerado por `banner-checkout-gpt` (seta pequena pra baixo no rodapé da imagem, título, garantia, acesso imediato por e-mail, vitalício).
-- **Confiança:** ícone preto + texto (Privacidade · Compra segura · Conteúdo aprovado) quando o gateway permitir bloco/HTML na página; o estilo azul com cards é só do Hotmart; visual-base em `MODELOS/checkout-base/index.html`.
+- **Confiança:** ícone preto + texto (Privacidade · Compra segura · Conteúdo aprovado) quando o gateway permitir bloco/HTML na página; o estilo azul com cards é só do Hotmart; visual-base em `modelos/checkout-base/index.html`.

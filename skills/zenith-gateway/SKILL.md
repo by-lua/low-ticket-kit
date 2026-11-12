@@ -5,7 +5,7 @@ description: Integrar, avaliar ou decidir sobre a Zenith (Zenith Pay / Zenith Wo
 
 # Zenith — gateway global com CNPJ brasileiro
 
-Levantamento feito em 08/09/2026 na conta `contact@seudominio.com`. Números conferidos direto no painel e na doc oficial, não em material de venda.
+Levantamento feito em 08/09/2026 na conta `contact@<seu-dominio>`. Números conferidos direto no painel e na doc oficial, não em material de venda.
 
 ## Leia isto antes de integrar
 
@@ -33,15 +33,15 @@ O preço disso é alto e mal documentado. Antes de escrever qualquer linha de c�
 
 ## Acesso ao painel
 
-Perfil de browser persistente `zenith`, porta **9251**, já logado (sessão sobrevive a reboot).
+Perfil de browser persistente `zenith`, porta <PORTA>, já logado (sessão sobrevive a reboot).
 
 ```bash
 ~/.claude/bin/browsers.sh zenith          # sobe se estiver parado
 agent-browser --session zenith snapshot   # usa
 ```
 
-Credenciais em `~/.claude/.credentials.env`: `ZENITH_EMAIL`, `ZENITH_PASSWORD`.
-Carregue com `set -a; source ~/.claude/.credentials.env; set +a` e **sempre use a variável**, nunca o valor literal.
+Credenciais em `<COFRE-DE-CREDENCIAIS>`: `ZENITH_EMAIL`, `ZENITH_PASSWORD`.
+Carregue com `set -a; source <COFRE-DE-CREDENCIAIS>; set +a` e **sempre use a variável**, nunca o valor literal.
 
 **Login tem 2FA TOTP.** O fluxo automatizável vai até a tela do autenticador; o código de 6 dígitos precisa do humano. O Turnstile da Cloudflare valida sozinho nesse perfil — não trate como bloqueio.
 
@@ -170,7 +170,7 @@ sandbox exige chamado no suporte, com essa referência.
 O Chromium empacotado do `agent-browser` não passa no Turnstile do login:
 `Falha no Turnstile (600010)`, três tentativas, com desafio novo entre elas. Não
 é senha errada — as credenciais nem chegam a ser testadas. Use o perfil
-persistente do sistema (`~/.claude/bin/browsers.sh zenith`, porta 9251), onde a
+persistente do sistema (`~/.claude/bin/browsers.sh zenith`, porta <PORTA>), onde a
 sessão já fica logada.
 
 ## Credencial: onde ela realmente sai
@@ -197,7 +197,7 @@ Mesma tela também exibe canais (Canal A–E, PagSeguro International, Movantis)
 
 ## Routing real desta conta (produção, 08/09/2026)
 
-Lido em `/integracoes-zenith`, país por país. Isto é o que a conta `contact@seudominio.com` tem — não o catálogo da doc:
+Lido em `/integracoes-zenith`, país por país. Isto é o que a conta `contact@<seu-dominio>` tem — não o catálogo da doc:
 
 | País | Moeda | Métodos liberados |
 |---|---|---|
@@ -295,4 +295,4 @@ Pergunte o país-alvo e o meio de pagamento real do público:
 - **Garantia sempre igual ao produto:** Brasil 7 dias · internacional 15 dias. Conferir no produto, no checkout e no selo.
 - **Entrega:** "Acesso imediato por e-mail".
 - **Banner:** gerado por `banner-checkout-gpt` (seta pequena pra baixo no rodapé da imagem, título, garantia, acesso imediato por e-mail, vitalício).
-- **Confiança:** ícone preto + texto (Privacidade · Compra segura · Conteúdo aprovado) quando o gateway permitir bloco/HTML na página; o estilo azul com cards é só do Hotmart; visual-base em `MODELOS/checkout-base/index.html`.
+- **Confiança:** ícone preto + texto (Privacidade · Compra segura · Conteúdo aprovado) quando o gateway permitir bloco/HTML na página; o estilo azul com cards é só do Hotmart; visual-base em `modelos/checkout-base/index.html`.

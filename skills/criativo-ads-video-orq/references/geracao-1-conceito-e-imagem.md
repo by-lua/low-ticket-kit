@@ -209,7 +209,7 @@ decidiu sair antes de descobrir que não custa nada. Derrube a objeção primeir
 no corpo, depois mande a ação.
 
 ```
-Es gratis: tocá el botón acá abajo y descubrí tu número maestro ahora.
+Es gratis: tocá el botón acá abajo y descubrí tu <Oferta Exemplo> ahora.
 ```
 
 Não:
@@ -408,7 +408,7 @@ Portas fixas por perfil, registradas em `~/.agent-profiles/registry.conf`. Nunca
 
 Os perfis em `~/.agent-profiles/` são persistentes, então normalmente já abrem logados.
 
-Se o login cair: as credenciais estão em `~/.claude/.credentials.env` (permissão 600) — `set -a; source ~/.claude/.credentials.env; set +a`, e preencha pela variável, nunca com o valor literal. **O checkbox do Cloudflare pode ser clicado** — nesse Chromium ele valida normalmente. Só chame o usuário se falhar duas vezes seguidas ou se pedir 2FA.
+Se o login cair: as credenciais estão em `<COFRE-DE-CREDENCIAIS>` (permissão 600) — `set -a; source <COFRE-DE-CREDENCIAIS>; set +a`, e preencha pela variável, nunca com o valor literal. **O checkbox do Cloudflare pode ser clicado** — nesse Chromium ele valida normalmente. Só chame o usuário se falhar duas vezes seguidas ou se pedir 2FA.
 
 Passe `--session $G` (ChatGPT) ou `--session $H` (Hub) em **todo** comando. Sessão sem lane (`--session gpt`) é bug: vai parar no chat de outro Claude.
 

@@ -10,11 +10,11 @@ description: Etapa E8 do sistema LOW-TICKET — cadastra a oferta e as peças do
 
 ## Antes de tudo
 - **Fatos:** `_memoria/contas-e-codigos.md` (gateway, conta, código, perfil de browser). Nunca de cabeça.
-- **Gateway pelo mercado:** BR → `wiven-checkout` (conta **LeadGo**; a Wiven EmpresaB está aposentada) ·
+- **Gateway pelo mercado:** BR → `wiven-checkout` (conta **<EMPRESA>**; a Wiven EmpresaB está aposentada) ·
   EUR/USD → `mundpay` · global → `cooud-checkout` · LATAM → `zenith-gateway` · 250 Atividades → `ggcheckout-produto` ·
   Mercado Pago (Argentina/LATAM pelo nosso `checkout-premium`) → `mercadopago-checkout` ·
   Hotmart (quando a dona escolher) → `hotmart-produto-playwright`, seção "Rastreamento com o AdsTrackeador" obrigatória.
-- **Trackeador na organização certa (incidente 04-06/11/2026, Calendrier FR):** a oferta foi criada na Leadgo, quando era da WINX, e o funil ficou sem medir.
+- **Trackeador na organização certa (incidente 04-06/11/2026, <Oferta Exemplo>):** a oferta foi criada na <EMPRESA>, quando era da <ORGANIZAÇÃO>, e o funil ficou sem medir.
   Antes de `trackeador init/checkout create/dashboard create`, confirme com a dona **de qual organização é a oferta**. Passe sempre `--org <org>` e `--dashboard <oferta>`.
   Nunca crie dashboard só para destravar um comando. Relate tudo o que criou (dashboard, conexão, pixel, host).
 - **Gateway novo ou primeira vez nele? Leia a documentação OFICIAL antes de ligar** (dona, 06/11/2026). A Hotmart quebrou
@@ -38,12 +38,12 @@ description: Etapa E8 do sistema LOW-TICKET — cadastra a oferta e as peças do
    Nunca disparar venda de teste no webhook de produção do Trackeador (manda Purchase real pro Meta): usar o
    modo teste oficial ("Simular venda").
    **Segredo do webhook igual nos 2 destinos e lido de onde o gateway manda.** Na Hotmart é o hottok, no HEADER
-   `X-Hotmart-Hottok`. Servidor da área de membros que lê o token do corpo devolve 401 (Calendrier, 06/11/2026).
+   `X-Hotmart-Hottok`. Servidor da área de membros que lê o token do corpo devolve 401 (<Oferta Exemplo>, 06/11/2026).
    Prova obrigatória: um evento real com resposta 2xx nos dois destinos. No Trackeador: último aviso OK, sem
    `secret_invalido`. Sem essa prova, o checkout NÃO está pronto.
    **Link de checkout leva a sessão:** o botão sai com `utm_*` e o id da visita no campo que o gateway devolve
    (Hotmart: `sck`, até 30 caracteres, sem `_`; Wiven: `utm_medium`; Mundpay: `_tkid`). Confira no navegador.
-5. **Pedido só no clique em comprar:** a cobrança/pedido no gateway ou API é criado UMA vez, no botão de compra; escolher forma de pagamento ou marcar bump não cria nada. Detalhe em `checkout-premium`. Modelo: `MODELOS/checkout-base/index.html`.
+5. **Pedido só no clique em comprar:** a cobrança/pedido no gateway ou API é criado UMA vez, no botão de compra; escolher forma de pagamento ou marcar bump não cria nada. Detalhe em `checkout-premium`. Modelo: `modelos/checkout-base/index.html`.
 6. **Temporizador:** Timer SEMPRE regressivo e SEM memória (dona, 10/11/2026): conta de 10:00 até 00:00 e, se a pessoa sair e entrar de novo (ou recarregar), **reinicia em 10:00**. Vale pra qualquer checkout: o nosso premium, Wiven, Hotmart, Mundpay, Cooud, qualquer um. Nunca persistir o tempo (sem localStorage/cookie/sessão), nunca configurar prazo fixo/absoluto; no gateway, ligar o contador de reinício por visita.
 7. Suporte no checkout: e-mail e WhatsApp de `_memoria/empresa.md`; reembolso = menor prazo do gateway.
 8. Links de checkout nos botões da página e do popup (preço igual ao botão).

@@ -8,7 +8,7 @@ Decisão da dona em 11/11/2026: checkout próprio no estilo Hotmart. A pessoa en
 
 | Assunto | Skill dona | Regra |
 |---|---|---|
-| Visual, ordem da tela, copy, timer, garantia, selos, bump com foto, prova social, popup de saída | `checkout-premium` | Parte de `MODELOS/checkout-base/index.html` |
+| Visual, ordem da tela, copy, timer, garantia, selos, bump com foto, prova social, popup de saída | `checkout-premium` | Parte de `modelos/checkout-base/index.html` |
 | Conta, Product/Price, PaymentIntent, webhook, upsell de um clique, IVA, métodos disponíveis | `stripe-checkout` + `CHECKOUT-PROPRIO-STRIPE.md` | Valor sempre calculado no servidor |
 | Entrega e Trackeador | `stripe-checkout` §6 | Dois webhooks, idempotentes |
 
@@ -67,6 +67,6 @@ Num checkout de **um só país**, nada disto é necessário:
 
 1. Definir quem recebe o PayPal e conferir elegibilidade de Apple/Google Pay (domínio).
 2. Catálogo de preços por moeda em `skus.mjs` (preço do bump e do Lenormand pendentes).
-3. Páginas: copiar `MODELOS/checkout-base`, adaptar ao Payment Element e idioma.
+3. Páginas: copiar `modelos/checkout-base`, adaptar ao Payment Element e idioma.
 4. Backend: rota que calcula total e cria o Intent; webhooks de entrega e Trackeador.
 5. Teste completo em sandbox (lista da seção 4 de `CHECKOUT-PROPRIO-STRIPE.md`), depois publicar.

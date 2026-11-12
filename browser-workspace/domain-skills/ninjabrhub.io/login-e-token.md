@@ -27,7 +27,7 @@ Deslogado, o `localStorage` do Supabase volta `null` — o eval devolve `SEM TOK
 não um erro. Não confunda com problema de seletor.
 
 ```bash
-set -a; . ~/.claude/.credentials.env; set +a     # NINJABR_EMAIL / NINJABR_PASSWORD
+set -a; . <COFRE-DE-CREDENCIAIS>; set +a     # NINJABR_EMAIL / NINJABR_PASSWORD
 agent-browser --session hub-<lane> snapshot -i -c   # pega os refs
 agent-browser --session hub-<lane> focus @<ref EMAIL>
 agent-browser --session hub-<lane> keyboard inserttext "$NINJABR_EMAIL"

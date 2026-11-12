@@ -44,7 +44,7 @@ Origem original (não mexer): `LOW-TICKET/OFERTAS/mapa-do-tarot/instagram/storie
 Porta de imagem: **`gpt-imagem-playwright`** (ChatGPT, perfil `gpt`). Anexar no prompt, sempre:
 
 1. **A oferta inteira** — `OFERTAS/<slug>/STATUS.md` (o que é, preço, mercado, checkout).
-2. **O site no ar** (screenshot da página de vendas) — BR `<slug>.leadgo.dev` · PT `pt.…` ·
+2. **O site no ar** (screenshot da página de vendas) — BR `<slug>.<seu-dominio>` · PT `pt.…` ·
    ES `…` (domínio próprio). Manda o site **e** as cores: `DESIGN-SYSTEM.md` da oferta.
 3. **Imagens reais da entrega** — `produto/ENTREGA/` / capa + 2 a 3 páginas do PDF: capa + 2/3
    páginas reais, sempre (regra da dona 09/10). O mockup do rodapé mostra página real, nunca
@@ -58,7 +58,7 @@ entregável. Prompt sem aspas duplas no meio (regra da oferta: `keyboard insertt
 ## 3 · Publicar no Postiz (conta da oferta)
 
 Credenciais self-hosted ficam em `~/.postiz/credentials.json`
-(`apiUrl: https://postiz.empresa-b.com.br/api`, chave da API no `~/.claude.json` →
+(`apiUrl: https://<seu-dominio>/api`, chave da API no `~/.claude.json` →
 `projects…mcpServers.postiz.headers.Authorization`, gravada **sem** o prefixo `Bearer `).
 Se `postiz auth:status` falhar, regravar o arquivo e conferir de novo antes de qualquer coisa.
 

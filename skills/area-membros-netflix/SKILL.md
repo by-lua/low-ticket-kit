@@ -5,7 +5,7 @@ description: Entregável de área de membros estilo Netflix (hero + grid de mód
 
 # Área de Membros estilo Netflix
 
-> **REGRA FIXA DA DONA (repetida muitas vezes; não perguntar, não inventar alternativa):** área de membros é SEMPRE a NOSSA, externa, no site da oferta (`https://<site>/painel`). NUNCA a área de membros do checkout (Wiven, GG, Hotmart, Mundpay) nem página de obrigado genérica dele. Por isso: (1) redirect/página final pós-compra de TODA oferta e bump → `<site>/painel`; (2) link de entrega/e-mail do checkout, se existir → `<site>/painel`; (3) liberação por webhook no nosso servidor (e-mail → SKUs comprados); (4) e-mail de acesso pelo Resend da LeadGo (`no-reply@seudominio.com`) com o link do /painel e "entre com o e-mail da compra". Pronto só com venda-teste REAL provando: webhook liberou → login com o e-mail entra → e-mail chegou. Motivo: em 26/09/2026 a 1ª cliente do Mapa do Tarot BR pagou e não recebeu nada (webhook ignorava a venda, nenhum e-mail saía).
+> **REGRA FIXA DA DONA (repetida muitas vezes; não perguntar, não inventar alternativa):** área de membros é SEMPRE a NOSSA, externa, no site da oferta (`https://<site>/painel`). NUNCA a área de membros do checkout (Wiven, GG, Hotmart, Mundpay) nem página de obrigado genérica dele. Por isso: (1) redirect/página final pós-compra de TODA oferta e bump → `<site>/painel`; (2) link de entrega/e-mail do checkout, se existir → `<site>/painel`; (3) liberação por webhook no nosso servidor (e-mail → SKUs comprados); (4) e-mail de acesso pelo Resend da <EMPRESA> (`no-reply@<seu-dominio>`) com o link do /painel e "entre com o e-mail da compra". Pronto só com venda-teste REAL provando: webhook liberou → login com o e-mail entra → e-mail chegou. Motivo: em 26/09/2026 a 1ª cliente do Mapa do Tarot BR pagou e não recebeu nada (webhook ignorava a venda, nenhum e-mail saía).
 
 > **REGRA FIXA DA DONA (10/11/2026): OFERTA DE MEMBRO + UPSELL NO TOPO EM TODA ÁREA, SEJA QUAL FOR O CHECKOUT.** Até aqui só as ofertas na Wiven ganhavam oferta de membro; nas outras (Hotmart, Cakto, Mundpay, Cooud, GG, Stripe) o agente pulava. Agora vale para **todo checkout, toda oferta, todo mercado**. A área só fica pronta com as 3 peças abaixo **criadas no gateway, ligadas nos 2 webhooks (entrega + Trackeador) e provadas no /painel**:
 > 1. **Ofertas de membro** (tudo vendável que a pessoa ainda não tem: upgrade de tier, combo, cada bump/bônus, produto irmão): **internacional (EUR/USD etc.) = 50% off, piso 2,90; Brasil = regra antiga (30% off, piso R$ 9,90, preços fixos BR de `CONSTRUCAO.md`)**: seção "Ofertas de membro" abaixo. Oferta criada **no mesmo gateway que vende a oferta principal**, dentro do produto do item, nome "<item> - Área de Membros". O "como criar" fica na skill do checkout: `wiven-checkout`, `hotmart-produto-playwright`, `cakto-checkout`, `mundpay`, `cooud-checkout`, `ggcheckout-produto`, `stripe-checkout`.
@@ -16,11 +16,11 @@ description: Entregável de área de membros estilo Netflix (hero + grid de mód
 >
 > **Gateway do upsell da área:** **Stripe** (assinatura com `trial_period_days: 2`, conta Stripe da oferta; conta nova é criada como conta separada no login `stripe`, ver `stripe-checkout`). Se não der para usar Stripe naquela oferta (conta não ativada, país não suportado, etc.), usa **o mesmo checkout que vende a oferta principal** (Hotmart, Cakto etc.), numa oferta de assinatura própria com o preço de membro e o teste de 2 dias. Venda de Stripe libera o app pelo webhook da Stripe no nosso servidor (`checkout.session.completed` + `customer.subscription.*` → e-mail → SKU do app; cancelou/inadimplente = revoga) e entra no Trackeador (conexão Stripe da oferta).
 >
-> **Trackeador e checkout bem configurados (não negociável):** cada oferta de membro e o upsell da área têm botão com `data-tk-value`/`data-tk-currency` = preço de membro; cada produto/oferta novo entra nos 2 webhooks no mesmo dia; a conta de teste (`teste-*@leadgo.dev`) vê tudo aberto e não vê ofertas. Prova antes de "pronto": abrir cada link de checkout numa sessão separada (nome + preço certos), simular webhook por offerCode/preço, e logar com uma conta sem o item e outra com o item.
+> **Trackeador e checkout bem configurados (não negociável):** cada oferta de membro e o upsell da área têm botão com `data-tk-value`/`data-tk-currency` = preço de membro; cada produto/oferta novo entra nos 2 webhooks no mesmo dia; a conta de teste (`teste-*@<seu-dominio>`) vê tudo aberto e não vê ofertas. Prova antes de "pronto": abrir cada link de checkout numa sessão separada (nome + preço certos), simular webhook por offerCode/preço, e logar com uma conta sem o item e outra com o item.
 
 > **REGRA FIXA DA DONA (16/10/2026): FAVICON.** Toda oferta tem **favicon na PÁGINA e na ÁREA DE MEMBROS (`/painel`)**. Arquivos em `site/img/` (`favicon.svg` + `favicon-32.png` + `apple-touch-icon.png` — o servidor padrão só serve a raiz `index/terms/privacy` + as pastas `img/painel/assets`), com `<link rel="icon">` no `<head>` dos 4 arquivos (`index.html`, `terms.html`, `privacy.html`, `painel/index.html`).
 
-> **REGRA FIXA DA DONA (16/10/2026): aviso "material em atualização" some pro USUÁRIO DE TESTE.** O aviso **"MATERIAL BEING UPDATED"**, os contadores **"X of Y published"** e o **"Content being updated"** do leitor existem pro **cliente real** (a área sobe antes do conteúdo final) — **vale pra toda oferta**. Mas pro **usuário de teste** (e-mail `teste-*@leadgo.dev`, ex.: `teste@seudominio.com`) eles **NÃO aparecem** — a área mostra tudo **"Complete"**, sem contador, pra gravar criativo com a área "pronta". Padrão a copiar: helper **`isTestUser()` = `/^teste.*@leadgo\.dev$/i.test(getEmail())`** (o e-mail da compra vive no `localStorage`, ex. `gn_email`). Aplicar em 3 pontos: (a) esconder `#aviso-atualizacao` no boot do hub (`renderHub`); (b) no `cardHtml`: `cnt=''` e pill `Complete` se teste, senão o `In update`/`X of Y published`; (c) o "Content being updated" do leitor só quando **não** for teste.
+> **REGRA FIXA DA DONA (16/10/2026): aviso "material em atualização" some pro USUÁRIO DE TESTE.** O aviso **"MATERIAL BEING UPDATED"**, os contadores **"X of Y published"** e o **"Content being updated"** do leitor existem pro **cliente real** (a área sobe antes do conteúdo final) — **vale pra toda oferta**. Mas pro **usuário de teste** (e-mail `teste-*@<seu-dominio>`, ex.: `teste-xxxxxxxx@<seu-dominio>`) eles **NÃO aparecem** — a área mostra tudo **"Complete"**, sem contador, pra gravar criativo com a área "pronta". Padrão a copiar: helper **`isTestUser()` = `/^teste.*@<EMPRESA>\.dev$/i.test(getEmail())`** (o e-mail da compra vive no `localStorage`, ex. `gn_email`). Aplicar em 3 pontos: (a) esconder `#aviso-atualizacao` no boot do hub (`renderHub`); (b) no `cardHtml`: `cnt=''` e pill `Complete` se teste, senão o `In update`/`X of Y published`; (c) o "Content being updated" do leitor só quando **não** for teste.
 
 Entregável reutilizável: hub pós-compra onde o cliente vê, num grid de cards, o produto principal (sempre desbloqueado) e os add-ons/upsells (bloqueados até a compra). Layout de referência veio de um hub estilo "The Creator Pack" (hero grande + grid de thumbnails com badge). A referência é só de LAYOUT — hero + grid — não copie literalmente "N Módulos"/"N Aulas" se o produto não for um curso.
 
@@ -171,7 +171,7 @@ A área de membros entra SÓ com o e-mail usado na compra. Nenhum campo de senha
 entra só com e-mail. Se a tela de login tiver qualquer campo de senha, é bug — remover.
 
 ## Conta de teste padrão — TUDO liberado (regra da dona, 29/09/2026)
-Todo /painel nasce com a conta **teste@seudominio.com** (mesmo e-mail em TODO
+Todo /painel nasce com a conta **teste-xxxxxxxx@<seu-dominio>** (mesmo e-mail em TODO
 projeto e mercado), com todos os SKUs liberados: principal, tier completo, cada bump,
 combo e upsell/irmão. Ela entra só com o e-mail, como cliente normal. Serve pra aprovação de
 checkout (analista do gateway entra sem comprar) e pra gravação de tela dos criativos.
@@ -202,7 +202,7 @@ fixa de 10/11 no topo):
 
 Cálculo: Brasil `normal × 0,70`; internacional (desde 10/11/2026) `normal × 0,50`; arredonda pro final **,90** mais próximo abaixo.
 **Piso R$9,90:** se o preço com desconto ficar abaixo de 9,90, NÃO dá desconto — o
-item fica no preço normal. Nunca vender nada abaixo de 9,90. **Em EUR (Mundpay/Europa) o piso é €4,90** (decisão da dona 29/09). **Desde 10/11/2026 (dona): piso internacional (EUR/USD) = 2,90**; com 50% off, item que cairia abaixo de 2,90 sai a 2,90 (não volta ao preço cheio). Ex. Calendrier FR: Atlas 3,90 → 2,90 · 100 Gestes 4,90 → 2,90 · upgrade Essentiel→Complet 7,90 → 3,90.
+item fica no preço normal. Nunca vender nada abaixo de 9,90. **Em EUR (Mundpay/Europa) o piso é €4,90** (decisão da dona 29/09). **Desde 10/11/2026 (dona): piso internacional (EUR/USD) = 2,90**; com 50% off, item que cairia abaixo de 2,90 sai a 2,90 (não volta ao preço cheio). Ex. <Oferta Exemplo>: Atlas 3,90 → 2,90 · 100 Gestes 4,90 → 2,90 · upgrade Essentiel→Complet 7,90 → 3,90.
 
 Visual: preço normal riscado + preço de membro. Só mostra o que ela NÃO tem (ownership
 por SKU). Checkout: OFERTA criada dentro do produto já existente de cada item (bump → no produto do bump; upgrade → no produto principal), nunca produto novo, nome "<item> - Área de Membros", item
@@ -236,7 +236,7 @@ Aprendido na prática do Mapa do Tarot (desenho completo em
 - **Arte:** régua "boa × feia" em `imagens-pagina-low`; banner **1600×533 (desktop)** + **778×836
   (mobile)**, webp leve, **sem preço queimado** na arte.
 - **Camada ADITIVA:** não mexe nos cards/preços/checkouts atuais nem nos módulos do leitor.
-- **Oferta de membro pode ter ENTREGA EXTERNA** (ex.: Diário Astral / Mapa Astral = **AstroDicas**):
+- **Oferta de membro pode ter ENTREGA EXTERNA** (ex.: Diário Astral / Mapa Astral = **<Oferta Exemplo>**):
   não é módulo do `conteudo/` — o `audita.py` **não conta**; entra no MANIFESTO como "entrega
   externa" e o produto tem os **2 webhooks** próprios (entrega + Trackeador). A venda sai pelo botão
   (`data-tk-value`/`data-tk-currency`); IC pelo Trackeador, sem `fbq` manual (não duplicar).
@@ -366,7 +366,7 @@ CSS mínimo (topo do `main.wrap`, antes do primeiro `.section-title`):
 `.promo-banner{display:block;margin:0 0 6px;border-radius:18px;overflow:hidden;background:#0B1220;box-shadow:var(--shadow-md)}` +
 `:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}`.
 
-Referência no ar: `mapaseletricos.leadgo.dev/painel` (banner SiteExpress, commit `92ef1ec`).
+Referência no ar: `<subdominio>.<seu-dominio>/painel` (banner SiteExpress, commit `92ef1ec`).
 Arquivos-fonte em `OFERTAS/mapas-visuais-eletrotecnia/site/painel/assets/banner/`.
 
 ## Preço de venda na área de membros — SEMPRE mais barato que o checkout (dona, 10/10/2026)

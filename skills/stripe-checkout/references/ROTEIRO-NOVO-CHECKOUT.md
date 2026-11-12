@@ -49,7 +49,7 @@ PayPal **não entra no upsell de um clique** (assumir que não até provar) e s�
 
 ## 6. Tela e fluxo
 
-Tela pelo `checkout-premium` / modelo `MODELOS/checkout-internacional-hotmart/`. Extras internacionais (país, moeda, idioma, locale do Stripe Elements). Ver `MAPA-PREMIUM-x-STRIPE.md`, `MODELO-INTERNACIONAL-HOTMART.md` e `CHECKOUT-PROPRIO-STRIPE.md`.
+Tela pelo `checkout-premium` / modelo `modelos/checkout-internacional-hotmart/`. Extras internacionais (país, moeda, idioma, locale do Stripe Elements). Ver `MAPA-PREMIUM-x-STRIPE.md`, `MODELO-INTERNACIONAL-HOTMART.md` e `CHECKOUT-PROPRIO-STRIPE.md`.
 
 ## 7. Entrega, tracking e upsell
 
@@ -67,4 +67,4 @@ Rodar a lista da seção 4 de `CHECKOUT-PROPRIO-STRIPE.md` em sandbox da conta d
 
 ## 10. Implementação de referência e lições
 
-O modelo `MODELOS/checkout-internacional-hotmart/` é a implementação de referência (instâncias em `OFERTAS/<slug>/checkout/`). Lições: a CLI da Stripe serve de backend de teste (`stripe post|get --project-name <perfil>`) e `stripe listen --events ... --forward-to` entrega webhooks locais; as chaves de teste do sandbox estão no DOM da página de chaves (extrair sem imprimir e gravar no cofre); a captura PayPal só se prova com conta compradora sandbox.
+O modelo `modelos/checkout-internacional-hotmart/` é a implementação de referência (instâncias em `OFERTAS/<slug>/checkout/`). Lições: a CLI da Stripe serve de backend de teste (`stripe post|get --project-name <perfil>`) e `stripe listen --events ... --forward-to` entrega webhooks locais; as chaves de teste do sandbox estão no DOM da página de chaves (extrair sem imprimir e gravar no cofre); a captura PayPal só se prova com conta compradora sandbox.

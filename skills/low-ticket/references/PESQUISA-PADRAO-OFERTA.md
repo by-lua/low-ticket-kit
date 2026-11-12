@@ -3,7 +3,7 @@
 Nasceu do Atlas AR (23/10/2026). Antes dela a persona do Atlas estava só "herdada do BR"; com ela
 mudaram o termo do gancho, a unidade da peça, a cena da dor e o argumento de preço. **Toda oferta
 nova, e toda oferta que vai ganhar leva de criativo, passa por isto.** Referência viva:
-`OFERTAS/luciola-atlas-movimiento/pesquisa/BIBLIOTECA-AMPLIADA-2026-10-23.md` +
+`OFERTAS/<slug-da-oferta>/pesquisa/BIBLIOTECA-AMPLIADA-2026-10-23.md` +
 `DEMANDA-ORGANICA-2026-10-23.md`.
 
 Saída: 2 arquivos datados em `OFERTAS/<slug>/pesquisa/` + `PERSONA-E-ANGULOS.md` atualizado +

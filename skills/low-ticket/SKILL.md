@@ -1,12 +1,12 @@
 ---
 name: low-ticket
-description: Porta de entrada e orquestradora do sistema LOW-TICKET (ofertas low ticket da LeadGo). Abre a sessão (índice, métodos ativos, oferta) e diz qual etapa e qual filha usar, da escolha da oferta até a entrega pronta. Use SEMPRE no começo de qualquer trabalho low ticket — "abrir", "retomar", "onde paramos", "vou mexer na oferta X", "achei uma oferta na Biblioteca", "modelar essa oferta", página, entregável, área de membros, funil, checkout. Criativo de anúncio vai pra skill `criativo`.
+description: Porta de entrada e orquestradora do sistema LOW-TICKET (ofertas low ticket da <EMPRESA>). Abre a sessão (índice, métodos ativos, oferta) e diz qual etapa e qual filha usar, da escolha da oferta até a entrega pronta. Use SEMPRE no começo de qualquer trabalho low ticket — "abrir", "retomar", "onde paramos", "vou mexer na oferta X", "achei uma oferta na Biblioteca", "modelar essa oferta", página, entregável, área de membros, funil, checkout. Criativo de anúncio vai pra skill `criativo`.
 ---
 
 # low-ticket — orquestradora (índice)
 
 Esta skill só diz **a ordem e quem chamar**. Regra de execução mora na filha/skill da etapa.
-Raiz: `~/Documentos/TRAMPO/PROJETOS/WORKING/PROJETOS - INTERNOS/LOW-TICKET` (fonte desta skill: `_skills/low-ticket/`).
+Raiz: `<RAIZ-DO-KIT>` (fonte desta skill: `_skills/low-ticket/`).
 
 ## 1. Abrir — sempre primeiro
 
@@ -59,7 +59,7 @@ Tudo que a dona disser vai **literal** em `pesquisa/da-dona/<data>-<assunto>.md`
   → peças do original revisadas (manter/melhorar/cortar; acrescentar só onde sobrou objeção) → **planos e
   valores** (moeda do país) → bumps, upgrade, downsell/saída, upsell/microSaaS → **checkout** (gateway e conta
   conferidos em `_memoria/contas-e-codigos.md` · moeda · métodos de pagamento do país · modelo: checkout do
-  gateway ou `checkout-premium` (padrão = visual do checkout Chave Mestra) · o que aparece nele: banner, bumps, garantia 7d BR/15d fora, timer 10 min, ícone preto+texto Privacidade/Compra segura/Conteúdo aprovado na caixa de segurança) → **plano da página** (títulos,
+  gateway ou `checkout-premium` (padrão = visual do checkout <Oferta Exemplo>) · o que aparece nele: banner, bumps, garantia 7d BR/15d fora, timer 10 min, ícone preto+texto Privacidade/Compra segura/Conteúdo aprovado na caixa de segurança) → **plano da página** (títulos,
   seções manter/reordenar/cortar/acrescentar, popup, CTAs, desktop+mobile).
 - 🛑 Mostro tudo por extenso e pergunto cada pendência (valores, checkout, garantia, bônus, título).
 - ✅ `OFERTA.md` + `FUNIL.md` com "aprovada em AAAA-MM-DD" · `CLAUDE.md` + `STATUS.md` da oferta.
@@ -116,14 +116,14 @@ Regras:
 ## 3. Regras que valem em toda etapa (só estas; o resto mora na filha)
 - **Fatos antes de cadastrar:** gateway, conta, código, webhook, domínio e **organização do Trackeador** — conferir no
   índice (seção Fatos). Nunca de cabeça. Todo comando `trackeador` que cria algo leva `--org` explícito.
-  Incidente Calendrier FR (04-06/11/2026): a oferta nasceu na Leadgo, não na WINX, e a venda chegou órfã.
+  Incidente <Oferta Exemplo> (04-06/11/2026): a oferta nasceu na <EMPRESA>, não na <ORGANIZAÇÃO>, e a venda chegou órfã.
 - **Webhook de medição (Trackeador) com TODOS os eventos, em qualquer checkout** (Hotmart, Wiven, Mundpay, Zenith,
   GG, próprio): aprovada, recusada/cancelada, expirada, boleto/aguardando, atrasada, abandono, reembolso, chargeback.
   Só "aprovada" = tentativas somem do Trackeador. Regra da dona 09/11/2026. Entrega (`/painel`) segue só o que libera/tira acesso.
 - **IC só quando vai pro checkout, no pixel Meta e no Trackeador (dona, 10/11/2026):** botão que só abre o popup Básico→Completo = 0 IC; clique que leva ao checkout (Completo barato ou Básico no popup, Completo ou saída na página) = 1 IC. Gate obrigatório antes de entregar pixel: `low-gates-no-ar` › regra fixa do topo + Gate 1.
-- **Funil de upsell e order bump em TODA oferta de entrada (dona, 10/11/2026):** Básico, **Completo, Upgrade e Saída/popup** (e combos) têm cada um **funil de vendas ATIVO** (entrada → upsell → downsell → obrigado) e os **mesmos order bumps** no checkout, **inclusive a oferta de Saída**. O funil serve **cartão, PayPal, Apple Pay e Google Pay** (boleto/Pix desligados). Antes do tráfego e todo dia de tráfego: conferir pela API/tela da Hotmart (status do funil, bumps no checkout de cada `off=`, planos do app). Procedimento e script: `_skills/low-upsell-app/references/CHECKLIST-UPSELL-QUALQUER-OFERTA.md` § « Verificação POR OFERTA DE ENTRADA ». Caso: Calendrier FR, funil do Complet achado desligado em 10/11.
+- **Funil de upsell e order bump em TODA oferta de entrada (dona, 10/11/2026):** Básico, **Completo, Upgrade e Saída/popup** (e combos) têm cada um **funil de vendas ATIVO** (entrada → upsell → downsell → obrigado) e os **mesmos order bumps** no checkout, **inclusive a oferta de Saída**. O funil serve **cartão, PayPal, Apple Pay e Google Pay** (boleto/Pix desligados). Antes do tráfego e todo dia de tráfego: conferir pela API/tela da Hotmart (status do funil, bumps no checkout de cada `off=`, planos do app). Procedimento e script: `_skills/low-upsell-app/references/CHECKLIST-UPSELL-QUALQUER-OFERTA.md` § « Verificação POR OFERTA DE ENTRADA ». Caso: <Oferta Exemplo>, funil do Complet achado desligado em 10/11.
 - **Checkout (dona, 10/11/2026) — depende do tipo, nova ou existente:**
-  - **Checkout PRÓPRIO / premium** (a oferta usa `checkout-premium`): sai pronto no modelo `MODELOS/checkout-base/index.html` (cópia da Chave Mestra) — timer 10 min regressivo que reinicia a cada entrada · selos "acesso imediato por e-mail" (cinza, esquerda) + garantia (verde: BR 7 dias, internacional 15) · seta pequena no rodapé do banner · confiança em ícone preto + texto · fluxo e-mail → bumps → forma de pagamento → botão de compra · total recalcula ao marcar bump · **pedido/cobrança criado UMA vez, só no clique em comprar**.
+  - **Checkout PRÓPRIO / premium** (a oferta usa `checkout-premium`): sai pronto no modelo `modelos/checkout-base/index.html` (cópia da <Oferta Exemplo>) — timer 10 min regressivo que reinicia a cada entrada · selos "acesso imediato por e-mail" (cinza, esquerda) + garantia (verde: BR 7 dias, internacional 15) · seta pequena no rodapé do banner · confiança em ícone preto + texto · fluxo e-mail → bumps → forma de pagamento → botão de compra · total recalcula ao marcar bump · **pedido/cobrança criado UMA vez, só no clique em comprar**.
   - **Checkout de gateway** (Hotmart, Wiven, Mundpay, Cooud, Zenith, GG, Cakto, Stripe): NÃO é o modelo premium. Aplica o que o gateway permitir do mesmo padrão (timer 10 min que reinicia, texto do timer, garantia 7/15, acesso imediato por e-mail, banner) seguindo o bloco "Padrão de checkout da casa" da skill do gateway; o que o gateway não deixar configurar, avisar a dona. Azul de confiança é só Hotmart.
 - **Tráfego só depois do `low-gates-no-ar` inteiro**, inclusive o aviso de venda 2xx nos 2 destinos e o link
   do checkout levando a sessão. "Configurei" não é prova.

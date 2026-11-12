@@ -51,7 +51,7 @@ S=gpt-<lane>                                # use $S em TODO comando daqui pra f
 
 Nome da lane = a tarefa (`cozinha`, `espanhol`, `tarot`), nunca número. Protocolo completo em `~/.claude/bin/LANES.md`.
 
-Perfil persistente `~/.agent-profiles/gpt`, porta 9222, já logado. Nunca use `agent-browser open` (trava no Cloudflare) nem `close --all` (mata as abas das outras lanes). Ao terminar: `~/.claude/bin/lane.sh drop gpt <lane>`.
+Perfil persistente `~/.agent-profiles/gpt`, porta <PORTA>, já logado. Nunca use `agent-browser open` (trava no Cloudflare) nem `close --all` (mata as abas das outras lanes). Ao terminar: `~/.claude/bin/lane.sh drop gpt <lane>`.
 
 ### ⚠️ Contas e perfis GPT — ATUALIZADO 04/11/2026 (vale sobre a tabela antiga abaixo)
 Fonte da verdade: `~/.claude/bin/gpt-contas.lst` (o `gpt-livre.sh` lê de lá).
@@ -159,11 +159,11 @@ agent-browser --session $S snapshot -i -c | grep -iE "Novo chat|Projetos|Fixada"
 >    script velho sem aspas — revogada. Script que quebrar com espaço: corrija (aspas, `sys.argv`),
 >    regra global em `~/.claude/CLAUDE.md` → "Caminho com espaço".
 >
-> **`gpt-luciola` (9297, conta da Luciola):** só dentro do projeto Dona. Desde 09/11/2026 o
-> `gerar-1-imagem.sh` força a URL do projeto Dona sempre que `GPT_S` começa com `gpt-luciola`
-> (nunca abre chatgpt.com raiz). Uso: `~/.claude/bin/lane.sh take gpt-luciola <lane>` e depois
-> `export GPT_S=gpt-luciola-<lane> GPT_TAB=<lane>`. Se ficar em
-> "Um momento…" (Cloudflare) por >30 s: `~/.claude/bin/browsers.sh gpt-luciola` (sobe de novo) e repete.
+> **`gpt-<SÓCIO>` (9297, conta da <SÓCIO>):** só dentro do projeto Dona. Desde 09/11/2026 o
+> `gerar-1-imagem.sh` força a URL do projeto Dona sempre que `GPT_S` começa com `gpt-<SÓCIO>`
+> (nunca abre chatgpt.com raiz). Uso: `~/.claude/bin/lane.sh take gpt-<SÓCIO> <lane>` e depois
+> `export GPT_S=gpt-<SÓCIO>-<lane> GPT_TAB=<lane>`. Se ficar em
+> "Um momento…" (Cloudflare) por >30 s: `~/.claude/bin/browsers.sh gpt-<SÓCIO>` (sobe de novo) e repete.
 >
 > **`gpt-livre.sh` pode devolver perfil com 1 aba `/c/` ocupada** (a checagem dele só descarta
 > com >1). Sintoma: você anexa e a tela mostra outro chat, com prompt de outra oferta. Antes de
@@ -195,7 +195,7 @@ Se aparecer botão "Entrar", a conta caiu: peça ao usuário para logar naquela 
 
 ## Fluxo
 
-> **⚠️ 04/11/2026 — a MEMÓRIA da conta contamina chat novo (Calendrier Magique).** Depois de um pedido Art Nouveau,
+> **⚠️ 04/11/2026 — a MEMÓRIA da conta contamina chat novo (<Oferta Exemplo>).** Depois de um pedido Art Nouveau,
 > 5 gerações seguidas em chats novos saíram Art Nouveau mesmo com o prompt mandando manter os elementos da referência.
 > **Dona (04/11/2026): usar o chat NORMAL, nunca o temporário/anônimo.** Contra a contaminação: chat novo + prompt dizendo
 > explicitamente o estilo a manter e o que NÃO usar (ex.: "no Art Nouveau muse"), e conferir a 1ª imagem antes do lote.
@@ -926,7 +926,7 @@ enquadramento. **Existe cena aprovada com a persona? Anexa.**
 
 > **⚠️ 05/11/2026 — quando a REFERÊNCIA anexada já é uma geração anterior do GPT (não
 > foto original), ela nasce com a MESMA dimensão da geração nova, e o filtro por
-> `naturalWidth` sozinho NÃO distingue uma da outra (Calendrier Magique FR: baixei a
+> `naturalWidth` sozinho NÃO distingue uma da outra (<Oferta Exemplo> FR: baixei a
 > referência de novo, achando que era a cena sem o objeto — hash diferente por
 > recompressão de blob, mas o conteúdo era o antigo).** A regra "geração é sempre mais
 > larga que a ref" (`naturalWidth>1020`) só vale quando a ref é foto original >1000px;

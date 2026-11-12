@@ -39,7 +39,7 @@ Produto "vibe"/não-material (ex.: número mestre): UGC pode ser "entrevista de 
 
 Toda oferta com criativo em produção mantém `criativos/ASSETS-MAPA.md` (o que existe em
 `MATERIAL-ENTREGAVEL/`, `FLOW-TAKES/`, `BROLL-3D/`, card CTA pronto, trilha). Ler primeiro e
-atualizar na hora. Se não existir, criar antes do 1º vídeo (exemplo: `OFERTAS/luciola-atlas-movimiento/criativos/ASSETS-MAPA.md`).
+atualizar na hora. Se não existir, criar antes do 1º vídeo (exemplo: `OFERTAS/<slug-da-oferta>/criativos/ASSETS-MAPA.md`).
 
 ```bash
 find criativos/MATERIAL-ENTREGAVEL -iname "*.mp4"   # gravações reais de tela (sempre a 1ª parada, usar TODAS)

@@ -11,9 +11,9 @@ Automação de browser pra cadastro e configuração de produto na Hotmart (`app
 
 > **REGRA FIXA DA DONA (04/11/2026) — ÁREA DE MEMBROS SEMPRE EXTERNA E PRÓPRIA (`/painel`), EM QUALQUER CHECKOUT.** O padrão de todo produto/oferta é entregar pela área externa da oferta (`https://<oferta>/painel`), nunca pelo Hotmart Club nem pela área nativa do gateway. Hotmart Club só se a dona pedir **explicitamente** ("quero no Club"). Configure a área externa **desde o cadastro**; produto que nasce no Club é exceção, não default. A área externa é vinculada pelo fluxo abaixo e a URL de acesso é a mesma nos produtos principal, bumps, combos, upsells e upgrades.
 >
-> **REGRA FIXA DA DONA (16/10/2026) — TODO produto/oferta criado entra nos DOIS webhooks NO MESMO DIA.** Vale pra toda peça: principal · **order bump** · combo · upsell/downsell · **upgrade Essencial → Completo** · produto irmão/cross · oferta de membro. Cada produto novo, na MESMA sessão do cadastro, marcado em (1) **webhook de ENTREGA** (`<site>/painel/api/webhooks/hotmart`) e (2) **webhook de MEDIÇÃO** (Trackeador, `https://adstrackeador.leadgo.dev/api/webhooks/sale/c/<conexão>`) — "todos os produtos" OFF. Produto fora do webhook = a venda some do Trackeador/atribuição e/ou o comprador fica sem acesso, **sem erro em lugar nenhum**. Padrão/incidente (order bump "Combo Domínio Total", Jiu-Jitsu, 16/10): `wiven-checkout` §6.
+> **REGRA FIXA DA DONA (16/10/2026) — TODO produto/oferta criado entra nos DOIS webhooks NO MESMO DIA.** Vale pra toda peça: principal · **order bump** · combo · upsell/downsell · **upgrade Essencial → Completo** · produto irmão/cross · oferta de membro. Cada produto novo, na MESMA sessão do cadastro, marcado em (1) **webhook de ENTREGA** (`<site>/painel/api/webhooks/hotmart`) e (2) **webhook de MEDIÇÃO** (Trackeador, `https://<subdominio>.<seu-dominio>/api/webhooks/sale/c/<conexão>`) — "todos os produtos" OFF. Produto fora do webhook = a venda some do Trackeador/atribuição e/ou o comprador fica sem acesso, **sem erro em lugar nenhum**. Padrão/incidente (order bump "Combo Domínio Total", Jiu-Jitsu, 16/10): `wiven-checkout` §6.
 
-> **REGRA FIXA DA DONA (09/11/2026) — TODOS OS EVENTOS NO WEBHOOK DE MEDIÇÃO, EM QUALQUER CHECKOUT.** Webhook do Trackeador (`adstrackeador.leadgo.dev/api/webhooks/sale/c/<conexão>`) sai com **"Todos"** marcado na lista "Eventos para enviar" (topo da lista). Nunca só "Compra aprovada": sem os outros a Hotmart não manda recusa, expirada, boleto, atrasada nem abandono, e o Trackeador perde as tentativas (o CLI avisa "conexão só recebe venda aprovada"). Nomes na Hotmart: **recusada** chega como "Compra cancelada"; **boleto impresso** = "Aguardando pagamento". Ao editar webhook antigo, conferir e completar. Webhook de **entrega** (`/painel`): aprovada + cancelada/reembolsada/chargeback; **se tiver produto de assinatura (app), também Cancelamento de Assinatura, Compra atrasada e Compra expirada**, senão quem cancela ou para de pagar fica com acesso pra sempre (caso Calendrier, 09/11). Primeiro caso: Calendrier Magique FR.
+> **REGRA FIXA DA DONA (09/11/2026) — TODOS OS EVENTOS NO WEBHOOK DE MEDIÇÃO, EM QUALQUER CHECKOUT.** Webhook do Trackeador (`<subdominio>.<seu-dominio>/api/webhooks/sale/c/<conexão>`) sai com **"Todos"** marcado na lista "Eventos para enviar" (topo da lista). Nunca só "Compra aprovada": sem os outros a Hotmart não manda recusa, expirada, boleto, atrasada nem abandono, e o Trackeador perde as tentativas (o CLI avisa "conexão só recebe venda aprovada"). Nomes na Hotmart: **recusada** chega como "Compra cancelada"; **boleto impresso** = "Aguardando pagamento". Ao editar webhook antigo, conferir e completar. Webhook de **entrega** (`/painel`): aprovada + cancelada/reembolsada/chargeback; **se tiver produto de assinatura (app), também Cancelamento de Assinatura, Compra atrasada e Compra expirada**, senão quem cancela ou para de pagar fica com acesso pra sempre (caso <Oferta Exemplo>, 09/11). Primeiro caso: <Oferta Exemplo> FR.
 
 ## Layout padrão do checkout — regra da dona (04/11/2026)
 
@@ -29,7 +29,7 @@ Automação de browser pra cadastro e configuração de produto na Hotmart (`app
 - **Por padrão o comprador NÃO vê imposto na hora da venda: a dona absorve.** Em todo produto/oferta novo, no cadastro de precificação/checkout, deixar a cobrança/exibição de imposto ao comprador **DESLIGADA** (nada de imposto somado ao preço no checkout). O preço que o comprador vê é o preço final.
 - **Onde fica:** `Precificação e ofertas → ⋮ → Editar` do **preço base** → checkbox **"Incluir impostos no preço"** (LIGADO = imposto embutido, comprador paga só o valor do produto). Ofertas secundárias (bumps/upgrade/saída do mesmo produto) não têm o checkbox: herdam do preço base. "Coleta de impostos" é regra fiscal (quem coleta), não mexer. Checkbox pode demorar ~14 s pra renderizar na edição.
 - Produto já criado com imposto ativo ao comprador: abrir Precificação/checkout, desligar e conferir no checkout **público** que o total não mudou. Só ligar se a dona pedir explicitamente.
-- Pedido literal: *“por padrão eu não quero que o cliente veja o imposto na hora da venda, eu absorvo ele”*. Primeiro caso: Calendrier Magique FR.
+- Pedido literal: *“por padrão eu não quero que o cliente veja o imposto na hora da venda, eu absorvo ele”*. Primeiro caso: <Oferta Exemplo> FR.
 
 ## Perfil
 
@@ -40,7 +40,7 @@ echo "hotmart <porta_livre> https://app-vlc.hotmart.com/login" >> ~/.agent-profi
 ~/.claude/bin/browsers.sh hotmart
 ```
 
-Credenciais em `~/.claude/.credentials.env` (`HOTMART_ACCOUNT`, `HOTMART_URL`, `HOTMART_EMAIL`, `HOTMART_PASSWORD`, `HOTMART_HOTTOK`). Login pede 2FA por email — o humano digita o código na janela, você só confirma que a sessão avançou.
+Credenciais em `<COFRE-DE-CREDENCIAIS>` (`HOTMART_ACCOUNT`, `HOTMART_URL`, `HOTMART_EMAIL`, `HOTMART_PASSWORD`, `HOTMART_HOTTOK`). Login pede 2FA por email — o humano digita o código na janela, você só confirma que a sessão avançou.
 
 ```bash
 agent-browser --session hotmart snapshot -i -c   # confere se logou
@@ -121,17 +121,17 @@ Webhook **não fica dentro do produto** — é ferramenta de conta, em `Ferramen
 Array.from(document.querySelectorAll('input')).filter(i=>i.type==='text' && i.value.length>10).pop().value
 ```
 
-Salve em `~/.claude/.credentials.env` como `HOTMART_HOTTOK` — nunca em texto solto na conversa nem em screenshot.
+Salve em `<COFRE-DE-CREDENCIAIS>` como `HOTMART_HOTTOK` — nunca em texto solto na conversa nem em screenshot.
 
 ## Rastreamento com o AdsTrackeador — erros que já custaram venda (06/11/2026)
 
-Caso real: Calendrier Magique FR. A primeira venda chegou órfã (sem campanha) e os avisos da Hotmart foram recusados com 401. No mesmo dia o Tarot FR estava com o mesmo erro de token. Não repita:
+Caso real: <Oferta Exemplo> FR. A primeira venda chegou órfã (sem campanha) e os avisos da Hotmart foram recusados com 401. No mesmo dia o Tarot FR estava com o mesmo erro de token. Não repita:
 
 1. **O hottok é UM por conta Hotmart e vai no HEADER `X-Hotmart-Hottok`, não no corpo.** Cole exatamente esse valor como segredo de TODA conexão do Trackeador daquela conta e de todo servidor de entrega (`/painel/api/webhooks/hotmart`). Um servidor que procura o token no corpo devolve 401 e o comprador fica sem acesso. Trocar o segredo desliga a CAPI da conexão: religue de propósito.
 2. **Prove que o aviso chega antes do tráfego**, sem venda de teste em conexão de produção. Qualquer evento real conta como prova, inclusive "Abandono de carrinho". Confira `trackeador doctor` / Config → Rastreamento (último aviso OK, nunca `secret_invalido:header=x-hotmart-hottok`) e o log do servidor de entrega (2xx). Se der erro, reenvie pelo histórico de webhooks da Hotmart depois de corrigir o token.
 3. **A sessão viaja no link, não no `_tkid`.** A Hotmart descarta `_tkid`. Ela só devolve no webhook `data.purchase.origin.sck`, `src` e `xcod`. O link do site tem que levar o id da visita em `sck` (e `xcod`), além das `utm_*`. **Limite da Hotmart: até 30 caracteres, sem underscore**, e o id cru (UUID) tem 36: use o formato compacto que o Trackeador gera; nunca corte o id à mão. Fonte: suportehotmart.zendesk.com/hc/pt-br/articles/216441797. O comportamento padrão está sendo levado ao pixel/preset (PR fix/hotmart-sck-no-produto). Até ele entrar, confira o link no navegador (botão → `pay.hotmart.com/...&sck=...`).
 4. **Nunca mapeie `sck` como `utm_campaign`** na conexão. Venda feita pela página de vendas da própria Hotmart chega com `sck=HOTMART_SITE`. Isso suja a campanha e desliga a recuperação pelo clique (caso Número Mestre LATAM, 31/10).
-5. **Não ponha `sck`/`xcod` à mão no código do site.** O pixel do Trackeador (depois do PR #488) põe o id em formato curto (`tkh…`, ≤ 30 caracteres). Linha própria que faz `searchParams.set("sck", <uuid>)` SOBRESCREVE o formato curto pelo UUID de 36 caracteres; apague (Calendrier tem uma dessas, do remendo de 06/11). O site pode usar `src` para rótulo próprio.
+5. **Não ponha `sck`/`xcod` à mão no código do site.** O pixel do Trackeador (depois do PR #488) põe o id em formato curto (`tkh…`, ≤ 30 caracteres). Linha própria que faz `searchParams.set("sck", <uuid>)` SOBRESCREVE o formato curto pelo UUID de 36 caracteres; apague (<Oferta Exemplo> tem uma dessas, do remendo de 06/11). O site pode usar `src` para rótulo próprio.
 6. **Antes de mudar algo de Hotmart no Trackeador, leia a doc oficial** (developers.hotmart.com e help.hotmart.com). Se ela divergir do preset, corrija o preset no repo (skill `trackeador` § "Antes de ligar gateway/checkout"), nunca só a conexão da oferta.
 7. **Venda pela página da própria Hotmart não passa pelo nosso site**: sai sem rastreio. Anúncio e link de divulgação apontam para a NOSSA página, nunca para `go.hotmart.com`/página Hotmart.
 
@@ -223,7 +223,7 @@ Vale pra todo produto (principal, bump, upsell, popup) e todo mercado. Substitui
 
 **A config é POR PRODUTO**, não da conta: `/products/manage/<id>/tools/checkout/settings`. As ofertas (`off=`) do mesmo produto herdam. Oferta com bump = repetir nos 3 produtos (principal + cada bump) e conferir que o resumo "Formas de pagamento e cupom" subiu de "(+2)" pra "(+15)".
 
-**Roteiro de clique que funcionou (09/11/2026, Calendrier Magique, produtos 8888363/8888432/8888448):**
+**Roteiro de clique que funcionou (09/11/2026, <Oferta Exemplo>, produtos 8888363/8888432/8888448):**
 1. Abrir a URL acima, esperar ~9 s. Abrir o card **"Formas de pagamento e cupom"** pelo lápis (localizar por texto, não por `@ref`: a ordem dos botões muda de produto pra produto e um clique errado abre "Dados solicitados" ou "Ferramentas").
 2. Dois cards: **Principais** e **Parceiras**. Cada lápis abre um modal com toggles. Clicar sempre com `agent-browser mouse move/down/up` nas **coordenadas lidas do DOM naquele instante** (`getBoundingClientRect` do toggle, depois de `scrollIntoView`). A lista rola: coordenada guardada de antes erra o toggle e fecha o modal.
 3. Fechar o modal pelo X (canto superior direito) e depois clicar **"Salvar alterações"**, cujo `y` **muda** conforme a janela (já foi 789 e 813): ler do DOM também. Se o botão estiver cinza, nada mudou. **Os toggles do modal só valem depois do "Salvar alterações"** da tela de trás; fechar sem salvar descarta.
@@ -235,7 +235,7 @@ Vale pra todo produto (principal, bump, upsell, popup) e todo mercado. Substitui
 - **Formas de pagamento do funil:** cartão + PayPal + Apple Pay ligados; boleto e Pix desligados; Google Pay não é campo do funil — conferir liberado no produto (`tools/checkout/settings`). O produto do app tem de ter as mesmas formas do principal (resumo « (+15) »).
 - **Funil pode estar desligado sem aviso** (a Hotmart não registra quem/quando): no FR o funil do Complet estava Inativo em 10/11. Ligar = switch « Ativar » na lista de funis (confirmar com a dona antes) e reconferir pela API.
 - **Order bump de cada oferta:** abrir `https://pay.hotmart.com/<código do produto>?checkoutMode=10&off=<oferta>` e procurar « Aproveite e compre junto » (rolar até o bloco para o print). Tabela de planos do app: clicar « Precificação » no menu do produto (abrir a URL direto não renderiza); `publique` sem teste e `upsell-trial` com **2 dias**, preço padrão do país.
-- **Login:** se cair em `sso.hotmart.com` com campos vazios, `agent-browser fill` com `$HOTMART_EMAIL`/`$HOTMART_PASSWORD` de `~/.claude/.credentials.env` e clicar « Entrar » (em 10/11 entrou sem 2FA).
+- **Login:** se cair em `sso.hotmart.com` com campos vazios, `agent-browser fill` com `$HOTMART_EMAIL`/`$HOTMART_PASSWORD` de `<COFRE-DE-CREDENCIAIS>` e clicar « Entrar » (em 10/11 entrou sem 2FA).
 
 ## Cronômetro do checkout: tipo "Quantidade de tempo" é por visitante
 
@@ -330,4 +330,4 @@ validar com `POST /api/session` antes de entregar a credencial pra Hotmart.
 - **Garantia sempre igual ao produto:** Brasil 7 dias · internacional 15 dias. Conferir no produto, no checkout e no selo.
 - **Entrega:** "Acesso imediato por e-mail".
 - **Banner:** gerado por `banner-checkout-gpt` (seta pequena pra baixo no rodapé da imagem, título, garantia, acesso imediato por e-mail, vitalício).
-- **Confiança no estilo azul com cards (Privacidade · Compra segura · Conteúdo aprovado) é do Hotmart; no premium é ícone preto + texto, quando o gateway permitir bloco/HTML na página; visual-base em `MODELOS/checkout-base/index.html`.
+- **Confiança no estilo azul com cards (Privacidade · Compra segura · Conteúdo aprovado) é do Hotmart; no premium é ícone preto + texto, quando o gateway permitir bloco/HTML na página; visual-base em `modelos/checkout-base/index.html`.

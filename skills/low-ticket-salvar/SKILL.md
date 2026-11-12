@@ -5,7 +5,7 @@ description: Fecho de sessão do sistema LOW-TICKET — grava o estado antes de 
 
 # low-ticket-salvar — fecho de sessão
 
-Raiz: `~/Documentos/TRAMPO/PROJETOS/WORKING/PROJETOS - INTERNOS/LOW-TICKET`. Cirúrgico: só a linha nova, nunca reformatar arquivo.
+Raiz: `<RAIZ-DO-KIT>`. Cirúrgico: só a linha nova, nunca reformatar arquivo.
 
 1. **Oferta mexida** → `OFERTAS/<slug>/STATUS.md`: "Atualizado em", etapa atual (E1–E9 / C1–C7), o que ficou pronto
    (com prova: arquivo, link, saída de gate), pendências da dona, próximo passo.

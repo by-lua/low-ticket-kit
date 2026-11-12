@@ -37,7 +37,7 @@ export async function POST(request: Request) {
   if (!tieneCore) {
     // Sin el núcleo comprado, esto no es "sumar un add-on" — es un checkout
     // normal, que ya existe en /checkout. No duplicar ese camino acá.
-    return NextResponse.json({ error: "Comprá primero El Número Maestro." }, { status: 403 });
+    return NextResponse.json({ error: "Comprá primero El <Oferta Exemplo>." }, { status: 403 });
   }
 
   const yaComprados = new Set(aprobadas.flatMap((o) => orderSkus(o)));

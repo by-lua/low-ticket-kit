@@ -702,7 +702,7 @@ diferentes.
 
 Implementação de referência (Remotion, com os quatro layouts e o menu de estilos
 já escritos): `marketing/anuncios/2026-09-02-BR-gratis/editor/` no projeto
-AstroDicas — `src/layouts.ts` (retângulo + zoom + foco de cada layout),
+<Oferta Exemplo> — `src/layouts.ts` (retângulo + zoom + foco de cada layout),
 `src/estilos.ts` (o menu), `src/MeioAMeio.tsx` (a viagem entre layouts).
 
 A troca **não é fade**: os dois vídeos viajam entre os retângulos, então a pessoa

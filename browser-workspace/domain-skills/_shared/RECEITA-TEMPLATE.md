@@ -19,7 +19,7 @@ So grave o que voce EXECUTOU e viu funcionar. Nada de suposicao.
 ## Pre-condicoes
 
 - perfil no ar: `~/.claude/bin/browsers.sh <perfil>`
-- login: ja persistido no perfil / precisa `$VAR_DE_SENHA` do `~/.claude/.credentials.env`
+- login: ja persistido no perfil / precisa `$VAR_DE_SENHA` do `<COFRE-DE-CREDENCIAIS>`
 - qualquer coisa que precise estar aberta/selecionada antes
 
 ## Passos

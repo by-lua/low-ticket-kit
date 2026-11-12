@@ -1,0 +1,1 @@
+Coloque aqui as imagens da SUA oferta: banner.jpg (banner do checkout), bump-*.webp (miniaturas dos bumps) e fotos de depoimentos REAIS autorizados (ar-*.jpg no index.html). As do modelo original não são publicadas.

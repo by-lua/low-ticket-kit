@@ -108,7 +108,7 @@ Segunda semana: estrutura de páginas de venda, tipos de funis, elementos de con
 
 ### Tipos de Estrutura de Venda
 
-**1. X1 (WhatsApp direto)**
+**1. <projeto-isolado> (WhatsApp direto)**
 - Levar lead pro WhatsApp, vender lá
 - Palestrante não recomenda (gosto pessoal): muito trabalho respondendo, automação necessária
 - Usa para remarketing de quem iniciou compra

@@ -65,8 +65,8 @@ function DialogContent({
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
+              <line <projeto-isolado>="18" y1="6" x2="6" y2="18" />
+              <line <projeto-isolado>="6" y1="6" x2="18" y2="18" />
             </svg>
             <span className="sr-only">Close</span>
           </DialogPrimitive.Close>

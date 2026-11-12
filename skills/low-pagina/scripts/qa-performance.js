@@ -94,7 +94,7 @@ const OK = m => console.log('  ok    ' + m);
   else if (metaId && fb[1] !== metaId) F(`pixel Meta ${fb[1]} ≠ esperado ${metaId}`);
   else OK(`pixel Meta ${fb[1]}`);
   /fbq\(\s*['"]track['"]\s*,\s*['"]PageView['"]/.test(html) ? OK('PageView no load') : F('sem fbq track PageView');
-  /adstrackeador\.leadgo\.dev\/api\/pixel/.test(html) ? OK('loader do Trackeador') : F('loader do Trackeador ausente (sem venda × campanha)');
+  /adstrackeador\.<EMPRESA>\.dev\/api\/pixel/.test(html) ? OK('loader do Trackeador') : F('loader do Trackeador ausente (sem venda × campanha)');
   const vis = reqs.some(r => /facebook\.com\/tr|connect\.facebook\.net/.test(r.url));
   vis ? OK('requisição do Meta saiu no carregamento') : A('nenhuma requisição ao Meta no carregamento (pixel bloqueado ou lento demais)');
 

@@ -1,6 +1,6 @@
 # Wiven — Funil "Página final" (link de entrega) + Webhooks/API pós-venda
 
-Perfil browser: `wiven` porta 9254 (conta LeadGo/Dona). Credenciais em `~/.claude/.credentials.env`.
+Perfil browser: `wiven` porta <PORTA> (conta <EMPRESA>/Dona). Credenciais em `<COFRE-DE-CREDENCIAIS>`.
 App = Next.js + HeroUI + React Flow. Controlado com `agent-browser --session wiven`.
 
 ## 1. Setar LINK DE ENTREGA (redirecionamento pós-compra) — funil "Página final"
@@ -17,7 +17,7 @@ Fluxo que funcionou (2026-09-21, produto Mapa do Tarot `cmubqz6yu010o01pqgcgfw6j
    down; mouse up — em UM ou sequência de chamadas). Abre o painel `#editingPanel`.
 4. No painel: `input[role=switch]` **"Usar página final externa"** → click liga → surge campo
    **"Link da página externa"** (`#editingPanel input[type=text]`). `fill` com a URL destino
-   (ex.: `https://mapadotarot.leadgo.dev/painel`).
+   (ex.: `https://<subdominio>.<seu-dominio>/painel`).
 5. **CONECTAR** etapa inicial → página final. Drag de handle **NÃO cria edge** (nem HTML5 DnD,
    nem PointerEvent sintético, nem drag de handle-a-handle). **O que funciona = click-to-connect:**
    click real (mouse down+up) no `.react-flow__handle.source` do node inicial, DEPOIS click real
@@ -38,7 +38,7 @@ de "Criar funil".
 
 Rota: `/panel/webhooks` (menu Integrações → Webhooks). Docs: `/panel/docs/v1/webhooks`.
 
-- **Já existe webhook cadastrado**: "SiteExpress Portal" → `https://siteexpress.minhaempresa.com.br/painel/api/webhooks/wiven`, token `<token no env do app, nunca em nota>`, "Todos os produtos". Ou seja, o portal SiteExpress (mesma stack do /painel leadgo.dev) JÁ recebe eventos Wiven.
+- **Já existe webhook cadastrado**: "SiteExpress Portal" → `https://siteexpress.minhaempresa.com.br/painel/api/webhooks/wiven`, token `<token no env do app, nunca em nota>`, "Todos os produtos". Ou seja, o portal SiteExpress (mesma stack do /painel <seu-dominio>) JÁ recebe eventos Wiven.
   - **ERRADO (26/09/2026):** "Todos os produtos" fez a venda do Mapa do Tarot cair também no SiteExpress. Regra: todo webhook só com os produtos da própria oferta (toggle OFF). Ver seção 6 da skill `wiven-checkout`.
 - Criar webhook (botão **Criar**): Título, **URL alvo do disparo** (nossa URL, POST JSON), Tipo
   (Padrão | SellFlux), **Eventos** (multiselect), toggle "Disparar para todos os produtos".
@@ -117,13 +117,13 @@ no próprio botão (idem para "Salvar"/"Cancelar"). O modal lista os produtos **
    ⚠ preservar `title`/`targetUrl`/`events` **exatamente** como capturado — só `productsIds` muda.
 4. Confirmar: reabrir o webhook (5a) e ler os chips.
 
-### 5c. Ids dos webhooks (conta LeadGo, 16/10/2026)
+### 5c. Ids dos webhooks (conta <EMPRESA>, 16/10/2026)
 | Oferta | Área de membros (`/painel/api/webhooks/wiven`) | Trackeador (`adstrackeador…/sale/c/…`) |
 |---|---|---|
 | Jiu-Jitsu | `cmun53usdd27c01o80k46e2xs` | `cmuw2hayr4xku01ohsehumpue` |
 | Mapas/Eletrotécnica | `cmuls9zym1nb901pv5yfmlkgt` | `cmuxeltfk1wvl01oilqc783o2` |
 | Mapa do Tarot (+ Cigano) | `cmuh1hebg1oqg01ooeg8q9qe9` | `cmuixpo5o49z201oiibel7xut` (v2) |
-| AstroDicas | `cmv1an7ev0j1e01pu5iqq8459` | `cmv2lsd6a1lz901pqzff86sxt` |
+| <Oferta Exemplo> | `cmv1an7ev0j1e01pu5iqq8459` | `cmv2lsd6a1lz901pqzff86sxt` |
 
 **Regras:** 1 webhook por destino, **"Disparar para todos os produtos" OFF**, só os produtos da oferta.
 **Produto novo entra nos DOIS** (regra da dona 16/10). ⚠ **Upgrades de ofertas diferentes têm nomes quase
@@ -132,4 +132,4 @@ de marcar (16/10: o webhook do JJ ficou com o upgrade da **Elétrica** e sem o d
 
 ### 5d. Não bater no painel em rajada
 Reloads/navegações rápidos em `app.wiven.com.br` derrubam a aba com **403** (Cloudflare) e a sessão cai.
-Uma navegação por vez, ~5–8 s entre elas. Perfil morto volta com `~/.claude/bin/browsers.sh wiven-leadgo-dona`.
+Uma navegação por vez, ~5–8 s entre elas. Perfil morto volta com `~/.claude/bin/browsers.sh wiven-<EMPRESA>-dona`.

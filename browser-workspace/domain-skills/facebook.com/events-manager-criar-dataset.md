@@ -1,6 +1,6 @@
 # Gerenciador de Eventos — o que a UI dá e o que ela NÃO dá
 
-Tentado em 2026-09-04, perfil `meta` (porta 9225), portfólio Cosmos Astrología
+Tentado em 2026-09-04, perfil `meta` (porta <PORTA>), portfólio Cosmos Astrología
 (`business_id=2835296186826870`). **A UI não cede — e não precisa: crie o dataset
 pela Marketing API.** Ver `skills/trackeador/references/abrir-mercado-novo.md`
 § "Dataset no Meta — CRIE PELA API". Este doc fica pro que SÓ existe na UI
@@ -60,9 +60,9 @@ antes e extraia o `e\d+` num segundo `grep -oE`.
 
 ## ⚠️ Perfil `meta` é COMPARTILHADO entre panes — isole em aba
 
-`meta` e `utmify` dividem a porta 9225 (mesma instância de Chromium). Com dois
+`meta` e `utmify` dividem a porta <PORTA> (mesma instância de Chromium). Com dois
 panes trabalhando, um arrasta a página do outro no meio da operação — aconteceu:
-a aba pulou de `EmpresaB N MESTRE`/Cosmos pra `ASTRODICAS AR`/portfólio Lucas Leis
+a aba pulou de `EmpresaB N MESTRE`/Cosmos pra `<Oferta Exemplo> AR`/portfólio Lucas Leis
 entre dois comandos meus.
 
 **Risco concreto:** criar dataset no portfólio errado (o dataset nasce no

@@ -9,7 +9,7 @@ import { BUMP_SKUS, BUMP_DESCRIPTION, BUMP_PUNTOS, BUMP_CATEGORIA, product, form
 import { t } from "@/lib/copy";
 import Modal from "@/components/Modal";
 
-const SOPORTE_EMAIL = "voce@exemplo.com";
+const SOPORTE_EMAIL = "support@<seu-dominio>";
 
 interface Props {
   nombre: string;
@@ -34,7 +34,7 @@ const MODULOS: Modulo[] = [
   {
     sku: "core",
     categoria: "EL NÚCLEO",
-    title: "Tu Número Maestro",
+    title: "Tu <Oferta Exemplo>",
     subtitle: "La lectura completa",
     image: "/oferta/mockup-producto.png",
     href: "/panel/lectura",

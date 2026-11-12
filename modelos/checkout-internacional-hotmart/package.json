@@ -1,0 +1,23 @@
+{
+  "name": "checkout-internacional",
+  "private": true,
+  "type": "module",
+  "version": "0.2.0",
+  "scripts": {
+    "test": "node --test catalog.test.mjs core.test.mjs",
+    "start": "node server.mjs",
+    "dev:cf": "NODE_OPTIONS='--experimental-strip-types --no-warnings' cf dev",
+    "deploy:cf": "cf deploy"
+  },
+  "dependencies": {
+    "stripe": "^18.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^2.0.0-beta.v.15",
+    "cf": "^0.15.0",
+    "vite": "^8.3.8"
+  },
+  "allowScripts": {
+    "workerd": true
+  }
+}

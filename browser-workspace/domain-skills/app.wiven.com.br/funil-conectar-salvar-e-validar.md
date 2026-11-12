@@ -118,7 +118,7 @@ grava o que estava no formulário (que pode ser o de outro produto se a página 
 
 ## 7. Fechamento comprovado nesta rodada (01/10/2026)
 
-5 funis → 1 aresta + página final `https://mapaseletricos.leadgo.dev/painel` cada:
+5 funis → 1 aresta + página final `https://<subdominio>.<seu-dominio>/painel` cada:
 - principal `cmulrrekz014801ookjczraz1` → `xy-edge__glhz12lo8wnext-upsell-1hng4gcr07previous-upsell`
 - bump Segurança `cmulrtppu015c01oom5b5svwr` → `xy-edge__jtwip6irydnext-upsell-kpbvsj8u2eprevious-upsell`
 - bump Medição `cmulruab9015l01oop6kbb2sj` → `xy-edge__dc41nhv7q2next-upsell-fk6iaiyguxprevious-upsell`

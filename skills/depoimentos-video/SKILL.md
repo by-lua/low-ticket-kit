@@ -27,7 +27,7 @@ skill-filha.
 ## O erro que define esta skill: depoimento é RESULTADO, não setup
 
 A fala de cada pessoa tem que ser **o depoimento dela sobre o produto**. Medido em
-produção (AstroDicas, 01/09/2026): a primeira leva saiu com falas de *contexto*
+produção (<Oferta Exemplo>, 01/09/2026): a primeira leva saiu com falas de *contexto*
 («eu lia horóscopo de site e nunca batia nada») e o dono cortou na hora — *"não deu
 depoimento, é pra falar o depoimento"*. As oito falas tiveram que ser reescritas.
 
@@ -215,7 +215,7 @@ for t in json.load(sys.stdin):
 ```
 
 Sinal no histórico: o topo mostra um `CHARACTER:` que não é o seu. Nesse caso mude
-para `hubv2` (segundo perfil de vídeo, porta 9231) e **solte a lane do `hub`**. O
+para `hubv2` (segundo perfil de vídeo, porta <PORTA>) e **solte a lane do `hub`**. O
 `hubv2` costuma estar deslogado — logue com as credenciais do env, o Cloudflare
 dessa tela valida normalmente.
 

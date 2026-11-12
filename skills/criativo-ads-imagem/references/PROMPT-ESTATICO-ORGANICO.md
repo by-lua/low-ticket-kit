@@ -1,6 +1,6 @@
 # Molde de prompt — estático orgânico (ugly iPhone, digital + impresso)
 
-Montar em inglês, numa linha só, sem aspas duplas. Exemplos reais: `OFERTAS/luciola-atlas-movimiento/criativos/CRIATIVO-*/intermediarios/prompt-v3.txt`.
+Montar em inglês, numa linha só, sem aspas duplas. Exemplos reais: `OFERTAS/<slug-da-oferta>/criativos/CRIATIVO-*/intermediarios/prompt-v3.txt`.
 
 1. **STYLE:** Create ONE single standalone photograph, vertical 4:5 portrait format, full-bleed, not a grid, not a collage. Ugly amateur photo shot on an iPhone by a normal person: slightly tilted crooked framing, imperfect natural window or room light, light grain and soft phone camera blur, no retouching, no studio light, no perfect composition, no AI render look, it looks like a spontaneous Instagram story post. Real ordinary objects, natural imperfections.
 2. **SCENE:** lugar real da persona + quem segura o quê + onde ficam as folhas.

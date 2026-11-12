@@ -123,7 +123,7 @@ Nem cheguei a tentar o select de oferta desta vez — travei no passo anterior (
 manual: arrastar os handles verdes pra conectar os nodes no canvas React Flow).
 
 **Achado novo: a tela inteira do canvas do funil vem renderizada com `transform: rotate(90deg)`**
-(perfil `wiven` porta 9254, janela real 500×806 — landscape forçado numa janela portrait).
+(perfil `wiven` porta <PORTA>, janela real 500×806 — landscape forçado numa janela portrait).
 Isso quebra qualquer automação que assuma eixos X/Y normais:
 - `getBoundingClientRect()` de qualquer elemento (incl. os handles `.react-flow__handle`)
   continua retornando coordenadas de VIEWPORT corretas (pós-transform) — isso bateu com
@@ -255,7 +255,7 @@ mesmo quando o mouse sintético falha.
 ## 2026-09-29 — RESOLVIDO de ponta a ponta (upsell Cigano no funil do Mapa do Tarot, salvo e conferido)
 
 Tudo via CDP cru (`Input.dispatchMouseEvent` mouseMoved → mousePressed → mouseReleased), janela ~1920 px.
-Script de apoio: websocket-client + `Runtime.evaluate`/`Input.*` na aba do /funnel (porta 9254).
+Script de apoio: websocket-client + `Runtime.evaluate`/`Input.*` na aba do /funnel (porta <PORTA>).
 
 **Causa raiz do "Oferta desta etapa" que "nunca fixava":** fixava sim. A oferta AQNS7ED tinha
 **nome vazio** ("Sem nome"). O nó grava `settings.offer = {code:"AQNS7ED", name:""}`, mas a UI

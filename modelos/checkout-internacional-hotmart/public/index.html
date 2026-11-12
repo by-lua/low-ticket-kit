@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="pageTitle">Secure checkout</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/hotmartlike-fonts.css">
+<link rel="stylesheet" href="checkout.css">
+<link rel="stylesheet" href="assets/hotmartlike-fonts.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+<body>
+<!-- MODELO checkout internacional (Hotmart adaptado). Trocar: banner/capa/miniaturas em assets/img, textos do produto em i18n.js, preços em catalog.mjs, favicon. BUILD DE TESTE (sandbox). -->
+<main class="checkout-page min-h-dvh">
+
+  <div id="testbar" class="gt-testbar" data-i18n="testbar">MODE TEST — aucun paiement réel. Carte de test : 4242 4242 4242 4242</div>
+
+  <!-- 1. Barra de urgência full-bleed -->
+  <div class="gt-urgency sticky top-0 z-10 flex w-full items-center justify-center gap-3 px-4 py-3 text-center text-white">
+    <span id="timer" class="font-mono text-lg font-bold tabular-nums drop-shadow-sm">00:10:00</span>
+    <span class="flex items-center gap-1.5 text-sm font-medium">
+      <svg viewBox="0 0 20 20" class="h-4 w-4 shrink-0" fill="none" aria-hidden="true">
+        <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.4"></circle>
+        <path d="M10 6v4.2l2.8 1.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <span data-i18n="urgency">Réduction disponible pour une durée limitée</span>
+    </span>
+  </div>
+
+  <div class="gt-wrap">
+    <!-- 2. Banner largo, com respiro abaixo da barra (como na Hotmart) -->
+    <img class="gt-bannerimg" src="assets/img/banner.webp" width="1024" height="576" data-i18n-alt="bannerAlt" alt="Product banner">
+
+    <section class="gt-card">
+      <!-- Seletor de país, à direita -->
+      <div class="gt-countrybar">
+        <div class="gt-country">
+          <button type="button" id="countrybtn" class="gt-countrybtn" aria-haspopup="listbox" aria-expanded="false">
+            <span class="gt-flag" id="curflag"></span><span id="curname" data-i18n="changeCountry">Changer de pays</span>
+            <svg viewBox="0 0 10 6" class="gt-chev" aria-hidden="true"><path d="M0 0l5 6 5-6z" fill="currentColor"/></svg>
+          </button>
+          <div id="countrymenu" class="gt-countrymenu hidden">
+            <div class="gt-csearch"><svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="5.500" fill="none" stroke="currentColor" stroke-width="1.600"/><path d="m13 13 4 4" stroke="currentColor" stroke-width="1.600" stroke-linecap="round"/></svg><input id="countrysearch" type="text" autocomplete="off" data-i18n-ph="searchCountry" data-i18n-aria="searchCountry" placeholder="Rechercher un pays" aria-label="Rechercher un pays"></div>
+            <ul id="countrylist" role="listbox"></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Produto: capa, nome, autor, preço, descrição -->
+      <div class="gt-product">
+        <img class="gt-cover" src="assets/img/cover.webp" width="80" height="80" alt="">
+        <div class="gt-pinfo">
+          <h1 class="gt-ptitle" data-i18n="ptitle">Nom du produit</h1>
+          <p class="gt-pplan" id="planname">Formule Essentielle</p>
+          <p class="gt-pprice"><span data-planprice>—</span></p>
+        </div>
+      </div>
+
+      <!-- 4. Dados: só e-mail -->
+      <form id="f1" class="grid gap-1.5" novalidate onsubmit="return false">
+        <label for="email" class="gt-label" data-i18n="emailQ">À quelle adresse e-mail envoyons-nous votre accès immédiat ?</label>
+        <input id="email" type="email" inputmode="email" autocomplete="email" class="gt-input" data-i18n-ph="emailPh" placeholder="votreadresse@exemple.fr">
+        <p id="err" role="alert" class="hidden text-sm text-red-600" data-i18n="emailErr">Saisissez une adresse e-mail valide pour recevoir votre accès.</p>
+      </form>
+
+      <!-- 6. Forma de pagamento -->
+      <h2 class="gt-h" data-i18n="payHeading">Choisissez le mode de paiement</h2>
+      <div class="grid gap-1.5">
+            <div class="gt-methods" role="radiogroup" data-i18n-aria="methodsAria" aria-label="Moyen de paiement">
+              <div class="gt-pm">
+                <button type="button" data-pay="card" class="gt-method" role="radio" aria-checked="false">
+                  <span class="gt-radio" aria-hidden="true"></span>
+                  <svg class="gt-cardsolid" viewBox="0 0 26 20" aria-hidden="true"><rect x="0.500" y="0.500" width="25" height="19" rx="3" fill="#111"/><rect x="0.500" y="5" width="25" height="3.200" fill="#fff"/><rect x="3.500" y="13" width="8" height="2" rx="1" fill="#fff"/></svg>
+                  <span class="gt-mtxt"><b data-i18n="cardDC">Carte de débit / crédit</b></span>
+                </button>
+                <div id="cardpanel" class="gt-cardpanel hidden">
+                  <div id="payment-element"></div>
+                  <label class="mt-3 flex items-start gap-2 text-xs text-neutral-600">
+                    <input type="checkbox" id="savecard" checked class="mt-0.5 h-4 w-4 shrink-0 accent-gold">
+                    <span data-i18n="saveCard">Enregistrer ma carte de façon sécurisée pour mes prochains achats en un clic. Je peux la supprimer à tout moment.</span>
+                  </label>
+                  <p class="mt-2 flex items-center gap-1.5 text-[11px] text-neutral-500">
+                    <svg viewBox="0 0 20 20" class="h-3.5 w-3.5" fill="currentColor" aria-hidden="true"><path d="M10 1.500 3.500 4v5c0 4 2.800 7.700 6.500 9.500 3.700-1.800 6.500-5.500 6.500-9.500V4L10 1.500Z"/></svg>
+                    <span data-i18n="cardStripe">Paiement par carte sécurisé par Stripe — vos données de carte ne transitent jamais par notre site.</span>
+                  </p>
+                </div>
+              </div>
+              <div class="gt-pm">
+                <button type="button" data-pay="applepay" class="gt-method" role="radio" aria-checked="false">
+                  <span class="gt-radio" aria-hidden="true"></span>
+                  <img class="gt-walleticon" src="assets/pay/applepay.svg" alt="">
+                  <span class="gt-mtxt"><b>Apple Pay</b></span>
+                </button>
+              </div>
+              <div class="gt-pm">
+                <button type="button" data-pay="googlepay" class="gt-method" role="radio" aria-checked="false">
+                  <span class="gt-radio" aria-hidden="true"></span>
+                  <img class="gt-walleticon" src="assets/pay/gpay-light.svg" alt="">
+                  <span class="gt-mtxt"><b>Google Pay</b></span>
+                </button>
+              </div>
+              <div id="walletpanel" class="gt-walletpanel hidden">
+                <div id="express"></div>
+                <p id="walletnote" class="gt-walletnote hidden"></p>
+              </div>
+              <div class="gt-pm">
+                <button type="button" data-pay="paypal" id="paypal-tile" class="gt-method" role="radio" aria-checked="false">
+                  <span class="gt-radio" aria-hidden="true"></span>
+                  <span class="gt-ppicon" aria-hidden="true"><img src="assets/pay/paypal.svg" alt=""></span>
+                  <span class="gt-mtxt"><b class="gt-pptext">Pay<i>Pal</i></b></span>
+                </button>
+              </div>
+            </div>
+        <p id="paymsg" role="alert" class="hidden mt-2 text-sm text-red-600"></p>
+      </div>
+
+      <!-- 5. Order bumps (checkbox DESMARCADO) -->
+      <h2 class="gt-h" data-i18n="bumpsHeading">Profitez-en et achetez ensemble :</h2>
+      <div id="bumps" class="gt-bumps"></div>
+
+      <!-- 7. Detalhes da compra + botão -->
+      <h2 class="gt-h" data-i18n="detailsHeading">Détails de l'achat</h2>
+      <div class="gt-summary">
+        <div id="lines" class="grid gap-2"></div>
+        <div class="gt-total"><span><span data-i18n="total">Total</span> <small>(<span data-i18n="vat">TVA incluse</span>)</small></span><strong data-total>—</strong></div>
+      </div>
+
+      <!-- Botão de compra: só aparece depois que a pessoa escolhe a forma de pagamento -->
+      <div id="buy" class="grid overflow-hidden transition-all duration-500" style="grid-template-rows:0fr;opacity:0">
+        <div class="min-h-0">
+          <button id="buybtn" type="button" class="btn-gold mt-4 min-h-[56px] w-full rounded-lg text-base"><span data-i18n="buy">Acheter maintenant</span> · <span data-total>—</span></button>
+        </div>
+      </div>
+
+      <p class="gt-assure">
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.500" y="10.500" width="15" height="10" rx="2.200"/><path d="M8 10.500V8a4 4 0 0 1 8 0v2.500"/></svg><span data-i18n="secure">Paiement sécurisé</span></span>
+        <i></i>
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.500" width="18" height="13" rx="2.200"/><path d="m4 7.500 8 6 8-6"/></svg><span data-i18n="instant">Accès immédiat par e-mail</span></span>
+        <i></i>
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 5.800v5.200c0 4.300 3 7.800 7 9.500 4-1.700 7-5.200 7-9.500V5.800L12 3Z"/><path d="m8.800 12.200 2.400 2.400 4.200-4.800"/></svg><em data-i18n="guarantee" data-n="15">Garantie de 15 jours</em></span>
+      </p>
+      <!-- Prova social (mantida a pedido da dona): contador + depoimentos reais do mercado FR + PCI DSS -->
+      <div class="gt-proof">
+        <p class="gt-proof-count" id="proofcount">Plus de 850 clients ont déjà acheté !</p>
+        <div id="testimonials" class="gt-proof-grid hidden"></div>
+        <p class="gt-proof-note" data-i18n="pciNote">Vos données sont protégées par chiffrement et conformité PCI DSS pendant tout le processus.</p>
+      </div>
+      <p class="gt-legal" data-i18n="legal">En cliquant sur « Acheter maintenant », vous acceptez les conditions de vente.</p>
+      <p class="gt-stripe"><span data-i18n="protectedBy">Protégé par</span><img src="assets/pay/stripe.svg" alt="" width="18" height="18"><strong>stripe</strong></p>
+    </section>
+  </div>
+
+</main>
+<template id="flags">
+  <svg data-f="FR" viewBox="0 0 3 2"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>
+  <svg data-f="BE" viewBox="0 0 3 2"><rect width="1" height="2" fill="#000"/><rect x="1" width="1" height="2" fill="#FAE042"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg>
+  <svg data-f="CH" viewBox="0 0 32 32"><rect width="32" height="32" fill="#D52B1E"/><path fill="#fff" d="M13 6h6v7h7v6h-7v7h-6v-7H6v-6h7z"/></svg>
+  <svg data-f="CA" viewBox="0 0 4 2"><rect width="4" height="2" fill="#fff"/><rect width="1" height="2" fill="#D52B1E"/><rect x="3" width="1" height="2" fill="#D52B1E"/><path fill="#D52B1E" d="M2 .35l.2.4.25-.1-.1.55.3-.25.08.2-.55.5.05.25h-.46l.05-.25-.55-.5.08-.2.3.25-.1-.55.25.1z"/></svg>
+</template>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="app.js" type="module"></script>
+</body>
+</html>

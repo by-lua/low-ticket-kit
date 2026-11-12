@@ -3,7 +3,7 @@
 
 Uso: python3 otimizar-imagens.py <site/img> [--q 75] [--backup <pasta>]
 
-Regras (aprendidas no Calendrier Magique, 06/11/2026: 4,5 MB -> 3,2 MB):
+Regras (aprendidas no <Oferta Exemplo>, 06/11/2026: 4,5 MB -> 3,2 MB):
 - Só .webp; qualidade 75 (selos/logos: 85), method 6, mesma dimensão.
 - Só grava se ganhar >= 10% (páginas de calendário/texto raramente ganham: ficam como estão).
 - Não toca jpg/png de img/checkout/ (a Hotmart já usa) nem fonts/.

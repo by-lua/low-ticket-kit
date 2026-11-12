@@ -2,8 +2,8 @@
 
 # chatgpt.com — gerar imagem com referência anexada
 
-Validado por execução em 2026-08-30 (leva AstroDicas estáticos, peça 1).
-Perfil `gpt` / porta 9222.
+Validado por execução em 2026-08-30 (leva <Oferta Exemplo> estáticos, peça 1).
+Perfil `gpt` / porta <PORTA>.
 
 ## O que quebra e por quê
 

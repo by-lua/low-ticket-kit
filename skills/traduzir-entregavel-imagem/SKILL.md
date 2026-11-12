@@ -78,7 +78,7 @@ perspectiva dos mockups o script saiu borrado e com fonte errada (05/10); o GPT 
    ADAPTADO ao mercado (seção acima: ES neutro latino; PT de Portugal), mesmo sentido, sem
    acrescentar promessa nem cortar conteúdo, nomes canônicos (ex.: arcanos em espanhol: El Loco, El Mago…).
    `**negrito**` dentro da string vira bold.
-3. **Geometria:** retângulo `[x0,y0,x1,y1]` de cada bloco de texto, medido sobre uma grade de
+3. **Geometria:** retângulo `[x0,y0,<projeto-isolado>,y1]` de cada bloco de texto, medido sobre uma grade de
    coordenadas desenhada na página. Família no JSON, ajuste fino por página em `overrides`.
 4. **Apagar (`inpaint`):** preencher o retângulo interpolando na horizontal os pixels limpos das bordas.
    Funciona em fundo liso/papel/gradiente suave. Nunca apagar dentro da ilustração; só a faixa

@@ -65,7 +65,7 @@ Referências herdadas das skills antigas (detalhe que as filhas citam): `referen
 
 ## 3. Regras que valem em toda peça (só estas; o resto mora na filha)
 - **Adaptar criativo = refazer CENA a CENA com o NOSSO material (regra fixa da dona, 09/11/2026).** Vale pra toda
-  adaptação: criativo nosso levado pra outro idioma/mercado (ex.: Calendrier Magique FR → Calendario Mágico AR) e
+  adaptação: criativo nosso levado pra outro idioma/mercado (ex.: <Oferta Exemplo> FR → Calendario Mágico AR) e
   criativo de concorrente modelado pra nossa oferta, no mesmo idioma ou em outro. O pedido "adapta/modela esse criativo"
   já significa isto, sem a dona precisar explicar:
   1. **Cada cena/take do original é refeita.** O frame/imagem da cena entra como referência de COMPOSIÇÃO (ângulo,
@@ -121,7 +121,7 @@ Referências herdadas das skills antigas (detalhe que as filhas citam): `referen
   stretched, square`. Vale pra capa na mão, folha na mesa, prancheta, caderno aberto. Ao conferir a imagem, compare a
   proporção do objeto com as mãos/mesa; fora de A4 = regera.
 - **Produto em cena = só o produto oficial da oferta (regra fixa, 05/11/2026):** antes de anexar capa/mockup/página como
-  referência, leia `OFERTAS/<slug>/ATIVOS.md` (seções 1 e 2: o que é OFICIAL e o que foi DESCARTADO; regra em `low-ticket` § 2b). **Nunca escolha capa pelo nome do arquivo** (`capa`, `guia`, `kit`): o agente do Calendrier Magique pegou
+  referência, leia `OFERTAS/<slug>/ATIVOS.md` (seções 1 e 2: o que é OFICIAL e o que foi DESCARTADO; regra em `low-ticket` § 2b). **Nunca escolha capa pelo nome do arquivo** (`capa`, `guia`, `kit`): o agente do <Oferta Exemplo> pegou
   `guia-v1-capa.png` (azul descartada, igual à da concorrente) por causa do nome. Arquivo em lista de descartado, com
   `descartado` no nome, ou de cor/arte diferente da capa oficial = não usar. Sem ponteiro de capa oficial no
   `CLAUDE.md` da oferta → criar o ponteiro antes de gerar. Depois de gerar, **confira a imagem contra a capa oficial**
@@ -131,7 +131,7 @@ Referências herdadas das skills antigas (detalhe que as filhas citam): `referen
   - **Tudo que é imagem de feed = 4:5, 1080×1350.** Vale pra imagem estática, carrossel (todos os cards) e **imagem animada**
     (a imagem animada é imagem de feed: o `.mp4` dela também sai 1080×1350). Nunca 3:4 (1080×1440), nunca 1:1, nunca 9:16.
   - **Tudo que é vídeo = 9:16, 1080×1920** (estilo Stories/Reels): demonstrativo, UGC, expert, caixinha etc.
-  - Erro real (Calendrier Magique FR): CTV 5, 6, 7 e 8 (imagem + imagem animada) saíram 1080×1440 (3:4) e só a CTV 9 estava em 4:5.
+  - Erro real (<Oferta Exemplo> FR): CTV 5, 6, 7 e 8 (imagem + imagem animada) saíram 1080×1440 (3:4) e só a CTV 9 estava em 4:5.
   - **Como aplicar:** o prompt de imagem pede `vertical 4:5 aspect ratio, 1080x1350`; o GPT às vezes devolve outra proporção
     (já voltou 1092×1440), então **meça o PNG com `ffprobe` antes de aplicar texto/selo/botão** e corte/refaça até dar 1080×1350.
     A animação (zoom, deslize, botão pulsando) parte da arte já em 4:5, nunca de uma 3:4 cortada depois.
@@ -147,7 +147,7 @@ Referências herdadas das skills antigas (detalhe que as filhas citam): `referen
   na raiz, só o(s) arquivo(s) final(is) pra postar (vídeo pronto, imagem pronta, card de carrossel pronto) e o
   `anuncio.md` (texto principal, título, CTA) — nada mais. **O `anuncio.md` leva o TEXTO ESCRITO por extenso (texto
   principal + título + CTA + link), com tradução PT se não for português. Nunca "ver IDEIAS/FICHA": ponteiro não conta
-  como texto (erro real 05/11/2026, Calendrier Magique FR: os 9 `anuncio.md` só apontavam). Peça pronta sem o texto = peça não entregue.**
+  como texto (erro real 05/11/2026, <Oferta Exemplo> FR: os 9 `anuncio.md` só apontavam). Peça pronta sem o texto = peça não entregue.**
   **O texto do anúncio é MODELADO do anúncio original que a gente pegou (regra da dona, 05/11/2026):** texto principal e título
   saem do texto do anúncio de referência (Biblioteca de Anúncios), traduzido fielmente e trocando só produto/idioma/moeda.
   Vale tanto pra levar o MESMO produto pra outro país quanto pra modelar uma oferta: o texto é o do original e **só muda

@@ -11,9 +11,9 @@ description: Cadastra produto digital na Mundpay (login.mundpay.com) pelo painel
 > **Regra fixa da dona (09/11/2026, vale pra todo gateway e país) — SUBSTITUI a de 07/10:** podem ficar ligados **cartão (crédito e débito), Apple Pay, Google Pay, PayPal e qualquer método local que o comprador paga e cai na hora**. Fica desligado só o que é pré-pago/não cai na hora (boleto, dinheiro em loja, voucher, parcelado de terceiro, recorrência agendada); dúvida = desligado. Google Pay e PicPay deixam de ser "sempre desmarcados" (PicPay liga se cair na hora). Lógica completa e roteiro: skill `hotmart-produto-playwright` → "REGRA FIXA da dona (09/11/2026)".
 > **Regra fixa (08/10/2026): todo checkout leva banner no idioma da oferta** (PT = pt-PT, ES = espanhol neutro) **+ contador de 10 minutos (00h10), cor de fundo vermelha `#F14254`** (aba Checkouts → Personalizar → Urgência). **Mensagem de exibição no idioma da oferta:** “Discount available for a limited time only” traduzido pro idioma da oferta (10/11/2026; substitui o texto antigo “Oferta por tempo limitado! Garanta o seu agora antes que o preço suba.”). Traduzir/adaptar essa mensagem ao idioma da oferta. Ver skill `banner-checkout-gpt`.
 
-> **REGRA FIXA DA DONA (16/10/2026) — TODO produto/oferta criado entra nos DOIS webhooks NO MESMO DIA.** Vale pra toda peça: principal · **order bump** · combo · upsell/downsell · **upgrade Essencial → Completo** · produto irmão/cross · oferta de membro. Cada produto novo, na MESMA sessão do cadastro, marcado em (1) **webhook de ENTREGA** (`<site>/painel/api/webhooks/mundpay`) e (2) **webhook de MEDIÇÃO** (Trackeador, `https://adstrackeador.leadgo.dev/api/webhooks/sale/c/<conexão>`) — "todos os produtos" OFF. Produto fora do webhook = a venda some do Trackeador/atribuição e/ou o comprador fica sem acesso, **sem erro em lugar nenhum**. Padrão/incidente (order bump "Combo Domínio Total", Jiu-Jitsu, 16/10): `wiven-checkout` §6.
+> **REGRA FIXA DA DONA (16/10/2026) — TODO produto/oferta criado entra nos DOIS webhooks NO MESMO DIA.** Vale pra toda peça: principal · **order bump** · combo · upsell/downsell · **upgrade Essencial → Completo** · produto irmão/cross · oferta de membro. Cada produto novo, na MESMA sessão do cadastro, marcado em (1) **webhook de ENTREGA** (`<site>/painel/api/webhooks/mundpay`) e (2) **webhook de MEDIÇÃO** (Trackeador, `https://<subdominio>.<seu-dominio>/api/webhooks/sale/c/<conexão>`) — "todos os produtos" OFF. Produto fora do webhook = a venda some do Trackeador/atribuição e/ou o comprador fica sem acesso, **sem erro em lugar nenhum**. Padrão/incidente (order bump "Combo Domínio Total", Jiu-Jitsu, 16/10): `wiven-checkout` §6.
 
-Painel: `https://login.mundpay.com` · perfil browser **`mundpay` porta 9270** (sessão persistente, já logada; credenciais `$MUNDPAY_EMAIL`/`$MUNDPAY_PASSWORD` em `~/.claude/.credentials.env`, nunca imprimir nem literal; só pra relogar se o 9270 cair no login — perfil já logado é o único que se usa).
+Painel: `https://login.mundpay.com` · perfil browser **`mundpay` porta <PORTA> (sessão persistente, já logada; credenciais `$MUNDPAY_EMAIL`/`$MUNDPAY_PASSWORD` em `<COFRE-DE-CREDENCIAIS>`, nunca imprimir nem literal; só pra relogar se o 9270 cair no login — perfil já logado é o único que se usa).
 ```bash
 ~/.claude/bin/browsers.sh mundpay          # sobe o perfil se estiver parado
 agent-browser --session mundpay open "https://login.mundpay.com/products"
@@ -33,7 +33,7 @@ oferta/bump dentro do produto já aprovado não passa por nova análise.
 Nomes com sufixo do mercado (" - PT", " - ES").
 
 ## Regras da oferta (memória do projeto low ticket)
-Reembolso = **mínimo** (7 dias). Suporte: **support@seudominio.com** + WhatsApp **<seu-whatsapp>**. Página de vendas = URL REAL da oferta (nunca inventar domínio). Entrega = **nossa área de membros**, nunca a do gateway. Idioma do texto (nome/oferta/descrição) conforme o mercado (ex.: português de Portugal) — a Mundpay não tem campo de idioma, só moeda.
+Reembolso = **mínimo** (7 dias). Suporte: **support@<seu-dominio>** + WhatsApp **(XX) XXXXX-XXXX**. Página de vendas = URL REAL da oferta (nunca inventar domínio). Entrega = **nossa área de membros**, nunca a do gateway. Idioma do texto (nome/oferta/descrição) conforme o mercado (ex.: português de Portugal) — a Mundpay não tem campo de idioma, só moeda.
 
 ## Criar produto — wizard de 6 passos (`/products/create-products`)
 1. **Produto digital**.
@@ -41,7 +41,7 @@ Reembolso = **mínimo** (7 dias). Suporte: **support@seudominio.com** + WhatsApp
 3. Email + WhatsApp de suporte (+55 default).
 4. **Código de 4 dígitos enviado por email ao suporte** — precisa do humano; pedir o código.
 5. Tipo **Único** + moeda (**BRL/USD/EUR**) + valor; a máscara aceita dígitos: digitar `990` = 9,90.
-6. Entrega **Integração Externa**: link da nossa área + e-mail de teste PADRÃO `teste@seudominio.com` (tudo liberado, igual em todo projeto) + senha de apoio para análise (senha obrigatória, ≥ ~10 caracteres; nosso painel entra só por email, então a senha é texto de apoio). **Finalizar.**
+6. Entrega **Integração Externa**: link da nossa área + e-mail de teste PADRÃO `teste-xxxxxxxx@<seu-dominio>` (tudo liberado, igual em todo projeto) + senha de apoio para análise (senha obrigatória, ≥ ~10 caracteres; nosso painel entra só por email, então a senha é texto de apoio). **Finalizar.**
 Produto nasce **"Em análise"** (toggle "Ativar para venda" só após aprovação).
 
 ## Checkout
@@ -141,30 +141,30 @@ objeto `tracking`. Ele exclui explicitamente `ref`, `mund_lang`, `mndpay` e
 Order bump/upsell na Mundpay continua não testado com venda real.
 
 ## Estado conhecido (2026-09-25)
-Conta LeadGo/Dona. Produto "Mapa do Tarot" € 9,90 criado, **em análise**. Dois produtos antigos "La chave mestra" aparecem **Bloqueado** (causa desconhecida — checar suporte se afetar aprovação).
+Conta <EMPRESA>/Dona. Produto "Mapa do Tarot" € 9,90 criado, **em análise**. Dois produtos antigos "La <Oferta Exemplo>" aparecem **Bloqueado** (causa desconhecida — checar suporte se afetar aprovação).
 
 ## Aprovação Mundpay: o que a página de vendas TEM que ter (pendência real 2026-09-25, Mapa do Tarot)
 A Mundpay reprova ("Falta pouco para aprovar") se faltar qualquer item; retorno em até 24h úteis após salvar. Checklist antes de enviar para análise:
 1. **Produto claro**: a página diz exatamente o que o cliente compra (formato, conteúdo, entrega).
-2. **Rodapé completo**: identificação do responsável (Razão Social + CNPJ, ou Nome + CPF), Termos de Uso, Política de Privacidade, canal de suporte (email + WhatsApp). Nosso padrão: 49.265.147 DONA DE LIMA ASSIS, CNPJ 49.265.147/0001-00, support@seudominio.com, WhatsApp <seu-whatsapp>. Termos/Privacidade = páginas reais no mesmo domínio (`/termos`, `/privacidade`).
+2. **Rodapé completo**: identificação do responsável (Razão Social + CNPJ, ou Nome + CPF), Termos de Uso, Política de Privacidade, canal de suporte (email + WhatsApp). Nosso padrão: XX.XXX.XXX DONA DE LIMA ASSIS, CNPJ XX.XXX.XXX/XXXX-XX, support@<seu-dominio>, WhatsApp (XX) XXXXX-XXXX. Termos/Privacidade = páginas reais no mesmo domínio (`/termos`, `/privacidade`).
 3. **Domínio próprio** (não subdomínio de plataforma alheia).
 4. **Todos os botões de compra = checkout OFICIAL Mundpay** `https://pay.mycheckoutt.com/<uuid>?ref=` (uuid em `/products/edit-product/<produto>/checkouts`). Link Hotmart/Wiven/GG na página = reprovação ("link de checkout não direciona para o checkout da Mundpay"). Conferir com curl: zero hotmart/wiven, todos os botões no mesmo link.
 5. **Campo "Página de vendas" do produto** = URL real publicada, com `https://`.
-6. **Acesso de análise**: painel/área de membros no ar + usuário teste PADRÃO `teste@seudominio.com` (senha de apoio ≥10 caracteres) cadastrado em Entrega → Integração Externa, para o analista testar sem comprar.
+6. **Acesso de análise**: painel/área de membros no ar + usuário teste PADRÃO `teste-xxxxxxxx@<seu-dominio>` (senha de apoio ≥10 caracteres) cadastrado em Entrega → Integração Externa, para o analista testar sem comprar.
 7. Idioma da página conforme mercado (ex.: `/pt` em português neutro, `lang="pt"`); sem prova social inventada.
 Verificar sempre a página AO VIVO (curl) depois do deploy: o auto-relato do worker não basta.
 Suporte para dúvida: risco@mundpay.com; produtor: help@mundpay.com.
 
 ### Receita executada (Mapa do Tarot)
-Página = `OFERTAS/mapa-do-tarot/site/` (cópia de `pagina-clone`, original intacta), rota `/pt`, `termos.html`, `privacidade.html`, `/painel` (+ `/pt/painel`). Publicada em https://mapadotarot.leadgo.dev/pt. Checkout Mundpay uuid 01a0d98a-e909-7239-b459-75d58aff0365.
+Página = `OFERTAS/mapa-do-tarot/site/` (cópia de `pagina-clone`, original intacta), rota `/pt`, `termos.html`, `privacidade.html`, `/painel` (+ `/pt/painel`). Publicada em https://<subdominio>.<seu-dominio>/pt. Checkout Mundpay uuid 01a0d98a-e909-7239-b459-75d58aff0365.
 
 ### Termos e Privacidade (exigidos no rodapé)
 Páginas reais e completas, mesmo domínio, rotas limpas `/termos` e `/privacidade` (e `/pt/termos`, `/pt/privacidade`), linkadas no rodapé de todas as versões. Duas linhas não bastam (1,4 KB foi raso). Termos: produto digital e entrega, preço, reembolso 7 dias, licença pessoal, limite de responsabilidade, foro, contato. Privacidade: dados coletados (email; pagamento tratado pela Mundpay), finalidade, cookies/pixels (só citar o que a página realmente usa), compartilhamento, retenção, direitos do titular (LGPD), contato. Ambas com Razão Social + CNPJ + suporte. Conferir 200 com curl.
 
 ### Resultado real (Mapa do Tarot, 2026-09-25) — ao vivo, verificado por curl
-- Página de vendas: https://mapadotarot.leadgo.dev/pt (campo "Página de vendas" da Mundpay). Todos os botões = `pay.mycheckoutt.com/01a0d98a-e909-7239-b459-75d58aff0365?ref=`.
+- Página de vendas: https://<subdominio>.<seu-dominio>/pt (campo "Página de vendas" da Mundpay). Todos os botões = `pay.mycheckoutt.com/01a0d98a-e909-7239-b459-75d58aff0365?ref=`.
 - Termos/Privacidade completas em `/termos`, `/privacidade`, `/pt/termos`, `/pt/privacidade` (200, ~4,7/5,3 KB).
-- Acesso de análise: https://mapadotarot.leadgo.dev/pt/painel, login demo `teste@seudominio.com` (senha demo salva na Mundpay em Entrega; login testado por API: certa=200, errada=401). Usuário demo no `server/index.mjs` (`DEMO_USERS`, hash), acesso completo sem compra.
+- Acesso de análise: https://<subdominio>.<seu-dominio>/pt/painel, login demo `teste-mundpay@<seu-dominio>` (senha demo salva na Mundpay em Entrega; login testado por API: certa=200, errada=401). Usuário demo no `server/index.mjs` (`DEMO_USERS`, hash), acesso completo sem compra.
 - Armadilha: deploy no Coolify demora; curl logo após publicar pode ver a versão antiga (parecia 404/tamanho antigo). Rechecar com `cache-control: no-cache` e `?x=$RANDOM` antes de concluir que falhou.
 
 
@@ -173,4 +173,4 @@ Páginas reais e completas, mesmo domínio, rotas limpas `/termos` e `/privacida
 - **Garantia sempre igual ao produto:** Brasil 7 dias · internacional 15 dias. Conferir no produto, no checkout e no selo.
 - **Entrega:** "Acesso imediato por e-mail".
 - **Banner:** gerado por `banner-checkout-gpt` (seta pequena pra baixo no rodapé da imagem, título, garantia, acesso imediato por e-mail, vitalício).
-- **Confiança:** ícone preto + texto (Privacidade · Compra segura · Conteúdo aprovado) quando o gateway permitir bloco/HTML na página; o estilo azul com cards é só do Hotmart; visual-base em `MODELOS/checkout-base/index.html`.
+- **Confiança:** ícone preto + texto (Privacidade · Compra segura · Conteúdo aprovado) quando o gateway permitir bloco/HTML na página; o estilo azul com cards é só do Hotmart; visual-base em `modelos/checkout-base/index.html`.

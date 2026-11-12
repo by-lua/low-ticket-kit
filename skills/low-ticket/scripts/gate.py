@@ -204,7 +204,7 @@ def hub_check(ctx, name):
     if name == "decifrado":
         if ctx.hub:
             return True, "ofertas.json decifrado (atualizado_em %s)" % ctx.hub.get("atualizado_em")
-        return False, "ofertas.json ausente/ilegível em %s — rode: cd HUB-OFERTAS && set -a; source ~/.claude/.credentials.env; set +a; uv run cifrar.py --verificar" % ctx.hubdir
+        return False, "ofertas.json ausente/ilegível em %s — rode: cd HUB-OFERTAS && set -a; source <COFRE-DE-CREDENCIAIS>; set +a; uv run cifrar.py --verificar" % ctx.hubdir
     if not ctx.hub:
         return False, "Hub não decifrado (rode `uv run cifrar.py --verificar` em HUB-OFERTAS)"
     c = ctx.conc()

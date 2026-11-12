@@ -20,7 +20,7 @@ de Servico de Pixel" **nao existe como tela**. Dois motivos:
 - login ja persistido no perfil; sem Cloudflare, sem 2FA nessa superficie da BM
   `empresab.digital`. **Nao presuma:** a MESMA URL na BM Cosmos cai em reauth por chave
   de acesso (ver `facebook.com/events-manager-criar-dataset.md`).
-- `meta` divide a porta 9225 com `utmify` -> `tab new` antes de comecar, e
+- `meta` divide a porta <PORTA> com `utmify` -> `tab new` antes de comecar, e
   `business_id` explicito na URL, senao outro pane arrasta sua pagina.
 
 ## Passos

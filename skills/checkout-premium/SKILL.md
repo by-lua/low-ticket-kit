@@ -19,17 +19,20 @@ cada uma custou um retrabalho visível pro usuário.
 
 Tudo que está nesta skill continua valendo. O que muda é o modo:
 
-| | **Modo LOCAL** (um país, gateway nacional) | **Modo INTERNACIONAL com Stripe** |
+| | **Checkout Premium (local)** (um país, gateway nacional) | **Checkout Premium Internacional** (Stripe + PayPal) |
 |---|---|---|
 | Quando | Hotmart, Mundpay, Wiven, Cooud, Mercado Pago, XPag etc., um mercado só | Vários países/moedas, checkout próprio com Stripe |
 | Visual, ordem, timer, selos, bump, prova social, popup de saída | Tudo desta skill | **Exatamente o mesmo** |
-| Pagamento | Tabela de gateways por país abaixo | Cartão incorporado (Stripe Payment Element) + Apple Pay + Google Pay + PayPal, sempre ligados |
+| Pagamento | Tabela de gateways por país abaixo | Padrão: cartão pelo link da Stripe (Checkout Session) + Apple/Google Pay + PayPal; alternativa: cartão na própria página (Payment Element) |
 | Preço | Um preço, uma moeda | Catálogo por moeda no servidor; total calculado no servidor |
 | País/moeda/idioma | Fixos do mercado | Detectados na entrada (seletor para trocar); todo texto traduzido; locale do Stripe Elements |
 | Extras | Nenhum | País → moeda → idioma, formatação de preço, métodos por país, depoimentos do mercado, IVA, tracking `event_id` |
 | Regra de cobrança | Pedido criado uma vez, no clique | Igual: PaymentIntent só no clique |
 
-**MODELO INTERNACIONAL PRONTO — "Hotmart adaptado" (dona, 11/11/2026):** para checkout internacional com Stripe + PayPal use `MODELOS/checkout-internacional-hotmart/` (README lá). É o layout inspirado no checkout Hotmart: barra de urgência 10:00, banner largo arredondado alinhado ao card estreito, seletor de país com busca (idioma e moeda mudam pelo IP e pelo seletor), e-mail → **forma de pagamento** (cartão de débito/crédito, Apple Pay, Google Pay, PayPal, ícones de mesmo tamanho) → **bumps amarelos** (upgrade **aditivo**) → detalhes → botão verde → garantias com ícones → "Protegido por stripe". **Sem notificação de compra.** Depoimentos só reais (placeholder só em teste). Esta ordem (pagamento antes dos bumps) vale para este modelo; o modo local/padrão da casa segue a ordem e-mail → bumps → pagamento. Versão nova de tela = arquivo novo, nunca sobrescrever. O servidor do modelo roda em **Coolify (Node) ou só Cloudflare (Workers + D1)** com o mesmo núcleo. **Ao pedirem esse checkout, PERGUNTE onde vai hospedar (Cloudflare ou Coolify) antes de montar; não assuma** (ver `stripe-checkout/references/MODELO-INTERNACIONAL-HOTMART.md`, passo 0).
+**CHECKOUT PREMIUM INTERNACIONAL (dona, 11/11/2026)** = este mesmo checkout premium, adaptado para vender fora com Stripe + PayPal, em dois modelos prontos em `modelos/checkout-internacional-hotmart/` (leia o `AGENTS.md` de lá antes de tudo; a 1ª ação é a pergunta de abertura de `docs/FICHA-INTEGRACAO.md`: o que já está cadastrado na Stripe/PayPal só se integra):
+1. **Checkout Premium Internacional — modelo Hotmart com Stripe, cartão pelo link** — **o padrão**: `/stripe`. A página escolhe plano, bumps (antes da forma de pagar) e forma de pagar; o cartão é digitado na página segura da Stripe (Checkout Session); PayPal no PayPal. Menos código, carteiras sem registrar domínio, cartão salvo para o upsell de 1 clique.
+2. **Checkout Premium Internacional — modelo Hotmart, pagamento na própria página**: `/`. Cartão digitado na própria página (Stripe Payment Element), Apple/Google Pay pelo Express Checkout (registrar o domínio na Stripe), PayPal.
+Os dois: idioma e moeda pelo país (IP + seletor, país detectado sempre com nome), e-mail lembrado no navegador, total calculado no servidor, entrega assinada para a área de membros e espelho no Trackeador, rodam em Cloudflare, Coolify ou Docker (deploy na Cloudflare provado). Só essas duas telas: ajuste = editar a própria tela, sem `v2`, `v3`.
 
 **Modo internacional com Stripe = abrir também** `~/.claude/skills/stripe-checkout/references/ROTEIRO-NOVO-CHECKOUT.md` (passo a passo: organização, mercados, formas de pagamento, PayPal, entrega, testes) e `MAPA-PREMIUM-x-STRIPE.md` (o que cada skill manda). Em checkout de um só país, os extras internacionais NÃO entram.
 
@@ -38,7 +41,7 @@ Tudo que está nesta skill continua valendo. O que muda é o modo:
 ## PADRÃO da casa = visual do checkout padrão da casa (dona, 10/11/2026)
 
 A skill é o **design system do checkout padrão da casa**
-(extraído do CSS real e guardado em `MODELOS/checkout-base/`). Sem
+(extraído do CSS real e guardado em `modelos/checkout-base/`). Sem
 print de referência novo, todo checkout premium nasce com este visual, trocando
 só produto, textos, banner e (se pedido) a cor de destaque. Abrir o modelo
 de referência antes de montar.
@@ -72,12 +75,12 @@ com borda fina `gold/25` e `rounded-2xl`; caixa de segurança com ✓ ("Datos
 cifrados / No guardamos tu tarjeta"). Nada de preto puro, nada de dark.
 
 **Sempre junto em todo checkout premium:**
-- **Fluxo de compra (premium):** tudo numa coluna só, visível desde o começo, nesta ordem: **e-mail** (sem botão "Continuar"; o formato é validado ao clicar em comprar) → **order bumps** ("Aproveite e adicione", checkbox desmarcado, ela marca ou não) → **forma de pagamento** (nenhuma vem marcada) → ao escolher a forma, **aparece o botão de compra** (`.btn-gold`, grande, largura total, logo abaixo, com "acceso inmediato por e-mail · garantía X días" embaixo). **🛑 REGRA FIXA (dona, 10/11/2026): o pedido/cobrança (POST pro gateway/API) é criado UMA ÚNICA VEZ, no clique em comprar.** Escolher forma de pagamento, marcar/desmarcar bump e digitar e-mail NÃO criam pedido; só atualizam a tela (valores locais). Nada de gerar pedido ao escolher o método e gerar outro ao marcar o bump (isso duplicava pedido e é proibido). Botão de compra trava (disabled + flag) assim que clica, pra não duplicar com duplo clique. Evento InitiateCheckout também só nesse clique. Se o código antigo (ex.: `CheckoutHotmartTeste`) cria cobrança ao escolher método ou refaz ao marcar bump, remover. **Marcou/desmarcou um bump, tudo recalcula na hora:** preço do cabeçalho (e o riscado), linha do bump em "Tu pedido", total e o valor no botão de compra. Sem telefone/nome. Modelo: `MODELOS/checkout-base/index.html`.
+- **Fluxo de compra (premium):** tudo numa coluna só, visível desde o começo, nesta ordem: **e-mail** (sem botão "Continuar"; o formato é validado ao clicar em comprar) → **order bumps** ("Aproveite e adicione", checkbox desmarcado, ela marca ou não) → **forma de pagamento** (nenhuma vem marcada) → ao escolher a forma, **aparece o botão de compra** (`.btn-gold`, grande, largura total, logo abaixo, com "acceso inmediato por e-mail · garantía X días" embaixo). **🛑 REGRA FIXA (dona, 10/11/2026): o pedido/cobrança (POST pro gateway/API) é criado UMA ÚNICA VEZ, no clique em comprar.** Escolher forma de pagamento, marcar/desmarcar bump e digitar e-mail NÃO criam pedido; só atualizam a tela (valores locais). Nada de gerar pedido ao escolher o método e gerar outro ao marcar o bump (isso duplicava pedido e é proibido). Botão de compra trava (disabled + flag) assim que clica, pra não duplicar com duplo clique. Evento InitiateCheckout também só nesse clique. Se o código antigo (ex.: `CheckoutHotmartTeste`) cria cobrança ao escolher método ou refaz ao marcar bump, remover. **Marcou/desmarcou um bump, tudo recalcula na hora:** preço do cabeçalho (e o riscado), linha do bump em "Tu pedido", total e o valor no botão de compra. Sem telefone/nome. Modelo: `modelos/checkout-base/index.html`.
 - Timer SEMPRE regressivo e SEM memória (dona, 10/11/2026): conta de 10:00 até 00:00 e, se a pessoa sair e entrar de novo (ou recarregar), **reinicia em 10:00**. Vale pra qualquer checkout: o nosso premium, Wiven, Hotmart, Mundpay, Cooud, qualquer um. Nunca persistir o tempo (sem localStorage/cookie/sessão), nunca configurar prazo fixo/absoluto; no gateway, ligar o contador de reinício por visita.
 - Barra de urgência vermelha full-bleed (padrão Hotmart): contador `00:10:00` (10 min) + ícone de cronômetro + "Discount available for a limited time only" traduzido.
 - Garantia 7 dias BR / 15 dias internacional; "Acesso imediato por e-mail".
 - Banner com 1 seta pequena pra baixo no rodapé da imagem, apontando pra parte branca do checkout.
-- **Confiança (premium) = ícone PRETO + texto**, caixa `rounded-xl border-black/10 bg-neutral-50` na coluna do resumo, abaixo de "Tu pedido": Privacidad ("Tu información 100% segura") · Compra segura ("Ambiente seguro y autenticado") · Contenido aprobado ("100% revisado y aprobado"), traduzidos pro mercado. **Nada de azul e nada do estilo Hotmart no premium** — o visual azul com cards e a barra Hotmart só vão no checkout do Hotmart. O resto (visual e comentários) é igual ao do padrão da casa. Modelo: `MODELOS/checkout-base/index.html`.
+- **Confiança (premium) = ícone PRETO + texto**, caixa `rounded-xl border-black/10 bg-neutral-50` na coluna do resumo, abaixo de "Tu pedido": Privacidad ("Tu información 100% segura") · Compra segura ("Ambiente seguro y autenticado") · Contenido aprobado ("100% revisado y aprobado"), traduzidos pro mercado. **Nada de azul e nada do estilo Hotmart no premium** — o visual azul com cards e a barra Hotmart só vão no checkout do Hotmart. O resto (visual e comentários) é igual ao do padrão da casa. Modelo: `modelos/checkout-base/index.html`.
 
 ## Regra de identidade visual: clone exato por padrão
 
@@ -250,7 +253,7 @@ genérico) não tem esse problema: aí sim vale ícone neutro desenhado.
 
 ## Referências
 
-- **MODELO OFICIAL (abrir primeiro):** `MODELOS/checkout-base/index.html` (+ `assets/`: CSS e fontes originais do padrão da casa). Cópia fiel do padrão da casa com os ajustes da dona (timer 10 min, selos acesso por e-mail + garantia, seta no banner, confiança em ícone preto, fluxo e-mail → bumps → pagamento → botão de compra, recálculo ao marcar bump). Qualquer checkout premium novo parte dele; a implementação em React segue o mesmo visual.
+- **MODELO OFICIAL (abrir primeiro):** `modelos/checkout-base/index.html` (+ `assets/`: CSS e fontes originais do padrão da casa). Cópia fiel do padrão da casa com os ajustes da dona (timer 10 min, selos acesso por e-mail + garantia, seta no banner, confiança em ícone preto, fluxo e-mail → bumps → pagamento → botão de compra, recálculo ao marcar bump). Qualquer checkout premium novo parte dele; a implementação em React segue o mesmo visual.
 
 - `references/exemplo-componente.md` — trecho comentado do componente que
   originou esta skill, com a estrutura completa de JSX pra copiar como

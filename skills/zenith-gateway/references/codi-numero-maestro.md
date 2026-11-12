@@ -1,6 +1,6 @@
-# Receita ponta a ponta: CoDi no Número Maestro (MX)
+# Receita ponta a ponta: CoDi no <Oferta Exemplo> (MX)
 
-Integração real, feita em 09/09/2026 e no ar em `elnumeromaestro.leadgo.dev`.
+Integração real, feita em 09/09/2026 e no ar em `<subdominio>.<seu-dominio>`.
 Serve como molde para qualquer método da Zenith que devolva `nextAction`.
 
 O contexto: o checkout mexicano já rodava na XPag (SPEI + OXXO). CoDi é **o
@@ -258,7 +258,7 @@ curl -X POST https://api.zenithworld.com.br/integrations/webhooks/endpoints \
 "isActive":true,"deliveryFailures":0}}`. O secret é **seu**, escolhido por você
 — não é emitido pela Zenith.
 
-O endpoint do Número Maestro é `cmtu34l9q027nzmy1y3ijme7a`.
+O endpoint do <Oferta Exemplo> é `cmtu34l9q027nzmy1y3ijme7a`.
 
 ## 5. Env e deploy
 
@@ -274,8 +274,8 @@ disponibilidades vêm ligadas por padrão, que é o certo para as `NEXT_PUBLIC_*
 `env update` respondeu `422 Validation failed` tanto por chave quanto por uuid —
 para corrigir uma variável, apague e recrie.
 
-App do Número Maestro MX: contexto `empresab`, uuid `rdb7cs7wsgj0p2irrwgkpjyv`,
-repo `leadgodev/projeto-chavemestra-es`, **branch `mx`** (a `main` é a Argentina).
+App do <Oferta Exemplo> MX: contexto `empresab`, uuid `rdb7cs7wsgj0p2irrwgkpjyv`,
+repo `<org-github>/projeto-chavemestra-es`, **branch `mx`** (a `main` é a Argentina).
 
 ## Armadilha de automação: o login do painel
 
@@ -287,7 +287,7 @@ isso.
 Use o perfil persistente do sistema:
 
 ```bash
-~/.claude/bin/browsers.sh zenith    # porta 9251, sessão já logada
+~/.claude/bin/browsers.sh zenith    # porta <PORTA>, sessão já logada
 agent-browser --session zenith ...
 ```
 

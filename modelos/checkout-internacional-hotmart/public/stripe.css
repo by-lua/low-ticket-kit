@@ -1,0 +1,55 @@
+/* Redirect mode look (from the first real offer, 11/11/2026).
+   Cream page, Cormorant titles, gold accents and a deep gold button instead of the Hotmart green. */
+:root{--v11-ink:#1d1a16;--v11-muted:#6b6358;--v11-line:#e8dfcf;--v11-cream:#faf6ee;--v11-gold:#b8862b;--v11-gold-deep:#8a6114;--v11-gold-soft:#fbf3e2}
+body,.checkout-page{background:var(--v11-cream)}
+.gt-card{border-color:var(--v11-line);border-radius:18px;box-shadow:0 1px 2px rgba(60,40,10,.04),0 12px 32px -18px rgba(60,40,10,.18)}
+.gt-bannerimg{border-radius:14px}
+.gt-ptitle{font-family:var(--font-display);font-weight:600;font-size:22px;letter-spacing:.005em;color:var(--v11-ink)}
+.gt-h{font-family:var(--font-display);font-weight:600;font-size:20px;color:var(--v11-ink);letter-spacing:.005em}
+.gt-label{color:var(--v11-ink)}
+.gt-pplan{color:var(--v11-gold-deep)}
+.gt-input:focus{border-color:var(--v11-gold);box-shadow:0 0 0 3px rgba(184,134,43,.16);outline:none}
+
+/* Payment rows */
+.v11-methods{display:grid;gap:8px}
+.v11-method{display:flex;align-items:center;gap:12px;width:100%;min-height:56px;padding:12px 14px;border:1px solid var(--v11-line);border-radius:12px;background:#fff;text-align:left;cursor:pointer;transition:border-color .15s,background .15s,box-shadow .15s}
+.v11-method:hover{border-color:#d6c6a6}
+.v11-method:focus-visible{outline:2px solid var(--v11-gold);outline-offset:2px}
+.v11-method.is-on{border-color:var(--v11-gold);background:var(--v11-gold-soft);box-shadow:0 0 0 3px rgba(184,134,43,.14)}
+.v11-method .gt-radio{flex:none;width:18px;height:18px;border-radius:50%;border:2px solid #cfc4b0;position:relative;background:#fff}
+.v11-method.is-on .gt-radio{border-color:var(--v11-gold-deep)}
+.v11-method.is-on .gt-radio:after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--v11-gold-deep)}
+.v11-cardico{flex:none;width:26px;height:20px;fill:var(--v11-ink)}
+.v11-cardico .v11-stripe{fill:#fff}
+.v11-walleticon{flex:none;width:26px;height:20px;object-fit:contain}
+.v11-mtxt{display:grid;gap:1px;min-width:0;flex:1}
+.v11-mtxt b{font-weight:600;font-size:15px;color:var(--v11-ink)}
+.v11-mtxt small{font-size:12px;color:var(--v11-muted)}
+.v11-brands{display:flex;gap:4px;flex:none}
+.v11-brands img{width:30px;height:20px;padding:2px 3px;border:1px solid var(--v11-line);border-radius:4px;background:#fff;object-fit:contain}
+@media (max-width:400px){.v11-brands{display:none}}
+
+/* The "direction": what happens after the click */
+.v11-route{margin-top:10px;padding:14px 16px;border:1px dashed #d9c7a1;border-radius:12px;background:#fff}
+.v11-route-title{display:flex;align-items:center;gap:8px;margin:0 0 10px;font-size:14px;font-weight:600;color:var(--v11-ink)}
+.v11-route-title svg{width:16px;height:16px;flex:none;fill:none;stroke:var(--v11-gold-deep);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.v11-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0;padding:0;list-style:none}
+.v11-steps li{display:flex;align-items:flex-start;gap:7px;font-size:12.5px;line-height:1.35;color:var(--v11-muted)}
+.v11-steps li span{flex:none;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--v11-gold-soft);border:1px solid #e3cf9f;color:var(--v11-gold-deep);font-size:11px;font-weight:700}
+.v11-steps em{font-style:normal}
+.v11-route[data-via="stripe"] .v11-steps li:nth-child(2) em,.v11-route[data-via="paypal"] .v11-steps li:nth-child(2) em{color:var(--v11-ink);font-weight:600}
+@media (max-width:480px){.v11-steps{grid-template-columns:1fr}}
+
+/* Bumps: gold instead of green */
+.gt-bump{border-color:#e3cf9f;border-radius:12px}
+.gt-bump.is-on{box-shadow:0 0 0 2px rgba(184,134,43,.28)}
+
+/* Buy button: deep gold, ours */
+.btn-gold#buybtn{display:flex;align-items:center;justify-content:center;gap:6px;background:linear-gradient(180deg,#c4923a,var(--v11-gold-deep))!important;color:#fff;border-radius:12px;font-weight:700;letter-spacing:.01em;min-height:56px;box-shadow:0 8px 20px -10px rgba(138,97,20,.7)}
+.btn-gold#buybtn:hover:not(:disabled){filter:brightness(1.05)}
+.v11-arrow{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.gt-assure svg{stroke:var(--v11-gold-deep)}
+
+/* Stable size: the box never changes height when the method changes */
+.v11-route{min-height:92px}.v11-route-title{min-height:20px}.v11-steps li{min-height:34px}
+@media (max-width:480px){.v11-route{min-height:150px}}

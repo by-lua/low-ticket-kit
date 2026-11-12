@@ -1,0 +1,8 @@
+node_modules
+data
+.dev.vars
+.env
+*.test.mjs
+docs
+migrations
+.wrangler

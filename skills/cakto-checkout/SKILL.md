@@ -7,7 +7,7 @@ description: Cadastra e opera produto/oferta na Cakto (app.cakto.com.br) — gat
 
 # Cakto — checkout nacional + internacional
 
-Pesquisado e testado em 29/10/2026 (conta LeadGo, `contact@seudominio.com`). Fonte: `docs.cakto.com.br`,
+Pesquisado e testado em 29/10/2026 (conta <EMPRESA>, `contact@<seu-dominio>`). Fonte: `docs.cakto.com.br`,
 `cakto.com.br/cobertura`, `cakto.com.br/pagamentos` — reconfirmar se algo não bater (preço/taxa muda rápido).
 
 ## Quando usar
@@ -18,16 +18,16 @@ Pesquisado e testado em 29/10/2026 (conta LeadGo, `contact@seudominio.com`). Fon
 
 ## Perfil e credenciais
 
-- Perfil de browser: `cakto` (porta 9298) — só pro login inicial / 2FA / tarefas que a API não cobre.
+- Perfil de browser: `cakto` (porta <PORTA>) — só pro login inicial / 2FA / tarefas que a API não cobre.
   `~/.claude/bin/browsers.sh cakto`
 - Login: **sem senha por padrão** (magic link) ou **com senha + código de 6 dígitos por e-mail**
   (toggle "Login com senha" na tela). Conta usa 2FA por e-mail sempre — não tem como pular.
-  - E-mail de recebimento do código: `contact@seudominio.com`, webmail Hostinger, perfil `hostinger-mail-empresab`
-    (credenciais `HOSTINGER_LEADGO_EMAIL`/`HOSTINGER_LEADGO_PASSWORD` em `~/.claude/.credentials.env`).
+  - E-mail de recebimento do código: `contact@<seu-dominio>`, webmail <provedor-de-e-mail>, perfil `<perfil-de-e-mail>-empresab`
+    (credenciais `<VARIAVEL-DO-COFRE>`/`<VARIAVEL-DO-COFRE>` em `<COFRE-DE-CREDENCIAIS>`).
   - **Código expira rápido** (~60-90s) — entre pegar no e-mail e digitar na Cakto, não demorar.
     Se digitar e der "código inválido", é porque pegou um e-mail de tentativa anterior: clicar
     "Reenviar Código", esperar os ~90s de cooldown, abrir o e-mail **mais recente** de novo.
-- Credenciais em `~/.claude/.credentials.env`:
+- Credenciais em `<COFRE-DE-CREDENCIAIS>`:
   - `CAKTO_EMAIL` / `CAKTO_PASSWORD` — login do painel.
   - `CAKTO_CLIENT_ID` / `CAKTO_CLIENT_SECRET` — chave de API "low-ticket-skill" (escopos: leitura,
     escrita, produtos, pedidos, ofertas). Criada em Integrações → Cakto API → Criar Chave API.
@@ -46,7 +46,7 @@ checkout, Integrações de app, etc.).
 ### Autenticação (token OAuth2)
 
 ```bash
-set -a; source ~/.claude/.credentials.env; set +a
+set -a; source <COFRE-DE-CREDENCIAIS>; set +a
 curl -s -X POST https://api.cakto.com.br/public_api/token/ \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "client_id=$CAKTO_CLIENT_ID" \
@@ -187,7 +187,7 @@ conversacional direto no painel), configurar pelo botão "Configurar o CaktoMCP"
 
 A doc pública (`cakto.com.br/pagamentos`) só dá o quadro geral BRL. **Taxa real por país só existe
 no painel**, não na API — `Minha Conta` → aba `Planos E Taxas`, campo `Pais` troca o conjunto de
-métodos + taxas exibido. Conferido direto na tela, conta LeadGo:
+métodos + taxas exibido. Conferido direto na tela, conta <EMPRESA>:
 
 | País | Métodos disponíveis | Taxa (todos os métodos locais, exceto PayPal) | PayPal | Recebimento |
 |---|---|---|---|---|
@@ -259,4 +259,4 @@ de migrar o checkout de verdade.
 - **Garantia sempre igual ao produto:** Brasil 7 dias · internacional 15 dias. Conferir no produto, no checkout e no selo.
 - **Entrega:** "Acesso imediato por e-mail".
 - **Banner:** gerado por `banner-checkout-gpt` (seta pequena pra baixo no rodapé da imagem, título, garantia, acesso imediato por e-mail, vitalício).
-- **Confiança:** ícone preto + texto (Privacidade · Compra segura · Conteúdo aprovado) quando o gateway permitir bloco/HTML na página; o estilo azul com cards é só do Hotmart; visual-base em `MODELOS/checkout-base/index.html`.
+- **Confiança:** ícone preto + texto (Privacidade · Compra segura · Conteúdo aprovado) quando o gateway permitir bloco/HTML na página; o estilo azul com cards é só do Hotmart; visual-base em `modelos/checkout-base/index.html`.

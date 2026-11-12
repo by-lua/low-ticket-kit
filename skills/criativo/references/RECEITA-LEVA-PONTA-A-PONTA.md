@@ -2,7 +2,7 @@
 
 Pra qualquer agente que não sabe nada do projeto. Pedido do tipo "faz os criativos da oferta X" = seguir isto
 na ordem, sem pular etapa. Cada etapa tem uma prova (script ou arquivo). Sem a prova, não avança.
-Referência viva (feita assim em 23/10/2026): `OFERTAS/luciola-atlas-movimiento/criativos/`.
+Referência viva (feita assim em 23/10/2026): `OFERTAS/<slug-da-oferta>/criativos/`.
 
 ## 0 · Carregar
 Skill `low-ticket-painel` (estado do negócio) → `OFERTAS/<slug>/CLAUDE.md` + `STATUS.md` + `trafego/ANALISES.md`
@@ -79,7 +79,7 @@ Pasta `criativos/CRIATIVO-NN-<slug>/`:
 - Sessão: `S=$(~/.claude/bin/gpt-livre.sh <lane> | tail -1)` → `agent-browser --session $S navigate https://chatgpt.com/`
 - `bash ~/.claude/skills/criativo/scripts/gerar-imagem-gpt.sh $S prompt.txt saida.png <páginas...> <REF-FORMATO...>`
   (1 imagem por chat novo; confere anexo, envio, dono do chat e baixa). Várias peças = fila em série (ver
-  `OFERTAS/luciola-atlas-movimiento/criativos/_fila/fila-estaticos.sh`), parando se a cota acabar.
+  `OFERTAS/<slug-da-oferta>/criativos/_fila/fila-estaticos.sh`), parando se a cota acabar.
 - Cota acabou ("limite de criação de imagens") = `gpt-livre.sh --esgotou secundaria HH:MM` e agendar pra depois.
 - Personagem: a 1ª imagem aprovada do expert vira referência de rosto das próximas (mesma pessoa sempre).
 

@@ -1,0 +1,323 @@
+/* Checkout internacional (Hotmart adaptado) — consolidado de extra, v3..v10 na ordem de cascata. */
+
+/* ---- extra.css ---- */
+/* Extras do checkout checkout FR (a base vem de assets/style.css, cópia do modelo da casa). */
+/* Fontes da padrão da casa: Inter (corpo) e Cormorant Garamond (títulos), empacotadas em assets/fonts */
+:root{--font-body:Inter,"Inter Fallback",ui-sans-serif,system-ui,sans-serif;--font-display:"Cormorant Garamond","Cormorant Garamond Fallback",Georgia,serif}
+body{background:var(--color-night);color:var(--color-bone);font-family:Inter,system-ui,sans-serif}
+.gt-testbar{background:#14213d;color:#fff;text-align:center;font-size:12px;padding:6px 12px;letter-spacing:.02em}
+.gt-banner{position:relative;overflow:hidden;padding:38px 24px 44px;text-align:center;color:#fff;
+  background:radial-gradient(60rem 30rem at 50% -20%,#e8a31e55,transparent 70%),linear-gradient(160deg,#2a1b0f,#4a2308 60%,#1a1208)}
+.gt-banner-eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#ffc65c;font-weight:600}
+.gt-banner-title{margin-top:10px;font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(26px,5vw,40px);font-weight:500;line-height:1.1}
+.gt-banner-sub{margin-top:12px;font-size:13px;color:#f3e4c5}
+.gt-banner-arrow{position:absolute;left:50%;bottom:8px;width:18px;height:18px;transform:translateX(-50%);color:#ffc65c}
+.gt-countrybar{display:flex;justify-content:flex-end;margin:-8px 0 14px}
+.gt-country{position:relative}
+.gt-countrybtn{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:#1f2937;background:none;border:0;cursor:pointer;padding:4px 2px}
+.gt-countrybtn .gt-chev{width:9px;height:6px}
+.gt-flag{display:inline-block;width:22px;height:15px;border-radius:2px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.12);flex:none}
+.gt-flag svg{display:block;width:100%;height:100%}
+.gt-countrymenu{position:absolute;right:0;top:calc(100% + 6px);z-index:30;min-width:210px;margin:0;padding:6px;list-style:none;background:#fff;border:1px solid rgba(0,0,0,.12);border-radius:12px;box-shadow:0 18px 40px -16px rgba(0,0,0,.3)}
+.gt-countrymenu li{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;font-size:14px;color:#1f2937;cursor:pointer}
+.gt-countrymenu li:hover,.gt-countrymenu li[aria-selected=true]{background:#fff4dc}
+.gt-countrymenu li em{margin-left:auto;font-style:normal;font-size:11px;color:#6b7280}
+.gt-bumpimg{display:flex;height:56px;width:56px;flex:none;align-items:center;justify-content:center;border-radius:10px;
+  background:linear-gradient(135deg,#ffc65c33,#b26a0033);font-size:22px;color:#b26a00}
+.gt-brands{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;font-size:9px;color:#6b7280}
+.gt-brands b{border:1px solid rgba(0,0,0,.15);border-radius:4px;padding:1px 4px;font-weight:700}
+.gt-paypal{font-size:17px;font-weight:800;font-style:italic;color:#003087;letter-spacing:-.01em}
+.gt-paypal i{color:#009cde;font-style:italic}
+.gt-cardpanel{margin-top:10px;border:1px solid rgba(232,163,30,.35);border-radius:12px;padding:14px;background:#fffdf8}
+.gt-express{display:none;margin-bottom:10px}
+.gt-express.gt-express-on{display:block}
+
+/* Tipografia e campos no padrão da padrão da casa: títulos em Cormorant Garamond leve, corpo em Inter, campos beges com borda dourada */
+.gt-title{font-family:var(--font-display);font-size:clamp(26px,4.4vw,32px);font-weight:500;line-height:1.1;color:var(--color-bone);letter-spacing:-.005em}
+.gt-banner-title{font-weight:400}
+.gt-input{min-height:52px;width:100%;border-radius:12px;border:1px solid rgba(232,163,30,.3);background:#f7f4ee;padding:0 16px;font-size:16px;color:var(--color-bone);outline:none;font-family:var(--font-body)}
+.gt-input::placeholder{color:var(--color-mist);opacity:.7}
+.gt-input:focus{border-color:var(--color-gold);box-shadow:0 0 0 3px rgba(232,163,30,.18)}
+#f1 label,.checkout-page section .text-sm.font-medium{color:#4a3a28;font-weight:500}
+.checkout-page h2{font-family:var(--font-display);font-size:19px;font-weight:600;color:var(--color-bone)}
+
+/* Formas de pagamento: linhas selecionáveis estilo Hotmart, com ícones coloridos das marcas */
+.gt-methods{display:grid;gap:10px}
+.gt-method{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#fff;border:1.5px solid rgba(0,0,0,.14);border-radius:14px;padding:14px;cursor:pointer;transition:border-color .2s,box-shadow .2s,background .2s}
+.gt-method:hover{border-color:var(--color-gold)}
+.gt-method.is-on{border-color:var(--color-gold);background:#fffaf0;box-shadow:0 0 0 3px rgba(232,163,30,.16)}
+.gt-radio{flex:none;width:18px;height:18px;border-radius:50%;border:2px solid #cbd5e1;position:relative;background:#fff}
+.gt-method.is-on .gt-radio{border-color:var(--color-gold-deep)}
+.gt-method.is-on .gt-radio:after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--color-gold-deep)}
+.gt-cardicon svg{display:block;width:40px;height:28px;flex:none;filter:drop-shadow(0 3px 5px rgba(178,106,0,.35))}
+.gt-ppicon{display:flex;align-items:center;justify-content:center;width:40px;height:28px;flex:none}
+.gt-ppicon img{width:24px;height:24px}
+.gt-mtxt{display:grid;gap:2px;min-width:0;flex:1}
+.gt-mtxt b{font-size:15px;font-weight:600;color:#1f2937}
+.gt-mtxt small{font-size:12px;color:#6b7280;line-height:1.3}
+.gt-pptext{font-size:17px!important;font-weight:800!important;font-style:italic;color:#003087!important;letter-spacing:-.01em}
+.gt-pptext i{color:#009cde;font-style:italic}
+.gt-mlogos{display:flex;align-items:center;gap:8px;flex:none}
+.gt-mlogos img{height:18px;width:auto;max-width:34px}
+.gt-stripebadge{display:flex;align-items:center;justify-content:center;gap:6px;margin:10px 0 0;font-size:11.5px;color:#6b7280}
+.gt-stripebadge svg{width:13px;height:13px;color:#10b981}
+.gt-stripebadge img{height:17px;width:auto}
+@media (max-width:560px){.gt-method{flex-wrap:wrap}.gt-mlogos{width:100%;padding-left:30px;justify-content:flex-start}}
+
+.gt-mlogos{margin-top:6px}
+.gt-mlogos img{height:17px}
+.gt-stripebadge{flex-wrap:wrap;row-gap:2px}
+.gt-stripebadge strong{font-size:15px;font-weight:700;letter-spacing:-.02em;color:#635bff;margin-left:-3px}
+@media (max-width:560px){.gt-method{flex-wrap:nowrap}.gt-mlogos{width:auto;padding-left:0}}
+
+.gt-method,.pay{scroll-margin-top:84px}
+
+/* ---- v3.css ---- */
+/* V3 — inspirada no checkout Hotmart do produto (banner largo com respiro, card estreito, títulos serifados,
+   campos retos, bumps com borda verde, botão verde). Extras da casa mantidos: acesso imediato por e-mail e garantia de 15 dias. */
+:root{--hm-border:#c9c9c9;--hm-green:#04b045;--hm-green-soft:#e3f8e8;--hm-ink:#111;--hm-grey:#6b6b6b;--hm-bege:#f3f1ec}
+body{background:#fff;color:#1b1b1b;font-family:"Open Sans",system-ui,sans-serif;font-size:14px;-webkit-font-smoothing:antialiased}
+.checkout-page{background:#fff;isolation:auto}
+.checkout-page:before{display:none}
+.gt-testbar{background:#14213d}
+
+/* Barra de urgência (mesma regra da casa: 10:00 sem memória) */
+.gt-urgency{background:linear-gradient(180deg,#f0625a,#dd423a);box-shadow:none}
+
+/* Banner largo, com respiro abaixo da barra */
+.gt-wrap{max-width:1022px;margin:0 auto;padding:44px 16px 56px}
+.gt-bannerimg{display:block;width:100%;height:auto;border-radius:6px}
+
+/* Card estreito */
+.gt-card{max-width:670px;margin:30px auto 0;border:1px solid var(--hm-border);border-radius:16px;background:#fff;padding:0 16px 28px;box-shadow:none}
+.gt-countrybar{margin:0 -4px 6px;padding-top:12px}
+.gt-countrybtn{font-family:"Open Sans",sans-serif;font-size:12.5px;font-weight:700;color:#111}
+
+/* Produto */
+.gt-product{display:flex;gap:12px;align-items:flex-start;margin-top:6px}
+.gt-cover{width:80px;height:80px;flex:none;border-radius:4px;object-fit:cover;background:#f1f1f1}
+.gt-pinfo{min-width:0}
+.gt-ptitle{margin:0;font-family:"Libre Baskerville",Georgia,serif;font-weight:700;font-size:16px;line-height:1.3;color:#111}
+.gt-pauthor{margin:2px 0 0;font-size:12px;color:#444}
+.gt-pprice{margin:4px 0 0;font-size:20px;font-weight:700;color:#111}
+.gt-pprice small{font-size:12px;font-weight:400;color:var(--hm-grey);margin-left:6px}
+.gt-pbadges{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.gt-chip{display:inline-flex;align-items:center;gap:5px;border:1px solid #dcdcdc;background:#f5f5f5;color:#444;border-radius:999px;padding:3px 9px;font-size:11px;font-weight:600}
+.gt-chip svg{width:13px;height:13px}
+.gt-chip-green{border-color:#b7ead0;background:#ecfbf3;color:#0a7a4b}
+.gt-pdesc{margin:12px 0 0;font-size:12px;line-height:1.5;color:#4a4a4a}
+
+/* Títulos de seção */
+.gt-h{margin:30px 0 12px;font-family:"Libre Baskerville",Georgia,serif;font-weight:700;font-size:16px;color:#111;letter-spacing:0}
+.gt-label{font-size:14px;color:#222;font-weight:400}
+
+/* Campos retos */
+.gt-input{min-height:42px;width:100%;border-radius:6px;border:1px solid #b5b5b5;background:#fff;padding:0 12px;font-family:"Open Sans",sans-serif;font-size:14px;color:#111;outline:none}
+.gt-input::placeholder{color:#9a9a9a;opacity:1}
+.gt-input:focus{border-color:#111;box-shadow:none}
+
+/* Order bumps: cartão com borda verde, miniatura, desconto e faixa "Ajouter le produit" */
+.gt-bumps{display:grid;gap:14px}
+.gt-bump{display:block;border:1px solid var(--hm-green);border-radius:6px;overflow:hidden;cursor:pointer;background:#fff}
+.gt-bump-top{display:flex;gap:14px;padding:16px}
+.gt-bump-img{width:72px;height:72px;flex:none;border-radius:4px;object-fit:cover}
+.gt-bump-info{display:grid;gap:4px;min-width:0}
+.gt-bump-title{font-family:"Libre Baskerville",Georgia,serif;font-weight:700;font-size:15px;line-height:1.3;color:#111}
+.gt-bump-desc{font-size:12px;line-height:1.45;color:#737373}
+.gt-bump-prices{display:flex;align-items:center;gap:8px;margin-top:2px}
+.gt-old{font-size:12px;color:#8a8a8a;text-decoration:line-through}
+.gt-off{display:inline-flex;align-items:center;background:var(--hm-green);color:#fff;font-size:11px;font-weight:700;border-radius:4px;padding:1px 6px}
+.gt-bump-price{font-size:15px;font-weight:700;color:#111}
+.gt-bump-add{display:flex;align-items:center;gap:10px;background:var(--hm-green-soft);padding:13px 16px;font-size:14px;color:#111}
+.gt-bump-add input{width:17px;height:17px;accent-color:#111;margin:0}
+.gt-bump.is-on{box-shadow:0 0 0 2px rgba(4,176,69,.25)}
+
+/* Formas de pagamento: linhas retas com rádio preto; a escolhida ganha borda escura */
+.gt-methods{gap:12px}
+.gt-method{border:1px solid var(--hm-border);border-radius:8px;padding:14px;gap:12px;background:#fff;box-shadow:none}
+.gt-method:hover{border-color:#8f8f8f}
+.gt-method.is-on{border:1.5px solid #111;background:#fff;box-shadow:none}
+.gt-radio{width:17px;height:17px;border:1.5px solid #9a9a9a}
+.gt-method.is-on .gt-radio{border-color:#111}
+.gt-method.is-on .gt-radio:after{inset:3px;background:#111}
+.gt-mtxt b{font-family:"Open Sans",sans-serif;font-size:14px;font-weight:700;color:#111}
+.gt-mtxt small{color:var(--hm-grey);font-size:12px}
+.gt-cardicon svg{filter:none}
+.gt-pptext{font-family:"Open Sans",sans-serif;font-size:15px!important;font-style:italic;font-weight:800!important}
+.gt-cardpanel{margin-top:-4px;border:1.5px solid #111;border-top:0;border-radius:0 0 8px 8px;background:var(--hm-bege);padding:16px}
+.gt-stripebadge{justify-content:flex-start;margin-top:8px}
+
+/* Detalhes da compra */
+.gt-summary{border:1px solid var(--hm-border);border-radius:6px;overflow:hidden}
+#lines{gap:0}
+.gt-line{display:flex;justify-content:space-between;gap:16px;padding:12px;border-bottom:1px solid #e6e6e6;font-size:14px;font-weight:600;color:#111}
+.gt-line span:last-child{font-weight:400}
+.gt-line:last-child{border-bottom:0}
+.gt-total{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px;background:#fafafa;border-top:1px solid var(--hm-border);font-size:14px}
+.gt-total small{color:var(--hm-grey);font-size:11px}
+.gt-total strong{font-size:18px}
+
+/* Botão de compra verde, como a Hotmart; "Acheter maintenant" */
+.btn-gold#buybtn{background:var(--hm-green)!important;background-image:none!important;color:#fff;border-radius:6px;font-weight:700;box-shadow:none;letter-spacing:0;min-height:48px}
+.btn-gold#buybtn:after{display:none}
+.btn-gold#buybtn:hover:not(:disabled){transform:none;filter:brightness(1.05);box-shadow:none}
+
+/* Confiança (ícone preto + texto) */
+.gt-trust{display:grid;gap:12px;margin-top:22px;border:1px solid #e3e3e3;border-radius:8px;background:#fafafa;padding:14px}
+.gt-trust div{display:flex;align-items:center;gap:12px}
+.gt-trust svg{width:24px;height:24px;flex:none;color:#111}
+.gt-trust p{margin:0;display:grid;font-size:13px}
+.gt-trust b{font-weight:700;color:#111}
+.gt-trust span{font-size:12px;color:var(--hm-grey)}
+.gt-legal{margin:16px 0 0;font-size:11px;line-height:1.5;color:#8a8a8a;text-align:center}
+
+@media (max-width:560px){
+  .gt-wrap{padding:24px 12px 40px}
+  .gt-card{padding:0 12px 24px}
+  .gt-bump-top{padding:12px;gap:10px}
+}
+
+/* Títulos: serifa Libre Baskerville (a regra da V2 usava Cormorant) */
+.checkout-page .gt-h,.checkout-page h2.gt-h{font-family:"Libre Baskerville",Georgia,serif;font-weight:700;font-size:16px;color:#111}
+/* Cartão + campos formam um bloco só, como na Hotmart */
+.gt-pm{display:grid}
+.gt-pm .gt-method.is-on{border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom-color:#111}
+.gt-pm .gt-cardpanel{margin-top:0}
+
+@media (max-width:560px){#toast{top:auto!important;bottom:12px;right:12px;left:12px;max-width:none}}
+
+.gt-method,.pay{scroll-margin-top:84px}
+
+/* ---- v4.css ---- */
+/* V4 — ajustes sobre a V3 (11/11/2026) */
+/* Banner alinhado ao card, com cantos arredondados */
+.gt-wrap{max-width:702px}
+.gt-bannerimg{border-radius:16px}
+.gt-card{margin-top:22px}
+
+/* Produto: nome, "Formule ..." e preço abaixo (sem autora nem chips) */
+.gt-pplan{margin:6px 0 0;font-size:13px;font-weight:600;color:#444}
+.gt-pprice{margin:2px 0 0}
+
+/* Cartão Hotmart: ícone simples em linha preta; Apple/Google Pay e PayPal como linhas iguais */
+.gt-cardsvg{width:26px;height:26px;flex:none}
+.gt-walleticon{height:20px;width:auto;max-width:52px;flex:none}
+.gt-ppicon{width:26px}
+.gt-mlogos{margin-top:4px}
+.gt-pm{display:grid}
+.gt-methods{gap:12px}
+.gt-walletpanel{border:1.5px solid #111;border-radius:8px;padding:14px;background:var(--hm-bege);margin-top:-4px}
+.gt-walletnote{margin:10px 0 0;font-size:12px;line-height:1.5;color:#555}
+
+/* Garantias: uma linha discreta, sem caixa */
+.gt-assure{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 12px;margin:18px 0 0;font-size:12px;color:#6b6b6b}
+.gt-assure i{width:3px;height:3px;border-radius:50%;background:#b5b5b5}
+.gt-legal{margin-top:12px}
+@media (max-width:560px){.gt-wrap{max-width:none}}
+
+/* Seletor de país com busca */
+.gt-countrymenu{min-width:260px;padding:0;overflow:hidden}
+.gt-countrymenu.hidden{display:none}
+.gt-csearch{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid #e6e6e6;color:#777}
+.gt-csearch input{flex:1;border:0;outline:0;font:14px "Open Sans",sans-serif;color:#111;background:none}
+#countrylist{list-style:none;margin:0;padding:6px;max-height:268px;overflow:auto}
+#countrylist li{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;font-size:14px;color:#1f2937;cursor:pointer}
+#countrylist li:hover,#countrylist li[aria-selected=true]{background:#f1f1f1}
+#countrylist li img{width:22px;height:16px;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.12);object-fit:cover}
+#countrylist .gt-empty{color:#888;cursor:default}
+#countrylist .gt-empty:hover{background:none}
+
+/* Seletor de país um pouco menor */
+.gt-countrybar{padding-top:10px;margin-bottom:2px}
+.gt-countrybtn{font-size:11.5px;gap:6px;padding:2px}
+.gt-countrybtn .gt-flag{width:17px;height:12px}
+.gt-countrybtn .gt-flag img{width:100%;height:100%;object-fit:cover}
+.gt-countrybtn .gt-chev{width:7px;height:5px}
+.gt-countrymenu{min-width:230px}
+#countrylist li{font-size:13px;padding:7px 9px}
+.gt-csearch input{font-size:13px}
+
+.gt-method,.pay{scroll-margin-top:84px}
+
+/* Ícones das formas de pagamento no MESMO tamanho: caixa fixa de 46x28, imagem contida e centralizada */
+.gt-method .gt-cardsvg,.gt-method .gt-walleticon,.gt-method .gt-ppicon{width:46px;height:28px;flex:none}
+.gt-method .gt-cardsvg{padding:0 9px;box-sizing:border-box}
+.gt-method .gt-walleticon{object-fit:contain;max-width:none;height:28px;padding:2px 0}
+.gt-method .gt-ppicon{display:flex;align-items:center;justify-content:center}
+.gt-method .gt-ppicon img{width:auto;height:24px}
+.gt-method .gt-walleticon{transform:scale(1.55)}
+
+/* Ícone do cartão mais fino */
+.gt-cardsvg rect,.gt-cardsvg path{stroke-width:1.15}
+.gt-method .gt-cardsvg{padding:0 10px}
+
+/* ---- v5.css ---- */
+/* V5 — prova social */
+.gt-proof{margin-top:30px;border-top:1px solid #e3e3e3;padding-top:20px}
+.gt-proof-count{margin:0 0 14px;font-size:14px;font-weight:700;color:#111}
+.gt-proof-grid{display:grid;gap:16px 24px;grid-template-columns:1fr 1fr}
+.gt-proof-grid.hidden{display:none}
+.gt-t{display:flex;gap:10px;align-items:flex-start}
+.gt-t img{width:36px;height:36px;border-radius:50%;object-fit:cover;flex:none}
+.gt-t-name{margin:0;font-size:13px;font-weight:600;color:#111}
+.gt-stars{color:#f59e0b;font-size:12px;letter-spacing:1px}.gt-stars i{color:#d4d4d4;font-style:normal}
+.gt-t-text{margin:3px 0 0;font-size:12px;line-height:1.5;color:#6b6b6b}
+.gt-proof-note{margin:18px 0 0;text-align:center;font-size:11px;color:#8a8a8a}
+.gt-proof-pci{display:flex;align-items:center;justify-content:center;gap:6px;margin:8px 0 0;font-size:11px;font-weight:600;color:#6b6b6b}
+@media (max-width:560px){.gt-proof-grid{grid-template-columns:1fr}}
+
+/* ---- v6.css ---- */
+/* V6 — sobre sobre a V5: garantias com ícones, sem descrição do produto, bumps amarelos (dourado da casa) */
+:root{--gt-yellow:#e8a31e;--gt-yellow-deep:#b26a00;--gt-yellow-soft:#fff4d6}
+
+/* Linha de garantias minimalista, com um ícone ao lado de cada item */
+.gt-assure{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 14px;margin:22px 0 0;font-size:12.5px;color:#6b6b6b}
+.gt-assure span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.gt-assure svg{width:15px;height:15px;flex:none;fill:none;stroke:#8a8a8a;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.gt-assure b{font-weight:400}
+.gt-assure i{width:3px;height:3px;border-radius:50%;background:#c2c2c2}
+
+/* Produto sem descrição: só capa, nome, fórmula e preço */
+.gt-product{margin-bottom:2px}
+
+/* Bumps em amarelo */
+.gt-bump{border-color:var(--gt-yellow)}
+.gt-bump.is-on{box-shadow:0 0 0 2px rgba(232,163,30,.28)}
+.gt-bump-add{background:var(--gt-yellow-soft)}
+.gt-bump-add input{accent-color:var(--gt-yellow-deep)}
+.gt-off{background:var(--gt-yellow);color:#2a1b0f}
+.gt-assure em{font-style:normal}
+
+/* ---- v7.css ---- */
+/* V7 — a pergunta do e-mail é o título da seção (sem "Vos informations") */
+#f1{margin-top:26px;gap:10px}
+#f1 .gt-label{font-family:"Libre Baskerville",Georgia,serif;font-weight:700;font-size:16px;line-height:1.35;color:#111}
+
+/* ---- v8.css ---- */
+/* V8 — ícones coloridos, sem notificação de compra */
+.gt-cardsvg rect,.gt-cardsvg path{stroke:#111;stroke-width:1.0}
+.gt-method .gt-walleticon[src*="gpay"]{transform:none;width:46px;height:28px;object-fit:contain;padding:5px 0}
+#toast{display:none!important}
+
+/* "Protégé par stripe" no fim do card, como o "Protegido por Hotmart" */
+.gt-stripe{display:flex;align-items:center;justify-content:center;gap:6px;margin:14px 0 0;font-size:11.5px;color:#8a8a8a}
+.gt-stripe img{height:18px;width:auto;filter:grayscale(1);opacity:.75}
+.gt-stripe strong{font-size:17px;font-weight:800;letter-spacing:-.03em;color:#8a8a8a;margin-left:-3px}
+
+/* Pergunta do e-mail menor (V7 deixava em 16px e quebrava em duas linhas) */
+#f1 .gt-label{font-size:13.5px;line-height:1.4;letter-spacing:-.005em}
+
+/* ---- v9.css ---- */
+/* V9 — linha do cartão no estilo Hotmart: ícone cheio preto, rótulo curto, sem logos embaixo */
+.gt-method .gt-cardsolid{width:26px;height:20px;flex:none;margin:0 10px 0 0}
+.gt-method[data-pay="card"]{padding:16px 14px}
+.gt-method[data-pay="card"] .gt-mtxt b{font-size:14.5px}
+
+/* Sem espaço vazio antes de escolher a forma de pagamento: o botão só ocupa lugar depois da escolha */
+#buy[style*="0fr"]{display:none}
+
+/* Avatar genérico dos depoimentos (sem foto) */
+.gt-avatar{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;flex:none;background:linear-gradient(135deg,#d9b36a,#b26a00)}
+
+/* ---- v10.css ---- */
+.gt-avatar{color:#fff;font-weight:700;font-size:15px}

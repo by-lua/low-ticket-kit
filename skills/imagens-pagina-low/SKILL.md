@@ -327,8 +327,8 @@ daquele item — capa, uma página de seção, etc.; (2) validar e SALVAR como i
 então passar essas imagens-âncora pro GPT como referência visual pra gerar o resto do item. Gera a
 identidade primeiro, guarda, e produz o lote em cima dela — nunca o lote solto sem âncora.
 
-Mecânica de geração: skill `gpt-imagem-playwright` (perfil `gpt`, porta 9222).
-Cota do GPT estourada -> Hub (`hub`, porta 9223), modo Imagem.
+Mecânica de geração: skill `gpt-imagem-playwright` (perfil `gpt`, porta <PORTA>).
+Cota do GPT estourada -> Hub (`hub`, porta <PORTA>), modo Imagem.
 Nunca gerar desenho técnico com medida aqui — isso sai de código, não de IA.
 
 **Exemplos de mockup bons (referência de qualidade)** em `assets/exemplos-mockups-*`. O conjunto

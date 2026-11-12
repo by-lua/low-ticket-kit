@@ -6,7 +6,7 @@
 
 - Objetivo: criar SaaS funcional prototipo mínimo 30min (não produto final polido)
 - Exemplo: SermonFlix (gerenciador sermões: login, criar, listar, visualizar, editar, deletar, relatórios, exportar)
-- Hospedagem: Hostinger Premium (permite 25 sites mesma conta)
+- Hospedagem: <provedor-de-e-mail> Premium (permite 25 sites mesma conta)
 - Plano: Premium 1 mês R$45 (teste rápido) ou 12 meses R$23 mês (ganha domínio grátis)
 - Domínio: gerar nome único ChatGPT (prompt fornecido) → pesquisar disponibilidade
 - Exemplo nomes gerados: púlpito + tech = púlpito, verbo + logos = verbos
@@ -15,7 +15,7 @@
 - Guardar credenciais: arquivo texto com banco|usuário|senha|URL|nome-site
 - Prompt ChatGPT: "Cria app PHP+SQL nome SermonFlix. Objetivos: criar/listar/visualizar sermão. Login. Usuário vê apenas seus. Design responsivo elegante. Fonte Inter. Cores azul branco, texto preto chumbo. Menu vertical"
 - Chat Cloud IA: colar prompt → aguarda gerando files (SQL, config.php, style.css, header.php, footer.php, script.js, login.php, logout.php, index.php, etc)
-- Upload arquivos: hostinger → cPanel → gerenciador arquivos → public_html/app → criar pasta subdomínio → novo arquivo php → colar conteúdo Cloud
+- Upload arquivos: <provedor-de-e-mail> → cPanel → gerenciador arquivos → public_html/app → criar pasta subdomínio → novo arquivo php → colar conteúdo Cloud
 - Quando Cloud trava (limite chars): pedir "refaça último arquivo" → continue
 - Teste prático: access app.seudomain.com.br → login padrão admin/123456 (criar conta novo usuário)
 - Funcionalidades testadas: criar sermão, listar, visualizar, editar, deletar, buscar, relatórios, exportar TXT/HTML/planilha
@@ -33,12 +33,12 @@
 - Logo SaaS: Ideogram.AI (gerador imagem IA) → prompt "logotipo 'SermonFlix'" → landscape 1:1 tamanho
 - Remover fundo: remove.bg upload logo → automático remove fundo → salvar PNG transparente
 - Edit Windows: diminuir tamanho logo mínimo (File > Edit menu) → File > Save
-- Hospedagem logo: Hostinger gerenciador arquivos → public_html → upload logo.png → copiar URL (https://seudominio/logo.png)
+- Hospedagem logo: <provedor-de-e-mail> gerenciador arquivos → public_html → upload logo.png → copiar URL (https://seudominio/logo.png)
 - Prompt página vendas: PDF fornecido com estrutura completa (3 partes: menu, benefícios, planos)
 - Pontos amarelos template: troque aqui → logo URL, vídeo VSL, imagem 1-4 benefícios, preço, link checkout
 - Vídeo VSL: gravar seu SaaS funcionando mostrando features (5-10 min explicação clara)
 - Imagens benefícios: screenshot SaaS resize quadrado (Windows+Shift+S) → Paint → Ctrl+V → 4 imagens variadas funcionalidades
-- Upload imagens: Hostinger → 1.png, 2.png, 3.png, 4.png → copiar URLs complete (https://seudominio/1.png etc)
+- Upload imagens: <provedor-de-e-mail> → 1.png, 2.png, 3.png, 4.png → copiar URLs complete (https://seudominio/1.png etc)
 - Garantia imagem: Ideogram prompt "imagem texto '7 dias' cor azul" → remover fundo remove.bg → salvar garantia.png
 - Cloud AI: colar 3 partes prompt completo → aguarda geração HTML (pode travar parte 2/3)
 - Se travar: "refaça parte dois" → copiar completo → vir arquivo anterior → colar continuação

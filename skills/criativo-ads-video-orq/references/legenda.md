@@ -154,7 +154,7 @@ Duas armadilhas medidas em produção:
    base, senão a segunda linha invade a faixa dos 360 px.
 2. **Legenda que "não pula"** — largura fixa e base fixa. Legenda que muda de altura
    a cada frase denuncia automação e cansa o olho. Ver a memória de pós-produção do
-   projeto AstroDicas (1.15x, corte de respiração, legenda dourada estável).
+   projeto <Oferta Exemplo> (1.15x, corte de respiração, legenda dourada estável).
 
 #### Acelerar é padrão, não opcional
 > ⚠️ **OBSOLETO (26/10/2026)** — vale `references/EDICAO-PADRAO.md` (velocidade 1.0, sem aceleração).

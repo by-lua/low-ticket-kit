@@ -17,7 +17,7 @@ Os atores do Apify também não resolvem:
 ## A solução: perfil logado
 
 Qualquer perfil com conta Google logada abre o Trends normalmente. O perfil
-`gcloud` (porta 9228) já está logado.
+`gcloud` (porta <PORTA>) já está logado.
 
 Para não brigar pelo `gcloud`, clone-o:
 
@@ -27,7 +27,7 @@ rm -rf ~/.agent-profiles/trends && mkdir -p ~/.agent-profiles/trends
 rsync -a --exclude='*Cache*' --exclude='Code Cache' --exclude='GPUCache' \
       --exclude='Service Worker/CacheStorage' --exclude='Singleton*' \
       ~/.agent-profiles/gcloud/ ~/.agent-profiles/trends/
-~/.claude/bin/browsers.sh trends          # porta 9234
+~/.claude/bin/browsers.sh trends          # porta <PORTA>
 ```
 
 333M → 145M sem os caches. O login vem junto e sobrevive a reboot.
@@ -47,7 +47,7 @@ agent-browser --session trends eval '
   i<0?"":t.slice(i,i+280)'
 ```
 
-Retorno útil: `... Média x1 <termo1> <termo2> <termo3> Média <v1> <v2> <v3> ...`
+Retorno útil: `... Média <projeto-isolado> <termo1> <termo2> <termo3> Média <v1> <v2> <v3> ...`
 
 Script pronto (até 3 termos por chamada): ver `trends.sh` nesta pasta.
 
