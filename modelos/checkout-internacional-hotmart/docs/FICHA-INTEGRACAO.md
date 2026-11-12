@@ -2,7 +2,12 @@
 
 Objetivo: quando alguém disser "monta o Checkout Premium Internacional da oferta X", o agente **não sai criando nada**. Primeiro pergunta, numa mensagem só, o que já existe. Se a pessoa já cadastrou tudo (organização, conta Stripe, produto, preços, PayPal, domínio), o agente **só integra**: recebe os dados, liga e testa. Só cria o que faltar, e só depois de perguntar.
 
-Segredos (chaves `sk_`, `whsec_`, secret do PayPal, secret do Trackeador) **nunca** no chat nem no repositório: a pessoa grava no cofre/variável de ambiente e diz o NOME da variável. O agente lê de lá.
+## Envelope de segredos (cada pessoa, o seu — separado do kit)
+Cada pessoa guarda as PRÓPRIAS chaves num arquivo só dela, fora do kit e fora do projeto: `~/.config/low-ticket-kit/segredos/<oferta>.env` (`chmod 600`). Ela mesma cola os valores lá; ninguém mais vê.
+- O kit, as skills, os scripts e o agente **não leem, não conferem e não mostram** o conteúdo do envelope. O agente só pergunta se a variável existe (`grep -c '^STRIPE_SECRET_KEY=' <arquivo>`, nunca o valor) e passa o arquivo inteiro para quem precisa dele: `cf deploy --secrets-file <arquivo>`, `--env-file` do Docker ou as variáveis do Coolify.
+- Nada do envelope vai para o chat, para log, para o Git ou para o kit. O sincronizador do kit não toca nessa pasta.
+- Nomes padrão das variáveis: `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`, `STRIPE_WEBHOOK_SECRET`, `PAYPAL_CLIENT_ID`, `PAYPAL_SECRET`, `DELIVERY_WEBHOOK_URL`, `DELIVERY_WEBHOOK_SECRET`, `TRACKEADOR_WEBHOOK_URL`, `TRACKEADOR_SECRET`, `ADMIN_TOKEN`. Um envelope por oferta (uma conta Stripe por oferta).
+- Valor que o agente gera (o `whsec_` do webhook, o `ADMIN_TOKEN`): ele grava direto no envelope, sem imprimir.
 
 ## Pergunta de abertura (copiar e mandar)
 
@@ -29,14 +34,14 @@ Segredos (chaves `sk_`, `whsec_`, secret do PayPal, secret do Trackeador) **nunc
 |---|---|---|
 | Organização e conta da oferta (`acct_…`) | Dashboard → nome da conta | nota da oferta |
 | Chave publicável teste/live (`pk_test_…`/`pk_live_…`) | Developers → API keys | `STRIPE_PUBLISHABLE_KEY` |
-| Chave secreta ou restrita (`sk_`/`rk_`) | Developers → API keys | **cofre** → `STRIPE_SECRET_KEY` (nunca no chat) |
+| Chave secreta ou restrita (`sk_`/`rk_`) | Developers → API keys | **envelope** → `STRIPE_SECRET_KEY` (a pessoa cola; nunca no chat) |
 | Produto e preços JÁ cadastrados? (`prod_…`, `price_…` por moeda) | Product catalog | `catalog.mjs` → referência (o valor cobrado continua vindo do `catalog.mjs`) |
 | Empresa verificada para o live? | Settings → Business | só liga live com isso + ordem do dono |
 | Formas de pagamento | Settings → Payment methods: cartão, Apple Pay, **Google Pay ligado** (conta nova pode vir desligado) | o agente confere pela API |
-| Webhook | o agente cria (`https://<domínio>/webhook`, eventos do `AGENTS.md` §5) e guarda o `whsec_` no cofre | `STRIPE_WEBHOOK_SECRET` |
+| Webhook | o agente cria (`https://<domínio>/webhook`, eventos do `AGENTS.md` §5) e grava o `whsec_` no envelope sem imprimir | `STRIPE_WEBHOOK_SECRET` |
 | Domínio das carteiras | o agente registra (`paymentMethodDomains`), teste e live | — |
 
-**Se já está tudo cadastrado:** o agente só pede `pk_`, o nome da variável do `sk_` e os IDs de produto/preço, confere pela API que a conta é a certa e integra.
+**Se já está tudo cadastrado:** o agente só pede `pk_`, se o `STRIPE_SECRET_KEY` já está no envelope e os IDs de produto/preço, confere pela API que a conta é a certa e integra.
 **Se falta:** o agente mostra o que vai criar (produto, preços por moeda) e cria só com o ok.
 
 ### 3. PayPal
@@ -44,7 +49,7 @@ Segredos (chaves `sk_`, `whsec_`, secret do PayPal, secret do Trackeador) **nunc
 |---|---|
 | Conta Business que recebe (qual entidade/pessoa) | nota da oferta |
 | Client ID (sandbox e live) | `PAYPAL_CLIENT_ID` |
-| Secret (sandbox e live) | **cofre** → `PAYPAL_SECRET` |
+| Secret (sandbox e live) | **envelope** → `PAYPAL_SECRET` |
 | Ambiente | `PAYPAL_ENV=live` só no go-live |
 
 Sem PayPal: deixar vazio; a opção some da tela sozinha.
@@ -56,9 +61,9 @@ Plano básico e completo por moeda (EUR/CHF/CAD ou as da oferta) · upgrade **ad
 | Dado | Vai para |
 |---|---|
 | URL da rota da área de membros que recebe a venda | `DELIVERY_WEBHOOK_URL` |
-| Segredo compartilhado com essa rota | **cofre** → `DELIVERY_WEBHOOK_SECRET` |
+| Segredo compartilhado com essa rota | **envelope** → `DELIVERY_WEBHOOK_SECRET` |
 | Conexão do Trackeador (gateway `generic`): URL `.../api/webhooks/sale/c/<id>` | `TRACKEADOR_WEBHOOK_URL` |
-| Secret da conexão (aparece só na criação) | **cofre** → `TRACKEADOR_SECRET` |
+| Secret da conexão (aparece só na criação) | **envelope** → `TRACKEADOR_SECRET` |
 
 Se a rota da área de membros não existe: criar no site da oferta, seguindo o contrato do `AGENTS.md` §1c.
 
